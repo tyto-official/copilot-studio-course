@@ -1,0 +1,8 @@
+site_name: Copilot Studio Utbildning
+theme:
+  name: material
+  language: sv
+  features:
+    - content.code.copy
+nav:
+  - Hem: index.md

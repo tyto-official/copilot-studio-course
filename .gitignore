@@ -1,0 +1,9 @@
+# Python / MkDocs junk
+__pycache__
+*.py[cod]
+*.swp
+site/
+.DS_Store
+.env
+.venv
+venv/
