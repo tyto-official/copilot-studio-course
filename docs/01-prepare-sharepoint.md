@@ -42,22 +42,30 @@ Nu ska vi välja rätt mall.
 
 ---
 
-## Steg 3: Konfigurera språk (Kritiskt!)
+## Steg 3: Konfigurera namn och språk (Kritiskt!)
 
-Detta är det viktigaste steget för att koden ska fungera senare.
+Detta är det viktigaste steget. Vi måste döpa sajten och tvinga den att använda engelska.
 
 1. **Site name:** Döp den till `IT-Support`.
-2. Klicka på pilen för att fälla ut inställningarna (om de inte redan syns).
-3. **Language:** Ändra detta till **English**.
+2. **Site description:** (Valfritt) Skriv en kort beskrivning om du vill.
+3. Klicka på knappen **Next**.
 
-![Välj English under språkinställningarna](assets/images/chap01/sp-step6-language.jpg)
+![Fyll i namn och klicka Next](assets/images/chap01/sp-step6-sitename-next.jpg)
+
+4. Nu får du välja språk. Det är **mycket viktigt** att det står **English** här. Om det är förvalt något annat (t.ex. Swedish), klicka på rullgardinsmenyn och ändra till English.
+
+![Välj English under språkinställningarna](assets/images/chap01/sp-step7-language.jpg)
 
 !!! danger "Välj Engelska!"
     Även om du föredrar svenska menyer **MÅSTE** du välja **English** här.
     
     Om du väljer svenska kommer de interna namnen på kolumnerna heta saker som `Enhetstyp` istället för `DeviceType`, vilket gör att din Copilot inte kommer kunna läsa datan i senare övningar.
 
-4. Klicka **Create site** / **Finish**.
+5. Klicka på **Create site** (eller *Finish*).
+
+![Klicka på Finish för att skapa sajten](assets/images/chap01/sp-step8-finish.jpg)
+
+*Vänta några sekunder medan sajten skapas. När det är klart skickas du automatiskt till den nya sajten.*
 
 ---
 
@@ -68,12 +76,12 @@ Mallen har skapat en lista åt oss som heter **Devices**, men vi behöver lägga
 1. På din nya sajt, klicka på **Site contents** i vänstermenyn (eller "Webbplatsinnehåll").
 2. Klicka på listan som heter **Devices**.
 
-![Hitta listan Devices under Site contents](assets/images/chap01/sp-step7-sitecontents.jpg)
+*(Här kommer bild sp-step9-sitecontents.jpg senare)*
 
 3. Scrolla längst till höger i listan och klicka på **+ Add column**.
 4. Välj typen **Hyperlink** (Länk).
 
-![Lägg till kolumn av typen Hyperlink](assets/images/chap01/sp-step8-addcolumn.jpg)
+*(Här kommer bild sp-step10-addcolumn.jpg senare)*
 
 5. Döp kolumnen till: `Image`
 6. Klicka **Save**.
@@ -86,10 +94,12 @@ Nu ska vi fylla listan med 4 produkter.
 Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in följande artiklar.
 
 !!! tip "Hur får jag in bilden?"
-    Vi har lagt bilderna här nedanför.
+    Det enklaste sättet:
     1. **Högerklicka** på bilden här i guiden.
     2. Välj **Kopiera bildadress** (Copy image address).
-    3. Klistra in länken i fältet **Image** i SharePoint.
+    3. Klistra in i SharePoint.
+    
+    *Alternativt: Kopiera den långa länken som står i rutan under respektive bild.*
 
 ### 1. Surface Laptop 13
 ![Surface Laptop 13](assets/images/products/surface-laptop-13.png)
@@ -103,7 +113,8 @@ Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in 
 * **Serial Number:** 1
 * **Price:** 1500
 * **Order #:** 10001
-* **Image:** https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-laptop-13.png
+* **Image:**
+`https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-laptop-13.png`
 
 ---
 
@@ -119,7 +130,8 @@ Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in 
 * **Serial Number:** 2
 * **Price:** 2000
 * **Order #:** 10002
-* **Image:** https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-laptop-15.png
+* **Image:**
+`https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-laptop-15.png`
 
 ---
 
@@ -135,7 +147,8 @@ Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in 
 * **Serial Number:** 3
 * **Price:** 2500
 * **Order #:** 10003
-* **Image:** https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-studio.png
+* **Image:**
+`https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-studio.png`
 
 ---
 
@@ -151,7 +164,8 @@ Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in 
 * **Serial Number:** 4
 * **Price:** 1000
 * **Order #:** 10004
-* **Image:** https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-pro-12.png
+* **Image:**
+`https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-pro-12.png`
 
 !!! success "Klart!"
     Nu har du en databas fylld med hårdvara. I nästa kapitel ska vi börja bygga själva agenten!
