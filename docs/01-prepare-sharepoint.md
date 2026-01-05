@@ -12,15 +12,15 @@ Vi navigerar dit direkt från Power Apps.
 
 1. Klicka på **Våfflan** (App launchern) bestående av 9 prickar högst upp i vänstra hörnet.
 
-![Klicka på våfflan](assets/images/chap01/sp-step1-waffle.png)
+    ![Klicka på våfflan](assets/images/chap01/sp-step1-waffle.jpg)
 
 2. I menyn som fälls ut, klicka på **SharePoint**.
 
-![Välj SharePoint i menyn](assets/images/chap01/sp-step2-icon.png)
+    ![Välj SharePoint i menyn](assets/images/chap01/sp-step2-icon.jpg)
 
 3. Du hamnar nu på startsidan för SharePoint. Klicka på **+ Create site** (eller *+ Skapa webbplats*).
 
-![SharePoint startsida](assets/images/chap01/sp-step3-home.png)
+    ![SharePoint startsida](assets/images/chap01/sp-step3-home.jpg)
 
 ---
 
@@ -30,18 +30,13 @@ Nu ska vi välja rätt mall.
 
 1. Du får två val. Välj **Team site** (Gruppwebbplats).
 
-![Välj Team Site](assets/images/chap01/sp-step4-teamsite.png)
+    ![Välj Team Site](assets/images/chap01/sp-step4-teamsite.jpg)
 
 2. Klicka på fliken **Templates** (Mallar) högst upp.
 3. Scrolla ner och klicka på rutan för **IT Help Desk**.
-
-![Välj mallen IT Help Desk i galleriet](assets/images/chap01/sp-step5-template.png)
-
 4. Klicka på knappen **Use template**.
 
-![Klicka på Use template](assets/images/chap01/sp-step6.5-template.png)
-
-
+    ![Välj mallen IT Help Desk i galleriet](assets/images/chap01/sp-step5-template.jpg)
 
 *(Om du inte ser mallen, kontakta kursledaren för instruktioner om hur man skapar listan manuellt).*
 
@@ -55,26 +50,26 @@ Detta är det viktigaste steget. Vi måste döpa sajten och tvinga den att anvä
 2. **Site description:** (Valfritt) Skriv en kort beskrivning om du vill.
 3. Klicka på knappen **Next**.
 
-![Fyll i namn och klicka Next](assets/images/chap01/sp-step6-create.png)
+    ![Fyll i namn och klicka Next](assets/images/chap01/sp-step6-create.png)
 
 4. Nu får du välja språk. Det är **mycket viktigt** att det står **English** här. Om det är förvalt något annat (t.ex. Swedish), klicka på rullgardinsmenyn och ändra till English.
 
-![Välj English under språkinställningarna](assets/images/chap01/sp-step7-language.png)
+    ![Välj English under språkinställningarna](assets/images/chap01/sp-step7-language.png)
 
-!!! danger "Välj Engelska!"
-    Även om du föredrar svenska menyer **MÅSTE** du välja **English** här.
-    
-    Om du väljer svenska kommer de interna namnen på kolumnerna heta saker som `Enhetstyp` istället för `DeviceType`, vilket gör att din Copilot inte kommer kunna läsa datan i senare övningar.
+    !!! danger "Välj Engelska!"
+        Även om du föredrar svenska menyer **MÅSTE** du välja **English** här.
+        
+        Om du väljer svenska kommer de interna namnen på kolumnerna heta saker som `Enhetstyp` istället för `DeviceType`, vilket gör att din Copilot inte kommer kunna läsa datan i senare övningar.
 
 5. Klicka på **Create site**.
 
-*Vänta några sekunder medan sajten skapas...*
+    *Vänta några sekunder medan sajten skapas...*
 
 6. När sajten är skapad kommer en ruta där du kan lägga till medlemmar. Vi behöver inte göra det nu. Klicka bara på **Finish**.
 
-![Klicka på Finish för att skapa sajten](assets/images/chap01/sp-step8-finish.png)
+    ![Klicka på Finish för att skapa sajten](assets/images/chap01/sp-step8-finish.png)
 
-*Du skickas nu automatiskt till den nya sajten.*
+    *Du skickas nu automatiskt till den nya sajten.*
 
 ---
 
@@ -84,20 +79,20 @@ Mallen har skapat en lista åt oss som heter **Devices**, men vi behöver lägga
 
 1. På din nya sajt, klicka på fliken **Devices** i toppmenyn (eller under "Site contents").
 
-![Hitta listan Devices](assets/images/chap01/sp-step9-sitecontents.png)
+    ![Hitta listan Devices](assets/images/chap01/sp-step9-sitecontents.jpg)
 
 2. Scrolla längst till höger i listan tills du ser knappen **+ Add column**. Klicka på den.
 
-![Klicka på Add column längst till höger](assets/images/chap01/sp-step10-addcolumn.png)
+    ![Klicka på Add column längst till höger](assets/images/chap01/sp-step10-addcolumn.png)
 
 3. I menyn som dyker upp, scrolla ner och välj **Hyperlink**.
 
-![Välj datatypen Hyperlink](assets/images/chap01/sp-step11-hyperlink.png)
+    ![Välj datatypen Hyperlink](assets/images/chap01/sp-step11-hyperlink.png)
 
 4. Döp kolumnen till `Image`.
 5. Klicka på **Save**.
 
-![Döp kolumnen till Image och spara](assets/images/chap01/sp-step12-hyperlink.png)
+    ![Döp kolumnen till Image och spara](assets/images/chap01/sp-step12-hyperlink.png)
 
 ---
 
@@ -107,11 +102,11 @@ Nu ska vi fylla listan med 4 produkter.
 
 1. Klicka på knappen **+ Add new item** (eller *New*) uppe till vänster i listan.
 
-![Klicka på Add new item](assets/images/chap01/sp-step13-add-new-item.png)
+    ![Klicka på Add new item](assets/images/chap01/sp-step13-add-new-item.png)
 
 2. En ruta öppnas till höger. Här fyller du i informationen för produkten (se tabellerna nedan).
 
-![Fyll i informationen i formuläret](assets/images/chap01/sp-step14-fill-item.png)
+    ![Fyll i informationen i formuläret](assets/images/chap01/sp-step14-fill-item.png)
 
 !!! tip "Hur får jag in bilden?"
     Det enklaste sättet:
