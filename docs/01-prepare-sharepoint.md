@@ -50,11 +50,11 @@ Detta är det viktigaste steget. Vi måste döpa sajten och tvinga den att anvä
 2. **Site description:** (Valfritt) Skriv en kort beskrivning om du vill.
 3. Klicka på knappen **Next**.
 
-![Fyll i namn och klicka Next](assets/images/chap01/sp-step6-sitename-next.jpg)
+![Fyll i namn och klicka Next](assets/images/chap01/sp-step6-create.png)
 
 4. Nu får du välja språk. Det är **mycket viktigt** att det står **English** här. Om det är förvalt något annat (t.ex. Swedish), klicka på rullgardinsmenyn och ändra till English.
 
-![Välj English under språkinställningarna](assets/images/chap01/sp-step7-language.jpg)
+![Välj English under språkinställningarna](assets/images/chap01/sp-step7-language.png)
 
 !!! danger "Välj Engelska!"
     Även om du föredrar svenska menyer **MÅSTE** du välja **English** här.
@@ -63,7 +63,7 @@ Detta är det viktigaste steget. Vi måste döpa sajten och tvinga den att anvä
 
 5. Klicka på **Create site** (eller *Finish*).
 
-![Klicka på Finish för att skapa sajten](assets/images/chap01/sp-step8-finish.jpg)
+![Klicka på Finish för att skapa sajten](assets/images/chap01/sp-step8-finish.png)
 
 *Vänta några sekunder medan sajten skapas. När det är klart skickas du automatiskt till den nya sajten.*
 
@@ -73,31 +73,42 @@ Detta är det viktigaste steget. Vi måste döpa sajten och tvinga den att anvä
 
 Mallen har skapat en lista åt oss som heter **Devices**, men vi behöver lägga till bilder på produkterna.
 
-1. På din nya sajt, klicka på **Site contents** i vänstermenyn (eller "Webbplatsinnehåll").
-2. Klicka på listan som heter **Devices**.
+1. På din nya sajt, klicka på fliken **Devices** i toppmenyn (eller under "Site contents").
 
-*(Här kommer bild sp-step9-sitecontents.jpg senare)*
+![Hitta listan Devices](assets/images/chap01/sp-step9-sitecontents.jpg)
 
-3. Scrolla längst till höger i listan och klicka på **+ Add column**.
-4. Välj typen **Hyperlink** (Länk).
+2. Scrolla längst till höger i listan tills du ser knappen **+ Add column**. Klicka på den.
 
-*(Här kommer bild sp-step10-addcolumn.jpg senare)*
+![Klicka på Add column längst till höger](assets/images/chap01/sp-step10-addcolumn.png)
 
-5. Döp kolumnen till: `Image`
-6. Klicka **Save**.
+3. I menyn som dyker upp, scrolla ner och välj **Hyperlink**.
+
+![Välj datatypen Hyperlink](assets/images/chap01/sp-step11-hyperlink.png)
+
+4. Döp kolumnen till `Image`.
+5. Klicka på **Save**.
+
+![Döp kolumnen till Image och spara](assets/images/chap01/sp-step12-hyperlink.png)
 
 ---
 
 ## Steg 5: Lägg in testdata
 
 Nu ska vi fylla listan med 4 produkter.
-Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in följande artiklar.
+
+1. Klicka på knappen **+ Add new item** (eller *New*) uppe till vänster i listan.
+
+![Klicka på Add new item](assets/images/chap01/sp-step13-add-new-item.png)
+
+2. En ruta öppnas till höger. Här fyller du i informationen för produkten (se tabellerna nedan).
+
+![Fyll i informationen i formuläret](assets/images/chap01/sp-step14-fill-item.png)
 
 !!! tip "Hur får jag in bilden?"
     Det enklaste sättet:
     1. **Högerklicka** på bilden här i guiden.
     2. Välj **Kopiera bildadress** (Copy image address).
-    3. Klistra in i SharePoint.
+    3. Klistra in länken i fältet **Image** (längst ner i formuläret i SharePoint).
     
     *Alternativt: Kopiera den långa länken som står i rutan under respektive bild.*
 
