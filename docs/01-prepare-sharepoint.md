@@ -92,7 +92,7 @@ Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in 
     3. Klistra in länken i fältet **Image** i SharePoint.
 
 ### 1. Surface Laptop 13
-![Surface Laptop 13](assets/images/products/laptop13.png)
+![Surface Laptop 13](assets/images/products/surface-laptop-13.png)
 
 * **Title:** Surface Laptop 13
 * **Status:** Available
@@ -108,7 +108,7 @@ Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in 
 ---
 
 ### 2. Surface Laptop 15
-![Surface Laptop 15](assets/images/products/laptop15.png)
+![Surface Laptop 15](assets/images/products/surface-laptop-15.png)
 
 * **Title:** Surface Laptop 15
 * **Status:** Available
@@ -124,7 +124,7 @@ Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in 
 ---
 
 ### 3. Surface Studio
-![Surface Studio](assets/images/products/studio.png)
+![Surface Studio](assets/images/products/surface-studio.png)
 
 * **Title:** Surface Studio
 * **Status:** Available
@@ -140,7 +140,7 @@ Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in 
 ---
 
 ### 4. Surface Pro
-![Surface Pro](assets/images/products/pro.png)
+![Surface Pro](assets/images/products/surface-pro-12.png)
 
 * **Title:** Surface Pro
 * **Status:** Available
