@@ -82,23 +82,76 @@ Mallen har skapat en lista åt oss som heter **Devices**, men vi behöver lägga
 
 ## Steg 5: Lägg in testdata
 
-Vi behöver några produkter som agenten kan söka efter.
+Nu ska vi fylla listan med 4 produkter.
+Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in följande artiklar.
 
-1. Öppna vår **[Bildbank](device-images.md)** i en ny flik.
-2. Kopiera bildlänken för respektive produkt (Högerklicka -> Kopiera bildadress).
-3. Gå tillbaka till SharePoint och lägg in följande rader i listan (via **+ New** eller **Edit in grid view**).
+!!! tip "Hur får jag in bilden?"
+    Vi har lagt bilderna här nedanför.
+    1. **Högerklicka** på bilden här i guiden.
+    2. Välj **Kopiera bildadress** (Copy image address).
+    3. Klistra in länken i fältet **Image** i SharePoint.
 
-| Title | Manufacturer | Price | Image |
-| :--- | :--- | :--- | :--- |
-| **Surface Laptop 13** | Microsoft | 999 | *(Klistra in länk från Bildbanken)* |
-| **Surface Laptop 15** | Microsoft | 1299 | *(Klistra in länk från Bildbanken)* |
-| **Surface Pro** | Microsoft | 899 | *(Klistra in länk från Bildbanken)* |
-| **Surface Studio** | Microsoft | 3500 | *(Klistra in länk från Bildbanken)* |
+### 1. Surface Laptop 13
+![Surface Laptop 13](assets/images/products/laptop13.png)
 
-*(Du kan lämna övriga fält som Serial Number och Asset Type tomma).*
+* **Title:** Surface Laptop 13
+* **Status:** Available
+* **Manufacturer:** Microsoft
+* **Model:** Surface Laptop 13
+* **Asset Type:** Laptop
+* **Color:** Silver
+* **Serial Number:** 1
+* **Price:** 1500
+* **Order #:** 10001
+* **Image:** *(Högerklicka på bilden ovan -> Kopiera länk)*
 
-!!! warning "Viktigt för bilderna"
-    För att bilderna ska synas i SharePoint måste webbplatsen vara publicerad (live). Om du kör detta lokalt på din dator (`localhost`) kommer länkarna inte fungera förrän du gjort en `git push`.
+---
+
+### 2. Surface Laptop 15
+![Surface Laptop 15](assets/images/products/laptop15.png)
+
+* **Title:** Surface Laptop 15
+* **Status:** Available
+* **Manufacturer:** Microsoft
+* **Model:** Surface Laptop 15
+* **Asset Type:** Laptop
+* **Color:** Black
+* **Serial Number:** 2
+* **Price:** 2000
+* **Order #:** 10002
+* **Image:** *(Högerklicka på bilden ovan -> Kopiera länk)*
+
+---
+
+### 3. Surface Studio
+![Surface Studio](assets/images/products/studio.png)
+
+* **Title:** Surface Studio
+* **Status:** Available
+* **Manufacturer:** Microsoft
+* **Model:** Surface Studio
+* **Asset Type:** Desktop
+* **Color:** Silver
+* **Serial Number:** 3
+* **Price:** 2500
+* **Order #:** 10003
+* **Image:** *(Högerklicka på bilden ovan -> Kopiera länk)*
+
+---
+
+### 4. Surface Pro
+![Surface Pro](assets/images/products/pro.png)
+
+* **Title:** Surface Pro
+* **Status:** Available
+* **Manufacturer:** Microsoft
+* **Model:** Surface Pro
+* **Asset Type:** Tablet
+* **Color:** Silver
+* **Serial Number:** 4
+* **Price:** 1000
+* **Order #:** 10004
+* **Image:** *(Högerklicka på bilden ovan -> Kopiera länk)*
 
 !!! success "Klart!"
     Nu har du en databas fylld med hårdvara. I nästa kapitel ska vi börja bygga själva agenten!
