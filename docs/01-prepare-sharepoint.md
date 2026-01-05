@@ -66,11 +66,15 @@ Detta är det viktigaste steget. Vi måste döpa sajten och tvinga den att anvä
     
     Om du väljer svenska kommer de interna namnen på kolumnerna heta saker som `Enhetstyp` istället för `DeviceType`, vilket gör att din Copilot inte kommer kunna läsa datan i senare övningar.
 
-5. Klicka på **Create site** (eller *Finish*).
+5. Klicka på **Create site**.
+
+*Vänta några sekunder medan sajten skapas...*
+
+6. När sajten är skapad kommer en ruta där du kan lägga till medlemmar. Vi behöver inte göra det nu. Klicka bara på **Finish**.
 
 ![Klicka på Finish för att skapa sajten](assets/images/chap01/sp-step8-finish.png)
 
-*Vänta några sekunder medan sajten skapas. När det är klart skickas du automatiskt till den nya sajten.*
+*Du skickas nu automatiskt till den nya sajten.*
 
 ---
 
@@ -80,7 +84,7 @@ Mallen har skapat en lista åt oss som heter **Devices**, men vi behöver lägga
 
 1. På din nya sajt, klicka på fliken **Devices** i toppmenyn (eller under "Site contents").
 
-![Hitta listan Devices](assets/images/chap01/sp-step9-sitecontents.jpg)
+![Hitta listan Devices](assets/images/chap01/sp-step9-sitecontents.png)
 
 2. Scrolla längst till höger i listan tills du ser knappen **+ Add column**. Klicka på den.
 
