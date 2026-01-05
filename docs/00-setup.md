@@ -44,19 +44,39 @@ Detta är det vanligaste misstaget. Power Apps lägger dig ofta i fel miljö som
 
 ---
 
-## Steg 3: Verifiera att det fungerar
+## Steg 3: Verifiera Dataverse (Viktigt!)
 
-Vi gör ett snabbtest för att se att Dataverse är igång i den miljö du valt.
+Vi ska nu göra ett "lackmustest" för att se att databasen (Dataverse) är korrekt installerad.
 
-1. Klicka på **Create** i vänstermenyn i Copilot Studio.
-2. Välj **New copilot**.
-3. Om du kommer till rutan där du får namnge din agent – Grattis! Allt fungerar. ✅
-4. Klicka på **Cancel** (vi skapar den "på riktigt" i nästa kapitel).
+1. Se till att du står i din nya miljö (enligt Steg 2).
+2. Klicka på **+ Create** i menyn längst till vänster.
+
+![Klicka på Create i menyn](assets/images/verify-step1-create-menu.png)
+
+3. Klicka på kortet som heter **AI hub**.
+
+![Klicka på AI hub kortet](assets/images/verify-step2-aihub-card.png)
+
+4. **Titta på resultatet:**
+
+**✅ Det ser ut så här (Succé):**
+Du ser en sida med rutor för "AI models", "Prompts" eller en lista. Inga felmeddelanden.
+![Lyckat resultat i AI Hub](assets/images/verify-success.png)
+*Grattis! Din miljö är redo. Du kan gå vidare till nästa kapitel.*
+
+**❌ Det ser ut så här (Fel):**
+Du möts av en bild på en burk och texten **"No database found"**.
+![Misslyckat resultat - databas saknas](assets/images/verify-fail.png)
 
 ---
 
 ## 🛑 Felsökning
 
+**Jag fick "No database found" i Steg 3?**
+Då har du troligen valt fel miljö (t.ex. Default-miljön) eller så har installationen av din Developer-miljö inte blivit klar än.
+1. Dubbelkolla i miljöväljaren (uppe till höger) att du INTE är i "(default)".
+2. Om du är i rätt miljö men ändå får felet: Vänta 5-10 minuter och uppdatera sidan. Ibland tar det en stund för databasen att skapas första gången.
+
 **Jag får felmeddelande när jag försöker signa upp i Steg 1?**
-Om din IT-avdelning har blockerat detta, gå tillbaka till miljöväljaren i Steg 2 och välj **Default**-miljön (under "Other environments").
-*OBS: Meddela kursledaren om du måste göra detta, då vissa moment (som Godkännanden) kan behöva anpassas.*
+Om din IT-avdelning har blockerat detta får du använda din **Default**-miljö.
+*OBS: Meddela kursledaren om du måste göra detta.*
