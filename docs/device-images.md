@@ -20,7 +20,7 @@ Här hittar du bilderna som behövs för SharePoint-listan.
 ---
 
 ## Surface Pro
-![Surface Pro](assets/images/products/surface-pro.png)
+![Surface Pro](assets/images/products/surface-pro-12.png)
 
 ---
 
