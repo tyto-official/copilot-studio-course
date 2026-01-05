@@ -6,3 +6,4 @@ theme:
     - content.code.copy
 nav:
   - Hem: index.md
+  - 0. Förberedelser: 00-setup.md
