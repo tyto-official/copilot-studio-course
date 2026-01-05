@@ -12,11 +12,11 @@ Innan vi börjar bygga måste vi se till att du har rätt förutsättningar. Vi 
 1. Öppna en ny flik och gå till [Power Apps Developer Plan](https://powerapps.microsoft.com/en-us/developerplan/).
 2. Klicka på den blå knappen **Try for free**.
 
-![Startsidan för Power Apps Developer Plan](assets/images/chap00/setup-step1-tryfree.png)
+    ![Startsidan för Power Apps Developer Plan](assets/images/chap00/setup-step1-tryfree.png)
 
 3. Ange din jobbmail, kryssa i rutan för att godkänna avtalen och klicka på **Start free**.
 
-![Formulär för registrering](assets/images/chap00/setup-step1-signup.png)
+    ![Formulär för registrering](assets/images/chap00/setup-step1-signup.png)
 
 När du registrerat dig skickas du vidare till Power Apps startsida.
 
@@ -30,11 +30,11 @@ Nu ska vi se till att din nya miljö finns tillgänglig och välja den. Detta g�
 
 1. Titta uppe i högra hörnet på sidan. Klicka på väljaren för **Environment** (där ditt namn eller ett miljönamn står).
 
-![Pilen visar Environment-väljaren i menyn](assets/images/chap00/setup-step2-home.jpg)
+    ![Pilen visar Environment-väljaren i menyn](assets/images/chap00/setup-step2-home.jpg)
 
 2. En lista fälls ut. Titta under rubriken **Build apps with Dataverse**. Där ska din utvecklingsmiljö ligga. Klicka på den för att välja den.
 
-![Välj din Developer-miljö i listan under Dataverse-rubriken](assets/images/chap00/setup-step2-selector.png)
+    ![Välj din Developer-miljö i listan under Dataverse-rubriken](assets/images/chap00/setup-step2-selector.png)
 
 **Viktigt om namngivning:**
 I mina screenshots heter miljön "CopilotLab". Din miljö kommer troligen heta **"[Ditt Namn]'s Environment"**.
@@ -50,11 +50,11 @@ Nu gör vi ett snabbt test för att se att databasen (Dataverse) är installerad
 1. Se till att du står i din nya miljö (enligt Steg 2).
 2. Klicka på **+ Create** i menyn längst till vänster.
 
-![Klicka på Create i menyn](assets/images/chap00/verify-step1-create-menu.jpg)
+    ![Klicka på Create i menyn](assets/images/chap00/verify-step1-create-menu.jpg)
 
 3. Klicka på kortet som heter **AI hub**.
 
-![Klicka på AI hub kortet](assets/images/chap00/verify-step2-aihub-card.jpg)
+    ![Klicka på AI hub kortet](assets/images/chap00/verify-step2-aihub-card.jpg)
 
 4. **Titta på resultatet:**
 

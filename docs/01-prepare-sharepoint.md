@@ -12,15 +12,15 @@ Vi navigerar dit direkt från Power Apps.
 
 1. Klicka på **Våfflan** (App launchern) bestående av 9 prickar högst upp i vänstra hörnet.
 
-    ![Klicka på våfflan](assets/images/chap01/sp-step1-waffle.jpg)
+    ![Klicka på våfflan](assets/images/chap01/sp-step1-waffle.png)
 
 2. I menyn som fälls ut, klicka på **SharePoint**.
 
-    ![Välj SharePoint i menyn](assets/images/chap01/sp-step2-icon.jpg)
+    ![Välj SharePoint i menyn](assets/images/chap01/sp-step2-icon.png)
 
 3. Du hamnar nu på startsidan för SharePoint. Klicka på **+ Create site** (eller *+ Skapa webbplats*).
 
-    ![SharePoint startsida](assets/images/chap01/sp-step3-home.jpg)
+    ![SharePoint startsida](assets/images/chap01/sp-step3-home.png)
 
 ---
 
@@ -30,13 +30,13 @@ Nu ska vi välja rätt mall.
 
 1. Du får två val. Välj **Team site** (Gruppwebbplats).
 
-    ![Välj Team Site](assets/images/chap01/sp-step4-teamsite.jpg)
+    ![Välj Team Site](assets/images/chap01/sp-step4-teamsite.png)
 
 2. Klicka på fliken **Templates** (Mallar) högst upp.
 3. Scrolla ner och klicka på rutan för **IT Help Desk**.
 4. Klicka på knappen **Use template**.
 
-    ![Välj mallen IT Help Desk i galleriet](assets/images/chap01/sp-step5-template.jpg)
+    ![Välj mallen IT Help Desk i galleriet](assets/images/chap01/sp-step5-template.png)
 
 *(Om du inte ser mallen, kontakta kursledaren för instruktioner om hur man skapar listan manuellt).*
 
