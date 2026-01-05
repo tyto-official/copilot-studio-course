@@ -34,9 +34,12 @@ Nu ska vi välja rätt mall.
 
 2. Klicka på fliken **Templates** (Mallar) högst upp.
 3. Scrolla ner och klicka på rutan för **IT Help Desk**.
-4. Klicka på knappen **Use template**.
 
     ![Välj mallen IT Help Desk i galleriet](assets/images/chap01/sp-step5-template.png)
+
+4. Klicka på knappen **Use template**.
+
+    ![Välj mallen IT Help Desk i galleriet](assets/images/chap01/sp-step6.5-template.png)
 
 *(Om du inte ser mallen, kontakta kursledaren för instruktioner om hur man skapar listan manuellt).*
 
