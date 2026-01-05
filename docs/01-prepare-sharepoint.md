@@ -97,6 +97,9 @@ Mallen har skapat en lista åt oss som heter **Devices**, men vi behöver lägga
 
     ![Döp kolumnen till Image och spara](assets/images/chap01/sp-step12-hyperlink.png)
 
+    !!! info "Varför gör vi detta?"
+        För att vår AI-agent ska kunna visa bilder i chatten behöver den en direktlänk (URL) till bilden. Det inbyggda bildfältet i SharePoint är svårt för agenten att läsa, så vi skapar en enkel länkkolumn istället.
+
 ---
 
 ## Steg 5: Lägg in testdata
@@ -111,13 +114,13 @@ Nu ska vi fylla listan med 4 produkter.
 
     ![Fyll i informationen i formuläret](assets/images/chap01/sp-step14-fill-item.png)
 
-!!! tip "Hur får jag in bilden?"
-    Det enklaste sättet:
-    1. **Högerklicka** på bilden här i guiden.
-    2. Välj **Kopiera bildadress** (Copy image address).
-    3. Klistra in länken i fältet **Image** (längst ner i formuläret i SharePoint).
+!!! tip "Viktigt om bilder"
+    **Lämna fältet 'Device photo' tomt!** Vi ska inte ladda upp några filer.
     
-    *Alternativt: Kopiera den långa länken som står i rutan under respektive bild.*
+    Gör istället så här:
+    1. Scrolla ner i formuläret till fältet **Image** (som vi skapade i förra steget).
+    2. Kopiera länken (URL:en) från rutan under respektive produkt här nedanför.
+    3. Klistra in den i **Image**-fältet i SharePoint.
 
 ### 1. Surface Laptop 13
 ![Surface Laptop 13](assets/images/products/surface-laptop-13.png)

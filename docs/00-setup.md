@@ -60,7 +60,7 @@ Nu gör vi ett snabbt test för att se att databasen (Dataverse) är installerad
 
 **✅ Det ser ut så här (Succé):**
 Du ser en sida med rutor för "AI models", "Prompts" eller en lista. Inga felmeddelanden.
-![Lyckat resultat i AI Hub](assets/images/chap00/verify-success.jpg)
+![Lyckat resultat i AI Hub](assets/images/chap00/verify-success.png)
 *Grattis! Din miljö är redo. Du kan gå vidare till nästa kapitel.*
 
 **❌ Det ser ut så här (Fel):**
