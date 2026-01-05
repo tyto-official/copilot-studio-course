@@ -103,7 +103,7 @@ Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in 
 * **Serial Number:** 1
 * **Price:** 1500
 * **Order #:** 10001
-* **Image:** *(Högerklicka på bilden ovan -> Kopiera länk)*
+* **Image:** https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-laptop-13.png
 
 ---
 
@@ -119,7 +119,7 @@ Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in 
 * **Serial Number:** 2
 * **Price:** 2000
 * **Order #:** 10002
-* **Image:** *(Högerklicka på bilden ovan -> Kopiera länk)*
+* **Image:** https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-laptop-15.png
 
 ---
 
@@ -135,7 +135,7 @@ Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in 
 * **Serial Number:** 3
 * **Price:** 2500
 * **Order #:** 10003
-* **Image:** *(Högerklicka på bilden ovan -> Kopiera länk)*
+* **Image:** https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-studio.png
 
 ---
 
@@ -147,11 +147,11 @@ Använd knappen **+ New** (eller *Edit in grid view*) i SharePoint och lägg in 
 * **Manufacturer:** Microsoft
 * **Model:** Surface Pro
 * **Asset Type:** Tablet
-* **Color:** Silver
+* **Color:** Pink
 * **Serial Number:** 4
 * **Price:** 1000
 * **Order #:** 10004
-* **Image:** *(Högerklicka på bilden ovan -> Kopiera länk)*
+* **Image:** https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-pro-12.png
 
 !!! success "Klart!"
     Nu har du en databas fylld med hårdvara. I nästa kapitel ska vi börja bygga själva agenten!
