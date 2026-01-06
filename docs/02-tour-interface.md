@@ -29,15 +29,15 @@ Det första du **alltid** ska göra är att titta uppe i högra hörnet.
 I mitten av skärmen ser du en stor chattruta.
 Här kan du använda "Describe to build" – alltså chatta med Copilot för att låta den bygga grunden åt dig.
 
-| Toggle Agent | Toggle Workflow |
-| :--- | :--- |
-| ![Agent](assets/images/chap02/tour-toggle-agent.png) | ![Workflow](assets/images/chap02/tour-toggle-workflow.png) |
+![Agent](assets/images/chap02/tour-toggle-agent.png) 
 
-<br>
+**Toggle-knappen:** Ovanför rutan (se bilderna ovan) kan du växla mellan att be den bygga en **Agent** (en AI-agent) eller ett **Workflow** (ett flöde).
 
-* **Toggle-knappen:** Ovanför rutan (se bilderna ovan) kan du växla mellan att be den bygga en **Agent** (en AI-agent) eller ett **Workflow** (ett flöde).
+![Workflow](assets/images/chap02/tour-toggle-workflow.png) 
 
 Under chattrutan har du tre genvägar för att börja från noll (Start building from scratch):
+
+![Create](assets/images/chap02/tour-create-menu.png)
 
 1. **Create Workflow:** Skapa en automatiserad process.
 2. **Create Agent:** Skapa en AI-agent.
