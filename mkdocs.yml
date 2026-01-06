@@ -10,6 +10,7 @@ nav:
   - 1. Förbered SharePoint: 01-prepare-sharepoint.md
   - 2. Hitta rätt i Copilot Studio: 02-tour-interface.md
   - 3. Skapa Solution: 03-create-solution.md
+  - 4. Skapa Agent: 04-create-agent.md
 
 markdown_extensions:
   - admonition
