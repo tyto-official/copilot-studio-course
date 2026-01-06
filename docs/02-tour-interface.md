@@ -33,12 +33,15 @@ Här kan du använda "Describe to build" – alltså chatta med Copilot för att
 | :--- | :--- |
 | ![Agent](assets/images/chap02/tour-toggle-agent.png) | ![Workflow](assets/images/chap02/tour-toggle-workflow.png) |
 
+<br>
+
 * **Toggle-knappen:** Ovanför rutan (se bilderna ovan) kan du växla mellan att be den bygga en **Agent** (en AI-agent) eller ett **Workflow** (ett flöde).
 
 Under chattrutan har du tre genvägar för att börja från noll (Start building from scratch):
-1.  **Create Workflow:** Skapa en automatiserad process.
-2.  **Create Agent:** Skapa en AI-agent.
-3.  **Computer-using agent:** En agent som kan styra en dator.
+
+1. **Create Workflow:** Skapa en automatiserad process.
+2. **Create Agent:** Skapa en AI-agent.
+3. **Computer-using agent:** En agent som kan styra en dator.
 
 Längre ner på sidan ser du dina senast uppdaterade agenter och länkar till dokumentation.
 
