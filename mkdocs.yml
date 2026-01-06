@@ -9,6 +9,7 @@ nav:
   - 0. Förberedelser: 00-setup.md
   - 1. Förbered SharePoint: 01-prepare-sharepoint.md
   - 2. Hitta rätt i Copilot Studio: 02-tour-interface.md
+  - 3. Skapa Solution: 03-create-solution.md
 
 markdown_extensions:
   - admonition
