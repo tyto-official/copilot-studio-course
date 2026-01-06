@@ -29,10 +29,9 @@ Det första du **alltid** ska göra är att titta uppe i högra hörnet.
 I mitten av skärmen ser du en stor chattruta.
 Här kan du använda "Describe to build" – alltså chatta med Copilot för att låta den bygga grunden åt dig.
 
-<div style="display: flex; gap: 10px; margin-bottom: 10px;">
-  <img src="assets/images/chap02/tour-toggle-agent.png" alt="Toggle Agent" style="width: 48%; border: 1px solid #ddd; border-radius: 4px;">
-  <img src="assets/images/chap02/tour-toggle-workflow.png" alt="Toggle Workflow" style="width: 48%; border: 1px solid #ddd; border-radius: 4px;">
-</div>
+| Toggle Agent | Toggle Workflow |
+| :--- | :--- |
+| ![Agent](assets/images/chap02/tour-toggle-agent.png) | ![Workflow](assets/images/chap02/tour-toggle-workflow.png) |
 
 * **Toggle-knappen:** Ovanför rutan (se bilderna ovan) kan du växla mellan att be den bygga en **Agent** (en AI-agent) eller ett **Workflow** (ett flöde).
 
