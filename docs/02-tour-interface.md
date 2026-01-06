@@ -29,7 +29,12 @@ Det första du **alltid** ska göra är att titta uppe i högra hörnet.
 I mitten av skärmen ser du en stor chattruta.
 Här kan du använda "Describe to build" – alltså chatta med Copilot för att låta den bygga grunden åt dig.
 
-* **Toggle-knappen:** Ovanför rutan kan du växla mellan att be den bygga en **Agent** (en AI-agent) eller ett **Workflow** (ett flöde).
+<div style="display: flex; gap: 10px; margin-bottom: 10px;">
+  <img src="assets/images/chap02/tour-toggle-agent.png" alt="Toggle Agent" style="width: 48%; border: 1px solid #ddd; border-radius: 4px;">
+  <img src="assets/images/chap02/tour-toggle-workflow.png" alt="Toggle Workflow" style="width: 48%; border: 1px solid #ddd; border-radius: 4px;">
+</div>
+
+* **Toggle-knappen:** Ovanför rutan (se bilderna ovan) kan du växla mellan att be den bygga en **Agent** (en AI-agent) eller ett **Workflow** (ett flöde).
 
 Under chattrutan har du tre genvägar för att börja från noll (Start building from scratch):
 1.  **Create Workflow:** Skapa en automatiserad process.
@@ -52,7 +57,7 @@ Klicka på **Agents** i menyn.
 ![Agenter](assets/images/chap02/tour-agents.png)
 
 * Längst upp kan du återigen få hjälp av Copilot att skapa en ny agent.
-* Uppe till höger finns knappen **+ Create blank agent** och möjlighet att **Importera** en agnet.
+* Uppe till höger finns knappen **+ Create blank agent** och möjlighet att **Importera** en agent.
 * I listan ser du dina befintliga agenter.
 * Längre ner finns färdiga mallar (Templates) från Microsoft som du kan utgå ifrån.
 
@@ -61,7 +66,7 @@ Klicka på **Flows**.
 
 ![Flöden](assets/images/chap02/tour-flows.png)
 
-Här bor logiken för **Agent flows**, I Copilot Studio betyder flows determinsista processer bestånde av AI-driven automation. Medans flows i **Power Automate** är mer flexibla och kan användas för att automatisera processer utan inblandingen av AI.
+Här bor logiken för **Agent flows**. I Copilot Studio betyder flows deterministiska processer bestående av AI-driven automation. Medan flows i **Power Automate** är mer flexibla och kan användas för att automatisera processer utan inblandning av AI.
 
 ---
 
@@ -77,10 +82,10 @@ Klicka på **+ New tool** för att se vad vi kan skapa.
 
 Här ser du de olika typerna av verktyg:
 
-* **Prompt:** Här använder vi AI-modellera förmåga att analyser och genterar, exempelvis använda en språkmodellens för en specifik uppgift. T.ex. "Sammanfatta detta mejl" eller "Klassificera detta ärende".
-* **Agent flow:** Här använder vi ett flöde som ett verktyg. Eftersom agnets flows är deterministiska är detta perfekt när agenten behöver utföra något strikt.
+* **Prompt:** Här använder vi AI-modellernas förmåga att analysera och generera, exempelvis för en specifik uppgift. T.ex. "Sammanfatta detta mejl" eller "Klassificera detta ärende".
+* **Agent flow:** Här använder vi ett flöde som ett verktyg. Eftersom agent flows är deterministiska är detta perfekt när agenten behöver utföra något strikt.
 * **Custom Connector:** Kopplingar till externa tjänster och datakällor (utanför Microsoft 365).
-* **Rest API:** Detta är en mycket flexibla lösning som kan användas för att hämta data från olika system.
+* **Rest API:** Detta är en mycket flexibel lösning som kan användas för att hämta data från olika system.
 * **MCP (Model Context Protocol):** Detta är en ny standard. Man kan säga att det är **"USB-C för Generativ AI"**. Det är ett standardiserat sätt för AI-modeller att ansluta till externa källor för att använda och dela data säkert och enkelt.
 
 ---
