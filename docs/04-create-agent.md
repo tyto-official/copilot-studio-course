@@ -116,3 +116,50 @@ Riktlinjer för dina svar:
 - Om du inte hittar svaret i din kunskapsbank, svara ärligt "Jag hittar tyvärr ingen information om det i mina system".
 - Hitta aldrig på fakta.
 - Använd punktlistor för att göra teknisk information lättläst.
+```
+
+---
+
+## Steg 5: Testa Agenten
+
+Vi har nu skapat agentens "hjärna" (instruktionerna), och nu är det dags att testa hur den beter sig.
+
+### Steg 1: Öppna testpanelen
+Om du inte redan ser chatten till höger:
+1. Klicka på **Test**-knappen högst upp till höger i Copilot Studio.
+
+![Öppna testpanelen](assets/images/chap05/test-panel.png)
+
+### Steg 2: Hälsa på agenten
+Vi börjar med att kolla att den förstår sin roll.
+
+1. Skriv i chatten:
+    > *Hej, vem är du?*
+
+2. **Förväntat resultat:**
+    Agenten ska presentera sig som **IT Support Helper** (eller det namn du valde) och erbjuda hjälp. Den ska vara trevlig och professionell.
+
+![Agenten hälsar](assets/images/chap05/test-greeting.png)
+
+*Ser det bra ut? Då vet vi att systemprompten ("Du är en hjälpsam assistent...") fungerar.*
+
+### Steg 3: Hallucinationstestet
+Nu ska vi ställa en fråga som agenten **inte** har svaret på. Vi har inte laddat upp några öppettider eller dokument än.
+
+En dålig AI skulle gissa ("Vi har öppet 8-17"). En bra agent (med våra instruktioner) ska erkänna att den inte vet.
+
+1. Skriv i chatten:
+    > *Vilka tider har IT-supporten öppet?*
+
+2. **Förväntat resultat:**
+    Agenten ska svara något i stil med:
+    > *"Jag hittar tyvärr ingen information om öppettiderna i mina system."*
+
+![Agenten vet inte svaret](assets/images/chap05/test-fail.png)
+
+### Varför är detta bra?
+Om agenten hade svarat *"Vi har öppet 08:00 - 17:00"*, hade den ljugit (hallucinerat). Det är farligt i en företagskontext.
+Eftersom vi skrev i instruktionerna: *"Hitta aldrig på fakta"*, så skyddar agenten oss genom att vara ärlig.
+
+!!! success "Bra jobbat!"
+    Att agenten svarar "Jag vet inte" är precis vad vi vill! Det betyder att den följer din regel om att **inte hitta på fakta**. I nästa kapitel ska vi ge den svaren genom att koppla in SharePoint.
