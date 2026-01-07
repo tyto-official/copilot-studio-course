@@ -51,7 +51,7 @@ Nu ska vi lära agenten innehållet i filen.
 1. Se till att du är inne i din agent (**IT Support Helper**).
 2. Leta upp sektionen **Knowledge** (oftast mitt på sidan eller under fliken Knowledge) och klicka på **+ Add knowledge**.
 
-    ![Meny för att lägga till kunskap](assets/images/chap05/knowledge-add-menu.png)
+    ![Meny för att lägga till kunskap](assets/images/chap05/knowledge-add.png)
 
 3. Välj **Upload file** (eller *Click to browse*).
 
@@ -75,6 +75,9 @@ Vi vill inte behöva skriva instruktioner för hur man använder Windows 11 sjä
 
 1. Klicka på **+ Add knowledge** igen.
 2. Välj **Public websites**.
+
+    ![Meny för att lägga till kunskap](assets/images/chap05/knowledge-add-menu.png)
+
 3. I rutan för URL, klistra in:
     `https://support.microsoft.com/sv-se/windows`
 

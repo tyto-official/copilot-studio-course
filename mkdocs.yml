@@ -11,6 +11,7 @@ nav:
   - 2. Hitta rätt i Copilot Studio: 02-tour-interface.md
   - 3. Skapa Solution: 03-create-solution.md
   - 4. Skapa Agent: 04-create-agent.md
+  - 5. Lägg till kunskap: 05-add-knowledge.md
 
 markdown_extensions:
   - admonition
