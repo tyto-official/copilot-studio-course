@@ -11,10 +11,14 @@ Nu ska vi ändra på det! Vi ska ge agenten två typer av kunskap:
 
 ## Steg 1: Skapa Policy-dokumentet
 
-Vi behöver en fil att ladda upp. För att göra det enkelt skapar vi en direkt på datorn.
+Vi behöver en fil att ladda upp. Vi skapar den snabbt via Word Online.
 
-1. Öppna **Anteckningar** (Notepad) eller **Word** på din dator.
-2. Kopiera texten i rutan nedan och klistra in den i ditt dokument:
+1.  Klicka på **Appfönstret** (de nio prickarna, "Våfflan") längst upp till vänster i webbläsaren och klicka på **Word**.
+
+    ![Appfönstret](assets/images/chap06/create-doc-waffle.png)
+
+2.  Välj **Tomt dokument** (Blank document).
+3.  Kopiera texten i rutan nedan och klistra in den i ditt Word-dokument:
 
 ```text
 **IT-Policy och Rutiner för Anställda**
@@ -45,7 +49,9 @@ Om din enhet går sönder eller blir stulen måste du anmäla detta till IT-supp
 Du får ta med din arbetsdator hem. För att säkerställa att datorn har de senaste säkerhetsuppdateringarna måste du ansluta till företagets VPN minst en gång i veckan.
 ```
 
-3. Spara filen på skrivbordet (eller någonstans du hittar den) och döp den till `IT_Policy.docx` (eller `.txt` / `.pdf`).
+4. Klicka på namnet (där det står Document eller Dokument) i den översta namnlisten och döp filen till IT-Policy och Rutiner för Anställda.
+
+5. Spara filen så att du hittar den igen.
 
 ---
 
@@ -54,15 +60,15 @@ Du får ta med din arbetsdator hem. För att säkerställa att datorn har de sen
 Nu ska vi lära agenten innehållet i filen.
 
 1. Se till att du är inne i din agent (**IT Support Helper**).
-2. Leta upp sektionen **Knowledge** (oftast mitt på sidan eller under fliken Knowledge) och klicka på **+ Add knowledge**.
+2. Leta upp sektionen **Knowledge** (oftast mitt på sidan eller under fliken Knowledge) och klicka på **Add knowledge**.
 
     ![Meny för att lägga till kunskap](assets/images/chap05/knowledge-add.png)
 
-3. Välj **Upload file** (eller *Click to browse*).
+3. Välj OneDrive i **Upload file** fältet (eller *select to browse*).
 
     ![Välja filen](assets/images/chap05/knowledge-choose-onedrive.png)
 
-4. Leta upp filen `IT_Policy` som du nyss skapade och välj den genom att klicka på den och sedan klicka på **Confirm selection**.
+4. Leta upp filen `IT_Policy och Rutiner för Anställda` som du nyss skapade och välj den genom att klicka på den och sedan klicka på **Confirm selection**.
 
     ![Välja filen](assets/images/chap05/knowledge-browse.png)
 
@@ -84,11 +90,11 @@ Vi vill inte behöva skriva instruktioner för hur man använder Windows 11 sjä
     ![Meny för att lägga till kunskap](assets/images/chap05/knowledge-add-menu.png)
 
 3. I rutan för URL, klistra in:
-    `https://support.microsoft.com/sv-se/windows`
+    `https://support.microsoft.com/sv-se/windows` och klicka på **Add**.
 
     ![Lägga till webbsida](assets/images/chap05/knowledge-web-input.png)
 
-4. Klicka på **Add** och sedan **Add to agent**.
+4. Klicka där efter på **Add to agent**.
 
     ![Bekräfta uppladdning](assets/images/chap05/knowledge-confirm-web.png)
 
@@ -108,24 +114,41 @@ Förra gången visste agenten inte när vi hade öppet.
     > *Vilka tider har IT-supporten öppet?*
 
 **Förväntat resultat:**
-Nu ska agenten svara korrekt (Måndagar 09-11 och Torsdagar 13-15).
+Nu ska agenten svara att supporten har öppet vardagar 08:00 – 17:00.
+
+### Analys: Hur tänkte agenten?
+Nu ska vi se hur den använde våra källor.
+
+1.  Längst upp i testpanelen, klicka på ikonen för **Expand test panel** (ser ut som en pil).
+
+    ![Aktivera Activity Map](assets/images/chap06/test-map-toggle.png)
+
+2.  Nu ser du flödet som agenten gick igenom. Klicka på boxen som heter **Search sources**.
+
+    ![Klicka på noden i kartan](assets/images/chap06/test-map-node.png)
+
+3.  En detaljruta öppnas. Här ser du exakt vilka källor agenten har **utvärderat**.
+    
+    ![Detaljer om källan](assets/images/chap06/test-map-details.png)
+    
+    * Du ser förmodligen både din **Public website** och ditt **Dokument** i listan.
+    * Detta betyder att agenten ansåg att båda källorna *kunde* vara relevanta och "läste igenom" dem (Reviewed).
+    * Men eftersom svaret bara fanns i dokumentet, var det bara den källan som användes för att formulera svaret (Referenced).
+
+    ![Refererad källa](assets/images/chap06/referenced-source.png)
 
 ### Test 2: Den externa frågan
-Nu testar vi om den kan söka på webben.
+Nu testar vi den andra källan för att se om den kan söka på webben.
 
-1. Fråga:
+1.  Klicka på **New test session** (eller Refresh-ikonen) högst upp i testpanelen för att rensa minnet.
+
+    ![Starta om testet](assets/images/chap06/test-reset.png)
+
+2. Fråga:
     > *Hur tar jag en skärmdump i Windows 11?*
 
 **Förväntat resultat:**
 Agenten ska ge dig en steg-för-steg guide hämtad från Microsofts hemsida.
-
-### Analysera källan
-Titta noga på agentens svar. Under svaret (eller om du klickar på fotnoterna `[1]`) kan du se var den hittade informationen.
-
-* På fråga 1 ska det stå **IT_Policy**.
-* På fråga 2 ska det stå **support.microsoft.com**.
-
-![Lyckat test med källhänvisning](assets/images/chap05/knowledge-test-success.png)
 
 !!! success "Succé!"
     Du har nu byggt en **hybrid-agent**! Den kombinerar dina unika företagsregler med allmän kunskap från internet.
