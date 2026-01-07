@@ -96,7 +96,7 @@ Nu ska vi ge agenten dess identitet. Fyll i följande i fälten på skärmen:
 1.  **Name:** `IT Support Helper`
 2.  **Description:**
     ```text
-    En professionell IT-supportagent som hjälper användare med frågor om hårdvara och nätverk.
+    En professionell IT-supportagent som hjälper användare med frågor om hårdvara och nätverk osv.
     ```
 3.  **Model:** Låt den stå på `GPT-4.1` (Vilket är Default).
 
