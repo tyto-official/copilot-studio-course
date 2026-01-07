@@ -140,7 +140,7 @@ Nu ska vi se hur den använde våra källor.
 ### Test 2: Den externa frågan
 Nu testar vi den andra källan för att se om den kan söka på webben.
 
-1.  Klicka på **New test session** (eller Refresh-ikonen) högst upp i testpanelen för att rensa minnet.
+1.  Klicka på **New test session** högst upp i testpanelen för att rensa minnet.
 
     ![Starta om testet](assets/images/chap05/test-reset.png)
 
@@ -149,6 +149,8 @@ Nu testar vi den andra källan för att se om den kan söka på webben.
 
 **Förväntat resultat:**
 Agenten ska ge dig en steg-för-steg guide hämtad från Microsofts hemsida.
+
+![Förväntat resultat](assets/images/chap05/test-expected-result.png)
 
 !!! success "Succé!"
     Du har nu byggt en **hybrid-agent**! Den kombinerar dina unika företagsregler med allmän kunskap från internet.
