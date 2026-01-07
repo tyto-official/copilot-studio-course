@@ -166,7 +166,11 @@ Vi ska börja med att skapa ett vägskäl. Om användaren vill ha en "Laptop" sk
 ### 2. Konfigurera Vägvalet (Condition)
 Nu ser du att flödet delar sig i två vägar: *Condition* och *All other conditions*.
 
-1.  Klicka på rutan där det står **Condition** och döp noden till: ```Laptop```
+1.  Klicka på rutan där det står **Condition** och döp noden till: 
+
+    ```text
+    Laptop
+    ```
 
     ![Condition](assets/images/chap06/topic-laptop-condition.png)
 
