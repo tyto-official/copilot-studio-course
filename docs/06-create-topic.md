@@ -175,10 +175,15 @@ Nu ser du att flödet delar sig i två vägar: *Condition* och *All other condit
     ![Condition](assets/images/chap06/topic-laptop-condition.png)
 
 2.  Vi ska nu bestämma regeln. Klicka på **Select a variable**.
-3.  Välj din input-variabel: `VarDeviceType`.
+3.  Välj din input-variabel: 
+    ```text
+    VarDeviceType
+    ```
 4.  Låt operation vara satt till **is equal to**.
 5.  I rutan *Enter or select a value*, skriv:
-    ```Laptop```
+    ```text
+    Laptop
+    ```
 
     *Nu har du sagt: "Om användaren letar efter en Laptop -> Gå till vänster. Annars -> Gå till höger."*
 
@@ -196,12 +201,16 @@ Vi fortsätter på spåret för "Laptop" (den vänstra vägen). Vi vill veta mer
     ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer.png)
 
 3.  Döp noden till:
-    ```Manufacturer```
+    ```text
+    Manufacturer
+    ```
 
     ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer-node-name.png)
 
 4.  I rutan **Enter a message**, skriv:
-    ```Är du specifikt intresserad av en Microsoft-laptop?```
+    ```text
+    Är du specifikt intresserad av en Microsoft-laptop?
+    ```
 
     ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer-node-message.png)
 
@@ -218,7 +227,9 @@ Agenten sparar automatiskt svaret i en variabel som heter `Var1`. Det är ett d�
 
 1.  Klicka på rutan där det står **Save user response as** (där namnet `Var1` står).
 2.  En ruta öppnas till höger. Ändra **Name** till:
-    `VarManufacturerChoice`
+    ```text
+    VarManufacturerChoice
+    ```
 
     ![Döp om variabel](assets/images/chap06/topic-var-rename.png)
 
@@ -226,14 +237,21 @@ Agenten sparar automatiskt svaret i en variabel som heter `Var1`. Det är ett d�
 
 3.  Stäng variabel-rutan på krysset (X).
 
-### 5. Städa upp flödet
-Eftersom vi valde "Multiple choice" har Copilot Studio automatiskt skapat nya vägar åt oss: en för *Ja*, en för *Nej*, och en för *All other conditions* (om användaren svarar något konstigt).
+### 5. Städa upp flödet (Smart Logik)
+Eftersom vi valde "Multiple choice" har Copilot Studio automatiskt skapat tre vägar åt oss:
+1.  **Condition (VarManufacturerChoice = Ja)**
+2.  **Condition (VarManufacturerChoice = Nej)**
+3.  **All other conditions**
 
-![Fråga om tillverkare](assets/images/chap06/topic-condition-split-manufacturer.png)
+Detta blir lite rörigt. Vi kan förenkla detta genom att tänka: *"Om det inte är JA, så hanterar vi det som NEJ."*
 
-Eftersom vi bara bryr oss om Ja och Nej just nu, kan vi ta bort "skräp-vägen".
-
-1.  Leta upp grenen som heter **All other conditions** (den ligger bredvid Ja och Nej).
+1.  Leta upp grenen som specifikt heter **Nej** (Condition: VarManufacturerChoice = Nej).
 2.  Klicka på de **tre prickarna (...)** på den noden och välj **Delete**.
 
     ![Radera nod](assets/images/chap06/topic-delete-node.png)
+
+3.  Nu har du bara två vägar kvar:
+    * **Ja:** Användaren vill ha Microsoft.
+    * **All other conditions:** Användaren svarade Nej (eller något annat).
+
+    Detta gör flödet mycket enklare att läsa!
