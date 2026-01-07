@@ -243,6 +243,8 @@ Eftersom vi valde "Multiple choice" har Copilot Studio automatiskt skapat tre v�
 2.  **Condition (VarManufacturerChoice = Nej)**
 3.  **All other conditions**
 
+    ![Fråga om tillverkare](assets/images/chap06/topic-condition-split-manufacturer.png)
+
 Detta blir lite rörigt. Vi kan förenkla detta genom att tänka: *"Om det inte är JA, så hanterar vi det som NEJ."*
 
 1.  Leta upp grenen som specifikt heter **Nej** (Condition: VarManufacturerChoice = Nej).
@@ -255,3 +257,20 @@ Detta blir lite rörigt. Vi kan förenkla detta genom att tänka: *"Om det inte 
     * **All other conditions:** Användaren svarade Nej (eller något annat).
 
     Detta gör flödet mycket enklare att läsa!
+
+### 6. Döpa om vägarna (För tydlighet)
+Just nu heter din ena väg *Condition* och den andra *All other conditions*. Låt oss göra det snyggare och mer lättläst.
+
+1.  Klicka på pennan (eller namnet) på den vänstra grenen (där villkoret är Ja).
+2.  Döp om den till `Ja`.
+3.  Klicka på pennan på den högra grenen (*All other conditions*).
+4.  Döp om den till `Nej`.
+
+Nu ser flödet logiskt ut: Antingen svarade de Ja, eller så svarade de Nej (eller något annat, som vi tolkar som Nej).
+
+![Döpa om grenar](assets/images/chap06/topic-rename-branches.png)
+
+!!! info "Alternativ: Boolean vs Multiple Choice"
+    Du kanske funderar på varför vi inte valde datatypen **Boolean** (Sant/Falskt) här? Det är annars standard för Ja/Nej-frågor.
+    
+    Vi valde **Multiple Choice** för **synlighetens skull**. Det ger användaren tydliga knappar med texten "Ja" och "Nej" direkt i chatten, och det gör det tydligare för dig som bygger att se exakt vad alternativen är direkt i flödesschemat.
