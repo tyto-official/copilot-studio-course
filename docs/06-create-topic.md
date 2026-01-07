@@ -132,3 +132,103 @@ Vi är inte riktigt klara än! Vi ska redan nu bestämma vad den här topicen sk
 4.  Nu är vi klara med inställningarna! Stäng detaljpanelen genom att klicka på krysset (**X**) högst upp till höger.
 
     ![Stäng panelen](assets/images/chap06/topic-details-close.png)
+
+---
+
+## 6.4 Bygga Logiken (Conditions & Questions)
+
+Nu har vi en start (Trigger), en Input och en Output. Nu ska vi bygga det som händer däremellan – själva "hjärnan" i topicen.
+
+### 1. Välj Nod-typ
+Vi ska börja med att skapa ett vägskäl. Om användaren vill ha en "Laptop" ska vi ställa vissa frågor. Om de vill ha något annat, gör vi något annat.
+
+1.  Håll muspekaren över linjen under din **Trigger**-nod och klicka på **plus-tecknet (+)**.
+
+    ![Lägg till nod](assets/images/chap06/topic-add-node.png)
+
+2.  En meny öppnas. Här är en snabb genomgång av verktygslådan:
+
+    ![Verktygslådan](assets/images/chap06/topic-toolbox.png)
+
+    * **Send a message:** Skickar text eller bilder till användaren.
+    * **Ask a question:** Ställer en fråga och sparar svaret (det vi ska använda snart).
+    * **Ask with adaptive card:** Visar interaktiva formulär (mer om detta senare).
+    * **Add a condition:** Skapar vägval (Om X, gör Y). Som en "If-sats".
+    * **Variable management:** För att skapa eller ändra variabler manuellt.
+    * **Topic management:** För att hoppa till andra topics eller avsluta samtalet.
+    * **Call an action (Add a tool):** Här hittar vi våra "superkrafter" som Power Automate och SharePoint.
+    * **Advanced:** Avancerade funktioner som HTTP-anrop och inloggning.
+
+3.  Välj **Add a condition**.
+
+    ![Add a condition](assets/images/chap06/topic-add-condition.png)
+
+### 2. Konfigurera Vägvalet (Condition)
+Nu ser du att flödet delar sig i två vägar: *Condition* och *All other conditions*.
+
+    ![Vägval](assets/images/chap06/topic-condition-split.png)
+
+1.  Klicka på rutan där det står **Condition** och döp noden till: ```Laptop```
+
+    ![Condition](assets/images/chap06/topic-laptop-condition.png)
+
+2.  Vi ska nu bestämma regeln. Klicka på **Select a variable**.
+3.  Välj din input-variabel: `VarDeviceType`.
+4.  Låt operation vara satt till **is equal to**.
+5.  I rutan *Enter or select a value*, skriv:
+    ```Laptop```
+
+    *Nu har du sagt: "Om användaren letar efter en Laptop -> Gå till vänster. Annars -> Gå till höger."*
+
+    ![Vägvalet klart](assets/images/chap06/topic-condition-split-laptop.png)
+
+### 3. Ställ frågor (Tratten)
+Vi fortsätter på spåret för "Laptop" (den vänstra vägen). Vi vill veta mer om vad de vill ha.
+
+1.  Klicka på **plus-tecknet (+)** under din nya *Laptop*-nod.
+2.  Välj **Ask a question**.
+
+    ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer.png)
+
+3.  Döp noden till:
+    ```Manufacturer```
+
+    ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer-node-name.png)
+
+4.  I rutan **Enter a message**, skriv:
+    ```Är du specifikt intresserad av en Microsoft-laptop?```
+
+    ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer-node-message.png)
+
+5.  Under **Identify**, se till att **Multiple choice options** är valt.
+
+6.  Under **Options for user**:
+    * Klicka **+ New option**, skriv `Ja` och tryck Enter.
+    * Klicka **+ New option**, skriv `Nej` och tryck Enter.
+
+    ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer-options.png)
+
+### 4. Döpa om Variabeln
+Agenten sparar automatiskt svaret i en variabel som heter `Var1`. Det är ett dåligt namn om vi ska minnas vad det betyder.
+
+1.  Klicka på rutan där det står **Save user response as** (där namnet `Var1` står).
+2.  En ruta öppnas till höger. Ändra **Name** till:
+    `VarManufacturerChoice`
+
+    ![Döp om variabel](assets/images/chap06/topic-var-rename.png)
+
+    *Notera "Usage" inställningen: Topic (limited scope) vs Global. Vi låter den vara kvar på Topic eftersom vi inte behöver komma åt det här svaret från andra delar av agenten.*
+
+3.  Stäng variabel-rutan på krysset (X).
+
+### 5. Städa upp flödet
+Eftersom vi valde "Multiple choice" har Copilot Studio automatiskt skapat nya vägar åt oss: en för *Ja*, en för *Nej*, och en för *All other conditions* (om användaren svarar något konstigt).
+
+![Fråga om tillverkare](assets/images/chap06/topic-condition-split-manufacturer.png)
+
+Eftersom vi bara bryr oss om Ja och Nej just nu, kan vi ta bort "skräp-vägen".
+
+1.  Leta upp grenen som heter **All other conditions** (den ligger bredvid Ja och Nej).
+2.  Klicka på de **tre prickarna (...)** på den noden och välj **Delete**.
+
+    ![Radera nod](assets/images/chap06/topic-delete-node.png)
