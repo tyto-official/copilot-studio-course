@@ -166,8 +166,6 @@ Vi ska börja med att skapa ett vägskäl. Om användaren vill ha en "Laptop" sk
 ### 2. Konfigurera Vägvalet (Condition)
 Nu ser du att flödet delar sig i två vägar: *Condition* och *All other conditions*.
 
-    ![Vägval](assets/images/chap06/topic-condition-split.png)
-
 1.  Klicka på rutan där det står **Condition** och döp noden till: ```Laptop```
 
     ![Condition](assets/images/chap06/topic-laptop-condition.png)
@@ -186,6 +184,9 @@ Nu ser du att flödet delar sig i två vägar: *Condition* och *All other condit
 Vi fortsätter på spåret för "Laptop" (den vänstra vägen). Vi vill veta mer om vad de vill ha.
 
 1.  Klicka på **plus-tecknet (+)** under din nya *Laptop*-nod.
+
+    ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer-node.png)
+
 2.  Välj **Ask a question**.
 
     ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer.png)
