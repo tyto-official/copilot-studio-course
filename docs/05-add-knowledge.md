@@ -154,3 +154,13 @@ Agenten ska ge dig en steg-för-steg guide hämtad från Microsofts hemsida.
     Du har nu byggt en **hybrid-agent**! Den kombinerar dina unika företagsregler med allmän kunskap från internet.
     
     *(Vi väntar lite med SharePoint-listan för att säkerställa att alla har rätt behörigheter, men principen är exakt densamma).*
+
+!!! info "Alternativ: Web Search (Hela internet)"
+    Du kanske har sett att det finns en inställning som heter Web Search under Knowledge-fliken?
+
+    ![Web Search inställning](assets/images/chap05/web-search-toggle.png)
+
+    Om du aktiverar denna ("Enabled") kommer agenten att söka på *hela* internet via Bing, inte bara på de specifika sidor du angett.
+
+    **Varför använder vi inte det?**
+    I en företagskontext vill vi oftast ha kontroll. Om vi slår på "Hela internet" kan agenten börja hämta svar från Flashback, Reddit eller osäkra källor. Genom att bara lägga till specifika URL:er (som `microsoft.com`) garanterar vi att svaren håller hög kvalitet.
