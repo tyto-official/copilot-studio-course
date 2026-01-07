@@ -34,10 +34,15 @@ Beställda datorer och telefoner kan hämtas ut i IT-receptionen (Plan 3).
 
 **3. Installation av programvara**
 Det är tillåtet att installera arbetsrelaterade program (t.ex. Spotify, VS Code).
-Det är **strängt förbjudet** att installera spelplattformar (t.ex. Steam, Epic Games) på företagets datorer.
+Det är **strängt förbjudet** att installera spelplattformar (t.ex. Steam, Epic Games, Battle.net) på företagets datorer. Upptäcks detta kan datorn komma att fjärraderars omedelbart.
 
-**4. Skadad utrustning**
-Vid skada orsakad av oaktsamhet (t.ex. kaffespill) utgår en självrisk på 500 kr.
+**4. Skadad eller förlorad utrustning**
+Om din enhet går sönder eller blir stulen måste du anmäla detta till IT-supporten inom 24 timmar.
+- Vid stöld krävs en polisanmälan.
+- Vid skada orsakad av oaktsamhet (t.ex. kaffespill) utgår en självrisk på 500 kr som dras på nästa lön.
+
+**5. Hemarbete och Säkerhet**
+Du får ta med din arbetsdator hem. För att säkerställa att datorn har de senaste säkerhetsuppdateringarna måste du ansluta till företagets VPN minst en gång i veckan.
 ```
 
 3. Spara filen på skrivbordet (eller någonstans du hittar den) och döp den till `IT_Policy.docx` (eller `.txt` / `.pdf`).
@@ -84,6 +89,8 @@ Vi vill inte behöva skriva instruktioner för hur man använder Windows 11 sjä
     ![Lägga till webbsida](assets/images/chap05/knowledge-web-input.png)
 
 4. Klicka på **Add** och sedan **Add to agent**.
+
+    ![Bekräfta uppladdning](assets/images/chap05/knowledge-confirm-web.png)
 
 ---
 
