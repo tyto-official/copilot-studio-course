@@ -6,7 +6,7 @@ Vi ska skapa en "Topic" (ett ämne) som hanterar lagersaldokontroll.
 
 ---
 
-## Steg 1: Skapa och Beskriv Ämnet
+## 6.1 Skapa och Beskriv Ämnet
 
 Vi börjar med att skapa ett tomt ämne och berätta för AI:n vad det ska användas till.
 
@@ -40,11 +40,11 @@ Vi börjar med att skapa ett tomt ämne och berätta för AI:n vad det ska anvä
 
 ---
 
-## Steg 2: Definiera Input (Input Variable)
+## 6.2 Definiera Input (Input Variable)
 
 Nu ska vi göra något smart. Vi vill att agenten ska kunna plocka upp *vad* användaren letar efter (t.ex. "Laptop") redan i första meningen.
 
-1.  Klicka på **Details** (cirkeln med utropstecken `i`, eller texten *Details* i menyn) längst upp till höger för att fälla ut detaljpanelen.
+1.  Klicka på **Details** (cirkeln med utropstecken `i`) längst upp till höger för att fälla ut detaljpanelen.
     *Notera att Name och Description redan är ifyllda eftersom vi gjorde det i förra steget.*
 
     ![Verifiera detaljer](assets/images/chap06/topic-details-verify.png)
@@ -73,38 +73,62 @@ Nu får du upp inställningar för din nya variabel. Fyll i följande:
 
 3.  **Variable data type:** Låt stå på **String** (Text).
 
-4.  **Display name:** (Valfritt, för din egen skull).
+4.  **Display name:** (Valfritt).
     ```text
     VarDeviceType
     ```
 
-5.  **Identify as:** Klicka på listan.
-    Här ser du massor av färdiga alternativ som *City*, *Color*, *Age*. Dessa är bra om du letar efter exakta standardvärden.
-    Men eftersom vi letar efter specifika IT-prylar väljer vi: **User's entire response**.
-    
+5.  **Identify as:** Klicka på listan och välj: **User's entire response**.
     *Detta ger oss mest flexibilitet att fånga upp precis det användaren frågar efter.*
 
     ![Välja Identify as](assets/images/chap06/topic-identify-as.png)
 
 6.  **Description:** (Detta fält är till för AI:n, inte användaren).
+    Det handlar om att specificera vad vi är ute efter. Eftersom vi valde att ta med *hela* användarens svar, är det bra att ge AI:n en fingervisning om vilka värden vi letar efter i texten.
+
     ```text
     Lista av möjliga värden: Laptop, Desktop, Tablet
     ```
 
+    Om allt är ifyllt enligt instruktionerna borde det se ut ungefär så här:
+
     ![Variabelinställningar klara](assets/images/chap06/topic-variable-settings.png)
-
-### Extra: Logik för återförsök
-Om du klickar på **Additional settings** längst ner i rutan kan du se inställningar för hur envis agenten ska vara.
-
-![Additional settings](assets/images/chap06/topic-additional-settings.png)
-
-Här kan man t.ex. ställa in "How many reprompts" (hur många gånger agenten får fråga om den inte kan sätta input variabeln). Vi låter standardvärdena vara kvar, men det är bra att veta att logiken finns här.
-
-7.  Stäng detaljpanelen på krysset (X) och klicka på **Save** uppe till höger.
 
 ---
 
-### Vad har vi byggt nu?
-Du har skapat en **Input Variabel**.
-Det fungerar så här: Agenten läser din *Description* och förstår att den ska leta efter en "Enhetstyp".
-Om användaren säger *"Jag letar efter en Laptop"*, kommer agenten automatiskt att hugga ordet "Laptop", stoppa ner det i variabeln `VarDeviceType`, och sedan starta din Topic med den informationen redo att användas.
+## 6.3 Definiera Output (Output Variable)
+
+Vi är inte riktigt klara än! Vi ska redan nu bestämma vad den här topicen ska leverera tillbaka till agenten när den är klar. Eftersom vi ska hämta en lista med produkter, måste vi förbereda en variabel för det.
+
+1.  Längst upp i detaljpanelen, klicka på fliken **Output**.
+
+    ![Topic Output flik](assets/images/chap06/topic-output.png)
+
+2.  Klicka på **Create a new variable**.
+
+    ![Skapa output variabel](assets/images/chap06/topic-output-create.png)
+
+### Konfigurera output-variabeln
+
+1.  **Name:**
+    ```text
+    VarAvailableDevices
+    ```
+
+2.  **Variable data type:** **OBS! Viktigt steg.**
+    Klicka på listan (där det står *String*) och ändra till **Table**.
+    
+    *Varför? Jo, en "String" är bara text (t.ex. "Dator"). Men vi ska hämta en hel lista med flera produkter, priser och bilder från SharePoint. Då krävs datatypen Tabell.*
+
+3.  **Description:**
+    ```text
+    Lista över tillgängliga enheter baserat på enhetstyp
+    ```
+
+    Kontrollera att det ser ut så här:
+
+    ![Output inställningar](assets/images/chap06/topic-output-settings.png)
+
+4.  Nu är vi klara med inställningarna! Stäng detaljpanelen genom att klicka på krysset (**X**) högst upp till höger.
+
+    ![Stäng panelen](assets/images/chap06/topic-details-close.png)
