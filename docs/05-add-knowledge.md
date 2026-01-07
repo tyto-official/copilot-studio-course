@@ -121,28 +121,28 @@ Nu ska vi se hur den använde våra källor.
 
 1.  Längst upp i testpanelen, klicka på ikonen för **Expand test panel** (ser ut som en pil).
 
-    ![Aktivera Activity Map](assets/images/chap06/test-map-toggle.png)
+    ![Aktivera Activity Map](assets/images/chap05/test-map-toggle.png)
 
 2.  Nu ser du flödet som agenten gick igenom. Klicka på boxen som heter **Search sources**.
 
-    ![Klicka på noden i kartan](assets/images/chap06/test-map-node.png)
+    ![Klicka på noden i kartan](assets/images/chap05/test-map-node.png)
 
 3.  En detaljruta öppnas. Här ser du exakt vilka källor agenten har **utvärderat**.
     
-    ![Detaljer om källan](assets/images/chap06/test-map-details.png)
+    ![Detaljer om källan](assets/images/chap05/test-map-details.png)
     
     * Du ser förmodligen både din **Public website** och ditt **Dokument** i listan.
     * Detta betyder att agenten ansåg att båda källorna *kunde* vara relevanta och "läste igenom" dem (Reviewed).
     * Men eftersom svaret bara fanns i dokumentet, var det bara den källan som användes för att formulera svaret (Referenced).
 
-    ![Refererad källa](assets/images/chap06/referenced-source.png)
+    ![Refererad källa](assets/images/chap05/referenced-source.png)
 
 ### Test 2: Den externa frågan
 Nu testar vi den andra källan för att se om den kan söka på webben.
 
 1.  Klicka på **New test session** (eller Refresh-ikonen) högst upp i testpanelen för att rensa minnet.
 
-    ![Starta om testet](assets/images/chap06/test-reset.png)
+    ![Starta om testet](assets/images/chap05/test-reset.png)
 
 2. Fråga:
     > *Hur tar jag en skärmdump i Windows 11?*
