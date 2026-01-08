@@ -459,6 +459,69 @@ Nu är Topicen klar! Men agenten vet inte om att den finns eller hur den ska anv
 
 4.  Klicka **Save**.
 
+---
+
+## 6.5 Hantera "Nej"-grenen (Guidning)
+
+Vad händer om kollegan svarar **Nej** (att de *inte* specifikt vill ha Microsoft)?
+Eftersom vi är en intern IT-support följer vi företagets standard (som i detta fall är Microsoft). Men istället för att bara säga "Nej" och stänga ner, frågar vi om de vill se vad som faktiskt finns på hyllan.
+
+### 1. Ställ frågan
+Vi ska nu arbeta i den högra grenen, den som heter **All other conditions** (eller *Nej*, om du döpte om den).
+
+1.  Klicka på **plus-tecknet (+)** under grenen **All other conditions**.
+2.  Välj **Ask a question**.
+
+    ![Fråga i nej-grenen](assets/images/chap06/topic-branch-no-add-question.png)
+
+3.  I meddelandet, skriv:
+    ```text
+    Just nu har vi endast Microsoft-enheter som standard i lagret. Vill du se vilka modeller som finns tillgängliga ändå?
+    ```
+
+4.  Under **Identify**, klicka på listan och välj **Boolean**.
+    *(Detta ger oss ett enkelt Ja/Nej-val).*
+
+    ![Välj Boolean](assets/images/chap06/topic-branch-no-boolean.png)
+
+5.  Klicka på rutan för **Save user response as** (Var2) och döp om variabeln till:
+    ```text
+    VarShowStandard
+    ```
+
+    ![Döp om variabel](assets/images/chap06/topic-variable-showstandard.png)
+
+### 2. Skapa villkoret (Vägvalet)
+Nu måste vi agera på svaret.
+
+1.  Lägg till en **Condition**-nod under din nya fråga.
+2.  Klicka på **Select a variable**, välj `VarShowStandard` och sätt den till **is equal to** `True`.
+
+    ![Villkor för Visa ändå](assets/images/chap06/topic-condition-showstandard.png)
+
+3.  (Valfritt) Döp om grenarna för tydlighet:
+    * Döp *Condition* till **Visa ändå** (True).
+    * Döp *All other conditions* till **Avsluta** (False).
+
+### 3. Hantera vägarna
+Nu har vi två scenarion:
+
+**Scenario A: De vill se datorerna (Visa ändå / True)**
+Här behöver vi faktiskt **inte göra någonting!**
+Eftersom vi ska lägga vår SharePoint-sökning längst ner där alla trådar möts, kommer användaren automatiskt att "rinna vidare" ner till sökningen om vi lämnar denna gren tom.
+* *Låt denna gren vara tom.*
+
+**Scenario B: De vill inte se datorerna (Avsluta / False)**
+Här måste vi avsluta snyggt, annars kommer de också ramla ner till sökningen (vilket vi inte vill).
+
+1.  Gå till grenen **All other conditions** (False).
+2.  Klicka på **+** och välj **Topic management** -> **End topic**.
+    *(Eller "End current topic").*
+
+    ![Avsluta ämnet](assets/images/chap06/topic-end-topic.png)
+
+*Nu är logiken idiotsäker. De som vill ha en dator (oavsett om de gillar Microsoft eller bara accepterar läget) kommer att flöda vidare neråt. De som tackar nej avslutas.*
+
 !!! success "Bra jobbat!"
     Du har nu byggt en avancerad funktion!
     
