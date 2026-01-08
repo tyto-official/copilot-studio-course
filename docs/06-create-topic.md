@@ -273,7 +273,10 @@ Nu ser flödet logiskt ut: Antingen svarade de Ja, eller så svarade de Nej (ell
 !!! info "Alternativ: Boolean vs Multiple Choice"
     Du kanske funderar på varför vi inte valde datatypen **Boolean** (Sant/Falskt) här? Det är annars standard för Ja/Nej-frågor.
     
-    Vi valde **Multiple Choice** för **synlighetens skull**. Det ger användaren tydliga knappar med texten "Ja" och "Nej" direkt i chatten, och det gör det tydligare för dig som bygger att se exakt vad alternativen är direkt i flödesschemat.
+    Vi valde **Multiple Choice** av två anledningar:
+
+    1.  **Synlighet:** Det ger användaren tydliga knappar med texten "Ja" och "Nej" direkt i chatten, och det blir tydligare för dig i flödesschemat att se vägvalen.
+    2.  **Flexibilitet:** Boolean är en mycket striktare datatyp som tekniskt sett bara hanterar True/False (Yes/No). Med Multiple Choice, även om vi bara ger alternativen Ja och Nej, är modellen ofta bättre på att tolka friare formuleringar från användaren (t.ex. "Gärna" eller "Absolut") och matcha dem till rätt alternativ.
 
 ---
 
@@ -463,64 +466,74 @@ Nu är Topicen klar! Men agenten vet inte om att den finns eller hur den ska anv
 
 ## 6.5 Hantera "Nej"-grenen (Guidning)
 
-Vad händer om kollegan svarar **Nej** (att de *inte* specifikt vill ha Microsoft)?
-Eftersom vi är en intern IT-support följer vi företagets standard (som i detta fall är Microsoft). Men istället för att bara säga "Nej" och stänga ner, frågar vi om de vill se vad som faktiskt finns på hyllan.
+Vad händer om användaren svarar **Nej** (att de *inte* specifikt vill ha Microsoft)?
+Vi vet att vi just nu inte har några andra märken. För att undvika att göra en sökning som vi vet blir tom, frågar vi istället om de vill se våra standarddatorer ändå.
 
-### 1. Ställ frågan
-Vi ska nu arbeta i den högra grenen, den som heter **All other conditions** (eller *Nej*, om du döpte om den).
+### 1. Ställ frågan (Multiple Choice)
+Vi ska nu arbeta i den högra grenen under Microsoft-frågan, den som heter **All other conditions** (eller *Nej*, om du döpte om den).
 
 1.  Klicka på **plus-tecknet (+)** under grenen **All other conditions**.
 2.  Välj **Ask a question**.
 
     ![Fråga i nej-grenen](assets/images/chap06/topic-branch-no-add-question.png)
 
-3.  I meddelandet, skriv:
+3.  Döp noden till:
+    ```text
+    Visa ändå
+    ```
+
+4.  I meddelandet, skriv:
     ```text
     Just nu har vi endast Microsoft-enheter som standard i lagret. Vill du se vilka modeller som finns tillgängliga ändå?
     ```
 
-4.  Under **Identify**, klicka på listan och välj **Boolean**.
-    *(Detta ger oss ett enkelt Ja/Nej-val).*
+5.  Under **Identify**, välj **Multiple choice options**.
 
-    ![Välj Boolean](assets/images/chap06/topic-branch-no-boolean.png)
+6.  Skapa två alternativ under **Options for user**:
+    * `Ja`
+    * `Nej`
 
-5.  Klicka på rutan för **Save user response as** (Var2) och döp om variabeln till:
+    ![Alternativ Ja och Nej](assets/images/chap06/topic-branch-no-choices.png)
+
+7.  Klicka på rutan för **Save user response as** (Var1) och döp om variabeln till:
     ```text
     VarShowStandard
     ```
 
     ![Döp om variabel](assets/images/chap06/topic-variable-showstandard.png)
 
-### 2. Skapa villkoret (Vägvalet)
-Nu måste vi agera på svaret.
+### 2. Städa upp villkoren
+Precis som förut skapas nu tre vägar (Ja, Nej, All other). Vi städar upp för att hålla det enkelt.
 
-1.  Lägg till en **Condition**-nod under din nya fråga.
-2.  Klicka på **Select a variable**, välj `VarShowStandard` och sätt den till **is equal to** `True`.
+1.  Hitta grenen som heter **Nej**. Klicka på de tre prickarna (...) och välj **Delete**.
+    *Vi tar bort "Nej" och låter istället "All other conditions" fånga upp de som inte svarar Ja.*
 
-    ![Villkor för Visa ändå](assets/images/chap06/topic-condition-showstandard.png)
+    ![Ta bort Nej](assets/images/chap06/topic-branch-no-delete.png)
 
-3.  (Valfritt) Döp om grenarna för tydlighet:
-    * Döp *Condition* till **Visa ändå** (True).
-    * Döp *All other conditions* till **Avsluta** (False).
+2.  Nu har du två vägar kvar:
+    * **Condition (VarShowStandard = Ja)**
+    * **All other conditions**
+    * Döp om *All other conditions* till **Nej**.
 
 ### 3. Hantera vägarna
-Nu har vi två scenarion:
+Nu ska vi bestämma vart vägarna leder.
 
-**Scenario A: De vill se datorerna (Visa ändå / True)**
-Här behöver vi faktiskt **inte göra någonting!**
-Eftersom vi ska lägga vår SharePoint-sökning längst ner där alla trådar möts, kommer användaren automatiskt att "rinna vidare" ner till sökningen om vi lämnar denna gren tom.
-* *Låt denna gren vara tom.*
+**Väg A: De svarar JA**
+Om de svarar Ja, vill vi att de ska gå vidare till SharePoint-sökningen.
+* **Åtgärd:** Gör ingenting! Låt grenen vara helt tom.
+    *Eftersom vi ska lägga SharePoint-noden längre ner (där alla trådar möts), kommer användaren automatiskt att fortsätta dit om vi inte stoppar dem.*
 
-**Scenario B: De vill inte se datorerna (Avsluta / False)**
-Här måste vi avsluta snyggt, annars kommer de också ramla ner till sökningen (vilket vi inte vill).
+**Väg B: De svarar NEJ (All other conditions)**
+Om de svarar Nej, har vi inget mer att erbjuda just nu.
 
-1.  Gå till grenen **All other conditions** (False).
-2.  Klicka på **+** och välj **Topic management** -> **End topic**.
-    *(Eller "End current topic").*
+1.  Gå till grenen **Nej**.
+2.  Klicka på **plus-tecknet (+)**.
+3.  Välj **Topic management** och sedan **End current topic**.
 
     ![Avsluta ämnet](assets/images/chap06/topic-end-topic.png)
 
-*Nu är logiken idiotsäker. De som vill ha en dator (oavsett om de gillar Microsoft eller bara accepterar läget) kommer att flöda vidare neråt. De som tackar nej avslutas.*
+---
+*Logiken är klar! Nu fångar vi upp "fel" märke och leder in dem på rätt spår igen, eller avslutar om de inte är intresserade.*
 
 !!! success "Bra jobbat!"
     Du har nu byggt en avancerad funktion!
