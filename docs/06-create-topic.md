@@ -274,3 +274,170 @@ Nu ser flödet logiskt ut: Antingen svarade de Ja, eller så svarade de Nej (ell
     Du kanske funderar på varför vi inte valde datatypen **Boolean** (Sant/Falskt) här? Det är annars standard för Ja/Nej-frågor.
     
     Vi valde **Multiple Choice** för **synlighetens skull**. Det ger användaren tydliga knappar med texten "Ja" och "Nej" direkt i chatten, och det gör det tydligare för dig som bygger att se exakt vad alternativen är direkt i flödesschemat.
+
+---
+
+## 6.5 Hämta data (SharePoint Connector)
+
+Nu ska vi göra det viktigaste: Hämta den faktiska listan på datorer från SharePoint. Detta gör vi i **Ja**-grenen (eftersom vi vet att användaren vill ha en Microsoft-dator).
+
+### 1. Lägg till Connectorn
+1.  Gå till grenen under **Ja** (där vi frågade om budget). Klicka på **plus-tecknet (+)**.
+2.  Välj **Call an action** (kan heta *Add a tool* i vissa vyer).
+
+    ![Lägg till action](assets/images/chap06/topic-action-add.png)
+
+3.  Klicka på fliken **Connectors** (om den finns) eller sök direkt i rutan efter: `Get items`.
+4.  Välj **SharePoint - Get items**.
+
+    ![Välj Get items](assets/images/chap06/topic-connector-getitems.png)
+
+### 2. Skapa anslutningen (Autentisering)
+Om detta är första gången du använder SharePoint i denna agent, måste du godkänna anslutningen.
+* Om du ser en knapp där det står **Connect**, klicka på den.
+* Välj **Connect directly (cloud-services)** och klicka **Create**.
+* Välj ditt konto och klicka **Allow access** om en ruta poppar upp.
+
+När anslutningen är klar, klicka på **Submit** (eller Add) för att lägga till noden i ditt flöde.
+
+![Connector tillagd](assets/images/chap06/topic-connector-submit.png)
+
+### 3. Konfigurera Egenskaper (Properties)
+Nu har vi en "dum" SharePoint-nod. Vi måste berätta för den vilken lista den ska läsa ifrån.
+
+1.  Klicka på de **tre prickarna (...)** i högra hörnet på den nya *Get items*-noden.
+2.  Välj **Properties**.
+
+    ![Välj properties](assets/images/chap06/topic-connector-properties.png)
+
+3.  En sidomeny öppnas. Se till att du är på fliken **Initiation**.
+
+    ![Properties panel](assets/images/chap06/topic-properties-pane.png)
+
+4.  I fältet **Usage Description**, skriv (på engelska för säkerhets skull):
+    ```text
+    Retrieves devices from SharePoint list
+    ```
+    *(Detta hjälper agenten förstå vad verktyget gör).*
+
+    ![Usage description](assets/images/chap06/topic-prop-initiation.png)
+
+5.  Hoppa över "Error handling". Gå direkt till sektionen **Inputs**.
+6.  **Site Address:** Välj din SharePoint-sida (**IT Help Desk**) i listan.
+
+    ![Välj site](assets/images/chap06/topic-prop-site.png)
+
+7.  **List Name:** Välj din lista (**Devices**).
+
+    ![Välj lista](assets/images/chap06/topic-prop-list.png)
+
+### 4. Filtrera listan (Power Fx)
+Om vi inte gör något nu, kommer agenten hämta *allt*. Vi vill bara ha **Available** (tillgängliga) enheter av rätt typ (t.ex. **Laptop**).
+
+Här måste vi använda **Power Fx**, som är Microsofts formelspråk.
+
+1.  Hitta fältet **Filter Query**.
+2.  Klicka på de **tre prickarna (...)** vid fältet och välj **Formula**.
+3.  Klicka på den lilla pilen (vinkeln) för att expandera formelfältet så du ser bättre.
+
+    ![Expandera formel](assets/images/chap06/topic-prop-formula.png)
+
+4.  Kopiera och klistra in exakt denna kod:
+    ```powerfx
+    Concatenate("Status eq 'Available' and AssetType eq '", Topic.VarDeviceType, "'")
+    ```
+
+    **Vad betyder koden?**
+    Vi bygger en mening som SharePoint förstår. `Concatenate` betyder "klistra ihop".
+    Vi klistrar ihop texten *"Status är Available OCH AssetType är..."* med värdet från vår input-variabel (t.ex. "Laptop").
+    
+    *Resultatet som skickas till SharePoint blir: `Status eq 'Available' and AssetType eq 'Laptop'`*
+
+5.  Kontrollera att du har en liten **grön bock** nere i hörnet av rutan. Det betyder att koden är korrekt.
+
+    ![Grön bock formel](assets/images/chap06/topic-prop-formula-check.png)
+
+6.  Klicka **Insert**.
+
+7.  (Valfritt men bra) Scrolla ner till **Limit Columns by View**. Välj **All items**.
+    *Ibland kan SharePoint gömma kolumner om man inte väljer en vy. Detta garanterar att vi får all data.*
+
+    ![Välj vy](assets/images/chap06/topic-prop-view.png)
+
+### 5. Spara resultatet (Output)
+Nu har vi ställt frågan till SharePoint. Nu ska vi ta hand om svaret.
+
+1.  I Properties-panelen, klicka på fliken **Output**.
+
+    ![Output flik](assets/images/chap06/topic-prop-output.png)
+
+2.  Klicka på variabelnamnet (som troligen heter *GetItems*).
+3.  Döp om den till:
+    ```text
+    VarDevices
+    ```
+4.  Ändra **Usage** till **Global**.
+    *Varför? För att vi vill att denna lista ska vara tillgänglig för hela agenten, ifall vi vill använda den i andra topics senare.*
+
+    ![Output inställningar](assets/images/chap06/topic-prop-output-global.png)
+
+5.  Stäng Properties-panelen på krysset (X).
+
+---
+
+## 6.7 Koppla ihop allt (Output Mapping)
+
+Nu har vi hämtat datan till en *Global* variabel (`VarDevices`).
+Men minns du att vi i början av Topicen (steg 6.3) skapade en specifik Output-variabel för just den här topicen (`VarAvailableDevices`)? Vi måste flytta datan från den ena till den andra.
+
+1.  Lägg till en ny nod under din SharePoint-nod.
+2.  Välj **Variable management** -> **Set a variable value**.
+
+    ![Set variable](assets/images/chap06/topic-set-var-node.png)
+
+3.  Under **Set variable**, välj topicens output-variabel: `VarAvailableDevices`.
+4.  Under **To value**, klicka på pilen/ikonen och välj **Formula**.
+5.  Skriv in följande formel:
+    ```powerfx
+    Global.VarDevices.value
+    ```
+
+    **Varför .value?**
+    SharePoint skickar tillbaka ett paket med massor av info. Själva listan med rader (datorerna) ligger inuti en egenskap som heter `value`. Vi måste "packa upp" den för att vår tabell ska bli rätt.
+
+    ![Formel för value](assets/images/chap06/topic-set-var-formula.png)
+
+6.  Klicka **Insert**.
+7.  **Spara** din Topic (Save högst upp till höger).
+
+---
+
+## 6.8 Uppdatera Agentens Instruktioner
+
+Nu är Topicen klar! Men agenten (Orchestratorn) vet inte om att den finns eller hur den ska användas än. Vi måste uppdatera huvudinstruktionerna.
+
+1.  Gå till fliken **Overview** högst upp.
+
+    ![Overview flik](assets/images/chap06/agent-overview.png)
+
+2.  Vid **Instructions**, klicka på **Edit**.
+
+    ![Edit instructions](assets/images/chap06/agent-instructions-edit.png)
+
+3.  Lägg till följande rad i instruktionerna (gärna sist i listan):
+
+    ```text
+    - Help find available devices and give full details using [Available devices]. Always extract the VarDeviceType from the inputs. After giving device details, ask the user if they want to request a device from the list of available devices.
+    ```
+
+    *(Tips: När du skriver `[Available devices]`, se till att du faktiskt väljer topicen från listan som poppar upp, så att den blir en klickbar länk i instruktionen).*
+
+4.  Klicka **Save**.
+
+!!! success "Bra jobbat!"
+    Du har nu byggt en avancerad funktion!
+    
+    1. Agenten lyssnar efter vad användaren vill ha (Input).
+    2. Den ställer smarta följdfrågor (Logic).
+    3. Den hämtar data från SharePoint (Action).
+    4. Den levererar en snygg lista tillbaka (Output).
