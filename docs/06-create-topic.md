@@ -279,22 +279,25 @@ Nu ser flödet logiskt ut: Antingen svarade de Ja, eller så svarade de Nej (ell
 
 ## 6.5 Hämta data (SharePoint Connector)
 
-Nu ska vi göra det viktigaste: Hämta den faktiska listan på datorer från SharePoint. Detta gör vi i **Ja**-grenen (eftersom vi vet att användaren vill ha en Microsoft-dator).
+Nu ska vi hämta listan på datorer.
+Vi ska placera denna koppling **längst ner i flödet**, där alla vägar ("Laptop"-vägen och "All other"-vägen) möts igen.
+På så sätt fungerar sökningen oavsett om användaren letar efter en Laptop, en Desktop eller en Tablet.
 
 ### 1. Lägg till Connectorn
-1.  Gå till grenen under **Ja** (där vi frågade om budget). Klicka på **plus-tecknet (+)**.
+1.  Scrolla längst ner i ditt flödesschema. Leta upp punkten där linjerna från dina olika vägval kopplas ihop igen.
+2.  Klicka på **plus-tecknet (+)** under sammanslagningen (där trådarna möts).
 
     ![Lägg till action](assets/images/chap06/topic-ja-add-node.png)
 
-2.  Välj **Add a tool**
+3.  Välj **Add a tool**
 
     ![Lägg till action](assets/images/chap06/topic-action-add-tool.png)
 
-3.  Välj **Connectors**
+4.  Välj **Connectors**
 
     ![Lägg till action](assets/images/chap06/topic-action-add-tool-connectors.png)
 
-4.  Sök efter **SharePoint - Get items**
+5.  Sök efter **SharePoint - Get items**
 
     ![Lägg till action](assets/images/chap06/topic-action-add-tool-sharepoint-getitems.png)
 
