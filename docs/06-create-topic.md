@@ -283,18 +283,25 @@ Nu ska vi göra det viktigaste: Hämta den faktiska listan på datorer från Sha
 
 ### 1. Lägg till Connectorn
 1.  Gå till grenen under **Ja** (där vi frågade om budget). Klicka på **plus-tecknet (+)**.
-2.  Välj **Call an action** (kan heta *Add a tool* i vissa vyer).
 
-    ![Lägg till action](assets/images/chap06/topic-action-add.png)
+    ![Lägg till action](assets/images/chap06/topic-ja-add-node.png)
 
-3.  Klicka på fliken **Connectors** (om den finns) eller sök direkt i rutan efter: `Get items`.
-4.  Välj **SharePoint - Get items**.
+2.  Välj **Add a tool**
 
-    ![Välj Get items](assets/images/chap06/topic-connector-getitems.png)
+    ![Lägg till action](assets/images/chap06/topic-action-add-tool.png)
+
+3.  Välj **Connectors**
+
+    ![Lägg till action](assets/images/chap06/topic-action-add-tool-connectors.png)
+
+4.  Sök efter **SharePoint - Get items**
+
+    ![Lägg till action](assets/images/chap06/topic-action-add-tool-sharepoint-getitems.png)
 
 ### 2. Skapa anslutningen (Autentisering)
 Om detta är första gången du använder SharePoint i denna agent, måste du godkänna anslutningen.
-* Om du ser en knapp där det står **Connect**, klicka på den.
+* Om du ser en knapp där det står **Not connected**, klicka på den.
+* Välj **Create new connection**
 * Välj **Connect directly (cloud-services)** och klicka **Create**.
 * Välj ditt konto och klicka **Allow access** om en ruta poppar upp.
 
@@ -305,29 +312,31 @@ När anslutningen är klar, klicka på **Submit** (eller Add) för att lägga ti
 ### 3. Konfigurera Egenskaper (Properties)
 Nu har vi en "dum" SharePoint-nod. Vi måste berätta för den vilken lista den ska läsa ifrån.
 
-1.  Klicka på de **tre prickarna (...)** i högra hörnet på den nya *Get items*-noden.
-2.  Välj **Properties**.
+1.  Klicka på de **tre prickarna (...)** i högra hörnet på den nya *Get items*-noden och välj **Properties**.
 
-    ![Välj properties](assets/images/chap06/topic-connector-properties.png)
+    ![Tre prickar](assets/images/chap06/topic-connector-properties-node.png)
 
-3.  En sidomeny öppnas. Se till att du är på fliken **Initiation**.
+2.  En sidomeny öppnas. Se till att du är på fliken **Initiation**.
 
     ![Properties panel](assets/images/chap06/topic-properties-pane.png)
 
-4.  I fältet **Usage Description**, skriv (på engelska för säkerhets skull):
+3.  I fältet **Usage Description**, skriv:
     ```text
-    Retrieves devices from SharePoint list
+    Hämtar enheter från SharePoint-listan
     ```
     *(Detta hjälper agenten förstå vad verktyget gör).*
 
     ![Usage description](assets/images/chap06/topic-prop-initiation.png)
 
-5.  Hoppa över "Error handling". Gå direkt till sektionen **Inputs**.
-6.  **Site Address:** Välj din SharePoint-sida (**IT Help Desk**) i listan.
+4.  Hoppa över "Error handling". Gå direkt till sektionen **Inputs**.
+
+    ![Inputs](assets/images/chap06/topic-prop-inputs.png)
+
+5.  **Site Address:** Välj din SharePoint-sida (**IT Help Desk**) i listan.
 
     ![Välj site](assets/images/chap06/topic-prop-site.png)
 
-7.  **List Name:** Välj din lista (**Devices**).
+6.  **List Name:** Välj din lista (**Devices**).
 
     ![Välj lista](assets/images/chap06/topic-prop-list.png)
 
@@ -336,11 +345,17 @@ Om vi inte gör något nu, kommer agenten hämta *allt*. Vi vill bara ha **Avail
 
 Här måste vi använda **Power Fx**, som är Microsofts formelspråk.
 
-1.  Hitta fältet **Filter Query**.
+1.  Hitta fältet **Filter Query** under *Advanced parameters*.
+
+    ![Filter query](assets/images/chap06/topic-prop-filterquery.png)
+
 2.  Klicka på de **tre prickarna (...)** vid fältet och välj **Formula**.
+
+    ![Tre prickar](assets/images/chap06/topic-prop-filterquery-formula.png)
+
 3.  Klicka på den lilla pilen (vinkeln) för att expandera formelfältet så du ser bättre.
 
-    ![Expandera formel](assets/images/chap06/topic-prop-formula.png)
+    ![Expandera formel](assets/images/chap06/topic-prop-formula-expand.png)
 
 4.  Kopiera och klistra in exakt denna kod:
     ```powerfx
@@ -349,18 +364,18 @@ Här måste vi använda **Power Fx**, som är Microsofts formelspråk.
 
     **Vad betyder koden?**
     Vi bygger en mening som SharePoint förstår. `Concatenate` betyder "klistra ihop".
-    Vi klistrar ihop texten *"Status är Available OCH AssetType är..."* med värdet från vår input-variabel (t.ex. "Laptop").
+    Vi klistrar ihop texten *"Status är Available OCH AssetType är..."* med värdet från vår input-variabel `VarDeviceType` (t.ex. "Laptop").
     
     *Resultatet som skickas till SharePoint blir: `Status eq 'Available' and AssetType eq 'Laptop'`*
 
-5.  Kontrollera att du har en liten **grön bock** nere i hörnet av rutan. Det betyder att koden är korrekt.
+5.  Kontrollera att du har en liten **grön bock** brevid formelfältet. Det betyder att koden är korrekt.
 
     ![Grön bock formel](assets/images/chap06/topic-prop-formula-check.png)
 
 6.  Klicka **Insert**.
 
 7.  (Valfritt men bra) Scrolla ner till **Limit Columns by View**. Välj **All items**.
-    *Ibland kan SharePoint gömma kolumner om man inte väljer en vy. Detta garanterar att vi får all data.*
+    *Ibland kan SharePoint gömma kolumner om man inte väljer en vy. Detta garanterar att vi får all data. Kan behöva refresch för att få upp alternativen.*
 
     ![Välj vy](assets/images/chap06/topic-prop-view.png)
 
@@ -376,6 +391,9 @@ Nu har vi ställt frågan till SharePoint. Nu ska vi ta hand om svaret.
     ```text
     VarDevices
     ```
+
+    ![Output inställningar](assets/images/chap06/topic-prop-output-vardevices.png)
+
 4.  Ändra **Usage** till **Global**.
     *Varför? För att vi vill att denna lista ska vara tillgänglig för hela agenten, ifall vi vill använda den i andra topics senare.*
 
@@ -396,7 +414,13 @@ Men minns du att vi i början av Topicen (steg 6.3) skapade en specifik Output-v
     ![Set variable](assets/images/chap06/topic-set-var-node.png)
 
 3.  Under **Set variable**, välj topicens output-variabel: `VarAvailableDevices`.
+
+    ![Set variable](assets/images/chap06/topic-set-var-node-varavailabledevices.png)
+
 4.  Under **To value**, klicka på pilen/ikonen och välj **Formula**.
+
+    ![Set variable](assets/images/chap06/topic-set-var-node-value-to-formula.png)
+
 5.  Skriv in följande formel:
     ```powerfx
     Global.VarDevices.value
@@ -405,7 +429,7 @@ Men minns du att vi i början av Topicen (steg 6.3) skapade en specifik Output-v
     **Varför .value?**
     SharePoint skickar tillbaka ett paket med massor av info. Själva listan med rader (datorerna) ligger inuti en egenskap som heter `value`. Vi måste "packa upp" den för att vår tabell ska bli rätt.
 
-    ![Formel för value](assets/images/chap06/topic-set-var-formula.png)
+    ![Formel för value](assets/images/chap06/topic-set-var-formula-value.png)
 
 6.  Klicka **Insert**.
 7.  **Spara** din Topic (Save högst upp till höger).
@@ -414,7 +438,7 @@ Men minns du att vi i början av Topicen (steg 6.3) skapade en specifik Output-v
 
 ## 6.8 Uppdatera Agentens Instruktioner
 
-Nu är Topicen klar! Men agenten (Orchestratorn) vet inte om att den finns eller hur den ska användas än. Vi måste uppdatera huvudinstruktionerna.
+Nu är Topicen klar! Men agenten vet inte om att den finns eller hur den ska användas än. Vi måste uppdatera huvudinstruktionerna.
 
 1.  Gå till fliken **Overview** högst upp.
 
@@ -427,7 +451,7 @@ Nu är Topicen klar! Men agenten (Orchestratorn) vet inte om att den finns eller
 3.  Lägg till följande rad i instruktionerna (gärna sist i listan):
 
     ```text
-    - Help find available devices and give full details using [Available devices]. Always extract the VarDeviceType from the inputs. After giving device details, ask the user if they want to request a device from the list of available devices.
+    - Hjälp till att hitta tillgängliga enheter och ge fullständiga detaljer genom att använda [Available devices]. Extrahera alltid VarDeviceType från indatan. Efter att ha presenterat detaljerna, fråga användaren om de vill beställa en enhet från listan.
     ```
 
     *(Tips: När du skriver `[Available devices]`, se till att du faktiskt väljer topicen från listan som poppar upp, så att den blir en klickbar länk i instruktionen).*
