@@ -318,15 +318,13 @@ Nu har vi en "dum" SharePoint-nod. Vi måste berätta för den vilken lista den 
 
 2.  En sidomeny öppnas. Se till att du är på fliken **Initiation**.
 
-    ![Properties panel](assets/images/chap06/topic-properties-pane.png)
-
 3.  I fältet **Usage Description**, skriv:
     ```text
     Hämtar enheter från SharePoint-listan
     ```
     *(Detta hjälper agenten förstå vad verktyget gör).*
 
-    ![Usage description](assets/images/chap06/topic-prop-initiation.png)
+    ![Properties panel](assets/images/chap06/topic-properties-pane.png)
 
 4.  Hoppa över "Error handling". Gå direkt till sektionen **Inputs**.
 
