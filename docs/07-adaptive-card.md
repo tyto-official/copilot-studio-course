@@ -9,8 +9,15 @@ För att göra detta snyggt och användarvänligt ska vi använda ett **Adaptive
 
 Vi skapar en separat Topic för själva beställningen för att hålla logiken ren.
 
-1.  Gå till **Topics** och välj **+ Add a topic** -> **From blank**.
-2.  Döp topicen till:
+1.  Navigera till dina **Topics** i Copilot Studio.
+
+    ![Navigera till Topics](assets/images/chap07/topic-navigate.png)
+
+2.  Välj **+ Add a topic** -> **From blank**.
+
+    ![Välj Add a topic](assets/images/chap07/topic-add-a-topic.png)
+
+3.  Döp topicen till:
     ```text
     Request device
     ```
@@ -21,6 +28,8 @@ Vi skapar en separat Topic för själva beställningen för att hålla logiken r
     ```text
     Detta ämne hjälper användare att beställa en enhet när de svarar ja på frågan om de vill göra en beställning av en av de visade enheterna.
     ```
+
+    ![Beskrivning](assets/images/chap07/topic-description.png)
 
 ---
 
@@ -37,18 +46,23 @@ Nu ska vi lägga till själva kortet.
 
     ![Kort Properties](assets/images/chap07/card-properties.png)
 
-4.  I panelen till höger, klicka på den stora bilden där det står **Edit Adaptive Card**.
+4.  I panelen till höger, klicka på knappen **Edit Adaptive Card**.
 
     ![Redigera kort](assets/images/chap07/card-edit-button.png)
 
 ### Testa verktyget (Valfritt men lärorikt)
 Nu öppnas en stor editor. Till vänster har du komponenter (text, bilder, inputs) och i mitten ser du ditt kort.
 
+![Editor](assets/images/chap07/card-designer.png)
+
 1.  Prova att dra in ett **TextBlock** från vänstermenyn till kortet.
+
+    ![Dra in text](assets/images/chap07/card-drag-text.png)
+
 2.  Ändra texten till "Tillgängliga enheter" i menyn till höger.
 3.  Ändra **Horizontal alignment** till **Center**.
 
-    ![Dra in text](assets/images/chap07/card-drag-text.png)
+    
 
 4.  Prova att dra in en **Input.ChoiceSet** under texten.
 5.  Ändra **Style** till **Expanded** för att se hur det ser ut som en lista med radioknappar.
