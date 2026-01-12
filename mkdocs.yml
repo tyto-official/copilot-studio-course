@@ -14,6 +14,7 @@ nav:
   - 5. Lägg till kunskap: 05-add-knowledge.md
   - 6. Skapa Topic: 06-create-topic.md
   - 7. Skapa Adaptive Card: 07-adaptive-card.md
+  - 8. Skapa Flow: 08-create-flow.md
 
 markdown_extensions:
   - admonition
