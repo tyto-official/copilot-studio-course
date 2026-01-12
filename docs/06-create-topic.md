@@ -486,77 +486,6 @@ Nu är Topicen klar! Men agenten vet inte om att den finns eller hur den ska anv
 
 4.  Klicka **Save**.
 
----
-
-## 6.9 Hantera "Nej"-grenen (Guidning)
-
-Vad händer om användaren svarar **Nej** (att de *inte* specifikt vill ha Microsoft)?
-Vi vet att vi just nu inte har några andra märken. För att undvika att göra en sökning som vi vet blir tom, frågar vi istället om de vill se våra standarddatorer ändå.
-
-### 1. Ställ frågan (Multiple Choice)
-Vi ska nu arbeta i den högra grenen under Microsoft-frågan, den som heter **All other conditions** (eller *Nej*, om du döpte om den).
-
-1.  Klicka på **plus-tecknet (+)** under grenen **All other conditions**.
-2.  Välj **Ask a question**.
-
-    ![Fråga i nej-grenen](assets/images/chap06/topic-branch-no-add-question.png)
-
-3.  Döp noden till:
-    ```text
-    Visa ändå
-    ```
-
-4.  I meddelandet, skriv:
-    ```text
-    Just nu har vi endast Microsoft-enheter som standard i lagret. Vill du se vilka modeller som finns tillgängliga ändå?
-    ```
-
-5.  Under **Identify**, välj **Multiple choice options**.
-
-6.  Skapa två alternativ under **Options for user**:
-    * `Ja`
-    * `Nej`
-
-    ![Alternativ Ja och Nej](assets/images/chap06/topic-branch-no-choices.png)
-
-7.  Klicka på rutan för **Save user response as** (Var1) och döp om variabeln till:
-    ```text
-    VarShowStandard
-    ```
-
-    ![Döp om variabel](assets/images/chap06/topic-variable-showstandard.png)
-
-### 2. Städa upp villkoren
-Precis som förut skapas nu tre vägar (Ja, Nej, All other). Vi städar upp för att hålla det enkelt.
-
-1.  Hitta grenen som heter **Nej**. Klicka på de tre prickarna (...) och välj **Delete**.
-    *Vi tar bort "Nej" och låter istället "All other conditions" fånga upp de som inte svarar Ja.*
-
-    ![Ta bort Nej](assets/images/chap06/topic-branch-no-delete.png)
-
-2.  Nu har du två vägar kvar:
-    * **Condition (VarShowStandard = Ja)**
-    * **All other conditions**
-    * Döp om *All other conditions* till **Nej**.
-
-### 3. Hantera vägarna
-Nu ska vi bestämma vart vägarna leder.
-
-**Väg A: De svarar JA**
-Om de svarar Ja, vill vi att de ska gå vidare till SharePoint-sökningen.
-* **Åtgärd:** Gör ingenting! Låt grenen vara helt tom.
-    *Eftersom vi ska lägga SharePoint-noden längre ner (där alla trådar möts), kommer användaren automatiskt att fortsätta dit om vi inte stoppar dem.*
-
-**Väg B: De svarar NEJ (All other conditions)**
-Om de svarar Nej, har vi inget mer att erbjuda just nu.
-
-1.  Gå till grenen **Nej**.
-2.  Klicka på **plus-tecknet (+)**.
-3.  Välj **Topic management** och sedan **End current topic**.
-
-    ![Avsluta ämnet](assets/images/chap06/topic-end-topic.png)
-
----
 *Logiken är klar! Nu fångar vi upp "fel" märke och leder in dem på rätt spår igen, eller avslutar om de inte är intresserade.*
 
 !!! success "Bra jobbat!"
@@ -566,3 +495,5 @@ Om de svarar Nej, har vi inget mer att erbjuda just nu.
     2. Den ställer smarta följdfrågor (Logic).
     3. Den hämtar data från SharePoint (Action).
     4. Den levererar en snygg lista tillbaka (Output).
+
+---
