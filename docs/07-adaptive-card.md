@@ -60,14 +60,20 @@ Nu öppnas en stor editor. Till vänster har du komponenter (text, bilder, input
     ![Dra in text](assets/images/chap07/card-drag-text.png)
 
 2.  Ändra texten till "Tillgängliga enheter" i menyn till höger.
+
+    ![Text](assets/images/chap07/card-text.png)
+
 3.  Ändra **Horizontal alignment** till **Center**.
 
-    
+    ![Horizontal alignment](assets/images/chap07/card-horizontal-alignment.png)
 
 4.  Prova att dra in en **Input.ChoiceSet** under texten.
+
+    ![Dra in val](assets/images/chap07/card-drag-choice.png)
+
 5.  Ändra **Style** till **Expanded** för att se hur det ser ut som en lista med radioknappar.
 
-    ![Dra in val](assets/images/chap07/card-style-expanded.png)
+    ![Style](assets/images/chap07/card-style-expanded.png)
 
 6.  Klicka på **Preview Mode** högst upp för att se hur det skulle se ut i chatten.
 
@@ -200,6 +206,8 @@ Att bygga hela kortet för hand tar tid. Vi ska använda färdig kod (JSON) för
 
 4.  Klicka på **Preview Mode** för att se ditt snygga kort!
     *Just nu är listan på datorer "Hårdkodad" (Surface Laptop 13, 15 etc). Det ska vi ändra på nu.*
+
+    ![Preview](assets/images/chap07/card-preview-static.png)
 
 ---
 
