@@ -190,37 +190,66 @@ Nu ser du att flödet delar sig i två vägar: *Condition* och *All other condit
     ![Vägvalet klart](assets/images/chap06/topic-condition-split-laptop.png)
 
 ### 3. Ställ frågor (Tratten)
-Vi fortsätter på spåret för "Laptop" (den vänstra vägen). Vi vill veta mer om vad de vill ha.
+Vi fortsätter på spåret för "Laptop" (den vänstra vägen). Vi vill veta vilken prestanda användaren behöver.
 
 1.  Klicka på **plus-tecknet (+)** under din nya *Laptop*-nod.
-
-    ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer-node.png)
-
 2.  Välj **Ask a question**.
 
-    ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer.png)
+    ![Välj fråga](assets/images/chap06/topic-question-performance.png)
 
-3.  Döp noden till:
+3.  **Döp om noden:**
+    Klicka på namnet *Question* högst upp på noden och ändra det till:
     ```text
-    Manufacturer
+    Prestandaval
     ```
-
-    ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer-node-name.png)
 
 4.  I rutan **Enter a message**, skriv:
     ```text
-    Är du specifikt intresserad av en Microsoft-laptop?
+    För vilken typ av arbete ska datorn användas?
     ```
-
-    ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer-node-message.png)
 
 5.  Under **Identify**, se till att **Multiple choice options** är valt.
 
-6.  Under **Options for user**:
-    * Klicka **+ New option**, skriv `Ja` och tryck Enter.
-    * Klicka **+ New option**, skriv `Nej` och tryck Enter.
+6.  Under **Options for user**, skapa två alternativ:
+    * `Standard (Office/Admin)`
+    * `High Performance (Utveckling/Grafik)`
 
-    ![Fråga om tillverkare](assets/images/chap06/topic-question-manufacturer-options.png)
+    *(Genom att ge specifika alternativ styr vi användaren rätt).*
+
+    ![Alternativ för prestanda](assets/images/chap06/topic-question-performance-options.png)
+
+### 4. Döpa om Variabeln
+Agenten sparar svaret i `Var1`. Vi byter namn för att hålla ordning.
+
+1.  Klicka på rutan **Save user response as**.
+2.  Ändra **Name** till:
+    ```text
+    VarPerformance
+    ```
+3.  Stäng rutan.
+
+### 5. Hantera grenarna (Standard vs High Performance)
+Copilot Studio har nu skapat två grenar åt dig baserat på valen. Vi ska nu bestämma vad som händer i respektive gren.
+
+**Gren 1: Standard**
+Användaren valde Standard. Här är allt som vanligt.
+* **Åtgärd:** Gör ingenting. Låt grenen vara tom.
+* *Flödet kommer automatiskt att rinna vidare ner till botten där vi strax ska hämta listan.*
+
+**Gren 2: High Performance**
+Användaren valde High Performance. Låt oss simulera att dessa är tillfälligt slut, men att vi vill vara hjälpsamma och visa vad som finns ändå.
+
+1.  Leta upp grenen för **High Performance**.
+2.  Klicka på **plus-tecknet (+)** i den grenen.
+3.  Välj **Send a message**.
+4.  Skriv:
+    ```text
+    Just nu har vi tyvärr lång leveranstid på High Performance-enheter. Jag visar dig listan på våra Standard-modeller som finns för omgående leverans istället.
+    ```
+
+    ![Meddelande om slut i lager](assets/images/chap06/topic-message-outofstock.png)
+
+*Nu har vi en snygg logik: De som väljer Standard går raka vägen. De som väljer Avancerat får ett meddelande, men båda grupperna landar till slut på samma ställe – i SharePoint-söket.*
 
 ### 4. Döpa om Variabeln
 Agenten sparar automatiskt svaret i en variabel som heter `Var1`. Det är ett dåligt namn om vi ska minnas vad det betyder.
@@ -228,7 +257,7 @@ Agenten sparar automatiskt svaret i en variabel som heter `Var1`. Det är ett d�
 1.  Klicka på rutan där det står **Save user response as** (där namnet `Var1` står).
 2.  En ruta öppnas till höger. Ändra **Name** till:
     ```text
-    VarManufacturerChoice
+    VarPerformance
     ```
 
     ![Döp om variabel](assets/images/chap06/topic-var-rename.png)
@@ -237,48 +266,43 @@ Agenten sparar automatiskt svaret i en variabel som heter `Var1`. Det är ett d�
 
 3.  Stäng variabel-rutan på krysset (X).
 
-### 5. Städa upp flödet (Smart Logik)
-Eftersom vi valde "Multiple choice" har Copilot Studio automatiskt skapat tre vägar åt oss:
-1.  **Condition (VarManufacturerChoice = Ja)**
-2.  **Condition (VarManufacturerChoice = Nej)**
+### 5. Städa upp grenarna (Förenkling)
+När du skapade alternativen skapade Copilot Studio automatiskt tre vägar åt dig:
+1.  **Condition** (VarPerformance = Standard)
+2.  **Condition** (VarPerformance = High Performance)
 3.  **All other conditions**
 
-    ![Fråga om tillverkare](assets/images/chap06/topic-condition-split-manufacturer.png)
+Detta är onödigt komplicerat för vår övning. Vi förenklar det genom att ta bort den specifika grenen för "High Performance" och låta "Allt annat" hantera det valet.
 
-Detta blir lite rörigt. Vi kan förenkla detta genom att tänka: *"Om det inte är JA, så hanterar vi det som NEJ."*
-
-1.  Leta upp grenen som specifikt heter **Nej** (Condition: VarManufacturerChoice = Nej).
+1.  Leta upp grenen som specifikt heter **High Performance** (Condition: VarPerformance = High Performance).
 2.  Klicka på de **tre prickarna (...)** på den noden och välj **Delete**.
+    *Nu har du bara två vägar kvar: Standard och All other conditions.*
 
-    ![Radera nod](assets/images/chap06/topic-delete-node.png)
+3.  **Döp om vägarna för tydlighet:**
+    * Klicka på pennan på den vänstra grenen (*Condition*). Döp om den till `Standard`.
+    * Klicka på pennan på den högra grenen (*All other conditions*). Döp om den till `High Performance` (eller Avancerad).
 
-3.  Nu har du bara två vägar kvar:
-    * **Ja:** Användaren vill ha Microsoft.
-    * **All other conditions:** Användaren svarade Nej (eller något annat).
+### 6. Hantera logiken i grenarna
+Nu ska vi bestämma vad som händer i respektive gren.
 
-    Detta gör flödet mycket enklare att läsa!
+**Gren 1: Standard**
+Användaren valde Standard. Här är allt som vanligt och finns i lager.
+* **Åtgärd:** Gör ingenting. Låt grenen vara tom.
+    *Flödet kommer automatiskt att rinna vidare ner till botten där vi strax ska hämta listan.*
 
-### 6. Döpa om vägarna (För tydlighet)
-Just nu heter din ena väg *Condition* och den andra *All other conditions*. Låt oss göra det snyggare och mer lättläst.
+**Gren 2: High Performance (All other)**
+Användaren valde High Performance (eller något annat). Låt oss simulera att dessa är tillfälligt slut, men att vi vill vara hjälpsamma och visa vad som finns ändå.
 
-1.  Klicka på pennan (eller namnet) på den vänstra grenen (där villkoret är Ja).
-2.  Döp om den till `Ja`.
-3.  Klicka på pennan på den högra grenen (*All other conditions*).
-4.  Döp om den till `Nej`.
+1.  Klicka på **plus-tecknet (+)** i den högra grenen (som du döpte till High Performance).
+2.  Välj **Send a message**.
+3.  Skriv:
+    ```text
+    Just nu har vi tyvärr lång leveranstid på High Performance-enheter. Jag visar dig listan på våra Standard-modeller som finns för omgående leverans istället.
+    ```
 
-Nu ser flödet logiskt ut: Antingen svarade de Ja, eller så svarade de Nej (eller något annat, som vi tolkar som Nej).
+    ![Meddelande om slut i lager](assets/images/chap06/topic-message-outofstock.png)
 
-![Döpa om grenar](assets/images/chap06/topic-rename-branches.png)
-
-!!! info "Alternativ: Boolean vs Multiple Choice"
-    Du kanske funderar på varför vi inte valde datatypen **Boolean** (Sant/Falskt) här? Det är annars standard för Ja/Nej-frågor.
-    
-    Vi valde **Multiple Choice** av två anledningar:
-
-    1.  **Synlighet:** Det ger användaren tydliga knappar med texten "Ja" och "Nej" direkt i chatten, och det blir tydligare för dig i flödesschemat att se vägvalen.
-    2.  **Flexibilitet:** Boolean är en mycket striktare datatyp som tekniskt sett bara hanterar True/False (Yes/No). Med Multiple Choice, även om vi bara ger alternativen Ja och Nej, är modellen ofta bättre på att tolka friare formuleringar från användaren (t.ex. "Gärna" eller "Absolut") och matcha dem till rätt alternativ.
-
----
+*Nu är logiken klar: De som väljer Standard går raka vägen. De som väljer Avancerat får ett meddelande. Båda grupperna landar till slut på samma ställe – i SharePoint-söket som vi lägger till härnäst.*
 
 ## 6.5 Hämta data (SharePoint Connector)
 
@@ -464,7 +488,7 @@ Nu är Topicen klar! Men agenten vet inte om att den finns eller hur den ska anv
 
 ---
 
-## 6.5 Hantera "Nej"-grenen (Guidning)
+## 6.9 Hantera "Nej"-grenen (Guidning)
 
 Vad händer om användaren svarar **Nej** (att de *inte* specifikt vill ha Microsoft)?
 Vi vet att vi just nu inte har några andra märken. För att undvika att göra en sökning som vi vet blir tom, frågar vi istället om de vill se våra standarddatorer ändå.

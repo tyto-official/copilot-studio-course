@@ -365,6 +365,9 @@ Dessa skapades automatiskt baserat på ID:n i koden vi klistrade in. Vi kommer a
 Nu har vi en topic för att visa enheter (Available devices) och en för att beställa (Request device). Vi måste lära agenten hur de hänger ihop.
 
 1.  Gå till fliken **Overview**.
+
+    ![Overview](assets/images/chap07/agent-overview.png)
+
 2.  Vid **Instructions**, klicka på **Edit**.
 
     ![Edit instructions](assets/images/chap07/agent-instructions-edit.png)
@@ -374,14 +377,15 @@ Nu har vi en topic för att visa enheter (Available devices) och en för att bes
     *Ändra den sista punkten till följande:*
 
     ```text
-    - Hjälp till att hitta tillgängliga enheter och ge fullständiga detaljer genom att använda [Available devices]. Extrahera alltid VarDeviceType från indatan. Om användaren svarar ja på frågan om att beställa en enhet, trigga [Request device]. Om de svarar nej, trigga [Goodbye].
+    - Om användaren svarar ja på frågan om att beställa en enhet, trigga [Request device]. Om de svarar nej, avsluta på ett vänligt vis.
     ```
 
 4.  **Viktigt:** Du måste göra länkarna "blåa".
     * Sudda ut `[Request device]`. Skriv `/Req` och välj **Request device** från listan.
-    * Sudda ut `[Goodbye]`. Skriv `/Good` och välj **Goodbye** från listan.
 
 5.  Klicka **Save**.
+
+    ![Save](assets/images/chap07/agent-save.png)
 
 ### Testa flödet
 Nu är det dags att se magin hända!
