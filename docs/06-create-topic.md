@@ -228,30 +228,7 @@ Agenten sparar svaret i `Var1`. Vi byter namn för att hålla ordning.
     ```
 3.  Stäng rutan.
 
-### 5. Hantera grenarna (Standard vs High Performance)
-Copilot Studio har nu skapat två grenar åt dig baserat på valen. Vi ska nu bestämma vad som händer i respektive gren.
-
-**Gren 1: Standard**
-Användaren valde Standard. Här är allt som vanligt.
-* **Åtgärd:** Gör ingenting. Låt grenen vara tom.
-* *Flödet kommer automatiskt att rinna vidare ner till botten där vi strax ska hämta listan.*
-
-**Gren 2: High Performance**
-Användaren valde High Performance. Låt oss simulera att dessa är tillfälligt slut, men att vi vill vara hjälpsamma och visa vad som finns ändå.
-
-1.  Leta upp grenen för **High Performance**.
-2.  Klicka på **plus-tecknet (+)** i den grenen.
-3.  Välj **Send a message**.
-4.  Skriv:
-    ```text
-    Just nu har vi tyvärr lång leveranstid på High Performance-enheter. Jag visar dig listan på våra Standard-modeller som finns för omgående leverans istället.
-    ```
-
-    ![Meddelande om slut i lager](assets/images/chap06/topic-message-outofstock.png)
-
-*Nu har vi en snygg logik: De som väljer Standard går raka vägen. De som väljer Avancerat får ett meddelande, men båda grupperna landar till slut på samma ställe – i SharePoint-söket.*
-
-### 4. Döpa om Variabeln
+### 5. Döpa om Variabeln
 Agenten sparar automatiskt svaret i en variabel som heter `Var1`. Det är ett dåligt namn om vi ska minnas vad det betyder.
 
 1.  Klicka på rutan där det står **Save user response as** (där namnet `Var1` står).
@@ -266,7 +243,7 @@ Agenten sparar automatiskt svaret i en variabel som heter `Var1`. Det är ett d�
 
 3.  Stäng variabel-rutan på krysset (X).
 
-### 5. Städa upp grenarna (Förenkling)
+### 6. Städa upp grenarna (Förenkling)
 När du skapade alternativen skapade Copilot Studio automatiskt tre vägar åt dig:
 1.  **Condition** (VarPerformance = Standard)
 2.  **Condition** (VarPerformance = High Performance)
@@ -282,7 +259,7 @@ Detta är onödigt komplicerat för vår övning. Vi förenklar det genom att ta
     * Klicka på pennan på den vänstra grenen (*Condition*). Döp om den till `Standard`.
     * Klicka på pennan på den högra grenen (*All other conditions*). Döp om den till `High Performance` (eller Avancerad).
 
-### 6. Hantera logiken i grenarna
+### 7. Hantera logiken i grenarna
 Nu ska vi bestämma vad som händer i respektive gren.
 
 **Gren 1: Standard**
