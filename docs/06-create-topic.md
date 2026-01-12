@@ -203,13 +203,16 @@ Vi fortsätter på spåret för "Laptop" (den vänstra vägen). Vi vill veta vil
     Prestandaval
     ```
 
+    ![Döp om noden](assets/images/chap06/topic-question-performance-rename.png)
+
 4.  I rutan **Enter a message**, skriv:
     ```text
     För vilken typ av arbete ska datorn användas?
     ```
 
-5.  Under **Identify**, se till att **Multiple choice options** är valt.
+    ![Fråga meddelande](assets/images/chap06/topic-question-performance-message.png)
 
+5.  Under **Identify**, se till att **Multiple choice options** är valt.
 6.  Under **Options for user**, skapa två alternativ:
     * `Standard (Office/Admin)`
     * `High Performance (Utveckling/Grafik)`
@@ -219,32 +222,28 @@ Vi fortsätter på spåret för "Laptop" (den vänstra vägen). Vi vill veta vil
     ![Alternativ för prestanda](assets/images/chap06/topic-question-performance-options.png)
 
 ### 4. Döpa om Variabeln
-Agenten sparar svaret i `Var1`. Vi byter namn för att hålla ordning.
-
-1.  Klicka på rutan **Save user response as**.
-2.  Ändra **Name** till:
-    ```text
-    VarPerformance
-    ```
-3.  Stäng rutan.
-
-### 5. Döpa om Variabeln
 Agenten sparar automatiskt svaret i en variabel som heter `Var1`. Det är ett dåligt namn om vi ska minnas vad det betyder.
 
 1.  Klicka på rutan där det står **Save user response as** (där namnet `Var1` står).
+
+    ![Döp om variabel](assets/images/chap06/topic-var-rename-performance.png)
+
 2.  En ruta öppnas till höger. Ändra **Name** till:
     ```text
     VarPerformance
     ```
 
-    ![Döp om variabel](assets/images/chap06/topic-var-rename.png)
+    ![Döp om variabel](assets/images/chap06/topic-var-rename-performance-2.png)
 
     *Notera "Usage" inställningen: Topic (limited scope) vs Global. Vi låter den vara kvar på Topic eftersom vi inte behöver komma åt det här svaret från andra delar av agenten.*
 
 3.  Stäng variabel-rutan på krysset (X).
 
-### 6. Städa upp grenarna (Förenkling)
+### 5. Städa upp grenarna (Förenkling)
 När du skapade alternativen skapade Copilot Studio automatiskt tre vägar åt dig:
+
+![Grenar](assets/images/chap06/topic-branches.png)
+
 1.  **Condition** (VarPerformance = Standard)
 2.  **Condition** (VarPerformance = High Performance)
 3.  **All other conditions**
@@ -255,11 +254,13 @@ Detta är onödigt komplicerat för vår övning. Vi förenklar det genom att ta
 2.  Klicka på de **tre prickarna (...)** på den noden och välj **Delete**.
     *Nu har du bara två vägar kvar: Standard och All other conditions.*
 
+    ![Grenar](assets/images/chap06/topic-branches-delete.png)
+
 3.  **Döp om vägarna för tydlighet:**
     * Klicka på pennan på den vänstra grenen (*Condition*). Döp om den till `Standard`.
     * Klicka på pennan på den högra grenen (*All other conditions*). Döp om den till `High Performance` (eller Avancerad).
 
-### 7. Hantera logiken i grenarna
+### 6. Hantera logiken i grenarna
 Nu ska vi bestämma vad som händer i respektive gren.
 
 **Gren 1: Standard**
@@ -272,12 +273,15 @@ Användaren valde High Performance (eller något annat). Låt oss simulera att d
 
 1.  Klicka på **plus-tecknet (+)** i den högra grenen (som du döpte till High Performance).
 2.  Välj **Send a message**.
+
+    ![Meddelande](assets/images/chap06/topic-message-outofstock.png)
+
 3.  Skriv:
     ```text
     Just nu har vi tyvärr lång leveranstid på High Performance-enheter. Jag visar dig listan på våra Standard-modeller som finns för omgående leverans istället.
     ```
 
-    ![Meddelande om slut i lager](assets/images/chap06/topic-message-outofstock.png)
+    ![Meddelande om slut i lager](assets/images/chap06/topic-message-outofstock-2.png)
 
 *Nu är logiken klar: De som väljer Standard går raka vägen. De som väljer Avancerat får ett meddelande. Båda grupperna landar till slut på samma ställe – i SharePoint-söket som vi lägger till härnäst.*
 
