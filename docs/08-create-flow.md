@@ -1,8 +1,10 @@
-# 8. Skapa ett Agent Flow (Power Automate)
+# 8. Skapa ett Agent Flow
 
-Nu ska vi bygga motorn som faktiskt utför beställningen. När användaren klickar på "Skicka" i det adaptiva kortet, ska agenten anropa ett **Power Automate-flöde**.
+Nu ska vi bygga motorn som faktiskt utför beställningen. När användaren klickar på "Skicka" i det adaptiva kortet, ska agenten anropa ett **Agent Flow**.
 
-Detta flöde ska:
+Skillnaden mot ett vanligt flöde är att ett Agent Flow är skräddarsytt för att ta emot data direkt från din agent, utföra arbete, och sedan svara agenten med ett resultat.
+
+Detta Agent Flow ska:
 1.  Ta emot information från chatten (Vilken dator? Vem beställer?).
 2.  Hämta detaljer om datorn från SharePoint (för att dubbelkolla att den finns).
 3.  Skicka ett beställningsmejl till IT-avdelningen.
@@ -10,7 +12,7 @@ Detta flöde ska:
 
 ---
 
-## 8.1 Skapa flödet inifrån Agenten
+## 8.1 Skapa ett nytt Agent Flow
 
 Vi börjar inifrån din Topic **Request device** som vi jobbade med sist.
 
@@ -21,13 +23,13 @@ Vi börjar inifrån din Topic **Request device** som vi jobbade med sist.
 
     ![Skapa flöde](assets/images/chap08/topic-call-action-flow.png)
 
-    *Detta öppnar Power Automate i ett nytt fönster, färdigkopplat till din agent.*
+    *Detta öppnar Power Automate i ett nytt fönster där vi kan bygga vårt Agent Flow.*
 
 ---
 
 ## 8.2 Definiera Inputs (Trigger)
 
-Det första vi ser är noden **When an agent calls the flow**. Det är här vi bestämmer vad agenten ska skicka med sig in i "fabriken".
+Det första vi ser är noden **When an agent calls the flow**. Det är här vi bestämmer vad agenten ska skicka med sig in i processen.
 
 Vi behöver tre saker: ID på datorn, vem användaren är, och eventuella kommentarer.
 
@@ -127,7 +129,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
 
 ## 8.5 Skicka svar till Agenten (Output)
 
-Slutligen måste flödet berätta för agenten att allt gick bra, och ge ett meddelande som agenten kan visa för användaren.
+Slutligen måste vårt Agent Flow berätta för agenten att allt gick bra, och ge ett meddelande som agenten kan visa för användaren.
 
 1.  Klicka på sista noden **Respond to the agent**.
 2.  Klicka **+ Add an output** -> **Text**.
@@ -143,7 +145,7 @@ Slutligen måste flödet berätta för agenten att allt gick bra, och ge ett med
 
     ![Output response](assets/images/chap08/flow-output-response.png)
 
-5.  **Spara flödet:**
+5.  **Spara ditt Agent Flow:**
     * Längst upp till vänster, klicka på namnet (som ofta heter *Untitled*).
     * Döp det till: `Beställningsflöde` (eller *Place Device Order*).
     * Klicka **Save** uppe till höger.
@@ -151,24 +153,24 @@ Slutligen måste flödet berätta för agenten att allt gick bra, och ge ett med
 
 ---
 
-## 8.6 Koppla flödet i Topicen
+## 8.6 Koppla ditt Agent Flow i Topicen
 
-Nu måste vi gå tillbaka till Copilot Studio och koppla in vårt nya fina flöde.
+Nu måste vi gå tillbaka till Copilot Studio och koppla in vårt nya Agent Flow.
 
 1.  Gå tillbaka till fliken med Copilot Studio (där din Topic är öppen).
     *(Om du tappat bort den, gå till Topics -> Request device).*
 2.  Du kanske behöver klicka **Refresh** eller ta bort den tomma noden och lägga till **Call an action** igen för att se ditt nya flöde i listan.
-3.  Välj ditt flöde: `Beställningsflöde`.
+3.  Välj ditt Agent Flow: `Beställningsflöde`.
 
 4.  **Mappa inputs:**
-    Nu frågar agenten: "Vad ska jag stoppa in i de hål (inputs) du byggde?"
+    Nu frågar agenten: "Vad ska jag stoppa in i de input-hål du byggde?"
     * **DeviceSharePointId:** Klicka på pilen `>` och välj variabeln `deviceSelectionId` (den kommer från ditt Adaptive Card).
     * **User:** Klicka på pilen `>` och välj systemvariabeln `User.DisplayName`.
     * **AdditionalComments:** Klicka på pilen `>` och välj `commentsId` (från Adaptive Card).
 
-5.  **Hanter resultatet:**
-    Flödet ger tillbaka variabeln `OrderStatus`.
-    * Lägg till en **Send a message**-nod under flödes-noden.
+5.  **Hantera resultatet:**
+    Ditt Agent Flow ger tillbaka variabeln `OrderStatus`.
+    * Lägg till en **Send a message**-nod under action-noden.
     * I meddelandet, klicka på `{X}` och välj variabeln `OrderStatus`.
 
 6.  **Avsluta snyggt:**
@@ -180,8 +182,8 @@ Nu måste vi gå tillbaka till Copilot Studio och koppla in vårt nya fina flöd
 3.  Välj en prestandanivå (Standard).
 4.  När listan visas och den frågar om beställning, svara `Ja`.
 5.  Välj en dator i kortet, skriv en kommentar och klicka **Skicka**.
-6.  *Nu ska agenten tänka en liten stund, och sedan svara med din bekräftelse. Samtidigt ska det plinga till i din inkorg!*
+6.  *Nu ska agenten tänka en liten stund, anropa ditt Agent Flow, och sedan svara med bekräftelsen. Samtidigt ska det plinga till i din inkorg!*
 
 !!! success "Grattis!"
-    Du har nu byggt en fullständig kedja:
-    AI (Förstår) -> Logik (Styr) -> Data (SharePoint) -> GUI (Adaptive Card) -> Action (Power Automate) -> Verkligheten (Email).
+    Du har nu byggt en fullständig kedja med ett **Agent Flow**:
+    AI (Förstår) -> Logik (Styr) -> Data (SharePoint) -> GUI (Adaptive Card) -> Agent Flow (Power Automate) -> Verkligheten (Email).
