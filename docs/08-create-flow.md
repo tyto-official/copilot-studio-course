@@ -190,6 +190,10 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     
     * Sök efter `User` och välj den från listan (under "When an agent calls the flow").
 
+    ```text
+    User
+    ```
+
     ![Select User](assets/images/chap08/flow-email-select-user.png)
 
     **2. Lägg till Enhet:**
@@ -200,6 +204,10 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
 
     * Sök efter `Model` (från steget *Get Device*) och välj den.
 
+    ```text
+    Model
+    ```
+
     ![Select Model](assets/images/chap08/flow-email-select-model.png)
 
     **3. Lägg till Pris:**
@@ -209,6 +217,10 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     * Klicka på blixten.
 
     * Sök efter `Price` (från steget *Get Device*) och välj den.
+
+    ```text
+    Price
+    ```
 
     ![Select Price](assets/images/chap08/flow-email-select-price.png)
 
