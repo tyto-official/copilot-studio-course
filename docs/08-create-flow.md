@@ -6,7 +6,7 @@ Skillnaden mot ett vanligt flöde är att ett Agent Flow är skräddarsytt för 
 
 Detta Agent Flow ska:
 1.  Ta emot information från chatten (Vilken dator? Vem beställer?).
-2.  Hämta detaljer om datorn från SharePoint (för att dubbelkolla att den finns).
+2.  Hämta detaljer om datorn från SharePoint (för att dubbelkolla att den finns och hämta pris).
 3.  Skicka ett beställningsmejl till IT-avdelningen.
 4.  Skicka tillbaka en bekräftelse till chatten.
 
@@ -20,6 +20,7 @@ Vi börjar inifrån din Topic **Request device** som vi jobbade med sist.
 2.  Scrolla längst ner i flödet (under `Ask with Adaptive Card`).
 3.  Klicka på **plus-tecknet (+)**.
 4.  Välj **Add a tool** -> **New Agent flow**.
+    *(Ibland kan det heta "Call an action" -> "Create a flow" beroende på version).*
 
     ![Skapa flöde](assets/images/chap08/topic-call-action-flow.png)
 
@@ -29,46 +30,48 @@ Vi börjar inifrån din Topic **Request device** som vi jobbade med sist.
 
 ## 8.2 Definiera Inputs (Trigger)
 
-Väl inne i **Agent flows** kan vi se två noder. Den övre av dessa är noden **When an agent calls the flow**. Det är här vi bestämmer vad agenten ska skicka med sig in i processen. Den nedre noden är en **Respond to the agent**, vilket innebär vad som skickas ut från agent flowet och tillbaka till agenten.Vi kommer börja med att definiera vad agenten ska skicka med sig in i processen. 
+När vi kommer in i redigeraren för **Agent flows** ser vi två noder.
+* Den övre noden: **When an agent calls the flow**. Här bestämmer vi vad agenten ska skicka *in* i processen.
+* Den nedre noden: **Respond to the agent**. Här bestämmer vi vad som skickas *tillbaka* till agenten.
 
-Vi behöver tre saker: ID på datorn, vem användaren är, och eventuella kommentarer.
+Vi börjar med att definiera inputs. Vi behöver tre saker: ID på datorn, vem användaren är, och eventuella kommentarer.
 
 1.  Klicka på noden **When an agent calls the flow** för att öppna inställningarna.
 
     ![Öppnar noden](assets/images/chap08/flow-open-inputs.png)
 
-2.  Klicka på **+ Add an input**
+2.  Klicka på **+ Add an input**.
 
     ![Add input](assets/images/chap08/flow-add-input.png)
 
-3. Nu ser du ett gäng olika typer av inputs, men vi kommer välja **Text**. Klicka därför på **Text**.
+3.  Du ser nu olika typer av inputs. Välj **Text**.
 
-    ![Add input](assets/images/chap08/flow-add-input-text.png)
+    ![Add input text](assets/images/chap08/flow-add-input-text.png)
 
-4.  Ställ dig i textrutan där det står text och döp om den till:
+4.  Ställ dig i textrutan (där det står "User's input") och döp om den till:
     ```text
     DeviceSharePointId
     ```
-    *Här kommer vi skicka in ID:t från SharePoint.*
+    *Här skickar vi in ID:t från SharePoint.*
 
-    ![Add input](assets/images/chap08/flow-add-input-text-device.png)
+    ![Input DeviceSharePointId](assets/images/chap08/flow-add-input-text-device.png)
 
-4.  Gör om proceduren. Klicka **+ Add an input** -> **Text**. Döp den till:
+5.  Gör om proceduren. Klicka **+ Add an input** -> **Text**. Döp den till:
     ```text
     User
     ```
     *Här skickar vi in användarens namn.*
 
-    ![Add input](assets/images/chap08/flow-add-input-text-user.png)
+    ![Input User](assets/images/chap08/flow-add-input-text-user.png)
 
-5.  Gör om proceduren igen. Klicka **+ Add an input** -> **Text**. Döp den till:
+6.  Gör om proceduren igen. Klicka **+ Add an input** -> **Text**. Döp den till:
     ```text
     AdditionalComments
     ```
 
-    ![Trigger inputs](assets/images/chap08/flow-trigger-inputs-text-comments.png)
+    ![Input AdditionalComments](assets/images/chap08/flow-trigger-inputs-text-comments.png)
 
-6.  **Gör kommentaren frivillig:**
+7.  **Gör kommentaren frivillig:**
     Eftersom användaren kanske inte skriver någon kommentar, måste vi göra detta fält valfritt (Optional).
     * Klicka på de **tre prickarna (...)** bredvid fältet *AdditionalComments*.
     * Välj **Make the field optional**.
@@ -83,14 +86,14 @@ Agenten skickar bara ett ID (t.ex. "4"). För att mejlet ska bli snyggt måste v
 
 1.  Klicka på **plus-tecknet (+)** under trigger-noden.
 2.  Sök efter **Get item** och välj **Get item (SharePoint)**.
-    *(Obs: Välj "Get item", inte "Get items" i plural, eftersom vi bara ska hämta en specifik rad).*
+    *(Obs: Välj "Get item" i singular, inte "Get items", eftersom vi bara ska hämta en specifik rad).*
 
     ![Get item action](assets/images/chap08/flow-action-getitem.png)
 
 3.  **Döp om steget (Best Practice):**
     * Klicka på de **tre prickarna (...)** på noden *Get item*.
     * Välj **Rename**.
-    * Döp den till: 
+    * Döp den till:
     ```text
     Get Device
     ```
@@ -106,19 +109,19 @@ Agenten skickar bara ett ID (t.ex. "4"). För att mejlet ska bli snyggt måste v
 
     ![List Name](assets/images/chap08/flow-getitem-listname.png)
 
-    * **Id:** Klicka på **fx** längs till vänster i Id-rutan.
+    * **Id:** Vi måste koppla detta till vårt input-värde. Klicka på **fx** (eller blixten) i Id-rutan.
 
-    ![Id](assets/images/chap08/flow-getitem-id.png)
+    ![Id fx](assets/images/chap08/flow-getitem-id.png)
 
-    * Välj **Dynamic content** och Sök efter 
-    ```text 
+    * Välj **Dynamic content** och sök efter:
+    ```text
     DeviceSharePointId
-    ``` 
+    ```
     ![Mappa ID](assets/images/chap08/flow-getitem-dynamic.png)
 
-    * Notera att följande syntax *triggerBody()?['text']* används när du klickar på **DeviceSharePointId**. Klicka nu på **Add**.
+    * Välj parametern under "When an agent calls the flow". Klicka sedan på **Add**.
 
-    ![Add](assets/images/chap08/flow-getitem-add.png)
+    ![Add button](assets/images/chap08/flow-getitem-add.png)
 
 5.  **Avancerade inställningar:**
     * Klicka på **Show all** i inställningarna för *Get Device*.
@@ -135,49 +138,96 @@ Agenten skickar bara ett ID (t.ex. "4"). För att mejlet ska bli snyggt måste v
 Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robust i denna övning använder vi e-post.
 
 1.  Klicka på **plus-tecknet (+)** under *Get Device*.
-2.  Sök efter 
-    ```text 
-    Send an email
-    ```      
+2.  Sök efter `Send an email` och välj **Send an email (V2)** (Office 365 Outlook).
+    *(Logga in om det behövs).*
+
     ![Send an email](assets/images/chap08/flow-action-email.png)
 
-    och välj **Send an email (V2)** (Office 365 Outlook).
-    *(Logga in om det behövs).*  
-3.  Döp om noden till 
-    ```text 
+3.  Döp om noden till:
+    ```text
     Skicka mejl till IT
-    ``` 
+    ```
 
 4.  **Konfigurera mejlet:**
+    Vi ska nu bygga mailet med hjälp av **Dynamiskt innehåll** (värden som hämtas från tidigare steg).
+
     * **To:** Klicka på **Enter custom value** och skriv in **din egen e-postadress**.
 
-    ![To](assets/images/chap08/flow-action-email-to.png)
+    ![To field](assets/images/chap08/flow-action-email-to.png)
 
-        *(I verkligheten hade detta gått till en funktionsbrevlåda för IT).*
-    * **Subject:** Skriv: 
+    * **Subject:** Skriv följande text:
     ```text
-    Typ av förfrågan: ny enhet
-    ``` 
-    
-    ![Subject](assets/images/chap08/flow-action-email-subject.png)
+    Typ av förfrågan: Ny enhet
+    ```
+    ![Subject field](assets/images/chap08/flow-action-email-subject.png)
 
-    * **Body:** Här bygger vi meddelandet. Skriv text och klicka i dynamiska värden från blixten:
+    * **Body:** Här bygger vi meddelandet. Kopiera först in grundtexten nedan:
 
     ```text
     Hej IT-supporten!
 
     En ny beställning har inkommit.
-    
-    Beställare: [Välj 'User' från Triggern]
-    Enhet: [Välj 'Model' från 'Get Device']
-    Pris: [Välj 'Price' från 'Get Device'] $
-    
+
+    Beställare:
+    Enhet:
+    Pris:
+
     Kommentar från användaren:
-    
+
     Vänligen hantera skyndsamt.
     ```
 
-    ![Skicka email](assets/images/chap08/flow-action-email.png)
+    **Nu ska vi fylla i hålen med data:**
+
+    **1. Lägg till Beställare:**
+    * Sätt markören efter "Beställare: ".
+    * Klicka på **blixt-ikonen** (Dynamic content) eller `fx`.
+    * Sök efter `User` och välj den från listan (från Trigger-steget).
+
+    ![Select User](assets/images/chap08/flow-email-select-user.png)
+
+    **2. Lägg till Enhet:**
+    * Sätt markören efter "Enhet: ".
+    * Klicka på blixten.
+    * Sök efter `Model` (från steget *Get Device*) och välj den.
+
+    ![Select Model](assets/images/chap08/flow-email-select-model.png)
+
+    **3. Lägg till Pris:**
+    * Sätt markören efter "Pris: ".
+    * Klicka på blixten.
+    * Sök efter `Price` (från steget *Get Device*) och välj den.
+
+    ![Select Price](assets/images/chap08/flow-email-select-price.png)
+
+    **4. Lägg till Kommentar (Avancerat - Hantera tomma svar):**
+    Vi vill kontrollera om användaren lämnade fältet tomt. Om det är tomt skriver vi "None", annars visar vi kommentaren. Vi gör detta med ett uttryck (Expression).
+
+    * Sätt markören efter "Kommentar från användaren: ".
+    * Klicka på **fx** (Insert Expression).
+    * I rutan för Function/Expression, skriv in följande start:
+      ```powerfx
+      if(empty(
+      ```
+      *Detta startar en "Om"-sats som kollar "Om tomt...".*
+
+    * Klicka nu på fliken **Dynamic content**. Sök efter `AdditionalComments` och klicka på den.
+      *Din formel fylls nu på med referensen till input-fältet.*
+
+    * Gå tillbaka till formelfältet och skriv in resten av logiken efter parentesen:
+      ```powerfx
+      ), 'None',
+      ```
+      *Detta betyder: Om det är tomt -> Skriv 'None'. Nu ska vi ange vad som händer om det INTE är tomt (Else).*
+
+    * Klicka på fliken **Dynamic content** igen. Sök upp och välj `AdditionalComments` en gång till.
+
+    * Avsluta formeln med en slutparentes `)`.
+    * Klicka på **Add** (eller OK).
+
+    ![Expression Logic](assets/images/chap08/flow-email-expression-add.png)
+
+    *Nu är mejlet klart och dynamiskt!*
 
 ---
 
