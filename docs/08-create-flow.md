@@ -231,19 +231,58 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     
     ![Select Price](assets/images/chap08/flow-email-select-price.png)
 
-    **4. Lägg till Kommentar (Avancerat):**
+    **4. Lägg till Kommentar (Avancerat - Hantera tomma svar):**
+
+    Vi vill kontrollera om användaren lämnade fältet tomt. Om det är tomt skriver vi "None", annars visar vi kommentaren. Vi gör detta med ett uttryck (Expression).
 
     * Sätt markören efter "Kommentar från användaren: ".
 
-    * Klicka på blixten.
+    * Klicka på **fx** (Insert Expression).
 
-    * Sök efter `AdditionalComments` (från Trigger-steget) och välj den.
-    
+    * I rutan för Function/Expression, skriv in följande start:
+
+      ```powerfx
+      if(empty(
+      ```
+      *Detta startar en "Om"-sats som kollar "Om tomt...".*
+
+    ![Select AdditionalComments](assets/images/chap08/flow-email-select-additionalcomments.png)
+
+    * Klicka nu på fliken **Dynamic content**. Sök efter `AdditionalComments` och klicka på den.
+
     ```text
     AdditionalComments
     ```
 
----
+    ![Select AdditionalComments](assets/images/chap08/flow-email-select-additionalcomments2.png)
+
+      *Din formel fylls nu på med referensen till input-fältet.*
+
+    * Gå tillbaka till formelfältet och skriv in resten av logiken efter parentesen:
+
+      ```powerfx
+      , 'None',
+      ```
+
+      *Detta betyder: Om det är tomt -> Skriv 'None'. Nu ska vi ange vad som händer om det INTE är tomt (Else).*
+
+    ![Select AdditionalComments](assets/images/chap08/flow-email-select-additionalcomments3.png)
+
+    * Klicka på fliken **Dynamic content** igen. Sök upp och välj `AdditionalComments` en gång till.
+
+    ```text
+    AdditionalComments
+    ```
+
+    * Avsluta formeln med en slutparentes `)`.
+
+    * Klicka på **Add** (eller OK).
+
+    ![Expression Logic](assets/images/chap08/flow-email-expression-add.png)
+
+    *Nu är mejlet klart och dynamiskt!*
+
+--- 
 
 ## 8.5 Skicka svar till Agenten (Output)
 
