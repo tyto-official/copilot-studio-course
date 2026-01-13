@@ -183,7 +183,10 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     **1. Lägg till Beställare:**
     * Sätt markören efter "Beställare: ".
     * Klicka på **blixt-ikonen** (Dynamic content) eller `fx`.
-    * Sök efter `User` och välj den från listan (från Trigger-steget).
+
+    ![Dynamic content](assets/images/chap08/flow-email-dynamiccontent.png)
+    
+    * Sök efter `User` och välj den från listan (under "When an agent calls the flow").
 
     ![Select User](assets/images/chap08/flow-email-select-user.png)
 
