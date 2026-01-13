@@ -120,7 +120,7 @@ Agenten skickar bara ett ID (t.ex. "4"). För att mejlet ska bli snyggt måste v
     ```
     ![Mappa ID](assets/images/chap08/flow-getitem-dynamic.png)
 
-    * Välj parametern under "When an agent calls the flow". Klicka sedan på **Add**.
+    * Klicka sedan på **Add**.
 
     ![Add button](assets/images/chap08/flow-getitem-add.png)
 
