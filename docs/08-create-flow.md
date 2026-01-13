@@ -28,7 +28,7 @@ Vi börjar inifrån din Topic **Request device** som vi jobbade med sist.
 
 ---
 
-## 8.2 Definiera Inputs (Trigger)
+## 8.2 Definiera Inputs (Trigger) m
 
 Väl inne i **Agent flows** kan vi se två noder.
 * Den övre noden: **When an agent calls the flow**. Här bestämmer vi vad agenten ska skicka *in* i processen.
@@ -252,7 +252,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
 
     ```text
     AdditionalComments
-    ```
+    ``` 
 
     ![Select AdditionalComments](assets/images/chap08/flow-email-select-additionalcomments2.png)
 
