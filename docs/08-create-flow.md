@@ -19,27 +19,39 @@ Vi börjar inifrån din Topic **Request device** som vi jobbade med sist.
 1.  Gå till **Topics** och öppna **Request device**.
 2.  Scrolla längst ner i flödet (under `Ask with Adaptive Card`).
 3.  Klicka på **plus-tecknet (+)**.
-4.  Välj **Call an action** -> **Create a flow**.
+4.  Välj **Add a tool** -> **New Agent flow**.
 
     ![Skapa flöde](assets/images/chap08/topic-call-action-flow.png)
 
-    *Detta öppnar Power Automate i ett nytt fönster där vi kan bygga vårt Agent Flow.*
+    *Detta öppnar ett nytt fönster där vi kan bygga vårt Agent Flow.*
 
 ---
 
 ## 8.2 Definiera Inputs (Trigger)
 
-Det första vi ser är noden **When an agent calls the flow**. Det är här vi bestämmer vad agenten ska skicka med sig in i processen.
+Väl inne i **Agent flows** kan vi se två noder. Den övre av dessa är noden **When an agent calls the flow**. Det är här vi bestämmer vad agenten ska skicka med sig in i processen. Den nedre noden är en **Respond to the agent**, vilket innebär vad som skickas ut från agent flowet och tillbaka till agenten.Vi kommer börja med att definiera vad agenten ska skicka med sig in i processen. 
 
 Vi behöver tre saker: ID på datorn, vem användaren är, och eventuella kommentarer.
 
 1.  Klicka på noden **When an agent calls the flow** för att öppna inställningarna.
-2.  Klicka på **+ Add an input** och välj **Text**.
-3.  Döp inputen till:
+
+    ![Öppnar noden](assets/images/chap08/flow-open-inputs.png)
+
+2.  Klicka på **+ Add an input**
+
+    ![Add input](assets/images/chap08/flow-add-input.png)
+
+3. Nu ser du ett gäng olika typer av inputs, men vi kommer välja **Text**. Klicka därför på **Text**.
+
+    ![Add input](assets/images/chap08/flow-add-input-text.png)
+
+4.  Ställ dig i textrutan där det står text och döp om den till:
     ```text
     DeviceSharePointId
     ```
     *Här kommer vi skicka in ID:t från SharePoint.*
+
+    ![Add input](assets/images/chap08/flow-add-input-text-device.png)
 
 4.  Gör om proceduren. Klicka **+ Add an input** -> **Text**. Döp den till:
     ```text
@@ -47,12 +59,14 @@ Vi behöver tre saker: ID på datorn, vem användaren är, och eventuella kommen
     ```
     *Här skickar vi in användarens namn.*
 
+    ![Add input](assets/images/chap08/flow-add-input-text-user.png)
+
 5.  Gör om proceduren igen. Klicka **+ Add an input** -> **Text**. Döp den till:
     ```text
     AdditionalComments
     ```
 
-    ![Trigger inputs](assets/images/chap08/flow-trigger-inputs.png)
+    ![Trigger inputs](assets/images/chap08/flow-trigger-inputs-text-comments.png)
 
 6.  **Gör kommentaren frivillig:**
     Eftersom användaren kanske inte skriver någon kommentar, måste vi göra detta fält valfritt (Optional).
@@ -67,7 +81,7 @@ Vi behöver tre saker: ID på datorn, vem användaren är, och eventuella kommen
 
 Agenten skickar bara ett ID (t.ex. "4"). För att mejlet ska bli snyggt måste vi slå upp vad "4" är för dator (Modell, Pris, etc).
 
-1.  Klicka på **plus-tecknet (+)** under trigger-noden och välj **Add an action**.
+1.  Klicka på **plus-tecknet (+)** under trigger-noden.
 2.  Sök efter **Get item** och välj **Get item (SharePoint)**.
     *(Obs: Välj "Get item", inte "Get items" i plural, eftersom vi bara ska hämta en specifik rad).*
 
@@ -76,20 +90,42 @@ Agenten skickar bara ett ID (t.ex. "4"). För att mejlet ska bli snyggt måste v
 3.  **Döp om steget (Best Practice):**
     * Klicka på de **tre prickarna (...)** på noden *Get item*.
     * Välj **Rename**.
-    * Döp den till: `Get Device`.
+    * Döp den till: 
+    ```text
+    Get Device
+    ```
+
+    ![Rename step](assets/images/chap08/flow-getitem-rename.png)
 
 4.  **Konfigurera steget:**
     * **Site Address:** Välj din IT Help Desk-sida.
-    * **List Name:** Välj listan **Devices**.
-    * **Id:** Klicka i rutan. Klicka på **blixten (Dynamic content)**.
-    * Sök efter eller välj `DeviceSharePointId` (från Trigger-steget).
 
+    ![Site Address](assets/images/chap08/flow-getitem-siteaddress.png)
+
+    * **List Name:** Välj listan **Devices**.
+
+    ![List Name](assets/images/chap08/flow-getitem-listname.png)
+
+    * **Id:** Klicka på **fx** längs till vänster i Id-rutan.
+
+    ![Id](assets/images/chap08/flow-getitem-id.png)
+
+    * Välj **Dynamic content** och Sök efter 
+    ```text 
+    DeviceSharePointId
+    ``` 
     ![Mappa ID](assets/images/chap08/flow-getitem-dynamic.png)
+
+    * Notera att följande syntax *triggerBody()?['text']* används när du klickar på **DeviceSharePointId**. Klicka nu på **Add**.
+
+    ![Add](assets/images/chap08/flow-getitem-add.png)
 
 5.  **Avancerade inställningar:**
     * Klicka på **Show all** i inställningarna för *Get Device*.
+    ![Show all](assets/images/chap08/flow-getitem-showall.png)
     * Hitta **Limit Columns by View**.
     * Välj **All Items**.
+    ![Limit Columns by View](assets/images/chap08/flow-getitem-limitcolumns.png)
     *(Detta säkerställer att vi får tillgång till alla kolumner).*
 
 ---
@@ -99,13 +135,32 @@ Agenten skickar bara ett ID (t.ex. "4"). För att mejlet ska bli snyggt måste v
 Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robust i denna övning använder vi e-post.
 
 1.  Klicka på **plus-tecknet (+)** under *Get Device*.
-2.  Sök efter **Send an email** och välj **Send an email (V2)** (Office 365 Outlook).
-    *(Logga in om det behövs).*
+2.  Sök efter 
+    ```text 
+    Send an email
+    ```      
+    ![Send an email](assets/images/chap08/flow-action-email.png)
 
-3.  **Konfigurera mejlet:**
+    och välj **Send an email (V2)** (Office 365 Outlook).
+    *(Logga in om det behövs).*  
+3.  Döp om noden till 
+    ```text 
+    Skicka mejl till IT
+    ``` 
+
+4.  **Konfigurera mejlet:**
     * **To:** Klicka på **Enter custom value** och skriv in **din egen e-postadress**.
+
+    ![To](assets/images/chap08/flow-action-email-to.png)
+
         *(I verkligheten hade detta gått till en funktionsbrevlåda för IT).*
-    * **Subject:** Skriv: `Ny beställning: ` och välj sedan `Model` från din *Get Device*-lista (Dynamic content).
+    * **Subject:** Skriv: 
+    ```text
+    Typ av förfrågan: ny enhet
+    ``` 
+    
+    ![Subject](assets/images/chap08/flow-action-email-subject.png)
+
     * **Body:** Här bygger vi meddelandet. Skriv text och klicka i dynamiska värden från blixten:
 
     ```text
@@ -118,7 +173,6 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     Pris: [Välj 'Price' från 'Get Device'] $
     
     Kommentar från användaren:
-    [Välj 'AdditionalComments' från Triggern]
     
     Vänligen hantera skyndsamt.
     ```
