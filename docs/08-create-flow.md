@@ -181,7 +181,9 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     **Nu ska vi fylla i hålen med data:**
 
     **1. Lägg till Beställare:**
+
     * Sätt markören efter "Beställare: ".
+
     * Klicka på **blixt-ikonen** (Dynamic content) eller `fx`.
 
     ![Dynamic content](assets/images/chap08/flow-email-dynamiccontent.png)
@@ -191,15 +193,21 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     ![Select User](assets/images/chap08/flow-email-select-user.png)
 
     **2. Lägg till Enhet:**
+
     * Sätt markören efter "Enhet: ".
+
     * Klicka på blixten.
+
     * Sök efter `Model` (från steget *Get Device*) och välj den.
 
     ![Select Model](assets/images/chap08/flow-email-select-model.png)
 
     **3. Lägg till Pris:**
+    
     * Sätt markören efter "Pris: ".
+
     * Klicka på blixten.
+
     * Sök efter `Price` (från steget *Get Device*) och välj den.
 
     ![Select Price](assets/images/chap08/flow-email-select-price.png)
@@ -208,7 +216,9 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     Vi vill kontrollera om användaren lämnade fältet tomt. Om det är tomt skriver vi "None", annars visar vi kommentaren. Vi gör detta med ett uttryck (Expression).
 
     * Sätt markören efter "Kommentar från användaren: ".
+
     * Klicka på **fx** (Insert Expression).
+
     * I rutan för Function/Expression, skriv in följande start:
       ```powerfx
       if(empty(
