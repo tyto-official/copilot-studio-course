@@ -276,57 +276,195 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
 Slutligen måste vårt Agent Flow berätta för agenten att allt gick bra, och ge ett meddelande som agenten kan visa för användaren.
 
 1.  Klicka på sista noden **Respond to the agent**.
-2.  Klicka **+ Add an output** -> **Text**.
-3.  Döp outputen till:
-    ```text
-    OrderStatus
-    ```
-4.  I värdefältet, skriv:
-    ```text
-    Din beställning är mottagen och ett ärende har skapats hos IT-supporten. Du får ett bekräftelsemail inom kort.
-    ```
-    *(Här kan vi hårdkoda texten eftersom den alltid ska vara densamma om flödet lyckas).*
+2.  Klicka **+ Add an output**
 
-    ![Output response](assets/images/chap08/flow-output-response.png)
+    ![Add Output](assets/images/chap08/flow-output-add.png)
 
-5.  **Spara ditt Agent Flow:**
-    * Längst upp till vänster, klicka på namnet (som ofta heter *Untitled*).
-    * Döp det till: `Beställningsflöde` (eller *Place Device Order*).
-    * Klicka **Save** uppe till höger.
-    * Vänta på den gröna bocken som säger att det är sparat.
+3.  Klicka på **Text**.
+
+    ![Add Output](assets/images/chap08/flow-output-add-text.png)
+
+4.  Döp outputen till:
+    ```text
+    ModelValue
+    ```
+5.  I värdefältet klicka på **blixt-ikonen** (Dynamic content) eller `fx`.
+
+    ![Add Output](assets/images/chap08/flow-output-modelvalue.png)
+
+6.  Sök efter `ModelValue` (från steget *Get Device*) och välj den.
+
+    ```text
+    Model
+    ```
+
+    ![Select ModelValue](assets/images/chap08/flow-output-select-modelvalue.png)
 
 ---
 
-## 8.6 Koppla ditt Agent Flow i Topicen
+## 8.6 Spara och konfigurera Agent Flow
+
+1.  Längst upp till vänster, klicka på namnet **Save draft**.
+
+    ![Save draft](assets/images/chap08/flow-save-draft.png)
+
+2.  Klicka nu på **Overview**.
+
+    ![Overview](assets/images/chap08/flow-overview.png)
+
+3.  Väl innne i overview och klicka på **Edit**.
+
+    ![Edit](assets/images/chap08/flow-edit.png)
+
+4.  Välj *Flow name* och skriv in:
+    ```text
+    Send device request email
+    ```
+
+5.  Välj *Description* och skriv in:
+    ```text
+    This flow sends an email to the user with the device request.
+    ```
+
+6.  Klicka på **Save**.
+
+    ![Save](assets/images/chap08/flow-save.png)
+
+7.  Klicka nu på **Designer**, och där efter klicka **Publish**.
+
+    ![Designer](assets/images/chap08/flow-designer-publish.png)
+
+## 8.7 Koppla ditt Agent Flow i Topicen
 
 Nu måste vi gå tillbaka till Copilot Studio och koppla in vårt nya Agent Flow.
 
-1.  Gå tillbaka till fliken med Copilot Studio (där din Topic är öppen).
-    *(Om du tappat bort den, gå till Topics -> Request device).*
-2.  Du kanske behöver klicka **Refresh** eller ta bort den tomma noden och lägga till **Call an action** igen för att se ditt nya flöde i listan.
-3.  Välj ditt Agent Flow: `Beställningsflöde`.
+1.  **Navigera till *Request device* Topicen:**
+    Gå tillbaka till Agents, genom att klicka på Agents i menyn till vänster.
 
-4.  **Mappa inputs:**
+    ![Agents](assets/images/chap08/flow-agents.png)
+
+    * Välj *IT Support Helper*.
+
+    ![IT Support Helper](assets/images/chap08/flow-it-support-helper.png)
+
+    * Gå till *Topics* genom att klicka på Topics uppe i menyn.
+
+    ![Topics](assets/images/chap08/flow-topics.png)
+
+    * Välj *Request device*.
+
+    ![Request device](assets/images/chap08/flow-request-device.png)
+
+2.  **Mappa inputs:**
     Nu frågar agenten: "Vad ska jag stoppa in i de input-hål du byggde?"
-    * **DeviceSharePointId:** Klicka på pilen `>` och välj variabeln `deviceSelectionId` (den kommer från ditt Adaptive Card).
-    * **User:** Klicka på pilen `>` och välj systemvariabeln `User.DisplayName`.
-    * **AdditionalComments:** Klicka på pilen `>` och välj `commentsId` (från Adaptive Card).
 
-5.  **Hantera resultatet:**
-    Ditt Agent Flow ger tillbaka variabeln `OrderStatus`.
-    * Lägg till en **Send a message**-nod under action-noden.
-    * I meddelandet, klicka på `{X}` och välj variabeln `OrderStatus`.
+    1. Gå längst ner, under Adaptive Card, och klicka på **Add**.
+    2. Välj **Add a tool** och klicka på våran nyligen skapade agnet flow *Send device request email*.
 
-6.  **Avsluta snyggt:**
-    * Lägg till en sista nod: **Topic management** -> **End topic**.
+    ![Add Flow](assets/images/chap08/add-custom-flow.png)
+
+    3. Klicka på det tre unkteran bredvs *Enter or selattc a value* fältet under *DeviceSharePointId* och välj variabeln `deviceSelectionId` (den kommer från ditt Adaptive Card).
+
+    ![Add Flow](assets/images/chap08/add-custom-flow-deviceid.png)
+
+    4. Klicka på det tre unkteran bredvs *Enter or selattc a value* navigera till *System* och sök efter 
+    
+    ```text
+    User
+    ```
+    
+    välj systemvariabeln `User.DisplayName`.
+
+    ![Add Flow](assets/images/chap08/add-custom-flow-user.png)
+
+    5. Klicka på *Advanced inputs*
+
+    ![Add Flow](assets/images/chap08/add-custom-flow-advancedinputs.png)
+    
+    6. Klicka på det tre unkteran bredvs *Enter or selattc a value* fältet under *AdditionalComments* och navigera till *Formula*, expandera sedan fältet.
+
+    ![Add Flow](assets/images/chap08/add-custom-flow-additionalcomments.png)
+
+    7. Skriv in följande fomula i formelfältet:
+    ```powerfx
+    If(IsBlank(Topic.commentsId), "", Topic.commentsId)
+    ```
+    Se till att den gröna bock finns under *Output* för att försäkdig om att det inte är någe syntaxfel, sedan klicka **Insert**
+
+    ![Add Flow](assets/images/chap08/add-custom-flow-additionalcomments2.png)
+
+    !!! info "Var för gjorde vi detta?"
+        when true - if the Topic.commentsId string parameter is empty, then we want to insert no value.
+        when false - if the Topic.commentsId string parameter is not empty, then insert the value of commentsId variable.
+
+---
+
+## 8.8 Förbättra användarupplevelsen (Bekräftelse)
+
+Vi ska nu lägga till en nod för att ge användaren en tydlig och personlig bekräftelse på att beställningen är mottagen.
+
+1.  Klicka på **plus-tecknet (+)** under din Agent Flow-nod och välj **Send a message**.
+
+    ![Lägg till meddelande](assets/images/chap08/topic-add-message-confirm.png)
+
+2.  Vi ska nu bygga meddelandet steg för steg för att få in dynamiska värden:
+
+    * Börja med att skriva: 
+    
+    ```text
+    Tack `
+    ```
+    * Klicka på ikonen **{X} (Insert variable)**.
+
+    * Välj fliken **System** och sök efter 
+    ```text
+    User
+    ```
+    * Välj **User.DisplayName**.
+
+    ![Infoga användarnamn](assets/images/chap08/topic-msg-insert-user.png)
+
+    * Fortsätt skriva texten: 
+    ```text
+    . Din valda enhet, `
+    ```
+    * Klicka på **{X} (Insert variable)** igen.
+    * Välj fliken **Custom** och sök efter 
+    ```text
+    ModelValue
+    ```
+    * Välj **ModelValue**.
+
+    ![Infoga modell](assets/images/chap08/topic-msg-insert-model.png)
+
+    * Avsluta meningen med att skriva: 
+    ```text
+    , har skickats in och kommer att granskas av IT-ansvarig.`
+    ```
+
+3.  Granska meddelandet. Det ska nu se ut ungefär så här i editorn:
+
+    > Tack {User.DisplayName}. Din valda enhet, {ModelValue}, har skickats in och kommer att granskas av IT-ansvarig.
+
+    ![Färdigt meddelande](assets/images/chap08/topic-msg-complete.png)
+
+!!! success "Snyggt!"
+    Nu får användaren en personlig bekräftelse med sitt eget namn och namnet på datorn de valt. 
 
 ### Testa allt!
 1.  Öppna testpanelen. Starta om med Refresh.
-2.  Skriv: `Jag vill ha en laptop`.
+2.  Skriv: 
+    ```text
+    Jag vill ha en laptop
+    ```
 3.  Välj en prestandanivå (Standard).
 4.  När listan visas och den frågar om beställning, svara `Ja`.
-5.  Välj en dator i kortet, skriv en kommentar och klicka **Skicka**.
-6.  *Nu ska agenten tänka en liten stund, anropa ditt Agent Flow, och sedan svara med bekräftelsen. Samtidigt ska det plinga till i din inkorg!*
+5.  Välj en dator i kortet, skriv en kommentar 
+    ```text
+    Jag vill ha så mycket RAM minne som möjligt!
+    ```
+6.  Klicka **Skicka**.
+7.  *Nu ska agenten tänka en liten stund, anropa ditt Agent Flow, och sedan svara med bekräftelsen. Samtidigt ska det plinga till i din inkorg!*
 
 !!! success "Grattis!"
     Du har nu byggt en fullständig kedja med ett **Agent Flow**:
