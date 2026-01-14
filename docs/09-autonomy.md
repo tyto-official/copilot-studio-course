@@ -120,7 +120,10 @@ Nu har agenten en trigger, men den behöver ett verktyg för att kunna skicka me
 
     ![Add Tool](assets/images/chap09/bild14.png)
 
-2.  Sök efter **Send an email**.
+2.  Sök efter 
+    ```text
+    Send an email
+    ```
 
     ![Search Email](assets/images/chap09/bild15.png)
 
@@ -128,7 +131,10 @@ Nu har agenten en trigger, men den behöver ett verktyg för att kunna skicka me
 
     ![Select Email V2](assets/images/chap09/bild16.png)
 
-4.  Vänta på anslutningen och klicka sedan på **Add and configure** (eller Next).
+4.  Vänta på anslutningen genom att konntrolera att det är grönt tillhöger om den mejladress och klicka sedan på **Add and configure** (eller Next).
+
+    !!! info "Ser du ingen grön bock?" 
+        Om anslutningen inte är klar (ingen grön bock vid din mejladress), klicka på pilen eller de tre prickarna vid Connection-raden och välj att logga in/lägga till anslutning. Du kan inte klicka på Add and configure förrän anslutningen är aktiv.
 
     ![Add and Configure](assets/images/chap09/bild17.png)
 
@@ -142,22 +148,26 @@ Nu har agenten en trigger, men den behöver ett verktyg för att kunna skicka me
       Det här verktyget skickar ett e-postmeddelande till IT-avdelningen med information om att en ny ticket har skapats.
       ```
 
+    ![Configure Tool](assets/images/chap09/bild18.png)
+
 6.  **Konfigurera Inputs (Viktigt):**
-    Vi måste vara tydliga med vad agenten ska fylla i. Klicka på **Edit** (eller Customize) bredvid *Inputs*.
+    Vi måste vara tydliga med vad agenten ska fylla i.
 
     **Konfigurera "To" (Mottagare):**
     Här ska vi ange vem som ska ta emot mejlet. Eftersom det är en notifiering till IT (dig), hårdkodar vi adressen så agenten slipper gissa.
     
-    * Klicka på dropdown-menyn där det står *Dynamically fill with AI* och välj **Enter custom value**.
+    * Klicka på dropdown-menyn där det står *Dynamically fill with AI* och välj **Custom value**.
 
     ![Configure To Input](assets/images/chap09/tool-config-to-custom.png)
 
     * Skriv in din egen e-postadress i fältet (t.ex. `JoelThyberg@thybergai.onmicrosoft.com`).
 
+    ![Configure To Input](assets/images/chap09/bild19.png)
+
     **Konfigurera "Subject" (Ämne):**
     Låt stå på *Dynamically fill with AI*, men vi ska ge en instruktion.
     
-    * Klicka på **Edit** (pennan) eller Customize bredvid Subject.
+    * Klicka på **Customize** bredvid Subject.
 
     ![Configure Subject](assets/images/chap09/tool-config-subject-edit.png)
 
@@ -167,21 +177,24 @@ Nu har agenten en trigger, men den behöver ett verktyg för att kunna skicka me
       ```
     * Se till att **Identify as** är satt till *User's entire response*.
 
-    ![Configure Subject Details](assets/images/chap09/tool-config-subject-settings.png)
+    ![Configure Subject Details](assets/images/chap09/bild20.png)
 
     * Stäng panelen för Subject.
 
     **Konfigurera "Body" (Innehåll):**
     Vi gör samma sak här.
     
-    * Klicka på **Edit** (pennan) eller Customize bredvid Body.
+    * Klicka på **Customize**.
 
-    ![Configure Body](assets/images/chap09/tool-config-body-edit.png)
+    ![Configure Body](assets/images/chap09/bild21.png)
 
     * I fältet **Description**, skriv:
       ```text
       En sammanfattning av den nya ticketen, inklusive titel, prioritet och beskrivning.
       ```
+    * Se till att **Identify as** är satt till *User's entire response*.
+
+    ![Configure Body Details](assets/images/chap09/bild22.png)
 
     * Stäng panelen.
 
