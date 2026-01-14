@@ -97,7 +97,8 @@ Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicer
 
     ![Insert Expression](assets/images/chap09/bild12.png)
 
-    !!! info "Vad gör denna formel?" När SharePoint skickar data till flödet kommer det som en stor, teknisk dataklump (JSON). För att göra det enkelt för agenten att läsa informationen gör vi två saker i denna formel:
+    !!! info "Vad gör denna formel?" 
+        När SharePoint skickar data till flödet kommer det som en stor, teknisk dataklump (JSON). För att göra det enkelt för agenten att läsa informationen gör vi två saker i denna formel:
         1.  **Plockar russinen ur kakan:** Vi hämtar specifika fält som *Titel*, *Avsändare* och *Beskrivning*.
         2.  **Formaterar:** Vi använder `concat` (slå ihop) för att skapa en prydlig textlista med radbrytningar (`\n`). 
 
