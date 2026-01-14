@@ -15,6 +15,7 @@ nav:
   - 6. Skapa Topic: 06-create-topic.md
   - 7. Skapa Adaptive Card: 07-adaptive-card.md
   - 8. Skapa Flow: 08-create-flow.md
+  - 9. Autonomi (Vakna till liv): 09-autonomy.md
 
 markdown_extensions:
   - admonition

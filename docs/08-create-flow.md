@@ -28,7 +28,7 @@ Vi börjar inifrån din Topic **Request device** som vi jobbade med sist.
 
 ---
 
-## 8.2 Definiera Inputs (Trigger) m
+## 8.2 Definiera Inputs (Trigger)
 
 Väl inne i **Agent flows** kan vi se två noder.
 * Den övre noden: **When an agent calls the flow**. Här bestämmer vi vad agenten ska skicka *in* i processen.
@@ -339,7 +339,7 @@ Nu ska vi spara arbetet, namnge flödet korrekt och publicera det.
 
 5.  I fältet *Description*, skriv in:
     ```text
-    This flow sends an email to the user with the device request.
+    This flow sends a device request email to the IT department for review.
     ```
 
 6.  Klicka på **Save**.
