@@ -1,231 +1,172 @@
 # 9. Autonomi (Vakna till liv)
 
-Hittills har din agent varit reaktiv: den sitter snällt och väntar på att du ska säga "Hej".
-Nu ska vi göra den **proaktiv**. Vi ska ge agenten förmågan att reagera på händelser i omvärlden och agera helt självständigt.
-
-Vi kommer att göra två saker i detta kapitel:
-1.  **Övning 1 (Academy-spåret):** Vi sätter upp en trigger som reagerar när ett nytt supportärende skapas i SharePoint.
-2.  **Övning 2 (Förberedelse):** Vi lägger till en trigger för inkommande e-post (som vi ska använda i finalen).
+Hittills har din agent varit reaktiv. Nu ska vi göra den **proaktiv**.
+Vi ska skapa en funktion där agenten automatiskt reagerar när en ny support-ticket skapas i SharePoint, och genast notifierar IT-avdelningen via mejl.
 
 ---
 
-## 9.0 Förberedelse: Skapa SharePoint-lista
+## 9.1 Skapa SharePoint-triggern
 
-För att kunna testa detta behöver vi en lista där ärenden kan skapas.
+Vi börjar med att tala om för agenten vad den ska lyssna efter.
 
-1.  Gå till din SharePoint-site (samma som vi använde för *Devices*).
-2.  Klicka på **+ New** -> **List** -> **Blank list**.
-3.  Döp den till: `Tickets`.
-4.  Klicka **Create**.
-5.  (Valfritt) Lägg till en kolumn för "Priority" (Choice) och "Description" (Text) om du vill vara noga, men för denna övning räcker standardkolumnerna.
+1.  Navigera till fliken **Overview**.
 
----
+    ![Overview](assets/images/chap09/bild1.png)
 
-## 9.1 Aktivera Generativ Orkestrering
+2.  Leta upp sektionen **Triggers** och klicka på **+ Add trigger**.
 
-För att triggers ska fungera måste agentens "hjärna" vara inställd på att tänka självständigt (Generative Orchestration).
+    ![Add Trigger](assets/images/chap09/bild2.png)
 
-1.  Öppna din agent **IT Support Helper**.
-2.  Gå till fliken **Overview**.
-3.  Under rubriken **Orchestration**, se till att **Generative orchestration** är satt till **On**.
-    *(Om den redan är på, låt den vara).*
+3.  Sök efter **When an item is created**.
 
-    ![Enable Generative AI](assets/images/chap09/gen-ai-enable.png)
+    ![Search Trigger](assets/images/chap09/bild3.png)
 
----
+4.  Välj **When an item is created (SharePoint)** och klicka **Next**.
 
-## 9.2 Skapa SharePoint-triggern
+    ![Select Trigger](assets/images/chap09/bild4.png)
 
-Nu ska vi koppla ihop agenten med listan vi just skapade.
+5.  Vänta tills anslutningen konfigureras och klicka sedan på **Next**.
 
-1.  Stanna kvar på **Overview**-fliken och scrolla ner till sektionen **Triggers**.
-2.  Klicka på **+ Add trigger**.
+    ![Configure Connection](assets/images/chap09/bild5.png)
 
-    ![Add Trigger](assets/images/chap09/trigger-add-menu.png)
+6.  **Konfigurera Triggern:**
+    * **Site Address:** Klicka på dropdown-menyn och välj **IT Help Desk**. (Om du inte ser den, klicka på *Enter custom value* och klistra in URL:en, eller sök).
 
-3.  Sök efter och välj: **When an item is created (SharePoint)**.
+    ![Select Site](assets/images/chap09/bild6.png)
 
-    ![Select SharePoint Trigger](assets/images/chap09/trigger-select-sharepoint.png)
+    * **List Name:** Välj **Tickets**.
 
-4.  **Konfigurera anslutningen:**
-    * **Trigger name:** Döp den till:
-      ```text
-      New Support Ticket Created in SharePoint
-      ```
-    * Vänta tills anslutningen (Connection) är klar (grön bock).
-    * Klicka **Next**.
+    ![Select List](assets/images/chap09/bild7.png)
 
-5.  **Konfigurera parametrarna:**
-    * **Site Address:** Välj din "Contoso IT" (eller IT Help Desk) site.
-    * **List Name:** Välj listan **Tickets**.
+    * *Limit Columns by View:* Låt vara som den är.
 
-    ![Configure Trigger](assets/images/chap09/trigger-config-sharepoint.png)
-
-6.  **Ge agenten instruktioner:**
-    Nu måste vi berätta för agenten vad den ska göra när triggern går igång. Kopiera in följande text i rutan **Additional instructions**:
+7.  **Instruktioner till Agenten:**
+    I rutan **Additional instructions to the agent...** klistrar du in följande:
 
     ```text
-    New Support Ticket Created in SharePoint: {Body}
+    Ny supportticket skapad i SharePoint: {Body}
     
-    Use the 'Acknowledge SharePoint Ticket' tool to generate the email body automatically and respond.
+    Använd verktyget 'Acknowledge SharePoint Ticket' för att meddela IT-avdelningen om detta.
     
-    IMPORTANT: Do not wait for any user input. Work completely autonomously.
+    VIKTIGT: Vänta inte på någon användarinmatning. Arbeta helt autonomt.
     ```
 
-    ![Trigger Instructions](assets/images/chap09/trigger-instructions.png)
+8.  Klicka på **Create trigger**.
 
-7.  Klicka på **Create trigger**.
-    *Nu skapas ett Power Automate-flöde i bakgrunden som agerar "lyssnare".*
-8.  Klicka **Close** när det är klart.
+    ![Create Trigger](assets/images/chap09/bild8.png)
 
 ---
 
-## 9.3 Redigera Triggern (Power Automate)
+## 9.2 Redigera Triggern (Power Automate)
 
-Just nu får agenten bara veta *att* något hände. Vi vill ge den *detaljerna* (Vem skapade ärendet? Vad handlar det om?). För att göra det måste vi redigera flödet och lägga in en formel.
+Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicera en formel som plockar ut exakt den data vi vill ha (Vem, Vad, Prioritet).
 
-1.  I sektionen **Triggers** på Overview-sidan, klicka på de **tre prickarna (...)** bredvid din nya trigger.
+**Vänta tills triggern är skapad. Testa den inte än.**
+
+1.  I listan över triggers på Overview-sidan: Klicka på de **tre prickarna (...)** längst till höger på din nya trigger.
 2.  Välj **Edit in Power Automate**.
 
-    ![Edit Trigger Flow](assets/images/chap09/trigger-edit-flow.png)
+    ![Edit in Power Automate](assets/images/chap09/bild9.png)
 
-    *Ett nytt fönster öppnas.*
+    *Ett nytt fönster öppnas med ditt flöde.*
 
-3.  Klicka på noden **Sends a prompt to the specified copilot for processing**.
-4.  Hitta fältet **Body/message**.
-5.  **Ta bort** allt innehåll som står där (t.ex. `{Body}`).
-6.  Tryck på **snedstreck-tangenten (`/`)** och välj **Insert Expression** (blixten/fx-ikonen).
+3.  Du ser två noder. Klicka på den nedre noden: **Send a prompt to the specified copilot for processing**.
 
-    ![Insert Expression](assets/images/chap09/flow-edit-expression.png)
+    *En meny öppnas till vänster.*
 
-7.  Kopiera och klistra in följande formel i uttrycksfältet (Expression):
+    ![Open Node](assets/images/chap09/bild10.png)
+
+4.  **Redigera meddelandet:**
+    * Klicka i rutan **Body/Message**.
+    * Ta bort texten `{Body}` som ligger där.
+    * Skriv ett snedstreck `/` och välj **Insert Expression** (blixt-ikonen).
+
+5.  **Lägg till uttrycket:**
+    En ny meny kommer upp. Klistra in exakt denna kod i rutan:
 
     ```powerfx
     concat('Submitted By Name: ', first(triggerOutputs()?['body/value'])?['Author/DisplayName'], '\nSubmitted By Email: ', first(triggerOutputs()?['body/value'])?['Author/Email'], '\nTitle: ', first(triggerOutputs()?['body/value'])?['Title'], '\nIssue Description: ', first(triggerOutputs()?['body/value'])?['Description'], '\nPriority: ', first(triggerOutputs()?['body/value'])?['Priority/Value'],'\nTicket ID : ', first(triggerOutputs()?['body/value'])?['ID'])
     ```
-    *(Denna kod skapar en snygg textsträng med all info agenten behöver).*
 
-8.  Klicka **Add** (eller Insert).
-9.  Klicka på **Save** (eller Publish) högst upp till höger.
-10. När det är sparat, stäng Power Automate-fliken och gå tillbaka till Copilot Studio.
+    * Klicka på **Add**.
 
-    ![Flow Updated](assets/images/chap09/flow-update-finished.png)
+    ![Insert Expression](assets/images/chap09/bild11.png)
+
+6.  Klicka på **Save** högst upp till höger på sidan.
+
+    ![Save Flow](assets/images/chap09/bild12.png)
+
+    *När det är sparat kan du stänga fliken och gå tillbaka till Copilot Studio.*
 
 ---
 
-## 9.4 Ge Agenten ett verktyg (Email Tool)
+## 9.3 Skapa Notifierings-verktyget
 
-Agenten har fått instruktionen att "Använda 'Acknowledge SharePoint Ticket' tool", men det verktyget finns inte än! Vi måste skapa det. Här använder vi en **Connector** direkt som verktyg (inte ett Agent Flow som i förra kapitlet).
+Nu har agenten en trigger, men den behöver ett verktyg för att kunna skicka mejlet till IT-avdelningen.
 
-1.  Gå till fliken **Topics** (eller Tools/Actions beroende på version).
-2.  Klicka på **+ Add a tool** (eller Add an action) och välj **Connector**. (Ibland ligger Connectors direkt under "Add a tool").
+1.  Navigera till fliken **Topics** (eller Tools) och välj **+ Add a tool**.
 
-    ![Add Email Tool](assets/images/chap09/tool-add-email.png)
+    ![Add Tool](assets/images/chap09/bild13.png)
 
-3.  Sök efter och välj **Send an email (V2)**.
-4.  Vänta på anslutningen och klicka **Add and configure** (eller Next).
+2.  Välj **Connector** (eller sök direkt).
+3.  Sök efter **Send an email**.
 
-5.  **Konfigurera verktyget:**
+    ![Search Email](assets/images/chap09/bild14.png)
+
+4.  Välj **Send an email (V2)** (Office 365 Outlook).
+
+    ![Select Email V2](assets/images/chap09/bild15.png)
+
+5.  Vänta på anslutningen och klicka sedan på **Add and configure** (eller Next).
+
+    ![Add and Configure](assets/images/chap09/bild16.png)
+
+6.  **Konfigurera verktyget:**
+    Här gör vi din "Twist". Vi konfigurerar verktyget så att agenten förstår att den ska mejla IT-avdelningen (dig), inte kunden.
+
     * **Name:**
       ```text
       Acknowledge SharePoint ticket
       ```
+      *(Vi behåller namnet från instruktionen i triggern).*
+
     * **Description:**
       ```text
-      This tool sends an email acknowledgement that a ticket has been received.
+      Det här verktyget skickar ett e-postmeddelande till IT-avdelningen med information om att en ny ticket har skapats.
       ```
 
-6.  **Konfigurera Inputs:**
-    Klicka på **Edit** (eller Customize) bredvid *Inputs*. Vi ska ställa in vad agenten ska fylla i.
-
-    * **To:**
-        * **Description:**
-          ```text
-          The email address of the person submitting the SharePoint Ticket
-          ```
-        * **Identify as:** Välj **Email**.
-
-    * **Subject:** (Om du kan redigera denna, sätt den till "Ticket Received", annars låt agenten bestämma).
-
-    * **Body:**
-        * **Description:**
-          ```text
-          An acknowledgement that the Ticket was received, and we aim to respond within 3 working days.
-          ```
-
-    ![Configure Email Tool](assets/images/chap09/tool-config-email.png)
+    * **Konfigurera Inputs (Viktigt):**
+      Klicka på **Edit** (eller Customize) vid Inputs.
+      
+      * **To (Mottagare):**
+        Här vill vi göra det enkelt. Eftersom detta är en notifiering till IT, kan vi antingen:
+        1. Skriva en beskrivning: *"The email address of the IT Department"*.
+        2. Eller ännu hellre, hårdkoda din egen mejladress i "Custom value" så agenten slipper gissa.
+        * *Rekommendation:* Skriv din egen e-postadress direkt i fältet **To** under "Enter custom value". Då vet vi att det funkar.
+      
+      * **Subject:**
+        Låt agenten fylla i detta. Beskrivning: *"A short subject line including the Ticket Title"*.
+        
+      * **Body:**
+        Beskrivning: *"A summary of the new ticket including Title, Priority and Description."*
 
 7.  Klicka **Save**.
 
 ---
 
-## 9.5 Testa Autonomin
+## 9.4 Testa Autonomin
 
-Nu är sanningens ögonblick här. Kan agenten jobba utan oss?
+Nu testar vi om agenten vaknar till liv när vi skapar en ticket.
 
-1.  Gå till fliken **Overview** i Copilot Studio.
-2.  Leta upp din trigger i listan och klicka på ikonen **Test Trigger** (ser ut som en liten blixt eller play-knapp).
-    *Detta öppnar testpanelen i "lyssnar-läge".*
+1.  Gå till **Overview** i Copilot Studio.
+2.  Vid din trigger, klicka på ikonen **Test trigger** (blixt/play). Testpanelen öppnas och väntar.
+3.  Öppna en ny flik i webbläsaren och gå till din SharePoint-lista **Tickets**.
+4.  Skapa en ny rad (+ New):
+    * **Title:** `VPN nere`
+    * **Description:** `Jag kommer inte åt nätverket.`
+    * **Priority:** `High`
+5.  Spara raden.
+6.  Gå tillbaka till Copilot Studio. Vänta och klicka **Refresh** i testpanelen tills triggern syns.
+7.  Klicka **Start testing**.
 
-3.  Öppna en ny webbläsarflik och gå till din **SharePoint-lista (Tickets)**.
-4.  Klicka **+ New** och skapa ett test-ärende:
-    * **Title:** `Unable to connect to VPN`
-    * **Description:** `Unable to connect to corporate WIFI network after recent update` (om du har kolumnen, annars skriv i Title).
-    * **Priority:** `Normal` (om du har kolumnen).
-5.  Klicka **Save**.
-
-    ![Create SharePoint Item](assets/images/chap09/test-sharepoint-item.png)
-
-6.  Gå tillbaka till Copilot Studio och titta på testpanelen.
-    *Det kan ta 1-2 minuter innan triggern vaknar. Klicka på **Refresh**-ikonen i testpanelen då och då.*
-
-    ![Test Panel Waiting](assets/images/chap09/test-panel-trigger.png)
-
-7.  När triggern dyker upp i listan, klicka på **Start testing**.
-8.  Agenten kommer nu att köra igång. Klicka på **Activity Map** (kart-ikonen högst upp i testpanelen) för att se vad den gör.
-
-    **Du bör se:**
-    1.  Agenten tar emot datan (Trigger payload).
-    2.  Agenten bestämmer sig för att använda verktyget "Acknowledge SharePoint ticket".
-    3.  Verktyget körs.
-
-    ![Activity Map Success](assets/images/chap09/test-success-map.png)
-
-9.  Kontrollera din mejlkorg. Har du fått ett bekräftelsemejl?
-
-    ![Email Success](assets/images/chap09/test-email-result.png)
-
----
-
-## 9.6 Förberedelse: E-post-triggern
-
-Nu har vi bevisat att agenten kan agera autonomt på en SharePoint-lista.
-För att förbereda inför nästa kapitel (där vi ska koppla ihop allt), ska vi lägga till en trigger till.
-
-Vi vill att agenten ska vakna när det kommer en **ny beställning** via mejl (det mejlet vi byggde i kapitel 8).
-
-1.  Gå till **Overview** -> **Triggers**.
-2.  Klicka **+ Add trigger**.
-3.  Sök efter och välj: **When a new email arrives (V3)** (Office 365 Outlook).
-4.  **Konfigurera:**
-    * **Trigger name:** `New Device Order Received`
-    * Klicka **Next**.
-5.  **Parametrar:**
-    * **Folder:** `Inbox`
-    * **Subject Filter:**
-      ```text
-      Typ av förfrågan: Ny enhet
-      ```
-      *(Detta är viktigt! Vi vill bara att agenten vaknar på just dessa mejl, inte alla dina mejl).*
-    * **Instructions:**
-      ```text
-      Notify the user that the order email has been received and will be processed by the specialist agent.
-      ```
-6.  Klicka **Create trigger**.
-
-!!! success "Bra jobbat!"
-    Du har nu en agent som:
-    1. Reagerar på IT-ärenden i SharePoint och skickar bekräftelser.
-    2. Lyssnar efter beställningsmejl (som vi ska använda i nästa kapitel).
-    
-    Din agent är nu **autonom**.
+**Resultat:** Agenten ska läsa in ticketen, formulera ett mejl med informationen om "VPN nere" och skicka det till dig (IT-avdelningen).
