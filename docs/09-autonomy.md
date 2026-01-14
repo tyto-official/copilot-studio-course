@@ -122,35 +122,59 @@ Nu har agenten en trigger, men den behöver ett verktyg för att kunna skicka me
     ![Add and Configure](assets/images/chap09/bild16.png)
 
 6.  **Konfigurera verktyget:**
-    Här gör vi din "Twist". Vi konfigurerar verktyget så att agenten förstår att den ska mejla IT-avdelningen (dig), inte kunden.
-
     * **Name:**
       ```text
       Acknowledge SharePoint ticket
       ```
-      *(Vi behåller namnet från instruktionen i triggern).*
-
     * **Description:**
       ```text
       Det här verktyget skickar ett e-postmeddelande till IT-avdelningen med information om att en ny ticket har skapats.
       ```
 
-    * **Konfigurera Inputs (Viktigt):**
-      Klicka på **Edit** (eller Customize) vid Inputs.
-      
-      * **To (Mottagare):**
-        Här vill vi göra det enkelt. Eftersom detta är en notifiering till IT, kan vi antingen:
-        1. Skriva en beskrivning: *"The email address of the IT Department"*.
-        2. Eller ännu hellre, hårdkoda din egen mejladress i "Custom value" så agenten slipper gissa.
-        * *Rekommendation:* Skriv din egen e-postadress direkt i fältet **To** under "Enter custom value". Då vet vi att det funkar.
-      
-      * **Subject:**
-        Låt agenten fylla i detta. Beskrivning: *"A short subject line including the Ticket Title"*.
-        
-      * **Body:**
-        Beskrivning: *"A summary of the new ticket including Title, Priority and Description."*
+7.  **Konfigurera Inputs (Viktigt):**
+    Vi måste vara tydliga med vad agenten ska fylla i. Klicka på **Edit** (eller Customize) bredvid *Inputs*.
 
-7.  Klicka **Save**.
+    **Konfigurera "To" (Mottagare):**
+    Här ska vi ange vem som ska ta emot mejlet. Eftersom det är en notifiering till IT (dig), hårdkodar vi adressen så agenten slipper gissa.
+    
+    * Klicka på dropdown-menyn där det står *Dynamically fill with AI* och välj **Enter custom value**.
+
+    ![Configure To Input](assets/images/chap09/tool-config-to-custom.png)
+
+    * Skriv in din egen e-postadress i fältet (t.ex. `JoelThyberg@thybergai.onmicrosoft.com`).
+
+    **Konfigurera "Subject" (Ämne):**
+    Låt stå på *Dynamically fill with AI*, men vi ska ge en instruktion.
+    
+    * Klicka på **Edit** (pennan) eller Customize bredvid Subject.
+
+    ![Configure Subject](assets/images/chap09/tool-config-subject-edit.png)
+
+    * I fältet **Description**, skriv:
+      ```text
+      En kort ämnesrad som inkluderar tickettiteln
+      ```
+    * Se till att **Identify as** är satt till *User's entire response*.
+
+    ![Configure Subject Details](assets/images/chap09/tool-config-subject-settings.png)
+
+    * Stäng panelen för Subject.
+
+    **Konfigurera "Body" (Innehåll):**
+    Vi gör samma sak här.
+    
+    * Klicka på **Edit** (pennan) eller Customize bredvid Body.
+
+    ![Configure Body](assets/images/chap09/tool-config-body-edit.png)
+
+    * I fältet **Description**, skriv:
+      ```text
+      En sammanfattning av den nya ticketen, inklusive titel, prioritet och beskrivning.
+      ```
+
+    * Stäng panelen.
+
+8.  Klicka **Save**.
 
 ---
 
