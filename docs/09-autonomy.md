@@ -82,7 +82,7 @@ Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicer
 4.  **Redigera meddelandet:**
     * Klicka i rutan **Body/Message**.
     * Ta bort texten `{Body}` som ligger där.
-    * Skriv ett snedstreck `/` och välj **Insert Expression** (blixt-ikonen).
+    * Skriv ett snedstreck `/` och välj **Insert Expression** (fx-ikonen).
 
     ![Insert Expression](assets/images/chap09/bild11.png)
 
@@ -96,6 +96,12 @@ Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicer
     * Klicka på **Add**.
 
     ![Insert Expression](assets/images/chap09/bild12.png)
+
+    !!! info "Vad gör denna formel?" När SharePoint skickar data till flödet kommer det som en stor, teknisk dataklump (JSON). För att göra det enkelt för agenten att läsa informationen gör vi två saker i denna formel:
+        1.  **Plockar russinen ur kakan:** Vi hämtar specifika fält som *Titel*, *Avsändare* och *Beskrivning*.
+        2.  **Formaterar:** Vi använder `concat` (slå ihop) för att skapa en prydlig textlista med radbrytningar (`\n`). 
+
+        Resultatet blir en ren text som agenten lätt kan förstå, typ: *"Title: VPN nere, Priority: High"*.
 
 6.  Klicka på **Save** högst upp till höger på sidan.
 
