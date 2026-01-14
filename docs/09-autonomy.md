@@ -17,7 +17,10 @@ Vi börjar med att tala om för agenten vad den ska lyssna efter.
 
     ![Add Trigger](assets/images/chap09/bild2.png)
 
-3.  Sök efter **When an item is created**.
+3.  Sök efter 
+    ```text
+    When an item is created
+    ```
 
     ![Search Trigger](assets/images/chap09/bild3.png)
 
