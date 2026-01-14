@@ -72,14 +72,16 @@ Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicer
 
 3.  Du ser två noder. Klicka på den nedre noden: **Send a prompt to the specified copilot for processing**.
 
-    *En meny öppnas till vänster.*
-
     ![Open Node](assets/images/chap09/bild10.png)
+    
+    *En meny öppnas till vänster.*
 
 4.  **Redigera meddelandet:**
     * Klicka i rutan **Body/Message**.
     * Ta bort texten `{Body}` som ligger där.
     * Skriv ett snedstreck `/` och välj **Insert Expression** (blixt-ikonen).
+
+    ![Insert Expression](assets/images/chap09/bild11.png)
 
 5.  **Lägg till uttrycket:**
     En ny meny kommer upp. Klistra in exakt denna kod i rutan:
@@ -90,11 +92,11 @@ Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicer
 
     * Klicka på **Add**.
 
-    ![Insert Expression](assets/images/chap09/bild11.png)
+    ![Insert Expression](assets/images/chap09/bild12.png)
 
 6.  Klicka på **Save** högst upp till höger på sidan.
 
-    ![Save Flow](assets/images/chap09/bild12.png)
+    ![Save Flow](assets/images/chap09/bild13.png)
 
     *När det är sparat kan du stänga fliken och gå tillbaka till Copilot Studio.*
 
@@ -106,22 +108,21 @@ Nu har agenten en trigger, men den behöver ett verktyg för att kunna skicka me
 
 1.  Navigera till fliken **Topics** (eller Tools) och välj **+ Add a tool**.
 
-    ![Add Tool](assets/images/chap09/bild13.png)
+    ![Add Tool](assets/images/chap09/bild14.png)
 
-2.  Välj **Connector** (eller sök direkt).
-3.  Sök efter **Send an email**.
+2.  Sök efter **Send an email**.
 
-    ![Search Email](assets/images/chap09/bild14.png)
+    ![Search Email](assets/images/chap09/bild15.png)
 
-4.  Välj **Send an email (V2)** (Office 365 Outlook).
+3.  Välj **Send an email (V2)** (Office 365 Outlook).
 
-    ![Select Email V2](assets/images/chap09/bild15.png)
+    ![Select Email V2](assets/images/chap09/bild16.png)
 
-5.  Vänta på anslutningen och klicka sedan på **Add and configure** (eller Next).
+4.  Vänta på anslutningen och klicka sedan på **Add and configure** (eller Next).
 
-    ![Add and Configure](assets/images/chap09/bild16.png)
+    ![Add and Configure](assets/images/chap09/bild17.png)
 
-6.  **Konfigurera verktyget:**
+5.  **Konfigurera verktyget:**
     * **Name:**
       ```text
       Acknowledge SharePoint ticket
@@ -131,7 +132,7 @@ Nu har agenten en trigger, men den behöver ett verktyg för att kunna skicka me
       Det här verktyget skickar ett e-postmeddelande till IT-avdelningen med information om att en ny ticket har skapats.
       ```
 
-7.  **Konfigurera Inputs (Viktigt):**
+6.  **Konfigurera Inputs (Viktigt):**
     Vi måste vara tydliga med vad agenten ska fylla i. Klicka på **Edit** (eller Customize) bredvid *Inputs*.
 
     **Konfigurera "To" (Mottagare):**
@@ -174,7 +175,7 @@ Nu har agenten en trigger, men den behöver ett verktyg för att kunna skicka me
 
     * Stäng panelen.
 
-8.  Klicka **Save**.
+7.  Klicka **Save**.
 
 ---
 
