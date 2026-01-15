@@ -3,8 +3,11 @@
 Nu är vi framme vid finalen! Vi ska sluta cirkeln och visa hur agenter kan samarbeta.
 
 Vi ska bygga ett scenario där:
+
 1.  Din huvudagent tar emot ett viktigt mejl (beställningar och felanmälan).
+
 2.  Istället för att hantera det själv delegerar den uppgiften till en *Specialist* (en dedikerad *Child Agent*).
+
 3.  Specialisten analyserar mejlet och skickar en notis i Microsoft Teams.
 
 ---
