@@ -23,24 +23,24 @@ Först måste agenten få en ny trigger som lyssnar på inkommande mejl.
     When a new email arrives
     ```
 
-    ![Search Trigger](assets/images/chap10/bild2.png)
-
 4.  Klicka på **When a new email arrives (V3)** och därefter på **Next**.
 
-    ![Select Email Trigger](assets/images/chap10/bild3.png)
+    ![Select Email Trigger](assets/images/chap10/bild2.png)
 
 5.  Kontrollera att anslutningen är grön (Connected) och klicka på **Next**.
 
-    ![Check Connection](assets/images/chap10/bild4.png)
+    ![Check Connection](assets/images/chap10/bild3.png)
 
 6.  **Konfigurera Triggern:**
     Idealiskt sett vill man kanske inte att agenten ska vakna av alla olika mejl, men i denna lab vill vi se agentens förmåga att filtrera och plocka upp relevanta mejl utan fördefinerade filter. Tanken är att denna ska agera som företagets centrala IT-support. Därav kommer vi konfigurera den på följande vis:
 
     * **Folder:** Klicka på mapp-ikonen och välj **Inbox** (Inkorgen).
 
-    ![Select Inbox](assets/images/chap10/bild5.png)
+    ![Select Inbox](assets/images/chap10/bild4.png)
 
     * **Importance:** Låt resterande vara oförändrade och klicka på **Create trigger**.
+
+    ![Select Inbox](assets/images/chap10/bild5.png)
 
 ---
 
@@ -48,10 +48,13 @@ Först måste agenten få en ny trigger som lyssnar på inkommande mejl.
 
 Nu vet vi att vår huvudagent lyssnar och tar emot inkommande mejl. För att göra huvudagenten smart och effektiv kommer vi delegera analysen av dessa mejl till en så kallad *Child Agent*.
 
-1.  Gå tillbaka till *Overview*. 
+1.  Stäng *Time to test your tigger!* vilket leder tillbaka till agntens *Overview*. 
+
+    ![No Test](assets/images/chap10/bild6.png)
+
 2.  Scrolla ner till **Agents**-delen i **Overview** och klicka på **+ Add agent**.
 
-    ![Add Agent](assets/images/chap10/bild6.png)
+    ![Add Agent](assets/images/chap10/bild7.png)
 
 3.  Rutan *Choose how you want to extend your agent* dyker upp.
     * Här ser vi alternativet *Create a Child agent*.
@@ -59,18 +62,14 @@ Nu vet vi att vår huvudagent lyssnar och tar emot inkommande mejl. För att gö
 
     * Klicka på **New child agent**.
 
-    ![New Child Agent](assets/images/chap10/bild7.png)
+    ![New Child Agent](assets/images/chap10/bild8.png)
 
     * **Name:** Döp agenten till:
       ```text
       Email Agent
       ```
 
-    ![Name Agent](assets/images/chap10/bild8.png)
-
     * **When will this be used:** Låt vara som standard (dvs "Agent chooses based on description"). Detta är viktigt för orkestreringen.
-
-    ![Description Setting](assets/images/chap10/bild9.png)
 
     * **Description:** Det här är avgörande. Det är denna text som Huvudagenten läser för att förstå *när* den ska lämna över jobbet. Skriv:
 
@@ -78,65 +77,38 @@ Nu vet vi att vår huvudagent lyssnar och tar emot inkommande mejl. För att gö
     Använd denna agent för att hantera och analysera inkommande e-postmeddelanden som rör beställningar eller supportärenden. Denna agent kan analysera innehållet och notifiera via Teams.
     ```
 
-    ![Description Text](assets/images/chap10/bild10.png)
-
     * Klicka sedan på **Save** uppe i högra hörnet.
 
-    ![Save](assets/images/chap10/bild12.png)
+    ![Save](assets/images/chap10/bild9.png)
 
 ---
 
-## 10.3 Konfigurera Child Agenten
-
-Nu har vi skapat "skalet" för agenten. Nu ska vi kliva in i den och ge den en hjärna och verktyg.
-
-1.  **Ge Instruktioner:**
-    På fliken **Overview** för din Child Agent, hitta rutan för **Instructions**. Klicka på **Edit**.
-    
-    Klistra in följande instruktioner som talar om hur den ska bete sig:
-
-    ```text
-    Du är en 'Email Triage Specialist'. Din uppgift är att analysera innehållet i inkommande mejl som skickas till dig från huvudagenten.
-
-    1. Identifiera vilken typ av ärende det gäller (Ny beställning eller Supportärende).
-    2. Extrahera viktig information:
-       - Om det är en beställning: Vilken modell och vem som beställer.
-       - Om det är support: Vad felet är.
-    3. Använd verktyget 'Notify IT Team' för att skicka en sammanfattning till Teams-chatten.
-    ```
-
-    * Klicka på **Save**.
-
-    ![Agent Instructions](assets/images/chap10/bild13.png)
-
----
-
-## 10.4 Lägg till Teams-verktyg
+## 10.3 Lägg till Teams-verktyg
 
 För att agenten ska kunna utföra punkt 3 i sina instruktioner måste den ha ett verktyg.
 
-1.  Gå till fliken **Tools** inne i din Child Agent.
+1.  Gå till delen **Tools** inne i din Child Agent.
 
-    ![Tools](assets/images/chap10/bild14.png)
+    ![Tools](assets/images/chap10/bild10.png)
 
 2.  Klicka på **+ Add**.
 
-    ![Add](assets/images/chap10/bild15.png)
+    ![Add](assets/images/chap10/bild11.png)
 
 3.  Sök efter:
     ```text
     Post message in a chat or channel
     ```
     
-    ![Search Tool](assets/images/chap10/bild16.png)
+    ![Search Tool](assets/images/chap10/bild12.png)
 
 4.  Välj **Post message in a chat or channel** genom att klicka på den.
 
-    ![Add Teams Action](assets/images/chap10/bild17.png)
+    ![Add Teams Action](assets/images/chap10/bild13.png)
 
 5.  Kontrollera anslutningen och klicka **Add and configure**.
 
-    ![Add Configure](assets/images/chap10/bild18.png)
+    ![Add Configure](assets/images/chap10/bild14.png)
 
 6.  **Konfigurera Verktyget:**
     * **Name:**
@@ -148,47 +120,79 @@ För att agenten ska kunna utföra punkt 3 i sina instruktioner måste den ha et
       Skickar ett meddelande till IT-supportens Teams-chatt med information från mejlet.
       ```
 
-    ![Configure Tool](assets/images/chap10/bild19.png)
+    ![Configure Tool](assets/images/chap10/bild15.png)
 
 7.  **Konfigurera Inputs:**
     Vi vill göra det enkelt och säkert att det fungerar.
 
     1. Klicka på **Dynamically fill with AI** bredvid *Post as* och välj **Custom value**.
 
-    ![Configure Post As](assets/images/chap10/bild20.png)
+    ![Configure Post As](assets/images/chap10/bild16.png)
 
     2. Klicka på **Select an option** och välj **Flow bot**.
 
-    ![Select Flow Bot](assets/images/chap10/bild21.png)
+    ![Select Flow Bot](assets/images/chap10/bild17.png)
 
     3. Klicka på **Dynamically fill with AI** bredvid **Post in** och välj **Custom value**.
 
-    ![Configure Post In](assets/images/chap10/bild22.png)
+    ![Configure Post In](assets/images/chap10/bild18.png)
 
     4. Klicka på **Select an option** och välj **Chat with Flow bot**.
 
-    ![Select Chat Flow Bot](assets/images/chap10/bild23.png)
+    ![Select Chat Flow Bot](assets/images/chap10/bild19.png)
 
     5. Notera att en ny input dyker upp: *Recipient*. Välj även här att klicka på **Dynamically fill with AI** och sedan **Custom value**.
 
-    ![Configure Recipient](assets/images/chap10/bild24.png)
+    ![Configure Recipient](assets/images/chap10/bild20.png)
 
     6. Skriv in din E-postadress i fältet.
 
-    ![Enter Email](assets/images/chap10/bild25.png)
+    ![Enter Email](assets/images/chap10/bild21.png)
 
-    7. För **Message**, låt stå kvar på *Dynamically fill with AI* men välj att klicka på **Edit** (eller Customize).
+    7. För **Message**, låt stå kvar på *Dynamically fill with AI* men välj att klicka på **Customize**.
 
-    ![Edit Message](assets/images/chap10/bild26.png)
+    ![Edit Message](assets/images/chap10/bild22.png)
 
     8. I rutan **Description** för Message, skriv in följande:
        ```text
        En sammanfattning av e-postinnehållet inklusive, Syfte (Beställning/Support) och Viktiga detaljer.
        ```
+    ![Message](assets/images/chap10/bild23.png)
 
     9. Stäng panelen för Message.
 
 8.  Klicka **Save**.
+
+---
+
+## 10.3 Konfigurera Child Agenten
+
+Nu har vi skapat "skalet" för agenten samt ett vertyg. Nu ska vi ge den instruktioner så den förstå vem den är och vad den ska och kan göra.
+
+1.  Klicka på **<- Notify IT Team**.
+
+    ![Notify IT Team](assets/images/chap10/bild24.png)
+
+2.  **Ge Instruktioner:**
+    Hitta rutan för **Instructions** och klicka i den.
+    
+    Klistra in följande instruktioner som talar om hur den ska bete sig:
+
+    ```text
+    Du är en Email Triage Specialist. Din uppgift är att analysera innehållet i inkommande mejl som skickas till dig från huvudagenten.
+
+    1. Identifiera vilken typ av ärende det gäller (Ny beställning eller Supportärende).
+    2. Extrahera viktig information:
+       - Om det är en beställning: Vilken modell och vem som beställer.
+       - Om det är support: Vad felet är.
+    3. Använd verktyget /Notify IT Team för att skicka en sammanfattning till Teams-chatten.
+    ```
+
+    * Ställ dig direkt efter `/Notify IT Team` och välj 
+    
+    * Klicka på **Save**.
+
+    ![Agent Instructions](assets/images/chap10/bild25.png)
 
 ---
 
@@ -198,21 +202,30 @@ Nu är all logik för child-agenten klar. Vi ska nu uppdatera huvudagenten för 
 
 1.  Navigera tillbaka till Huvudagentens **Overview**.
 
-    ![Huvudagent Overview](assets/images/chap10/bild27.png)
+    ![Huvudagent Overview](assets/images/chap10/bild26.png)
 
 2.  Gå ner till **Instructions** och klicka på **Edit**.
 
-    ![Huvudagent Instructions](assets/images/chap10/bild28.png)
+    ![Huvudagent Instructions](assets/images/chap10/bild27.png)
 
 3.  Lägg till följande instruktioner i slutet:
 
     ```text
-    - För inkommande mejl, delegera vidare direkt till /Email Agent och skicka med all information.
+    - För inkommande mejl, delegera vidare direkt till [Email Agent] och skicka med all information.
     ```
+
+    ![Huvudagent Instructions Added](assets/images/chap10/bild28.png)
+
+4.  Skapa länkningen (Viktigt):
+    Texten du nyss klistrade in är bara "vanlig" text. Vi måste göra om namnet till en aktiv länk så att AI:n förstår att vi menar objektet.
+
+    * Markera och **ta bort** orden `[Email Agent] ` i texten du nyss skrev.
+    * Skriv ett snedstreck **/**.
+    * I menyn som dyker upp, välj din **Email Agent** (den ligger ofta under rubriken *Agents* eller *Topics*).
 
     ![Huvudagent Instructions Added](assets/images/chap10/bild29.png)
 
-4.  Klicka på **Save**.
+5.  Klicka på **Save**.
 
 ---
 
@@ -221,34 +234,53 @@ Nu är all logik för child-agenten klar. Vi ska nu uppdatera huvudagenten för 
 Nu knyter vi ihop säcken. Vi ska simulera hela kedjan:
 Beställning -> Mejl -> Trigger -> Huvudagent -> Child Agent -> Teams.
 
-1.  **Öppna Testpanelen:**
-    * Se till att du är i Huvudagenten (**IT Support Helper**).
-    * Gå till **Overview**.
-    * Klicka på **Test trigger** bredvid din E-post trigger.
-    * Klicka **Start testing**.
+1.  **Testa enhets förfråging**
+    1. Klicka på **Test** i högra hörnet ifall testpanel inte redan är upp.
+    2. OM det redan ligger en chatt där, klicka på **Start new test session**.
+    3. Skiv: 
+       ```text
+       Hej jag behöver en ny Laptop
+       ```
+    4. Välj *Standard(Offiece/Admin)* varianten.
+    5. Skiva:
+       ```text
+       Ja, tack!
+       ```
+    6. Välj ett av alterntiven exampelvis **Surface Laptop 13**, men för nu lämna ytterligare intomtions rutan tom. 
+    7. Klicka **Skicka**
+    8. Invänta svaret, öppna därefter din inkorg för att se nta *Enhetsförfrågan mejelt*.
 
-    ![Start Testing](assets/images/chap10/bild30.png)
+2.  **Testa felanmälan**
+    1. Gå in i Sharepoint.
+    2. Klicka på **Add new item**.
+    3. Under *Issue* skiv in:
 
-2.  **Skapa händelsen:**
-    Vi behöver att ett mejl med ämnet "Typ av förfrågan: Ny enhet" landar i din inkorg.
-    * Antingen: Öppna din mejl och skicka ett mejl till dig själv med det ämnet och texten "Jag vill ha en Surface Laptop".
-    * Eller (Coolare): Öppna en *ny* flik med Copilot Studio, starta en ny chatt med din agent och gör en beställning (precis som i kapitel 8). Detta genererar mejlet automatiskt.
+       ```text
+       Wi-Fi problem
+       ```
 
-3.  **Vänta och Se:**
-    * Gå tillbaka till fliken där Test Trigger snurrar.
-    * När mejlet landar i din inkorg (kolla Outlook), börjar agenten jobba.
-    * Titta på **Activity Map** i testpanelen.
+    4. För *Issue description* skriv:
 
-    **Du kommer se:**
-    1.  Triggern aktiveras.
-    2.  Huvudagenten analyserar inkommande data.
-    3.  Huvudagenten delegerar till **Email Agent** (Child Agent).
-    4.  Child Agenten kör Teams-verktyget.
+       ```text
+       Kan inte logga in på Wi-Fi för tillfället.
+       ```
 
-4.  **Resultat:**
-    Kontrollera din Teams. Du ska ha fått ett chattmeddelande från **Power Automate** (Flow bot) med en sammanfattning av beställningen!
+    4. Sätt *Priority* till **High**.
 
-    ![Teams Success](assets/images/chap10/bild31.png)
+3.  **Testa dina triggers**
+    1. Gå tillbaka till copilot studio och till *Owerviwe*.
+    2. Klicka på **Test trigger** brevid *When an item is created*.
+    3. Välj den senaste .... och klicka **Start testing**.
+    4. Kolla din inkorg igen, förhoppningsvis ligger nya *Ny supportticket* mejlet där. 
+
+4.  **Testa child agenten**
+    1. Gå tillbaka till *Overviwe*. 
+    2. Klicka nu på **Test trigger** men nu dne som är brevid *When a new emaiil arrives (V3)*. 
+    3. Förhoppningsvis ser vi två valmöjliga .... nu, den älsta borde vara mejlet angåne ny enhets begäran och det nyare borde vara gällande ny supporterticket.
+    4. Börja med att klicka på den äldsta, och klicka **Start testing**.
+    5. Öppna den *Teams* och se om du har ett nytt medelende under *Chattar* från *Workflows*. Om du ser detta fungerar systemt end to end. 
+    6. Gå tillbaka till *Overviwe* och klicka nu igen på **Test trigger* brevid *When a new emaiil arrives (V3)* men välj nu det senaste mejlet. 
+    7. Öppna *Teams* igen och se nu om du fått ett nytt medelende i samma chatt men nu gällande nytt suporterärende.
 
 !!! success "MISSION COMPLETE"
     Grattis! Du har nu byggt en **Multi-Agent lösning** med:
