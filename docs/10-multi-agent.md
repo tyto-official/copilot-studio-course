@@ -87,30 +87,25 @@ Nu vet vi att vår huvudagent lyssnar och tar emot inkommande mejl. För att gö
 
 För att agenten ska kunna utföra punkt 3 i sina instruktioner måste den ha ett verktyg.
 
-1.  Gå till delen **Tools** inne i din Child Agent.
+1.  Gå till delen **Tools** inne i din Child Agent och klicka på **+ Add**.
 
     ![Tools](assets/images/chap10/bild10.png)
 
-2.  Klicka på **+ Add**.
-
-    ![Add](assets/images/chap10/bild11.png)
-
-3.  Sök efter:
+2.  Sök efter:
     ```text
     Post message in a chat or channel
     ```
-    
-    ![Search Tool](assets/images/chap10/bild12.png)
+    ![Search Tool](assets/images/chap10/bild11.png)
 
-4.  Välj **Post message in a chat or channel** genom att klicka på den.
+3.  Välj **Post message in a chat or channel** genom att klicka på den.
 
-    ![Add Teams Action](assets/images/chap10/bild13.png)
+    ![Add Teams Action](assets/images/chap10/bild12.png)
 
-5.  Kontrollera anslutningen och klicka **Add and configure**.
+4.  Kontrollera anslutningen och klicka **Add and configure**.
 
-    ![Add Configure](assets/images/chap10/bild14.png)
+    ![Add Configure](assets/images/chap10/bild13.png)
 
-6.  **Konfigurera Verktyget:**
+5.  **Konfigurera Verktyget:**
     * **Name:**
       ```text
       Notify IT Team
@@ -120,48 +115,48 @@ För att agenten ska kunna utföra punkt 3 i sina instruktioner måste den ha et
       Skickar ett meddelande till IT-supportens Teams-chatt med information från mejlet.
       ```
 
-    ![Configure Tool](assets/images/chap10/bild15.png)
+    ![Configure Tool](assets/images/chap10/bild14.png)
 
-7.  **Konfigurera Inputs:**
+6.  **Konfigurera Inputs:**
     Vi vill göra det enkelt och säkert att det fungerar.
 
     1. Klicka på **Dynamically fill with AI** bredvid *Post as* och välj **Custom value**.
 
-    ![Configure Post As](assets/images/chap10/bild16.png)
+    ![Configure Post As](assets/images/chap10/bild15.png)
 
     2. Klicka på **Select an option** och välj **Flow bot**.
 
-    ![Select Flow Bot](assets/images/chap10/bild17.png)
+    ![Select Flow Bot](assets/images/chap10/bild16.png)
 
     3. Klicka på **Dynamically fill with AI** bredvid **Post in** och välj **Custom value**.
 
-    ![Configure Post In](assets/images/chap10/bild18.png)
+    ![Configure Post In](assets/images/chap10/bild17.png)
 
     4. Klicka på **Select an option** och välj **Chat with Flow bot**.
 
-    ![Select Chat Flow Bot](assets/images/chap10/bild19.png)
+    ![Select Chat Flow Bot](assets/images/chap10/bild18.png)
 
     5. Notera att en ny input dyker upp: *Recipient*. Välj även här att klicka på **Dynamically fill with AI** och sedan **Custom value**.
 
-    ![Configure Recipient](assets/images/chap10/bild20.png)
+    ![Configure Recipient](assets/images/chap10/bild19.png)
 
     6. Skriv in din E-postadress i fältet.
 
-    ![Enter Email](assets/images/chap10/bild21.png)
+    ![Enter Email](assets/images/chap10/bild20.png)
 
     7. För **Message**, låt stå kvar på *Dynamically fill with AI* men välj att klicka på **Customize**.
 
-    ![Edit Message](assets/images/chap10/bild22.png)
+    ![Edit Message](assets/images/chap10/bild21.png)
 
     8. I rutan **Description** för Message, skriv in följande:
        ```text
        En sammanfattning av e-postinnehållet inklusive, Syfte (Beställning/Support) och Viktiga detaljer.
        ```
-    ![Message](assets/images/chap10/bild23.png)
+    ![Message](assets/images/chap10/bild22.png)
 
     9. Stäng panelen för Message.
 
-8.  Klicka **Save**.
+7.  Klicka **Save**.
 
 ---
 
@@ -171,7 +166,7 @@ Nu har vi skapat "skalet" för agenten samt ett vertyg. Nu ska vi ge den instruk
 
 1.  Klicka på **<- Notify IT Team**.
 
-    ![Notify IT Team](assets/images/chap10/bild24.png)
+    ![Notify IT Team](assets/images/chap10/bild23.png)
 
 2.  **Ge Instruktioner:**
     Hitta rutan för **Instructions** och klicka i den.
@@ -192,7 +187,7 @@ Nu har vi skapat "skalet" för agenten samt ett vertyg. Nu ska vi ge den instruk
     
     * Klicka på **Save**.
 
-    ![Agent Instructions](assets/images/chap10/bild25.png)
+    ![Agent Instructions](assets/images/chap10/bild24.png)
 
 ---
 
@@ -202,11 +197,11 @@ Nu är all logik för child-agenten klar. Vi ska nu uppdatera huvudagenten för 
 
 1.  Navigera tillbaka till Huvudagentens **Overview**.
 
-    ![Huvudagent Overview](assets/images/chap10/bild26.png)
+    ![Huvudagent Overview](assets/images/chap10/bild25.png)
 
 2.  Gå ner till **Instructions** och klicka på **Edit**.
 
-    ![Huvudagent Instructions](assets/images/chap10/bild27.png)
+    ![Huvudagent Instructions](assets/images/chap10/bild26.png)
 
 3.  Lägg till följande instruktioner i slutet:
 
@@ -214,7 +209,7 @@ Nu är all logik för child-agenten klar. Vi ska nu uppdatera huvudagenten för 
     - För inkommande mejl, delegera vidare direkt till [Email Agent] och skicka med all information.
     ```
 
-    ![Huvudagent Instructions Added](assets/images/chap10/bild28.png)
+    ![Huvudagent Instructions Added](assets/images/chap10/bild27.png)
 
 4.  Skapa länkningen (Viktigt):
     Texten du nyss klistrade in är bara "vanlig" text. Vi måste göra om namnet till en aktiv länk så att AI:n förstår att vi menar objektet.
@@ -223,7 +218,7 @@ Nu är all logik för child-agenten klar. Vi ska nu uppdatera huvudagenten för 
     * Skriv ett snedstreck **/**.
     * I menyn som dyker upp, välj din **Email Agent** (den ligger ofta under rubriken *Agents* eller *Topics*).
 
-    ![Huvudagent Instructions Added](assets/images/chap10/bild29.png)
+    ![Huvudagent Instructions Added](assets/images/chap10/bild28.png)
 
 5.  Klicka på **Save**.
 
