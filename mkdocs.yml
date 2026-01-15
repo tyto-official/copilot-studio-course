@@ -16,7 +16,8 @@ nav:
   - 7. Skapa Adaptive Card: 07-adaptive-card.md
   - 8. Skapa Flow: 08-create-flow.md
   - 9. Autonomi (Vakna till liv): 09-autonomy.md
-
+  - 10. Multi-Agent Orchestration (Finalen): 10-multi-agent.md
+  
 markdown_extensions:
   - admonition
   - pymdownx.details
