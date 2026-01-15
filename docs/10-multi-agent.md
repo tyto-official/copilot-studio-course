@@ -4,8 +4,8 @@ Nu är vi framme vid finalen! Vi ska sluta cirkeln och visa hur agenter kan sama
 
 Vi ska bygga ett scenario där:
 1.  Din huvudagent tar emot ett viktigt mejl (beställningar och felanmälan).
-2.  Istället för att hantera det själv delegerar den uppgiften till en **Specialist** (en dedikerad Child Agent).
-3.  Specialisten analyserar mejlet och skickar en notis i **Microsoft Teams**.
+2.  Istället för att hantera det själv delegerar den uppgiften till en *Specialist* (en dedikerad *Child Agent*).
+3.  Specialisten analyserar mejlet och skickar en notis i Microsoft Teams.
 
 ---
 
@@ -48,16 +48,16 @@ Först måste agenten få en ny trigger som lyssnar på inkommande mejl.
 
 Nu vet vi att vår huvudagent lyssnar och tar emot inkommande mejl. För att göra huvudagenten smart och effektiv kommer vi delegera analysen av dessa mejl till en så kallad *Child Agent*.
 
-1.  Stäng *Time to test your trigger!* vilket leder tillbaka till agentens *Overview*.
+1.  Stäng *Time to test your trigger!* vilket leder tillbaka till agentens **Overview**.
 
     ![No Test](assets/images/chap10/bild6.png)
 
-2.  Scrolla ner till **Agents**-delen i **Overview** och klicka på **+ Add agent**.
+2.  Scrolla ner till **Agents** delen i **Overview** och klicka på **+ Add agent**.
 
     ![Add Agent](assets/images/chap10/bild7.png)
 
 3.  Rutan *Choose how you want to extend your agent* dyker upp.
-    * Här ser vi alternativet *Create a Child agent*.
+    * Här ser vi alternativet **Create a Child agent**.
     * Notera: Eftersom vi i början gjorde en dedikerad *Solution* ser vi att inga andra agenter är valbara, eftersom de tillhör en annan environment.
 
     * Klicka på **New child agent**.
@@ -69,7 +69,7 @@ Nu vet vi att vår huvudagent lyssnar och tar emot inkommande mejl. För att gö
       Email Agent
       ```
 
-    * **When will this be used:** Låt vara som standard (dvs "Agent chooses based on description"). Detta är viktigt för orkestreringen.
+    * **When will this be used:** Låt vara som standard (dvs **Agent chooses based on description**). Detta är viktigt för orkestreringen.
 
     * **Description:** Det här är avgörande. Det är denna text som huvudagenten läser för att förstå när den ska lämna över jobbet. Skriv:
 
@@ -120,7 +120,7 @@ För att agenten ska kunna utföra punkt 3 i sina instruktioner måste den ha et
 6.  **Konfigurera inputs:**
     Vi vill göra det enkelt och säkert att detta fungerar.
 
-    1. Klicka på **Dynamically fill with AI** bredvid *Post as* och välj **Custom value**.
+    1. Klicka på **Dynamically fill with AI** bredvid **Post as** och välj **Custom value**.
 
     ![Configure Post As](assets/images/chap10/bild16.png)
 
@@ -136,7 +136,7 @@ För att agenten ska kunna utföra punkt 3 i sina instruktioner måste den ha et
 
     ![Select Chat Flow Bot](assets/images/chap10/bild19.png)
 
-    5. Notera att en ny input dyker upp: *Recipient*. Välj även här att klicka på **Dynamically fill with AI** och sedan **Custom value**.
+    5. Notera att en ny input dyker upp: **Recipient**. Välj även här att klicka på **Dynamically fill with AI** och sedan **Custom value**.
 
     ![Configure Recipient](assets/images/chap10/bild20.png)
 
@@ -144,7 +144,7 @@ För att agenten ska kunna utföra punkt 3 i sina instruktioner måste den ha et
 
     ![Enter Email](assets/images/chap10/bild21.png)
 
-    7. För **Message**, låt stå kvar på *Dynamically fill with AI* men välj att klicka på **Customize**.
+    7. För **Message**, låt stå kvar på **Dynamically fill with AI** men välj att klicka på **Customize**.
 
     ![Edit Message](assets/images/chap10/bild22.png)
 
@@ -183,7 +183,7 @@ Nu har vi skapat skalet för agenten samt ett verktyg. Nu ska vi ge den instrukt
     3. Använd verktyget /Notify IT Team för att skicka en sammanfattning till Teams-chatten.
     ```
 
-    * Ställ dig direkt efter `/Notify IT Team` och välj **Notify IT Team**-verktyget genom att klicka på popupmenyn.
+    * Ställ dig direkt efter ` /Notify IT Team ` och välj **Notify IT Team** verktyget genom att klicka på popupmenyn.
 
     ![Agent Instructions](assets/images/chap10/bild25.png)
 
@@ -237,7 +237,7 @@ Beställning -> Mejl -> Trigger -> Huvudagent -> Child Agent -> Teams.
        ```text
        Hej jag behöver en ny laptop
        ```
-    4. Välj *Standard (Office/Admin)* varianten.
+    4. Välj **Standard (Office/Admin)** varianten.
     5. Skriv:
        ```text
        Ja, tack!
@@ -249,29 +249,29 @@ Beställning -> Mejl -> Trigger -> Huvudagent -> Child Agent -> Teams.
 2.  **Testa felanmälan**
     1. Gå in i SharePoint.
     2. Klicka på **Add new item**.
-    3. Under *Issue* skriv in:
+    3. Under **Issue** skriv in:
        ```text
        Wi-Fi problem
        ```
-    4. För *Issue description* skriv:
+    4. För **Issue description** skriv:
        ```text
        Kan inte logga in på Wi-Fi för tillfället.
        ```
-    5. Sätt *Priority* till **High**.
+    5. Sätt **Priority** till **High**.
 
 3.  **Testa dina triggers**
-    1. Gå tillbaka till Copilot Studio och till *Overview*.
+    1. Gå tillbaka till Copilot Studio och till **Overview**.
     2. Klicka på **Test trigger** bredvid *When an item is created*.
     3. Välj den senaste posten och klicka **Start testing**.
     4. Kolla din inkorg igen. Förhoppningsvis ligger nya *Ny supportticket* mejlet där.
 
 4.  **Testa Child Agenten**
-    1. Gå tillbaka till *Overview*.
+    1. Gå tillbaka till **Overview**.
     2. Klicka nu på **Test trigger** bredvid *When a new email arrives (V3)*.
     3. Förhoppningsvis ser vi två valmöjliga poster nu. Den äldsta borde vara mejlet angående ny enhetsbegäran och den nyare borde vara gällande ny supportticket.
     4. Börja med att klicka på den äldsta och klicka **Start testing**.
-    5. Öppna Teams och se om du har ett nytt meddelande under *Chattar* från *Workflows*. Om du ser detta fungerar systemet end to end.
-    6. Gå tillbaka till *Overview* och klicka nu igen på **Test trigger** bredvid *When a new email arrives (V3)*, men välj nu det senaste mejlet.
+    5. Öppna Teams och se om du har ett nytt meddelande under **Chattar** från **Workflows**. Om du ser detta fungerar systemet end to end.
+    6. Gå tillbaka till **Overview** och klicka nu igen på **Test trigger** bredvid *When a new email arrives (V3)*, men välj nu det senaste mejlet.
     7. Öppna Teams igen och se nu om du fått ett nytt meddelande i samma chatt men nu gällande nytt supportärende.
 
 !!! success "MISSION COMPLETE"
