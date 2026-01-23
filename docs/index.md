@@ -1,54 +1,53 @@
 # Copilot Studio kurs
 
-Det här är en praktisk guide där du bygger en IT supportagent i Copilot Studio. Du går från grundsetup till en agent som kan svara på frågor, guida användaren i en styrd dialog, använda adaptiva kort, anropa Agent Flows och agera mer självgående vid händelser.
+Välkommen! I den här guiden ska vi tillsammans bygga en smart IT-supportagent i Copilot Studio.
 
-## Konventioner i guiden
-* UI etiketter, menyer och knappar skrivs i fetstil
-* Roller och koncept skrivs i kursiv
-* Tekniska namn, variabler och fältnamn skrivs som inline code
-* Text som du ska kopiera skrivs i kodblock
+Vi börjar från grunden och bygger steg för steg på med nya funktioner. När vi är klara kommer du ha en agent som kan svara på frågor, hjälpa användare med beställningar, använda snygga formulär och till och med agera helt självständigt på inkommande mejl.
+
+---
 
 ## Kapitel och mål
 
 ### 0. Förberedelser och miljö
-Mål: skapa en utvecklingsmiljö med Dataverse och verifiera att allt fungerar innan vi bygger.
+Mål: Skapa en utvecklingsmiljö med Dataverse och se till att allt fungerar innan vi sätter igång.
+Läs: [00-prereqs.md](00-prereqs.md)
 
 ### 1. Förbered SharePoint
-Mål: skapa SharePoint sajten med mallen IT Help Desk, komplettera listan Devices och lägga in testdata.  
+Mål: Sätta upp SharePoint-sajten med mallen IT Help Desk och lägga in lite testdata.
 Läs: [01-prepare-sharepoint.md](01-prepare-sharepoint.md)
 
 ### 2. Hitta rätt i Copilot Studio
-Mål: förstå var Agents, Flows och Tools bor och alltid säkra att du jobbar i rätt miljö.  
+Mål: Lära känna gränssnittet så du hittar bland Agents, Flows och Tools.
 Läs: [02-tour-interface.md](02-tour-interface.md)
 
 ### 3. Skapa en lösning
-Mål: skapa en Solution och sätt den som preferred så allt hamnar samlat och går att flytta senare.  
+Mål: Skapa en Solution för att hålla ordning på allt vi bygger.
 Läs: [03-create-solution.md](03-create-solution.md)
 
 ### 4. Skapa agenten
-Mål: skapa IT Support Helper, fyll i instruktioner och gör första testet i testpanelen.  
+Mål: Skapa vår huvudperson **IT Support Helper**, ge den instruktioner och testa den för första gången.
 Läs: [04-create-agent.md](04-create-agent.md)
 
 ### 5. Lägg till kunskap
-Mål: koppla in datakällor så agenten kan svara baserat på innehåll ni äger.  
+Mål: Koppla in dokument och filer så agenten kan svara på frågor direkt.
 Läs: [05-add-knowledge.md](05-add-knowledge.md)
 
 ### 6. Skapa en styrd dialog
-Mål: bygg en Topic som samlar in behov, gör villkorslogik och hämtar tillgängliga enheter från SharePoint.  
+Mål: Bygga en Topic som guidar användaren genom en behovsanalys och hämtar data från SharePoint.
 Läs: [06-create-topic.md](06-create-topic.md)
 
 ### 7. Skapa ett adaptivt kort
-Mål: bygg ett formulär i chatten som fångar val och kommentarer på ett strukturerat sätt.  
+Mål: Skapa ett snyggt formulär direkt i chatten för att ta emot val och kommentarer.
 Läs: [07-adaptive-card.md](07-adaptive-card.md)
 
 ### 8. Skapa ett Agent Flow
-Mål: bygg ett Agent Flow som tar emot data från chatten, hämtar detaljer från SharePoint och skickar ett beställningsmejl.  
+Mål: Bygga logiken som tar emot beställningen och skickar bekräftelsemejl via Power Automate.
 Läs: [08-create-flow.md](08-create-flow.md)
 
 ### 9. Autonomi
-Mål: låt agenten reagera på händelser, till exempel när ett nytt ärende skapas, utan att användaren måste starta en chatt.  
+Mål: Få agenten att vakna till liv och agera själv på händelser, utan att någon pratar med den först.
 Läs: [09-autonomy.md](09-autonomy.md)
 
 ### 10. Multi Agent Orchestration
-Mål: delegera arbete till en specialistagent och koppla på notifieringar och verktyg.  
+Mål: Bygga finalen där huvudagenten delegerar arbete till en specialistagent som rapporterar i Teams.
 Läs: [10-multi-agent.md](10-multi-agent.md)
