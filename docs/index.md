@@ -1,2 +1,54 @@
-# Välkommen till kursen
-Här bygger vi en IT-support agent.
+# Copilot Studio kurs
+
+Det här är en praktisk guide där du bygger en IT supportagent i Copilot Studio. Du går från grundsetup till en agent som kan svara på frågor, guida användaren i en styrd dialog, använda adaptiva kort, anropa Agent Flows och agera mer självgående vid händelser.
+
+## Konventioner i guiden
+* UI etiketter, menyer och knappar skrivs i fetstil
+* Roller och koncept skrivs i kursiv
+* Tekniska namn, variabler och fältnamn skrivs som inline code
+* Text som du ska kopiera skrivs i kodblock
+
+## Kapitel och mål
+
+### 0. Förberedelser och miljö
+Mål: skapa en utvecklingsmiljö med Dataverse och verifiera att allt fungerar innan vi bygger.
+
+### 1. Förbered SharePoint
+Mål: skapa SharePoint sajten med mallen IT Help Desk, komplettera listan Devices och lägga in testdata.
+Fil: 01-prepare-sharepoint.md
+
+### 2. Hitta rätt i Copilot Studio
+Mål: förstå var Agents, Flows och Tools bor och alltid säkra att du jobbar i rätt miljö.
+Fil: 02-tour-interface.md
+
+### 3. Skapa en lösning
+Mål: skapa en Solution och sätt den som preferred så allt hamnar samlat och går att flytta senare.
+Fil: 03-create-solution.md
+
+### 4. Skapa agenten
+Mål: skapa IT Support Helper, fyll i instruktioner och gör första testet i testpanelen.
+Fil: 04-create-agent.md
+
+### 5. Lägg till kunskap
+Mål: koppla in datakällor så agenten kan svara baserat på innehåll ni äger.
+Fil: 05-add-knowledge.md
+
+### 6. Skapa en styrd dialog
+Mål: bygg en Topic som samlar in behov, gör villkorslogik och hämtar tillgängliga enheter från SharePoint.
+Fil: 06-create-topic.md
+
+### 7. Skapa ett adaptivt kort
+Mål: bygg ett formulär i chatten som fångar val och kommentarer på ett strukturerat sätt.
+Fil: 07-adaptive-card.md
+
+### 8. Skapa ett Agent Flow
+Mål: bygg ett Agent Flow som tar emot data från chatten, hämtar detaljer från SharePoint och skickar ett beställningsmejl.
+Fil: 08-create-flow.md
+
+### 9. Autonomi
+Mål: låt agenten reagera på händelser, till exempel när ett nytt ärende skapas, utan att användaren måste starta en chatt.
+Fil: 09-autonomy.md
+
+### 10. Multi Agent Orchestration
+Mål: förstå hur du kan delegera arbete till en specialistagent och koppla på notifieringar och verktyg.
+Fil: 10-multi-agent.md
