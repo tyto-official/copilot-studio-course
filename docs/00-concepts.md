@@ -101,10 +101,12 @@ Microsoft pratar ofta om tre nivåer av automatisering. Det är viktigt att för
 
 ### 1. Conversational Agent (Chatbot++)
 Detta är en språkmodell som har fått tillgång till verktyg (Tools). Den pratar med en människa och kan utföra uppgifter på kommando, t.ex. söka på nätet eller kolla kalendern.
+
 * **Exempel:** "Boka ett möte med Anna kl 14."
 
 ### 2. Autonomous Agent
 Dessa agenter behöver inte en människa som startar dem. De kan triggas av händelser, t.ex. att ett mejl kommer in eller att klockan slår 08:00. De arbetar självständigt i bakgrunden.
+
 * **Exempel:** En agent som övervakar en inkorg dygnet runt.
 
 ### 3. Workflow vs. Agent
