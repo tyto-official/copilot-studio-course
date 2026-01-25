@@ -8,9 +8,7 @@ Innan vi hoppar in i Copilot Studio ska vi gå igenom några grundläggande begr
 
 En **LLM** (Large Language Model) är ett stort neuralt nätverk tränat på enorma mängder data. Den har statistiskt lärt sig mönster i språket och fått en "inbakad" förståelse för världen.
 
-Det är viktigt att veta att en språkmodell inte läser ord som vi gör. Dess alfabet består av 
-
-**Tokens**.
+Det är viktigt att veta att en språkmodell inte läser ord som vi gör. Dess alfabet består av **Tokens**.
 
 * En token är en del av ett ord (vanligt förekommande bokstavskombinationer).
 
@@ -120,28 +118,6 @@ Detta är den viktigaste skillnaden i design:
 
     ![Agent](assets/images/chap/6.jpeg)
 
-#### Jämförelse: Workflow vs Agent
-
-```mermaid
-graph TD
-    subgraph Workflow [Workflow - Processdrivet]
-    W_Start(Start) --> W_Val{Har vi text?}
-    W_Val -- Nej --> W_Log[Logga fel]
-    W_Val -- Ja --> W_LLM[LLM: Analysera]
-    W_LLM -.->|Använder| W_Tool[Verktyg: Sentiment]
-    W_Tool -.->|Svar| W_LLM
-    W_LLM --> W_End(Slut)
-    W_Log --> W_End
-    end
-
-    subgraph Agent [Agent - Måldrivet]
-    A_Goal[Mål: Lös problemet] --> A_Brain((AI Hjärna))
-    A_Brain <-->|Väljer| A_Tool1[Verktyg: Sök]
-    A_Brain <-->|Väljer| A_Tool2[Verktyg: Epost]
-    A_Brain <-->|Väljer| A_Tool3[Verktyg: Databas]
-    A_Brain --> A_Result(Resultat)
-    end
-```
 ---
 
 Nu när vi har begreppen på plats är det dags att börja bygga! Klicka på nästa kapitel för att sätta upp din miljö.
