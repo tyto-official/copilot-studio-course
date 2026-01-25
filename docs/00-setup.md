@@ -34,8 +34,6 @@ Nu ska vi se till att din nya miljö finns tillgänglig och välja den. Detta g�
 
 2. En lista fälls ut. Titta under rubriken **Build apps with Dataverse**. Där ska din utvecklingsmiljö ligga. Klicka på den för att välja den.
 
-    ![Overwive power plttfoms](assets/images/chap00/setup-step2-home.png)
-
 **Viktigt om namngivning:**
 I mina screenshots heter miljön "CopilotLab". Din miljö kommer troligen heta **"[Ditt Namn]'s Environment"**.
     ![Välj din Developer-miljö i listan under Dataverse-rubriken](assets/images/chap00/setup-step2-selector.png)
