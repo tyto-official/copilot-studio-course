@@ -8,8 +8,12 @@ Innan vi hoppar in i Copilot Studio ska vi gå igenom några grundläggande begr
 
 En **LLM** (Large Language Model) är ett stort neuralt nätverk tränat på enorma mängder data. Den har statistiskt lärt sig mönster i språket och fått en "inbakad" förståelse för världen.
 
-Det är viktigt att veta att en språkmodell inte läser ord som vi gör. Dess alfabet består av **Tokens**.
+Det är viktigt att veta att en språkmodell inte läser ord som vi gör. Dess alfabet består av 
+
+**Tokens**.
+
 * En token är en del av ett ord (vanligt förekommande bokstavskombinationer).
+
 * Som tumregel: 1000 tokens motsvarar ungefär 750 ord.
 
 ![Tokens](assets/images/chap/1.png)
