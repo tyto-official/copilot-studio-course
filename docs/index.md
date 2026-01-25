@@ -10,7 +10,7 @@ Vi börjar från grunden och bygger steg för steg på med nya funktioner. När 
 
 ### 0. Förberedelser och miljö
 Mål: Skapa en utvecklingsmiljö med Dataverse och se till att allt fungerar innan vi sätter igång.
-Läs: [00-prereqs.md](00-prereqs.md)
+Läs: [00-prereqs.md](00-concepts.md)
 
 ### 1. Förbered SharePoint
 Mål: Sätta upp SharePoint-sajten med mallen IT Help Desk och lägga in lite testdata.
