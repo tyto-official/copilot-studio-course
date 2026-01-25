@@ -116,27 +116,6 @@ Detta är den viktigaste skillnaden i design:
 
     ![Agent](assets/images/chap/6.jpeg)
 
-#### Jämförelse: Workflow vs Agent
-
-```mermaid
-graph TD
-    subgraph Workflow ["Workflow (Deterministiskt)"]
-    A[Start] --> B{Val}
-    B -- Ja --> C[Gör X]
-    B -- Nej --> D[Gör Y]
-    C --> E[Slut]
-    D --> E
-    end
-
-    subgraph Agent ["Agent (Dynamiskt)"]
-    Goal[Mål: Lös problemet] --> Brain((AI Hjärna))
-    Brain <--> Tool1[Sök info]
-    Brain <--> Tool2[Skicka mejl]
-    Brain <--> Tool3[Uppdatera DB]
-    Brain --> Resultat
-    end
-```
-
 ---
 
 Nu när vi har begreppen på plats är det dags att börja bygga! Klicka på nästa kapitel för att sätta upp din miljö.
