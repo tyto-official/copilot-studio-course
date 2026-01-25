@@ -116,6 +116,37 @@ Detta är den viktigaste skillnaden i design:
 
     ![Agent](assets/images/chap/6.jpeg)
 
+#### Jämförelse: Workflow vs Agent
+
+graph TD
+    %% Workflow: En fast process där ett steg råkar vara AI
+    subgraph Workflow ["Workflow (Process-drivet)"]
+    direction TB
+    W_Start([Start]) --> W_Val{Har vi text?}
+    W_Val -- Nej --> W_Log[Vanlig Kod: Logga fel]
+    W_Val -- Ja --> W_LLM[LLM-Steg: Analysera text]
+    
+    %% Här visar vi att LLM-steget använder ett verktyg
+    W_LLM -.->|Använder| W_Tool[Verktyg: Sentiment]
+    W_Tool -.->|Ger svar| W_LLM
+    
+    W_LLM --> W_End([Slut])
+    W_Log --> W_End
+    end
+
+    %% Agent: AI bestämmer vägen
+    subgraph Agent ["Agent (Mål-drivet)"]
+    direction TB
+    A_Goal[Mål: 'Lös problemet'] --> A_Brain((LLM Hjärna))
+    
+    %% Här visar vi att AI:n har en verktygslåda
+    A_Brain <-->|Väljer fritt| A_Tool1[Verktyg: Sök]
+    A_Brain <-->|Väljer fritt| A_Tool2[Verktyg: E-post]
+    A_Brain <-->|Väljer fritt| A_Tool3[Verktyg: Databas]
+    
+    A_Brain --> A_Result([Resultat])
+    end
+
 ---
 
 Nu när vi har begreppen på plats är det dags att börja bygga! Klicka på nästa kapitel för att sätta upp din miljö.
