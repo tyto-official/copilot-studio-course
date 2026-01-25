@@ -24,7 +24,7 @@ Varje modell har en begränsning i hur mycket information den kan hålla i huvud
 * Om du skickar in en bok på 1000 sidor till en modell med litet minne, kommer den att glömma början innan den läst klart slutet.
 * Moderna modeller (som GPT-5) har stora kontextfönster (över 400k tokens), men precisionen kan sjunka om man fyller dem till bredden.
 
-![Window](assets/images/chap/7.png)
+![Window](assets/images/chap/7.jpeg)
 
 ---
 
