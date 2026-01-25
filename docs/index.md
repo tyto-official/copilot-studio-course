@@ -8,7 +8,7 @@ Vi börjar från grunden och bygger steg för steg på med nya funktioner. När 
 
 ## Kapitel och mål
 
-### 0. Förberedelser och miljö
+### 0. Begrepp och Teori
 Mål: Skapa en utvecklingsmiljö med Dataverse och se till att allt fungerar innan vi sätter igång.
 Läs: [00-prereqs.md](00-concepts.md)
 
