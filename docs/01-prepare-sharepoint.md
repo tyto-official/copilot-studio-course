@@ -82,7 +82,7 @@ Mallen har skapat en lista åt oss som heter **Devices**, men vi behöver lägga
 
 1. På din nya sajt, klicka på fliken **Devices** i toppmenyn (eller under "Site contents").
 
-    ![Hitta listan Devices](assets/images/chap01/sp-step9-sitecontents.jpg)
+    ![Hitta listan Devices](assets/images/chap01/sp-step9-sitecontents.png)
 
 2. Scrolla längst till höger i listan tills du ser knappen **+ Add column**. Klicka på den.
 
