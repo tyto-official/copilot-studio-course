@@ -30,15 +30,15 @@ Nu ska vi se till att din nya miljö finns tillgänglig och välja den. Detta g�
 
 1. Titta uppe i högra hörnet på sidan. Klicka på väljaren för **Environment** (där ditt namn eller ett miljönamn står).
 
-    ![Pilen visar Environment-väljaren i menyn](assets/images/chap00/setup-step2-home.jpg)
+    ![Pilen visar Environment-väljaren i menyn](assets/images/chap00/kolla-miljo.png)
 
 2. En lista fälls ut. Titta under rubriken **Build apps with Dataverse**. Där ska din utvecklingsmiljö ligga. Klicka på den för att välja den.
 
-    ![Välj din Developer-miljö i listan under Dataverse-rubriken](assets/images/chap00/setup-step2-selector.png)
+    ![Overwive power plttfoms](assets/images/chap00/setup-step2-home.png)
 
 **Viktigt om namngivning:**
 I mina screenshots heter miljön "CopilotLab". Din miljö kommer troligen heta **"[Ditt Namn]'s Environment"**.
-
+    ![Välj din Developer-miljö i listan under Dataverse-rubriken](assets/images/chap00/setup-step2-selector.png)
 Om du redan hade en utvecklingsmiljö sedan tidigare kommer systemet *inte* skapa en ny, utan du använder bara den gamla. Det viktiga är att miljön du väljer ligger under rubriken **Build apps with Dataverse** och inte under "Other environments".
 
 ---
@@ -50,11 +50,11 @@ Nu gör vi ett snabbt test för att se att databasen (Dataverse) är installerad
 1. Se till att du står i din nya miljö (enligt Steg 2).
 2. Klicka på **+ Create** i menyn längst till vänster.
 
-    ![Klicka på Create i menyn](assets/images/chap00/verify-step1-create-menu.jpg)
+    ![Klicka på Create i menyn](assets/images/chap00/verify-step1-create-menu.png)
 
 3. Klicka på kortet som heter **AI hub**.
 
-    ![Klicka på AI hub kortet](assets/images/chap00/verify-step2-aihub-card.jpg)
+    ![Klicka på AI hub kortet](assets/images/chap00/verify-step2-aihub-card.png)
 
 4. **Titta på resultatet:**
 
