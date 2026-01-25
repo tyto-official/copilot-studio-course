@@ -61,12 +61,12 @@ För att datorn ska kunna söka i text måste vi göra om text till siffror (Vek
 
 3.  Varje stycke omvandlas till en **Vektor** (en lista med siffror som representerar *betydelsen*).
 
-    ![Vector](assets/images/chap/3.png)
+    ![Vector](assets/images/chap/3.jpeg)
 
 4.  När användaren ställer en fråga, görs även frågan om till en vektor.
 5.  Vi letar upp de stycken som ligger närmast frågan matematiskt och skickar dem till AI:n.
 
-    ![Hitta](assets/images/chap/4.png)
+    ![Hitta](assets/images/chap/4.jpeg)
 
 #### Visualisering av RAG
 *Här ser du hur en vektor (frågan) matchas mot en rymd av kunskap.*
@@ -108,11 +108,11 @@ Detta är den viktigaste skillnaden i design:
 
 * **Workflow (Process):** En förutbestämd väg. Steg 1 leder alltid till Steg 2. Det är stabilt men flexibelt.
 
-    ![Workflows](assets/images/chap/5.png)
+    ![Workflows](assets/images/chap/5.jpeg)
 
 * **Agent (Dynamisk):** Agenten får ett mål och en låda verktyg. Agenten bestämmer *själv* i vilken ordning den ska använda verktygen för att nå målet.
 
-    ![Agent](assets/images/chap/6.png)
+    ![Agent](assets/images/chap/6.jpeg)
 
 #### Jämförelse: Workflow vs Agent
 
