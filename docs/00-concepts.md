@@ -14,6 +14,9 @@ Det är viktigt att veta att en språkmodell inte läser ord som vi gör. Dess a
 
 * Som tumregel: 1000 tokens motsvarar ungefär 750 ord.
 
+!!! tip "Prova själv"
+    Vill du se hur din text delas upp i tokens? Testa att klistra in en mening i verktyget [OpenAI Tokenizer](https://platform.openai.com/tokenizer).
+
 ![Tokens](assets/images/chap/1.png)
 
 ---
