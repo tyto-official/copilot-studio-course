@@ -118,6 +118,7 @@ Detta är den viktigaste skillnaden i design:
 
 #### Jämförelse: Workflow vs Agent
 
+```mermaid
 graph TD
     subgraph Workflow [Workflow - Processdrivet]
     W_Start(Start) --> W_Val{Har vi text?}
@@ -136,7 +137,7 @@ graph TD
     A_Brain <-->|Väljer| A_Tool3[Verktyg: Databas]
     A_Brain --> A_Result(Resultat)
     end
-
+```
 ---
 
 Nu när vi har begreppen på plats är det dags att börja bygga! Klicka på nästa kapitel för att sätta upp din miljö.
