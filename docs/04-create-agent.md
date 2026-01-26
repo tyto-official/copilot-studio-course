@@ -128,8 +128,6 @@ Vi har nu skapat agentens "hjärna" (instruktionerna), och nu är det dags att t
 Om du inte redan ser chatten till höger:
 1. Klicka på **Test**-knappen högst upp till höger i Copilot Studio.
 
-![Öppna testpanelen](assets/images/chap04/test-panel.png)
-
 ### Steg 2: Hälsa på agenten
 Vi börjar med att kolla att den förstår sin roll.
 
