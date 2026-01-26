@@ -216,7 +216,7 @@ Vi fortsätter på spåret för "Laptop" (den vänstra vägen). Vi vill veta vil
 6.  Under **Options for user**, skapa två alternativ:
 
     * `Standard (Office/Admin)`
-    
+
     * `High Performance (Utveckling/Grafik)`
 
     *(Genom att ge specifika alternativ styr vi användaren rätt).*
@@ -481,6 +481,16 @@ Nu är Topicen klar! Men agenten vet inte om att den finns eller hur den ska anv
 4.  Klicka **Save**.
 
 *Logiken är klar! Nu fångar vi upp "fel" märke och leder in dem på rätt spår igen, eller avslutar om de inte är intresserade.*
+
+---
+
+### Testa flödet
+Nu är det dags att testa!
+1.  Öppna **Test**-panelen. Klicka på ikonen för **Map** (Activity map) och slå på **Track between topics**.
+2.  Skriv: `Jag behöver en laptop`
+    *Agenten bör visa listan och fråga om du vill beställa.*
+3.  Svara: `Ja tack`
+    *Agenten vet inte vad den ska göra nu*
 
 !!! success "Bra jobbat!"
     Du har nu byggt en avancerad funktion!
