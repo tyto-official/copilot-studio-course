@@ -242,7 +242,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     * I rutan för Function/Expression, skriv in följande start:
 
       ```powerfx
-      if(empty(
+      if(empty())
       ```
       *Detta startar en "Om"-sats som kollar "Om tomt...".*
 
@@ -258,7 +258,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
 
       *Din formel fylls nu på med referensen till input-fältet.*
 
-    * Gå tillbaka till formelfältet och skriv in resten av logiken efter parentesen:
+    * Gå tillbaka till formelfältet och skriv in resten av logiken efter parentesen (efter första stängda parantesen):
 
       ```powerfx
       , 'Ingen kommentar',
@@ -273,9 +273,6 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     ```text
     AdditionalComments
     ```
-
-    * Avsluta formeln med en slutparentes `))`.
-
     * Klicka på **Add** (eller OK).
 
     ![Expression Logic](assets/images/chap08/flow-email-expression-add.png)
