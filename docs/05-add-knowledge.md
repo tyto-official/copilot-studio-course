@@ -14,9 +14,6 @@ Nu ska vi ändra på det! Vi ska ge agenten två typer av kunskap:
 Vi behöver en fil att ladda upp. Vi skapar den snabbt via Word Online.
 
 1.  Klicka på **Appfönstret** (de nio prickarna, "Våfflan") längst upp till vänster i webbläsaren och klicka på **Word**.
-
-    ![Appfönstret](assets/images/chap05/create-doc-waffle.png)
-
 2.  Välj **Tomt dokument** (Blank document).
 3.  Kopiera texten i rutan nedan och klistra in den i ditt Word-dokument:
 
