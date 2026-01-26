@@ -274,7 +274,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     AdditionalComments
     ```
 
-    * Avsluta formeln med en slutparentes `)`.
+    * Avsluta formeln med en slutparentes `))`.
 
     * Klicka på **Add** (eller OK).
 
