@@ -128,7 +128,7 @@ Vi har nu skapat agentens "hjärna" (instruktionerna), och nu är det dags att t
 Om du inte redan ser chatten till höger:
 1. Klicka på **Test**-knappen högst upp till höger i Copilot Studio.
 
-![Öppna testpanelen](assets/images/chap05/test-panel.png)
+![Öppna testpanelen](assets/images/chap04/test-panel.png)
 
 ### Steg 2: Hälsa på agenten
 Vi börjar med att kolla att den förstår sin roll.
@@ -139,7 +139,7 @@ Vi börjar med att kolla att den förstår sin roll.
 2. **Förväntat resultat:**
     Agenten ska presentera sig som **IT Support Helper** (eller det namn du valde) och erbjuda hjälp. Den ska vara trevlig och professionell.
 
-![Agenten hälsar](assets/images/chap05/test-greeting.png)
+![Agenten hälsar](assets/images/chap04/test-greeting.png)
 
 *Ser det bra ut? Då vet vi att systemprompten ("Du är en hjälpsam assistent...") fungerar.*
 
@@ -155,7 +155,7 @@ En dålig AI skulle gissa ("Vi har öppet 8-17"). En bra agent (med våra instru
     Agenten ska svara något i stil med:
     > *"Jag hittar tyvärr ingen information om öppettiderna i mina system."*
 
-![Agenten vet inte svaret](assets/images/chap05/test-fail.png)
+![Agenten vet inte svaret](assets/images/chap04/test-fail.png)
 
 ### Varför är detta bra?
 Om agenten hade svarat *"Vi har öppet 08:00 - 17:00"*, hade den ljugit (hallucinerat). Det är farligt i en företagskontext.
