@@ -261,10 +261,10 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     * Gå tillbaka till formelfältet och skriv in resten av logiken efter parentesen:
 
       ```powerfx
-      , 'None',
+      , 'Ingen kommentar',
       ```
 
-      *Detta betyder: Om det är tomt -> Skriv 'None'. Nu ska vi ange vad som händer om det INTE är tomt (Else).*
+      *Detta betyder: Om det är tomt -> Skriv 'Ingen kommentar'. Nu ska vi ange vad som händer om det INTE är tomt (Else).*
 
     ![Select AdditionalComments](assets/images/chap08/flow-email-select-additionalcomments3.png)
 
