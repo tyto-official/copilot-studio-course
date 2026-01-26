@@ -214,7 +214,9 @@ Vi fortsätter på spåret för "Laptop" (den vänstra vägen). Vi vill veta vil
 
 5.  Under **Identify**, se till att **Multiple choice options** är valt.
 6.  Under **Options for user**, skapa två alternativ:
+
     * `Standard (Office/Admin)`
+    
     * `High Performance (Utveckling/Grafik)`
 
     *(Genom att ge specifika alternativ styr vi användaren rätt).*
@@ -245,7 +247,9 @@ När du skapade alternativen skapade Copilot Studio automatiskt tre vägar åt d
 ![Grenar](assets/images/chap06/topic-branches.png)
 
 1.  **Condition** (VarPerformance = Standard)
+
 2.  **Condition** (VarPerformance = High Performance)
+
 3.  **All other conditions**
 
 Detta är onödigt komplicerat för vår övning. Vi förenklar det genom att ta bort den specifika grenen för "High Performance" och låta "Allt annat" hantera det valet.
@@ -265,6 +269,7 @@ Nu ska vi bestämma vad som händer i respektive gren.
 
 **Gren 1: Standard**
 Användaren valde Standard. Här är allt som vanligt och finns i lager.
+
 * **Åtgärd:** Gör ingenting. Låt grenen vara tom.
     *Flödet kommer automatiskt att rinna vidare ner till botten där vi strax ska hämta listan.*
 
@@ -315,9 +320,13 @@ På så sätt fungerar sökningen oavsett om användaren letar efter en Laptop, 
 
 ### 2. Skapa anslutningen (Autentisering)
 Om detta är första gången du använder SharePoint i denna agent, måste du godkänna anslutningen.
+
 * Om du ser en knapp där det står **Not connected**, klicka på den.
+
 * Välj **Create new connection**
+
 * Välj **Connect directly (cloud-services)** och klicka **Create**.
+
 * Välj ditt konto och klicka **Allow access** om en ruta poppar upp.
 
 När anslutningen är klar, klicka på **Submit** (eller Add) för att lägga till noden i ditt flöde.
