@@ -307,6 +307,10 @@ På så sätt fungerar sökningen oavsett om användaren letar efter en Laptop, 
 
 5.  Sök efter **SharePoint - Get items**
 
+    ```text
+    Get items
+    ```
+
     ![Lägg till action](assets/images/chap06/topic-action-add-tool-sharepoint-getitems.png)
 
 ### 2. Skapa anslutningen (Autentisering)
