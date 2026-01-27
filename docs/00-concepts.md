@@ -102,7 +102,7 @@ graph TD
 
 Microsoft pratar ofta om två nivåer av AI agnter. Det är viktigt att förstå skillnaden på ett "Agent flows" och en "Agent".
 
-### 1. Konversation Agent (Chatbot++)
+### 1. Konversations Agent (Chatbot++)
 Detta är en språkmodell som har fått tillgång till verktyg (Tools). Den pratar med en människa och kan utföra uppgifter på kommando, t.ex. söka på nätet eller kolla kalendern.
 
 * **Exempel:** "Boka ett möte med Anna kl 14."
@@ -112,10 +112,10 @@ Dessa agenter behöver inte en människa som startar dem. De kan triggas av hän
 
 * **Exempel:** En agent som övervakar en inkorg dygnet runt.
 
-### 3. Agent flows vs. Agent
+### 3. Workflows vs. Agent
 Detta är den viktigaste skillnaden i design:
 
-* **Agent flow (Process):** En förutbestämd väg. Steg 1 leder alltid till Steg 2. Det är stabilt men flexibelt.
+* **Workflows (Process):** En förutbestämd väg. Steg 1 leder alltid till Steg 2. Det är stabilt men flexibelt.
 
     ![Workflows](assets/images/chap/5.jpeg)
 
