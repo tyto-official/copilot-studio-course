@@ -27,7 +27,7 @@ Vi kan hantera detta direkt inifrån Copilot Studio.
 
 ## Steg 2: Skapa en Publisher (Utgivare)
 
-En "Publisher" är din signatur. Det visar vem som byggt agenten och lägger till ett prefix (t.ex. `lab_`) på alla dina tekniska komponenter för att undvika namnkonflikter med Microsofts system.
+En "Publisher" är din signatur. Det visar vem som byggt agenten och lägger till ett prefix (t.ex. `alab_`) på alla dina tekniska komponenter för att undvika namnkonflikter med Microsofts system.
 
 1. I rutan som dyker upp, leta efter fältet **Publisher**.
 2. Klicka på **+ New publisher**.
@@ -35,9 +35,9 @@ En "Publisher" är din signatur. Det visar vem som byggt agenten och lägger til
 ![Skapa ny publisher](assets/images/chap03/sol-new-publisher.png)
 
 3. Fyll i följande uppgifter under fliken **Properties**:
-    * **Display name:** `Agent Lab`
-    * **Name:** `AgentLab` *(Inga mellanslag)*
-    * **Prefix:** `lab` *(Detta kommer stå framför alla dina databasnamn, t.ex. lab_minTabell)*
+    * **Display name:** `Lab Agent `
+    * **Name:** `LabAgent` *(Inga mellanslag)*
+    * **Prefix:** `alab` *(Detta kommer stå framför alla dina databasnamn, t.ex. lab_minTabell)*
     * **Choice value prefix:** Ändra det slumpade numret till `10000`.
       *(Detta styr vilka sifferkoder dina valalternativ får i databasen. 10000 är snyggt och enkelt).*
 
@@ -46,7 +46,7 @@ En "Publisher" är din signatur. Det visar vem som byggt agenten och lägger til
 
 ![Spara publisher](assets/images/chap03/sol-publisher-save.png)
 
-*(Rutan stängs och du kommer tillbaka till New solution-rutan. Din nya publisher 'Agent Lab' ska nu vara vald).*
+*(Rutan stängs och du kommer tillbaka till New solution-rutan. Din nya publisher 'Lab Agent' ska nu vara vald).*
 
 ---
 
@@ -56,7 +56,7 @@ Nu skapar vi själva lådan där vår agent ska bo.
 
 1. **Display name:** `IT Helpdesk Agent`
 2. **Name:** `ITHelpdeskAgent` (fylls i automatiskt)
-3. **Publisher:** Välj den du nyss skapade (`Agent Lab`).
+3. **Publisher:** Välj den du nyss skapade (`Lab Agent`).
 4. **Version:** `1.0.0.0` (Låt det vara).
 
 **Viktigt steg:**

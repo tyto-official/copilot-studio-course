@@ -81,7 +81,7 @@ Om din IT-avdelning har blockerat detta får du använda din **Default**-miljö.
 
 # 1. Förbered SharePoint
 
-Vår IT-support agent behöver data för att kunna svara på frågor. Vi ska nu skapa en SharePoint-sajt som innehåller information om hårdvara (Laptops, skärmar etc.).
+Vår IT support agent behöver data för att kunna svara på frågor. Vi ska nu skapa en SharePoint-sajt som innehåller information om hårdvara (Laptops, skärmar etc.).
 
 För att spara tid använder vi en färdig mall från Microsoft.
 
@@ -130,7 +130,7 @@ Nu ska vi välja rätt mall.
 
 Detta är det viktigaste steget. Vi måste döpa sajten och tvinga den att använda engelska.
 
-1. **Site name:** Döp den till `IT-Support`.
+1. **Site name:** Döp den till `IT Support`.
 2. **Site description:** (Valfritt) Skriv en kort beskrivning om du vill.
 3. Klicka på knappen **Next**.
 
