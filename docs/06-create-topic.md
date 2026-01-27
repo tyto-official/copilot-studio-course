@@ -354,7 +354,7 @@ Nu har vi en "dum" SharePoint-nod. Vi måste berätta för den vilken lista den 
 
     ![Inputs](assets/images/chap06/topic-prop-inputs.png)
 
-5.  **Site Address:** Välj din SharePoint-sida (**IT Help Desk**) i listan.
+5.  **Site Address:** Välj din SharePoint-sida (**IT Support**) i listan.
 
     ![Välj site](assets/images/chap06/topic-prop-site.png)
 
@@ -491,7 +491,7 @@ Nu är det dags att testa!
 
 2.  Skriv: `Jag behöver en laptop`
     *Agenten bör visa listan och fråga om du vill beställa.*
-    
+
 3.  Svara: `Ja tack`
     *Agenten vet inte vad den ska göra nu*
 

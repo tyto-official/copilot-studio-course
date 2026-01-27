@@ -78,7 +78,7 @@ Vi börjar med att definiera inputs. Vi behöver tre saker: ID på datorn, vem a
     Eftersom användaren kanske inte skriver någon kommentar, måste vi göra detta fält valfritt (Optional).
 
     * Klicka på de **tre prickarna (...)** bredvid fältet *AdditionalComments*.
-    
+
     * Välj **Make the field optional**.
 
     ![Gör input frivillig](assets/images/chap08/flow-input-optional.png)
@@ -106,7 +106,7 @@ Agenten skickar bara ett ID (t.ex. "4"). För att mejlet ska bli snyggt måste v
     ![Rename step](assets/images/chap08/flow-getitem-rename.png)
 
 4.  **Konfigurera steget:**
-    * **Site Address:** Välj din IT Help Desk-sida.
+    * **Site Address:** Välj din IT Support-sida.
 
     ![Site Address](assets/images/chap08/flow-getitem-siteaddress.png)
 

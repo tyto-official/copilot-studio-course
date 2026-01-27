@@ -33,7 +33,7 @@ Vi börjar med att tala om för agenten vad den ska lyssna efter.
     ![Configure Connection](assets/images/chap09/bild5.png)
 
 6.  **Konfigurera Triggern:**
-    * **Site Address:** Klicka på dropdown-menyn och välj **IT Help Desk**. (Om du inte ser den, klicka på *Enter custom value* och klistra in URL:en, eller sök).
+    * **Site Address:** Klicka på dropdown-menyn och välj **IT Support**. (Om du inte ser den, klicka på *Enter custom value* och klistra in URL:en, eller sök).
 
     ![Select Site](assets/images/chap09/bild6.png)
 
