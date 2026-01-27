@@ -179,8 +179,6 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     Pris:
 
     Kommentar från användaren:
-
-    Vänligen hantera skyndsamt.
     ```
 
     ![Email body setup](assets/images/chap08/flow-action-email.png)
