@@ -18,7 +18,7 @@ Vi behöver en fil att ladda upp. Vi skapar den snabbt via Word Online.
 3.  Kopiera texten i rutan nedan och klistra in den i ditt Word-dokument:
 
 ```text
-**IT-Policy och Rutiner för Anställda**
+**IT-Policy och Rutiner**
 Version: 2025-1.0
 
 **1. Kontakt och Öppettider**
@@ -46,7 +46,7 @@ Om din enhet går sönder eller blir stulen måste du anmäla detta till IT-supp
 Du får ta med din arbetsdator hem. För att säkerställa att datorn har de senaste säkerhetsuppdateringarna måste du ansluta till företagets VPN minst en gång i veckan.
 ```
 
-4. Klicka på namnet (där det står Document eller Dokument) i den översta namnlisten och döp filen till IT-Policy och Rutiner för Anställda.
+4. Klicka på namnet (där det står Document eller Dokument) i den översta namnlisten och döp filen till IT-Policy och Rutiner.
 
 5. Spara filen så att du hittar den igen.
 
@@ -65,7 +65,7 @@ Nu ska vi lära agenten innehållet i filen.
 
     ![Välja filen](assets/images/chap05/knowledge-choose-onedrive.png)
 
-4. Leta upp filen `IT_Policy och Rutiner för Anställda` som du nyss skapade och välj den genom att klicka på den och sedan klicka på **Confirm selection**.
+4. Leta upp filen `IT_Policy och Rutiner` som du nyss skapade och välj den genom att klicka på den och sedan klicka på **Confirm selection**.
 
     ![Välja filen](assets/images/chap05/knowledge-browse.png)
 
