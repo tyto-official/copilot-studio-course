@@ -37,7 +37,7 @@ En "Publisher" är din signatur. Det visar vem som byggt agenten och lägger til
 3. Fyll i följande uppgifter under fliken **Properties**:
     * **Display name:** `Lab Agent `
     * **Name:** `LabAgent` *(Inga mellanslag)*
-    * **Prefix:** `alab` *(Detta kommer stå framför alla dina databasnamn, t.ex. lab_minTabell)*
+    * **Prefix:** `alab` *(Detta kommer stå framför alla dina databasnamn, t.ex. alab_minTabell)*
     * **Choice value prefix:** Ändra det slumpade numret till `10000`.
       *(Detta styr vilka sifferkoder dina valalternativ får i databasen. 10000 är snyggt och enkelt).*
 
