@@ -31,7 +31,9 @@ Vi börjar inifrån din Topic **Request device** som vi jobbade med sist.
 ## 8.2 Definiera Inputs (Trigger)
 
 Väl inne i **Agent flows** kan vi se två noder.
+
 * Den övre noden: **When an agent calls the flow**. Här bestämmer vi vad agenten ska skicka *in* i processen.
+
 * Den nedre noden: **Respond to the agent**. Här bestämmer vi vad som skickas *tillbaka* till agenten.
 
 Vi börjar med att definiera inputs. Vi behöver tre saker: ID på datorn, vem användaren är, och eventuella kommentarer.
@@ -72,8 +74,11 @@ Vi börjar med att definiera inputs. Vi behöver tre saker: ID på datorn, vem a
     ![Input AdditionalComments](assets/images/chap08/flow-trigger-inputs-text-comments.png)
 
 7.  **Gör kommentaren frivillig:**
+
     Eftersom användaren kanske inte skriver någon kommentar, måste vi göra detta fält valfritt (Optional).
+
     * Klicka på de **tre prickarna (...)** bredvid fältet *AdditionalComments*.
+    
     * Välj **Make the field optional**.
 
     ![Gör input frivillig](assets/images/chap08/flow-input-optional.png)
