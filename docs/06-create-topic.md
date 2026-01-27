@@ -486,9 +486,12 @@ Nu är Topicen klar! Men agenten vet inte om att den finns eller hur den ska anv
 
 ### Testa flödet
 Nu är det dags att testa!
+
 1.  Öppna **Test**-panelen. Klicka på ikonen för **Map** (Activity map) och slå på **Track between topics**.
+
 2.  Skriv: `Jag behöver en laptop`
     *Agenten bör visa listan och fråga om du vill beställa.*
+    
 3.  Svara: `Ja tack`
     *Agenten vet inte vad den ska göra nu*
 
