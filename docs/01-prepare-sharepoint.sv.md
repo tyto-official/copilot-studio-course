@@ -50,16 +50,20 @@ Nu gör vi ett snabbt test för att se att databasen (Dataverse) är installerad
 
     ![Klicka på AI-nav i menyn](assets/images-sv/chap00/5.png)
 
-3. **Titta på resultatet:**
+3. Du ser nu AI-navet med dess olika verktyg och funktioner.
+
+    ![AI-navet öppnat](assets/images-sv/chap00/6.png)
+
+4. **Titta på resultatet:**
 
 **✅ Det ser ut så här (Succé):**
 Du ser en sida med rutor för "AI-modeller", "Promptar" eller en lista. Inga felmeddelanden.
-![Lyckat resultat i AI-nav](assets/images-sv/chap00/6.png)
+![Lyckat resultat i AI-nav](assets/images-sv/chap00/7.png)
 *Grattis! Din miljö är redo. Du kan gå vidare till nästa kapitel.*
 
 **❌ Det ser ut så här (Fel):**
 Du möts av en bild på en burk och texten **"Ingen databas hittades"**.
-![Misslyckat resultat - databas saknas](assets/images-sv/chap00/7.png)
+![Misslyckat resultat - databas saknas](assets/images-sv/chap00/8.png)
 
 ---
 
