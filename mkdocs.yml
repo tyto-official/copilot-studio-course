@@ -7,7 +7,6 @@ theme:
 
 plugins:
   - i18n:
-      default_language: sv
       docs_structure: suffix
       languages:
         - locale: sv
