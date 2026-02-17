@@ -12,11 +12,11 @@ Innan vi börjar bygga måste vi se till att du har rätt förutsättningar. Vi 
 1. Öppna en ny flik och gå till [Power Apps Developer Plan](https://www.microsoft.com/sv-se/power-platform/products/power-apps?market=se).
 2. Klicka på den blå knappen **Prova kostnadsfritt**.
 
-    ![Startsidan för Power Apps Developer Plan](assets/images-sv/chap00/1.png)
+    ![Startsidan för Power Apps Developer Plan](assets/images-sv/chap01/1.png)
 
 3. Ange din jobbmail, kryssa i rutan för att godkänna avtalen och klicka på **Börja kostnadsfritt**.
 
-    ![Formulär för registrering](assets/images-sv/chap00/2.png)
+    ![Formulär för registrering](assets/images-sv/chap01/2.png)
 
 När du registrerat dig skickas du vidare till Power Apps startsida.
 
@@ -30,13 +30,13 @@ Nu ska vi se till att din nya miljö finns tillgänglig och välja den. Detta g�
 
 1. Titta uppe i högra hörnet på sidan. Klicka på väljaren för **Miljö** (där ditt namn eller ett miljönamn står).
 
-    ![Pilen visar miljöväljaren i menyn](assets/images-sv/chap00/3.png)
+    ![Pilen visar miljöväljaren i menyn](assets/images-sv/chap01/3.png)
 
 2. En lista fälls ut. Titta under rubriken **App skapad med Dataverse**. Där ska din utvecklingsmiljö ligga. Klicka på den för att välja den.
 
 **Viktigt om namngivning:**
 I mina screenshots heter miljön "CopilotLab". Din miljö kommer troligen heta **"[Ditt Namn]s miljö"**.
-    ![Välj din Developer-miljö i listan under Dataverse-rubriken](assets/images-sv/chap00/4.png)
+    ![Välj din Developer-miljö i listan under Dataverse-rubriken](assets/images-sv/chap01/4.png)
 Om du redan hade en utvecklingsmiljö sedan tidigare kommer systemet *inte* skapa en ny, utan du använder bara den gamla. Det viktiga är att miljön du väljer ligger under rubriken **App skapad med Dataverse** och inte under "Andra miljöer".
 
 ---
@@ -48,22 +48,18 @@ Nu gör vi ett snabbt test för att se att databasen (Dataverse) är installerad
 1. Se till att du står i din nya miljö (enligt Steg 2).
 2. Klicka på **AI-nav** i menyn längst till vänster.
 
-    ![Klicka på AI-nav i menyn](assets/images-sv/chap00/5.png)
+    ![Klicka på AI-nav i menyn](assets/images-sv/chap01/5.png)
 
-3. Du ser nu AI-navet med dess olika verktyg och funktioner.
-
-    ![AI-navet öppnat](assets/images-sv/chap00/6.png)
-
-4. **Titta på resultatet:**
+3. **Titta på resultatet:**
 
 **✅ Det ser ut så här (Succé):**
 Du ser en sida med rutor för "AI-modeller", "Promptar" eller en lista. Inga felmeddelanden.
-![Lyckat resultat i AI-nav](assets/images-sv/chap00/7.png)
+![Lyckat resultat i AI-nav](assets/images-sv/chap01/6.png)
 *Grattis! Din miljö är redo. Du kan gå vidare till nästa kapitel.*
 
 **❌ Det ser ut så här (Fel):**
 Du möts av en bild på en burk och texten **"Ingen databas hittades"**.
-![Misslyckat resultat - databas saknas](assets/images-sv/chap00/8.png)
+![Misslyckat resultat - databas saknas](assets/images-sv/chap01/7.png)
 
 ---
 
@@ -93,15 +89,15 @@ Vi navigerar dit direkt från Power Apps.
 
 1. Klicka på **Våfflan** (Appstartaren) bestående av 9 prickar högst upp i vänstra hörnet.
 
-    ![Klicka på våfflan](assets/images-sv/chap01/1.png)
+    ![Klicka på våfflan](assets/images-sv/chap01/8.png)
 
 2. I menyn som fälls ut, klicka på **SharePoint**.
 
-    ![Välj SharePoint i menyn](assets/images-sv/chap01/2.png)
+    ![Välj SharePoint i menyn](assets/images-sv/chap01/9.png)
 
 3. Du hamnar nu på startsidan för SharePoint. Klicka på **+ Skapa webbplats**.
 
-    ![SharePoint startsida](assets/images-sv/chap01/3.png)
+    ![SharePoint startsida](assets/images-sv/chap01/10.png)
 
 ---
 
@@ -111,16 +107,16 @@ Nu ska vi välja rätt mall.
 
 1. Du får två val. Välj **Gruppwebbplats**.
 
-    ![Välj Gruppwebbplats](assets/images-sv/chap01/4.png)
+    ![Välj Gruppwebbplats](assets/images-sv/chap01/11.png)
 
 2. Klicka på fliken **Mallar** högst upp.
 3. Scrolla ner och klicka på rutan för **IT Support**.
 
-    ![Välj mallen IT Support i galleriet](assets/images-sv/chap01/5.png)
+    ![Välj mallen IT Support i galleriet](assets/images-sv/chap01/12.png)
 
 4. Klicka på knappen **Använd mall**.
 
-    ![Välj mallen IT Support i galleriet](assets/images-sv/chap01/6.png)
+    ![Välj mallen IT Support i galleriet](assets/images-sv/chap01/13.png)
 
 *(Om du inte ser mallen, kontakta kursledaren för instruktioner om hur man skapar listan manuellt).*
 
@@ -134,11 +130,11 @@ Nu ska vi döpa sajten och välja språk.
 2. **Webbplatsbeskrivning:** (Valfritt) Skriv en kort beskrivning om du vill.
 3. Klicka på knappen **Nästa**.
 
-    ![Fyll i namn och klicka Nästa](assets/images-sv/chap01/7.png)
+    ![Fyll i namn och klicka Nästa](assets/images-sv/chap01/14.png)
 
 4. Nu får du välja språk. Välj **Svenska**.
 
-    ![Välj Svenska under språkinställningarna](assets/images-sv/chap01/8.png)
+    ![Välj Svenska under språkinställningarna](assets/images-sv/chap01/15.png)
 
     !!! info "Språkval"
         Eftersom vi kör med svenskt gränssnitt i den här versionen av kursen väljer vi **Svenska** här. Kolumnnamnen i SharePoint-listan kommer då heta saker som `Enhetstyp` istället för `DeviceType`. Instruktionerna i resten av kursen är anpassade för detta.
@@ -149,7 +145,7 @@ Nu ska vi döpa sajten och välja språk.
 
 6. När sajten är skapad kommer en ruta där du kan lägga till medlemmar. Vi behöver inte göra det nu. Klicka bara på **Slutför**.
 
-    ![Klicka på Slutför för att skapa sajten](assets/images-sv/chap01/9.png)
+    ![Klicka på Slutför för att skapa sajten](assets/images-sv/chap01/16.png)
 
     *Du skickas nu automatiskt till den nya sajten.*
 
@@ -161,20 +157,20 @@ Mallen har skapat en lista åt oss som heter **Devices**, men vi behöver lägga
 
 1. På din nya sajt, klicka på fliken **Devices** i toppmenyn (eller under "Webbplatsinnehåll").
 
-    ![Hitta listan Devices](assets/images-sv/chap01/10.png)
+    ![Hitta listan Devices](assets/images-sv/chap01/17.png)
 
 2. Scrolla längst till höger i listan tills du ser knappen **+ Lägg till kolumn**. Klicka på den.
 
-    ![Klicka på Lägg till kolumn längst till höger](assets/images-sv/chap01/11.png)
+    ![Klicka på Lägg till kolumn längst till höger](assets/images-sv/chap01/18.png)
 
 3. I menyn som dyker upp, scrolla ner och välj **Hyperlänk**.
 
-    ![Välj datatypen Hyperlänk](assets/images-sv/chap01/12.png)
+    ![Välj datatypen Hyperlänk](assets/images-sv/chap01/19.png)
 
 4. Döp kolumnen till `Image`.
 5. Klicka på **Spara**.
 
-    ![Döp kolumnen till Image och spara](assets/images-sv/chap01/13.png)
+    ![Döp kolumnen till Image och spara](assets/images-sv/chap01/20.png)
 
     !!! info "Varför gör vi detta?"
         För att vår AI-agent ska kunna visa bilder i chatten behöver den en direktlänk (URL) till bilden. Det inbyggda bildfältet i SharePoint är svårt för agenten att läsa, så vi skapar en enkel länkkolumn istället.
@@ -187,11 +183,11 @@ Nu ska vi fylla listan med 4 produkter.
 
 1. Klicka på knappen **+ Lägg till nytt objekt** (eller *Nytt*) uppe till vänster i listan.
 
-    ![Klicka på Lägg till nytt objekt](assets/images-sv/chap01/14.png)
+    ![Klicka på Lägg till nytt objekt](assets/images-sv/chap01/21.png)
 
 2. En ruta öppnas till höger. Här fyller du i informationen för produkten (se tabellerna nedan).
 
-    ![Fyll i informationen i formuläret](assets/images-sv/chap01/15.png)
+    ![Fyll i informationen i formuläret](assets/images-sv/chap01/22.png)
 
 !!! tip "Viktigt om bilder"
     **Lämna fältet 'Device photo' tomt!** Vi ska inte ladda upp några filer.
@@ -204,15 +200,15 @@ Nu ska vi fylla listan med 4 produkter.
 ### 1. Surface Laptop 13
 ![Surface Laptop 13](assets/images/products/surface-laptop-13.png)
 
-* **Title:** Surface Laptop 13
+* **Rubrik:** Surface Laptop 13
 * **Status:** Available
-* **Manufacturer:** Microsoft
-* **Model:** Surface Laptop 13
-* **Asset Type:** Laptop
-* **Color:** Silver
-* **Serial Number:** 1
-* **Price:** 1500
-* **Order #:** 10001
+* **Tillverkare:** Microsoft
+* **Modell:** Surface Laptop 13
+* **Enhetstyp:** Laptop
+* **Färg:** Silver
+* **Serienummer:** 1
+* **Pris:** 1500
+* **Ordernummer:** 10001
 * **Image:**
 `https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-laptop-13.png`
 
@@ -221,15 +217,15 @@ Nu ska vi fylla listan med 4 produkter.
 ### 2. Surface Laptop 15
 ![Surface Laptop 15](assets/images/products/surface-laptop-15.png)
 
-* **Title:** Surface Laptop 15
+* **Rubrik:** Surface Laptop 15
 * **Status:** Available
-* **Manufacturer:** Microsoft
-* **Model:** Surface Laptop 15
-* **Asset Type:** Laptop
-* **Color:** Black
-* **Serial Number:** 2
-* **Price:** 2000
-* **Order #:** 10002
+* **Tillverkare:** Microsoft
+* **Modell:** Surface Laptop 15
+* **Enhetstyp:** Laptop
+* **Färg:** Black
+* **Serienummer:** 2
+* **Pris:** 2000
+* **Ordernummer:** 10002
 * **Image:**
 `https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-laptop-15.png`
 
@@ -238,15 +234,15 @@ Nu ska vi fylla listan med 4 produkter.
 ### 3. Surface Studio
 ![Surface Studio](assets/images/products/surface-studio.png)
 
-* **Title:** Surface Studio
+* **Rubrik:** Surface Studio
 * **Status:** Available
-* **Manufacturer:** Microsoft
-* **Model:** Surface Studio
-* **Asset Type:** Desktop
-* **Color:** Silver
-* **Serial Number:** 3
-* **Price:** 2500
-* **Order #:** 10003
+* **Tillverkare:** Microsoft
+* **Modell:** Surface Studio
+* **Enhetstyp:** Desktop
+* **Färg:** Silver
+* **Serienummer:** 3
+* **Pris:** 2500
+* **Ordernummer:** 10003
 * **Image:**
 `https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-studio.png`
 
@@ -255,15 +251,15 @@ Nu ska vi fylla listan med 4 produkter.
 ### 4. Surface Pro
 ![Surface Pro](assets/images/products/surface-pro-12.png)
 
-* **Title:** Surface Pro
+* **Rubrik:** Surface Pro
 * **Status:** Available
-* **Manufacturer:** Microsoft
-* **Model:** Surface Pro
-* **Asset Type:** Tablet
-* **Color:** Pink
-* **Serial Number:** 4
-* **Price:** 1000
-* **Order #:** 10004
+* **Tillverkare:** Microsoft
+* **Modell:** Surface Pro
+* **Enhetstyp:** Tablet
+* **Färg:** Pink
+* **Serienummer:** 4
+* **Pris:** 1000
+* **Ordernummer:** 10004
 * **Image:**
 `https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-pro-12.png`
 
