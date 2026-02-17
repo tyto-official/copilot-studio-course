@@ -122,9 +122,9 @@ Nu ska vi välja rätt mall.
 
 ---
 
-## Steg 3: Konfigurera namn och språk (Kritiskt!)
+## Steg 3: Konfigurera namn och språk
 
-Detta är det viktigaste steget. Vi måste döpa sajten och tvinga den att använda engelska.
+Nu ska vi döpa sajten och välja språk.
 
 1. **Webbplatsnamn:** Döp den till `IT Support`.
 2. **Webbplatsbeskrivning:** (Valfritt) Skriv en kort beskrivning om du vill.
@@ -132,14 +132,12 @@ Detta är det viktigaste steget. Vi måste döpa sajten och tvinga den att anvä
 
     ![Fyll i namn och klicka Nästa](assets/images-sv/chap01/7.png)
 
-4. Nu får du välja språk. Det är **mycket viktigt** att det står **Engelska** här. Om det är förvalt något annat (t.ex. Svenska), klicka på rullgardinsmenyn och ändra till Engelska.
+4. Nu får du välja språk. Välj **Svenska**.
 
-    ![Välj Engelska under språkinställningarna](assets/images-sv/chap01/8.png)
+    ![Välj Svenska under språkinställningarna](assets/images-sv/chap01/8.png)
 
-    !!! danger "Välj Engelska!"
-        Även om du föredrar svenska menyer **MÅSTE** du välja **Engelska** här.
-        
-        Om du väljer svenska kommer de interna namnen på kolumnerna heta saker som `Enhetstyp` istället för `DeviceType`, vilket gör att din Copilot inte kommer kunna läsa datan i senare övningar.
+    !!! info "Språkval"
+        Eftersom vi kör med svenskt gränssnitt i den här versionen av kursen väljer vi **Svenska** här. Kolumnnamnen i SharePoint-listan kommer då heta saker som `Enhetstyp` istället för `DeviceType`. Instruktionerna i resten av kursen är anpassade för detta.
 
 5. Klicka på **Skapa webbplats**.
 
