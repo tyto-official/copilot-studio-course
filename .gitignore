@@ -7,3 +7,4 @@ site/
 .env
 .venv
 venv/
+bra.txt

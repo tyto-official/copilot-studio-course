@@ -119,37 +119,33 @@ Nu ska agenten svara att supporten har öppet vardagar 08:00 – 17:00.
 ### Analys: Hur tänkte agenten?
 Nu ska vi se hur den använde våra källor.
 
-1.  Klicka först på **Starta ny session** högst upp i testpanelen.
+1.  Längst upp i testpanelen, klicka på ikonen för **Expandera testpanelen** (ser ut som en pil).
 
-    ![Starta ny session](assets/images-sv/chap05/9.png)
+    ![Aktivera aktivitetskarta](assets/images-sv/chap05/9.png)
 
-2.  Längst upp i testpanelen, klicka på ikonen för **Expandera testpanelen** (ser ut som en pil).
-
-    ![Aktivera aktivitetskarta](assets/images-sv/chap05/10.png)
-
-3.  Ställ frågan igen:
+2.  Ställ frågan igen:
     > *Vilka tider har IT-supporten öppet?*
 
-4.  Nu ser du flödet som agenten gick igenom. Klicka på boxen som heter **Sök i källor**.
+3.  Nu ser du flödet som agenten gick igenom. Klicka på boxen som heter **Sök i källor**.
 
-    ![Klicka på noden i kartan](assets/images-sv/chap05/11.png)
+    ![Klicka på noden i kartan](assets/images-sv/chap05/10.png)
 
-5.  En detaljruta öppnas. Här ser du exakt vilka källor agenten har **utvärderat**.
+4.  En detaljruta öppnas. Här ser du exakt vilka källor agenten har **utvärderat**.
     
-    ![Detaljer om källan](assets/images-sv/chap05/12.png)
+    ![Detaljer om källan](assets/images-sv/chap05/11.png)
     
     * Du ser förmodligen både din **Offentliga webbplats** och ditt **Dokument** i listan.
     * Detta betyder att agenten ansåg att båda källorna *kunde* vara relevanta och "läste igenom" dem (Granskade).
     * Men eftersom svaret bara fanns i dokumentet, var det bara den källan som användes för att formulera svaret (Refererad).
 
-    ![Refererad källa](assets/images-sv/chap05/13.png)
+    ![Refererad källa](assets/images-sv/chap05/12.png)
 
 ### Test 2: Den externa frågan
 Nu testar vi den andra källan för att se om den kan söka på webben.
 
 1.  Klicka på **Starta ny session** högst upp i testpanelen för att rensa minnet.
 
-    ![Starta om testet](assets/images-sv/chap05/14.png)
+    ![Starta om testet](assets/images-sv/chap05/13.png)
 
 2. Fråga:
     > *Hur tar jag en skärmdump i Windows 11?*
@@ -157,7 +153,7 @@ Nu testar vi den andra källan för att se om den kan söka på webben.
 **Förväntat resultat:**
 Agenten ska ge dig en steg-för-steg guide hämtad från Microsofts hemsida.
 
-![Förväntat resultat](assets/images-sv/chap05/15.png)
+![Förväntat resultat](assets/images-sv/chap05/14.png)
 
 !!! success "Succé!"
     Du har nu byggt en **hybrid-agent**! Den kombinerar dina unika företagsregler med allmän kunskap från internet.
