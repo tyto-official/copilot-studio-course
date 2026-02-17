@@ -4,6 +4,20 @@ theme:
   language: sv
   features:
     - content.code.copy
+
+plugins:
+  - i18n:
+      default_language: sv
+      docs_structure: suffix
+      languages:
+        - locale: sv
+          default: true
+          name: Svenska
+          build: true
+        - locale: en
+          name: English
+          build: true
+
 nav:
   - Hem: index.md
   - 0. Begrepp och Teori: 00-concepts.md
@@ -17,6 +31,7 @@ nav:
   - 8. Skapa Flow: 08-create-flow.md
   - 9. Autonomi (Vakna till liv): 09-autonomy.md
   - 10. Multi-Agent Orchestration (Finalen): 10-multi-agent.md
+  - 11. Redo för produktion: 11-set-up-for-production.md
   
 markdown_extensions:
   - admonition
