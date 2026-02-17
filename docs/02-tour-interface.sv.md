@@ -45,20 +45,18 @@ Under chattrutan har du tre genvägar för att börja från noll (Börja bygga f
 
 Längre ner på sidan ser du dina senast uppdaterade agenter och länkar till dokumentation.
 
-![Senast uppdaterade agenter](assets/images-sv/chap02/6.png)
-
 ---
 
 ## Steg 3: Navigera i vänstermenyn
 
 Tittar vi till vänster ser vi huvudmenyn. De viktigaste delarna är **Agenter**, **Flöden** och **Verktyg**.
 
-![Vänstermenyn](assets/images-sv/chap02/7.png)
+![Vänstermenyn](assets/images-sv/chap02/5.5.png)
 
 ### Agenter
 Klicka på **Agenter** i menyn.
 
-![Agenter](assets/images-sv/chap02/8.png)
+![Agenter](assets/images-sv/chap02/6.png)
 
 * Längst upp kan du återigen få hjälp av Copilot att skapa en ny agent.
 * Uppe till höger finns knappen **+ Skapa tom agent** och möjlighet att **Importera** en agent.
@@ -68,7 +66,7 @@ Klicka på **Agenter** i menyn.
 ### Flöden
 Klicka på **Flöden**.
 
-![Flöden](assets/images-sv/chap02/9.png)
+![Flöden](assets/images-sv/chap02/7.png)
 
 Här bor logiken för **Agentflöden**. I Copilot Studio betyder flöden deterministiska processer bestående av AI-driven automation. Medan flöden i **Power Automate** är mer flexibla och kan användas för att automatisera processer utan inblandning av AI.
 
@@ -78,11 +76,11 @@ Här bor logiken för **Agentflöden**. I Copilot Studio betyder flöden determi
 
 Klicka på **Verktyg**. Detta är kanske den mest spännande delen. Här ser du en lista på alla verktyg dina agenter kan använda.
 
-![Översikt av Verktyg-sidan](assets/images-sv/chap02/10.png)
+![Översikt av Verktyg-sidan](assets/images-sv/chap02/8.png)
 
 Klicka på **+ Nytt verktyg** för att se vad vi kan skapa.
 
-![Menyn för att skapa nya verktyg](assets/images-sv/chap02/11.png)
+![Menyn för att skapa nya verktyg](assets/images-sv/chap02/9.png)
 
 Här ser du de olika typerna av verktyg:
 
@@ -98,7 +96,7 @@ Här ser du de olika typerna av verktyg:
 
 Slutligen, om du klickar på de **tre prickarna (...)** längst ner i menyn (under Verktyg).
 
-![Menyn Mer med fler alternativ](assets/images-sv/chap02/12.png)
+![Menyn Mer med fler alternativ](assets/images-sv/chap02/10.png)
 
 Här ser du genvägar till andra Microsoft-tjänster och appar som ofta används tillsammans med agentbyggande, t.ex. Power Apps eller Power Automate.
 

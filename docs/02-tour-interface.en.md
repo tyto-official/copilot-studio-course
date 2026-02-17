@@ -45,8 +45,6 @@ Under chattrutan har du tre genvägar för att börja från noll (Start building
 
 Längre ner på sidan ser du dina senast uppdaterade agenter och länkar till dokumentation.
 
-![Senast uppdaterade agenter](assets/images/chap02/tour-recent-agents.png)
-
 ---
 
 ## Steg 3: Navigera i vänstermenyn
