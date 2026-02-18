@@ -126,34 +126,30 @@ Nu ska vi se hur den använde våra källor.
 2.  Ställ frågan igen:
     > *Vilka tider har IT-supporten öppet?*
 
-3.  Nu ser du flödet som agenten gick igenom. Klicka på boxen som heter **Sök i källor**.
+3.  Nu ser du flödet som agenten gick igenom. Klicka på boxen som heter **Sök i källor** om du inte direkt ser den detaljerade rutan.
 
-    ![Klicka på noden i kartan](assets/images-sv/chap05/10.png)
+    ![Klicka på noden i kartan](assets/images-sv/chap05/9,5.png)
 
 4.  En detaljruta öppnas. Här ser du exakt vilka källor agenten har **utvärderat**.
     
-    ![Detaljer om källan](assets/images-sv/chap05/11.png)
+    ![Detaljer om källan](assets/images-sv/chap05/10.png)
     
     * Du ser förmodligen både din **Offentliga webbplats** och ditt **Dokument** i listan.
     * Detta betyder att agenten ansåg att båda källorna *kunde* vara relevanta och "läste igenom" dem (Granskade).
     * Men eftersom svaret bara fanns i dokumentet, var det bara den källan som användes för att formulera svaret (Refererad).
-
-    ![Refererad källa](assets/images-sv/chap05/12.png)
 
 ### Test 2: Den externa frågan
 Nu testar vi den andra källan för att se om den kan söka på webben.
 
 1.  Klicka på **Starta ny session** högst upp i testpanelen för att rensa minnet.
 
-    ![Starta om testet](assets/images-sv/chap05/13.png)
+    ![Starta om testet](assets/images-sv/chap05/11.png)
 
 2. Fråga:
     > *Hur tar jag en skärmdump i Windows 11?*
 
 **Förväntat resultat:**
 Agenten ska ge dig en steg-för-steg guide hämtad från Microsofts hemsida.
-
-![Förväntat resultat](assets/images-sv/chap05/14.png)
 
 !!! success "Succé!"
     Du har nu byggt en **hybrid-agent**! Den kombinerar dina unika företagsregler med allmän kunskap från internet.
@@ -163,7 +159,7 @@ Agenten ska ge dig en steg-för-steg guide hämtad från Microsofts hemsida.
 !!! info "Alternativ: Webbsökning (Hela internet)"
     Du kanske har sett att det finns en inställning som heter Webbsökning under Kunskap-fliken?
 
-    ![Webbsökningsinställning](assets/images-sv/chap05/16.png)
+    ![Webbsökningsinställning](assets/images-sv/chap05/12.png)
 
     Om du aktiverar denna ("Aktiverad") kommer agenten att söka på *hela* internet via Bing, inte bara på de specifika sidor du angett.
 
