@@ -104,7 +104,7 @@ Vi är inte riktigt klara än! Vi ska redan nu bestämma vad det här ämnet ska
 
 2.  Klicka på **Skapa en ny variabel**.
 
-    ![Skapa utdatavariabel](assets/images-sv/chap06/12.png)
+    ![Skapa utdatavariabel](assets/images-sv/chap06/13.png)
 
 ### Konfigurera utdatavariabeln
 
@@ -125,11 +125,11 @@ Vi är inte riktigt klara än! Vi ska redan nu bestämma vad det här ämnet ska
 
     Kontrollera att det ser ut så här:
 
-    ![Utdatainställningar](assets/images-sv/chap06/13.png)
+    ![Utdatainställningar](assets/images-sv/chap06/12.png)
 
 4.  Nu är vi klara med inställningarna! Stäng detaljpanelen genom att klicka på krysset (**X**) högst upp till höger.
 
-    ![Stäng panelen](assets/images-sv/chap06/14.png)
+    ![Stäng panelen](assets/images-sv/chap06/12.5.png)
 
 ---
 
@@ -142,11 +142,11 @@ Vi ska börja med att skapa ett vägskäl. Om användaren vill ha en "Bärbar da
 
 1.  Håll muspekaren över linjen under din **Utlösare**-nod och klicka på **plus-tecknet (+)**.
 
-    ![Lägg till nod](assets/images-sv/chap06/15.png)
+    ![Lägg till nod](assets/images-sv/chap06/14.png)
 
 2.  En meny öppnas. Här är en snabb genomgång av verktygslådan:
 
-    ![Verktygslådan](assets/images-sv/chap06/16.png)
+    ![Verktygslådan](assets/images-sv/chap06/15.png)
 
     * **Skicka ett meddelande:** Skickar text eller bilder till användaren.
     * **Ställ en fråga:** Ställer en fråga och sparar svaret (det vi ska använda snart).
@@ -159,7 +159,7 @@ Vi ska börja med att skapa ett vägskäl. Om användaren vill ha en "Bärbar da
 
 3.  Välj **Lägg till ett villkor**.
 
-    ![Lägg till ett villkor](assets/images-sv/chap06/17.png)
+    ![Lägg till ett villkor](assets/images-sv/chap06/15.png)
 
 ### 2. Konfigurera Vägvalet (Villkor)
 Nu ser du att flödet delar sig i två vägar: *Villkor* och *Alla andra villkor*.
@@ -170,7 +170,7 @@ Nu ser du att flödet delar sig i två vägar: *Villkor* och *Alla andra villkor
     Bärbar dator
     ```
 
-    ![Villkor](assets/images-sv/chap06/18.png)
+    ![Villkor](assets/images-sv/chap06/16.png)
 
 2.  Vi ska nu bestämma regeln. Klicka på **Välj en variabel**.
 3.  Välj din indatavariabel: 
@@ -185,7 +185,7 @@ Nu ser du att flödet delar sig i två vägar: *Villkor* och *Alla andra villkor
 
     *Nu har du sagt: "Om användaren letar efter en Bärbar dator -> Gå till vänster. Annars -> Gå till höger."*
 
-    ![Vägvalet klart](assets/images-sv/chap06/19.png)
+    ![Vägvalet klart](assets/images-sv/chap06/17.png)
 
 ### 3. Ställ frågor (Tratten)
 Vi fortsätter på spåret för "Bärbar dator" (den vänstra vägen). Vi vill veta vilken prestanda användaren behöver.
@@ -193,7 +193,7 @@ Vi fortsätter på spåret för "Bärbar dator" (den vänstra vägen). Vi vill v
 1.  Klicka på **plus-tecknet (+)** under din nya *Bärbar dator*-nod.
 2.  Välj **Ställ en fråga**.
 
-    ![Välj fråga](assets/images-sv/chap06/20.png)
+    ![Välj fråga](assets/images-sv/chap06/19.png)
 
 3.  **Döp om noden:**
     Klicka på namnet *Fråga* högst upp på noden och ändra det till:
@@ -201,14 +201,14 @@ Vi fortsätter på spåret för "Bärbar dator" (den vänstra vägen). Vi vill v
     Prestandaval
     ```
 
-    ![Döp om noden](assets/images-sv/chap06/21.png)
+    ![Döp om noden](assets/images-sv/chap06/20.png)
 
 4.  I rutan **Ange ett meddelande**, skriv:
     ```text
     För vilken typ av arbete ska datorn användas?
     ```
 
-    ![Fråga meddelande](assets/images-sv/chap06/22.png)
+    ![Fråga meddelande](assets/images-sv/chap06/21.png)
 
 5.  Under **Identifiera**, se till att **Flervalsalternativ** är valt.
 6.  Under **Alternativ för användare**, skapa två alternativ:
@@ -219,21 +219,21 @@ Vi fortsätter på spåret för "Bärbar dator" (den vänstra vägen). Vi vill v
 
     *(Genom att ge specifika alternativ styr vi användaren rätt).*
 
-    ![Alternativ för prestanda](assets/images-sv/chap06/23.png)
+    ![Alternativ för prestanda](assets/images-sv/chap06/22.png)
 
 ### 4. Döpa om Variabeln
 Agenten sparar automatiskt svaret i en variabel som heter `Var1`. Det är ett dåligt namn om vi ska minnas vad det betyder.
 
 1.  Klicka på rutan där det står **Spara användarsvar som** (där namnet `Var1` står).
 
-    ![Döp om variabel](assets/images-sv/chap06/24.png)
+    ![Döp om variabel](assets/images-sv/chap06/23.png)
 
 2.  En ruta öppnas till höger. Ändra **Name** till:
     ```text
     VarPerformance
     ```
 
-    ![Döp om variabel](assets/images-sv/chap06/25.png)
+    ![Döp om variabel](assets/images-sv/chap06/24.png)
 
     *Notera "Användning"-inställningen: Ämne (begränsat omfång) vs Globalt. Vi låter den vara kvar på Ämne eftersom vi inte behöver komma åt det här svaret från andra delar av agenten.*
 
@@ -242,7 +242,7 @@ Agenten sparar automatiskt svaret i en variabel som heter `Var1`. Det är ett d�
 ### 5. Städa upp grenarna (Förenkling)
 När du skapade alternativen skapade Copilot Studio automatiskt tre vägar åt dig:
 
-![Grenar](assets/images-sv/chap06/26.png)
+![Grenar](assets/images-sv/chap06/25.png)
 
 1.  **Villkor** (VarPerformance = Standard)
 
@@ -256,7 +256,7 @@ Detta är onödigt komplicerat för vår övning. Vi förenklar det genom att ta
 2.  Klicka på de **tre prickarna (...)** på den noden och välj **Ta bort**.
     *Nu har du bara två vägar kvar: Standard och Alla andra villkor.*
 
-    ![Grenar](assets/images-sv/chap06/27.png)
+    ![Grenar](assets/images-sv/chap06/26.png)
 
 3.  **Döp om vägarna för tydlighet:**
     * Klicka på pennan på den vänstra grenen (*Villkor*). Döp om den till `Standard`.
@@ -277,14 +277,14 @@ Användaren valde High Performance (eller något annat). Låt oss simulera att d
 1.  Klicka på **plus-tecknet (+)** i den högra grenen (som du döpte till High Performance).
 2.  Välj **Skicka ett meddelande**.
 
-    ![Meddelande](assets/images-sv/chap06/28.png)
+    ![Meddelande](assets/images-sv/chap06/27.png)
 
 3.  Skriv:
     ```text
     Just nu har vi tyvärr lång leveranstid på High Performance-enheter. Jag visar dig listan på våra Standard-modeller som finns för omgående leverans istället.
     ```
 
-    ![Meddelande om slut i lager](assets/images-sv/chap06/29.png)
+    ![Meddelande om slut i lager](assets/images-sv/chap06/28.png)
 
 *Nu är logiken klar: De som väljer Standard går raka vägen. De som väljer Avancerat får ett meddelande. Båda grupperna landar till slut på samma ställe – i SharePoint-söket som vi lägger till härnäst.*
 
@@ -298,23 +298,23 @@ På så sätt fungerar sökningen oavsett om användaren letar efter en Bärbar 
 1.  Scrolla längst ner i ditt flödesschema. Leta upp punkten där linjerna från dina olika vägval kopplas ihop igen.
 2.  Klicka på **plus-tecknet (+)** under sammanslagningen (där trådarna möts).
 
-    ![Lägg till åtgärd](assets/images-sv/chap06/30.png)
+    ![Lägg till åtgärd](assets/images-sv/chap06/29.png)
 
 3.  Välj **Lägg till ett verktyg**
 
-    ![Lägg till verktyg](assets/images-sv/chap06/31.png)
+    ![Lägg till verktyg](assets/images-sv/chap06/30.png)
 
 4.  Välj **Anslutningar**
 
-    ![Anslutningar](assets/images-sv/chap06/32.png)
+    ![Anslutningar](assets/images-sv/chap06/30.1.png)
 
-5.  Sök efter **SharePoint - Hämta objekt**
+5.  Sök efter **SharePoint - Hämta objekten**
 
     ```text
-    Hämta objekt
+    Hämta objekten
     ```
 
-    ![Hämta objekt](assets/images-sv/chap06/33.png)
+    ![Hämta objekt](assets/images-sv/chap06/30.2.png)
 
 ### 2. Skapa anslutningen (Autentisering)
 Om detta är första gången du använder SharePoint i denna agent, måste du godkänna anslutningen.
@@ -329,14 +329,14 @@ Om detta är första gången du använder SharePoint i denna agent, måste du go
 
 När anslutningen är klar, klicka på **Skicka** (eller Lägg till) för att lägga till noden i ditt flöde.
 
-![Connector tillagd](assets/images-sv/chap06/34.png)
+![Connector tillagd](assets/images-sv/chap06/31.png)
 
 ### 3. Konfigurera Egenskaper
 Nu har vi en "dum" SharePoint-nod. Vi måste berätta för den vilken lista den ska läsa ifrån.
 
 1.  Klicka på de **tre prickarna (...)** i högra hörnet på den nya *Hämta objekt*-noden och välj **Egenskaper**.
 
-    ![Tre prickar](assets/images-sv/chap06/35.png)
+    ![Tre prickar](assets/images-sv/chap06/32.png)
 
 2.  En sidomeny öppnas. Se till att du är på fliken **Initiering**.
 
@@ -346,19 +346,19 @@ Nu har vi en "dum" SharePoint-nod. Vi måste berätta för den vilken lista den 
     ```
     *(Detta hjälper agenten förstå vad verktyget gör).*
 
-    ![Egenskapspanel](assets/images-sv/chap06/36.png)
+    ![Egenskapspanel](assets/images-sv/chap06/33.png)
 
 4.  Hoppa över "Felhantering". Gå direkt till sektionen **Indata**.
 
-    ![Indata](assets/images-sv/chap06/37.png)
+    ![Indata](assets/images-sv/chap06/34.png)
 
-5.  **Webbplatsadress:** Välj din SharePoint-sida (**IT Support**) i listan.
+5.  **Webbplatsadress:** Välj din SharePoint-sida (**IT Supporten**) i listan.
 
-    ![Välj webbplats](assets/images-sv/chap06/38.png)
+    ![Välj webbplats](assets/images-sv/chap06/35.png)
 
-6.  **Listnamn:** Välj din lista (**Devices**).
+6.  **Listnamn:** Välj din lista (**Enheter**).
 
-    ![Välj lista](assets/images-sv/chap06/39.png)
+    ![Välj lista](assets/images-sv/chap06/36.png)
 
 ### 4. Filtrera listan (Power Fx)
 Om vi inte gör något nu, kommer agenten hämta *allt*. Vi vill bara ha **Tillgängliga** enheter av rätt typ (t.ex. **Bärbar dator**).
@@ -367,15 +367,15 @@ Här måste vi använda **Power Fx**, som är Microsofts formelspråk.
 
 1.  Hitta fältet **Filterfråga** under *Avancerade parametrar*.
 
-    ![Filterfråga](assets/images-sv/chap06/40.png)
+    ![Filterfråga](assets/images-sv/chap06/37.png)
 
 2.  Klicka på de **tre prickarna (...)** vid fältet och välj **Formel**.
 
-    ![Tre prickar](assets/images-sv/chap06/41.png)
+    ![Tre prickar](assets/images-sv/chap06/38.png)
 
 3.  Klicka på den lilla pilen (vinkeln) för att expandera formelfältet så du ser bättre.
 
-    ![Expandera formel](assets/images-sv/chap06/42.png)
+    ![Expandera formel](assets/images-sv/chap06/39.png)
 
 4.  Kopiera och klistra in exakt denna kod:
     ```powerfx
@@ -390,21 +390,21 @@ Här måste vi använda **Power Fx**, som är Microsofts formelspråk.
 
 5.  Kontrollera att du har en liten **grön bock** brevid formelfältet. Det betyder att koden är korrekt.
 
-    ![Grön bock formel](assets/images-sv/chap06/43.png)
+    ![Grön bock formel](assets/images-sv/chap06/40.png)
 
 6.  Klicka **Infoga**.
 
 7.  (Valfritt men bra) Scrolla ner till **Begränsa kolumner efter vy**. Välj **Alla objekt**.
     *Ibland kan SharePoint gömma kolumner om man inte väljer en vy. Detta garanterar att vi får all data. Kan behöva uppdateras för att få upp alternativen.*
 
-    ![Välj vy](assets/images-sv/chap06/44.png)
+    ![Välj vy](assets/images-sv/chap06/41.png)
 
 ### 5. Spara resultatet (Utdata)
 Nu har vi ställt frågan till SharePoint. Nu ska vi ta hand om svaret.
 
 1.  I Egenskapspanelen, klicka på fliken **Utdata**.
 
-    ![Utdata-flik](assets/images-sv/chap06/45.png)
+    ![Utdata-flik](assets/images-sv/chap06/42.png)
 
 2.  Klicka på variabelnamnet (som troligen heter *HämtaObjekt*).
 3.  Döp om den till:
@@ -412,12 +412,12 @@ Nu har vi ställt frågan till SharePoint. Nu ska vi ta hand om svaret.
     VarDevices
     ```
 
-    ![Utdatainställningar](assets/images-sv/chap06/46.png)
+    ![Utdatainställningar](assets/images-sv/chap06/43.png)
 
 4.  Ändra **Användning** till **Globalt**.
     *Varför? För att vi vill att denna lista ska vara tillgänglig för hela agenten, ifall vi vill använda den i andra ämnen senare.*
 
-    ![Utdatainställningar](assets/images-sv/chap06/47.png)
+    ![Utdatainställningar](assets/images-sv/chap06/44.png)
 
 5.  Stäng Egenskapspanelen på krysset (X).
 
@@ -431,15 +431,15 @@ Men minns du att vi i början av ämnet (steg 6.3) skapade en specifik utdatavar
 1.  Lägg till en ny nod under din SharePoint-nod.
 2.  Välj **Variabelhantering** -> **Ange ett variabelvärde**.
 
-    ![Ange variabel](assets/images-sv/chap06/48.png)
+    ![Ange variabel](assets/images-sv/chap06/45.png)
 
 3.  Under **Ange variabel**, välj ämnets utdatavariabel: `VarAvailableDevices`.
 
-    ![Ange variabel](assets/images-sv/chap06/49.png)
+    ![Ange variabel](assets/images-sv/chap06/46.png)
 
 4.  Under **Till värde**, klicka på pilen/ikonen och välj **Formel**.
 
-    ![Ange variabel](assets/images-sv/chap06/50.png)
+    ![Ange variabel](assets/images-sv/chap06/47.png)
 
 5.  Skriv in följande formel:
     ```powerfx
@@ -449,7 +449,7 @@ Men minns du att vi i början av ämnet (steg 6.3) skapade en specifik utdatavar
     **Varför .value?**
     SharePoint skickar tillbaka ett paket med massor av info. Själva listan med rader (datorerna) ligger inuti en egenskap som heter `value`. Vi måste "packa upp" den för att vår tabell ska bli rätt.
 
-    ![Formel för value](assets/images-sv/chap06/51.png)
+    ![Formel för value](assets/images-sv/chap06/48.png)
 
 6.  Klicka **Infoga**.
 7.  **Spara** ditt ämne (Spara högst upp till höger).
@@ -462,11 +462,11 @@ Nu är ämnet klart! Men agenten vet inte om att det finns eller hur det ska anv
 
 1.  Gå till fliken **Översikt** högst upp.
 
-    ![Översikt-flik](assets/images-sv/chap06/52.png)
+    ![Översikt-flik](assets/images-sv/chap06/49.png)
 
 2.  Vid **Instruktioner**, klicka på **Redigera**.
 
-    ![Redigera instruktioner](assets/images-sv/chap06/53.png)
+    ![Redigera instruktioner](assets/images-sv/chap06/50.png)
 
 3.  Lägg till följande rad i instruktionerna (gärna sist i listan):
 
