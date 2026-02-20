@@ -37,7 +37,7 @@ Först måste agenten få en ny utlösare som lyssnar på inkommande mejl.
 6.  **Konfigurera utlösaren:**
     Idealiskt sett vill man kanske inte att agenten ska vakna av alla olika mejl, men i denna labb vill vi se agentens förmåga att filtrera och plocka upp relevanta mejl utan fördefinierade filter. Tanken är att denna ska agera som företagets centrala IT support. Därför konfigurerar vi den på följande vis:
 
-    * **Mapp:** Klicka på mapp-ikonen och välj **Inkorgen**.
+    * **Mapp:** Klicka på mapp-ikonen och välj **Inkorg**.
 
     ![Välj inkorg](assets/images-sv/chap10/4.png)
 
