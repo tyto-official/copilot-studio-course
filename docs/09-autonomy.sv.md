@@ -33,7 +33,7 @@ Vi börjar med att tala om för agenten vad den ska lyssna efter.
     ![Konfigurera anslutning](assets/images-sv/chap09/5.png)
 
 6.  **Konfigurera Utlösaren:**
-    * **Webbplatsadress:** Klicka på dropdown-menyn och välj **IT Support**. (Om du inte ser den, klicka på *Ange anpassat värde* och klistra in URL:en, eller sök).
+    * **Webbplatsadress:** Klicka på dropdown-menyn och välj **IT Supporten**. (Om du inte ser den, klicka på *Lägg till ett anpassat objekt* och klistra in URL:en, eller sök).
 
     ![Välj webbplats](assets/images-sv/chap09/6.png)
 
@@ -82,7 +82,7 @@ Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicer
 4.  **Redigera meddelandet:**
     * Klicka i rutan **Body/Message**.
     * Ta bort texten `{Body}` som ligger där.
-    * Skriv ett snedstreck `/` och välj **Insert Expression** (fx-ikonen).
+    * Skriv ett snedstreck `/` och välj **Infoga uttryck** (fx-ikonen).
 
     ![Insert Expression](assets/images-sv/chap09/11.png)
 
@@ -141,7 +141,7 @@ Nu har agenten en utlösare, men den behöver ett verktyg för att kunna skicka 
 5.  **Konfigurera verktyget:**
     * **Namn:**
       ```text
-      Acknowledge SharePoint ticket
+      Bekräfta SharePoint-ärende
       ```
     * **Beskrivning:**
       ```text
