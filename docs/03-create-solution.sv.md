@@ -35,18 +35,18 @@ En "Publisher" är din signatur. Det visar vem som byggt agenten och lägger til
 ![Skapa ny utgivare](assets/images-sv/chap03/3.png)
 
 3. Fyll i följande uppgifter under fliken **Egenskaper**:
-    * **Visningsnamn:** `Lab Agent `
-    * **Namn:** `LabAgent` *(Inga mellanslag)*
-    * **Prefix:** `alab` *(Detta kommer stå framför alla dina databasnamn, t.ex. alab_minTabell)*
-    * **Valalternativprefix:** Ändra det slumpade numret till `10000`.
-      *(Detta styr vilka sifferkoder dina valalternativ får i databasen. 10000 är snyggt och enkelt).*
+    * **Visningsnamn:** Använd dina initialer, t.ex. `Agent JT`
+    * **Namn:** Samma utan mellanslag, t.ex. `AgentJT` *(Inga mellanslag)*
+    * **Prefix:** Dina initialer i gemener, t.ex. `jt` *(Detta kommer stå framför alla dina databasnamn, t.ex. jt_minTabell)*
+    * **Valalternativprefix:** Den slumpade siffran som redan står där fungerar bra. Du kan även ändra den till `10000` om du vill ha ett renare nummer.
+      *(Detta styr vilka sifferkoder dina valalternativ får i databasen).*
 
 4. Du behöver **inte** fylla i något under fliken *Kontakt*.
 5. Klicka på **Spara**.
 
 ![Spara utgivare](assets/images-sv/chap03/4.png)
 
-*(Rutan stängs och du kommer tillbaka till Ny lösning-rutan. Din nya utgivare 'Lab Agent' ska nu vara vald).*
+*(Rutan stängs och du kommer tillbaka till Ny lösning-rutan. Din nya utgivare ska nu vara vald).*
 
 ---
 
@@ -54,9 +54,9 @@ En "Publisher" är din signatur. Det visar vem som byggt agenten och lägger til
 
 Nu skapar vi själva lådan där vår agent ska bo.
 
-1. **Visningsnamn:** `IT Helpdesk Agent`
-2. **Namn:** `ITHelpdeskAgent` (fylls i automatiskt)
-3. **Utgivare:** Välj den du nyss skapade (`Lab Agent`).
+1. **Visningsnamn:** `IT Support Agent`
+2. **Namn:** `ITSupportAgent` (fylls i automatiskt)
+3. **Utgivare:** Välj den du nyss skapade (`Agent JT`).
 4. **Version:** `1.0.0.0` (Låt det vara).
 
 **Viktigt steg:**

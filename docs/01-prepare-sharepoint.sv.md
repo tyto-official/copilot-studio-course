@@ -101,7 +101,7 @@ Vi navigerar dit direkt från Power Apps.
 
 ---
 
-## Steg 2: Välj mallen "IT Support"
+## Steg 2: Välj mallen "IT Supportavdelning"
 
 Nu ska vi välja rätt mall.
 
@@ -110,7 +110,7 @@ Nu ska vi välja rätt mall.
     ![Välj Gruppwebbplats](assets/images-sv/chap01/10.png)
 
 2. Klicka på fliken **Mallar** högst upp.
-3. Scrolla ner och klicka på rutan för **IT Support**.
+3. Scrolla ner och klicka på rutan för **IT Supportavdelning**.
 
     ![Välj mallen IT Support i galleriet](assets/images-sv/chap01/11.png)
 
@@ -126,7 +126,7 @@ Nu ska vi välja rätt mall.
 
 Nu ska vi döpa sajten och välja språk.
 
-1. **Webbplatsnamn:** Döp den till `IT Support`.
+1. **Webbplatsnamn:** Döp den till `IT Supporten`.
 2. **Webbplatsbeskrivning:** (Valfritt) Skriv en kort beskrivning om du vill.
 3. Klicka på knappen **Nästa**.
 
@@ -151,11 +151,11 @@ Nu ska vi döpa sajten och välja språk.
 
 ---
 
-## Steg 4: Anpassa listan "Devices"
+## Steg 4: Anpassa listan "Enheter"
 
-Mallen har skapat en lista åt oss som heter **Devices**, men vi behöver lägga till bilder på produkterna.
+Mallen har skapat en lista åt oss som heter **Enheter**, men vi behöver lägga till bilder på produkterna.
 
-1. På din nya sajt, klicka på fliken **Devices** i toppmenyn (eller under "Webbplatsinnehåll").
+1. På din nya sajt, klicka på fliken **Enheter** i toppmenyn (eller under "Webbplatsinnehåll").
 
     ![Hitta listan Devices](assets/images-sv/chap01/16.png)
 
@@ -167,7 +167,7 @@ Mallen har skapat en lista åt oss som heter **Devices**, men vi behöver lägga
 
     ![Välj datatypen Hyperlänk](assets/images-sv/chap01/18.png)
 
-4. Döp kolumnen till `Image`.
+4. Döp kolumnen till `Bild`.
 5. Klicka på **Spara**.
 
     ![Döp kolumnen till Image och spara](assets/images-sv/chap01/19.png)
@@ -204,12 +204,12 @@ Nu ska vi fylla listan med 4 produkter.
 * **Status:** Available
 * **Tillverkare:** Microsoft
 * **Modell:** Surface Laptop 13
-* **Enhetstyp:** Laptop
+* **Resurstyp:** Laptop
 * **Färg:** Silver
 * **Serienummer:** 1
-* **Pris:** 1500
-* **Ordernummer:** 10001
-* **Image:**
+* **Inköpspris:** 1500
+* **Beställningsnr:** 10001
+* **Bild:**
 `https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-laptop-13.png`
 
 ---
@@ -221,12 +221,12 @@ Nu ska vi fylla listan med 4 produkter.
 * **Status:** Available
 * **Tillverkare:** Microsoft
 * **Modell:** Surface Laptop 15
-* **Enhetstyp:** Laptop
+* **Resurstyp:** Laptop
 * **Färg:** Black
 * **Serienummer:** 2
-* **Pris:** 2000
-* **Ordernummer:** 10002
-* **Image:**
+* **Inköpspris:** 2000
+* **Beställningsnr:** 10002
+* **Bild:**
 `https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-laptop-15.png`
 
 ---
@@ -238,12 +238,12 @@ Nu ska vi fylla listan med 4 produkter.
 * **Status:** Available
 * **Tillverkare:** Microsoft
 * **Modell:** Surface Studio
-* **Enhetstyp:** Desktop
+* **Resurstyp:** Desktop
 * **Färg:** Silver
 * **Serienummer:** 3
-* **Pris:** 2500
-* **Ordernummer:** 10003
-* **Image:**
+* **Inköpspris:** 2500
+* **Beställningsnr:** 10003
+* **Bild:**
 `https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-studio.png`
 
 ---
@@ -255,12 +255,12 @@ Nu ska vi fylla listan med 4 produkter.
 * **Status:** Available
 * **Tillverkare:** Microsoft
 * **Modell:** Surface Pro
-* **Enhetstyp:** Tablet
+* **Resurstyp:** Tablet
 * **Färg:** Pink
 * **Serienummer:** 4
-* **Pris:** 1000
-* **Ordernummer:** 10004
-* **Image:**
+* **Inköpspris:** 1000
+* **Beställningsnr:** 10004
+* **Bild:**
 `https://tyto-official.github.io/copilot-studio-course/assets/images/products/surface-pro-12.png`
 
 !!! success "Klart!"

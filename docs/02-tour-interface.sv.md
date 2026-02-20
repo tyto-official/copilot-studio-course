@@ -40,8 +40,8 @@ Under chattrutan har du tre genvägar för att börja från noll (Börja bygga f
 ![Skapa](assets/images-sv/chap02/5.png)
 
 1. **Skapa arbetsflöde:** Skapa en automatiserad process.
-2. **Skapa agent:** Skapa en AI-agent.
-3. **Datoranvändande agent:** En agent som kan styra en dator.
+2. **Skapa en agent:** Skapa en AI-agent.
+3. **Skapa datorbaserad agent:** En agent som kan styra en dator.
 
 Längre ner på sidan ser du dina senast uppdaterade agenter och länkar till dokumentation.
 
@@ -49,12 +49,12 @@ Längre ner på sidan ser du dina senast uppdaterade agenter och länkar till do
 
 ## Steg 3: Navigera i vänstermenyn
 
-Tittar vi till vänster ser vi huvudmenyn. De viktigaste delarna är **Agenter**, **Flöden** och **Verktyg**.
+Tittar vi till vänster ser vi huvudmenyn. De viktigaste delarna är **Agenter (Handläggare)**, **Flöden** och **Verktyg**.
 
 ![Vänstermenyn](assets/images-sv/chap02/5.5.png)
 
 ### Agenter
-Klicka på **Agenter** i menyn.
+Klicka på **Handläggare** i menyn.
 
 ![Agenter](assets/images-sv/chap02/6.png)
 
@@ -88,7 +88,6 @@ Här ser du de olika typerna av verktyg:
 * **Agentflöde:** Här använder vi ett flöde som ett verktyg. Eftersom agentflöden är deterministiska är detta perfekt när agenten behöver utföra något strikt.
 * **Anpassad anslutning:** Kopplingar till externa tjänster och datakällor (utanför Microsoft 365).
 * **Rest API:** Detta är en mycket flexibel lösning som kan användas för att hämta data från olika system.
-* **MCP (Model Context Protocol):** Detta är en ny standard. Man kan säga att det är **"USB-C för Generativ AI"**. Det är ett standardiserat sätt för AI-modeller att ansluta till externa källor för att använda och dela data säkert och enkelt.
 
 ---
 
