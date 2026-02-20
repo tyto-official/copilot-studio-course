@@ -2,7 +2,7 @@
 
 Nu har vi gjort klart all nödvändig setup. Vi har datan, vi har miljön och vi har vår Solution. Nu är det dags att börja bygga!
 
-Vi ska bygga en **IT Support Helper**. I början kommer den fokusera på hårdvara (det vi lade i SharePoint), men tanken är att den ska växa och kunna hantera alla möjliga IT-frågor framöver.
+Vi ska bygga en **IT Support agent**. I början kommer den fokusera på hårdvara (det vi lade i SharePoint), men tanken är att den ska växa och kunna hantera alla möjliga IT-frågor framöver.
 
 ---
 
@@ -16,7 +16,7 @@ Vi rekommenderar att du använder huvudmenyn (den vanliga vägen), men för kän
     Om du vill vara 100% säker på var agenten hamnar, eller om du inte använder "Föredragen lösning"-funktionen, gör du så här:
 
     **1. Gå in i din Solution**
-    Navigera till **Lösningar** i menyn och klicka på din lösning (`IT Helpdesk Agent`).
+    Navigera till **Lösningar** i menyn och klicka på din lösning (`IT Support Agent`).
     
     ![Lista med lösningar](assets/images-sv/chap04/1.png)
 
@@ -59,7 +59,7 @@ Vi kommer att välja alternativ 3: **Skapa tom agent**.
 **Gör så här:**
 
 1. Om du varit inne i Lösningar nyss: Klicka på **Copilot Studio**-loggan uppe till vänster.
-2. Klicka på **Agenter** i vänstermenyn.
+2. Klicka på **Handläggare** i vänstermenyn.
 3. Klicka på **+ Skapa tom agent** (uppe i högra hörnet).
 
     ![Klicka på Skapa tom agent](assets/images-sv/chap04/6.png)
@@ -93,7 +93,7 @@ Till höger ser du **Testa din agent**. Det är din sandlåda där du kan chatta
 
 Nu ska vi ge agenten dess identitet. Fyll i följande i fälten på skärmen:
 
-1.  **Namn:** `IT Support Helper`
+1.  **Namn:** `IT Support agent`
 2.  **Beskrivning:**
     ```text
     En professionell IT-supportagent som hjälper användare med frågor om hårdvara och nätverk osv.
@@ -137,7 +137,7 @@ Vi börjar med att kolla att den förstår sin roll.
     > *Hej, vem är du?*
 
 2. **Förväntat resultat:**
-    Agenten ska presentera sig som **IT Support Helper** (eller det namn du valde) och erbjuda hjälp. Den ska vara trevlig och professionell.
+    Agenten ska presentera sig som **IT Support agent** (eller det namn du valde) och erbjuda hjälp. Den ska vara trevlig och professionell.
 
 ![Agenten hälsar](assets/images-sv/chap04/9.png)
 

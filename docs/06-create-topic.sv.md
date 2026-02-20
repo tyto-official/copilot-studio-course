@@ -154,7 +154,8 @@ Vi ska börja med att skapa ett vägskäl. Om användaren vill ha en "Bärbar da
     * **Lägg till ett villkor:** Skapar vägval (Om X, gör Y). Som en "If-sats".
     * **Variabelhantering:** För att skapa eller ändra variabler manuellt.
     * **Ämneshantering:** För att hoppa till andra ämnen eller avsluta samtalet.
-    * **Anropa en åtgärd (Lägg till ett verktyg):** Här hittar vi våra "superkrafter" som Power Automate och SharePoint.
+    * **Lägg till ett verktyg:** Här hittar vi våra "superkrafter" som Power Automate och SharePoint.
+    * **Lägg till en agent:** Här kan vi koppla ihop vår agent med andra agenter.
     * **Avancerat:** Avancerade funktioner som HTTP-anrop och inloggning.
 
 3.  Välj **Lägg till ett villkor**.

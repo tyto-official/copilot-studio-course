@@ -56,7 +56,7 @@ Du får ta med din arbetsdator hem. För att säkerställa att datorn har de sen
 
 Nu ska vi lära agenten innehållet i filen.
 
-1. Se till att du är inne i din agent (**IT Support Helper**).
+1. Se till att du är inne i din agent (**IT Support agent**).
 2. Leta upp sektionen **Kunskap** (oftast mitt på sidan eller under fliken Kunskap) och klicka på **Lägg till kunskap**.
 
     ![Meny för att lägga till kunskap](assets/images-sv/chap05/1.png)
