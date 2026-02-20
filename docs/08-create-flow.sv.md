@@ -14,9 +14,9 @@ Detta Agentflöde ska:
 
 ## 8.1 Skapa ett nytt Agentflöde
 
-Vi börjar inifrån ditt ämne **Beställ enhet** som vi jobbade med sist.
+Vi börjar inifrån ditt ämne **Begär enhet** som vi jobbade med sist.
 
-1.  Gå till **Ämnen** och öppna **Beställ enhet**.
+1.  Gå till **Ämnen** och öppna **Begär enhet**.
 2.  Scrolla längst ner i flödet (under `Fråga med adaptivt kort`).
 3.  Klicka på **plus-tecknet (+)**.
 4.  Välj **Lägg till ett verktyg** -> **Nytt agentflöde**.
@@ -34,7 +34,7 @@ Väl inne i **Agentflöden** kan vi se två noder.
 
 * Den övre noden: **När en agent anropar flödet**. Här bestämmer vi vad agenten ska skicka *in* i processen.
 
-* Den nedre noden: **Svara agenten**. Här bestämmer vi vad som skickas *tillbaka* till agenten.
+* Den nedre noden: **Respond to the agent**. Här bestämmer vi vad som skickas *tillbaka* till agenten.
 
 Vi börjar med att definiera indata. Vi behöver tre saker: ID på datorn, vem användaren är, och eventuella kommentarer.
 
@@ -90,17 +90,17 @@ Vi börjar med att definiera indata. Vi behöver tre saker: ID på datorn, vem a
 Agenten skickar bara ett ID (t.ex. "4"). För att mejlet ska bli snyggt måste vi slå upp vad "4" är för dator (Modell, Pris, etc).
 
 1.  Klicka på **plus-tecknet (+)** under utlösare-noden.
-2.  Sök efter **Hämta objekt** och välj **Hämta objekt (SharePoint)**.
-    *(Obs: Välj "Hämta objekt" i singular, inte "Hämta objekt" i plural, eftersom vi bara ska hämta en specifik rad).*
+2.  Sök efter **Hämta objektet** och välj **Hämta objektet (SharePoint)**.
+    *(Obs: Välj "Hämta objektet" i singular och bestämd form, inte "Hämta objekten" i plural, eftersom vi bara ska hämta en specifik rad).*
 
     ![Hämta objekt-åtgärd](assets/images-sv/chap08/9.png)
 
 3.  **Konfigurera steget:**
-    * **Webbplatsadress:** Välj din IT Support-sida.
+    * **Webbplatsadress:** Välj din IT Supporten-sida.
 
     ![Webbplatsadress](assets/images-sv/chap08/10.png)
 
-    * **Listnamn:** Välj listan **Devices**.
+    * **Listnamn:** Välj listan **Enheter**.
 
     ![Listnamn](assets/images-sv/chap08/11.png)
 
@@ -135,7 +135,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
 1.  Klicka på **plus-tecknet (+)** under *Hämta objekt*.
 2.  Sök efter:
     ```text
-    Skicka ett e-postmeddelande
+    Skicka ett e-postmeddelande (V2)
     ```
     ![Skicka ett e-postmeddelande](assets/images-sv/chap08/17.png)
 
@@ -147,12 +147,14 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     Skicka mejl till IT
     ```
 
+    ![Skicka mejl till IT](assets/images-sv/chap08/18.png)
+
 4.  **Konfigurera mejlet:**
     Vi ska nu bygga mailet med hjälp av **Dynamiskt innehåll** (värden som hämtas från tidigare steg).
 
     * **Till:** Klicka på **Ange anpassat värde** och skriv in **din egen e-postadress**.
 
-    ![Till-fält](assets/images-sv/chap08/18.png)
+    ![Till-fält](assets/images-sv/chap08/19.png)
 
     *(I verkligheten hade detta gått till en funktionsbrevlåda för IT).*
 
@@ -160,7 +162,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     ```text
     Typ av förfrågan: Ny enhet
     ```
-    ![Ämnesfält](assets/images-sv/chap08/19.png)
+    ![Ämnesfält](assets/images-sv/chap08/20.png)
 
     * **Brödtext:** Här bygger vi meddelandet. Kopiera först in grundtexten nedan:
 
@@ -176,7 +178,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     Kommentar från användaren:
     ```
 
-    ![E-postbrödtext](assets/images-sv/chap08/20.png)
+    ![E-postbrödtext](assets/images-sv/chap08/21.png)
 
     **Nu ska vi fylla i hålen med data:**
 
@@ -186,7 +188,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
 
     * Klicka på **blixt-ikonen** (Dynamiskt innehåll) eller `fx`.
     
-    ![Dynamiskt innehåll-ikon](assets/images-sv/chap08/21.png)
+    ![Dynamiskt innehåll-ikon](assets/images-sv/chap08/22.png)
     
     * Sök efter `User` och välj den från listan (under "När en agent anropar flödet").
     
@@ -194,7 +196,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     User
     ```
     
-    ![Välj User](assets/images-sv/chap08/22.png)
+    ![Välj User](assets/images-sv/chap08/23.png)
 
     **2. Lägg till Enhet:**
 
@@ -208,7 +210,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     Model
     ```
     
-    ![Välj Model](assets/images-sv/chap08/23.png)
+    ![Välj Model](assets/images-sv/chap08/24.png)
 
     **3. Lägg till Pris:**
 
@@ -222,7 +224,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     Price
     ```
     
-    ![Välj Price](assets/images-sv/chap08/24.png)
+    ![Välj Price](assets/images-sv/chap08/25.png)
 
     **4. Lägg till Kommentar (Avancerat - Hantera tomma svar):**
 
@@ -239,7 +241,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
       ```
       *Detta startar en "Om"-sats som kollar "Om tomt...".*
 
-    ![Välj AdditionalComments](assets/images-sv/chap08/25.png)
+    ![Välj AdditionalComments](assets/images-sv/chap08/26.png)
 
     * Klicka nu på fliken **Dynamiskt innehåll**. Sök efter `AdditionalComments` och klicka på den.
 
@@ -247,7 +249,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     AdditionalComments
     ``` 
 
-    ![Välj AdditionalComments](assets/images-sv/chap08/26.png)
+    ![Välj AdditionalComments](assets/images-sv/chap08/27.png)
 
       *Din formel fylls nu på med referensen till indatafältet.*
 
@@ -259,7 +261,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
 
       *Detta betyder: Om det är tomt -> Skriv 'Ingen kommentar'. Nu ska vi ange vad som händer om det INTE är tomt (Else).*
 
-    ![Välj AdditionalComments](assets/images-sv/chap08/27.png)
+    ![Välj AdditionalComments](assets/images-sv/chap08/28.png)
 
     * Klicka på fliken **Dynamiskt innehåll** igen. Sök upp och välj `AdditionalComments` en gång till.
 
@@ -268,7 +270,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
     ```
     * Klicka på **Lägg till** (eller OK).
 
-    ![Uttryckslogik](assets/images-sv/chap08/28.png)
+    ![Uttryckslogik](assets/images-sv/chap08/29.png)
 
     *Nu är mejlet klart och dynamiskt!*
 
@@ -281,11 +283,11 @@ Slutligen måste vårt Agentflöde berätta för agenten att allt gick bra. Vi s
 1.  Klicka på sista noden **Svara agenten**.
 2.  Klicka **+ Lägg till utdata**.
 
-    ![Lägg till utdata](assets/images-sv/chap08/29.png)
+    ![Lägg till utdata](assets/images-sv/chap08/30.png)
 
 3.  Klicka på **Text**.
 
-    ![Lägg till utdata Text](assets/images-sv/chap08/30.png)
+    ![Lägg till utdata Text](assets/images-sv/chap08/31.png)
 
 4.  Döp utdatan till:
     ```text
@@ -294,7 +296,7 @@ Slutligen måste vårt Agentflöde berätta för agenten att allt gick bra. Vi s
 
 5.  I värdefältet, klicka på **blixt-ikonen** (Dynamiskt innehåll) eller `fx`.
 
-    ![Lägg till utdatavärde](assets/images-sv/chap08/31.png)
+    ![Lägg till utdatavärde](assets/images-sv/chap08/32.png)
 
 6.  Sök efter `Model` (från steget *Hämta objekt*) och välj den.
 
@@ -302,7 +304,7 @@ Slutligen måste vårt Agentflöde berätta för agenten att allt gick bra. Vi s
     Model
     ```
 
-    ![Välj ModelValue](assets/images-sv/chap08/32.png)
+    ![Välj ModelValue](assets/images-sv/chap08/33.png)
 
 ---
 
@@ -312,15 +314,15 @@ Nu ska vi spara arbetet, namnge flödet korrekt och publicera det.
 
 1.  Längst upp till vänster, klicka på namnet **Spara utkast**.
 
-    ![Spara utkast](assets/images-sv/chap08/33.png)
+    ![Spara utkast](assets/images-sv/chap08/34.png)
 
 2.  Klicka nu på **Översikt** (till vänster om namnet).
 
-    ![Översikt](assets/images-sv/chap08/34.png)
+    ![Översikt](assets/images-sv/chap08/35.png)
 
 3.  Väl inne i översikten, klicka på **Redigera** under *Detaljer*.
 
-    ![Redigera detaljer](assets/images-sv/chap08/35.png)
+    ![Redigera detaljer](assets/images-sv/chap08/36.png)
 
 4.  I fältet *Flödesnamn*, skriv in:
     ```text
@@ -334,12 +336,12 @@ Nu ska vi spara arbetet, namnge flödet korrekt och publicera det.
 
 6.  Klicka på **Spara**.
 
-    ![Spara detaljer](assets/images-sv/chap08/36.png)
+    ![Spara detaljer](assets/images-sv/chap08/37.png)
 
 7.  Viktigt: För att flödet ska fungera måste det publiceras. Klicka på **Publicera** i verktygsfältet (oftast uppe till vänster).
     *(Ibland måste du gå in i Designer-läget igen för att se Publicera-knappen).*
 
-    ![Publicera flöde](assets/images-sv/chap08/37.png)
+    ![Publicera flöde](assets/images-sv/chap08/38.png)
 
 ---
 
@@ -350,26 +352,26 @@ Nu måste vi gå tillbaka till Copilot Studio och koppla in vårt nya Agentflöd
 1.  **Navigera till ämnet *Beställ enhet*:**
     * Gå tillbaka till Agent-vyn genom att klicka på **Agenter** i menyn till vänster.
 
-    ![Agenter-meny](assets/images-sv/chap08/38.png)
+    ![Agenter-meny](assets/images-sv/chap08/39.png)
 
     * Välj din agent **IT Support Helper**.
 
-    ![IT Support Helper](assets/images-sv/chap08/39.png)
+    ![IT Support Helper](assets/images-sv/chap08/40.png)
 
     * Gå till fliken **Ämnen** i menyn högst upp.
 
-    ![Ämnen-flik](assets/images-sv/chap08/40.png)
+    ![Ämnen-flik](assets/images-sv/chap08/41.png)
 
     * Klicka på **Beställ enhet**.
 
-    ![Beställ enhet-ämne](assets/images-sv/chap08/41.png)
+    ![Beställ enhet-ämne](assets/images-sv/chap08/42.png)
 
 2.  **Lägg till flödet:**
     * Gå längst ner i flödet, under det adaptiva kortet.
     * Klicka på **plus-tecknet (+) -> Lägg till ett verktyg**.
     * Välj ditt nyligen skapade flöde: **Skicka e-post med enhetsförfrågan**.
 
-    ![Lägg till anpassat flöde](assets/images-sv/chap08/42.png)
+    ![Lägg till anpassat flöde](assets/images-sv/chap08/43.png)
 
 3.  **Mappa indata:**
     Nu frågar agenten: "Vad ska jag stoppa in i de tre indatahål du byggde?"
@@ -378,14 +380,14 @@ Nu måste vi gå tillbaka till Copilot Studio och koppla in vårt nya Agentflöd
     * Klicka på pilen `>` (eller rutan) bredvid *DeviceSharePointId*.
     * Välj variabeln `deviceSelectionId` (den kommer från ditt adaptiva kort).
 
-    ![Mappa Device ID](assets/images-sv/chap08/43.png)
+    ![Mappa Device ID](assets/images-sv/chap08/44.png)
 
     **User:**
     * Klicka på pilen `>` bredvid *User*.
     * Navigera till fliken **System**.
     * Sök efter och välj `User.DisplayName`.
 
-    ![Mappa User](assets/images-sv/chap08/44.png)
+    ![Mappa User](assets/images-sv/chap08/45.png)
 
     **AdditionalComments (Avancerat):**
     Vi vill hantera fallet att användaren inte skrev någon kommentar alls. Om vi skickar in ett tomt värde kan det bli fel i vissa system, så vi använder en formel för att skicka en tom textsträng ("") istället för *null* om det saknas.
@@ -393,7 +395,7 @@ Nu måste vi gå tillbaka till Copilot Studio och koppla in vårt nya Agentflöd
     * Klicka på pilen `>` bredvid *AdditionalComments*.
     * Välj fliken **Formel** och klicka på expandera-ikonen (pilen) för att få mer plats.
 
-    ![Mappa kommentarer](assets/images-sv/chap08/45.png)
+    ![Mappa kommentarer](assets/images-sv/chap08/46.png)
 
     * Skriv in följande formel:
     ```powerfx
@@ -401,7 +403,7 @@ Nu måste vi gå tillbaka till Copilot Studio och koppla in vårt nya Agentflöd
     ```
     * Kontrollera att du har en grön bock (inget syntaxfel). Klicka sedan på **Infoga**.
 
-    ![Infoga formel](assets/images-sv/chap08/46.png)
+    ![Infoga formel](assets/images-sv/chap08/47.png)
 
     !!! info "Varför gjorde vi detta?"
         Formeln betyder: "Om variabeln *commentsId* är blank (tom), skicka en tom textsträng. Annars, skicka innehållet i *commentsId*." Detta gör flödet mer robust.
@@ -414,7 +416,7 @@ Vi ska nu lägga till en nod för att ge användaren en tydlig och personlig bek
 
 1.  Klicka på **plus-tecknet (+)** under din Agentflöde-nod och välj **Skicka ett meddelande**.
 
-    ![Lägg till meddelande](assets/images-sv/chap08/47.png)
+    ![Lägg till meddelande](assets/images-sv/chap08/48.png)
 
 2.  Vi ska nu bygga meddelandet steg för steg för att få in dynamiska värden:
 
@@ -427,7 +429,7 @@ Vi ska nu lägga till en nod för att ge användaren en tydlig och personlig bek
     * Klicka på ikonen **{X} (Infoga variabel)**.
     * Välj fliken **System** och sök efter `User`. Välj **User.DisplayName**.
 
-    ![Infoga användarnamn](assets/images-sv/chap08/48.png)
+    ![Infoga användarnamn](assets/images-sv/chap08/49.png)
 
     * Fortsätt skriva texten:
     ```text
@@ -438,7 +440,7 @@ Vi ska nu lägga till en nod för att ge användaren en tydlig och personlig bek
     * Välj fliken **Anpassat** och sök efter `ModelValue`. Välj **ModelValue**.
     *(Detta är variabeln vi fick tillbaka från vårt Agentflöde).*
 
-    ![Infoga modell](assets/images-sv/chap08/49.png)
+    ![Infoga modell](assets/images-sv/chap08/50.png)
 
     * Avsluta meningen med att skriva:
     ```text
@@ -449,7 +451,7 @@ Vi ska nu lägga till en nod för att ge användaren en tydlig och personlig bek
 
     > Tack {User.DisplayName}. Din valda enhet, {ModelValue}, har skickats in och kommer att granskas av IT-ansvarig.
 
-    ![Färdigt meddelande](assets/images-sv/chap08/50.png)
+    ![Färdigt meddelande](assets/images-sv/chap08/51.png)
 
 !!! success "Snyggt!"
     Nu får användaren en personlig bekräftelse med sitt eget namn och namnet på datorn de valt.

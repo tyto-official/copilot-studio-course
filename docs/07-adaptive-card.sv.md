@@ -19,7 +19,7 @@ Vi skapar ett separat ämne för själva beställningen för att hålla logiken 
 
 3.  Döp ämnet till:
     ```text
-    Beställ enhet
+    Begär enhet
     ```
 
     ![Skapa ämne](assets/images-sv/chap07/3.png)
@@ -59,7 +59,7 @@ Nu öppnas en stor editor. Till vänster har du komponenter (text, bilder, input
 
     ![Dra in text](assets/images-sv/chap07/9.png)
 
-2.  Ändra texten till "Tillgängliga enheter" i menyn till höger.
+2.  Testa att ändra texten till något annat, t.ex. "Tillgängliga enheter" i menyn till höger.
 
     ![Text](assets/images-sv/chap07/10.png)
 
@@ -71,15 +71,15 @@ Nu öppnas en stor editor. Till vänster har du komponenter (text, bilder, input
 
     ![Dra in val](assets/images-sv/chap07/12.png)
 
-5.  Ändra **Format** till **Expanderat** för att se hur det ser ut som en lista med radioknappar.
+5.  Ändra **Stil** till **Expanderat** för att se hur det ser ut som en lista med radioknappar.
 
     ![Format](assets/images-sv/chap07/13.png)
 
-6.  Klicka på **Förhandsgranskningsläge** högst upp för att se hur det skulle se ut i chatten.
+6.  Klicka på **Preview** högst upp för att se hur det skulle se ut i chatten.
 
     ![Förhandsgranskning](assets/images-sv/chap07/14.png)
 
-7.  Klicka på **Förhandsgranskningsläge** igen för att gå tillbaka.
+7.  Klicka på **Preview** igen för att gå tillbaka.
 
 ---
 
@@ -87,7 +87,7 @@ Nu öppnas en stor editor. Till vänster har du komponenter (text, bilder, input
 
 Att bygga hela kortet för hand tar tid. Vi ska använda färdig kod (JSON) för att få en snygg grundstruktur.
 
-1.  Längst ner i fönstret ser du **Card Payload Editor**. (Dra upp kanten om den är liten).
+1.  Längst ner i fönstret ser du **Redigerare för kortets nyttolast**. (Dra upp kanten om den är liten).
 
     ![Payload Editor](assets/images-sv/chap07/15.png)
 
@@ -204,7 +204,7 @@ Att bygga hela kortet för hand tar tid. Vi ska använda färdig kod (JSON) för
     }
     ```
 
-4.  Klicka på **Förhandsgranskningsläge** för att se ditt snygga kort!
+4.  Klicka på **Preview** för att se ditt snygga kort!
     *Just nu är listan på datorer "Hårdkodad" (Surface Laptop 13, 15 etc). Det ska vi ändra på nu.*
 
     ![Förhandsgranskning](assets/images-sv/chap07/16.png)
@@ -377,11 +377,11 @@ Nu har vi ett ämne för att visa enheter (Tillgängliga Enheter) och ett för a
     *Ändra den sista punkten till följande:*
 
     ```text
-    - Om användaren svarar ja på frågan om att beställa en enhet, trigga [Beställ enhet]. Om de svarar nej, avsluta på ett vänligt vis.
+    - Om användaren svarar ja på frågan om att beställa en enhet, trigga [Begär enhet]. Om de svarar nej, avsluta på ett vänligt vis.
     ```
 
 4.  **Viktigt:** Du måste göra länkarna "blåa".
-    * Sudda ut `[Beställ enhet]`. Skriv `/Best` och välj **Beställ enhet** från listan.
+    * Sudda ut `[Begär enhet]`. Skriv `/Beg` och välj **Begär enhet** från listan.
 
 5.  Klicka **Spara**.
 
