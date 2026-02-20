@@ -204,10 +204,10 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
 
     * Klicka på blixten.
 
-    * Sök efter `Model` (från steget *Hämta objekt*) och välj den.
+    * Sök efter `Modell` (från steget *Hämta objekt*) och välj den.
     
     ```text
-    Model
+    Modell
     ```
     
     ![Välj Model](assets/images-sv/chap08/24.png)
@@ -218,10 +218,10 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
 
     * Klicka på blixten.
 
-    * Sök efter `Price` (från steget *Hämta objekt*) och välj den.
+    * Sök efter `Inköpspris` (från steget *Hämta objekt*) och välj den.
     
     ```text
-    Price
+    Inköpspris
     ```
     
     ![Välj Price](assets/images-sv/chap08/25.png)
@@ -280,7 +280,7 @@ Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robu
 
 Slutligen måste vårt Agentflöde berätta för agenten att allt gick bra. Vi skickar också tillbaka namnet på den valda modellen för att kunna använda det i bekräftelsen.
 
-1.  Klicka på sista noden **Svara agenten**.
+1.  Klicka på sista noden **Respons to the agent**.
 2.  Klicka **+ Lägg till utdata**.
 
     ![Lägg till utdata](assets/images-sv/chap08/30.png)
@@ -298,10 +298,10 @@ Slutligen måste vårt Agentflöde berätta för agenten att allt gick bra. Vi s
 
     ![Lägg till utdatavärde](assets/images-sv/chap08/32.png)
 
-6.  Sök efter `Model` (från steget *Hämta objekt*) och välj den.
+6.  Sök efter `Modell` (från steget *Hämta objekt*) och välj den.
 
     ```text
-    Model
+    Modell
     ```
 
     ![Välj ModelValue](assets/images-sv/chap08/33.png)
@@ -349,22 +349,22 @@ Nu ska vi spara arbetet, namnge flödet korrekt och publicera det.
 
 Nu måste vi gå tillbaka till Copilot Studio och koppla in vårt nya Agentflöde i vårt ämne.
 
-1.  **Navigera till ämnet *Beställ enhet*:**
+1.  **Navigera till ämnet *Begär enhet*:**
     * Gå tillbaka till Agent-vyn genom att klicka på **Agenter** i menyn till vänster.
 
     ![Agenter-meny](assets/images-sv/chap08/39.png)
 
-    * Välj din agent **IT Support Helper**.
+    * Välj din agent **IT Support agent**.
 
-    ![IT Support Helper](assets/images-sv/chap08/40.png)
+    ![IT Support agent](assets/images-sv/chap08/40.png)
 
     * Gå till fliken **Ämnen** i menyn högst upp.
 
     ![Ämnen-flik](assets/images-sv/chap08/41.png)
 
-    * Klicka på **Beställ enhet**.
+    * Klicka på **Begär enhet**.
 
-    ![Beställ enhet-ämne](assets/images-sv/chap08/42.png)
+    ![Begär enhet-ämne](assets/images-sv/chap08/42.png)
 
 2.  **Lägg till flödet:**
     * Gå längst ner i flödet, under det adaptiva kortet.
@@ -377,12 +377,14 @@ Nu måste vi gå tillbaka till Copilot Studio och koppla in vårt nya Agentflöd
     Nu frågar agenten: "Vad ska jag stoppa in i de tre indatahål du byggde?"
 
     **DeviceSharePointId:**
+
     * Klicka på pilen `>` (eller rutan) bredvid *DeviceSharePointId*.
     * Välj variabeln `deviceSelectionId` (den kommer från ditt adaptiva kort).
 
     ![Mappa Device ID](assets/images-sv/chap08/44.png)
 
     **User:**
+
     * Klicka på pilen `>` bredvid *User*.
     * Navigera till fliken **System**.
     * Sök efter och välj `User.DisplayName`.
