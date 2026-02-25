@@ -19,9 +19,9 @@ flowchart LR
     C --> D["🗄️ Sparas i en vektordatabas"]
 ```
 
-1.  **Dokumentet delas upp** i mindre textdelar (*chunks*). Tänk dig att en 10-sidig PDF klipps i ~20-30 bitar. Ofta överlappar dessa delar varandra något – det kallas *overlapping* – för att viktig information som råkar hamna precis vid en klippgräns inte ska gå förlorad.
+1.  **Dokumentet delas upp** i mindre textdelar (*chunks*). Tänk dig att en 10-sidig PDF klipps i ~20-30 bitar. Ofta överlappar dessa delar varandra något, det kallas *overlapping*, för att viktig information som råkar hamna precis vid en klippgräns inte ska gå förlorad.
 
-2.  **Varje del omvandlas till en vektor** av en speciell typ av AI-modell som kallas *embedding-modell*. Denna modells enda uppgift är att analysera textstycken och representera deras *betydelse* som en matematisk punkt i ett rum med hundratals eller tusentals dimensioner.
+2.  **Varje del omvandlas till en vektor** av en speciell typ av AI-modell som kallas *embedding-modell*. Denna modells enda uppgift är att analysera textstycken och representera deras *betydelse* som en matematisk vektor i ett rum med hundratals eller tusentals dimensioner.
 
     En vektor kan se ut ungefär så här:
     ```
@@ -117,6 +117,13 @@ Men om du använder en **resonerande modell** (reasoning model) kan agenten gör
 
 Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets innehåll** – t.ex. för att sammanfatta, jämföra produkter, eller svara på breda frågor – kan du skapa ett **verktyg** som hämtar hela filen.
 
+!!! warning "Viktigt: Bara textfiler fungerar direkt"
+    Denna metod fungerar bra för **.txt**-filer eftersom den underliggande datan är ostrukturerad text. Men kör du samma teknik på en **.docx**-fil får du bara obegriplig binär ZIP-data, och för en **.pdf** får du PDF-källkod blandat med komprimerade dataströmmar.
+    
+    Detta beror på att Word-filer egentligen är ZIP-komprimerade samlingar av XML-filer, och PDF är ett kompilerat binärformat. Ingen av dem returnerar ren läsbar text direkt.
+    
+    **Vill du använda Word eller PDF?** Se avsnittet [Dynamisk hämtning av flera dokument](#dynamisk-hamtning-av-flera-dokument) längre ner.
+
 ### Steg-för-steg: Skapa ett Agentflöde för heldokumenthämtning
 
 #### 1. Skapa flödet
@@ -124,31 +131,50 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 1.  Navigera till **Agentflöden** och skapa ett **nytt agentflöde**.
     *(Du kan göra detta via Ämnen → + → Lägg till ett verktyg → Nytt agentflöde, precis som i kapitel 8).*
 
+    ![Skapa nytt agentflöde](../assets/images/tips-knowledge/2.png)
+
 2.  Du ser två noder:
     - **När en agent anropar flödet** (Indata)
     - **Respond to the agent** (Utdata)
+
+    ![Två noder](../assets/images/tips-knowledge/3.png)
 
 3.  **Viktigt:** Lägg **inte** till några indataparametrar. Flödet ska alltid hämta samma fil – ingen input behövs.
 
 #### 2. Lägg till "Hämta filinnehåll"
 
 1.  Klicka på **plus-tecknet (+)** mellan de två noderna.
+
+    ![Plus-tecknet](../assets/images/tips-knowledge/4.png)
+
 2.  Sök efter **Hämta filinnehåll** – välj SharePoint- eller OneDrive-varianten beroende på var din fil ligger.
 
-![Hämta filinnehåll](../assets/images/tips-knowledge/2.png)
+    ![Sök hämta filinnehåll](../assets/images/tips-knowledge/5.png)
 
 3.  Konfigurera noden:
     - **Webbplatsadress:** Välj din SharePoint-sida.
+
+    ![Webbplatsadress](../assets/images/tips-knowledge/6.png)
+
     - **Fil:** Navigera till den specifika filen du vill hämta.
 
-![Välj fil](../assets/images/tips-knowledge/3.png)
+    ![Välj fil](../assets/images/tips-knowledge/7.png)
 
 #### 3. Konfigurera utdata
 
 1.  Klicka på noden **Respond to the agent**.
+
+    ![Respond to the agent](../assets/images/tips-knowledge/8.png)
+
 2.  Klicka **+ Lägg till utdata** → **Text**.
+
+    ![Lägg till utdata](../assets/images/tips-knowledge/9.png)
+
 3.  Döp utdatan till ett passande namn, t.ex. `ProduktData`.
 4.  Klicka på **fx**-symbolen (Infoga uttryck).
+
+    ![FX-symbolen](../assets/images/tips-knowledge/10.png)
+
 5.  Skriv in följande uttryck:
 
     ```powerfx
@@ -159,12 +185,18 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 
 6.  Klicka **Lägg till**.
 
-![Uttryck för filinnehåll](../assets/images/tips-knowledge/4.png)
+    ![Uttryck för filinnehåll](../assets/images/tips-knowledge/11.png)
 
 #### 4. Spara och publicera
 
 1.  Klicka **Spara utkast**.
+
+    ![Spara utkast](../assets/images/tips-knowledge/12.png)
+
 2.  Klicka på **Översikt** (till vänster om flödesnamnet).
+
+    ![Översikt](../assets/images/tips-knowledge/13.png)
+
 3.  Klicka **Redigera** under *Detaljer*.
 4.  Ge flödet ett passande namn, t.ex.:
 
@@ -179,14 +211,25 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
     ```
 
 6.  Klicka **Spara**.
+
+    ![Spara detaljer](../assets/images/tips-knowledge/14.png)
+
 7.  Gå tillbaka till **Designer** och klicka på **Publicera**.
 8.  Om allt fungerar får du en grön bekräftelseruta.
+
+    ![Publicera](../assets/images/tips-knowledge/15.png)
 
 #### 5. Lägg till som verktyg i agenten
 
 1.  Navigera till din agent.
 2.  Klicka på **Lägg till ett verktyg** → **Flöden**.
+
+    ![Lägg till verktyg](../assets/images/tips-knowledge/16.png)
+
 3.  Välj ditt nyligen skapade flöde (**Produktinformation**).
+
+    ![Välj flöde](../assets/images/tips-knowledge/17.png)
+
 4.  Klicka **Lägg till och konfigurera**.
 5.  Kontrollera att **namn** och **beskrivning** stämmer:
     - **Namn:** `Produktinformation` (bör redan vara ifyllt)
@@ -194,6 +237,9 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
       ```text
       Detta verktyg genererar hela texten för företagets produktinformationsdokument.
       ```
+
+    ![Konfigurera verktyg](../assets/images/tips-knowledge/18.png)
+
 6.  **Spara** verktygskonfigurationen.
 
 #### 6. Uppdatera agentens instruktioner
@@ -208,7 +254,11 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 
     *(Kom ihåg att välja verktyget från popupmenyn så att det blir en aktiv länk.)*
 
+    ![Instruktioner](../assets/images/tips-knowledge/19.png)
+
 4.  Klicka **Spara**.
+
+    ![Spara instruktioner](../assets/images/tips-knowledge/20.png)
 
 ---
 
@@ -232,9 +282,21 @@ Detta kräver lite mer konfiguration – du behöver:
 
 1.  Lägga till en **indataparameter** i flödet (t.ex. filnamn eller fil-ID).
 2.  Använda dynamiskt innehåll i *Hämta filinnehåll*-noden istället för en fast fil.
+3.  Låta agenten först identifiera vilka filer som finns tillgängliga med hjälp av en nod som **Lista Rotmappen** som visar innehållet i en SharePoint-mapp.
 
 !!! warning "Begränsning: Filformat"
-    Denna teknik fungerar för **text-baserade filer** (.txt, .md). För Word-dokument (.docx) och PDF-filer krävs extra steg eftersom dessa format inte returnerar ren text direkt. Det enklaste sättet att hantera Word-filer är att använda den vanliga RAG-kunskapen (ladda upp som kunskap) eller konvertera dem till text först.
+    Denna teknik fungerar direkt för **text-baserade filer** (.txt, .md). 
+    
+    För **Word-dokument** (.docx) och **PDF-filer** krävs preprocessing innan texten kan läsas – eftersom dessa format inte är ren text utan komprimerade binärformat (se varningen ovan). Alternativ:
+    
+    - **Manuell konvertering:** Spara ditt Word-dokument som .txt-fil innan du laddar upp det.
+    - **Verktyg:** Använd externa verktyg eller skript för att konvertera PDF → text.
+    - **Azure AI Document Intelligence:** För mer avancerade flöden kan du använda Azure-tjänster som automatiskt extraherar text ur Word och PDF. *Mer om detta kommer i framtida artiklar.*
+
+!!! warning "Bilder och inskannade dokument"
+    Det är viktigt att veta att varken RAG-kunskapen eller heldokumentverktyget kan **"se" bilder** i dina dokument. Om ditt dokument innehåller diagram, tabeller som bilder, eller är ett **inskannat dokument** (t.ex. en scannad PDF) kommer agenten inte att kunna läsa det innehållet.
+    
+    För inskannade dokument krävs **OCR** (Optical Character Recognition) som ett förbearbetningssteg – t.ex. via Azure AI Document Intelligence – innan texten kan användas som kunskap.
 
 ---
 
@@ -242,3 +304,5 @@ Detta kräver lite mer konfiguration – du behöver:
     - **Få, specifika frågor** → RAG (Kunskap) räcker
     - **Behöver se helheten** → Skapa ett verktyg
     - **Blandat** → Använd båda! RAG för snabba svar, verktyg för djupgående analys
+    - **Word/PDF** → RAG fungerar (ladda upp), heldokumentverktyg kräver konvertering
+    - **Bilder/skannat** → Kräver preprocessing (OCR)
