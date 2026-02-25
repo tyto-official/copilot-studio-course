@@ -191,7 +191,7 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 
 2.  Klicka på **Översikt** (till vänster om flödesnamnet).
 
-    ![Översikt](../assets/images/tips-knowledge/11.png)
+    ![Översikt](../assets/images/tips-knowledge/12.png)
 
 3.  Klicka **Redigera** under *Detaljer*.
 4.  Ge flödet ett passande namn, t.ex.:
@@ -208,23 +208,23 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 
 6.  Klicka **Spara**.
 
-    ![Spara detaljer](../assets/images/tips-knowledge/12.png)
+    ![Spara detaljer](../assets/images/tips-knowledge/13.png)
 
 7.  Gå tillbaka till **Designer** och klicka på **Publicera**.
 8.  Om allt fungerar får du en grön bekräftelseruta.
 
-    ![Publicera](../assets/images/tips-knowledge/13.png)
+    ![Publicera](../assets/images/tips-knowledge/14.png)
 
 #### 5. Lägg till som verktyg i agenten
 
 1.  Navigera till din agent.
 2.  Klicka på **Lägg till ett verktyg** → **Flöden**.
 
-    ![Lägg till verktyg](../assets/images/tips-knowledge/14.png)
+    ![Lägg till verktyg](../assets/images/tips-knowledge/15.png)
 
 3.  Välj ditt nyligen skapade flöde (**Produktinformation**).
 
-    ![Välj flöde](../assets/images/tips-knowledge/15.png)
+    ![Välj flöde](../assets/images/tips-knowledge/16.png)
 
 4.  Klicka **Lägg till och konfigurera**.
 5.  Kontrollera att **namn** och **beskrivning** stämmer:
@@ -234,7 +234,7 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
       Detta verktyg genererar hela texten för företagets produktinformationsdokument.
       ```
 
-    ![Konfigurera verktyg](../assets/images/tips-knowledge/16.png)
+    ![Konfigurera verktyg](../assets/images/tips-knowledge/17.png)
 
 6.  **Spara** verktygskonfigurationen.
 
@@ -250,11 +250,11 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 
     *(Kom ihåg att välja verktyget från popupmenyn så att det blir en aktiv länk.)*
 
-    ![Instruktioner](../assets/images/tips-knowledge/17.png)
+    ![Instruktioner](../assets/images/tips-knowledge/18.png)
 
 4.  Klicka **Spara**.
 
-    ![Spara instruktioner](../assets/images/tips-knowledge/18.png)
+    ![Spara instruktioner](../assets/images/tips-knowledge/19.png)
 
 ---
 
