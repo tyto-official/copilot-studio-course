@@ -10,7 +10,7 @@ I kursen lärde vi oss lägga till kunskap via dokument och webbsidor. Men hur f
 
 Innan vi pratar om hur sökningen fungerar måste vi förstå vad som händer redan **när du lägger till ett dokument** som kunskap.
 
-När du laddar upp en fil (Word, PDF, etc.) eller pekar på en webbsida, startar en process som kallas **indexering**:
+När du laddar upp en fil (Word, PDF, etc.), startar en process som kallas **indexering**:
 
 ```mermaid
 flowchart LR
@@ -19,9 +19,17 @@ flowchart LR
     C --> D["🗄️ Sparas i en vektordatabas"]
 ```
 
-1.  **Dokumentet delas upp** i mindre textdelar (*chunks*). Tänk dig att en 10-sidig PDF klipps i ~20-30 bitar.
-2.  **Varje del omvandlas till en vektor** – en matematisk representation av textens *betydelse*. Ord som "laptop" och "bärbar dator" hamnar nära varandra i vektorrummet.
-3.  **Vektorerna sparas** i en databas som agenten sedan kan söka i.
+1.  **Dokumentet delas upp** i mindre textdelar (*chunks*). Tänk dig att en 10-sidig PDF klipps i ~20-30 bitar. Ofta överlappar dessa delar varandra något – det kallas *overlapping* – för att viktig information som råkar hamna precis vid en klippgräns inte ska gå förlorad.
+
+2.  **Varje del omvandlas till en vektor** av en speciell typ av AI-modell som kallas *embedding-modell*. Denna modells enda uppgift är att analysera textstycken och representera deras *betydelse* som en matematisk punkt i ett rum med hundratals eller tusentals dimensioner.
+
+    En vektor kan se ut ungefär så här:
+    ```
+    [0.23, -0.87, 0.45, 0.12, ..., -0.33, 0.91, 0.05]
+    ```
+    Denna kan ha **över 1 000 dimensioner** – långt bortom vad vi kan visualisera. Det smarta är att ord som "laptop" och "bärbar dator" hamnar **nära varandra** i detta vektorrum, trots att de är helt olika rent teckenmässigt. Det är för att deras *innebörd och betydelse* är likartad – och det är just betydelsen som modellen fångar.
+
+3.  **Vektorerna sparas** i en vektordatabas som agenten sedan kan söka i.
 
 Det är dessa sparade vektorer som användarens frågor sedan matchas mot.
 
@@ -42,12 +50,12 @@ När du lägger till ett dokument som kunskap i Copilot Studio använder Microso
 I korthet fungerar det så här:
 
 ```mermaid
-flowchart LR
-    A[Användaren ställer en fråga] --> B[Agenten omformulerar frågan]
-    B --> C[Frågan vektoriseras]
-    C --> D[Matchas mot textdelar i kunskapsbanken]
-    D --> E[Relevanta delar chunkar skickas till LLM]
-    E --> F[Agenten formulerar ett svar]
+flowchart TB
+    A["🗣️ Användaren ställer en fråga"] --> B["🤖 Agenten omformulerar frågan"]
+    B --> C["🔢 Frågan vektoriseras"]
+    C --> D["🔍 Matchas mot textdelar i kunskapsbanken"]
+    D --> E["📄 Relevanta delar skickas till LLM"]
+    E --> F["💬 Agenten formulerar ett svar"]
 ```
 
 1.  **Användaren ställer en fråga** i chatten (eller via en trigger).
