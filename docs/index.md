@@ -1,4 +1,4 @@
-# Copilot Studio kurs
+# Copilot Studio
 
 Välkommen! I den här guiden ska vi tillsammans bygga en smart IT-supportagent i Copilot Studio.
 
