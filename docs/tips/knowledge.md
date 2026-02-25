@@ -216,22 +216,32 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
     ![Spara detaljer](../assets/images/tips-knowledge/15.png)
 
 7.  Gå tillbaka till **Designer** och klicka på **Publicera**.
+
+    ![Designer](../assets/images/tips-knowledge/16.png)
+
+    ![Publicera](../assets/images/tips-knowledge/17.png)
+
 8.  Om allt fungerar får du en grön bekräftelseruta.
 
-    ![Publicera](../assets/images/tips-knowledge/16.png)
+    ![Grön bekräftelse](../assets/images/tips-knowledge/18.png)
 
 #### 5. Lägg till som verktyg i agenten
 
 1.  Navigera till din agent.
 2.  Klicka på **Lägg till ett verktyg** → **Flöden**.
 
-    ![Lägg till verktyg](../assets/images/tips-knowledge/17.png)
+    ![Lägg till verktyg](../assets/images/tips-knowledge/19.png)
+
+    ![Välj flöde](../assets/images/tips-knowledge/20.png)
 
 3.  Välj ditt nyligen skapade flöde (**Produktinformation**).
 
-    ![Välj flöde](../assets/images/tips-knowledge/18.png)
+    ![Välj flöde](../assets/images/tips-knowledge/21.png)
 
 4.  Klicka **Lägg till och konfigurera**.
+
+    ![Lägg till och konfigurera](../assets/images/tips-knowledge/22.png)
+
 5.  Kontrollera att **namn** och **beskrivning** stämmer:
     - **Namn:** `Produktinformation` (bör redan vara ifyllt)
     - **Beskrivning:**
@@ -239,7 +249,7 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
       Detta verktyg genererar hela texten för företagets produktinformationsdokument.
       ```
 
-    ![Konfigurera verktyg](../assets/images/tips-knowledge/19.png)
+    ![Konfigurera verktyg](../assets/images/tips-knowledge/23.png)
 
 6.  **Spara** verktygskonfigurationen.
 
@@ -255,11 +265,9 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 
     *(Kom ihåg att välja verktyget från popupmenyn så att det blir en aktiv länk.)*
 
-    ![Instruktioner](../assets/images/tips-knowledge/20.png)
+    ![Instruktioner](../assets/images/tips-knowledge/24.png)
 
 4.  Klicka **Spara**.
-
-    ![Spara instruktioner](../assets/images/tips-knowledge/21.png)
 
 ---
 
