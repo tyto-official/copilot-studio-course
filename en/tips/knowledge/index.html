@@ -1,0 +1,1541 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+      
+        
+          <link rel="alternate" href="../../../tips/knowledge/" hreflang="sv">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>Kunskap på djupet - Copilot Studio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kunskap-i-copilot-studio-pa-djupet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../" title="Copilot Studio" class="md-header__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Kunskap på djupet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../tips/knowledge/" hreflang="sv" class="md-select__link">
+              Svenska
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="Copilot Studio" class="md-nav__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Copilot Studio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio Kurs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio Kurs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och Teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Förbered SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa Topic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa Adaptive Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi (Vakna till liv)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-Agent Orchestration (Finalen)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11-set-up-for-production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Redo för produktion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & Tricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & Tricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#steg-1-vad-hander-nar-du-laddar-upp-ett-dokument" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 1: Vad händer när du laddar upp ett dokument?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg-2-hur-rag-fungerar-sokningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 2: Hur RAG fungerar (sökningen)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#begransningar-i-copilot-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Begränsningar i Copilot Studio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nar-fungerar-kunskapssokning-bra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        När fungerar kunskapssökning bra?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flera-iterationer-med-resonerande-modeller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flera iterationer med resonerande modeller
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternativ-hamta-hela-dokumentet-via-ett-verktyg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternativ: Hämta hela dokumentet via ett verktyg
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alternativ: Hämta hela dokumentet via ett verktyg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steg-for-steg-skapa-ett-agentflode-for-heldokumenthamtning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg-för-steg: Skapa ett Agentflöde för heldokumenthämtning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steg-för-steg: Skapa ett Agentflöde för heldokumenthämtning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-skapa-flodet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Skapa flödet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lagg-till-hamta-filinnehall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Lägg till "Hämta filinnehåll"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-konfigurera-utdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Konfigurera utdata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-spara-och-publicera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Spara och publicera
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-lagg-till-som-verktyg-i-agenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Lägg till som verktyg i agenten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-uppdatera-agentens-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Uppdatera agentens instruktioner
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jamforelse-rag-vs-heldokumentverktyg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jämförelse: RAG vs Heldokumentverktyg
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamisk-hamtning-av-flera-dokument" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynamisk hämtning av flera dokument
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#steg-1-vad-hander-nar-du-laddar-upp-ett-dokument" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 1: Vad händer när du laddar upp ett dokument?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg-2-hur-rag-fungerar-sokningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 2: Hur RAG fungerar (sökningen)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#begransningar-i-copilot-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Begränsningar i Copilot Studio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nar-fungerar-kunskapssokning-bra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        När fungerar kunskapssökning bra?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flera-iterationer-med-resonerande-modeller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flera iterationer med resonerande modeller
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternativ-hamta-hela-dokumentet-via-ett-verktyg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternativ: Hämta hela dokumentet via ett verktyg
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alternativ: Hämta hela dokumentet via ett verktyg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steg-for-steg-skapa-ett-agentflode-for-heldokumenthamtning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg-för-steg: Skapa ett Agentflöde för heldokumenthämtning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steg-för-steg: Skapa ett Agentflöde för heldokumenthämtning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-skapa-flodet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Skapa flödet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lagg-till-hamta-filinnehall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Lägg till "Hämta filinnehåll"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-konfigurera-utdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Konfigurera utdata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-spara-och-publicera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Spara och publicera
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-lagg-till-som-verktyg-i-agenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Lägg till som verktyg i agenten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-uppdatera-agentens-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Uppdatera agentens instruktioner
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jamforelse-rag-vs-heldokumentverktyg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jämförelse: RAG vs Heldokumentverktyg
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamisk-hamtning-av-flera-dokument" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynamisk hämtning av flera dokument
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="kunskap-i-copilot-studio-pa-djupet">Kunskap i Copilot Studio – på djupet</h1>
+<p>I kursen lärde vi oss lägga till kunskap via dokument och webbsidor. Men hur fungerar det egentligen bakom kulisserna? Och vad gör man när den vanliga kunskapssökningen inte räcker?</p>
+<p><img alt="Kunskapskällor i Copilot Studio" src="../../../assets/images/tips-knowledge/1.png" /></p>
+<hr />
+<h2 id="steg-1-vad-hander-nar-du-laddar-upp-ett-dokument">Steg 1: Vad händer när du laddar upp ett dokument?</h2>
+<p>Innan vi pratar om hur sökningen fungerar måste vi förstå vad som händer redan <strong>när du lägger till ett dokument</strong> som kunskap.</p>
+<p>När du laddar upp en fil (Word, PDF, etc.), startar en process som kallas <strong>indexering</strong>:</p>
+<pre class="mermaid"><code>flowchart LR
+    A["📄 Ditt dokument"] --&gt; B["✂️ Delas upp i delar (chunks)"]
+    B --&gt; C["🔢 Varje del omvandlas till vektorer (embeddings)"]
+    C --&gt; D["🗄️ Sparas i en vektordatabas"]</code></pre>
+<ol>
+<li>
+<p><strong>Dokumentet delas upp</strong> i mindre textdelar (<em>chunks</em>). Tänk dig att en 10-sidig PDF klipps i ~20-30 bitar. Ofta överlappar dessa delar varandra något, det kallas <em>overlapping</em>, för att viktig information som råkar hamna precis vid en klippgräns inte ska gå förlorad.</p>
+</li>
+<li>
+<p><strong>Varje del omvandlas till en vektor</strong> av en speciell typ av AI-modell som kallas <em>embedding-modell</em>. Denna modells enda uppgift är att analysera textstycken och representera deras <em>betydelse</em> som en matematisk vektor i ett rum med hundratals eller tusentals dimensioner.</p>
+<p>En vektor kan se ut ungefär så här:
+<div class="highlight"><pre><span></span><code>[0.23, -0.87, 0.45, 0.12, ..., -0.33, 0.91, 0.05]
+</code></pre></div>
+Denna kan ha <strong>över 1 000 dimensioner</strong> – långt bortom vad vi kan visualisera. Det smarta är att ord som "laptop" och "bärbar dator" hamnar <strong>nära varandra</strong> i detta vektorrum, trots att de är helt olika rent teckenmässigt. Det är för att deras <em>innebörd och betydelse</em> är likartad – och det är just betydelsen som modellen fångar.</p>
+</li>
+<li>
+<p><strong>Vektorerna sparas</strong> i en vektordatabas som agenten sedan kan söka i.</p>
+</li>
+</ol>
+<p>Det är dessa sparade vektorer som användarens frågor sedan matchas mot.</p>
+<div class="admonition warning">
+<p class="admonition-title">Dokument uppdateras inte automatiskt</p>
+<p>Om du ändrar innehållet i ett dokument som redan är uppladdat <strong>uppdateras inte kunskapsbanken automatiskt</strong>. Du måste:</p>
+<ol>
+<li><strong>Ta bort</strong> det gamla dokumentet från kunskapskällorna.</li>
+<li><strong>Ladda upp</strong> den nya versionen igen.</li>
+</ol>
+<p>Annars kommer agenten fortsätta svara baserat på den gamla versionen av filen.</p>
+</div>
+<hr />
+<h2 id="steg-2-hur-rag-fungerar-sokningen">Steg 2: Hur RAG fungerar (sökningen)</h2>
+<p>När du lägger till ett dokument som kunskap i Copilot Studio använder Microsoft en teknik som heter <strong>RAG</strong> – <em>Retrieval-Augmented Generation</em>.</p>
+<p>I korthet fungerar det så här:</p>
+<pre class="mermaid"><code>flowchart TB
+    A["🗣️ Användaren ställer en fråga"] --&gt; B["🤖 Agenten omformulerar frågan"]
+    B --&gt; C["🔢 Frågan vektoriseras"]
+    C --&gt; D["🔍 Matchas mot textdelar i kunskapsbanken"]
+    D --&gt; E["📄 Relevanta delar skickas till LLM"]
+    E --&gt; F["💬 Agenten formulerar ett svar"]</code></pre>
+<ol>
+<li><strong>Användaren ställer en fråga</strong> i chatten (eller via en trigger).</li>
+<li><strong>Agenten omformulerar frågan</strong> utifrån vad den uppfattade att användaren menade.</li>
+<li><strong>Frågan vektoriseras</strong> – omvandlas till en matematisk representation.</li>
+<li><strong>Matchning mot kunskapsbanken</strong> – de semantiskt närmaste delarna (<em>chunks</em>) av dina dokument hittas.</li>
+<li><strong>Relevanta delar skickas till LLM</strong> som bygger ett svar baserat på den hämtade texten.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Vill du förstå RAG på djupet?</p>
+<p>Kolla in denna förklaringsvideo: <a href="https://youtu.be/ee4X-JCDL8o?si=DUVdMrAOikwUQwHQ">RAG Explained (YouTube)</a></p>
+</div>
+<hr />
+<h2 id="begransningar-i-copilot-studio">Begränsningar i Copilot Studio</h2>
+<p>Microsoft specificerar inte exakt hur deras RAG-implementation fungerar gällande:</p>
+<ul>
+<li><strong>Chunking</strong> – hur dokumenten delas upp i delar</li>
+<li><strong>Overlapping</strong> – om delarna överlappar varandra</li>
+<li><strong>Antal chunks</strong> – hur många delar som hämtas per fråga</li>
+</ul>
+<p>Det går inte heller att konfigurera dessa parametrar. Vad man <em>kan</em> se baserat på Microsofts dokumentation är att det oftast returneras <strong>ungefär tre chunks</strong> per dokumentfråga.</p>
+<hr />
+<h2 id="nar-fungerar-kunskapssokning-bra">När fungerar kunskapssökning bra?</h2>
+<p>Kunskapssökning (RAG) är bäst på att <strong>hitta nålar i en höstack</strong> – att svara på konkreta, specifika frågor.</p>
+<p><strong>Fungerar bra:</strong> ✅</p>
+<ul>
+<li><em>"Vilka tider har supporten öppet?"</em></li>
+<li><em>"Vad kostar Surface Laptop 13?"</em></li>
+<li><em>"Vad händer om jag tappar min jobbtelefon?"</em></li>
+</ul>
+<p><strong>Fungerar sämre:</strong> ⚠️</p>
+<ul>
+<li><em>"Sammanfatta hela dokumentet"</em></li>
+<li><em>"Jämför alla produkter och ge mig den bästa"</em></li>
+<li>Frågor som kräver att agenten ser <strong>hela</strong> dokumentet på en gång</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Samband och jämförelser</p>
+<p>RAG kan ibland hitta samband mellan olika delar av ett dokument – men det är <strong>mycket beroende av datan</strong> och hur den är strukturerad. Ju tydligare och mer avgränsar dina dokument är, desto bättre fungerar sökningen.</p>
+</div>
+<hr />
+<h2 id="flera-iterationer-med-resonerande-modeller">Flera iterationer med resonerande modeller</h2>
+<p>Normalt kör agenten bara <strong>en iteration</strong> av kunskapssökningen. Den ställer sin fråga, får tillbaka chunks, och formulerar ett svar.</p>
+<p>Men om du använder en <strong>resonerande modell</strong> (reasoning model) kan agenten göra <strong>flera frågor</strong> mot kunskapsbasen om den inte känner att den fick tillräckligt med information vid första försöket.</p>
+<div class="admonition tip">
+<p class="admonition-title">Styr via instruktioner</p>
+<p>Du kan påverka detta beteende genom agentens <strong>beskrivning och instruktioner</strong>. Till exempel kan du instruera agenten att "söka i kunskapen flera gånger om svaret är otydligt" för att öka chansen att hitta rätt information.</p>
+</div>
+<hr />
+<h2 id="alternativ-hamta-hela-dokumentet-via-ett-verktyg">Alternativ: Hämta hela dokumentet via ett verktyg</h2>
+<p>Ibland räcker det inte med RAG. Om agenten behöver se <strong>hela dokumentets innehåll</strong> – t.ex. för att sammanfatta, jämföra produkter, eller svara på breda frågor – kan du skapa ett <strong>verktyg</strong> som hämtar hela filen.</p>
+<div class="admonition warning">
+<p class="admonition-title">Viktigt: Bara textfiler fungerar direkt</p>
+<p>Denna metod fungerar bra för <strong>.txt</strong>-filer eftersom den underliggande datan är ostrukturerad text. Men kör du samma teknik på en <strong>.docx</strong>-fil får du bara obegriplig binär ZIP-data, och för en <strong>.pdf</strong> får du PDF-källkod blandat med komprimerade dataströmmar.</p>
+<p>Detta beror på att Word-filer egentligen är ZIP-komprimerade samlingar av XML-filer, och PDF är ett kompilerat binärformat. Ingen av dem returnerar ren läsbar text direkt.</p>
+<p><strong>Vill du använda Word eller PDF?</strong> Se avsnittet <a href="#dynamisk-hamtning-av-flera-dokument">Dynamisk hämtning av flera dokument</a> längre ner.</p>
+</div>
+<h3 id="steg-for-steg-skapa-ett-agentflode-for-heldokumenthamtning">Steg-för-steg: Skapa ett Agentflöde för heldokumenthämtning</h3>
+<h4 id="1-skapa-flodet">1. Skapa flödet</h4>
+<ol>
+<li>
+<p>Klicka på <strong>Verktyg</strong> i menyn och sedan på <strong>+ Lägg till</strong>.</p>
+<p><img alt="Lägg till verktyg" src="../../../assets/images/tips-knowledge/2.png" /></p>
+</li>
+<li>
+<p>Välj <strong>Agentflöden</strong> för att skapa ett nytt agentflöde.</p>
+<p><img alt="Välj agentflöden" src="../../../assets/images/tips-knowledge/3.png" /></p>
+</li>
+<li>
+<p>Du ser två noder:</p>
+<ul>
+<li><strong>När en agent anropar flödet</strong> (Indata)</li>
+<li><strong>Respond to the agent</strong> (Utdata)</li>
+</ul>
+<p><img alt="Två noder" src="../../../assets/images/tips-knowledge/3.png" /></p>
+</li>
+<li>
+<p><strong>Viktigt:</strong> Lägg <strong>inte</strong> till några indataparametrar. Flödet ska alltid hämta samma fil – ingen input behövs.</p>
+</li>
+</ol>
+<h4 id="2-lagg-till-hamta-filinnehall">2. Lägg till "Hämta filinnehåll"</h4>
+<ol>
+<li>
+<p>Klicka på <strong>plus-tecknet (+)</strong> mellan de två noderna.</p>
+<p><img alt="Plus-tecknet" src="../../../assets/images/tips-knowledge/4.png" /></p>
+</li>
+<li>
+<p>Sök efter <strong>Hämta filinnehåll</strong> – välj SharePoint- eller OneDrive-varianten beroende på var din fil ligger.</p>
+<p><img alt="Sök hämta filinnehåll" src="../../../assets/images/tips-knowledge/5.png" /></p>
+</li>
+<li>
+<p>Konfigurera noden:</p>
+<ul>
+<li>
+<p><strong>Webbplatsadress:</strong> Välj din SharePoint-sida.</p>
+</li>
+<li>
+<p><strong>Fil:</strong> Navigera till den specifika filen du vill hämta.</p>
+</li>
+</ul>
+<p><img alt="Välj fil" src="../../../assets/images/tips-knowledge/6.png" /></p>
+</li>
+</ol>
+<h4 id="3-konfigurera-utdata">3. Konfigurera utdata</h4>
+<ol>
+<li>
+<p>Klicka på noden <strong>Respond to the agent</strong>.</p>
+<p><img alt="Respond to the agent" src="../../../assets/images/tips-knowledge/7.png" /></p>
+</li>
+<li>
+<p>Klicka <strong>+ Lägg till utdata</strong> → <strong>Text</strong>.</p>
+<p><img alt="Lägg till utdata" src="../../../assets/images/tips-knowledge/8.png" /></p>
+</li>
+<li>
+<p>Döp utdatan till ett passande namn, t.ex. <code>innehåll</code>.</p>
+</li>
+<li>
+<p>Klicka på <strong>fx</strong>-symbolen (Infoga uttryck).</p>
+<p><img alt="FX-symbolen" src="../../../assets/images/tips-knowledge/9.png" /></p>
+</li>
+<li>
+<p>Skriv in följande uttryck:</p>
+<div class="highlight"><pre><span></span><code>body(&#39;Hämta_filinnehåll&#39;)
+</code></pre></div>
+<p><em>Detta hämtar själva textinnehållet från filen – det som agenten sedan kan läsa och analysera.</em></p>
+</li>
+<li>
+<p>Klicka <strong>Lägg till</strong>.</p>
+<p><img alt="Uttryck för filinnehåll" src="../../../assets/images/tips-knowledge/10.png" /></p>
+</li>
+</ol>
+<h4 id="4-spara-och-publicera">4. Spara och publicera</h4>
+<ol>
+<li>
+<p>Klicka <strong>Spara utkast</strong>.</p>
+<p><img alt="Spara utkast" src="../../../assets/images/tips-knowledge/12.png" /></p>
+</li>
+<li>
+<p>Klicka på <strong>Översikt</strong> (till vänster om flödesnamnet).</p>
+<p><img alt="Översikt" src="../../../assets/images/tips-knowledge/13.png" /></p>
+</li>
+<li>
+<p>Klicka <strong>Redigera</strong> under <em>Detaljer</em>.</p>
+<p><img alt="Redigera" src="../../../assets/images/tips-knowledge/14.png" /></p>
+</li>
+<li>
+<p>Ge flödet ett passande namn, t.ex.:</p>
+<div class="highlight"><pre><span></span><code>Produktinformation
+</code></pre></div>
+</li>
+<li>
+<p>Skriv en beskrivning, t.ex.:</p>
+<div class="highlight"><pre><span></span><code>Detta flöde används för att hämta och ge tillbaka all text som finns gällande företagets produktinformation.
+</code></pre></div>
+</li>
+<li>
+<p>Klicka <strong>Spara</strong>.</p>
+<p><img alt="Spara detaljer" src="../../../assets/images/tips-knowledge/15.png" /></p>
+</li>
+<li>
+<p>Gå tillbaka till <strong>Designer</strong> och klicka på <strong>Publicera</strong>.</p>
+<p><img alt="Designer" src="../../../assets/images/tips-knowledge/16.png" /></p>
+<p><img alt="Publicera" src="../../../assets/images/tips-knowledge/17.png" /></p>
+</li>
+<li>
+<p>Om allt fungerar får du en grön bekräftelseruta.</p>
+<p><img alt="Grön bekräftelse" src="../../../assets/images/tips-knowledge/18.png" /></p>
+</li>
+</ol>
+<h4 id="5-lagg-till-som-verktyg-i-agenten">5. Lägg till som verktyg i agenten</h4>
+<ol>
+<li>Navigera till din agent.</li>
+<li>
+<p>Klicka på <strong>Lägg till ett verktyg</strong> → <strong>Agentflöden</strong>.</p>
+<p><img alt="Lägg till verktyg" src="../../../assets/images/tips-knowledge/19.png" /></p>
+<p><img alt="Välj flöde" src="../../../assets/images/tips-knowledge/20.png" /></p>
+</li>
+<li>
+<p>Välj ditt nyligen skapade flöde (<strong>Produktinformation</strong>).</p>
+<p><img alt="Välj flöde" src="../../../assets/images/tips-knowledge/21.png" /></p>
+</li>
+<li>
+<p>Klicka <strong>Lägg till och konfigurera</strong>.</p>
+<p><img alt="Lägg till och konfigurera" src="../../../assets/images/tips-knowledge/22.png" /></p>
+</li>
+<li>
+<p>Kontrollera att <strong>namn</strong> och <strong>beskrivning</strong> stämmer:</p>
+<ul>
+<li><strong>Namn:</strong> <code>Produktinformation</code> (bör redan vara ifyllt)</li>
+<li><strong>Beskrivning:</strong>
+  <div class="highlight"><pre><span></span><code>Detta verktyg genererar hela texten för företagets produktinformationsdokument.
+</code></pre></div></li>
+</ul>
+<p><img alt="Konfigurera verktyg" src="../../../assets/images/tips-knowledge/23.png" /></p>
+</li>
+<li>
+<p><strong>Spara</strong> verktygskonfigurationen.</p>
+</li>
+</ol>
+<h4 id="6-uppdatera-agentens-instruktioner">6. Uppdatera agentens instruktioner</h4>
+<ol>
+<li>Gå till <strong>Översikt</strong>.</li>
+<li>Klicka <strong>Redigera</strong> vid Instruktioner.</li>
+<li>
+<p>Lägg till:</p>
+<div class="highlight"><pre><span></span><code>- Använd verktyget /Produktinformation för att se all information om företagets produkter.
+</code></pre></div>
+<p><em>(Kom ihåg att välja verktyget från popupmenyn så att det blir en aktiv länk.)</em></p>
+<p><img alt="Instruktioner" src="../../../assets/images/tips-knowledge/24.png" /></p>
+</li>
+<li>
+<p>Klicka <strong>Spara</strong>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="jamforelse-rag-vs-heldokumentverktyg">Jämförelse: RAG vs Heldokumentverktyg</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>RAG (Kunskap)</th>
+<th>Heldokument (Verktyg)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bäst för</strong></td>
+<td>Specifika frågor</td>
+<td>Breda frågor, sammanfattningar</td>
+</tr>
+<tr>
+<td><strong>Dokumentstorlek</strong></td>
+<td>Stora dokument fungerar bra</td>
+<td>Begränsas av kontextfönstret</td>
+</tr>
+<tr>
+<td><strong>Konfiguration</strong></td>
+<td>Ingen – automatisk</td>
+<td>Kräver agentflöde</td>
+</tr>
+<tr>
+<td><strong>Kostnad</strong></td>
+<td>Låg (liten mängd text)</td>
+<td>Högre (hela dokumentet skickas)</td>
+</tr>
+<tr>
+<td><strong>Flera dokument</strong></td>
+<td>Söker i alla samtidigt</td>
+<td>Ett flöde per fil (statisk)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="dynamisk-hamtning-av-flera-dokument">Dynamisk hämtning av flera dokument</h2>
+<p>Metoden ovan fungerar utmärkt för <strong>en specifik fil</strong>. Men vad händer om du vill att agenten ska kunna välja <em>vilken</em> fil den hämtar?</p>
+<p>Detta kräver lite mer konfiguration – du behöver:</p>
+<ol>
+<li>Lägga till en <strong>indataparameter</strong> i flödet (t.ex. filnamn eller fil-ID).</li>
+<li>Använda dynamiskt innehåll i <em>Hämta filinnehåll</em>-noden istället för en fast fil.</li>
+<li>Låta agenten först identifiera vilka filer som finns tillgängliga med hjälp av en nod som <strong>Lista Rotmappen</strong> som visar innehållet i en SharePoint-mapp.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Begränsning: Filformat</p>
+<p>Denna teknik fungerar direkt för <strong>text-baserade filer</strong> (.txt, .md). </p>
+<p>För <strong>Word-dokument</strong> (.docx) och <strong>PDF-filer</strong> krävs preprocessing innan texten kan läsas – eftersom dessa format inte är ren text utan komprimerade binärformat (se varningen ovan). Alternativ:</p>
+<ul>
+<li><strong>Manuell konvertering:</strong> Spara ditt Word-dokument som .txt-fil innan du laddar upp det.</li>
+<li><strong>Verktyg:</strong> Använd externa verktyg eller skript för att konvertera PDF → text.</li>
+<li><strong>Azure AI Document Intelligence:</strong> För mer avancerade flöden kan du använda Azure-tjänster som automatiskt extraherar text ur Word och PDF. <em>Mer om detta kommer i framtida artiklar.</em></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Bilder och inskannade dokument</p>
+<p>Det är viktigt att veta att varken RAG-kunskapen eller heldokumentverktyget kan <strong>"se" bilder</strong> i dina dokument. Om ditt dokument innehåller diagram, tabeller som bilder, eller är ett <strong>inskannat dokument</strong> (t.ex. en scannad PDF) kommer agenten inte att kunna läsa det innehållet.</p>
+<p>För inskannade dokument krävs <strong>OCR</strong> (Optical Character Recognition) som ett förbearbetningssteg – t.ex. via Azure AI Document Intelligence – innan texten kan användas som kunskap.</p>
+</div>
+<hr />
+<div class="admonition tip">
+<p class="admonition-title">Tumregel</p>
+<ul>
+<li><strong>Få, specifika frågor</strong> → RAG (Kunskap) räcker</li>
+<li><strong>Behöver se helheten</strong> → Skapa ett verktyg</li>
+<li><strong>Blandat</strong> → Använd båda! RAG för snabba svar, verktyg för djupgående analys</li>
+<li><strong>Word/PDF</strong> → RAG fungerar (ladda upp), heldokumentverktyg kräver konvertering</li>
+<li><strong>Bilder/skannat</strong> → Kräver preprocessing (OCR)</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

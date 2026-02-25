@@ -1,0 +1,1157 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../08-create-flow/">
+      
+      
+        <link rel="next" href="../10-multi-agent/">
+      
+      
+        
+          <link rel="alternate" href="../../09-autonomy/" hreflang="sv">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>9. Autonomi (Vakna till liv) - Copilot Studio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#9-autonomi-vakna-till-liv" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="Copilot Studio" class="md-header__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9. Autonomi (Vakna till liv)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../09-autonomy/" hreflang="sv" class="md-select__link">
+              Svenska
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="Copilot Studio" class="md-nav__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Copilot Studio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio Kurs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio Kurs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och Teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Förbered SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa Topic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa Adaptive Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi (Vakna till liv)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi (Vakna till liv)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#91-skapa-sharepoint-triggern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Skapa SharePoint-triggern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#92-redigera-triggern-power-automate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Redigera Triggern (Power Automate)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#93-skapa-notifierings-verktyget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Skapa Notifierings-verktyget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#94-testa-autonomin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Testa Autonomin
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-Agent Orchestration (Finalen)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-set-up-for-production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Redo för produktion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & Tricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & Tricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#91-skapa-sharepoint-triggern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Skapa SharePoint-triggern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#92-redigera-triggern-power-automate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Redigera Triggern (Power Automate)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#93-skapa-notifierings-verktyget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Skapa Notifierings-verktyget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#94-testa-autonomin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Testa Autonomin
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="9-autonomi-vakna-till-liv">9. Autonomi (Vakna till liv)</h1>
+<p>Hittills har din agent varit reaktiv. Nu ska vi göra den <strong>proaktiv</strong>.
+Vi ska skapa en funktion där agenten automatiskt reagerar när en ny support-ticket skapas i SharePoint, och genast notifierar IT-avdelningen via mejl.</p>
+<hr />
+<h2 id="91-skapa-sharepoint-triggern">9.1 Skapa SharePoint-triggern</h2>
+<p>Vi börjar med att tala om för agenten vad den ska lyssna efter.</p>
+<ol>
+<li>
+<p>Navigera till fliken <strong>Overview</strong>.</p>
+<p><img alt="Overview" src="../../assets/images/chap09/bild1.png" /></p>
+</li>
+<li>
+<p>Leta upp sektionen <strong>Triggers</strong> och klicka på <strong>+ Add trigger</strong>.</p>
+<p><img alt="Add Trigger" src="../../assets/images/chap09/bild2.png" /></p>
+</li>
+<li>
+<p>Sök efter 
+    <div class="highlight"><pre><span></span><code>When an item is created
+</code></pre></div></p>
+<p><img alt="Search Trigger" src="../../assets/images/chap09/bild3.png" /></p>
+</li>
+<li>
+<p>Välj <strong>When an item is created (SharePoint)</strong> och klicka <strong>Next</strong>.</p>
+<p><img alt="Select Trigger" src="../../assets/images/chap09/bild4.png" /></p>
+</li>
+<li>
+<p>Vänta tills anslutningen konfigureras och klicka sedan på <strong>Next</strong>.</p>
+<p><img alt="Configure Connection" src="../../assets/images/chap09/bild5.png" /></p>
+</li>
+<li>
+<p><strong>Konfigurera Triggern:</strong></p>
+<ul>
+<li><strong>Site Address:</strong> Klicka på dropdown-menyn och välj <strong>IT Support</strong>. (Om du inte ser den, klicka på <em>Enter custom value</em> och klistra in URL:en, eller sök).</li>
+</ul>
+<p><img alt="Select Site" src="../../assets/images/chap09/bild6.png" /></p>
+<ul>
+<li><strong>List Name:</strong> Välj <strong>Tickets</strong>.</li>
+</ul>
+<p><img alt="Select List" src="../../assets/images/chap09/bild7.png" /></p>
+<ul>
+<li><em>Limit Columns by View:</em> Låt vara som den är.</li>
+</ul>
+</li>
+<li>
+<p><strong>Instruktioner till Agenten:</strong>
+    I rutan <strong>Additional instructions to the agent...</strong> klistrar du in följande:</p>
+<div class="highlight"><pre><span></span><code>Ny supportticket skapad i SharePoint: {Body}
+
+Använd verktyget &#39;Acknowledge SharePoint Ticket&#39; för att meddela IT-avdelningen om detta.
+
+VIKTIGT: Vänta inte på någon användarinmatning. Arbeta helt autonomt.
+</code></pre></div>
+</li>
+<li>
+<p>Klicka på <strong>Create trigger</strong>.</p>
+<p><img alt="Create Trigger" src="../../assets/images/chap09/bild8.png" /></p>
+</li>
+</ol>
+<hr />
+<h2 id="92-redigera-triggern-power-automate">9.2 Redigera Triggern (Power Automate)</h2>
+<p>Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicera en formel som plockar ut exakt den data vi vill ha (Vem, Vad, Prioritet).</p>
+<p><strong>Vänta tills triggern är skapad. Testa den inte än.</strong></p>
+<ol>
+<li>I listan över triggers på Overview-sidan: Klicka på de <strong>tre prickarna (...)</strong> längst till höger på din nya trigger.</li>
+<li>
+<p>Välj <strong>Edit in Power Automate</strong>.</p>
+<p><img alt="Edit in Power Automate" src="../../assets/images/chap09/bild9.png" /></p>
+<p><em>Ett nytt fönster öppnas med ditt flöde.</em></p>
+</li>
+<li>
+<p>Du ser två noder. Klicka på den nedre noden: <strong>Send a prompt to the specified copilot for processing</strong>.</p>
+<p><img alt="Open Node" src="../../assets/images/chap09/bild10.png" /></p>
+<p><em>En meny öppnas till vänster.</em></p>
+</li>
+<li>
+<p><strong>Redigera meddelandet:</strong></p>
+<ul>
+<li>Klicka i rutan <strong>Body/Message</strong>.</li>
+<li>Ta bort texten <code>{Body}</code> som ligger där.</li>
+<li>Skriv ett snedstreck <code>/</code> och välj <strong>Insert Expression</strong> (fx-ikonen).</li>
+</ul>
+<p><img alt="Insert Expression" src="../../assets/images/chap09/bild11.png" /></p>
+</li>
+<li>
+<p><strong>Lägg till uttrycket:</strong>
+    En ny meny kommer upp. Klistra in exakt denna kod i rutan:</p>
+<div class="highlight"><pre><span></span><code>concat(&#39;Submitted By Name: &#39;, first(triggerOutputs()?[&#39;body/value&#39;])?[&#39;Author/DisplayName&#39;], &#39;\nSubmitted By Email: &#39;, first(triggerOutputs()?[&#39;body/value&#39;])?[&#39;Author/Email&#39;], &#39;\nTitle: &#39;, first(triggerOutputs()?[&#39;body/value&#39;])?[&#39;Title&#39;], &#39;\nIssue Description: &#39;, first(triggerOutputs()?[&#39;body/value&#39;])?[&#39;Description&#39;], &#39;\nPriority: &#39;, first(triggerOutputs()?[&#39;body/value&#39;])?[&#39;Priority/Value&#39;],&#39;\nTicket ID : &#39;, first(triggerOutputs()?[&#39;body/value&#39;])?[&#39;ID&#39;])
+</code></pre></div>
+<ul>
+<li>Klicka på <strong>Add</strong>.</li>
+</ul>
+<p><img alt="Insert Expression" src="../../assets/images/chap09/bild12.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Vad gör denna formel?</p>
+<p>När SharePoint skickar data till flödet kommer det som en stor, teknisk dataklump (JSON). För att göra det enkelt för agenten att läsa informationen gör vi två saker i denna formel:
+1.  <strong>Plockar russinen ur kakan:</strong> Vi hämtar specifika fält som <em>Titel</em>, <em>Avsändare</em> och <em>Beskrivning</em>.
+2.  <strong>Formaterar:</strong> Vi använder <code>concat</code> (slå ihop) för att skapa en prydlig textlista med radbrytningar (<code>\n</code>). </p>
+<p>Resultatet blir en ren text som agenten lätt kan förstå, typ: <em>"Title: VPN nere, Priority: High"</em>.</p>
+</div>
+</li>
+<li>
+<p>Klicka på <strong>Save</strong> högst upp till höger på sidan.</p>
+<p><img alt="Save Flow" src="../../assets/images/chap09/bild13.png" /></p>
+<p><em>När det är sparat kan du stänga fliken och gå tillbaka till Copilot Studio.</em></p>
+</li>
+</ol>
+<hr />
+<h2 id="93-skapa-notifierings-verktyget">9.3 Skapa Notifierings-verktyget</h2>
+<p>Nu har agenten en trigger, men den behöver ett verktyg för att kunna skicka mejlet till IT-avdelningen.</p>
+<ol>
+<li>
+<p>Navigera till fliken <strong>Topics</strong> (eller Tools) och välj <strong>+ Add a tool</strong>.</p>
+<p><img alt="Add Tool" src="../../assets/images/chap09/bild14.png" /></p>
+</li>
+<li>
+<p>Sök efter 
+    <div class="highlight"><pre><span></span><code>Send an email
+</code></pre></div></p>
+<p><img alt="Search Email" src="../../assets/images/chap09/bild15.png" /></p>
+</li>
+<li>
+<p>Välj <strong>Send an email (V2)</strong> (Office 365 Outlook).</p>
+<p><img alt="Select Email V2" src="../../assets/images/chap09/bild16.png" /></p>
+</li>
+<li>
+<p>Vänta på anslutningen genom att konntrolera att det är grönt tillhöger om den mejladress och klicka sedan på <strong>Add and configure</strong> (eller Next).</p>
+<div class="admonition info">
+<p class="admonition-title">Ser du ingen grön bock?</p>
+<p>Om anslutningen inte är klar (ingen grön bock vid din mejladress), klicka på pilen eller de tre prickarna vid Connection-raden och välj att logga in/lägga till anslutning. Du kan inte klicka på Add and configure förrän anslutningen är aktiv.</p>
+</div>
+<p><img alt="Add and Configure" src="../../assets/images/chap09/bild17.png" /></p>
+</li>
+<li>
+<p><strong>Konfigurera verktyget:</strong></p>
+<ul>
+<li><strong>Name:</strong>
+  <div class="highlight"><pre><span></span><code>Acknowledge SharePoint ticket
+</code></pre></div></li>
+<li><strong>Description:</strong>
+  <div class="highlight"><pre><span></span><code>Det här verktyget skickar ett e-postmeddelande till IT-avdelningen med information om att en ny ticket har skapats.
+</code></pre></div></li>
+</ul>
+<p><img alt="Configure Tool" src="../../assets/images/chap09/bild18.png" /></p>
+</li>
+<li>
+<p><strong>Konfigurera Inputs (Viktigt):</strong>
+    Vi måste vara tydliga med vad agenten ska fylla i.</p>
+<p><strong>Konfigurera "To" (Mottagare):</strong>
+Här ska vi ange vem som ska ta emot mejlet. Eftersom det är en notifiering till IT (dig), hårdkodar vi adressen så agenten slipper gissa.</p>
+<ul>
+<li>Klicka på dropdown-menyn där det står <em>Dynamically fill with AI</em> och välj <strong>Custom value</strong>.</li>
+</ul>
+<p><img alt="Configure To Input" src="../../assets/images/chap09/tool-config-to-custom.png" /></p>
+<ul>
+<li>Skriv in din egen e-postadress i fältet (t.ex. <code>JoelThyberg@thybergai.onmicrosoft.com</code>).</li>
+</ul>
+<p><img alt="Configure To Input" src="../../assets/images/chap09/bild19.png" /></p>
+<p><strong>Konfigurera "Subject" (Ämne):</strong>
+Låt stå på <em>Dynamically fill with AI</em>, men vi ska ge en instruktion.</p>
+<ul>
+<li>Klicka på <strong>Customize</strong> bredvid Subject.</li>
+</ul>
+<p><img alt="Configure Subject" src="../../assets/images/chap09/tool-config-subject-edit.png" /></p>
+<ul>
+<li>I fältet <strong>Description</strong>, skriv:
+  <div class="highlight"><pre><span></span><code>En kort ämnesrad som inkluderar tickettiteln
+</code></pre></div></li>
+<li>Se till att <strong>Identify as</strong> är satt till <em>User's entire response</em>.</li>
+</ul>
+<p><img alt="Configure Subject Details" src="../../assets/images/chap09/bild20.png" /></p>
+<ul>
+<li>Stäng panelen för Subject.</li>
+</ul>
+<p><strong>Konfigurera "Body" (Innehåll):</strong>
+Vi gör samma sak här.</p>
+<ul>
+<li>Klicka på <strong>Customize</strong>.</li>
+</ul>
+<p><img alt="Configure Body" src="assets/images/chap09/bild21.png" /></p>
+<ul>
+<li>I fältet <strong>Description</strong>, skriv:
+  <div class="highlight"><pre><span></span><code>En sammanfattning av den nya ticketen, inklusive titel, prioritet och beskrivning.
+</code></pre></div></li>
+<li>Se till att <strong>Identify as</strong> är satt till <em>User's entire response</em>.</li>
+</ul>
+<p><img alt="Configure Body Details" src="../../assets/images/chap09/bild22.png" /></p>
+<ul>
+<li>Stäng panelen.</li>
+</ul>
+</li>
+<li>
+<p>Klicka <strong>Save</strong>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="94-testa-autonomin">9.4 Testa Autonomin</h2>
+<p>Nu testar vi om agenten vaknar till liv när vi skapar en ticket.</p>
+<ol>
+<li>Gå till <strong>Overview</strong> i Copilot Studio.</li>
+<li>Vid din trigger, klicka på ikonen <strong>Test trigger</strong> (blixt/play). Testpanelen öppnas och väntar.</li>
+<li>Öppna en ny flik i webbläsaren och gå till din SharePoint-lista <strong>Tickets</strong>.</li>
+<li>Skapa en ny rad (+ New):<ul>
+<li><strong>Title:</strong> <code>VPN nere</code></li>
+<li><strong>Description:</strong> <code>Jag kommer inte åt nätverket.</code></li>
+<li><strong>Priority:</strong> <code>High</code></li>
+</ul>
+</li>
+<li>Spara raden.</li>
+<li>Gå tillbaka till Copilot Studio. Vänta och klicka <strong>Refresh</strong> i testpanelen tills triggern syns.</li>
+<li>Klicka <strong>Start testing</strong>.</li>
+</ol>
+<p><strong>Resultat:</strong> Agenten ska läsa in ticketen, formulera ett mejl med informationen om "VPN nere" och skicka det till dig (IT-avdelningen).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

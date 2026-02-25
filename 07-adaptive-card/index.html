@@ -1,0 +1,1465 @@
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../06-create-topic/">
+      
+      
+        <link rel="next" href="../08-create-flow/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="sv">
+        
+          <link rel="alternate" href="../en/07-adaptive-card/" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>7. Skapa Adaptive Card - Copilot Studio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-skapa-ett-adaptivt-kort-for-bestallning" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Sidhuvud">
+    <a href=".." title="Copilot Studio" class="md-header__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. Skapa Adaptive Card
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Välj språk">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="sv" class="md-select__link">
+              Svenska
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../en/07-adaptive-card/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Copilot Studio" class="md-nav__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Copilot Studio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio Kurs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio Kurs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och Teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Förbered SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa Topic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa Adaptive Card
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa Adaptive Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-skapa-amne-for-bestallning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Skapa Ämne för Beställning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-bygga-kortet-visuell-redigerare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Bygga Kortet (Visuell redigerare)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 Bygga Kortet (Visuell redigerare)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testa-verktyget-valfritt-men-larorikt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testa verktyget (Valfritt men lärorikt)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-klistra-in-json-snabbvagen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Klistra in JSON (Snabbvägen)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-gora-kortet-dynamiskt-power-fx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Göra kortet Dynamiskt (Power Fx)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.4 Göra kortet Dynamiskt (Power Fx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viktigt-utdatavariabler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Viktigt: Utdatavariabler
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-uppdatera-agentens-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Uppdatera Agentens Instruktioner
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.5 Uppdatera Agentens Instruktioner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testa-flodet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testa flödet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi (Vakna till liv)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-Agent Orchestration (Finalen)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-set-up-for-production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Redo för produktion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & Tricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & Tricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-skapa-amne-for-bestallning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Skapa Ämne för Beställning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-bygga-kortet-visuell-redigerare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Bygga Kortet (Visuell redigerare)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 Bygga Kortet (Visuell redigerare)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testa-verktyget-valfritt-men-larorikt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testa verktyget (Valfritt men lärorikt)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-klistra-in-json-snabbvagen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Klistra in JSON (Snabbvägen)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-gora-kortet-dynamiskt-power-fx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Göra kortet Dynamiskt (Power Fx)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.4 Göra kortet Dynamiskt (Power Fx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viktigt-utdatavariabler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Viktigt: Utdatavariabler
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-uppdatera-agentens-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Uppdatera Agentens Instruktioner
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.5 Uppdatera Agentens Instruktioner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testa-flodet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testa flödet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="7-skapa-ett-adaptivt-kort-for-bestallning">7. Skapa ett Adaptivt Kort för Beställning</h1>
+<p>Vi har nu en agent som kan hitta datorer. Nästa steg är att låta användaren <strong>beställa</strong> en av dem.
+För att göra detta snyggt och användarvänligt ska vi använda ett <strong>Adaptive Card</strong>. Det är ett litet formulär direkt i chatten där användaren kan välja en dator och skriva en kommentar.</p>
+<hr />
+<h2 id="71-skapa-amne-for-bestallning">7.1 Skapa Ämne för Beställning</h2>
+<p>Vi skapar ett separat ämne för själva beställningen för att hålla logiken ren.</p>
+<ol>
+<li>
+<p>Navigera till dina <strong>Ämnen</strong> i Copilot Studio.</p>
+<p><img alt="Navigera till Ämnen" src="../assets/images-sv/chap07/1.png" /></p>
+</li>
+<li>
+<p>Välj <strong>+ Lägg till ett ämne</strong> -&gt; <strong>Från tom</strong>.</p>
+<p><img alt="Välj Lägg till ett ämne" src="../assets/images-sv/chap07/2.png" /></p>
+</li>
+<li>
+<p>Döp ämnet till:
+    <div class="highlight"><pre><span></span><code>Begär enhet
+</code></pre></div></p>
+<p><img alt="Skapa ämne" src="../assets/images-sv/chap07/3.png" /></p>
+</li>
+<li>
+<p>I rutan <strong>Beskrivning</strong> (under Utlösare), klistra in följande beskrivning:
+    <div class="highlight"><pre><span></span><code>Detta ämne hjälper användare att beställa en enhet när de svarar ja på frågan om de vill göra en beställning av en av de visade enheterna.
+</code></pre></div></p>
+<p><img alt="Beskrivning" src="../assets/images-sv/chap07/4.png" /></p>
+</li>
+</ol>
+<hr />
+<h2 id="72-bygga-kortet-visuell-redigerare">7.2 Bygga Kortet (Visuell redigerare)</h2>
+<p>Nu ska vi lägga till själva kortet.</p>
+<ol>
+<li>Klicka på <strong>plus-tecknet (+)</strong> under Utlösare-noden.</li>
+<li>
+<p>Välj <strong>Fråga med adaptivt kort</strong>.</p>
+<p><img alt="Välj Adaptivt kort" src="../assets/images-sv/chap07/5.png" /></p>
+</li>
+<li>
+<p>Klicka på de tre prickarna på kort-noden och välj <strong>Egenskaper</strong>.</p>
+<p><img alt="Kort Egenskaper" src="../assets/images-sv/chap07/6.png" /></p>
+</li>
+<li>
+<p>I panelen till höger, klicka på knappen <strong>Redigera adaptivt kort</strong>.</p>
+<p><img alt="Redigera kort" src="../assets/images-sv/chap07/7.png" /></p>
+</li>
+</ol>
+<h3 id="testa-verktyget-valfritt-men-larorikt">Testa verktyget (Valfritt men lärorikt)</h3>
+<p>Nu öppnas en stor editor. Till vänster har du komponenter (text, bilder, inputs) och i mitten ser du ditt kort.</p>
+<p><img alt="Editor" src="../assets/images-sv/chap07/8.png" /></p>
+<ol>
+<li>
+<p>Prova att dra in ett <strong>TextBlock</strong> från vänstermenyn till kortet.</p>
+<p><img alt="Dra in text" src="../assets/images-sv/chap07/9.png" /></p>
+</li>
+<li>
+<p>Testa att ändra texten till något annat, t.ex. "Tillgängliga enheter" i menyn till höger.</p>
+<p><img alt="Text" src="../assets/images-sv/chap07/10.png" /></p>
+</li>
+<li>
+<p>Ändra <strong>Horisontell justering</strong> till <strong>Centrerat</strong>.</p>
+<p><img alt="Horisontell justering" src="../assets/images-sv/chap07/11.png" /></p>
+</li>
+<li>
+<p>Prova att dra in en <strong>Input.ChoiceSet</strong> under texten.</p>
+<p><img alt="Dra in val" src="../assets/images-sv/chap07/12.png" /></p>
+</li>
+<li>
+<p>Ändra <strong>Stil</strong> till <strong>Expanderat</strong> för att se hur det ser ut som en lista med radioknappar.</p>
+<p><img alt="Format" src="../assets/images-sv/chap07/13.png" /></p>
+</li>
+<li>
+<p>Klicka på <strong>Preview</strong> högst upp för att se hur det skulle se ut i chatten.</p>
+<p><img alt="Förhandsgranskning" src="../assets/images-sv/chap07/14.png" /></p>
+</li>
+<li>
+<p>Klicka på <strong>Preview</strong> igen för att gå tillbaka.</p>
+</li>
+</ol>
+<hr />
+<h2 id="73-klistra-in-json-snabbvagen">7.3 Klistra in JSON (Snabbvägen)</h2>
+<p>Att bygga hela kortet för hand tar tid. Vi ska använda färdig kod (JSON) för att få en snygg grundstruktur.</p>
+<ol>
+<li>
+<p>Längst ner i fönstret ser du <strong>Redigerare för kortets nyttolast</strong>. (Dra upp kanten om den är liten).</p>
+<p><img alt="Payload Editor" src="../assets/images-sv/chap07/15.png" /></p>
+</li>
+<li>
+<p>Radera <strong>allt</strong> som står i editorn.</p>
+</li>
+<li>
+<p>Kopiera och klistra in följande kod:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AdaptiveCard&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://adaptivecards.io/schemas/adaptive-card.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;backgroundImage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://adaptivecards.io/content/backgroundImage.png&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;verticalAlignment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Center&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Container&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emphasis&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;bleed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;weight&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bolder&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Large&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;wrap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enhetsval&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;horizontalAlignment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Center&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Container&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;wrap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Medium&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vänligen välj vilken enhet du vill begära:&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;spacing&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Container&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;spacing&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Input.ChoiceSet&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deviceSelectionId&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expanded&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;choices&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Surface Laptop 13&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Surface Laptop 15&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Surface Studio&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Surface Pro&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Container&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;spacing&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emphasis&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;wrap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ytterligare information&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Input.Text&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;commentsId&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;placeholder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vänligen ange eventuella specifika krav eller övriga kommentarer&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;isMultiline&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;spacing&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Small&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FactSet&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;facts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Typ av förfrågan&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ny enhet&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Svarstid:&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3-5 arbetsdagar&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;spacing&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Small&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Action.Submit&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Skicka&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Klicka på <strong>Preview</strong> för att se ditt snygga kort!
+    <em>Just nu är listan på datorer "Hårdkodad" (Surface Laptop 13, 15 etc). Det ska vi ändra på nu.</em></p>
+<p><img alt="Förhandsgranskning" src="../assets/images-sv/chap07/16.png" /></p>
+</li>
+</ol>
+<hr />
+<h2 id="74-gora-kortet-dynamiskt-power-fx">7.4 Göra kortet Dynamiskt (Power Fx)</h2>
+<p>Vi vill att listan i kortet ska baseras på vad vi faktiskt hittade i SharePoint (i föregående kapitel). För att göra det måste vi byta från statisk JSON till dynamisk <strong>Power Fx</strong>.</p>
+<ol>
+<li>Stäng Förhandsgranskningsläge.</li>
+<li>
+<p>Längst upp till höger i editor-fönstret (ovanför koden), klicka på <strong>JSON</strong> och ändra till <strong>Formel</strong>.</p>
+<p><img alt="Ändra till Formel" src="../assets/images-sv/chap07/17.png" /></p>
+</li>
+<li>
+<p>Klicka på <strong>Expandera</strong>-ikonen (pilarna) för att göra formelfältet större.</p>
+<p><img alt="Expandera formel" src="../assets/images-sv/chap07/18.png" /></p>
+</li>
+<li>
+<p>Radera all kod i fönstret.</p>
+</li>
+<li>
+<p>Klistra in denna Power Fx-kod istället:</p>
+<div class="highlight"><pre><span></span><code>{
+  type: &quot;AdaptiveCard&quot;,
+  &#39;$schema&#39;: &quot;https://adaptivecards.io/schemas/adaptive-card.json&quot;,
+  version: &quot;1.5&quot;,
+  backgroundImage: {
+    url: &quot;https://adaptivecards.io/content/backgroundImage.png&quot;,
+    verticalAlignment: &quot;Center&quot;
+  },
+  body: [
+    {
+      type: &quot;Container&quot;,
+      style: &quot;emphasis&quot;,
+      bleed: true,
+      items: [
+        {
+          type: &quot;TextBlock&quot;,
+          text: &quot;Enhetsval&quot;,
+          weight: &quot;Bolder&quot;,
+          size: &quot;Large&quot;,
+          wrap: true,
+          horizontalAlignment: &quot;Center&quot;
+        }
+      ]
+    },
+    {
+      type: &quot;Container&quot;,
+      style: &quot;default&quot;,
+      items: [
+        {
+          type: &quot;TextBlock&quot;,
+          text: &quot;Vänligen välj vilken enhet du vill begära:&quot;,
+          wrap: true,
+          size: &quot;Medium&quot;
+        }
+      ],
+      spacing: &quot;None&quot;
+    },
+    {
+      type: &quot;Container&quot;,
+      spacing: &quot;None&quot;,
+      items: [
+        {
+          type: &quot;Input.ChoiceSet&quot;,
+          id: &quot;deviceSelectionId&quot;,
+          style: &quot;expanded&quot;,
+          choices: ForAll(
+            Global.VarDevices.value,
+            {
+              title: If(IsBlank(Model), &quot;Okänd modell&quot;, Model),
+              value: If(IsBlank(ID), &quot;NA&quot;, Text(ID))
+            }
+          )
+        }
+      ]
+    },
+    {
+      type: &quot;Container&quot;,
+      spacing: &quot;None&quot;,
+      style: &quot;emphasis&quot;,
+      items: [
+        {
+          type: &quot;TextBlock&quot;,
+          text: &quot;Ytterligare information&quot;,
+          wrap: true
+        },
+        {
+          type: &quot;Input.Text&quot;,
+          id: &quot;commentsId&quot;,
+          placeholder: &quot;Vänligen ange eventuella specifika krav eller övriga kommentarer&quot;,
+          isMultiline: true,
+          spacing: &quot;Small&quot;
+        }
+      ]
+    },
+    {
+      type: &quot;Container&quot;,
+      spacing: &quot;Medium&quot;,
+      items: [
+        {
+          type: &quot;FactSet&quot;,
+          facts: [
+            {
+              title: &quot;Typ av förfrågan:&quot;,
+              value: &quot;Ny enhet&quot;
+            },
+            {
+              title: &quot;Svarstid:&quot;,
+              value: &quot;3 till 5 arbetsdagar&quot;
+            }
+          ],
+          spacing: &quot;Small&quot;
+        }
+      ]
+    }
+  ],
+  actions: [
+    {
+      type: &quot;Action.Submit&quot;,
+      title: &quot;Skicka&quot;,
+      id: &quot;deviceSubmittedId&quot;
+    }
+  ]
+}
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Vad hände nu?</p>
+<p>Titta på delen med <code>choices: ForAll(...)</code>.
+Istället för en fast lista säger vi nu: "Loopa igenom vår globala variabel <code>Global.VarDevices.value</code>. För varje rad, skapa ett val där titeln är modellnamnet och värdet är ID:t."
+Detta gör kortet levande!</p>
+</div>
+</li>
+<li>
+<p>Kontrollera att du har en <strong>grön bock</strong> nere i hörnet (inga syntaxfel).</p>
+<p><img alt="Grön bock" src="../assets/images-sv/chap07/19.png" /></p>
+</li>
+<li>
+<p>Klicka på <strong>Spara kort</strong> (eller stäng krysset om knappen saknas, det sparas ofta automatiskt) och stäng sedan det adaptiva kortets egenskaper.</p>
+<p><img alt="Spara och stäng" src="../assets/images-sv/chap07/20.png" /></p>
+</li>
+</ol>
+<h3 id="viktigt-utdatavariabler">Viktigt: Utdatavariabler</h3>
+<p>Om du tittar längst ner i Egenskapspanelen för din kort-nod, ser du sektionen <strong>Utdata</strong>.
+Här bör du se två variabler:
+* <code>deviceSelectionId</code> (Vad användaren valde)
+* <code>commentsId</code> (Vad användaren skrev)</p>
+<p>Dessa skapades automatiskt baserat på ID:n i koden vi klistrade in. Vi kommer att använda dessa i nästa kapitel för att genomföra beställningen.</p>
+<p><img alt="Utdatavariabler" src="../assets/images-sv/chap07/21.png" /></p>
+<ol>
+<li>Klicka <strong>Spara</strong> för att spara ditt ämne.</li>
+</ol>
+<hr />
+<h2 id="75-uppdatera-agentens-instruktioner">7.5 Uppdatera Agentens Instruktioner</h2>
+<p>Nu har vi ett ämne för att visa enheter (Tillgängliga Enheter) och ett för att beställa (Beställ enhet). Vi måste lära agenten hur de hänger ihop.</p>
+<ol>
+<li>
+<p>Gå till fliken <strong>Översikt</strong>.</p>
+<p><img alt="Översikt" src="../assets/images-sv/chap07/22.png" /></p>
+</li>
+<li>
+<p>Vid <strong>Instruktioner</strong>, klicka på <strong>Redigera</strong>.</p>
+<p><img alt="Redigera instruktioner" src="../assets/images-sv/chap07/23.png" /></p>
+</li>
+<li>
+<p>Leta upp raden du lade till sist. Vi ska uppdatera den så att den länkar vidare till vårt nya ämne.</p>
+<p><em>Ändra den sista punkten till följande:</em></p>
+<div class="highlight"><pre><span></span><code>- Om användaren svarar ja på frågan om att beställa en enhet, trigga [Begär enhet]. Om de svarar nej, avsluta på ett vänligt vis.
+</code></pre></div>
+</li>
+<li>
+<p><strong>Viktigt:</strong> Du måste göra länkarna "blåa".</p>
+<ul>
+<li>Sudda ut <code>[Begär enhet]</code>. Skriv <code>/Beg</code> och välj <strong>Begär enhet</strong> från listan.</li>
+</ul>
+</li>
+<li>
+<p>Klicka <strong>Spara</strong>.</p>
+<p><img alt="Spara" src="assets/images-sv/chap07/24.png" /></p>
+</li>
+</ol>
+<h3 id="testa-flodet">Testa flödet</h3>
+<p>Nu är det dags att se magin hända!</p>
+<ol>
+<li>Öppna <strong>Testa</strong>-panelen. Klicka på ikonen för <strong>Karta</strong> (Aktivitetskarta) och slå på <strong>Spåra mellan ämnen</strong>.</li>
+<li>Skriv: <code>Jag behöver en bärbar dator</code>
+    <em>Agenten bör visa listan och fråga om du vill beställa.</em></li>
+<li>Svara: <code>Ja tack</code>
+    <em>Nu ska agenten automatiskt hoppa över till ditt nya ämne </em><em>Beställ enhet</em><em> och visa det snygga formuläret.</em></li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Snyggt!</p>
+<p>Du har nu byggt ett dynamiskt formulär som anpassar sig efter vad som finns i lagret. I nästa kapitel ska vi se till att det faktiskt händer något när man klickar på "Skicka"!</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopierat till urklipp", "clipboard.copy": "Kopiera till urklipp", "search.result.more.one": "1 till p\u00e5 denna sida", "search.result.more.other": "# till p\u00e5 denna sida", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.term.missing": "Saknas", "select.version": "V\u00e4lj version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

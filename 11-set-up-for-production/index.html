@@ -1,0 +1,1223 @@
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../10-multi-agent/">
+      
+      
+        <link rel="next" href="../tips/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="sv">
+        
+          <link rel="alternate" href="../en/11-set-up-for-production/" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>11. Redo för produktion - Copilot Studio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#00-satta-upp-azure-pay-as-you-go-for-copilot-studio-och-dataverse" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Sidhuvud">
+    <a href=".." title="Copilot Studio" class="md-header__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              11. Redo för produktion
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Välj språk">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="sv" class="md-select__link">
+              Svenska
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../en/11-set-up-for-production/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Copilot Studio" class="md-nav__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Copilot Studio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio Kurs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio Kurs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och Teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Förbered SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa Topic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa Adaptive Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi (Vakna till liv)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-Agent Orchestration (Finalen)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Redo för produktion
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Redo för produktion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mission-brief" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mission brief
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resultat-du-ska-ha-nar-du-ar-klar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resultat du ska ha när du är klar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forutsattningar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Förutsättningar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viktig-princip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Viktig princip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vanliga-fel-vi-loste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vanliga fel vi löste
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & Tricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & Tricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mission-brief" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mission brief
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resultat-du-ska-ha-nar-du-ar-klar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resultat du ska ha när du är klar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forutsattningar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Förutsättningar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viktig-princip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Viktig princip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vanliga-fel-vi-loste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vanliga fel vi löste
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="00-satta-upp-azure-pay-as-you-go-for-copilot-studio-och-dataverse">00 Sätta upp Azure pay as you go för Copilot Studio och Dataverse</h1>
+<h2 id="mission-brief">Mission brief</h2>
+<p>Målet är att kunna bygga och publicera agenter i en separat Power Platform miljö med betala per användning via Azure, utan att blockeras av Dataverse kapacitetskrav och utan att riskera oväntade kostnader i fel miljö.</p>
+<p>Den här guiden beskriver exakt vad vi gjorde, varför vi gjorde det, samt hur du verifierar att allt hamnar rätt.</p>
+<h2 id="resultat-du-ska-ha-nar-du-ar-klar">Resultat du ska ha när du är klar</h2>
+<ol>
+<li>En Azure prenumeration som kan ta emot debitering.</li>
+<li>En resursgrupp i Azure för tydlig kostnadsuppföljning.</li>
+<li>En faktureringsplan i Power Platform som pekar på Azure prenumerationen och resursgruppen.</li>
+<li>En ny Power Platform miljö med Dataverse där betala per användning är aktivt redan vid skapandet.</li>
+<li>En Azure budget med aviseringar så du ser kostnad tidigt.</li>
+</ol>
+<h2 id="forutsattningar">Förutsättningar</h2>
+<ol>
+<li>Du är global administratör i din tenant.</li>
+<li>Du har åtkomst till Power Platform admin center.</li>
+<li>Du kan skapa Azure konto eller prenumeration.</li>
+<li>Du vet vilken region du vill använda, exempel Sverige eller Europa.</li>
+</ol>
+<h2 id="viktig-princip">Viktig princip</h2>
+<p>Dataverse måste provisioneras med betala per användning aktivt redan vid skapandet av miljön.<br />
+Annars försöker systemet ta minst 1 GB från tenantens kapacitetspool, vilket ofta stoppar skapandet med kapacitetsfel.</p>
+<h2 id="vanliga-fel-vi-loste">Vanliga fel vi löste</h2>
+<ol>
+<li>No Azure subscriptions available i Power Platform.</li>
+<li>Det går inte att skapa miljön eftersom klientorganisationen behöver minst 1 GB databaskapacitet.</li>
+<li>Faktureringsplanen kräver att en miljö kopplas direkt, även om man helst vill vänta.</li>
+</ol>
+<hr />
+<h1 id="steg-1-skapa-azure-prenumeration-genom-azure-free-account">Steg 1 Skapa Azure prenumeration genom Azure Free Account</h1>
+<h2 id="var-gors-det">Var görs det</h2>
+<p>Azure portalen eller Azure sign up flödet.</p>
+<h2 id="gor-sa-har">Gör så här</h2>
+<ol>
+<li>Starta skapandet av ett Azure free account.</li>
+<li>Slutför registreringen.</li>
+<li>Logga in i Azure portalen och verifiera att du ser en prenumeration, exempel Azure subscription 1.</li>
+</ol>
+<h2 id="verifiera">Verifiera</h2>
+<ol>
+<li>Gå till Subscriptions i Azure portalen.</li>
+<li>Du ska se din prenumeration i listan.</li>
+</ol>
+<hr />
+<h1 id="steg-2-sakerstall-ratt-behorighet-pa-prenumerationen">Steg 2 Säkerställ rätt behörighet på prenumerationen</h1>
+<h2 id="varfor">Varför</h2>
+<p>Det här är den vanligaste orsaken till att Power Platform inte kan lista din Azure prenumeration.</p>
+<h2 id="var-gors-det_1">Var görs det</h2>
+<p>Azure portal, inne på din prenumeration.</p>
+<h2 id="gor-sa-har_1">Gör så här</h2>
+<ol>
+<li>Öppna Subscriptions.</li>
+<li>Klicka på Azure subscription 1.</li>
+<li>Välj Access control IAM.</li>
+<li>Öppna Role assignments.</li>
+<li>Kontrollera att du har rollen Owner. Contributor fungerar ofta men Owner är säkrast för setup.</li>
+</ol>
+<h2 id="verifiera_1">Verifiera</h2>
+<p>Du ska se ditt konto listat med Owner på scope för prenumerationen.</p>
+<hr />
+<h1 id="steg-3-skapa-resursgrupp-i-azure">Steg 3 Skapa resursgrupp i Azure</h1>
+<h2 id="varfor_1">Varför</h2>
+<p>Resursgruppen gör det enkelt att filtrera och förstå kostnader.</p>
+<h2 id="var-gors-det_2">Var görs det</h2>
+<p>Azure portal, Resource groups.</p>
+<h2 id="gor-sa-har_2">Gör så här</h2>
+<ol>
+<li>Gå till Resource groups.</li>
+<li>Klicka Create.</li>
+<li>Prenumeration: Azure subscription 1.</li>
+<li>Resource group name: rg pp paygo copilot.</li>
+<li>Region: exempel Sweden Central.</li>
+</ol>
+<h2 id="taggar-som-ar-bra-att-lagga-direkt">Taggar som är bra att lägga direkt</h2>
+<p>Du kan lägga taggar direkt vid skapandet. Det är best practice och biter dig inte senare.
+1. purpose: pp paygo
+2. env: demo
+3. owner: joel</p>
+<h2 id="verifiera_2">Verifiera</h2>
+<ol>
+<li>Öppna resursgruppen efter skapandet.</li>
+<li>Kontrollera att taggarna finns.</li>
+</ol>
+<hr />
+<h1 id="steg-4-skapa-faktureringsplan-i-power-platform-och-koppla-till-azure">Steg 4 Skapa faktureringsplan i Power Platform och koppla till Azure</h1>
+<h2 id="var-gors-det_3">Var görs det</h2>
+<p>Power Platform admin center.</p>
+<h2 id="navigering">Navigering</h2>
+<p>Power Platform admin center<br />
+Licensing<br />
+Billing plans<br />
+New billing plan</p>
+<h2 id="matare-du-valde">Mätare du valde</h2>
+<ol>
+<li>Dataverse</li>
+<li>Copilot Studio</li>
+<li>Power Automate</li>
+</ol>
+<p>Du kan lägga till fler senare, exempel Power Apps, Power Pages, Windows 365 för agenter, om du faktiskt behöver dem.</p>
+<h2 id="problem-vi-fick">Problem vi fick</h2>
+<p>Vi kunde inte skapa faktureringsplanen utan att koppla en miljö direkt.<br />
+Därför kopplade vi default miljön temporärt.</p>
+<h2 id="steg-4a-skapa-faktureringsplanen-med-default-miljon-temporart">Steg 4A Skapa faktureringsplanen med default miljön temporärt</h2>
+<ol>
+<li>Gå till Power Platform admin center, Billing plans, New.</li>
+<li>Name: DemoPublish Billing.</li>
+<li>Azure subscription: Azure subscription 1.</li>
+<li>Resource group: rg pp paygo copilot.</li>
+<li>Meter: välj Dataverse, Copilot Studio, Power Automate.</li>
+<li>Gå vidare till Välj miljöer.</li>
+<li>Välj Joel Thyberg default.</li>
+<li>Spara.</li>
+</ol>
+<h2 id="kontroll-direkt-efter">Kontroll direkt efter</h2>
+<ol>
+<li>Öppna billing planen du nyss skapade.</li>
+<li>Verifiera att endast Joel Thyberg default är kopplad.</li>
+<li>Verifiera att CopilotLab inte är kopplad.</li>
+</ol>
+<h2 id="varfor-detta-var-ok">Varför detta var ok</h2>
+<p>Default miljön hade ingen Dataverse konsumtion i praktiken och vi byggde inget där.<br />
+Risken för kostnad var därför nära noll så länge vi höll disciplin på vilken miljö vi använder.</p>
+<hr />
+<h1 id="steg-5-skapa-miljon-demopublish-med-dataverse-och-betala-per-anvandning-aktivt">Steg 5 Skapa miljön DemoPublish med Dataverse och betala per användning aktivt</h1>
+<h2 id="var-gors-det_4">Var görs det</h2>
+<p>Power Platform admin center.</p>
+<h2 id="navigering_1">Navigering</h2>
+<p>Power Platform admin center<br />
+Environments<br />
+New</p>
+<h2 id="fyll-i-sa-har">Fyll i så här</h2>
+<ol>
+<li>Name: DemoPublish.</li>
+<li>Region: välj Sverige om den finns, annars fungerar Europa Standard.</li>
+<li>Managed environment: Nej för start om du vill hålla det enkelt.</li>
+<li>Early access features: Nej för start.</li>
+<li>Environment type: välj Utvärdering eller Produktion. Undvik Begränsat läge om du vill minimera friktion initialt.</li>
+<li>Add Dataverse: Ja.</li>
+<li>Pay as you go with Azure: Ja.</li>
+<li>Välj billing plan: DemoPublish Billing.</li>
+<li>Dynamics 365 apps: Nej.</li>
+<li>Sample data: Nej.</li>
+<li>Security group: välj Inga om du är ensam, eller skapa en security group med bara dig om du vill vara strikt.</li>
+</ol>
+<h2 id="dataverse-installningar">Dataverse inställningar</h2>
+<ol>
+<li>Språk: svenska Sverige.</li>
+<li>Valuta: SEK.</li>
+<li>URL: låt den genereras automatiskt om du inte behöver anpassad domän.</li>
+</ol>
+<h2 id="den-kritiska-punkten">Den kritiska punkten</h2>
+<p>Pay as you go måste vara på redan när Dataverse provisioneras.<br />
+Om du försöker lägga på pay as you go efteråt kan skapandet falla på 1 GB kravet.</p>
+<hr />
+<h1 id="steg-6-flytta-kopplingen-i-faktureringsplanen-fran-default-till-demopublish">Steg 6 Flytta kopplingen i faktureringsplanen från default till DemoPublish</h1>
+<h2 id="varfor_2">Varför</h2>
+<p>Du vill inte ha default miljön kopplad längre, även om det var en temporär workaround.</p>
+<h2 id="gor-sa-har_3">Gör så här</h2>
+<ol>
+<li>Gå till Power Platform admin center, Billing plans.</li>
+<li>Öppna DemoPublish Billing.</li>
+<li>Ta bort Joel Thyberg default från miljölistan.</li>
+<li>Lägg till DemoPublish.</li>
+<li>Spara.</li>
+</ol>
+<h2 id="verifiera_3">Verifiera</h2>
+<p>Billing planen ska nu endast vara kopplad till DemoPublish.</p>
+<hr />
+<h1 id="steg-7-forlang-copilot-studio-trial-om-du-far-prompten">Steg 7 Förläng Copilot Studio trial om du får prompten</h1>
+<h2 id="varfor_3">Varför</h2>
+<p>Det ger dig mer tid att testa innan du behöver köpa eller gå fullt betala per användning för agentförbrukning i större skala.</p>
+<h2 id="gor-sa-har_4">Gör så här</h2>
+<ol>
+<li>Följ prompten i Copilot Studio när den erbjuds.</li>
+<li>Bekräfta förlängningen.</li>
+</ol>
+<p>Notera att du kan ha trial aktiv och ändå ha betala per användning setup redo.<br />
+Det viktiga är att du har kontroll på vilken miljö som är kopplad till billing planen.</p>
+<hr />
+<h1 id="steg-8-satt-upp-budget-och-aviseringar-i-azure">Steg 8 Sätt upp budget och aviseringar i Azure</h1>
+<h2 id="var-gors-det_5">Var görs det</h2>
+<p>Azure portal, Cost Management.</p>
+<h2 id="navigering_2">Navigering</h2>
+<p>Cost Management<br />
+Budgets<br />
+Create</p>
+<h2 id="rekommenderat-upplagg-for-enkel-kontroll">Rekommenderat upplägg för enkel kontroll</h2>
+<p>Scope: Azure subscription 1.</p>
+<h2 id="exempel-pa-budget-och-trosklar">Exempel på budget och trösklar</h2>
+<ol>
+<li>Budgetbelopp: välj ett belopp du är trygg med.</li>
+<li>Alerts för faktisk kostnad: 50 procent, 80 procent, 100 procent.</li>
+<li>Alerts för prognos: 50 procent.</li>
+</ol>
+<h2 id="mottagare">Mottagare</h2>
+<p>Lägg in både din onmicrosoft adress och din riktiga e post, om du vill.</p>
+<h2 id="viktigt-om-filter">Viktigt om filter</h2>
+<p>Det kan ta timmar innan kostnader syns och innan filter som resursgrupp går att välja.<br />
+Det är normalt.</p>
+<hr />
+<h1 id="miljotyper-och-hur-de-mappar-mot-det-du-ser-i-ui">Miljötyper och hur de mappar mot det du ser i UI</h1>
+<h2 id="begrepp">Begrepp</h2>
+<p>Begränsat läge motsvarar ofta Sandbox.
+Produktion motsvarar Production.
+Utvecklare är Developer environment som hör ihop med Developer Plan och har egna begränsningar.
+Utvärdering är Trial miljö som normalt löper ut.
+Utvärdering prenumerationsbaserad är en annan trial variant som Microsoft beskriver separat.</p>
+<hr />
+<h1 id="snabb-verifiering-efter-setup">Snabb verifiering efter setup</h1>
+<h2 id="1-verifiera-miljo-och-billing-koppling">1 Verifiera miljö och billing koppling</h2>
+<ol>
+<li>Power Platform admin center, Billing plans.</li>
+<li>Öppna planen.</li>
+<li>Kontrollera att DemoPublish är kopplad och inget annat.</li>
+</ol>
+<h2 id="2-verifiera-att-demopublish-har-dataverse">2 Verifiera att DemoPublish har Dataverse</h2>
+<ol>
+<li>Power Platform admin center, Environments.</li>
+<li>Öppna DemoPublish.</li>
+<li>Kontrollera att Dataverse är provisionerat.</li>
+</ol>
+<h2 id="3-verifiera-kostnadsflode-i-azure">3 Verifiera kostnadsflöde i Azure</h2>
+<ol>
+<li>Vänta några timmar.</li>
+<li>Azure portal, Cost Management, Cost analysis.</li>
+<li>Group by service name och byt period till This month.</li>
+</ol>
+<hr />
+<h1 id="nasta-steg-for-praktisk-test">Nästa steg för praktisk test</h1>
+<h2 id="malet-med-testet">Målet med testet</h2>
+<p>Bevisa att du kan bygga, paketera och publicera i DemoPublish.</p>
+<h2 id="rekommenderad-ordning">Rekommenderad ordning</h2>
+<ol>
+<li>Öppna Copilot Studio och byt miljö till DemoPublish.</li>
+<li>Skapa en enkel agent och testa i test chat.</li>
+<li>Skapa en solution i Power Apps maker portal i DemoPublish.</li>
+<li>Lägg agenten i solution och exportera.</li>
+<li>Publicera agenten till Teams eller annan kanal och verifiera att den svarar.</li>
+</ol>
+<hr />
+<h1 id="troubleshooting">Troubleshooting</h1>
+<h2 id="problem-no-azure-subscriptions-available">Problem No Azure subscriptions available</h2>
+<ol>
+<li>Kontrollera IAM på prenumerationen.</li>
+<li>Du ska vara Owner.</li>
+<li>Logga ut och in igen i Power Platform admin center efter rolländring.</li>
+</ol>
+<h2 id="problem-1-gb-databaskapacitet-vid-skapande-av-miljo">Problem 1 GB databaskapacitet vid skapande av miljö</h2>
+<ol>
+<li>Se till att Pay as you go with Azure är aktiverat redan vid skapandet.</li>
+<li>Se till att du väljer billing planen i skapandet.</li>
+<li>Försök inte skapa Dataverse först och koppla billing efteråt.</li>
+</ol>
+<h2 id="problem-att-developer-miljon-inte-syns-i-listor">Problem att developer miljön inte syns i listor</h2>
+<p>Det kan bero på regionfilter, rättigheter eller hur miljön är klassad.<br />
+Det viktiga här är att DemoPublish fungerar och är kopplad till billing planen.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopierat till urklipp", "clipboard.copy": "Kopiera till urklipp", "search.result.more.one": "1 till p\u00e5 denna sida", "search.result.more.other": "# till p\u00e5 denna sida", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.term.missing": "Saknas", "select.version": "V\u00e4lj version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

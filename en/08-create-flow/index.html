@@ -1,0 +1,1547 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../07-adaptive-card/">
+      
+      
+        <link rel="next" href="../09-autonomy/">
+      
+      
+        
+          <link rel="alternate" href="../../08-create-flow/" hreflang="sv">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>8. Skapa Flow - Copilot Studio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#8-skapa-ett-agent-flow" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="Copilot Studio" class="md-header__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8. Skapa Flow
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../08-create-flow/" hreflang="sv" class="md-select__link">
+              Svenska
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="Copilot Studio" class="md-nav__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Copilot Studio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio Kurs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio Kurs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och Teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Förbered SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa Topic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa Adaptive Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa Flow
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#81-skapa-ett-nytt-agent-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Skapa ett nytt Agent Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82-definiera-inputs-trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Definiera Inputs (Trigger)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#83-hamta-enhetsdetaljer-get-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Hämta enhetsdetaljer (Get Item)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#84-skicka-bestallningsmejl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Skicka Beställningsmejl
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#85-skicka-svar-till-agenten-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 Skicka svar till Agenten (Output)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#86-spara-och-konfigurera-agent-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6 Spara och konfigurera Agent Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#87-koppla-ditt-agent-flow-i-topicen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.7 Koppla ditt Agent Flow i Topicen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#88-forbattra-anvandarupplevelsen-bekraftelse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.8 Förbättra användarupplevelsen (Bekräftelse)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.8 Förbättra användarupplevelsen (Bekräftelse)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testa-allt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testa allt!
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi (Vakna till liv)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-Agent Orchestration (Finalen)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-set-up-for-production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Redo för produktion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & Tricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & Tricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#81-skapa-ett-nytt-agent-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Skapa ett nytt Agent Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82-definiera-inputs-trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Definiera Inputs (Trigger)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#83-hamta-enhetsdetaljer-get-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Hämta enhetsdetaljer (Get Item)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#84-skicka-bestallningsmejl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Skicka Beställningsmejl
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#85-skicka-svar-till-agenten-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 Skicka svar till Agenten (Output)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#86-spara-och-konfigurera-agent-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6 Spara och konfigurera Agent Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#87-koppla-ditt-agent-flow-i-topicen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.7 Koppla ditt Agent Flow i Topicen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#88-forbattra-anvandarupplevelsen-bekraftelse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.8 Förbättra användarupplevelsen (Bekräftelse)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.8 Förbättra användarupplevelsen (Bekräftelse)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testa-allt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testa allt!
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="8-skapa-ett-agent-flow">8. Skapa ett Agent Flow</h1>
+<p>Nu ska vi bygga motorn som faktiskt utför beställningen. När användaren klickar på "Skicka" i det adaptiva kortet, ska agenten anropa ett <strong>Agent Flow</strong>.</p>
+<p>Skillnaden mot ett vanligt flöde är att ett Agent Flow är skräddarsytt för att ta emot data direkt från din agent, utföra arbete, och sedan svara agenten med ett resultat.</p>
+<p>Detta Agent Flow ska:
+1.  Ta emot information från chatten (Vilken dator? Vem beställer?).
+2.  Hämta detaljer om datorn från SharePoint (för att dubbelkolla att den finns och hämta pris).
+3.  Skicka ett beställningsmejl till IT-avdelningen.
+4.  Skicka tillbaka en bekräftelse till chatten.</p>
+<hr />
+<h2 id="81-skapa-ett-nytt-agent-flow">8.1 Skapa ett nytt Agent Flow</h2>
+<p>Vi börjar inifrån din Topic <strong>Request device</strong> som vi jobbade med sist.</p>
+<ol>
+<li>Gå till <strong>Topics</strong> och öppna <strong>Request device</strong>.</li>
+<li>Scrolla längst ner i flödet (under <code>Ask with Adaptive Card</code>).</li>
+<li>Klicka på <strong>plus-tecknet (+)</strong>.</li>
+<li>
+<p>Välj <strong>Add a tool</strong> -&gt; <strong>New Agent flow</strong>.
+    <em>(Ibland kan det heta "Call an action" -&gt; "Create a flow" beroende på version).</em></p>
+<p><img alt="Skapa flöde" src="../../assets/images/chap08/topic-call-action-flow.png" /></p>
+<p><em>Detta öppnar ett nytt fönster där vi kan bygga vårt Agent Flow.</em></p>
+</li>
+</ol>
+<hr />
+<h2 id="82-definiera-inputs-trigger">8.2 Definiera Inputs (Trigger)</h2>
+<p>Väl inne i <strong>Agent flows</strong> kan vi se två noder.</p>
+<ul>
+<li>
+<p>Den övre noden: <strong>When an agent calls the flow</strong>. Här bestämmer vi vad agenten ska skicka <em>in</em> i processen.</p>
+</li>
+<li>
+<p>Den nedre noden: <strong>Respond to the agent</strong>. Här bestämmer vi vad som skickas <em>tillbaka</em> till agenten.</p>
+</li>
+</ul>
+<p>Vi börjar med att definiera inputs. Vi behöver tre saker: ID på datorn, vem användaren är, och eventuella kommentarer.</p>
+<ol>
+<li>
+<p>Klicka på noden <strong>When an agent calls the flow</strong> för att öppna inställningarna.</p>
+<p><img alt="Öppnar noden" src="../../assets/images/chap08/flow-open-inputs.png" /></p>
+</li>
+<li>
+<p>Klicka på <strong>+ Add an input</strong>.</p>
+<p><img alt="Add input" src="../../assets/images/chap08/flow-add-input.png" /></p>
+</li>
+<li>
+<p>Du ser nu ett gäng olika typer av inputs. Välj <strong>Text</strong>.</p>
+<p><img alt="Add input text" src="../../assets/images/chap08/flow-add-input-text.png" /></p>
+</li>
+<li>
+<p>Ställ dig i textrutan (där det står "User's input") och döp om den till:
+    <div class="highlight"><pre><span></span><code>DeviceSharePointId
+</code></pre></div>
+    <em>Här skickar vi in ID:t från SharePoint.</em></p>
+<p><img alt="Input DeviceSharePointId" src="../../assets/images/chap08/flow-add-input-text-device.png" /></p>
+</li>
+<li>
+<p>Gör om proceduren. Klicka <strong>+ Add an input</strong> -&gt; <strong>Text</strong>. Döp den till:
+    <div class="highlight"><pre><span></span><code>User
+</code></pre></div>
+    <em>Här skickar vi in användarens namn.</em></p>
+<p><img alt="Input User" src="../../assets/images/chap08/flow-add-input-text-user.png" /></p>
+</li>
+<li>
+<p>Gör om proceduren igen. Klicka <strong>+ Add an input</strong> -&gt; <strong>Text</strong>. Döp den till:
+    <div class="highlight"><pre><span></span><code>AdditionalComments
+</code></pre></div></p>
+<p><img alt="Input AdditionalComments" src="../../assets/images/chap08/flow-trigger-inputs-text-comments.png" /></p>
+</li>
+<li>
+<p><strong>Gör kommentaren frivillig:</strong></p>
+<p>Eftersom användaren kanske inte skriver någon kommentar, måste vi göra detta fält valfritt (Optional).</p>
+<ul>
+<li>
+<p>Klicka på de <strong>tre prickarna (...)</strong> bredvid fältet <em>AdditionalComments</em>.</p>
+</li>
+<li>
+<p>Välj <strong>Make the field optional</strong>.</p>
+</li>
+</ul>
+<p><img alt="Gör input frivillig" src="../../assets/images/chap08/flow-input-optional.png" /></p>
+</li>
+</ol>
+<hr />
+<h2 id="83-hamta-enhetsdetaljer-get-item">8.3 Hämta enhetsdetaljer (Get Item)</h2>
+<p>Agenten skickar bara ett ID (t.ex. "4"). För att mejlet ska bli snyggt måste vi slå upp vad "4" är för dator (Modell, Pris, etc).</p>
+<ol>
+<li>Klicka på <strong>plus-tecknet (+)</strong> under trigger-noden.</li>
+<li>
+<p>Sök efter <strong>Get item</strong> och välj <strong>Get item (SharePoint)</strong>.
+    <em>(Obs: Välj "Get item" i singular, inte "Get items", eftersom vi bara ska hämta en specifik rad).</em></p>
+<p><img alt="Get item action" src="../../assets/images/chap08/flow-action-getitem.png" /></p>
+</li>
+<li>
+<p><strong>Döp om steget (Best Practice):</strong></p>
+<ul>
+<li>Klicka på de <strong>tre prickarna (...)</strong> på noden <em>Get item</em>.</li>
+<li>Välj <strong>Rename</strong>.</li>
+<li>Döp den till:
+<div class="highlight"><pre><span></span><code>Get Device
+</code></pre></div></li>
+</ul>
+<p><img alt="Rename step" src="../../assets/images/chap08/flow-getitem-rename.png" /></p>
+</li>
+<li>
+<p><strong>Konfigurera steget:</strong></p>
+<ul>
+<li><strong>Site Address:</strong> Välj din IT Support-sida.</li>
+</ul>
+<p><img alt="Site Address" src="../../assets/images/chap08/flow-getitem-siteaddress.png" /></p>
+<ul>
+<li><strong>List Name:</strong> Välj listan <strong>Devices</strong>.</li>
+</ul>
+<p><img alt="List Name" src="../../assets/images/chap08/flow-getitem-listname.png" /></p>
+<ul>
+<li><strong>Id:</strong> Vi måste koppla detta till vårt input-värde. Klicka på <strong>fx</strong> (eller blixten) längst till vänster i Id-rutan.</li>
+</ul>
+<p><img alt="Id fx" src="../../assets/images/chap08/flow-getitem-id.png" /></p>
+<ul>
+<li>
+<p>Välj <strong>Dynamic content</strong> och sök efter:
+<div class="highlight"><pre><span></span><code>DeviceSharePointId
+</code></pre></div>
+<img alt="Mappa ID" src="../../assets/images/chap08/flow-getitem-dynamic.png" /></p>
+</li>
+<li>
+<p>Notera att syntaxen <code>triggerBody()?['text']</code> (eller liknande) används när du klickar på <strong>DeviceSharePointId</strong>. Klicka nu på <strong>Add</strong>.</p>
+</li>
+</ul>
+<p><img alt="Add button" src="../../assets/images/chap08/flow-getitem-add.png" /></p>
+</li>
+<li>
+<p><strong>Avancerade inställningar:</strong></p>
+<ul>
+<li>Klicka på <strong>Show all</strong> i inställningarna för <em>Get Device</em>.
+<img alt="Show all" src="../../assets/images/chap08/flow-getitem-showall.png" /></li>
+<li>Hitta <strong>Limit Columns by View</strong>.</li>
+<li>Välj <strong>All Items</strong>.
+<img alt="Limit Columns by View" src="../../assets/images/chap08/flow-getitem-limitcolumns.png" />
+<em>(Detta säkerställer att vi får tillgång till alla kolumner).</em></li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="84-skicka-bestallningsmejl">8.4 Skicka Beställningsmejl</h2>
+<p>Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robust i denna övning använder vi e-post.</p>
+<ol>
+<li>Klicka på <strong>plus-tecknet (+)</strong> under <em>Get Device</em>.</li>
+<li>
+<p>Sök efter:
+    <div class="highlight"><pre><span></span><code>Send an email
+</code></pre></div>
+    <img alt="Send an email" src="../../assets/images/chap08/flow-action-email.png" /></p>
+<p>Välj <strong>Send an email (V2)</strong> (Office 365 Outlook).
+<em>(Logga in om det behövs).</em></p>
+</li>
+<li>
+<p>Döp om noden till:
+    <div class="highlight"><pre><span></span><code>Skicka mejl till IT
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Konfigurera mejlet:</strong>
+    Vi ska nu bygga mailet med hjälp av <strong>Dynamiskt innehåll</strong> (värden som hämtas från tidigare steg).</p>
+<ul>
+<li><strong>To:</strong> Klicka på <strong>Enter custom value</strong> och skriv in <strong>din egen e-postadress</strong>.</li>
+</ul>
+<p><img alt="To field" src="../../assets/images/chap08/flow-action-email-to.png" /></p>
+<p><em>(I verkligheten hade detta gått till en funktionsbrevlåda för IT).</em></p>
+<ul>
+<li>
+<p><strong>Subject:</strong> Skriv följande text:
+<div class="highlight"><pre><span></span><code>Typ av förfrågan: Ny enhet
+</code></pre></div>
+<img alt="Subject field" src="../../assets/images/chap08/flow-action-email-subject.png" /></p>
+</li>
+<li>
+<p><strong>Body:</strong> Här bygger vi meddelandet. Kopiera först in grundtexten nedan:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Hej IT-supporten!
+
+En ny beställning har inkommit.
+
+Beställare:
+Enhet:
+Pris:
+
+Kommentar från användaren:
+</code></pre></div>
+<p><img alt="Email body setup" src="../../assets/images/chap08/flow-action-email.png" /></p>
+<p><strong>Nu ska vi fylla i hålen med data:</strong></p>
+<p><strong>1. Lägg till Beställare:</strong></p>
+<ul>
+<li>
+<p>Sätt markören efter "Beställare: ".</p>
+</li>
+<li>
+<p>Klicka på <strong>blixt-ikonen</strong> (Dynamic content) eller <code>fx</code>.</p>
+</li>
+</ul>
+<p><img alt="Dynamic content icon" src="../../assets/images/chap08/flow-email-dynamiccontent.png" /></p>
+<ul>
+<li>Sök efter <code>User</code> och välj den från listan (under "When an agent calls the flow").</li>
+</ul>
+<div class="highlight"><pre><span></span><code>User
+</code></pre></div>
+<p><img alt="Select User" src="../../assets/images/chap08/flow-email-select-user.png" /></p>
+<p><strong>2. Lägg till Enhet:</strong></p>
+<ul>
+<li>
+<p>Sätt markören efter "Enhet: ".</p>
+</li>
+<li>
+<p>Klicka på blixten.</p>
+</li>
+<li>
+<p>Sök efter <code>Model</code> (från steget <em>Get Device</em>) och välj den.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Model
+</code></pre></div>
+<p><img alt="Select Model" src="../../assets/images/chap08/flow-email-select-model.png" /></p>
+<p><strong>3. Lägg till Pris:</strong></p>
+<ul>
+<li>
+<p>Sätt markören efter "Pris: ".</p>
+</li>
+<li>
+<p>Klicka på blixten.</p>
+</li>
+<li>
+<p>Sök efter <code>Price</code> (från steget <em>Get Device</em>) och välj den.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Price
+</code></pre></div>
+<p><img alt="Select Price" src="../../assets/images/chap08/flow-email-select-price.png" /></p>
+<p><strong>4. Lägg till Kommentar (Avancerat - Hantera tomma svar):</strong></p>
+<p>Vi vill kontrollera om användaren lämnade fältet tomt. Om det är tomt skriver vi "None", annars visar vi kommentaren. Vi gör detta med ett uttryck (Expression).</p>
+<ul>
+<li>
+<p>Sätt markören efter "Kommentar från användaren: ".</p>
+</li>
+<li>
+<p>Klicka på <strong>fx</strong> (Insert Expression).</p>
+</li>
+<li>
+<p>I rutan för Function/Expression, skriv in följande start:</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>if(empty())
+</code></pre></div>
+  <em>Detta startar en "Om"-sats som kollar "Om tomt...".</em></p>
+<p><img alt="Select AdditionalComments" src="../../assets/images/chap08/flow-email-select-additionalcomments.png" /></p>
+<ul>
+<li>Klicka nu på fliken <strong>Dynamic content</strong>. Sök efter <code>AdditionalComments</code> och klicka på den.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>AdditionalComments
+</code></pre></div>
+<p><img alt="Select AdditionalComments" src="../../assets/images/chap08/flow-email-select-additionalcomments2.png" /></p>
+<p><em>Din formel fylls nu på med referensen till input-fältet.</em></p>
+<ul>
+<li>Gå tillbaka till formelfältet och skriv in resten av logiken efter parentesen (efter första stängda parantesen):</li>
+</ul>
+<div class="highlight"><pre><span></span><code>, &#39;Ingen kommentar&#39;,
+</code></pre></div>
+<p><em>Detta betyder: Om det är tomt -&gt; Skriv 'Ingen kommentar'. Nu ska vi ange vad som händer om det INTE är tomt (Else).</em></p>
+<p><img alt="Select AdditionalComments" src="../../assets/images/chap08/flow-email-select-additionalcomments3.png" /></p>
+<ul>
+<li>Klicka på fliken <strong>Dynamic content</strong> igen. Sök upp och välj <code>AdditionalComments</code> en gång till.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>AdditionalComments
+</code></pre></div>
+* Klicka på <strong>Add</strong> (eller OK).</p>
+<p><img alt="Expression Logic" src="../../assets/images/chap08/flow-email-expression-add.png" /></p>
+<p><em>Nu är mejlet klart och dynamiskt!</em></p>
+</li>
+</ol>
+<hr />
+<h2 id="85-skicka-svar-till-agenten-output">8.5 Skicka svar till Agenten (Output)</h2>
+<p>Slutligen måste vårt Agent Flow berätta för agenten att allt gick bra. Vi skickar också tillbaka namnet på den valda modellen för att kunna använda det i bekräftelsen.</p>
+<ol>
+<li>Klicka på sista noden <strong>Respond to the agent</strong>.</li>
+<li>
+<p>Klicka <strong>+ Add an output</strong>.</p>
+<p><img alt="Add Output" src="../../assets/images/chap08/flow-output-add.png" /></p>
+</li>
+<li>
+<p>Klicka på <strong>Text</strong>.</p>
+<p><img alt="Add Output Text" src="../../assets/images/chap08/flow-output-add-text.png" /></p>
+</li>
+<li>
+<p>Döp outputen till:
+    <div class="highlight"><pre><span></span><code>ModelValue
+</code></pre></div></p>
+</li>
+<li>
+<p>I värdefältet, klicka på <strong>blixt-ikonen</strong> (Dynamic content) eller <code>fx</code>.</p>
+<p><img alt="Add Output Value" src="../../assets/images/chap08/flow-output-modelvalue.png" /></p>
+</li>
+<li>
+<p>Sök efter <code>Model</code> (från steget <em>Get Device</em>) och välj den.</p>
+<div class="highlight"><pre><span></span><code>Model
+</code></pre></div>
+<p><img alt="Select ModelValue" src="../../assets/images/chap08/flow-output-select-modelvalue.png" /></p>
+</li>
+</ol>
+<hr />
+<h2 id="86-spara-och-konfigurera-agent-flow">8.6 Spara och konfigurera Agent Flow</h2>
+<p>Nu ska vi spara arbetet, namnge flödet korrekt och publicera det.</p>
+<ol>
+<li>
+<p>Längst upp till vänster, klicka på namnet <strong>Save draft</strong>.</p>
+<p><img alt="Save draft" src="assets/images/chap08/flow-save-draft.png" /></p>
+</li>
+<li>
+<p>Klicka nu på <strong>Overview</strong> (till vänster om namnet).</p>
+<p><img alt="Overview" src="../../assets/images/chap08/flow-overview.png" /></p>
+</li>
+<li>
+<p>Väl inne i översikten, klicka på <strong>Edit</strong> under <em>Details</em>.</p>
+<p><img alt="Edit Details" src="../../assets/images/chap08/flow-edit.png" /></p>
+</li>
+<li>
+<p>I fältet <em>Flow name</em>, skriv in:
+    <div class="highlight"><pre><span></span><code>Send device request email
+</code></pre></div></p>
+</li>
+<li>
+<p>I fältet <em>Description</em>, skriv in:
+    <div class="highlight"><pre><span></span><code>This flow sends a device request email to the IT department for review.
+</code></pre></div></p>
+</li>
+<li>
+<p>Klicka på <strong>Save</strong>.</p>
+<p><img alt="Save Details" src="../../assets/images/chap08/flow-save.png" /></p>
+</li>
+<li>
+<p>Viktigt: För att flödet ska fungera måste det publiceras. Klicka på <strong>Publish</strong> i verktygsfältet (oftast uppe till vänster).
+    <em>(Ibland måste du gå in i Designer-läget igen för att se Publish-knappen).</em></p>
+<p><img alt="Publish Flow" src="../../assets/images/chap08/flow-designer-publish.png" /></p>
+</li>
+</ol>
+<hr />
+<h2 id="87-koppla-ditt-agent-flow-i-topicen">8.7 Koppla ditt Agent Flow i Topicen</h2>
+<p>Nu måste vi gå tillbaka till Copilot Studio och koppla in vårt nya Agent Flow i vår Topic.</p>
+<ol>
+<li>
+<p><strong>Navigera till <em>Request device</em> Topicen:</strong></p>
+<ul>
+<li>Gå tillbaka till Agent-vyn genom att klicka på <strong>Agents</strong> i menyn till vänster.</li>
+</ul>
+<p><img alt="Agents Menu" src="../../assets/images/chap08/flow-agents.png" /></p>
+<ul>
+<li>Välj din agent <strong>IT Support Helper</strong>.</li>
+</ul>
+<p><img alt="IT Support Helper" src="../../assets/images/chap08/flow-it-support-helper.png" /></p>
+<ul>
+<li>Gå till fliken <strong>Topics</strong> i menyn högst upp.</li>
+</ul>
+<p><img alt="Topics Tab" src="../../assets/images/chap08/flow-topics.png" /></p>
+<ul>
+<li>Klicka på <strong>Request device</strong>.</li>
+</ul>
+<p><img alt="Request device Topic" src="../../assets/images/chap08/flow-request-device.png" /></p>
+</li>
+<li>
+<p><strong>Lägg till flödet:</strong></p>
+<ul>
+<li>Gå längst ner i flödet, under Adaptive Card.</li>
+<li>Klicka på <strong>plus-tecknet (+) -&gt; Add a tool</strong>.</li>
+<li>Välj ditt nyligen skapade flöde: <strong>Send device request email</strong>.</li>
+</ul>
+<p><img alt="Add Custom Flow" src="../../assets/images/chap08/add-custom-flow.png" /></p>
+</li>
+<li>
+<p><strong>Mappa inputs:</strong>
+    Nu frågar agenten: "Vad ska jag stoppa in i de tre input-hål du byggde?"</p>
+<p><strong>DeviceSharePointId:</strong>
+* Klicka på pilen <code>&gt;</code> (eller rutan) bredvid <em>DeviceSharePointId</em>.
+* Välj variabeln <code>deviceSelectionId</code> (den kommer från ditt Adaptive Card).</p>
+<p><img alt="Map Device ID" src="../../assets/images/chap08/add-custom-flow-deviceid.png" /></p>
+<p><strong>User:</strong>
+* Klicka på pilen <code>&gt;</code> bredvid <em>User</em>.
+* Navigera till fliken <strong>System</strong>.
+* Sök efter och välj <code>User.DisplayName</code>.</p>
+<p><img alt="Map User" src="../../assets/images/chap08/add-custom-flow-user.png" /></p>
+<p><strong>AdditionalComments (Avancerat):</strong>
+Vi vill hantera fallet att användaren inte skrev någon kommentar alls. Om vi skickar in ett tomt värde kan det bli fel i vissa system, så vi använder en formel för att skicka en tom textsträng ("") istället för <em>null</em> om det saknas.</p>
+<ul>
+<li>Klicka på pilen <code>&gt;</code> bredvid <em>AdditionalComments</em>.</li>
+<li>Välj fliken <strong>Formula</strong> och klicka på expandera-ikonen (pilen) för att få mer plats.</li>
+</ul>
+<p><img alt="Map Comments" src="../../assets/images/chap08/add-custom-flow-additionalcomments.png" /></p>
+<ul>
+<li>Skriv in följande formel:
+<div class="highlight"><pre><span></span><code>If(IsBlank(Topic.commentsId), &quot;&quot;, Topic.commentsId)
+</code></pre></div></li>
+<li>Kontrollera att du har en grön bock (inget syntaxfel). Klicka sedan på <strong>Insert</strong>.</li>
+</ul>
+<p><img alt="Insert Formula" src="../../assets/images/chap08/add-custom-flow-additionalcomments2.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Varför gjorde vi detta?</p>
+<p>Formeln betyder: "Om variabeln <em>commentsId</em> är blank (tom), skicka en tom textsträng. Annars, skicka innehållet i <em>commentsId</em>." Detta gör flödet mer robust.</p>
+</div>
+</li>
+</ol>
+<hr />
+<h2 id="88-forbattra-anvandarupplevelsen-bekraftelse">8.8 Förbättra användarupplevelsen (Bekräftelse)</h2>
+<p>Vi ska nu lägga till en nod för att ge användaren en tydlig och personlig bekräftelse på att beställningen är mottagen.</p>
+<ol>
+<li>
+<p>Klicka på <strong>plus-tecknet (+)</strong> under din Agent Flow-nod och välj <strong>Send a message</strong>.</p>
+<p><img alt="Lägg till meddelande" src="../../assets/images/chap08/topic-add-message-confirm.png" /></p>
+</li>
+<li>
+<p>Vi ska nu bygga meddelandet steg för steg för att få in dynamiska värden:</p>
+<ul>
+<li>
+<p>Börja med att skriva:
+<div class="highlight"><pre><span></span><code>Tack 
+</code></pre></div>
+<em>(Glöm inte mellanslaget efter Tack)</em></p>
+</li>
+<li>
+<p>Klicka på ikonen <strong>{X} (Insert variable)</strong>.</p>
+</li>
+<li>Välj fliken <strong>System</strong> och sök efter <code>User</code>. Välj <strong>User.DisplayName</strong>.</li>
+</ul>
+<p><img alt="Infoga användarnamn" src="../../assets/images/chap08/topic-msg-insert-user.png" /></p>
+<ul>
+<li>
+<p>Fortsätt skriva texten:
+<div class="highlight"><pre><span></span><code>. Din valda enhet, 
+</code></pre></div></p>
+</li>
+<li>
+<p>Klicka på <strong>{X} (Insert variable)</strong> igen.</p>
+</li>
+<li>Välj fliken <strong>Custom</strong> och sök efter <code>ModelValue</code>. Välj <strong>ModelValue</strong>.
+<em>(Detta är variabeln vi fick tillbaka från vårt Agent Flow).</em></li>
+</ul>
+<p><img alt="Infoga modell" src="../../assets/images/chap08/topic-msg-insert-model.png" /></p>
+<ul>
+<li>Avsluta meningen med att skriva:
+<div class="highlight"><pre><span></span><code>, har skickats in och kommer att granskas av IT-ansvarig.
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Granska meddelandet. Det ska nu se ut ungefär så här i editorn:</p>
+<blockquote>
+<p>Tack {User.DisplayName}. Din valda enhet, {ModelValue}, har skickats in och kommer att granskas av IT-ansvarig.</p>
+</blockquote>
+<p><img alt="Färdigt meddelande" src="../../assets/images/chap08/topic-msg-complete.png" /></p>
+</li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Snyggt!</p>
+<p>Nu får användaren en personlig bekräftelse med sitt eget namn och namnet på datorn de valt.</p>
+</div>
+<h3 id="testa-allt">Testa allt!</h3>
+<ol>
+<li>Öppna testpanelen. Starta om med <strong>Refresh</strong>-ikonen högst upp.</li>
+<li>Skriv:
+    <div class="highlight"><pre><span></span><code>Jag vill ha en laptop
+</code></pre></div></li>
+<li>Välj en prestandanivå (t.ex. Standard).</li>
+<li>När listan visas och agenten frågar om beställning, svara <code>Ja</code>.</li>
+<li>Välj en dator i det adaptiva kortet.</li>
+<li>I kommentarsfältet, skriv:
+    <div class="highlight"><pre><span></span><code>Jag vill ha så mycket RAM-minne som möjligt!
+</code></pre></div></li>
+<li>Klicka <strong>Skicka</strong>.</li>
+<li><em>Nu ska agenten tänka en liten stund, anropa ditt Agent Flow, och sedan svara med bekräftelsen. Samtidigt ska det plinga till i din mejlkorg!</em></li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Grattis!</p>
+<p>Du har nu byggt en fullständig kedja med ett <strong>Agent Flow</strong>:
+AI (Förstår) -&gt; Logik (Styr) -&gt; Data (SharePoint) -&gt; GUI (Adaptive Card) -&gt; Agent Flow (Power Automate) -&gt; Verkligheten (Email).</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

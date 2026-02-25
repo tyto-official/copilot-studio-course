@@ -1,0 +1,1220 @@
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../03-create-solution/">
+      
+      
+        <link rel="next" href="../05-add-knowledge/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="sv">
+        
+          <link rel="alternate" href="../en/04-create-agent/" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>4. Skapa Agent - Copilot Studio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-skapa-agenten" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Sidhuvud">
+    <a href=".." title="Copilot Studio" class="md-header__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Skapa Agent
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Välj språk">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="sv" class="md-select__link">
+              Svenska
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../en/04-create-agent/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Copilot Studio" class="md-nav__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Copilot Studio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio Kurs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio Kurs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och Teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Förbered SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa Agent
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vagval-hur-skapar-vi-agenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vägval: Hur skapar vi agenten?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg-1-skapa-fran-grunden-skapa-tom-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 1: Skapa från grunden (Skapa tom agent)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg-2-hitta-runt-i-granssnittet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 2: Hitta runt i gränssnittet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg-3-grundkonfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 3: Grundkonfiguration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg-4-satt-upp-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 4: Sätt upp Instruktioner
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg-5-testa-agenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 5: Testa Agenten
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steg 5: Testa Agenten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steg-1-oppna-testpanelen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 1: Öppna testpanelen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steg-2-halsa-pa-agenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 2: Hälsa på agenten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steg-3-hallucinationstestet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 3: Hallucinationstestet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#varfor-ar-detta-bra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Varför är detta bra?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa Topic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa Adaptive Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi (Vakna till liv)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-Agent Orchestration (Finalen)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-set-up-for-production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Redo för produktion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & Tricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & Tricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vagval-hur-skapar-vi-agenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vägval: Hur skapar vi agenten?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg-1-skapa-fran-grunden-skapa-tom-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 1: Skapa från grunden (Skapa tom agent)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg-2-hitta-runt-i-granssnittet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 2: Hitta runt i gränssnittet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg-3-grundkonfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 3: Grundkonfiguration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg-4-satt-upp-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 4: Sätt upp Instruktioner
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steg-5-testa-agenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 5: Testa Agenten
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steg 5: Testa Agenten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steg-1-oppna-testpanelen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 1: Öppna testpanelen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steg-2-halsa-pa-agenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 2: Hälsa på agenten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steg-3-hallucinationstestet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Steg 3: Hallucinationstestet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#varfor-ar-detta-bra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Varför är detta bra?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="4-skapa-agenten">4. Skapa Agenten</h1>
+<p>Nu har vi gjort klart all nödvändig setup. Vi har datan, vi har miljön och vi har vår Solution. Nu är det dags att börja bygga!</p>
+<p>Vi ska bygga en <strong>IT Support agent</strong>. I början kommer den fokusera på hårdvara (det vi lade i SharePoint), men tanken är att den ska växa och kunna hantera alla möjliga IT-frågor framöver.</p>
+<hr />
+<h2 id="vagval-hur-skapar-vi-agenten">Vägval: Hur skapar vi agenten?</h2>
+<p>Eftersom vi i förra kapitlet ställde in din Solution som <strong>Föredragen</strong>, spelar det ingen roll varifrån du skapar agenten. Den kommer automatiskt hamna i rätt "låda".</p>
+<p>Vi rekommenderar att du använder huvudmenyn (den vanliga vägen), men för kännedom kan man även göra det inifrån sin Solution.</p>
+<details class="info">
+<summary>Alternativ väg: Skapa direkt inifrån din Solution (Klicka för att se)</summary>
+<p>Om du vill vara 100% säker på var agenten hamnar, eller om du inte använder "Föredragen lösning"-funktionen, gör du så här:</p>
+<p><strong>1. Gå in i din Solution</strong>
+Navigera till <strong>Lösningar</strong> i menyn och klicka på din lösning (<code>IT Support Agent</code>).</p>
+<p><img alt="Lista med lösningar" src="assets/images-sv/chap04/1.png" /></p>
+<p><strong>2. Klicka på Nytt</strong>
+Väl inne i lösningen ser du allt som ingår i den. Klicka på <strong>+ Nytt</strong> i toppmenyn.</p>
+<p><img alt="Inne i solution" src="assets/images-sv/chap04/2.png" /></p>
+<p><strong>3. Välj Agent</strong>
+I menyn som fälls ut, välj <strong>Agent</strong> -&gt; <strong>Agent</strong>.</p>
+<p><img alt="Menyval för att skapa agent" src="assets/images-sv/chap04/3.png" /></p>
+<p><strong>4. Förhandsvisning och Val</strong>
+Detta tar dig till en vy där du startar skapandet. Här ser du "Beskriv"-fliken där du kan låta Copilot skapa grunderna åt dig via chatten.</p>
+<p><img alt="Förhandsvisning av skapa agent" src="assets/images-sv/chap04/4.png" /></p>
+<p>Alternativt kan du klicka på fliken <strong>Konfigurera</strong> (eller Hoppa till konfiguration) för att manuellt bestämma namn och inställningar direkt. När du är nöjd klickar du på <strong>Skapa</strong> för att officiellt skapa agenten.</p>
+<p><img alt="Konfigurera-fliken" src="assets/images-sv/chap04/5.png" /></p>
+</details>
+<hr />
+<h2 id="steg-1-skapa-fran-grunden-skapa-tom-agent">Steg 1: Skapa från grunden (Skapa tom agent)</h2>
+<p>Vi väljer att gå den vanliga vägen via huvudmenyn. När man skapar en agent finns det huvudsakligen tre vägar att gå:</p>
+<ol>
+<li><strong>Beskriv för att bygga:</strong> Du chattar med Copilot ("Skapa en agent som...") och låter AI:n bygga grunden åt dig.</li>
+<li><strong>Mallar:</strong> Du utgår från en färdig mall för ett specifikt syfte (t.ex. en reseagent).</li>
+<li><strong>Skapa tom agent:</strong> Du startar med ett helt tomt papper.</li>
+</ol>
+<p>Vi kommer att välja alternativ 3: <strong>Skapa tom agent</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Varför Skapa tom agent?</p>
+<p>Även om det är smidigt att låta AI:n eller en mall göra jobbet, ger det oss mindre kontroll. AI:n gissar ofta vilka verktyg som behövs, vilket kan leda till en rörig konfiguration.</p>
+<p>Genom att välja <strong>Skapa tom agent</strong> får vi en helt tom agent där vi själva bestämmer exakt vad den ska heta, vad den ska göra och vilka verktyg den får använda. Det är det bästa sättet att lära sig verktyget på riktigt.</p>
+</div>
+<p><strong>Gör så här:</strong></p>
+<ol>
+<li>Om du varit inne i Lösningar nyss: Klicka på <strong>Copilot Studio</strong>-loggan uppe till vänster.</li>
+<li>Klicka på <strong>Handläggare</strong> i vänstermenyn.</li>
+<li>
+<p>Klicka på <strong>+ Skapa tom agent</strong> (uppe i högra hörnet).</p>
+<p><img alt="Klicka på Skapa tom agent" src="../assets/images-sv/chap04/6.png" /></p>
+</li>
+</ol>
+<p><em>Agenten skapas nu direkt och du skickas till översiktsvyn.</em></p>
+<hr />
+<h2 id="steg-2-hitta-runt-i-granssnittet">Steg 2: Hitta runt i gränssnittet</h2>
+<p>Nu landar du i översiktsvyn för din nya agent. Innan vi fyller i något, låt oss gå igenom vad de olika delarna betyder.</p>
+<p><img alt="Översikt av agenten" src="../assets/images-sv/chap04/7.png" /></p>
+<p>Här är de viktigaste komponenterna:</p>
+<ul>
+<li><strong>Namn och Beskrivning:</strong> Agentens identitet utåt.</li>
+<li><strong>Utlösare:</strong> Det som får agenten att vakna eller agera på en viss händelse (t.ex. när ett mejl kommer).</li>
+<li><strong>Instruktioner:</strong> Detta är "System Prompten". Här beskriver vi agentens personlighet, regler och beteende.</li>
+<li><strong>Kunskap:</strong> Agentens minne. Här kopplar vi bland annat in dokument, webbsidor och SharePoint-listor.</li>
+<li><strong>Verktyg (Åtgärder):</strong> Agentens händer. Här lägger vi till verktyg om den ska kunna <em>göra</em> saker (t.ex. skicka ett mejl).</li>
+<li><strong>Agenter:</strong> Här kan vi koppla ihop vår agent med andra agenter, eller skapa så kallade <strong>Underordnade agenter</strong>.</li>
+<li><strong>Ämnen:</strong> Detta är "hårda" manus. Om vi vill att en konversation ska följa en exakt mall (t.ex. en returprocess) bygger vi det här.</li>
+<li><strong>Föreslagna promptar:</strong> De förslag på frågor som syns i chattrutan för användaren (Konversationsstartare).</li>
+</ul>
+<p>Till höger ser du <strong>Testa din agent</strong>. Det är din sandlåda där du kan chatta med agenten medan du bygger för att se hur den beter sig.</p>
+<hr />
+<h2 id="steg-3-grundkonfiguration">Steg 3: Grundkonfiguration</h2>
+<p>Nu ska vi ge agenten dess identitet. Fyll i följande i fälten på skärmen:</p>
+<ol>
+<li><strong>Namn:</strong> <code>IT Support agent</code></li>
+<li><strong>Beskrivning:</strong>
+    <div class="highlight"><pre><span></span><code>En professionell IT-supportagent som hjälper användare med frågor om hårdvara och nätverk osv.
+</code></pre></div></li>
+<li><strong>Modell:</strong> Låt den stå på <code>GPT-4.1</code> (Vilket är Standard).</li>
+</ol>
+<hr />
+<h2 id="steg-4-satt-upp-instruktioner">Steg 4: Sätt upp Instruktioner</h2>
+<p>Nu ska vi ge agenten en enkel "hjärna". Gå till rutan för <strong>Instruktioner</strong> och klistra in följande:</p>
+<div class="highlight"><pre><span></span><code>Du är en hjälpsam och professionell IT-supportassistent för företaget.
+Din uppgift är att hjälpa anställda med frågor rörande IT, hårdvara och felsökning.
+
+Riktlinjer för dina svar:
+- Var alltid vänlig och pedagogisk.
+- Svara på samma språk som användaren ställer frågan på.
+- Använd endast information från din kunskapsbank.
+- Om du inte hittar svaret i din kunskapsbank, ska du tydligt informera användaren om att du saknar den informationen. Hitta aldrig på fakta.
+- Använd punktlistor för att göra teknisk information lättläst.
+</code></pre></div>
+<hr />
+<h2 id="steg-5-testa-agenten">Steg 5: Testa Agenten</h2>
+<p>Vi har nu skapat agentens "hjärna" (instruktionerna), och nu är det dags att testa hur den beter sig.</p>
+<h3 id="steg-1-oppna-testpanelen">Steg 1: Öppna testpanelen</h3>
+<p>Om du inte redan ser chatten till höger:
+1. Klicka på <strong>Testa</strong>-knappen högst upp till höger i Copilot Studio.</p>
+<p><img alt="Testpanelen" src="../assets/images-sv/chap04/8.png" /></p>
+<h3 id="steg-2-halsa-pa-agenten">Steg 2: Hälsa på agenten</h3>
+<p>Vi börjar med att kolla att den förstår sin roll.</p>
+<ol>
+<li>
+<p>Skriv i chatten:
+    &gt; <em>Hej, vem är du?</em></p>
+</li>
+<li>
+<p><strong>Förväntat resultat:</strong>
+    Agenten ska presentera sig som <strong>IT Support agent</strong> (eller det namn du valde) och erbjuda hjälp. Den ska vara trevlig och professionell.</p>
+</li>
+</ol>
+<p><img alt="Agenten hälsar" src="../assets/images-sv/chap04/9.png" /></p>
+<p><em>Ser det bra ut? Då vet vi att systemprompten ("Du är en hjälpsam assistent...") fungerar.</em></p>
+<h3 id="steg-3-hallucinationstestet">Steg 3: Hallucinationstestet</h3>
+<p>Nu ska vi ställa en fråga som agenten <strong>inte</strong> har svaret på. Vi har inte laddat upp några öppettider eller dokument än.</p>
+<p>En dålig AI skulle gissa ("Vi har öppet 8-17"). En bra agent (med våra instruktioner) ska erkänna att den inte vet.</p>
+<ol>
+<li>
+<p>Skriv i chatten:
+    &gt; <em>Vilka tider har IT-supporten öppet?</em></p>
+</li>
+<li>
+<p><strong>Förväntat resultat:</strong>
+    Agenten ska svara något i stil med:
+    &gt; <em>"Jag hittar tyvärr ingen information om öppettiderna i mina system."</em></p>
+</li>
+</ol>
+<p><img alt="Agenten vet inte svaret" src="../assets/images-sv/chap04/10.png" /></p>
+<h3 id="varfor-ar-detta-bra">Varför är detta bra?</h3>
+<p>Om agenten hade svarat <em>"Vi har öppet 08:00 - 17:00"</em>, hade den ljugit (hallucinerat). Det är farligt i en företagskontext.
+Eftersom vi skrev i instruktionerna: <em>"Hitta aldrig på fakta"</em>, så skyddar agenten oss genom att vara ärlig.</p>
+<div class="admonition success">
+<p class="admonition-title">Bra jobbat!</p>
+<p>Att agenten svarar "Jag vet inte" är precis vad vi vill! Det betyder att den följer din regel om att <strong>inte hitta på fakta</strong>. I nästa kapitel ska vi ge den svaren genom att koppla in SharePoint.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopierat till urklipp", "clipboard.copy": "Kopiera till urklipp", "search.result.more.one": "1 till p\u00e5 denna sida", "search.result.more.other": "# till p\u00e5 denna sida", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.term.missing": "Saknas", "select.version": "V\u00e4lj version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1883 @@
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../05-add-knowledge/">
+      
+      
+        <link rel="next" href="../07-adaptive-card/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="sv">
+        
+          <link rel="alternate" href="../en/06-create-topic/" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>6. Skapa Topic - Copilot Studio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-skapa-en-styrd-dialog-amne" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Sidhuvud">
+    <a href=".." title="Copilot Studio" class="md-header__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. Skapa Topic
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Välj språk">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="sv" class="md-select__link">
+              Svenska
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../en/06-create-topic/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Copilot Studio" class="md-nav__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Copilot Studio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio Kurs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio Kurs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och Teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Förbered SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa Topic
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa Topic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-skapa-och-beskriv-amnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Skapa och Beskriv Ämnet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-definiera-input-indatavariabel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Definiera Input (Indatavariabel)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 Definiera Input (Indatavariabel)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#konfigurera-variabeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfigurera variabeln
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-definiera-output-utdatavariabel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Definiera Output (Utdatavariabel)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 Definiera Output (Utdatavariabel)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#konfigurera-utdatavariabeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfigurera utdatavariabeln
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-bygga-logiken-villkor-fragor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Bygga Logiken (Villkor &amp; Frågor)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 Bygga Logiken (Villkor &amp; Frågor)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-valj-nod-typ" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Välj Nod-typ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-konfigurera-vagvalet-villkor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Konfigurera Vägvalet (Villkor)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-stall-fragor-tratten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Ställ frågor (Tratten)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dopa-om-variabeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Döpa om Variabeln
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-stada-upp-grenarna-forenkling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Städa upp grenarna (Förenkling)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-hantera-logiken-i-grenarna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Hantera logiken i grenarna
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-hamta-data-sharepoint-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Hämta data (SharePoint Connector)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.5 Hämta data (SharePoint Connector)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lagg-till-connectorn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Lägg till Connectorn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-skapa-anslutningen-autentisering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Skapa anslutningen (Autentisering)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-konfigurera-egenskaper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Konfigurera Egenskaper
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-filtrera-listan-power-fx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Filtrera listan (Power Fx)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-spara-resultatet-utdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Spara resultatet (Utdata)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-koppla-ihop-allt-utdatamappning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 Koppla ihop allt (Utdatamappning)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-uppdatera-agentens-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 Uppdatera Agentens Instruktioner
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.8 Uppdatera Agentens Instruktioner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testa-flodet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testa flödet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa Adaptive Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi (Vakna till liv)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-Agent Orchestration (Finalen)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-set-up-for-production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Redo för produktion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & Tricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & Tricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-skapa-och-beskriv-amnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Skapa och Beskriv Ämnet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-definiera-input-indatavariabel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Definiera Input (Indatavariabel)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 Definiera Input (Indatavariabel)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#konfigurera-variabeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfigurera variabeln
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-definiera-output-utdatavariabel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Definiera Output (Utdatavariabel)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 Definiera Output (Utdatavariabel)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#konfigurera-utdatavariabeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfigurera utdatavariabeln
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-bygga-logiken-villkor-fragor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Bygga Logiken (Villkor &amp; Frågor)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 Bygga Logiken (Villkor &amp; Frågor)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-valj-nod-typ" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Välj Nod-typ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-konfigurera-vagvalet-villkor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Konfigurera Vägvalet (Villkor)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-stall-fragor-tratten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Ställ frågor (Tratten)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dopa-om-variabeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Döpa om Variabeln
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-stada-upp-grenarna-forenkling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Städa upp grenarna (Förenkling)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-hantera-logiken-i-grenarna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Hantera logiken i grenarna
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-hamta-data-sharepoint-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Hämta data (SharePoint Connector)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.5 Hämta data (SharePoint Connector)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lagg-till-connectorn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Lägg till Connectorn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-skapa-anslutningen-autentisering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Skapa anslutningen (Autentisering)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-konfigurera-egenskaper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Konfigurera Egenskaper
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-filtrera-listan-power-fx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Filtrera listan (Power Fx)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-spara-resultatet-utdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Spara resultatet (Utdata)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-koppla-ihop-allt-utdatamappning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 Koppla ihop allt (Utdatamappning)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-uppdatera-agentens-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 Uppdatera Agentens Instruktioner
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.8 Uppdatera Agentens Instruktioner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testa-flodet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testa flödet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="6-skapa-en-styrd-dialog-amne">6. Skapa en Styrd Dialog (Ämne)</h1>
+<p>Nu när agenten har både tonläge och kunskap, ska vi titta på hur vi kan <strong>styra</strong> ett samtal. Detta är en av de viktigaste delarna för att få agenten att utföra faktiska uppgifter.</p>
+<p>Vi ska skapa ett "Ämne" som hanterar lagersaldokontroll.</p>
+<hr />
+<h2 id="61-skapa-och-beskriv-amnet">6.1 Skapa och Beskriv Ämnet</h2>
+<p>Vi börjar med att skapa ett tomt ämne och berätta för AI:n vad det ska användas till.</p>
+<ol>
+<li>
+<p>Gå till fliken <strong>Ämnen</strong> i menyn.</p>
+<p><img alt="Ämnen" src="../assets/images-sv/chap06/1.png" /></p>
+</li>
+<li>
+<p>Klicka på <strong>+ Lägg till ett ämne</strong> och välj <strong>Från tom</strong>.</p>
+<p><img alt="Skapa ämne från tomt" src="../assets/images-sv/chap06/3.png" /></p>
+</li>
+<li>
+<p>Nu ser du ett tomt ämne. Klicka på namnet "Namnlös" högst upp till vänster och döp den till:</p>
+<div class="highlight"><pre><span></span><code>Tillgängliga Enheter
+</code></pre></div>
+<p><img alt="Döp ämne till Tillgängliga Enheter" src="../assets/images-sv/chap06/4.png" /></p>
+</li>
+<li>
+<p>Redan nu på arbetsytan (Canvasen) ser du rutan <strong>Utlösare</strong>. Under rubriken <em>Beskriv vad ämnet gör</em>, klistra in följande beskrivning:</p>
+<div class="highlight"><pre><span></span><code>Detta ämne hjälper användare att hitta enheter som är tillgängliga i vår SharePoint-lista. Användaren kan fråga efter tillgängliga enheter och får då tillbaka en lista som kan inkludera laptops, smartphones, tillbehör med mera.
+</code></pre></div>
+<p><em>Beskrivningen är avgörande. Det är den här texten som agentens "hjärna" läser för att förstå NÄR den ska aktivera just det här ämnet.</em></p>
+<p><img alt="Ämnets beskrivning i Utlösare-noden" src="../assets/images-sv/chap06/5.png" /></p>
+</li>
+</ol>
+<hr />
+<h2 id="62-definiera-input-indatavariabel">6.2 Definiera Input (Indatavariabel)</h2>
+<p>Nu ska vi göra något smart. Vi vill att agenten ska kunna plocka upp <em>vad</em> användaren letar efter (t.ex. "Bärbar dator") redan i första meningen.</p>
+<ol>
+<li>
+<p>Klicka på <strong>Detaljer</strong> (cirkeln med utropstecken <code>i</code>) längst upp till höger för att fälla ut detaljpanelen.
+    <em>Notera att Namn och Beskrivning redan är ifyllda eftersom vi gjorde det i förra steget.</em></p>
+<p><img alt="Verifiera detaljer" src="../assets/images-sv/chap06/6.png" /></p>
+</li>
+<li>
+<p>I detaljpanelen, klicka på fliken <strong>Indata</strong>.</p>
+<p><img alt="Ämne Indata" src="../assets/images-sv/chap06/7.png" /></p>
+</li>
+<li>
+<p>Klicka på knappen <strong>Skapa en ny variabel</strong>.</p>
+<p><img alt="Skapa indatavariabel" src="../assets/images-sv/chap06/8.png" /></p>
+</li>
+</ol>
+<h3 id="konfigurera-variabeln">Konfigurera variabeln</h3>
+<p>Nu får du upp inställningar för din nya variabel. Fyll i följande:</p>
+<ol>
+<li>
+<p><strong>Name:</strong>
+    <div class="highlight"><pre><span></span><code>VarDeviceType
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Varför engelska och inga mellanslag?</p>
+<p>Vi följer "Best Practice" inom Power Platform och programmering. Genom att använda alfanumeriska namn (Bokstäver A-Z och siffror) undviker vi problem med specialtecken (å, ä, ö) när vi senare ska använda variabeln i formler och kod.</p>
+</div>
+</li>
+<li>
+<p><strong>Hur ska agenten fylla i denna indata?:</strong> Låt denna stå kvar på <strong>Fyll i dynamiskt med bästa alternativ (standard)</strong>.
+    <em>Detta betyder att vi litar på att AI-modellen (LLM) är smart nog att hitta informationen i användarens mening.</em></p>
+</li>
+<li>
+<p><strong>Variabelns datatyp:</strong> Låt stå på <strong>Sträng</strong> (Text).</p>
+</li>
+<li>
+<p><strong>Visningsnamn:</strong> (Valfritt).
+    <div class="highlight"><pre><span></span><code>VarDeviceType
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Identifiera som:</strong> Klicka på listan och välj: <strong>Användarens hela svar</strong>.
+    <em>Detta ger oss mest flexibilitet att fånga upp precis det användaren frågar efter.</em></p>
+<p><img alt="Välja Identifiera som" src="../assets/images-sv/chap06/9.png" /></p>
+</li>
+<li>
+<p><strong>Beskrivning:</strong> (Detta fält är till för AI:n, inte användaren).
+    Det handlar om att specificera vad vi är ute efter. Eftersom vi valde att ta med <em>hela</em> användarens svar, är det bra att ge AI:n en fingervisning om vilka värden vi letar efter i texten.</p>
+<div class="highlight"><pre><span></span><code>Lista av möjliga värden: Bärbar dator, Desktop, Surfplatta
+</code></pre></div>
+<p>Om allt är ifyllt enligt instruktionerna borde det se ut ungefär så här:</p>
+<p><img alt="Variabelinställningar klara" src="../assets/images-sv/chap06/10.png" /></p>
+</li>
+</ol>
+<hr />
+<h2 id="63-definiera-output-utdatavariabel">6.3 Definiera Output (Utdatavariabel)</h2>
+<p>Vi är inte riktigt klara än! Vi ska redan nu bestämma vad det här ämnet ska leverera tillbaka till agenten när det är klart. Eftersom vi ska hämta en lista med produkter, måste vi förbereda en variabel för det.</p>
+<ol>
+<li>
+<p>Längst upp i detaljpanelen, klicka på fliken <strong>Utdata</strong>.</p>
+<p><img alt="Ämne Utdata-flik" src="../assets/images-sv/chap06/11.png" /></p>
+</li>
+<li>
+<p>Klicka på <strong>Skapa en ny variabel</strong>.</p>
+<p><img alt="Skapa utdatavariabel" src="../assets/images-sv/chap06/13.png" /></p>
+</li>
+</ol>
+<h3 id="konfigurera-utdatavariabeln">Konfigurera utdatavariabeln</h3>
+<ol>
+<li>
+<p><strong>Name:</strong>
+    <div class="highlight"><pre><span></span><code>VarAvailableDevices
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Variabelns datatyp:</strong> <strong>OBS! Viktigt steg.</strong>
+    Klicka på listan (där det står <em>Sträng</em>) och ändra till <strong>Tabell</strong>.</p>
+<p><em>Varför? Jo, en "Sträng" är bara text (t.ex. "Dator"). Men vi ska hämta en hel lista med flera produkter, priser och bilder från SharePoint. Då krävs datatypen Tabell.</em></p>
+</li>
+<li>
+<p><strong>Beskrivning:</strong>
+    <div class="highlight"><pre><span></span><code>Lista över tillgängliga enheter baserat på enhetstyp
+</code></pre></div></p>
+<p>Kontrollera att det ser ut så här:</p>
+<p><img alt="Utdatainställningar" src="../assets/images-sv/chap06/12.png" /></p>
+</li>
+<li>
+<p>Nu är vi klara med inställningarna! Stäng detaljpanelen genom att klicka på krysset (<strong>X</strong>) högst upp till höger.</p>
+<p><img alt="Stäng panelen" src="../assets/images-sv/chap06/12.5.png" /></p>
+</li>
+</ol>
+<hr />
+<h2 id="64-bygga-logiken-villkor-fragor">6.4 Bygga Logiken (Villkor &amp; Frågor)</h2>
+<p>Nu har vi en start (Utlösare), en Indata och en Utdata. Nu ska vi bygga det som händer däremellan – själva "hjärnan" i ämnet.</p>
+<h3 id="1-valj-nod-typ">1. Välj Nod-typ</h3>
+<p>Vi ska börja med att skapa ett vägskäl. Om användaren vill ha en "Bärbar dator" ska vi ställa vissa frågor. Om de vill ha något annat, gör vi något annat.</p>
+<ol>
+<li>
+<p>Håll muspekaren över linjen under din <strong>Utlösare</strong>-nod och klicka på <strong>plus-tecknet (+)</strong>.</p>
+<p><img alt="Lägg till nod" src="../assets/images-sv/chap06/14.png" /></p>
+</li>
+<li>
+<p>En meny öppnas. Här är en snabb genomgång av verktygslådan:</p>
+<p><img alt="Verktygslådan" src="../assets/images-sv/chap06/15.png" /></p>
+<ul>
+<li><strong>Skicka ett meddelande:</strong> Skickar text eller bilder till användaren.</li>
+<li><strong>Ställ en fråga:</strong> Ställer en fråga och sparar svaret (det vi ska använda snart).</li>
+<li><strong>Fråga med adaptivt kort:</strong> Visar interaktiva formulär (mer om detta senare).</li>
+<li><strong>Lägg till ett villkor:</strong> Skapar vägval (Om X, gör Y). Som en "If-sats".</li>
+<li><strong>Variabelhantering:</strong> För att skapa eller ändra variabler manuellt.</li>
+<li><strong>Ämneshantering:</strong> För att hoppa till andra ämnen eller avsluta samtalet.</li>
+<li><strong>Lägg till ett verktyg:</strong> Här hittar vi våra "superkrafter" som Power Automate och SharePoint.</li>
+<li><strong>Lägg till en agent:</strong> Här kan vi koppla ihop vår agent med andra agenter.</li>
+<li><strong>Avancerat:</strong> Avancerade funktioner som HTTP-anrop och inloggning.</li>
+</ul>
+</li>
+<li>
+<p>Välj <strong>Lägg till ett villkor</strong>.</p>
+<p><img alt="Lägg till ett villkor" src="../assets/images-sv/chap06/15.png" /></p>
+</li>
+</ol>
+<h3 id="2-konfigurera-vagvalet-villkor">2. Konfigurera Vägvalet (Villkor)</h3>
+<p>Nu ser du att flödet delar sig i två vägar: <em>Villkor</em> och <em>Alla andra villkor</em>.</p>
+<ol>
+<li>
+<p>Klicka på rutan där det står <strong>Villkor</strong> och döp noden till: </p>
+<div class="highlight"><pre><span></span><code>Bärbar dator
+</code></pre></div>
+<p><img alt="Villkor" src="../assets/images-sv/chap06/16.png" /></p>
+</li>
+<li>
+<p>Vi ska nu bestämma regeln. Klicka på <strong>Välj en variabel</strong>.</p>
+</li>
+<li>Välj din indatavariabel: 
+    <div class="highlight"><pre><span></span><code>VarDeviceType
+</code></pre></div></li>
+<li>Låt operation vara satt till <strong>är lika med</strong>.</li>
+<li>
+<p>I rutan <em>Ange eller välj ett värde</em>, skriv:
+    <div class="highlight"><pre><span></span><code>Bärbar dator
+</code></pre></div></p>
+<p><em>Nu har du sagt: "Om användaren letar efter en Bärbar dator -&gt; Gå till vänster. Annars -&gt; Gå till höger."</em></p>
+<p><img alt="Vägvalet klart" src="../assets/images-sv/chap06/17.png" /></p>
+</li>
+</ol>
+<h3 id="3-stall-fragor-tratten">3. Ställ frågor (Tratten)</h3>
+<p>Vi fortsätter på spåret för "Bärbar dator" (den vänstra vägen). Vi vill veta vilken prestanda användaren behöver.</p>
+<ol>
+<li>Klicka på <strong>plus-tecknet (+)</strong> under din nya <em>Bärbar dator</em>-nod.</li>
+<li>
+<p>Välj <strong>Ställ en fråga</strong>.</p>
+<p><img alt="Välj fråga" src="../assets/images-sv/chap06/19.png" /></p>
+</li>
+<li>
+<p><strong>Döp om noden:</strong>
+    Klicka på namnet <em>Fråga</em> högst upp på noden och ändra det till:
+    <div class="highlight"><pre><span></span><code>Prestandaval
+</code></pre></div></p>
+<p><img alt="Döp om noden" src="../assets/images-sv/chap06/20.png" /></p>
+</li>
+<li>
+<p>I rutan <strong>Ange ett meddelande</strong>, skriv:
+    <div class="highlight"><pre><span></span><code>För vilken typ av arbete ska datorn användas?
+</code></pre></div></p>
+<p><img alt="Fråga meddelande" src="../assets/images-sv/chap06/21.png" /></p>
+</li>
+<li>
+<p>Under <strong>Identifiera</strong>, se till att <strong>Flervalsalternativ</strong> är valt.</p>
+</li>
+<li>
+<p>Under <strong>Alternativ för användare</strong>, skapa två alternativ:</p>
+<ul>
+<li>
+<p><code>Standard (Office/Admin)</code></p>
+</li>
+<li>
+<p><code>High Performance (Utveckling/Grafik)</code></p>
+</li>
+</ul>
+<p><em>(Genom att ge specifika alternativ styr vi användaren rätt).</em></p>
+<p><img alt="Alternativ för prestanda" src="../assets/images-sv/chap06/22.png" /></p>
+</li>
+</ol>
+<h3 id="4-dopa-om-variabeln">4. Döpa om Variabeln</h3>
+<p>Agenten sparar automatiskt svaret i en variabel som heter <code>Var1</code>. Det är ett dåligt namn om vi ska minnas vad det betyder.</p>
+<ol>
+<li>
+<p>Klicka på rutan där det står <strong>Spara användarsvar som</strong> (där namnet <code>Var1</code> står).</p>
+<p><img alt="Döp om variabel" src="../assets/images-sv/chap06/23.png" /></p>
+</li>
+<li>
+<p>En ruta öppnas till höger. Ändra <strong>Name</strong> till:
+    <div class="highlight"><pre><span></span><code>VarPerformance
+</code></pre></div></p>
+<p><img alt="Döp om variabel" src="../assets/images-sv/chap06/24.png" /></p>
+<p><em>Notera "Användning"-inställningen: Ämne (begränsat omfång) vs Globalt. Vi låter den vara kvar på Ämne eftersom vi inte behöver komma åt det här svaret från andra delar av agenten.</em></p>
+</li>
+<li>
+<p>Stäng variabel-rutan på krysset (X).</p>
+</li>
+</ol>
+<h3 id="5-stada-upp-grenarna-forenkling">5. Städa upp grenarna (Förenkling)</h3>
+<p>När du skapade alternativen skapade Copilot Studio automatiskt tre vägar åt dig:</p>
+<p><img alt="Grenar" src="../assets/images-sv/chap06/25.png" /></p>
+<ol>
+<li>
+<p><strong>Villkor</strong> (VarPerformance = Standard)</p>
+</li>
+<li>
+<p><strong>Villkor</strong> (VarPerformance = High Performance)</p>
+</li>
+<li>
+<p><strong>Alla andra villkor</strong></p>
+</li>
+</ol>
+<p>Detta är onödigt komplicerat för vår övning. Vi förenklar det genom att ta bort den specifika grenen för "High Performance" och låta "Allt annat" hantera det valet.</p>
+<ol>
+<li>Leta upp grenen som specifikt heter <strong>High Performance</strong> (Villkor: VarPerformance = High Performance).</li>
+<li>
+<p>Klicka på de <strong>tre prickarna (...)</strong> på den noden och välj <strong>Ta bort</strong>.
+    <em>Nu har du bara två vägar kvar: Standard och Alla andra villkor.</em></p>
+<p><img alt="Grenar" src="../assets/images-sv/chap06/26.png" /></p>
+</li>
+<li>
+<p><strong>Döp om vägarna för tydlighet:</strong></p>
+<ul>
+<li>Klicka på pennan på den vänstra grenen (<em>Villkor</em>). Döp om den till <code>Standard</code>.</li>
+<li>Klicka på pennan på den högra grenen (<em>Alla andra villkor</em>). Döp om den till <code>High Performance</code> (eller Avancerad).</li>
+</ul>
+</li>
+</ol>
+<h3 id="6-hantera-logiken-i-grenarna">6. Hantera logiken i grenarna</h3>
+<p>Nu ska vi bestämma vad som händer i respektive gren.</p>
+<p><strong>Gren 1: Standard</strong>
+Användaren valde Standard. Här är allt som vanligt och finns i lager.</p>
+<ul>
+<li><strong>Åtgärd:</strong> Gör ingenting. Låt grenen vara tom.
+    <em>Flödet kommer automatiskt att rinna vidare ner till botten där vi strax ska hämta listan.</em></li>
+</ul>
+<p><strong>Gren 2: High Performance (Alla andra)</strong>
+Användaren valde High Performance (eller något annat). Låt oss simulera att dessa är tillfälligt slut, men att vi vill vara hjälpsamma och visa vad som finns ändå.</p>
+<ol>
+<li>Klicka på <strong>plus-tecknet (+)</strong> i den högra grenen (som du döpte till High Performance).</li>
+<li>
+<p>Välj <strong>Skicka ett meddelande</strong>.</p>
+<p><img alt="Meddelande" src="../assets/images-sv/chap06/27.png" /></p>
+</li>
+<li>
+<p>Skriv:
+    <div class="highlight"><pre><span></span><code>Just nu har vi tyvärr lång leveranstid på High Performance-enheter. Jag visar dig listan på våra Standard-modeller som finns för omgående leverans istället.
+</code></pre></div></p>
+<p><img alt="Meddelande om slut i lager" src="../assets/images-sv/chap06/28.png" /></p>
+</li>
+</ol>
+<p><em>Nu är logiken klar: De som väljer Standard går raka vägen. De som väljer Avancerat får ett meddelande. Båda grupperna landar till slut på samma ställe – i SharePoint-söket som vi lägger till härnäst.</em></p>
+<h2 id="65-hamta-data-sharepoint-connector">6.5 Hämta data (SharePoint Connector)</h2>
+<p>Nu ska vi hämta listan på datorer.
+Vi ska placera denna koppling <strong>längst ner i flödet</strong>, där alla vägar ("Bärbar dator"-vägen och "Alla andra"-vägen) möts igen.
+På så sätt fungerar sökningen oavsett om användaren letar efter en Bärbar dator, en Desktop eller en Surfplatta.</p>
+<h3 id="1-lagg-till-connectorn">1. Lägg till Connectorn</h3>
+<ol>
+<li>Scrolla längst ner i ditt flödesschema. Leta upp punkten där linjerna från dina olika vägval kopplas ihop igen.</li>
+<li>
+<p>Klicka på <strong>plus-tecknet (+)</strong> under sammanslagningen (där trådarna möts).</p>
+<p><img alt="Lägg till åtgärd" src="../assets/images-sv/chap06/29.png" /></p>
+</li>
+<li>
+<p>Välj <strong>Lägg till ett verktyg</strong></p>
+<p><img alt="Lägg till verktyg" src="../assets/images-sv/chap06/30.png" /></p>
+</li>
+<li>
+<p>Välj <strong>Anslutningar</strong></p>
+<p><img alt="Anslutningar" src="../assets/images-sv/chap06/30.1.png" /></p>
+</li>
+<li>
+<p>Sök efter <strong>SharePoint - Hämta objekten</strong></p>
+<div class="highlight"><pre><span></span><code>Hämta objekten
+</code></pre></div>
+<p><img alt="Hämta objekt" src="../assets/images-sv/chap06/30.2.png" /></p>
+</li>
+</ol>
+<h3 id="2-skapa-anslutningen-autentisering">2. Skapa anslutningen (Autentisering)</h3>
+<p>Om detta är första gången du använder SharePoint i denna agent, måste du godkänna anslutningen.</p>
+<ul>
+<li>
+<p>Om du ser en knapp där det står <strong>Inte ansluten</strong>, klicka på den.</p>
+</li>
+<li>
+<p>Välj <strong>Skapa ny anslutning</strong></p>
+</li>
+<li>
+<p>Välj <strong>Anslut direkt (molntjänster)</strong> och klicka <strong>Skapa</strong>.</p>
+</li>
+<li>
+<p>Välj ditt konto och klicka <strong>Tillåt åtkomst</strong> om en ruta poppar upp.</p>
+</li>
+</ul>
+<p>När anslutningen är klar, klicka på <strong>Skicka</strong> (eller Lägg till) för att lägga till noden i ditt flöde.</p>
+<p><img alt="Connector tillagd" src="../assets/images-sv/chap06/31.png" /></p>
+<h3 id="3-konfigurera-egenskaper">3. Konfigurera Egenskaper</h3>
+<p>Nu har vi en "dum" SharePoint-nod. Vi måste berätta för den vilken lista den ska läsa ifrån.</p>
+<ol>
+<li>
+<p>Klicka på de <strong>tre prickarna (...)</strong> i högra hörnet på den nya <em>Hämta objekt</em>-noden och välj <strong>Egenskaper</strong>.</p>
+<p><img alt="Tre prickar" src="../assets/images-sv/chap06/32.png" /></p>
+</li>
+<li>
+<p>En sidomeny öppnas. Se till att du är på fliken <strong>Initiering</strong>.</p>
+</li>
+<li>
+<p>I fältet <strong>Användningsbeskrivning</strong>, skriv:
+    <div class="highlight"><pre><span></span><code>Hämtar enheter från SharePoint-listan
+</code></pre></div>
+    <em>(Detta hjälper agenten förstå vad verktyget gör).</em></p>
+<p><img alt="Egenskapspanel" src="../assets/images-sv/chap06/33.png" /></p>
+</li>
+<li>
+<p>Hoppa över "Felhantering". Gå direkt till sektionen <strong>Indata</strong>.</p>
+<p><img alt="Indata" src="../assets/images-sv/chap06/34.png" /></p>
+</li>
+<li>
+<p><strong>Webbplatsadress:</strong> Välj din SharePoint-sida (<strong>IT Supporten</strong>) i listan.</p>
+<p><img alt="Välj webbplats" src="../assets/images-sv/chap06/35.png" /></p>
+</li>
+<li>
+<p><strong>Listnamn:</strong> Välj din lista (<strong>Enheter</strong>).</p>
+<p><img alt="Välj lista" src="../assets/images-sv/chap06/36.png" /></p>
+</li>
+</ol>
+<h3 id="4-filtrera-listan-power-fx">4. Filtrera listan (Power Fx)</h3>
+<p>Om vi inte gör något nu, kommer agenten hämta <em>allt</em>. Vi vill bara ha <strong>Tillgängliga</strong> enheter av rätt typ (t.ex. <strong>Bärbar dator</strong>).</p>
+<p>Här måste vi använda <strong>Power Fx</strong>, som är Microsofts formelspråk.</p>
+<ol>
+<li>
+<p>Hitta fältet <strong>Filterfråga</strong> under <em>Avancerade parametrar</em>.</p>
+<p><img alt="Filterfråga" src="../assets/images-sv/chap06/37.png" /></p>
+</li>
+<li>
+<p>Klicka på de <strong>tre prickarna (...)</strong> vid fältet och välj <strong>Formel</strong>.</p>
+<p><img alt="Tre prickar" src="../assets/images-sv/chap06/38.png" /></p>
+</li>
+<li>
+<p>Klicka på den lilla pilen (vinkeln) för att expandera formelfältet så du ser bättre.</p>
+<p><img alt="Expandera formel" src="../assets/images-sv/chap06/39.png" /></p>
+</li>
+<li>
+<p>Kopiera och klistra in exakt denna kod:
+    <div class="highlight"><pre><span></span><code>Concatenate(&quot;Status eq &#39;Tillgänglig&#39; and AssetType eq &#39;&quot;, Topic.VarDeviceType, &quot;&#39;&quot;)
+</code></pre></div></p>
+<p><strong>Vad betyder koden?</strong>
+Vi bygger en mening som SharePoint förstår. <code>Concatenate</code> betyder "klistra ihop".
+Vi klistrar ihop texten <em>"Status är Tillgänglig OCH AssetType är..."</em> med värdet från vår indatavariabel <code>VarDeviceType</code> (t.ex. "Bärbar dator").</p>
+<p><em>Resultatet som skickas till SharePoint blir: <code>Status eq 'Tillgänglig' and AssetType eq 'Bärbar dator'</code></em></p>
+</li>
+<li>
+<p>Kontrollera att du har en liten <strong>grön bock</strong> brevid formelfältet. Det betyder att koden är korrekt.</p>
+<p><img alt="Grön bock formel" src="../assets/images-sv/chap06/40.png" /></p>
+</li>
+<li>
+<p>Klicka <strong>Infoga</strong>.</p>
+</li>
+<li>
+<p>(Valfritt men bra) Scrolla ner till <strong>Begränsa kolumner efter vy</strong>. Välj <strong>Alla objekt</strong>.
+    <em>Ibland kan SharePoint gömma kolumner om man inte väljer en vy. Detta garanterar att vi får all data. Kan behöva uppdateras för att få upp alternativen.</em></p>
+<p><img alt="Välj vy" src="../assets/images-sv/chap06/41.png" /></p>
+</li>
+</ol>
+<h3 id="5-spara-resultatet-utdata">5. Spara resultatet (Utdata)</h3>
+<p>Nu har vi ställt frågan till SharePoint. Nu ska vi ta hand om svaret.</p>
+<ol>
+<li>
+<p>I Egenskapspanelen, klicka på fliken <strong>Utdata</strong>.</p>
+<p><img alt="Utdata-flik" src="../assets/images-sv/chap06/42.png" /></p>
+</li>
+<li>
+<p>Klicka på variabelnamnet (som troligen heter <em>HämtaObjekt</em>).</p>
+</li>
+<li>
+<p>Döp om den till:
+    <div class="highlight"><pre><span></span><code>VarDevices
+</code></pre></div></p>
+<p><img alt="Utdatainställningar" src="../assets/images-sv/chap06/43.png" /></p>
+</li>
+<li>
+<p>Ändra <strong>Användning</strong> till <strong>Globalt</strong>.
+    <em>Varför? För att vi vill att denna lista ska vara tillgänglig för hela agenten, ifall vi vill använda den i andra ämnen senare.</em></p>
+<p><img alt="Utdatainställningar" src="../assets/images-sv/chap06/44.png" /></p>
+</li>
+<li>
+<p>Stäng Egenskapspanelen på krysset (X).</p>
+</li>
+</ol>
+<hr />
+<h2 id="67-koppla-ihop-allt-utdatamappning">6.7 Koppla ihop allt (Utdatamappning)</h2>
+<p>Nu har vi hämtat datan till en <em>Global</em> variabel (<code>VarDevices</code>).
+Men minns du att vi i början av ämnet (steg 6.3) skapade en specifik utdatavariabel för just det här ämnet (<code>VarAvailableDevices</code>)? Vi måste flytta datan från den ena till den andra.</p>
+<ol>
+<li>Lägg till en ny nod under din SharePoint-nod.</li>
+<li>
+<p>Välj <strong>Variabelhantering</strong> -&gt; <strong>Ange ett variabelvärde</strong>.</p>
+<p><img alt="Ange variabel" src="../assets/images-sv/chap06/45.png" /></p>
+</li>
+<li>
+<p>Under <strong>Ange variabel</strong>, välj ämnets utdatavariabel: <code>VarAvailableDevices</code>.</p>
+<p><img alt="Ange variabel" src="../assets/images-sv/chap06/46.png" /></p>
+</li>
+<li>
+<p>Under <strong>Till värde</strong>, klicka på pilen/ikonen och välj <strong>Formel</strong>.</p>
+<p><img alt="Ange variabel" src="../assets/images-sv/chap06/47.png" /></p>
+</li>
+<li>
+<p>Skriv in följande formel:
+    <div class="highlight"><pre><span></span><code>Global.VarDevices.value
+</code></pre></div></p>
+<p><strong>Varför .value?</strong>
+SharePoint skickar tillbaka ett paket med massor av info. Själva listan med rader (datorerna) ligger inuti en egenskap som heter <code>value</code>. Vi måste "packa upp" den för att vår tabell ska bli rätt.</p>
+<p><img alt="Formel för value" src="../assets/images-sv/chap06/48.png" /></p>
+</li>
+<li>
+<p>Klicka <strong>Infoga</strong>.</p>
+</li>
+<li><strong>Spara</strong> ditt ämne (Spara högst upp till höger).</li>
+</ol>
+<hr />
+<h2 id="68-uppdatera-agentens-instruktioner">6.8 Uppdatera Agentens Instruktioner</h2>
+<p>Nu är ämnet klart! Men agenten vet inte om att det finns eller hur det ska användas än. Vi måste uppdatera huvudinstruktionerna.</p>
+<ol>
+<li>
+<p>Gå till fliken <strong>Översikt</strong> högst upp.</p>
+<p><img alt="Översikt-flik" src="../assets/images-sv/chap06/49.png" /></p>
+</li>
+<li>
+<p>Vid <strong>Instruktioner</strong>, klicka på <strong>Redigera</strong>.</p>
+<p><img alt="Redigera instruktioner" src="../assets/images-sv/chap06/50.png" /></p>
+</li>
+<li>
+<p>Lägg till följande rad i instruktionerna (gärna sist i listan):</p>
+<div class="highlight"><pre><span></span><code>- Hjälp till att hitta tillgängliga enheter och ge fullständiga detaljer genom att använda [Tillgängliga Enheter]. Extrahera alltid VarDeviceType från indatan. Efter att ha presenterat detaljerna, fråga användaren om de vill beställa en enhet från listan.
+</code></pre></div>
+<p><em>(Tips: När du skriver <code>[Tillgängliga Enheter]</code>, se till att du faktiskt väljer ämnet från listan som poppar upp, så att det blir en klickbar länk i instruktionen).</em></p>
+</li>
+<li>
+<p>Klicka <strong>Spara</strong>.</p>
+</li>
+</ol>
+<p><em>Logiken är klar! Nu fångar vi upp "fel" märke och leder in dem på rätt spår igen, eller avslutar om de inte är intresserade.</em></p>
+<hr />
+<h3 id="testa-flodet">Testa flödet</h3>
+<p>Nu är det dags att testa!</p>
+<ol>
+<li>
+<p>Öppna <strong>Testa</strong>-panelen. Klicka på ikonen för <strong>Karta</strong> (Aktivitetskarta) och slå på <strong>Spåra mellan ämnen</strong>.</p>
+</li>
+<li>
+<p>Skriv: <code>Jag behöver en bärbar dator</code>
+    <em>Agenten bör visa listan och fråga om du vill beställa.</em></p>
+</li>
+<li>
+<p>Svara: <code>Ja tack</code>
+    <em>Agenten vet inte vad den ska göra nu</em></p>
+</li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Bra jobbat!</p>
+<p>Du har nu byggt en avancerad funktion!</p>
+<ol>
+<li>Agenten lyssnar efter vad användaren vill ha (Indata).</li>
+<li>Den ställer smarta följdfrågor (Logik).</li>
+<li>Den hämtar data från SharePoint (Åtgärd).</li>
+<li>Den levererar en snygg lista tillbaka (Utdata).</li>
+</ol>
+</div>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopierat till urklipp", "clipboard.copy": "Kopiera till urklipp", "search.result.more.one": "1 till p\u00e5 denna sida", "search.result.more.other": "# till p\u00e5 denna sida", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.term.missing": "Saknas", "select.version": "V\u00e4lj version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
