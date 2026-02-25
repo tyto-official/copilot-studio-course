@@ -6,7 +6,36 @@ I kursen lärde vi oss lägga till kunskap via dokument och webbsidor. Men hur f
 
 ---
 
-## Hur RAG fungerar (bakom kulisserna)
+## Steg 1: Vad händer när du laddar upp ett dokument?
+
+Innan vi pratar om hur sökningen fungerar måste vi förstå vad som händer redan **när du lägger till ett dokument** som kunskap.
+
+När du laddar upp en fil (Word, PDF, etc.) eller pekar på en webbsida, startar en process som kallas **indexering**:
+
+```mermaid
+flowchart LR
+    A["📄 Ditt dokument"] --> B["✂️ Delas upp i delar (chunks)"]
+    B --> C["🔢 Varje del omvandlas till vektorer (embeddings)"]
+    C --> D["🗄️ Sparas i en vektordatabas"]
+```
+
+1.  **Dokumentet delas upp** i mindre textdelar (*chunks*). Tänk dig att en 10-sidig PDF klipps i ~20-30 bitar.
+2.  **Varje del omvandlas till en vektor** – en matematisk representation av textens *betydelse*. Ord som "laptop" och "bärbar dator" hamnar nära varandra i vektorrummet.
+3.  **Vektorerna sparas** i en databas som agenten sedan kan söka i.
+
+Det är dessa sparade vektorer som användarens frågor sedan matchas mot.
+
+!!! warning "Dokument uppdateras inte automatiskt"
+    Om du ändrar innehållet i ett dokument som redan är uppladdat **uppdateras inte kunskapsbanken automatiskt**. Du måste:
+    
+    1. **Ta bort** det gamla dokumentet från kunskapskällorna.
+    2. **Ladda upp** den nya versionen igen.
+    
+    Annars kommer agenten fortsätta svara baserat på den gamla versionen av filen.
+
+---
+
+## Steg 2: Hur RAG fungerar (sökningen)
 
 När du lägger till ett dokument som kunskap i Copilot Studio använder Microsoft en teknik som heter **RAG** – *Retrieval-Augmented Generation*.
 
