@@ -6,48 +6,58 @@ Vi börjar från grunden och bygger steg för steg på med nya funktioner. När 
 
 ---
 
-## Kapitel och mål
+## Kurskapitel
 
-### 0. Begrepp och Teori
-Mål: Skapa en utvecklingsmiljö med Dataverse och se till att allt fungerar innan vi sätter igång.
-Läs: [00-prereqs.md](00-concepts.md)
+??? note "0. Begrepp och Teori"
+    Mål: Förstå grundläggande koncept som LLMs, tokens, kontext och RAG.
+    [Läs kapitel →](00-concepts.md)
 
-### 1. Förbered SharePoint
-Mål: Sätta upp SharePoint-sajten med mallen IT Help Desk och lägga in lite testdata.
-Läs: [01-prepare-sharepoint.md](01-prepare-sharepoint.md)
+??? note "1. Förbered SharePoint"
+    Mål: Sätta upp SharePoint-sajten med mallen IT Supportavdelning och lägga in testdata.
+    [Läs kapitel →](01-prepare-sharepoint.md)
 
-### 2. Hitta rätt i Copilot Studio
-Mål: Lära känna gränssnittet så du hittar bland Agents, Flows och Tools.
-Läs: [02-tour-interface.md](02-tour-interface.md)
+??? note "2. Hitta rätt i Copilot Studio"
+    Mål: Lära känna gränssnittet så du hittar bland Agenter, Flöden och Verktyg.
+    [Läs kapitel →](02-tour-interface.md)
 
-### 3. Skapa en lösning
-Mål: Skapa en Solution för att hålla ordning på allt vi bygger.
-Läs: [03-create-solution.md](03-create-solution.md)
+??? note "3. Skapa en Lösning"
+    Mål: Skapa en Solution för att hålla ordning på allt vi bygger.
+    [Läs kapitel →](03-create-solution.md)
 
-### 4. Skapa agenten
-Mål: Skapa vår huvudperson **IT Support Helper**, ge den instruktioner och testa den för första gången.
-Läs: [04-create-agent.md](04-create-agent.md)
+??? note "4. Skapa Agenten"
+    Mål: Skapa vår huvudperson **IT Support agent**, ge den instruktioner och testa den för första gången.
+    [Läs kapitel →](04-create-agent.md)
 
-### 5. Lägg till kunskap
-Mål: Koppla in dokument och filer så agenten kan svara på frågor direkt.
-Läs: [05-add-knowledge.md](05-add-knowledge.md)
+??? note "5. Lägg till Kunskap"
+    Mål: Koppla in dokument och filer så agenten kan svara på frågor direkt.
+    [Läs kapitel →](05-add-knowledge.md)
 
-### 6. Skapa en styrd dialog
-Mål: Bygga en Topic som guidar användaren genom en behovsanalys och hämtar data från SharePoint.
-Läs: [06-create-topic.md](06-create-topic.md)
+??? note "6. Skapa en Styrd Dialog"
+    Mål: Bygga ett Ämne som guidar användaren genom en behovsanalys och hämtar data från SharePoint.
+    [Läs kapitel →](06-create-topic.md)
 
-### 7. Skapa ett adaptivt kort
-Mål: Skapa ett snyggt formulär direkt i chatten för att ta emot val och kommentarer.
-Läs: [07-adaptive-card.md](07-adaptive-card.md)
+??? note "7. Skapa ett Adaptivt Kort"
+    Mål: Skapa ett snyggt formulär direkt i chatten för att ta emot val och kommentarer.
+    [Läs kapitel →](07-adaptive-card.md)
 
-### 8. Skapa ett Agent Flow
-Mål: Bygga logiken som tar emot beställningen och skickar bekräftelsemejl via Power Automate.
-Läs: [08-create-flow.md](08-create-flow.md)
+??? note "8. Skapa ett Agentflöde"
+    Mål: Bygga logiken som tar emot beställningen och skickar bekräftelsemejl via Power Automate.
+    [Läs kapitel →](08-create-flow.md)
 
-### 9. Autonomi
-Mål: Få agenten att vakna till liv och agera själv på händelser, utan att någon pratar med den först.
-Läs: [09-autonomy.md](09-autonomy.md)
+??? note "9. Autonomi"
+    Mål: Få agenten att vakna till liv och agera själv på händelser, utan att någon pratar med den först.
+    [Läs kapitel →](09-autonomy.md)
 
-### 10. Multi Agent Orchestration
-Mål: Bygga finalen där huvudagenten delegerar arbete till en specialistagent som rapporterar i Teams.
-Läs: [10-multi-agent.md](10-multi-agent.md)
+??? note "10. Multi-Agent Orchestration"
+    Mål: Bygga finalen där huvudagenten delegerar arbete till en specialistagent som rapporterar i Teams.
+    [Läs kapitel →](10-multi-agent.md)
+
+---
+
+## Tips & Tricks
+
+Fördjupningar och praktiska tips utöver kursmaterialet.
+
+??? tip "Kunskap på djupet"
+    Förstå hur RAG fungerar bakom kulisserna, när den vanliga kunskapssökningen räcker – och när du behöver bygga ett verktyg som hämtar hela dokument istället.
+    [Läs artikeln →](tips/knowledge.md)

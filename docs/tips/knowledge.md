@@ -128,10 +128,13 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 
 #### 1. Skapa flödet
 
-1.  Navigera till **Agentflöden** och skapa ett **nytt agentflöde**.
-    *(Du kan göra detta via Ämnen → + → Lägg till ett verktyg → Nytt agentflöde, precis som i kapitel 8).*
+1.  Klicka på **Verktyg** i menyn och sedan på **+ Lägg till**.
 
-    ![Skapa nytt agentflöde](../assets/images/tips-knowledge/2.png)
+    ![Lägg till verktyg](../assets/images/tips-knowledge/2.png)
+
+2.  Välj **Agentflöden** för att skapa ett nytt agentflöde.
+
+    ![Välj agentflöden](../assets/images/tips-knowledge/3.png)
 
 2.  Du ser två noder:
     - **När en agent anropar flödet** (Indata)
@@ -228,7 +231,7 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 #### 5. Lägg till som verktyg i agenten
 
 1.  Navigera till din agent.
-2.  Klicka på **Lägg till ett verktyg** → **Flöden**.
+2.  Klicka på **Lägg till ett verktyg** → **Agentflöden**.
 
     ![Lägg till verktyg](../assets/images/tips-knowledge/19.png)
 
