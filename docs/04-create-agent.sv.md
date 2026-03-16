@@ -134,7 +134,7 @@ Om du inte redan ser chatten till höger:
 Vi börjar med att kolla att den förstår sin roll.
 
 1. Skriv i chatten:
-    > *Hej, vem är du?*
+    > *Vem är du?*
 
 2. **Förväntat resultat:**
     Agenten ska presentera sig som **IT Support agent** (eller det namn du valde) och erbjuda hjälp. Den ska vara trevlig och professionell.
