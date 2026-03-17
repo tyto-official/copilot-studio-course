@@ -60,10 +60,16 @@ Det betyder också att säkerhet och förtroende blir viktigt. När du använder
 
 Många av de största modellerna som används i molntjänster idag är dessutom **closed source**. Då får vi använda dem, men vi får inte se exakt hur alla vikter ser ut eller ladda ner hela modellen själva.
 
-Det är också viktigt att veta att en språkmodell inte läser ord som vi gör. Dess alfabet består av **tokens**.
+---
 
-* En token är en del av ett ord (vanligt förekommande bokstavskombinationer).
+## 🔤 Tokens
+
+Det är viktigt att veta att en språkmodell inte läser ord som vi gör. Dess alfabet består av **tokens**.
+
+* En token är ofta en del av ett ord, ett helt ord eller ett skiljetecken.
 * Som tumregel: 1000 tokens motsvarar ungefär 750 ord.
+
+Det betyder att modellen inte räknar i "sidor" eller "dokument", utan i hur många tokens som totalt skickas in och ut.
 
 !!! tip "Prova själv"
     Vill du se hur din text delas upp i tokens? Testa att klistra in en mening i verktyget [OpenAI Tokenizer](https://platform.openai.com/tokenizer).
@@ -76,9 +82,21 @@ Det är också viktigt att veta att en språkmodell inte läser ord som vi gör.
 
 Varje modell har en begränsning i hur mycket information den kan hålla i huvudet samtidigt. Detta kallas **Context Window** eller kontextlängd.
 
-* Du kan se det som modellens **korttidsminne**.
+Du kan se det som modellens **korttidsminne**, men det är viktigt att förstå att detta är den **totala tokenbudgeten** för hela anropet, inte bara för användarens fråga.
+
+I kontextfönstret ryms ofta allt detta samtidigt:
+
+* systemprompten
+* användarens fråga
+* tidigare meddelanden i chatten
+* information som hämtats via RAG eller verktyg
+* modellens eget svar, alltså output tokens
+
+Det betyder att om mycket plats redan används av instruktioner, historik eller hämtad kunskap, finns det mindre utrymme kvar för resten.
+
 * Om du skickar in en bok på 1000 sidor till en modell med litet minne, kommer den att glömma början innan den läst klart slutet.
-* Moderna modeller (som GPT-5) har stora kontextfönster (över 400k tokens), men precisionen kan sjunka om man fyller dem till bredden.
+* Moderna modeller kan ha mycket stora kontextfönster, men det betyder inte att de använder hela fönstret lika bra.
+* Om man fyller kontexten med för mycket eller halvrelevant information blir svaren ofta sämre. Detta kallas ibland för **context rot**.
 
 ![Window](assets/images/chap/7.jpeg)
 
@@ -107,6 +125,8 @@ graph LR
 En språkmodell kan mycket, men den kan inte *allt*. Den vet ingenting om ditt företags interna dokument, manualer eller hemligheter. För att lösa detta använder vi **RAG**.
 
 RAG handlar om att hämta (Retrieve) rätt information och ge den till modellen.
+
+Du kan också se RAG som ett sätt att hantera modellens kontextfönster. I stället för att skicka in hela dokument försöker systemet hitta de delar som verkar mest relevanta och bara skicka in dem.
 
 ### Hur fungerar det? (Vektorer och Embeddings)
 
@@ -146,6 +166,20 @@ graph TD
     V1 -->|Mest lik!| LLM[Språkmodell]
     LLM --> Svar
 ```
+
+### Hur märks detta i Copilot Studio?
+
+I praktiken ser man ofta att Copilot Studio inte söker med exakt samma formulering som användaren skrev i chatten. Agenten kan först omformulera frågan till något som är mer sökbart, hämta några relevanta utdrag ur kunskapen och ibland göra ytterligare en sökning om första omgången inte räcker, särskilt med mer resonerande modeller eller tydliga instruktioner i systemprompten.
+
+Det viktiga att förstå är att agenten då **inte ser hela dokumentmängden samtidigt**. Den ser bara de utdrag som retrieval-steget hittade och skickade vidare till modellen.
+
+Det är därför RAG ofta fungerar bra när man vill hitta **specifik information**, men sämre när frågan kräver att modellen ska:
+
+* räkna över många delar av ett dokument
+* jämföra många avsnitt samtidigt
+* förstå relationer som är utspridda över flera olika chunkar
+
+Om svaret finns spritt över många delar av många dokument finns det en risk att retrieval-steget bara hämtar en del av det, och då kan modellen inte resonera över information som den aldrig fick se.
 
 ---
 
