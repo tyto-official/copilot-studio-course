@@ -69,7 +69,11 @@ Det är viktigt att veta att en språkmodell inte läser ord som vi gör. Dess a
 * En token är ofta en del av ett ord, ett helt ord eller ett skiljetecken.
 * Som tumregel: 1000 tokens motsvarar ungefär 750 ord.
 
-Det betyder att modellen inte räknar i "sidor" eller "dokument", utan i hur många tokens som totalt skickas in och ut.
+I grunden lagras all information i en dator som bitar, alltså `0` och `1`. Men om en språkmodell skulle arbeta direkt med text på den nivån, eller tecken för tecken, skulle sekvenserna bli väldigt långa och ineffektiva.
+
+Därför används en **tokenizer**. Den delar upp text i mer praktiska byggstenar som modellen lättare kan arbeta med. Vanliga ord och vanliga delar av ord blir därför ofta egna tokens, medan ovanligare ord kan delas upp i flera mindre delar.
+
+Det betyder att modellen inte räknar i "sidor" eller "dokument", utan i hur många tokens som totalt skickas in och ut. Tokens är alltså ett effektivt mellanlager mellan mänskligt språk och den matematik modellen faktiskt arbetar med.
 
 !!! tip "Prova själv"
     Vill du se hur din text delas upp i tokens? Testa att klistra in en mening i verktyget [OpenAI Tokenizer](https://platform.openai.com/tokenizer).
