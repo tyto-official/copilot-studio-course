@@ -6,12 +6,63 @@ Innan vi hoppar in i Copilot Studio ska vi gå igenom några grundläggande begr
 
 ## 🧠 Språkmodeller (LLMs)
 
-En **LLM** (Large Language Model) är ett stort neuralt nätverk tränat på enorma mängder data. Den har statistiskt lärt sig mönster i språket och fått en "inbakad" förståelse för världen.
+En **LLM** (Large Language Model) är ett stort neuralt nätverk som tränas på enorma mängder text och annan data. Under träningen lär sig modellen statistiska mönster i språk: vilka ord som ofta hör ihop, hur meningar byggs upp och vilka samband som brukar finnas mellan olika begrepp.
 
-Det är viktigt att veta att en språkmodell inte läser ord som vi gör. Dess alfabet består av **Tokens**.
+### Vad är det som faktiskt tränas?
+
+När man tränar en språkmodell justerar man **miljontals eller miljarder parametrar**. Dessa parametrar kallas ofta för modellens **vikter**. Du kan tänka på dem som ett enormt antal små inställningar som tillsammans avgör hur modellen reagerar på olika ord och sammanhang.
+
+Efter träningen är det dessa vikter som i praktiken är själva modellen. Därför kan man pedagogiskt säga att en språkmodell är som en **väldigt stor modellfil** som innehåller allt modellen har lärt sig.
+
+### Vad händer när modellen körs?
+
+När du skriver en fråga börjar modellen inte "tänka" som en människa. I stället gör den väldigt många beräkningar för att förutsäga vilken token som mest sannolikt ska komma härnäst, sedan nästa, och sedan nästa igen tills svaret är klart.
+
+Det är därför **GPU:er** har blivit så viktiga inom AI:
+
+* En **CPU** är bra på generell logik, styrning och sekventiellt arbete.
+* En **GPU** är byggd för att göra väldigt många beräkningar parallellt.
+
+Just den typen av massiv parallellism passar språkmodeller mycket bra. För att det ska gå snabbt behöver modellens vikter och arbetsminne finnas nära beräkningen, oftast i grafikkortets minne, alltså **VRAM**.
+
+### Olika storlekar på modeller
+
+När du ser modellnamn som `3B`, `7B`, `14B` eller `27B` betyder `B` **miljarder parametrar**.
+
+Små och medelstora öppna modeller går ofta att köra lokalt på en kraftigare laptop eller stationär dator. Större modeller kräver däremot betydligt mer RAM, mer VRAM eller flera GPU:er.
+
+Här ser du ett exempel på hur samma modellfamilj kan finnas i flera storlekar:
+
+![Exempel på modellfamiljer](assets/images/chap/valjmodell.png)
+
+| Modellfamilj | Exempel på storlekar | Typiskt användningsområde |
+| --- | --- | --- |
+| Gemma 3 | `1B`, `4B`, `12B`, `27B` | Lokal körning i olika nivåer |
+| Qwen 3 | `0.6B`, `1.7B`, `4B`, `8B`, `14B`, `30B` | Från små tester till större lokala modeller |
+| DeepSeek-R1 | `1.5B`, `7B`, `8B`, `14B`, `32B`, `70B`, `671B` | Från lokala resonemangsmodeller till serverklass |
+| Ministral 3B | `3B` | Liten modell som är lättare att köra lokalt |
+
+!!! note "Exempel på lokal körning"
+    Här nedan ser du att jag kör modellen `ministral-3:3b` lokalt i Ollama. I det här fallet sker beräkningarna alltså på min egen dator i stället för i ett moln.
+
+![Lokal modell i Ollama](assets/images/chap/ollama-ministral-3b.png)
+
+### Var "bor" modellen?
+
+Det här är en viktig mental modell att ha med sig:
+
+* En **lokal modell** ligger på din egen dator och körs av din egen hårdvara.
+* En **molnmodell** ligger på leverantörens servrar och körs där.
+
+Om du använder ChatGPT sker beräkningarna hos OpenAI. Om du använder **Copilot Studio** sker beräkningarna normalt inte på din dator, utan i Microsofts moln. Microsoft beskriver Copilot-funktionerna som byggda på **Azure OpenAI**, vilket innebär att prompten skickas till Microsofts Azure-miljö, modellen bearbetar frågan där och svaret skickas tillbaka till dig.
+
+Det betyder också att säkerhet och förtroende blir viktigt. När du använder en molnmodell behöver du lita på den leverantör som driver infrastrukturen. I Microsofts fall är poängen att modellen körs i deras Azure-miljö, inte via OpenAI:s publika ChatGPT-tjänst.
+
+Många av de största modellerna som används i molntjänster idag är dessutom **closed source**. Då får vi använda dem, men vi får inte se exakt hur alla vikter ser ut eller ladda ner hela modellen själva.
+
+Det är också viktigt att veta att en språkmodell inte läser ord som vi gör. Dess alfabet består av **tokens**.
 
 * En token är en del av ett ord (vanligt förekommande bokstavskombinationer).
-
 * Som tumregel: 1000 tokens motsvarar ungefär 750 ord.
 
 !!! tip "Prova själv"
@@ -100,7 +151,7 @@ graph TD
 
 ## 🤖 Vad är en AI-Agent?
 
-Microsoft pratar ofta om två nivåer av AI agnter. Det är viktigt att förstå skillnaden på ett "Agent flows" och en "Agent".
+Microsoft pratar ofta om två nivåer av AI-agenter. Det är viktigt att förstå skillnaden mellan ett "Agent flow" och en "Agent".
 
 ### 1. Konversations Agent (Chatbot++)
 Detta är en språkmodell som har fått tillgång till verktyg (Tools). Den pratar med en människa och kan utföra uppgifter på kommando, t.ex. söka på nätet eller kolla kalendern.
@@ -115,7 +166,7 @@ Dessa agenter behöver inte en människa som startar dem. De kan triggas av hän
 ### 3. Workflows vs. Agent
 Detta är den viktigaste skillnaden i design:
 
-* **Workflows (Process):** En förutbestämd väg. Steg 1 leder alltid till Steg 2. Det är stabilt men flexibelt.
+* **Workflows (Process):** En förutbestämd väg. Steg 1 leder alltid till Steg 2. Det är stabilt men mindre flexibelt.
 
     ![Workflows](assets/images/chap/5.jpeg)
 
