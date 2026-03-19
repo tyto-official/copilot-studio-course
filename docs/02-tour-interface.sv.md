@@ -86,9 +86,10 @@ Här ser du de olika typerna av verktyg:
 
 * **Prompt:** Här använder vi AI-modellernas förmåga att analysera och generera, exempelvis för en specifik uppgift. T.ex. "Sammanfatta detta mejl" eller "Klassificera detta ärende".
 * **Agentflöde:** Här använder vi ett flöde som ett verktyg. Eftersom agentflöden är deterministiska är detta perfekt när agenten behöver utföra något strikt.
+* **Modellkontextprotokoll (MCP):** Ett standardiserat sätt att koppla AI-agenter och AI-system till verktyg och datakällor. Man kan se MCP som en slags **USB-C-kontakt** för AI-agenter, alltså ett gemensamt sätt att ansluta olika system.
 * **Anpassad anslutning:** Kopplingar till externa tjänster och datakällor (utanför Microsoft 365).
 * **Rest API:** Detta är en mycket flexibel lösning som kan användas för att hämta data från olika system.
-* **Modellkontextprotokoll (MCP):** Ett standardiserat sätt att koppla AI-agenter och AI-system till verktyg och datakällor. Man kan se MCP som en slags **USB-C-kontakt** för AI-agenter, alltså ett gemensamt sätt att ansluta olika system.
+
 
 ---
 
