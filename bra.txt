@@ -11,38 +11,17 @@ Funktionen ForAll fungerar som en loop. Den tittar i vår globala variabel (där
     Value: Blir datorns ID (så agenten vet exakt vilken rad vi valde).
 
 
-Hänga med om man vill
+
 
 
 
 
 JoelThyberg@thybergai.onmicrosoft.com
 
-https://copilotstudio.microsoft.com/environments/f83cf888-2d09-e899-8324-80a058d31948/home
+https://make.powerapps.com/environments/fd29af48-cd3f-e70f-8e0e-233d0ed0f867/home?offer=dev&ScenarioId=Signup
 
 
-https://tyto-official.github.io/copilot-studio-course/10-multi-agent/
+
 
 https://www.microsoft.com/sv-se/microsoft-365-copilot/microsoft-copilot-studio/?market=se#pricing
 
-https://azure.microsoft.com/sv-se/pricing/purchase-options/azure-account?cid=msft_learn
-
-
-https://admin.powerplatform.microsoft.com/licensing/billingplans
-
-
-
-
-
-
-myaccount.microsoft.com
-
-make.powerapps.com
-
-
-
-
-CopilotStudio DemoPublish
-1 Azure subscription 1
-2 Resursgrupp rg pp paygo copilot
-3 Mätare: Dataverse, Copilot Studio, Power Automate
