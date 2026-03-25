@@ -32,6 +32,8 @@ Språkmodeller var också en av de viktigaste orsakerna till att AI slog igenom 
 
 ### Hur tränas modellen?
 
+#### Del 1: Grundträning på text
+
 För att bygga en språkmodell räcker det inte med mycket data, modellen måste också **tränas**. Träningsdatan består i grunden av text: till exempel böcker, artiklar, webbsidor, diskussionsforum och transkriberat ljud eller video.
 
 ![Exempel på rapporterade uppgifter om träningsdata](assets/images/chap/youtube.png)
@@ -83,6 +85,28 @@ Det här kan liknas vid att träna en självkörande bil genom en hinderbana. I 
 *När träningen är klar används modellen sedan i nya situationer som den inte sett exakt tidigare.*
 
 Efter träningen är det dessa vikter som i praktiken **är** själva modellen. Därför kan man pedagogiskt säga att en språkmodell är som en väldigt stor modellfil som innehåller allt modellen har lärt sig.
+
+#### Del 2: Från språkmodell till assistent
+
+Efter den första delen har modellen ofta fått **bred språkförståelse och generell kunskap**, men den är fortfarande inte automatiskt en bra assistent. Den är fortfarande främst bra på att fortsätta text på ett sannolikt sätt.
+
+I en andra träningsfas får modellen därför ofta se exempel på **frågor och bra svar**. Då tränas den att följa instruktioner bättre, hålla rätt ton och ge mer användbara svar. Här lär den sig inte främst **nya fakta**, utan **hur ett bra assistentsvar brukar se ut**.
+
+#### Del 3: Feedback och finjustering
+
+Sedan kan man gå ett steg längre och finjustera modellen med **feedback**. Då jämför man ofta flera möjliga svar och lär modellen vilket svar som verkar mest hjälpsamt, tydligt och säkert.
+
+Den här delen handlar alltså mindre om att visa ett facit och mer om att **styra modellen mot bättre beteende**.
+
+```mermaid
+graph LR
+    A["Del 1: Grundträning på stora mängder text"] --> B["Kan språk och har bred generell kunskap"]
+    B --> C["Del 2: Instruktionsträning med bra exempel"]
+    C --> D["Del 3: Feedback och finjustering"]
+    D --> E["Blir mer hjälpsam, följer instruktioner bättre och svarar säkrare"]
+```
+
+Man kan alltså säga att **del 1 bygger hjärnan**, **del 2 lär modellen att svara som en assistent** och **del 3 finslipar beteendet ytterligare**.
 
 ### Vad händer när modellen körs?
 
