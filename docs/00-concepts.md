@@ -20,12 +20,13 @@ En **LLM** (Large Language Model) är ett stort neuralt nätverk som tränas på
 
 Språkmodeller var också en av de viktigaste orsakerna till att AI slog igenom så brett hos allmänheten. Sedan slutet av `2022` har utvecklingen gått extremt snabbt, och i dag ser vi inte bara bättre språkmodeller utan också kraftfulla bild- och videomodeller. I den här kursen kommer vi dock främst fokusera på språkmodeller, eftersom det är den viktigaste komponenten när vi bygger agenter i Copilot Studio.
 
-<table style="width: 100%; table-layout: fixed;">
-  <tr>
-    <td style="width: 50%; vertical-align: top;"><img src="assets/images/chap/fore.jpg" alt="Tidigare bildmodeller gav ofta sämre och mindre realistiska resultat" style="width: 100%; height: auto; display: block;" /></td>
-    <td style="width: 50%; vertical-align: top;"><img src="assets/images/chap/efter.png" alt="Nyare bildmodeller ger ofta betydligt mer realistiska och detaljerade resultat" style="width: 100%; height: auto; display: block;" /></td>
-  </tr>
-</table>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;" markdown="1">
+
+![Tidigare bildmodeller gav ofta sämre och mindre realistiska resultat](assets/images/chap/fore.jpg)
+
+![Nyare bildmodeller ger ofta betydligt mer realistiska och detaljerade resultat](assets/images/chap/efter.png)
+
+</div>
 
 *Utvecklingen inom generativ AI har inte bara gällt språkmodeller. Bildmodeller har också blivit betydligt bättre på kort tid.*
 
@@ -63,16 +64,17 @@ Efter väldigt många sådana varv blir modellen gradvis bättre på att gissa r
 
 Det här kan liknas vid att träna en självkörande bil genom en hinderbana. I början kör bilarna nästan hej vilt och misslyckas hela tiden. Men efter varje försök gör man små justeringar, till exempel i hur bilen svänger, och då blir körningen steg för steg bättre. Målet är inte bara att klara träningsbanan, utan att ha lärt sig mönster som fungerar även på nya vägar.
 
-<table>
-  <tr>
-    <td><img src="assets/images/chap/bil1.jpg" alt="Början av träningen: bilarna kör åt alla håll" /></td>
-    <td><img src="assets/images/chap/bil2.jpg" alt="Tidigt i träningen: några bilar börjar hitta rätt" /></td>
-  </tr>
-  <tr>
-    <td><img src="assets/images/chap/bil3.jpg" alt="Senare i träningen: fler bilar klarar svängen" /></td>
-    <td><img src="assets/images/chap/bil4.jpg" alt="Slutet av träningen: bilarna klarar banan" /></td>
-  </tr>
-</table>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;" markdown="1">
+
+![Början av träningen: bilarna kör åt alla håll](assets/images/chap/bil1.jpg)
+
+![Tidigt i träningen: några bilar börjar hitta rätt](assets/images/chap/bil2.jpg)
+
+![Senare i träningen: fler bilar klarar svängen](assets/images/chap/bil3.jpg)
+
+![Slutet av träningen: bilarna klarar banan](assets/images/chap/bil4.jpg)
+
+</div>
 
 *Bilanalogin visualiserad: från många fel i början till en modell som gradvis lär sig köra bättre.*
 

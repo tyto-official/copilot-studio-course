@@ -49,3 +49,10 @@ https://copilotstudio.microsoft.com/environments/fd29af48-cd3f-e70f-8e0e-233d0ed
 
 https://www.microsoft.com/sv-se/microsoft-365-copilot/microsoft-copilot-studio/?market=se#pricing
 
+
+
+https://copilotstudio.microsoft.com/environments/95275583-0477-e4b7-a796-d0ead685495d/home
+
+https://make.powerapps.com/environments/95275583-0477-e4b7-a796-d0ead685495d/home
+
+joel@intbizacademy.se
