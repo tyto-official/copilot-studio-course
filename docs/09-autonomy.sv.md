@@ -49,7 +49,7 @@ Vi börjar med att tala om för agenten vad den ska lyssna efter.
     ```text
     Ny supportbegäran skapad i SharePoint: {Body}
     
-    Använd verktyget 'Acknowledge SharePoint Ticket' för att meddela IT-avdelningen om detta.
+    Använd verktyget 'Bekräfta SharePoint-ärende' för att meddela IT-avdelningen om detta.
     
     VIKTIGT: Vänta inte på någon användarinmatning. Arbeta helt autonomt.
     ```
@@ -122,7 +122,7 @@ Nu har agenten en utlösare, men den behöver ett verktyg för att kunna skicka 
 
 2.  Sök efter 
     ```text
-    Skicka ett e-postmeddelande
+    Skicka ett e-postmeddelande (V2)
     ```
 
     ![Sök e-post](assets/images-sv/chap09/15.png)

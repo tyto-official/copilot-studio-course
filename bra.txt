@@ -11,7 +11,32 @@ Funktionen ForAll fungerar som en loop. Den tittar i vår globala variabel (där
     Value: Blir datorns ID (så agenten vet exakt vilken rad vi valde).
 
 
+Absolut, här är en kort och tydlig sammanfattning:
 
+I Adaptive Card loopar vi igenom Global.VarDevices.value, som är listan med filtrerade enheter från SharePoint. För varje enhet visar vi Model som text för användaren och sätter Text(ID) som det faktiska värdet som ska sparas om användaren väljer just den raden.
+
+id: "deviceSelectionId" betyder bara att ChoiceSet fältet heter deviceSelectionId. När användaren väljer till exempel “Model X” så sparas inte modellnamnet, utan value för det valet, alltså till exempel "7", eftersom du själv har sagt att value ska vara Text(ID).
+
+När användaren klickar på Skicka körs Action.Submit, och då samlar Copilot Studio in alla input fält i kortet och gör dem till outputvariabler i topicen med samma namn som deras id. Det betyder att deviceSelectionId blir "7" om användaren valde raden vars value var "7".
+
+Det är alltså inte submit knappens id som skapar deviceSelectionId. Det är Input.ChoiceSet med id: "deviceSelectionId" som skapar fältet, och value: Text(ID) som avgör vilket värde som hamnar där.
+
+Den enklaste minnesregeln är denna:
+
+title är det användaren ser
+value är det som sparas
+id är namnet på fältet där värdet hamnar
+
+Exempel:
+
+Val 1: title = "Model A", value = "3"
+Val 2: title = "Model X", value = "7"
+
+Om användaren klickar på “Model X” så blir:
+
+deviceSelectionId = "7"
+
+Det är precis därför ni senare kan skicka vidare det värdet till flowet som DeviceSharePointId.
 
 
 
@@ -20,8 +45,7 @@ JoelThyberg@thybergai.onmicrosoft.com
 
 https://make.powerapps.com/environments/fd29af48-cd3f-e70f-8e0e-233d0ed0f867/home?offer=dev&ScenarioId=Signup
 
-
-
+https://copilotstudio.microsoft.com/environments/fd29af48-cd3f-e70f-8e0e-233d0ed0f867/home
 
 https://www.microsoft.com/sv-se/microsoft-365-copilot/microsoft-copilot-studio/?market=se#pricing
 
