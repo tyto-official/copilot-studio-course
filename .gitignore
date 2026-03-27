@@ -8,3 +8,4 @@ site/
 .venv
 venv/
 bra.txt
+docs/11-set-up-for-production.md

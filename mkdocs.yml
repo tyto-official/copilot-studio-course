@@ -31,7 +31,6 @@ nav:
     - 8. Skapa Flow: 08-create-flow.md
     - 9. Autonomi (Vakna till liv): 09-autonomy.md
     - 10. Multi-Agent Orchestration (Finalen): 10-multi-agent.md
-    - 11. Redo för produktion: 11-set-up-for-production.md
   - Tips & Tricks:
     - Översikt: tips/index.md
     - Kunskap på djupet: tips/knowledge.md
