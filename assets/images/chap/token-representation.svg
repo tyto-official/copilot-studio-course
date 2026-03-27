@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">Text, tokens och bitar</title>
+  <desc id="desc">En forenklad visualisering av samma innehall som vanlig text, som tokens och som bitar.</desc>
+  <style>
+    .bg { fill: #f6f3ea; }
+    .title { font: 700 32px Arial, sans-serif; fill: #1f2937; }
+    .subtitle { font: 400 18px Arial, sans-serif; fill: #4b5563; }
+    .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 2; rx: 18; ry: 18; }
+    .label { font: 700 18px Arial, sans-serif; fill: #9a3412; }
+    .body { font: 400 28px Arial, sans-serif; fill: #111827; }
+    .mono { font: 400 21px 'Courier New', monospace; fill: #111827; }
+    .chip { fill: #e0f2fe; stroke: #7dd3fc; stroke-width: 1.5; rx: 12; ry: 12; }
+    .chipText { font: 700 20px Arial, sans-serif; fill: #0f172a; }
+  </style>
+
+  <rect class="bg" width="1200" height="560"/>
+  <text class="title" x="60" y="55">Samma innehall pa tre nivaer</text>
+  <text class="subtitle" x="60" y="88">Forenklad illustration: text for manniskor, tokens och token-ID:n for modellen, bitar i datorn</text>
+
+  <rect class="box" x="60" y="130" width="1080" height="80"/>
+  <text class="label" x="85" y="165">Vanlig text</text>
+  <text class="body" x="85" y="195">OpenAI!</text>
+
+  <rect class="box" x="60" y="230" width="1080" height="90"/>
+  <text class="label" x="85" y="265">Tokens (forenklat exempel)</text>
+  <rect class="chip" x="85" y="278" width="120" height="30"/>
+  <text class="chipText" x="117" y="300">Open</text>
+  <rect class="chip" x="220" y="278" width="80" height="30"/>
+  <text class="chipText" x="247" y="300">AI</text>
+  <rect class="chip" x="315" y="278" width="45" height="30"/>
+  <text class="chipText" x="332" y="300">!</text>
+
+  <rect class="box" x="60" y="340" width="1080" height="90"/>
+  <text class="label" x="85" y="375">Token-ID:n (forenklat exempel)</text>
+  <text class="mono" x="85" y="402">[6447, 17527, 0]</text>
+
+  <rect class="box" x="60" y="450" width="1080" height="90"/>
+  <text class="label" x="85" y="485">Bitar</text>
+  <text class="mono" x="85" y="512">01001111 01110000 01100101 01101110 01000001 01001001 00100001</text>
+</svg>

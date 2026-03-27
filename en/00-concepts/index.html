@@ -1,0 +1,1942 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../01-prepare-sharepoint/">
+      
+      
+        
+          <link rel="alternate" href="../../00-concepts/" hreflang="sv">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>0. Begrepp och Teori - Copilot Studio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#0-begrepp-och-teori" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="Copilot Studio" class="md-header__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Studio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              0. Begrepp och Teori
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../00-concepts/" hreflang="sv" class="md-select__link">
+              Svenska
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="Copilot Studio" class="md-nav__button md-logo" aria-label="Copilot Studio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Copilot Studio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio Kurs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio Kurs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och Teori
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och Teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sprakmodeller-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Språkmodeller (LLMs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 Språkmodeller (LLMs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hur-tranas-modellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hur tränas modellen?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hur tränas modellen?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#del-1-grundtraning-pa-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Grundträning på text
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#en-intuition-sjalvkorande-bil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        En intuition: självkörande bil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="En intuition: självkörande bil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#del-2-fran-sprakmodell-till-assistent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Från språkmodell till assistent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#del-3-feedback-och-finjustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Feedback och finjustering
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vad-hander-nar-modellen-kors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vad händer när modellen körs?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olika-storlekar-pa-modeller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Olika storlekar på modeller
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var-bor-modellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Var "bor" modellen?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔤 Tokens
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔤 Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vad-ar-en-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vad är en token?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vad-ar-en-tokenizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vad är en tokenizer?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#varfor-inte-bara-nollor-och-ettor-eller-ra-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Varför inte bara nollor och ettor eller rå text?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💬 Prompts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kontextlangd-korttidsminnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📏 Kontextlängd (Korttidsminnet)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📏 Kontextlängd (Korttidsminnet)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vad-hander-nar-den-borjar-bli-full" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vad händer när den börjar bli full?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modellers-kontextlangd-i-dag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modellers kontextlängd i dag
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-rot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context Rot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kontexthantering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kontexthantering
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rag-retrieval-augmented-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 RAG (Retrieval Augmented Generation)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 RAG (Retrieval Augmented Generation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hur-fungerar-det-vektorer-och-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hur fungerar det? (Vektorer och Embeddings)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hur fungerar det? (Vektorer och Embeddings)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualisering-av-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualisering av RAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#begransningar-med-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Begränsningar med RAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vad-ar-en-ai-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤖 Vad är en AI-Agent?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🤖 Vad är en AI-Agent?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viktiga-komponenter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Viktiga komponenter
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Viktiga komponenter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verktyg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verktyg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#larande" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lärande
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-workflow-vs-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Workflow vs. Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-konversationsagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Konversationsagent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-autonom-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Autonom agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Förbered SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa Topic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa Adaptive Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi (Vakna till liv)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-Agent Orchestration (Finalen)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & Tricks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & Tricks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sprakmodeller-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Språkmodeller (LLMs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 Språkmodeller (LLMs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hur-tranas-modellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hur tränas modellen?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hur tränas modellen?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#del-1-grundtraning-pa-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Grundträning på text
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#en-intuition-sjalvkorande-bil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        En intuition: självkörande bil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="En intuition: självkörande bil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#del-2-fran-sprakmodell-till-assistent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Från språkmodell till assistent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#del-3-feedback-och-finjustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Feedback och finjustering
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vad-hander-nar-modellen-kors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vad händer när modellen körs?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#olika-storlekar-pa-modeller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Olika storlekar på modeller
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var-bor-modellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Var "bor" modellen?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔤 Tokens
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔤 Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vad-ar-en-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vad är en token?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vad-ar-en-tokenizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vad är en tokenizer?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#varfor-inte-bara-nollor-och-ettor-eller-ra-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Varför inte bara nollor och ettor eller rå text?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💬 Prompts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kontextlangd-korttidsminnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📏 Kontextlängd (Korttidsminnet)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📏 Kontextlängd (Korttidsminnet)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vad-hander-nar-den-borjar-bli-full" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vad händer när den börjar bli full?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modellers-kontextlangd-i-dag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modellers kontextlängd i dag
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-rot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context Rot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kontexthantering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kontexthantering
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rag-retrieval-augmented-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 RAG (Retrieval Augmented Generation)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 RAG (Retrieval Augmented Generation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hur-fungerar-det-vektorer-och-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hur fungerar det? (Vektorer och Embeddings)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hur fungerar det? (Vektorer och Embeddings)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualisering-av-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualisering av RAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#begransningar-med-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Begränsningar med RAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vad-ar-en-ai-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤖 Vad är en AI-Agent?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🤖 Vad är en AI-Agent?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viktiga-komponenter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Viktiga komponenter
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Viktiga komponenter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verktyg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verktyg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#larande" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lärande
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-workflow-vs-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Workflow vs. Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-konversationsagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Konversationsagent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-autonom-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Autonom agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="0-begrepp-och-teori">0. Begrepp och Teori</h1>
+<p>Innan vi hoppar in i <strong>Microsoft Copilot Studio</strong> och faktiskt börjar bygga våra agenter ska vi gå igenom några grundläggande begrepp och AI-teknologier.</p>
+<p>Det gör vi av tre skäl:</p>
+<ul>
+<li>för att förstå lite bättre vad som faktiskt sker bakom kulisserna i Copilot Studio</li>
+<li>för att få en inblick i vilka komponenter som behövs för att bygga effektiva AI-agenter</li>
+<li>för att få en bättre allmän förståelse för några av de viktigaste AI-teknologierna</li>
+</ul>
+<p>Förhoppningen är att det här sedan ska göra det lättare att fatta bättre beslut, och att förstå både <strong>möjligheter</strong> och <strong>begränsningar</strong>, när vi väl börjar bygga i Copilot Studio.</p>
+<hr />
+<h2 id="sprakmodeller-llms">🧠 Språkmodeller (LLMs)</h2>
+<p>En <strong>LLM</strong> (Large Language Model) är ett stort neuralt nätverk som tränas på enorma mängder text. Under träningen lär sig modellen statistiska mönster i språk: vilka ord som ofta hör ihop, hur meningar byggs upp och vilka samband som brukar finnas mellan olika begrepp. På så sätt blir språkmodellen ofta själva "hjärnan" i en AI-agent.</p>
+<p><img alt="Hur snabbt ChatGPT slog igenom" src="../../assets/images/chap/hit-100m-users.jpg" /></p>
+<p>Språkmodeller var också en av de viktigaste orsakerna till att AI slog igenom så brett hos allmänheten. Sedan slutet av <code>2022</code> har utvecklingen gått extremt snabbt, och i dag ser vi inte bara bättre språkmodeller utan också kraftfulla bild- och videomodeller. I den här kursen kommer vi dock främst fokusera på språkmodeller, eftersom det är den viktigaste komponenten när vi bygger agenter i Copilot Studio.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+<p><img alt="Tidigare bildmodeller gav ofta sämre och mindre realistiska resultat" src="../../assets/images/chap/fore.jpg" /></p>
+<p><img alt="Nyare bildmodeller ger ofta betydligt mer realistiska och detaljerade resultat" src="../../assets/images/chap/efter.png" /></p>
+</div>
+<p><em>Utvecklingen inom generativ AI har inte bara gällt språkmodeller. Bildmodeller har också blivit betydligt bättre på kort tid.</em></p>
+<h3 id="hur-tranas-modellen">Hur tränas modellen?</h3>
+<h4 id="del-1-grundtraning-pa-text">Del 1: Grundträning på text</h4>
+<p>För att bygga en språkmodell räcker det inte med mycket data, modellen måste också <strong>tränas</strong>. Träningsdatan består i grunden av text: till exempel böcker, artiklar, webbsidor, diskussionsforum och transkriberat ljud eller video.</p>
+<p><img alt="Exempel på rapporterade uppgifter om träningsdata" src="../../assets/images/chap/youtube.png" /></p>
+<p><em>Exempel på rapporterade uppgifter om hur träningsdata kan samlas in. Detta är inte en officiell eller komplett beskrivning av hur språkmodeller tränas, utan ett journalistiskt exempel. Läs mer i <a href="https://www.theverge.com/2024/4/6/24122915/openai-youtube-transcripts-gpt-4-training-data-google">The Verge</a>.</em></p>
+<p>Under träningen justerar man <strong>miljontals eller miljarder parametrar</strong>. Dessa parametrar kallas ofta för modellens <strong>vikter</strong>. Du kan tänka på vikterna som små rattar eller reglage i ett enormt system av ekvationer.</p>
+<p>Förenklat kan man beskriva träningen så här:</p>
+<ol>
+<li>Modellen får se text.</li>
+<li>Den försöker gissa nästa del av texten.</li>
+<li>Gissningen jämförs med det faktiska svaret.</li>
+<li>Felet används för att justera vikterna lite grand.</li>
+<li>Processen upprepas om och om igen på enorma mängder data.</li>
+</ol>
+<p>I början är vikterna dåligt inställda, så modellen gissar ofta fel. Då använder man felet för att justera vikterna lite, testar igen och gör om samma sak. Det blir alltså en sorts styrd trial-and-error-loop där vikterna gradvis ställs in bättre och bättre.</p>
+<p><img alt="Hur en språkmodell tränas" src="../../assets/images/chap/training-loop.svg" /></p>
+<p>Om man sedan vill få en enkel matematisk intuition för vad en vikt gör kan man förenkla det väldigt mycket och tänka sig en liten del av modellen ungefär så här:</p>
+<p><img alt="Förenklad intuition för vad en vikt gör" src="../../assets/images/chap/weight-equation.svg" /></p>
+<p>I det här förenklade exemplet är <code>x</code> en inputsignal, <code>w</code> är vikten och <code>y</code> är modellens output. Outputen kan då ses som en poäng: ju högre poäng, desto mer rimligt verkar ett visst ord vara som nästa del av texten. Den riktiga modellen är förstås mycket mer komplex än så här, men intuitionen är densamma: när vikterna ändras, ändras också modellens gissning.</p>
+<p>Efter väldigt många sådana varv blir modellen gradvis bättre på att gissa rätt. Och för att kunna göra det måste den samtidigt lära sig mycket om hur språk brukar användas och hur världen ofta beskrivs i text.</p>
+<h3 id="en-intuition-sjalvkorande-bil">En intuition: självkörande bil</h3>
+<p>Det här kan liknas vid att träna en självkörande bil genom en hinderbana. I början kör bilarna nästan hej vilt och misslyckas hela tiden. Men efter varje försök gör man små justeringar, till exempel i hur bilen svänger, och då blir körningen steg för steg bättre. Målet är inte bara att klara träningsbanan, utan att ha lärt sig mönster som fungerar även på nya vägar.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+<p><img alt="Början av träningen: bilarna kör åt alla håll" src="../../assets/images/chap/bil1.jpg" /></p>
+<p><img alt="Tidigt i träningen: några bilar börjar hitta rätt" src="../../assets/images/chap/bil2.jpg" /></p>
+<p><img alt="Senare i träningen: fler bilar klarar svängen" src="../../assets/images/chap/bil3.jpg" /></p>
+<p><img alt="Slutet av träningen: bilarna klarar banan" src="../../assets/images/chap/bil4.jpg" /></p>
+</div>
+<p><em>Bilanalogin visualiserad: från många fel i början till en modell som gradvis lär sig köra bättre.</em></p>
+<p><img alt="Efter träningen: modellen används i nya situationer" src="../../assets/images/chap/bil5.png" /></p>
+<p><em>När träningen är klar används modellen sedan i nya situationer som den inte sett exakt tidigare.</em></p>
+<p>Efter träningen är det dessa vikter som i praktiken <strong>är</strong> själva modellen. Därför kan man pedagogiskt säga att en språkmodell är som en väldigt stor modellfil som innehåller allt modellen har lärt sig.</p>
+<h4 id="del-2-fran-sprakmodell-till-assistent">Del 2: Från språkmodell till assistent</h4>
+<p>Efter den första delen har modellen ofta fått <strong>bred språkförståelse och generell kunskap</strong>, men den är fortfarande inte automatiskt en bra assistent. Den är fortfarande främst bra på att fortsätta text på ett sannolikt sätt.</p>
+<p>I en andra träningsfas får modellen därför ofta se exempel på <strong>frågor och bra svar</strong>. Då tränas den att följa instruktioner bättre, hålla rätt ton och ge mer användbara svar. Här lär den sig inte främst <strong>nya fakta</strong>, utan <strong>hur ett bra assistentsvar brukar se ut</strong>.</p>
+<h4 id="del-3-feedback-och-finjustering">Del 3: Feedback och finjustering</h4>
+<p>Sedan kan man gå ett steg längre och finjustera modellen med <strong>feedback</strong>. Då jämför man ofta flera möjliga svar och lär modellen vilket svar som verkar mest hjälpsamt, tydligt och säkert.</p>
+<p>Den här delen handlar alltså mindre om att visa ett facit och mer om att <strong>styra modellen mot bättre beteende</strong>.</p>
+<pre class="mermaid"><code>graph LR
+    A["Del 1: Grundträning på stora mängder text"] --&gt; B["Kan språk och har bred generell kunskap"]
+    B --&gt; C["Del 2: Instruktionsträning med bra exempel"]
+    C --&gt; D["Del 3: Feedback och finjustering"]
+    D --&gt; E["Blir mer hjälpsam, följer instruktioner bättre och svarar säkrare"]</code></pre>
+<p>Man kan alltså säga att <strong>del 1 bygger hjärnan</strong>, <strong>del 2 lär modellen att svara som en assistent</strong> och <strong>del 3 finslipar beteendet ytterligare</strong>.</p>
+<h3 id="vad-hander-nar-modellen-kors">Vad händer när modellen körs?</h3>
+<p>När vi sedan använder modellen är det just de här tränade vikterna som sätts i arbete. Träningen handlar alltså om att ställa in vikterna. Körningen handlar om att använda samma vikter för att bygga upp ett svar.</p>
+<p>Förenklat går det till så här:</p>
+<ol>
+<li>Du skickar in en fråga.</li>
+<li>Frågan går in i modellen.</li>
+<li>Modellen använder sina tränade vikter för att räkna ut vad som mest sannolikt ska komma härnäst.</li>
+<li>Den bygger upp svaret steg för steg tills svaret är klart.</li>
+</ol>
+<p>Det betyder att vikterna först <strong>lärs in</strong> under träningen, och sedan <strong>används</strong> varje gång modellen svarar. Det är den röda tråden mellan träning och användning.</p>
+<p><img alt="Hur en språkmodell bygger upp ett svar" src="../../assets/images/chap/inference-loop.svg" /></p>
+<p>För att göra detta krävs mycket beräkningskraft. Därför körs moderna språkmodeller ofta på kraftiga <strong>GPU:er</strong>, eftersom de är bra på att göra många beräkningar parallellt.</p>
+<p><img alt="Nvidias börsutveckling i takt med ökat AI-intresse" src="../../assets/images/chap/nvidia-stock.png" /></p>
+<h3 id="olika-storlekar-pa-modeller">Olika storlekar på modeller</h3>
+<p>Det finns många olika typer av språkmodeller. De skiljer sig både i hur bra de är på olika uppgifter och i hur de kan köras i praktiken.</p>
+<p>En viktig skillnad här är att vissa modeller är <strong>open source</strong> och andra är <strong>closed source</strong>:</p>
+<ul>
+<li><strong>Open source-modeller</strong> går ofta att ladda ner och köra själv. Då kan man också i större utsträckning se hur modellen är uppbyggd och jobba med den lokalt.</li>
+<li><strong>Closed source-modeller</strong> får man oftast använda via en tjänst. Då kan man använda modellen, men man får inte ladda ner hela modellen själv eller se exakt hur alla vikter ser ut.</li>
+</ul>
+<p>En annan viktig skillnad är modellens <strong>storlek</strong>. När du ser modellnamn som <code>3B</code>, <code>7B</code>, <code>14B</code> eller <code>27B</code> betyder <code>B</code> <strong>miljarder parametrar</strong>.</p>
+<p>Fler parametrar betyder i praktiken att modellen har fler värden att använda i sina beräkningar varje gång den svarar. Större modeller blir därför ofta mer kapabla, men också tyngre och dyrare att köra.</p>
+<p>Här ser du ett exempel på hur samma modellfamilj kan finnas i flera storlekar:</p>
+<p><img alt="Exempel på modellfamiljer" src="../../assets/images/chap/valjmodell.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Modellfamilj</th>
+<th>Exempel på storlekar</th>
+<th>Typiskt användningsområde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gemma 3</td>
+<td><code>1B</code>, <code>4B</code>, <code>12B</code>, <code>27B</code></td>
+<td>Lokal körning i olika nivåer</td>
+</tr>
+<tr>
+<td>Qwen 3</td>
+<td><code>0.6B</code>, <code>1.7B</code>, <code>4B</code>, <code>8B</code>, <code>14B</code>, <code>30B</code></td>
+<td>Från små tester till större lokala modeller</td>
+</tr>
+<tr>
+<td>DeepSeek-R1</td>
+<td><code>1.5B</code>, <code>7B</code>, <code>8B</code>, <code>14B</code>, <code>32B</code>, <code>70B</code>, <code>671B</code></td>
+<td>Från lokala resonemangsmodeller till serverklass</td>
+</tr>
+<tr>
+<td>Ministral 3B</td>
+<td><code>3B</code></td>
+<td>Liten modell som är lättare att köra lokalt</td>
+</tr>
+</tbody>
+</table>
+<p>Om du vill bläddra bland fler öppna modeller kan du också titta i <a href="https://ollama.com/search">Ollamas modellkatalog</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Exempel på lokal körning</p>
+<p>Här nedan ser du att jag kör modellen <code>ministral-3:3b</code> lokalt i Ollama. I det här fallet sker beräkningarna alltså på min egen dator i stället för i ett moln.</p>
+</div>
+<p><img alt="Lokal modell i Ollama" src="../../assets/images/chap/ollama-ministral-3b.png" /></p>
+<h3 id="var-bor-modellen">Var "bor" modellen?</h3>
+<p>Det här är en viktig mental modell att ha med sig:</p>
+<ul>
+<li>En <strong>lokal modell</strong> ligger på din egen dator och körs av din egen hårdvara.</li>
+<li>En <strong>molnmodell</strong> ligger på leverantörens servrar och körs där.</li>
+</ul>
+<p>Mindre open source-modeller går ofta att köra lokalt på en kraftigare laptop eller stationär dator. Men större modeller kräver så mycket minne och så mycket beräkningskraft att de i praktiken ofta måste köras på kraftiga servrar eller flera GPU:er tillsammans.</p>
+<p>Det är också här kostnaden kommer in. Kraftiga GPU:er, särskilt Nvidia-GPU:er som ofta används till AI, är mycket dyra. Därför är det inte realistiskt att köra de största modellerna på en vanlig dator.</p>
+<p><img alt="Exempel på kostnader för kraftiga Nvidia-GPU:er" src="../../assets/images/chap/gpu-price.png" /></p>
+<p>Om du använder ChatGPT sker beräkningarna hos OpenAI. Om du använder <strong>Copilot Studio</strong> sker beräkningarna normalt inte på din dator, utan i Microsofts moln. Microsoft beskriver Copilot-funktionerna som byggda på <strong>Azure OpenAI</strong>, vilket innebär att prompten skickas till Microsofts Azure-miljö, modellen bearbetar frågan där och svaret skickas tillbaka till dig.</p>
+<p>Det betyder också att säkerhet och förtroende blir viktigt. När du använder en molnmodell behöver du lita på den leverantör som driver infrastrukturen. I Microsofts fall är poängen att modellen körs i deras Azure-miljö, inte via OpenAI:s publika ChatGPT-tjänst.</p>
+<p>Många av de största modellerna som används i molntjänster idag är dessutom <strong>closed source</strong>. Då får vi använda dem via leverantörens tjänst, men vi får inte ladda ner hela modellen själva eller se exakt hur alla vikter ser ut.</p>
+<p><img alt="Ranking av stora closed source-modeller" src="../../assets/images/chap/ranking.png" /></p>
+<hr />
+<h2 id="tokens">🔤 Tokens</h2>
+<p>Det är viktigt att veta att en språkmodell inte läser ord som vi gör. Dess alfabet består av <strong>tokens</strong>.</p>
+<h3 id="vad-ar-en-token">Vad är en token?</h3>
+<p>En token är i praktiken en <strong>ID-representation</strong> av ett vanligt förekommande ord, en del av ett ord eller ett skiljetecken.</p>
+<ul>
+<li>Som tumregel: 1000 tokens motsvarar ungefär 750 ord.</li>
+</ul>
+<h3 id="vad-ar-en-tokenizer">Vad är en tokenizer?</h3>
+<p>En <strong>tokenizer</strong> är systemet som delar upp vanlig text i tokens. Det är alltså tokenizern som översätter mellan mänsklig text och de byggstenar modellen lättare kan arbeta med.</p>
+<p>Vanliga ord blir ofta en token, medan ovanligare ord ibland delas upp i flera mindre delar. Tokenizern mappar också varje token till ett token-ID.</p>
+<p><img alt="Tokens som textdelar" src="../../assets/images/chap/1.png" /></p>
+<p>Men det är vikigt att förstå att det är alltså inte den uppdelade texten i sig som modellen arbetar med internt, utan de <strong>token-ID:n</strong> som dessa textbitar har fått.</p>
+<p><img alt="Token-ID:n" src="../../assets/images/chap/token-id.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Prova själv</p>
+<p>Vill du se hur din text delas upp i tokens? Testa att klistra in en mening i verktyget <a href="https://platform.openai.com/tokenizer">OpenAI Tokenizer</a>.</p>
+</div>
+<h3 id="varfor-inte-bara-nollor-och-ettor-eller-ra-text">Varför inte bara nollor och ettor eller rå text?</h3>
+<ul>
+<li><strong>Inte binära tal:</strong> I grunden lagras all information som <code>0</code> och <code>1</code>, men binära representationer blir långa och opraktiska att arbeta direkt med. Det skulle göra sekvenserna onödigt stora och ineffektiva för modellen.</li>
+<li><strong>Inte rå text:</strong> Vanlig text är full av olika ordformer, böjningar, stavningar och skiljetecken. Då blir det svårt att få ett effektivt och konsekvent sätt för modellen att arbeta med språket. Tokens blir därför ett bättre mellanlager mellan mänsklig text och modellens matematik.</li>
+</ul>
+<p><img alt="Text, tokens och bitar" src="../../assets/images/chap/token-representation.svg" /></p>
+<h2 id="prompts">💬 Prompts</h2>
+<p>En prompt är instruktionen vi skickar till modellen. I Copilot Studio jobbar vi främst med två typer:</p>
+<ol>
+<li><strong>System Prompt:</strong> Detta är "instruktionsboken" för agenten. Här definierar vi vem agenten är, vad den får göra och vilken ton den ska ha.</li>
+<li><strong>User Prompt:</strong> Detta är vad användaren skriver i chatten (frågan).</li>
+</ol>
+<p>Dessa slås ihop när modellen ska generera sitt svar:</p>
+<pre class="mermaid"><code>graph LR
+    A[System Prompt\n'Du är en hjälpsam IT-expert...'] --&gt; C(LLM)
+    B[User Prompt\n'Min dator startar inte...'] --&gt; C
+    C --&gt; D[Svar]</code></pre>
+<hr />
+<h2 id="kontextlangd-korttidsminnet">📏 Kontextlängd (Korttidsminnet)</h2>
+<p>Varje modell har en begränsning i hur mycket information den kan hålla i huvudet samtidigt. Detta kallas <strong>kontextlängd</strong>.</p>
+<p>Du kan se det som modellens <strong>korttidsminne</strong>, men det viktiga är att förstå att detta är den <strong>totala tokenbudgeten</strong> för hela anropet, inte bara för användarens fråga.</p>
+<p>I kontextlängden räknas ofta allt detta in samtidigt:</p>
+<table>
+<thead>
+<tr>
+<th>Del</th>
+<th>Typ</th>
+<th>Exempel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Systemprompt</td>
+<td>Input tokens</td>
+<td>Instruktioner om hur agenten ska bete sig</td>
+</tr>
+<tr>
+<td>Användarens fråga</td>
+<td>Input tokens</td>
+<td>Det användaren skriver i chatten</td>
+</tr>
+<tr>
+<td>Tidigare chattmeddelanden</td>
+<td>Input tokens</td>
+<td>Historik från samma konversation</td>
+</tr>
+<tr>
+<td>Information från RAG eller verktyg</td>
+<td>Input tokens</td>
+<td>Hämtade dokumentstycken eller verktygssvar</td>
+</tr>
+<tr>
+<td>Modellens svar</td>
+<td>Output tokens</td>
+<td>Det svar modellen genererar tillbaka</td>
+</tr>
+<tr>
+<td>Resonemang</td>
+<td>Output tokens</td>
+<td>I vissa resonerande modeller går även en del budget åt till mellanliggande resonemang</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Resonerande modeller anvander ocksa en del av budgeten" src="../../assets/images/chap/resoning.png" /></p>
+<p>Det betyder att om mycket plats redan används av instruktioner, historik eller hämtad kunskap, finns det mindre utrymme kvar för modellens svar.</p>
+<h3 id="vad-hander-nar-den-borjar-bli-full">Vad händer när den börjar bli full?</h3>
+<p>Tidigare kunde man ofta märka detta ganska tydligt genom att modellen helt enkelt klippte av sitt eget svar när den nådde gränsen. I dag hanteras detta ofta av systemet runt modellen i stället. Det kan till exempel innebära att äldre chattmeddelanden sammanfattas, kortas ned eller väljs bort innan nästa anrop skickas.</p>
+<p>Ofta görs detta också utifrån en tröskel, alltså att man redan innan kontextlängden är helt fylld börjar städa i historiken. En implementation kan till exempel börja sammanfatta när man närmar sig kanske <code>80 %</code> av den totala längden, även om den exakta nivån varierar mellan olika system.</p>
+<h3 id="modellers-kontextlangd-i-dag">Modellers kontextlängd i dag</h3>
+<ul>
+<li>Moderna modeller kan ha mycket långa kontextlängder. Exempelvis har <code>GPT-5.1</code> cirka <code>400 000</code> i kontextlängd, medan <code>GPT-4.1</code> ligger på <code>1 047 576</code>.</li>
+</ul>
+<p>Mellan tumme och pekfinger kan man säga att en modell med omkring <code>1 miljon</code> i kontextlängd kan hålla ungefär <code>750 000 ord</code> samtidigt. Det är alltså ungefär i nivå med hela Bibelns ordmängd, som brukar uppskattas till omkring <code>740 000 ord</code>. Men det betyder inte att modellen automatiskt använder all den informationen perfekt.</p>
+<h3 id="context-rot">Context Rot</h3>
+<p>Även om moderna modeller kan ha mycket långa kontextlängder betyder det inte att de använder hela kontexten lika bra. Det är här begreppet <strong>context rot</strong> blir viktigt. När kontexten blir väldigt lång, splittrad eller fylld av halvrelevant information får modellen svårare att hitta rätt signal. Då ökar risken att kvaliteten på svaret försämras, även innan den maximala kontextlängden är uppnådd.</p>
+<p>En enkel intuition är att modellen hela tiden försöker avgöra vad som mest sannolikt ska komma härnäst utifrån all information den redan fått. Om kontexten då blir lång, splittrad eller full av halvrelevant innehåll blir det svårare att avgöra vad som faktiskt är viktigast. Då ökar risken att nästa steg i svaret blir sämre.</p>
+<h3 id="kontexthantering">Kontexthantering</h3>
+<p>Det är därför kontexthantering blir viktigt. Att bygga bra AI-system handlar inte bara om att ha en modell med lång kontextlängd, utan också om att hantera den på rätt sätt.</p>
+<ul>
+<li>sammanfatta äldre historik när den inte längre behövs i detalj</li>
+<li>skicka bara in det som är relevant för den aktuella frågan</li>
+<li>undvika att fylla kontexten med halvrelevant information</li>
+<li>använda tekniker som RAG för att välja ut rätt underlag i stället för att skicka in allt</li>
+</ul>
+<p><img alt="Window" src="../../assets/images/chap/7.jpeg" /></p>
+<hr />
+<h2 id="rag-retrieval-augmented-generation">📚 RAG (Retrieval Augmented Generation)</h2>
+<p>RAG, som står för <strong>Retrieval-Augmented Generation</strong>, uppstod som ett svar på ett väldigt konkret problem: stora språkmodeller är bra på att formulera text, men de bär inte säkert runt på all den fakta du behöver i en verklig verksamhet.</p>
+<p>Det RAG gör är i praktiken tre saker:</p>
+<ul>
+<li><strong>Minskar hallucinationer</strong> genom att grunda svaret i faktiska dokument, alltså faktisk information.</li>
+<li><strong>Ger modellen tillgång till information som aldrig fanns i träningsdatan</strong>, till exempel interna manualer, avtal, produktblad, supportärenden eller teknisk dokumentation.</li>
+<li><strong>Hanterar modellens kontextlängd</strong> genom att försöka hitta de delar av dokumenten som verkar mest relevanta, i stället för att skicka in hela dokument.</li>
+</ul>
+<h3 id="hur-fungerar-det-vektorer-och-embeddings">Hur fungerar det? (Vektorer och Embeddings)</h3>
+<p>För att datorn ska kunna söka i text måste vi göra om text till siffror. Det är här <strong>embeddings</strong> och <strong>vektorer</strong> kommer in.</p>
+<ol>
+<li>Vi tar en PDF, till exempel en <strong>maskinmanual</strong>.</li>
+<li>Vi delar upp den i små stycken (<strong>chunks</strong>).</li>
+</ol>
+<p><img alt="Chunks" src="../../assets/images/chap/2.png" />
+3. Sedan använder vi en särskild AI-modell som kallas för en <strong>embeddingsmodell</strong>. Dess uppgift är att läsa varje stycke, förstå betydelsen i det och skapa en <strong>vektorrepresentation</strong> av den betydelsen.</p>
+<p><img alt="Vector" src="../../assets/images/chap/3.jpeg" />
+4. De här vektorerna lagras sedan i en <strong>vektordatabas</strong>. Där kan det ligga vektorer från många olika dokument samtidigt, till exempel flera maskinmanualer, produktblad eller supportguider.
+5. När användaren ställer en fråga går även frågan genom embeddingsmodellen, så att även frågan blir en vektorrepresentation av sin betydelse.
+6. Sedan letar vi upp <strong>x antal närmaste vektorer</strong> i vektordatabasen, till exempel de tre närmaste. Det betyder i praktiken att vi hittar de dokumentstycken vars betydelse är mest lik frågans betydelse.
+7. De här vektorerna har metadata som pekar tillbaka på vilka textstycken de representerar. Vi hämtar därför ut de riktiga styckena och skickar dem tillsammans med frågan till språkmodellen.
+8. Först då skriver språkmodellen sitt svar, men nu med hjälp av relevant underlag från dokumenten.</p>
+<p><img alt="Hitta" src="../../assets/images/chap/4.jpeg" /></p>
+<h4 id="visualisering-av-rag">Visualisering av RAG</h4>
+<p><em>Här ser du hur en vektor (frågan) matchas mot en rymd av kunskap.</em></p>
+<pre class="mermaid"><code>graph TD
+    subgraph Knowledge Base
+    Doc1[Dokument A] --&gt; Chunk1[Stycke 1]
+    Doc1 --&gt; Chunk2[Stycke 2]
+    Chunk1 -- Embedding --&gt; V1((Vektor 1))
+    Chunk2 -- Embedding --&gt; V2((Vektor 2))
+    V1 --&gt; M1[Metadata -&gt; Stycke 1]
+    V2 --&gt; M2[Metadata -&gt; Stycke 2]
+    end
+
+    User[Användarfråga] -- Embedding --&gt; Q((Fråge-vektor))
+
+    Q -.-&gt;|Söker likhet| V1
+    Q -.-&gt;|Inte vald| V2
+
+    User --&gt;|Originalfråga| LLM[Språkmodell]
+    M1 --&gt;|Relevanta stycken| LLM
+    LLM --&gt; Svar</code></pre>
+<h3 id="begransningar-med-rag">Begränsningar med RAG</h3>
+<p>Det viktiga att förstå är att språkmodellen i ett RAG-upplägg <strong>inte ser hela dokumentmängden samtidigt</strong>. Den ser bara de utdrag som retrieval-steget hittade och skickade vidare till modellen.</p>
+<p>Det är därför RAG ofta fungerar bra när man vill hitta <strong>specifik information</strong>, men sämre när frågan kräver att modellen ska:</p>
+<ul>
+<li>räkna över många delar av ett dokument</li>
+<li>jämföra många avsnitt samtidigt</li>
+<li>förstå relationer som är utspridda över flera olika chunkar</li>
+</ul>
+<p>Om svaret finns spritt över många delar av många dokument finns det en risk att retrieval-steget bara hämtar en del av det, och då kan modellen inte resonera över information som den aldrig fick se.</p>
+<hr />
+<h2 id="vad-ar-en-ai-agent">🤖 Vad är en AI-Agent?</h2>
+<p>AI-agenter är AI-system som gör att språkmodeller kan interagera med omvärlden, till exempel genom att använda verktyg, spara information och utföra uppgifter över flera steg.</p>
+<h3 id="viktiga-komponenter">Viktiga komponenter</h3>
+<h4 id="verktyg">Verktyg</h4>
+<p>Språkmodeller är väldigt bra på att förstå, analysera och generera text, men de kan i grunden inte göra så mycket mer än det. <strong>Verktyg</strong> är därför ett sätt att låta språkmodellen göra mer än bara textarbete. Det handlar om att koppla modellen till externa tjänster, till exempel e-post, databaser, kalendrar eller andra system.</p>
+<p><img alt="Verktyg" src="../../assets/images/chap/verktyg.png" /></p>
+<h4 id="minne">Minne</h4>
+<p><strong>Minne</strong> handlar om att information från tidigare steg eller tidigare interaktioner sparas, så att agenten kan använda den senare. Det kan vara allt från tidigare meddelanden i en konversation till resultat från en tidigare körning eller viktiga fakta som agenten behöver komma ihåg.</p>
+<h4 id="larande">Lärande</h4>
+<p>När man säger att en agent <strong>lär sig</strong> betyder det ofta inte att språkmodellen i grunden tränas om eller att vikterna ändras. Ofta handlar det i stället om att systemet runt agenten sparar minnen, feedback eller tidigare resultat, så att agenten kan fatta bättre beslut nästa gång.</p>
+<h3 id="1-workflow-vs-agent">1. Workflow vs. Agent</h3>
+<ul>
+<li><strong>Workflow:</strong> Ett styrt flöde där språkmodeller och verktyg används i vissa steg, men där den övergripande processen fortfarande är förutbestämd.</li>
+</ul>
+<p><img alt="Workflows" src="../../assets/images/chap/5.jpeg" />
+* <strong>Agent:</strong> Ett system där språkmodellen i högre grad själv avgör vilka verktyg som ska användas, i vilken ordning och hur uppgiften ska lösas.</p>
+<p><img alt="Agent" src="../../assets/images/chap/6.jpeg" /></p>
+<h3 id="2-konversationsagent">2. Konversationsagent</h3>
+<p>Detta är en språkmodell som har fått tillgång till verktyg (tools). Den pratar med en människa och kan utföra uppgifter på kommando, till exempel söka på nätet, kolla kalendern eller hämta information från ett system.</p>
+<ul>
+<li><strong>Exempel:</strong> "Boka ett möte med Anna kl 14."</li>
+</ul>
+<h3 id="3-autonom-agent">3. Autonom agent</h3>
+<p>Dessa agenter behöver inte en människa som startar dem. De kan triggas av händelser, till exempel att ett mejl kommer in eller att klockan slår 08:00. De arbetar då självständigt i bakgrunden.</p>
+<ul>
+<li><strong>Exempel:</strong> En agent som övervakar en inkorg dygnet runt.</li>
+</ul>
+<hr />
+<p>Nu när vi har begreppen på plats är det dags att börja bygga! Klicka på nästa kapitel för att sätta upp din miljö.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
