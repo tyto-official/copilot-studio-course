@@ -1,505 +1,444 @@
-# 6. Skapa en Styrd Dialog (Ämne)
+# 6. Skapa en styrd dialog (ämne)
 
-Nu när agenten har både tonläge och kunskap, ska vi titta på hur vi kan **styra** ett samtal. Detta är en av de viktigaste delarna för att få agenten att utföra faktiska uppgifter.
+Nu när agenten har både tonläge och kunskap ska vi titta på hur vi kan **styra** ett samtal.
 
-Vi ska skapa ett "Ämne" som hanterar lagersaldokontroll.
+I den här delen skapar vi ett ämne som hjälper användaren att hitta tillgängliga enheter från SharePoint-listan. Vi bygger också ett enkelt **vägval** så att du ser hur ett ämne kan göra olika saker beroende på vad användaren frågar efter.
 
 ---
 
-## 6.1 Skapa och Beskriv Ämnet
+## 6.1 Skapa och beskriv ämnet
 
-Vi börjar med att skapa ett tomt ämne och berätta för AI:n vad det ska användas till.
+Vi börjar med att skapa ett tomt ämne och berätta för agenten vad ämnet ska användas till.
 
 1.  Gå till fliken **Ämnen** i menyn.
 
-    ![Ämnen](assets/images-sv/chap06/1.png)
+    ![Ämnen](assets/images-sv/chap06_ny/1.png)
 
 2.  Klicka på **+ Lägg till ett ämne** och välj **Från tom**.
 
-    ![Skapa ämne från tomt](assets/images-sv/chap06/3.png)
+    ![Skapa ämne från tomt](assets/images-sv/chap06_ny/3.png)
 
-3.  Nu ser du ett tomt ämne. Klicka på namnet "Namnlös" högst upp till vänster och döp den till:
+3.  Klicka på namnet **Namnlös** högst upp till vänster och döp ämnet till:
 
     ```text
     Tillgängliga Enheter
     ```
 
-    ![Döp ämne till Tillgängliga Enheter](assets/images-sv/chap06/4.png)
+    ![Döp ämne till Tillgängliga Enheter](assets/images-sv/chap06_ny/4.png)
 
-4.  Redan nu på arbetsytan (Canvasen) ser du rutan **Utlösare**. Under rubriken *Beskriv vad ämnet gör*, klistra in följande beskrivning:
+4.  På arbetsytan ser du rutan **Utlösare**. Under rubriken *Beskriv vad ämnet gör*, klistra in följande beskrivning:
 
     ```text
-    Detta ämne hjälper användare att hitta enheter som är tillgängliga i vår SharePoint-lista. Användaren kan fråga efter tillgängliga enheter och får då tillbaka en lista som kan inkludera laptops, smartphones, tillbehör med mera.
+    Detta ämne hjälper användare att hitta enheter som är tillgängliga i vår SharePoint-lista. Användaren kan fråga efter tillgängliga enheter och får då tillbaka en lista som kan inkludera laptops, stationära datorer och surfplattor.
     ```
 
-    *Beskrivningen är avgörande. Det är den här texten som agentens "hjärna" läser för att förstå NÄR den ska aktivera just det här ämnet.*
+    Beskrivningen hjälper agenten att förstå **när** just det här ämnet ska användas.
 
-    ![Ämnets beskrivning i Utlösare-noden](assets/images-sv/chap06/5.png)
+    ![Ämnets beskrivning i Utlösare-noden](assets/images-sv/chap06_ny/5.png)
 
 ---
 
-## 6.2 Definiera Input (Indatavariabel)
+## 6.2 Skapa indata
 
-Nu ska vi göra något smart. Vi vill att agenten ska kunna plocka upp *vad* användaren letar efter (t.ex. "Bärbar dator") redan i första meningen.
+Nu ska vi skapa en indatavariabel. Den ska hålla reda på vilken typ av enhet användaren letar efter, till exempel `Laptop`, `Desktop` eller `Tablet`.
 
-1.  Klicka på **Detaljer** (cirkeln med utropstecken `i`) längst upp till höger för att fälla ut detaljpanelen.
-    *Notera att Namn och Beskrivning redan är ifyllda eftersom vi gjorde det i förra steget.*
+1.  Klicka på **Detaljer** längst upp till höger för att fälla ut detaljpanelen.
 
-    ![Verifiera detaljer](assets/images-sv/chap06/6.png)
+    ![Verifiera detaljer](assets/images-sv/chap06_ny/6.png)
 
-2.  I detaljpanelen, klicka på fliken **Indata**.
+2.  Klicka på fliken **Indata**.
 
-    ![Ämne Indata](assets/images-sv/chap06/7.png)
+    ![Ämne Indata](assets/images-sv/chap06_ny/7.png)
 
-3.  Klicka på knappen **Skapa en ny variabel**.
+3.  Klicka på **Skapa en ny variabel**.
 
-    ![Skapa indatavariabel](assets/images-sv/chap06/8.png)
+    ![Skapa indatavariabel](assets/images-sv/chap06_ny/8.png)
 
-### Konfigurera variabeln
-Nu får du upp inställningar för din nya variabel. Fyll i följande:
+### Konfigurera indatavariabeln
+
+Fyll i variabeln så här:
 
 1.  **Name:**
+
     ```text
-    VarDeviceType
-    ```
-    
-    !!! tip "Varför engelska och inga mellanslag?"
-        Vi följer "Best Practice" inom Power Platform och programmering. Genom att använda alfanumeriska namn (Bokstäver A-Z och siffror) undviker vi problem med specialtecken (å, ä, ö) när vi senare ska använda variabeln i formler och kod.
-
-2.  **Hur ska agenten fylla i denna indata?:** Låt denna stå kvar på **Fyll i dynamiskt med bästa alternativ (standard)**.
-    *Detta betyder att vi litar på att AI-modellen (LLM) är smart nog att hitta informationen i användarens mening.*
-
-3.  **Variabelns datatyp:** Låt stå på **Sträng** (Text).
-
-4.  **Visningsnamn:** (Valfritt).
-    ```text
-    VarDeviceType
+    OnskadEnhetstyp
     ```
 
-5.  **Identifiera som:** Klicka på listan och välj: **Användarens hela svar**.
-    *Detta ger oss mest flexibilitet att fånga upp precis det användaren frågar efter.*
+    !!! tip "Varför inte å, ä och ö?"
+        Vi använder svenska namn, men utan å, ä och ö. Det gör namnen lättare att använda i formler och minskar risken för tekniska problem.
 
-    ![Välja Identifiera som](assets/images-sv/chap06/9.png)
+2.  **Hur ska agenten fylla i denna indata?:** Låt stå kvar på **Fyll i dynamiskt med bästa alternativ (standard)**.
 
-6.  **Beskrivning:** (Detta fält är till för AI:n, inte användaren).
-    Det handlar om att specificera vad vi är ute efter. Eftersom vi valde att ta med *hela* användarens svar, är det bra att ge AI:n en fingervisning om vilka värden vi letar efter i texten.
+3.  **Variabelns datatyp:** Låt stå på **Sträng**.
+
+4.  **Visningsnamn:** Skriv samma namn:
+
+    ```text
+    OnskadEnhetstyp
+    ```
+
+5.  **Identifiera som:** Välj **Användarens hela svar**.
+
+    ![Välja Identifiera som](assets/images-sv/chap06_ny/9.png)
+
+6.  **Beskrivning:** Skriv:
 
     ```text
     Lista av möjliga värden: Bärbar dator, Desktop, Surfplatta
     ```
 
-    Om allt är ifyllt enligt instruktionerna borde det se ut ungefär så här:
+    Detta hjälper agenten förstå vilken typ av enhet användaren letar efter.
 
-    ![Variabelinställningar klara](assets/images-sv/chap06/10.png)
+    ![Variabelinställningar klara](assets/images-sv/chap06_ny/10.png)
 
 ---
 
-## 6.3 Definiera Output (Utdatavariabel)
+## 6.3 Skapa utdata
 
-Vi är inte riktigt klara än! Vi ska redan nu bestämma vad det här ämnet ska leverera tillbaka till agenten när det är klart. Eftersom vi ska hämta en lista med produkter, måste vi förbereda en variabel för det.
+Vi ska också skapa en utdatavariabel. Den ska innehålla listan med enheter som ämnet hittar.
 
-1.  Längst upp i detaljpanelen, klicka på fliken **Utdata**.
+1.  Klicka på fliken **Utdata** i detaljpanelen.
 
-    ![Ämne Utdata-flik](assets/images-sv/chap06/11.png)
+    ![Ämne Utdata-flik](assets/images-sv/chap06_ny/11.png)
 
 2.  Klicka på **Skapa en ny variabel**.
 
-    ![Skapa utdatavariabel](assets/images-sv/chap06/13.png)
+    ![Skapa utdatavariabel](assets/images-sv/chap06_ny/13.png)
 
 ### Konfigurera utdatavariabeln
 
 1.  **Name:**
+
     ```text
-    VarAvailableDevices
+    HittadeEnheter
     ```
 
-2.  **Variabelns datatyp:** **OBS! Viktigt steg.**
-    Klicka på listan (där det står *Sträng*) och ändra till **Tabell**.
-    
-    *Varför? Jo, en "Sträng" är bara text (t.ex. "Dator"). Men vi ska hämta en hel lista med flera produkter, priser och bilder från SharePoint. Då krävs datatypen Tabell.*
+2.  **Variabelns datatyp:** Ändra från **Sträng** till **Tabell**.
+
+    Vi väljer **Tabell** eftersom SharePoint kan skicka tillbaka flera rader, inte bara ett textvärde.
 
 3.  **Beskrivning:**
+
     ```text
     Lista över tillgängliga enheter baserat på enhetstyp
     ```
 
-    Kontrollera att det ser ut så här:
+    ![Utdatainställningar](assets/images-sv/chap06_ny/12.png)
 
-    ![Utdatainställningar](assets/images-sv/chap06/12.png)
+4.  Stäng detaljpanelen genom att klicka på krysset (**X**) högst upp till höger.
 
-4.  Nu är vi klara med inställningarna! Stäng detaljpanelen genom att klicka på krysset (**X**) högst upp till höger.
-
-    ![Stäng panelen](assets/images-sv/chap06/12.5.png)
+    ![Stäng panelen](assets/images-sv/chap06_ny/12.5.png)
 
 ---
 
-## 6.4 Bygga Logiken (Villkor & Frågor)
+## 6.4 Bygg ett vägval
 
-Nu har vi en start (Utlösare), en Indata och en Utdata. Nu ska vi bygga det som händer däremellan – själva "hjärnan" i ämnet.
+Nu ska vi skapa ett vägval. Syftet är att visa hur ett ämne kan göra något extra i en viss situation.
 
-### 1. Välj Nod-typ
-Vi ska börja med att skapa ett vägskäl. Om användaren vill ha en "Bärbar dator" ska vi ställa vissa frågor. Om de vill ha något annat, gör vi något annat.
+I vårt fall ska ämnet visa ett kort meddelande om användaren frågar efter en bärbar dator. Efter meddelandet fortsätter flödet ändå vidare till SharePoint.
 
-1.  Håll muspekaren över linjen under din **Utlösare**-nod och klicka på **plus-tecknet (+)**.
+### Lägg till villkor
 
-    ![Lägg till nod](assets/images-sv/chap06/14.png)
+1.  Håll muspekaren över linjen under **Utlösare**-noden och klicka på **plus-tecknet (+)**.
 
-2.  En meny öppnas. Här är en snabb genomgång av verktygslådan:
+    ![Lägg till nod](assets/images-sv/chap06_ny/14.png)
 
-    ![Verktygslådan](assets/images-sv/chap06/15.png)
+2.  Välj **Lägg till ett villkor**.
 
-    * **Skicka ett meddelande:** Skickar text eller bilder till användaren.
-    * **Ställ en fråga:** Ställer en fråga och sparar svaret (det vi ska använda snart).
-    * **Fråga med adaptivt kort:** Visar interaktiva formulär (mer om detta senare).
-    * **Lägg till ett villkor:** Skapar vägval (Om X, gör Y). Som en "If-sats".
-    * **Variabelhantering:** För att skapa eller ändra variabler manuellt.
-    * **Ämneshantering:** För att hoppa till andra ämnen eller avsluta samtalet.
-    * **Lägg till ett verktyg:** Här hittar vi våra "superkrafter" som Power Automate och SharePoint.
-    * **Lägg till en agent:** Här kan vi koppla ihop vår agent med andra agenter.
-    * **Avancerat:** Avancerade funktioner som HTTP-anrop och inloggning.
+    ![Lägg till ett villkor](assets/images-sv/chap06_ny/15.png)
 
-3.  Välj **Lägg till ett villkor**.
+### Konfigurera villkoret
 
-    ![Lägg till ett villkor](assets/images-sv/chap06/15.png)
+Nu delar sig flödet i två vägar: ett villkor och **Alla andra villkor**.
 
-### 2. Konfigurera Vägvalet (Villkor)
-Nu ser du att flödet delar sig i två vägar: *Villkor* och *Alla andra villkor*.
-
-1.  Klicka på rutan där det står **Villkor** och döp noden till: 
+1.  Klicka på rutan där det står **Villkor** och döp den till:
 
     ```text
     Bärbar dator
     ```
 
-    ![Villkor](assets/images-sv/chap06/16.png)
+    ![Villkor](assets/images-sv/chap06_ny/16.png)
 
-2.  Vi ska nu bestämma regeln. Klicka på **Välj en variabel**.
-3.  Välj din indatavariabel: 
+2.  Klicka på **Välj en variabel**.
+
+3.  Välj indatavariabeln:
+
     ```text
-    VarDeviceType
+    OnskadEnhetstyp
     ```
-4.  Låt operation vara satt till **är lika med**.
+
+4.  Låt operationen vara **är lika med**.
+
 5.  I rutan *Ange eller välj ett värde*, skriv:
+
     ```text
-    Bärbar dator
+    Laptop
     ```
 
-    *Nu har du sagt: "Om användaren letar efter en Bärbar dator -> Gå till vänster. Annars -> Gå till höger."*
+    Nu har du sagt: om användaren letar efter en bärbar dator, gå via grenen **Bärbar dator**. Annars går samtalet via **Alla andra villkor**.
 
-    ![Vägvalet klart](assets/images-sv/chap06/17.png)
+    ![Vägvalet klart](assets/images-sv/chap06_ny/17.png)
 
-### 3. Ställ frågor (Tratten)
-Vi fortsätter på spåret för "Bärbar dator" (den vänstra vägen). Vi vill veta vilken prestanda användaren behöver.
+### Lägg till ett meddelande på bärbar-dator-grenen
 
-1.  Klicka på **plus-tecknet (+)** under din nya *Bärbar dator*-nod.
-2.  Välj **Ställ en fråga**.
+1.  Klicka på **plus-tecknet (+)** under grenen **Bärbar dator**.
 
-    ![Välj fråga](assets/images-sv/chap06/19.png)
-
-3.  **Döp om noden:**
-    Klicka på namnet *Fråga* högst upp på noden och ändra det till:
-    ```text
-    Prestandaval
-    ```
-
-    ![Döp om noden](assets/images-sv/chap06/20.png)
-
-4.  I rutan **Ange ett meddelande**, skriv:
-    ```text
-    För vilken typ av arbete ska datorn användas?
-    ```
-
-    ![Fråga meddelande](assets/images-sv/chap06/21.png)
-
-5.  Under **Identifiera**, se till att **Flervalsalternativ** är valt.
-6.  Under **Alternativ för användare**, skapa två alternativ:
-
-    * `Standard (Office/Admin)`
-
-    * `High Performance (Utveckling/Grafik)`
-
-    *(Genom att ge specifika alternativ styr vi användaren rätt).*
-
-    ![Alternativ för prestanda](assets/images-sv/chap06/22.png)
-
-### 4. Döpa om Variabeln
-Agenten sparar automatiskt svaret i en variabel som heter `Var1`. Det är ett dåligt namn om vi ska minnas vad det betyder.
-
-1.  Klicka på rutan där det står **Spara användarsvar som** (där namnet `Var1` står).
-
-    ![Döp om variabel](assets/images-sv/chap06/23.png)
-
-2.  En ruta öppnas till höger. Ändra **Name** till:
-    ```text
-    VarPerformance
-    ```
-
-    ![Döp om variabel](assets/images-sv/chap06/24.png)
-
-    *Notera "Användning"-inställningen: Ämne (begränsat omfång) vs Globalt. Vi låter den vara kvar på Ämne eftersom vi inte behöver komma åt det här svaret från andra delar av agenten.*
-
-3.  Stäng variabel-rutan på krysset (X).
-
-### 5. Städa upp grenarna (Förenkling)
-När du skapade alternativen skapade Copilot Studio automatiskt tre vägar åt dig:
-
-![Grenar](assets/images-sv/chap06/25.png)
-
-1.  **Villkor** (VarPerformance = Standard)
-
-2.  **Villkor** (VarPerformance = High Performance)
-
-3.  **Alla andra villkor**
-
-Detta är onödigt komplicerat för vår övning. Vi förenklar det genom att ta bort den specifika grenen för "High Performance" och låta "Allt annat" hantera det valet.
-
-1.  Leta upp grenen som specifikt heter **High Performance** (Villkor: VarPerformance = High Performance).
-2.  Klicka på de **tre prickarna (...)** på den noden och välj **Ta bort**.
-    *Nu har du bara två vägar kvar: Standard och Alla andra villkor.*
-
-    ![Grenar](assets/images-sv/chap06/26.png)
-
-3.  **Döp om vägarna för tydlighet:**
-    * Klicka på pennan på den vänstra grenen (*Villkor*). Döp om den till `Standard`.
-    * Klicka på pennan på den högra grenen (*Alla andra villkor*). Döp om den till `High Performance` (eller Avancerad).
-
-### 6. Hantera logiken i grenarna
-Nu ska vi bestämma vad som händer i respektive gren.
-
-**Gren 1: Standard**
-Användaren valde Standard. Här är allt som vanligt och finns i lager.
-
-* **Åtgärd:** Gör ingenting. Låt grenen vara tom.
-    *Flödet kommer automatiskt att rinna vidare ner till botten där vi strax ska hämta listan.*
-
-**Gren 2: High Performance (Alla andra)**
-Användaren valde High Performance (eller något annat). Låt oss simulera att dessa är tillfälligt slut, men att vi vill vara hjälpsamma och visa vad som finns ändå.
-
-1.  Klicka på **plus-tecknet (+)** i den högra grenen (som du döpte till High Performance).
 2.  Välj **Skicka ett meddelande**.
 
-    ![Meddelande](assets/images-sv/chap06/27.png)
+    ![Meddelande](assets/images-sv/chap06_ny/27.png)
 
 3.  Skriv:
+
     ```text
-    Just nu har vi tyvärr lång leveranstid på High Performance-enheter. Jag visar dig listan på våra Standard-modeller som finns för omgående leverans istället.
+    Just nu kan det vara längre leveranstid på bärbara datorer. Ha det i åtanke när du gör din beställning.
     ```
 
-    ![Meddelande om slut i lager](assets/images-sv/chap06/28.png)
+    ![Meddelande om leveranstid](assets/images-sv/chap06_ny/28.png)
 
-*Nu är logiken klar: De som väljer Standard går raka vägen. De som väljer Avancerat får ett meddelande. Båda grupperna landar till slut på samma ställe – i SharePoint-söket som vi lägger till härnäst.*
+Grenen **Alla andra villkor** ska vara tom. Den går direkt vidare till SharePoint-steget.
 
-## 6.5 Hämta data (SharePoint Connector)
+Poängen är att båda vägarna möts igen efter vägvalet:
 
-Nu ska vi hämta listan på datorer.
-Vi ska placera denna koppling **längst ner i flödet**, där alla vägar ("Bärbar dator"-vägen och "Alla andra"-vägen) möts igen.
-På så sätt fungerar sökningen oavsett om användaren letar efter en Bärbar dator, en Desktop eller en Surfplatta.
+* Bärbar dator: visar ett meddelande och fortsätter.
+* Alla andra: fortsätter direkt.
 
-### 1. Lägg till Connectorn
-1.  Scrolla längst ner i ditt flödesschema. Leta upp punkten där linjerna från dina olika vägval kopplas ihop igen.
-2.  Klicka på **plus-tecknet (+)** under sammanslagningen (där trådarna möts).
+---
 
-    ![Lägg till åtgärd](assets/images-sv/chap06/29.png)
+## 6.5 Hämta data från SharePoint
 
-3.  Välj **Lägg till ett verktyg**
+Nu ska vi hämta enheter från SharePoint-listan. SharePoint-steget ska ligga **efter** vägvalet, där grenarna möts igen.
 
-    ![Lägg till verktyg](assets/images-sv/chap06/30.png)
+### Lägg till SharePoint-verktyget
 
-4.  Välj **Anslutningar**
+1.  Scrolla längst ner i flödesschemat. Leta upp punkten där grenarna möts.
 
-    ![Anslutningar](assets/images-sv/chap06/30.1.png)
+2.  Klicka på **plus-tecknet (+)** under sammanslagningen.
 
-5.  Sök efter **SharePoint - Hämta objekten**
+    ![Lägg till åtgärd](assets/images-sv/chap06_ny/29.png)
+
+3.  Välj **Lägg till ett verktyg**.
+
+    ![Lägg till verktyg](assets/images-sv/chap06_ny/30.png)
+
+4.  Välj **Anslutningar**.
+
+    ![Anslutningar](assets/images-sv/chap06_ny/30.1.png)
+
+5.  Sök efter:
 
     ```text
     Hämta objekten
     ```
 
-    ![Hämta objekt](assets/images-sv/chap06/30.2.png)
+    Välj **SharePoint - Hämta objekten**.
 
-### 2. Skapa anslutningen (Autentisering)
-Om detta är första gången du använder SharePoint i denna agent, måste du godkänna anslutningen.
+    ![Hämta objekt](assets/images-sv/chap06_ny/30.2.png)
 
-* Om du ser en knapp där det står **Inte ansluten**, klicka på den.
+### Skapa anslutningen
 
-* Välj **Skapa ny anslutning**
+Om detta är första gången du använder SharePoint i agenten behöver du godkänna anslutningen.
 
-* Välj **Anslut direkt (molntjänster)** och klicka **Skapa**.
+* Om du ser **Inte ansluten**, klicka där.
+* Välj **Skapa ny anslutning**.
+* Välj **Anslut direkt (molntjänster)** och klicka på **Skapa**.
+* Välj ditt konto och klicka på **Tillåt åtkomst** om du får upp en fråga.
 
-* Välj ditt konto och klicka **Tillåt åtkomst** om en ruta poppar upp.
+När anslutningen är klar, klicka på **Skicka** eller **Lägg till** för att lägga till noden i flödet.
 
-När anslutningen är klar, klicka på **Skicka** (eller Lägg till) för att lägga till noden i ditt flöde.
+![Connector tillagd](assets/images-sv/chap06_ny/31.png)
 
-![Connector tillagd](assets/images-sv/chap06/31.png)
-
-### 3. Konfigurera Egenskaper
-Nu har vi en "dum" SharePoint-nod. Vi måste berätta för den vilken lista den ska läsa ifrån.
+### Konfigurera SharePoint-steget
 
 1.  Klicka på de **tre prickarna (...)** i högra hörnet på den nya *Hämta objekt*-noden och välj **Egenskaper**.
 
-    ![Tre prickar](assets/images-sv/chap06/32.png)
+    ![Tre prickar](assets/images-sv/chap06_ny/32.png)
 
-2.  En sidomeny öppnas. Se till att du är på fliken **Initiering**.
+2.  Se till att du är på fliken **Initiering**.
 
 3.  I fältet **Användningsbeskrivning**, skriv:
+
     ```text
     Hämtar enheter från SharePoint-listan
     ```
-    *(Detta hjälper agenten förstå vad verktyget gör).*
 
-    ![Egenskapspanel](assets/images-sv/chap06/33.png)
+    ![Egenskapspanel](assets/images-sv/chap06_ny/33.png)
 
-4.  Hoppa över "Felhantering". Gå direkt till sektionen **Indata**.
+4.  Gå till sektionen **Indata**.
 
-    ![Indata](assets/images-sv/chap06/34.png)
+    ![Indata](assets/images-sv/chap06_ny/34.png)
 
-5.  **Webbplatsadress:** Välj din SharePoint-sida (**IT Supporten**) i listan.
+5.  **Webbplatsadress:** Välj din SharePoint-sida **IT Supporten**.
 
-    ![Välj webbplats](assets/images-sv/chap06/35.png)
+    ![Välj webbplats](assets/images-sv/chap06_ny/35.png)
 
-6.  **Listnamn:** Välj din lista (**Enheter**).
+6.  **Listnamn:** Välj listan **Enheter**.
 
-    ![Välj lista](assets/images-sv/chap06/36.png)
+    ![Välj lista](assets/images-sv/chap06_ny/36.png)
 
-### 4. Filtrera listan (Power Fx)
-Om vi inte gör något nu, kommer agenten hämta *allt*. Vi vill bara ha **Tillgängliga** enheter av rätt typ (t.ex. **Bärbar dator**).
+### Filtrera listan
 
-Här måste vi använda **Power Fx**, som är Microsofts formelspråk.
+Om vi inte filtrerar hämtar SharePoint alla enheter. Vi vill bara hämta enheter som är tillgängliga och matchar den enhetstyp användaren frågade efter.
 
 1.  Hitta fältet **Filterfråga** under *Avancerade parametrar*.
 
-    ![Filterfråga](assets/images-sv/chap06/37.png)
+    ![Filterfråga](assets/images-sv/chap06_ny/37.png)
 
 2.  Klicka på de **tre prickarna (...)** vid fältet och välj **Formel**.
 
-    ![Tre prickar](assets/images-sv/chap06/38.png)
+    ![Tre prickar](assets/images-sv/chap06_ny/38.png)
 
-3.  Klicka på den lilla pilen (vinkeln) för att expandera formelfältet så du ser bättre.
+3.  Expandera formelfältet så att du ser bättre.
 
-    ![Expandera formel](assets/images-sv/chap06/39.png)
+    ![Expandera formel](assets/images-sv/chap06_ny/39.png)
 
-4.  Kopiera och klistra in exakt denna kod:
+4.  Klistra in följande kod:
+
     ```powerfx
-    Concatenate("Status eq 'Tillgänglig' and AssetType eq '", Topic.VarDeviceType, "'")
+    Concatenate("Status eq 'Tillgänglig' and AssetType eq '", Topic.OnskadEnhetstyp, "'")
     ```
 
-    **Vad betyder koden?**
-    Vi bygger en mening som SharePoint förstår. `Concatenate` betyder "klistra ihop".
-    Vi klistrar ihop texten *"Status är Tillgänglig OCH AssetType är..."* med värdet från vår indatavariabel `VarDeviceType` (t.ex. "Bärbar dator").
-    
-    *Resultatet som skickas till SharePoint blir: `Status eq 'Tillgänglig' and AssetType eq 'Bärbar dator'`*
+    Formeln bygger ihop en filterfråga som SharePoint förstår.
 
-5.  Kontrollera att du har en liten **grön bock** brevid formelfältet. Det betyder att koden är korrekt.
+    Om användaren söker efter en bärbar dator blir resultatet ungefär:
 
-    ![Grön bock formel](assets/images-sv/chap06/40.png)
-
-6.  Klicka **Infoga**.
-
-7.  (Valfritt men bra) Scrolla ner till **Begränsa kolumner efter vy**. Välj **Alla objekt**.
-    *Ibland kan SharePoint gömma kolumner om man inte väljer en vy. Detta garanterar att vi får all data. Kan behöva uppdateras för att få upp alternativen.*
-
-    ![Välj vy](assets/images-sv/chap06/41.png)
-
-### 5. Spara resultatet (Utdata)
-Nu har vi ställt frågan till SharePoint. Nu ska vi ta hand om svaret.
-
-1.  I Egenskapspanelen, klicka på fliken **Utdata**.
-
-    ![Utdata-flik](assets/images-sv/chap06/42.png)
-
-2.  Klicka på variabelnamnet (som troligen heter *HämtaObjekt*).
-3.  Döp om den till:
     ```text
-    VarDevices
+    Status eq 'Tillgänglig' and AssetType eq 'Bärbar dator'
     ```
 
-    ![Utdatainställningar](assets/images-sv/chap06/43.png)
+    !!! info "Om din lista använder svenska interna kolumnnamn"
+        I vissa SharePoint-miljöer kan det interna kolumnnamnet skilja sig från det som visas på skärmen. Om filtret inte ger några resultat, kontrollera vilket internt namn kolumnen **Resurstyp** har i just din lista och använd det namnet i formeln.
+
+5.  Kontrollera att du får en **grön bock** vid formelfältet.
+
+    ![Grön bock formel](assets/images-sv/chap06_ny/40.png)
+
+6.  Klicka på **Infoga**.
+
+7.  Valfritt men bra: Scrolla ner till **Begränsa kolumner efter vy** och välj **Alla objekt**.
+
+    ![Välj vy](assets/images-sv/chap06_ny/41.png)
+
+### Spara resultatet
+
+Nu ska vi spara svaret från SharePoint i en variabel.
+
+1.  I egenskapspanelen, klicka på fliken **Utdata**.
+
+    ![Utdata-flik](assets/images-sv/chap06_ny/42.png)
+
+2.  Klicka på variabelnamnet, som troligen heter något i stil med *HämtaObjekt*.
+
+3.  Döp om den till:
+
+    ```text
+    HamtadeEnheter
+    ```
+
+    ![Utdatainställningar](assets/images-sv/chap06_ny/43.png)
 
 4.  Ändra **Användning** till **Globalt**.
-    *Varför? För att vi vill att denna lista ska vara tillgänglig för hela agenten, ifall vi vill använda den i andra ämnen senare.*
 
-    ![Utdatainställningar](assets/images-sv/chap06/44.png)
+    Det gör att listan även kan användas av nästa ämne, där vi ska visa ett adaptivt kort.
 
-5.  Stäng Egenskapspanelen på krysset (X).
+    ![Utdatainställningar](assets/images-sv/chap06_ny/44.png)
+
+5.  Stäng egenskapspanelen.
 
 ---
 
-## 6.7 Koppla ihop allt (Utdatamappning)
+## 6.6 Koppla resultatet till ämnets utdata
 
-Nu har vi hämtat datan till en *Global* variabel (`VarDevices`).
-Men minns du att vi i början av ämnet (steg 6.3) skapade en specifik utdatavariabel för just det här ämnet (`VarAvailableDevices`)? Vi måste flytta datan från den ena till den andra.
+SharePoint-steget sparar sitt svar i den globala variabeln `HamtadeEnheter`.
 
-1.  Lägg till en ny nod under din SharePoint-nod.
-2.  Välj **Variabelhantering** -> **Ange ett variabelvärde**.
+Men ämnet har också en egen utdatavariabel: `HittadeEnheter`. Nu ska vi koppla ihop dem.
 
-    ![Ange variabel](assets/images-sv/chap06/45.png)
+1.  Lägg till en ny nod under SharePoint-noden.
 
-3.  Under **Ange variabel**, välj ämnets utdatavariabel: `VarAvailableDevices`.
+2.  Välj **Variabelhantering** och sedan **Ange ett variabelvärde**.
 
-    ![Ange variabel](assets/images-sv/chap06/46.png)
+    ![Ange variabel](assets/images-sv/chap06_ny/45.png)
 
-4.  Under **Till värde**, klicka på pilen/ikonen och välj **Formel**.
+3.  Under **Ange variabel**, välj ämnets utdatavariabel:
 
-    ![Ange variabel](assets/images-sv/chap06/47.png)
-
-5.  Skriv in följande formel:
-    ```powerfx
-    Global.VarDevices.value
+    ```text
+    HittadeEnheter
     ```
 
-    **Varför .value?**
-    SharePoint skickar tillbaka ett paket med massor av info. Själva listan med rader (datorerna) ligger inuti en egenskap som heter `value`. Vi måste "packa upp" den för att vår tabell ska bli rätt.
+    ![Ange variabel](assets/images-sv/chap06_ny/46.png)
 
-    ![Formel för value](assets/images-sv/chap06/48.png)
+4.  Under **Till värde**, välj **Formel**.
 
-6.  Klicka **Infoga**.
-7.  **Spara** ditt ämne (Spara högst upp till höger).
+    ![Ange variabel](assets/images-sv/chap06_ny/47.png)
+
+5.  Skriv:
+
+    ```powerfx
+    Global.HamtadeEnheter.value
+    ```
+
+    SharePoint skickar tillbaka ett paket med flera delar. Själva listan med rader ligger i `value`, så därför använder vi `.value` här.
+
+    ![Formel för value](assets/images-sv/chap06_ny/48.png)
+
+6.  Klicka på **Infoga**.
+
+7.  Klicka på **Spara** högst upp till höger.
 
 ---
 
-## 6.8 Uppdatera Agentens Instruktioner
+## 6.7 Uppdatera agentens instruktioner
 
-Nu är ämnet klart! Men agenten vet inte om att det finns eller hur det ska användas än. Vi måste uppdatera huvudinstruktionerna.
+Nu är ämnet klart, men agenten behöver veta när ämnet ska användas.
 
-1.  Gå till fliken **Översikt** högst upp.
+1.  Gå till fliken **Översikt**.
 
-    ![Översikt-flik](assets/images-sv/chap06/49.png)
+    ![Översikt-flik](assets/images-sv/chap06_ny/49.png)
 
 2.  Vid **Instruktioner**, klicka på **Redigera**.
 
-    ![Redigera instruktioner](assets/images-sv/chap06/50.png)
+    ![Redigera instruktioner](assets/images-sv/chap06_ny/50.png)
 
-3.  Lägg till följande rad i instruktionerna (gärna sist i listan):
+3.  Lägg till följande rad sist i instruktionerna:
 
     ```text
-    - Hjälp till att hitta tillgängliga enheter och ge fullständiga detaljer genom att använda [Tillgängliga Enheter]. Extrahera alltid VarDeviceType från indatan. Efter att ha presenterat detaljerna, fråga användaren om de vill beställa en enhet från listan.
+    - Hjälp till att hitta tillgängliga enheter och ge fullständiga detaljer genom att använda [Tillgängliga Enheter]. Extrahera alltid OnskadEnhetstyp från indatan. Efter att ha presenterat detaljerna, fråga användaren om de vill beställa en enhet från listan.
     ```
 
-    *(Tips: När du skriver `[Tillgängliga Enheter]`, se till att du faktiskt väljer ämnet från listan som poppar upp, så att det blir en klickbar länk i instruktionen).*
+    När du skriver `[Tillgängliga Enheter]`, välj ämnet från listan som visas så att det blir en riktig länk.
 
-4.  Klicka **Spara**.
-
-*Logiken är klar! Nu fångar vi upp "fel" märke och leder in dem på rätt spår igen, eller avslutar om de inte är intresserade.*
+4.  Klicka på **Spara**.
 
 ---
 
-### Testa flödet
-Nu är det dags att testa!
+## Testa flödet
 
-1.  Öppna **Testa**-panelen. Klicka på ikonen för **Karta** (Aktivitetskarta) och slå på **Spåra mellan ämnen**.
+1.  Öppna **Testa**-panelen.
 
-2.  Skriv: `Jag behöver en bärbar dator`
-    *Agenten bör visa listan och fråga om du vill beställa.*
+2.  Klicka på ikonen för **Karta** och slå på **Spåra mellan ämnen**.
 
-3.  Svara: `Ja tack`
-    *Agenten vet inte vad den ska göra nu*
+3.  Skriv:
+
+    ```text
+    Jag behöver en bärbar dator
+    ```
+
+    Agenten ska gå via grenen **Bärbar dator**, visa leveranstidsmeddelandet och sedan hämta data från SharePoint.
+
+4.  Starta en ny test och skriv:
+
+    ```text
+    Jag behöver en surfplatta
+    ```
+
+    Agenten ska gå via **Alla andra villkor** och direkt vidare till SharePoint.
+
+5.  När agenten frågar om du vill beställa, svara:
+
+    ```text
+    Ja tack
+    ```
+
+    Agenten vet ännu inte hur själva beställningen ska göras. Det bygger vi i nästa delar.
 
 !!! success "Bra jobbat!"
-    Du har nu byggt en avancerad funktion!
-    
-    1. Agenten lyssnar efter vad användaren vill ha (Indata).
-    2. Den ställer smarta följdfrågor (Logik).
-    3. Den hämtar data från SharePoint (Åtgärd).
-    4. Den levererar en snygg lista tillbaka (Utdata).
-
----
+    Du har nu byggt ett ämne som fångar upp vad användaren söker, gör ett enkelt vägval och hämtar matchande data från SharePoint.

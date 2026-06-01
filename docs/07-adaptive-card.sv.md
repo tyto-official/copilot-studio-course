@@ -11,25 +11,25 @@ Vi skapar ett separat ämne för själva beställningen för att hålla logiken 
 
 1.  Navigera till dina **Ämnen** i Copilot Studio.
 
-    ![Navigera till Ämnen](assets/images-sv/chap07/1.png)
+    ![Navigera till Ämnen](assets/images-sv/chap07_ny/1.png)
 
 2.  Välj **+ Lägg till ett ämne** -> **Från tom**.
 
-    ![Välj Lägg till ett ämne](assets/images-sv/chap07/2.png)
+    ![Välj Lägg till ett ämne](assets/images-sv/chap07_ny/2.png)
 
 3.  Döp ämnet till:
     ```text
     Begär enhet
     ```
 
-    ![Skapa ämne](assets/images-sv/chap07/3.png)
+    ![Skapa ämne](assets/images-sv/chap07_ny/3.png)
 
 3.  I rutan **Beskrivning** (under Utlösare), klistra in följande beskrivning:
     ```text
     Detta ämne hjälper användare att beställa en enhet när de svarar ja på frågan om de vill göra en beställning av en av de visade enheterna.
     ```
 
-    ![Beskrivning](assets/images-sv/chap07/4.png)
+    ![Beskrivning](assets/images-sv/chap07_ny/4.png)
 
 ---
 
@@ -40,44 +40,44 @@ Nu ska vi lägga till själva kortet.
 1.  Klicka på **plus-tecknet (+)** under Utlösare-noden.
 2.  Välj **Fråga med adaptivt kort**.
 
-    ![Välj Adaptivt kort](assets/images-sv/chap07/5.png)
+    ![Välj Adaptivt kort](assets/images-sv/chap07_ny/5.png)
 
 3.  Klicka på de tre prickarna på kort-noden och välj **Egenskaper**.
 
-    ![Kort Egenskaper](assets/images-sv/chap07/6.png)
+    ![Kort Egenskaper](assets/images-sv/chap07_ny/6.png)
 
 4.  I panelen till höger, klicka på knappen **Redigera adaptivt kort**.
 
-    ![Redigera kort](assets/images-sv/chap07/7.png)
+    ![Redigera kort](assets/images-sv/chap07_ny/7.png)
 
 ### Testa verktyget (Valfritt men lärorikt)
 Nu öppnas en stor editor. Till vänster har du komponenter (text, bilder, inputs) och i mitten ser du ditt kort.
 
-![Editor](assets/images-sv/chap07/8.png)
+![Editor](assets/images-sv/chap07_ny/8.png)
 
 1.  Prova att dra in ett **TextBlock** från vänstermenyn till kortet.
 
-    ![Dra in text](assets/images-sv/chap07/9.png)
+    ![Dra in text](assets/images-sv/chap07_ny/9.png)
 
 2.  Testa att ändra texten till något annat, t.ex. "Tillgängliga enheter" i menyn till höger.
 
-    ![Text](assets/images-sv/chap07/10.png)
+    ![Text](assets/images-sv/chap07_ny/10.png)
 
 3.  Ändra **Horisontell justering** till **Centrerat**.
 
-    ![Horisontell justering](assets/images-sv/chap07/11.png)
+    ![Horisontell justering](assets/images-sv/chap07_ny/11.png)
 
 4.  Prova att dra in en **Input.ChoiceSet** under texten.
 
-    ![Dra in val](assets/images-sv/chap07/12.png)
+    ![Dra in val](assets/images-sv/chap07_ny/12.png)
 
 5.  Ändra **Stil** till **Expanderat** för att se hur det ser ut som en lista med radioknappar.
 
-    ![Format](assets/images-sv/chap07/13.png)
+    ![Format](assets/images-sv/chap07_ny/13.png)
 
 6.  Klicka på **Preview** högst upp för att se hur det skulle se ut i chatten.
 
-    ![Förhandsgranskning](assets/images-sv/chap07/14.png)
+    ![Förhandsgranskning](assets/images-sv/chap07_ny/14.png)
 
 7.  Klicka på **Preview** igen för att gå tillbaka.
 
@@ -89,7 +89,7 @@ Att bygga hela kortet för hand tar tid. Vi ska använda färdig kod (JSON) för
 
 1.  Längst ner i fönstret ser du **Redigerare för kortets nyttolast**. (Dra upp kanten om den är liten).
 
-    ![Payload Editor](assets/images-sv/chap07/15.png)
+    ![Payload Editor](assets/images-sv/chap07_ny/15.png)
 
 2.  Radera **allt** som står i editorn.
 3.  Kopiera och klistra in följande kod:
@@ -138,7 +138,7 @@ Att bygga hela kortet för hand tar tid. Vi ska använda färdig kod (JSON) för
                 "items": [
                     {
                         "type": "Input.ChoiceSet",
-                        "id": "deviceSelectionId",
+                        "id": "kortValdEnhetId",
                         "style": "expanded",
                         "choices": [
                             {
@@ -175,7 +175,7 @@ Att bygga hela kortet för hand tar tid. Vi ska använda färdig kod (JSON) för
             },
             {
                 "type": "Input.Text",
-                "id": "commentsId",
+                "id": "kortKommentar",
                 "placeholder": "Vänligen ange eventuella specifika krav eller övriga kommentarer",
                 "isMultiline": true,
                 "spacing": "Small"
@@ -207,7 +207,7 @@ Att bygga hela kortet för hand tar tid. Vi ska använda färdig kod (JSON) för
 4.  Klicka på **Preview** för att se ditt snygga kort!
     *Just nu är listan på datorer "Hårdkodad" (Surface Laptop 13, 15 etc). Det ska vi ändra på nu.*
 
-    ![Förhandsgranskning](assets/images-sv/chap07/16.png)
+    ![Förhandsgranskning](assets/images-sv/chap07_ny/16.png)
 
 ---
 
@@ -218,11 +218,11 @@ Vi vill att listan i kortet ska baseras på vad vi faktiskt hittade i SharePoint
 1.  Stäng Förhandsgranskningsläge.
 2.  Längst upp till höger i editor-fönstret (ovanför koden), klicka på **JSON** och ändra till **Formel**.
 
-    ![Ändra till Formel](assets/images-sv/chap07/17.png)
+    ![Ändra till Formel](assets/images-sv/chap07_ny/17.png)
 
 3.  Klicka på **Expandera**-ikonen (pilarna) för att göra formelfältet större.
 
-    ![Expandera formel](assets/images-sv/chap07/18.png)
+    ![Expandera formel](assets/images-sv/chap07_ny/18.png)
 
 4.  Radera all kod i fönstret.
 5.  Klistra in denna Power Fx-kod istället:
@@ -271,10 +271,10 @@ Vi vill att listan i kortet ska baseras på vad vi faktiskt hittade i SharePoint
           items: [
             {
               type: "Input.ChoiceSet",
-              id: "deviceSelectionId",
+              id: "kortValdEnhetId",
               style: "expanded",
               choices: ForAll(
-                Global.VarDevices.value,
+                Global.HamtadeEnheter.value,
                 {
                   title: If(IsBlank(Model), "Okänd modell", Model),
                   value: If(IsBlank(ID), "NA", Text(ID))
@@ -295,7 +295,7 @@ Vi vill att listan i kortet ska baseras på vad vi faktiskt hittade i SharePoint
             },
             {
               type: "Input.Text",
-              id: "commentsId",
+              id: "kortKommentar",
               placeholder: "Vänligen ange eventuella specifika krav eller övriga kommentarer",
               isMultiline: true,
               spacing: "Small"
@@ -326,8 +326,7 @@ Vi vill att listan i kortet ska baseras på vad vi faktiskt hittade i SharePoint
       actions: [
         {
           type: "Action.Submit",
-          title: "Skicka",
-          id: "deviceSubmittedId"
+          title: "Skicka"
         }
       ]
     }
@@ -335,26 +334,26 @@ Vi vill att listan i kortet ska baseras på vad vi faktiskt hittade i SharePoint
 
     !!! info "Vad hände nu?"
         Titta på delen med `choices: ForAll(...)`.
-        Istället för en fast lista säger vi nu: "Loopa igenom vår globala variabel `Global.VarDevices.value`. För varje rad, skapa ett val där titeln är modellnamnet och värdet är ID:t."
+        Istället för en fast lista säger vi nu: "Loopa igenom vår globala variabel `Global.HamtadeEnheter.value`. För varje rad, skapa ett val där titeln är modellnamnet och värdet är ID:t."
         Detta gör kortet levande!
 
 6.  Kontrollera att du har en **grön bock** nere i hörnet (inga syntaxfel).
 
-    ![Grön bock](assets/images-sv/chap07/19.png)
+    ![Grön bock](assets/images-sv/chap07_ny/19.png)
 
 7.  Klicka på **Spara kort** (eller stäng krysset om knappen saknas, det sparas ofta automatiskt) och stäng sedan det adaptiva kortets egenskaper.
 
-    ![Spara och stäng](assets/images-sv/chap07/20.png)
+    ![Spara och stäng](assets/images-sv/chap07_ny/20.png)
 
 ### Viktigt: Utdatavariabler
 Om du tittar längst ner i Egenskapspanelen för din kort-nod, ser du sektionen **Utdata**.
 Här bör du se två variabler:
-* `deviceSelectionId` (Vad användaren valde)
-* `commentsId` (Vad användaren skrev)
+* `kortValdEnhetId` (Vilken enhet användaren valde)
+* `kortKommentar` (Vad användaren skrev)
 
-Dessa skapades automatiskt baserat på ID:n i koden vi klistrade in. Vi kommer att använda dessa i nästa kapitel för att genomföra beställningen.
+Dessa skapades automatiskt baserat på ID:n i koden vi klistrade in. Vi kommer att använda dem i nästa kapitel när vi skickar beställningen vidare till ett agentflöde.
 
-![Utdatavariabler](assets/images-sv/chap07/21.png)
+![Utdatavariabler](assets/images-sv/chap07_ny/21.png)
 
 8.  Klicka **Spara** för att spara ditt ämne.
 
@@ -362,15 +361,15 @@ Dessa skapades automatiskt baserat på ID:n i koden vi klistrade in. Vi kommer a
 
 ## 7.5 Uppdatera Agentens Instruktioner
 
-Nu har vi ett ämne för att visa enheter (Tillgängliga Enheter) och ett för att beställa (Beställ enhet). Vi måste lära agenten hur de hänger ihop.
+Nu har vi ett ämne för att visa enheter (**Tillgängliga Enheter**) och ett för att beställa (**Begär enhet**). Vi måste lära agenten hur de hänger ihop.
 
 1.  Gå till fliken **Översikt**.
 
-    ![Översikt](assets/images-sv/chap07/22.png)
+    ![Översikt](assets/images-sv/chap07_ny/22.png)
 
 2.  Vid **Instruktioner**, klicka på **Redigera**.
 
-    ![Redigera instruktioner](assets/images-sv/chap07/23.png)
+    ![Redigera instruktioner](assets/images-sv/chap07_ny/23.png)
 
 3.  Leta upp raden du lade till sist. Vi ska uppdatera den så att den länkar vidare till vårt nya ämne.
     
@@ -385,7 +384,7 @@ Nu har vi ett ämne för att visa enheter (Tillgängliga Enheter) och ett för a
 
 5.  Klicka **Spara**.
 
-    ![Spara](assets/images-sv/chap07/24.png)
+    ![Spara](assets/images-sv/chap07_ny/24.png)
 
 ### Testa flödet
 Nu är det dags att se magin hända!
@@ -394,7 +393,7 @@ Nu är det dags att se magin hända!
 2.  Skriv: `Jag behöver en bärbar dator`
     *Agenten bör visa listan och fråga om du vill beställa.*
 3.  Svara: `Ja tack`
-    *Nu ska agenten automatiskt hoppa över till ditt nya ämne **Beställ enhet** och visa det snygga formuläret.*
+    *Nu ska agenten automatiskt hoppa över till ditt nya ämne **Begär enhet** och visa formuläret.*
 
 !!! success "Snyggt!"
     Du har nu byggt ett dynamiskt formulär som anpassar sig efter vad som finns i lagret. I nästa kapitel ska vi se till att det faktiskt händer något när man klickar på "Skicka"!

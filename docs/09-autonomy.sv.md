@@ -11,35 +11,35 @@ Vi börjar med att tala om för agenten vad den ska lyssna efter.
 
 1.  Navigera till fliken **Översikt**.
 
-    ![Översikt](assets/images-sv/chap09/1.png)
+    ![Översikt](assets/images-sv/chap09_ny/1.png)
 
 2.  Leta upp sektionen **Utlösare** och klicka på **+ Lägg till utlösare**.
 
-    ![Lägg till utlösare](assets/images-sv/chap09/2.png)
+    ![Lägg till utlösare](assets/images-sv/chap09_ny/2.png)
 
 3.  Sök efter 
     ```text
     När ett objekt skapas
     ```
 
-    ![Sök utlösare](assets/images-sv/chap09/3.png)
+    ![Sök utlösare](assets/images-sv/chap09_ny/3.png)
 
 4.  Välj **När ett objekt skapas (SharePoint)** och klicka **Nästa**.
 
-    ![Välj utlösare](assets/images-sv/chap09/4.png)
+    ![Välj utlösare](assets/images-sv/chap09_ny/4.png)
 
 5.  Vänta tills anslutningen konfigureras och klicka sedan på **Nästa**.
 
-    ![Konfigurera anslutning](assets/images-sv/chap09/5.png)
+    ![Konfigurera anslutning](assets/images-sv/chap09_ny/5.png)
 
 6.  **Konfigurera Utlösaren:**
     * **Webbplatsadress:** Klicka på dropdown-menyn och välj **IT Supporten**. (Om du inte ser den, klicka på *Lägg till ett anpassat objekt* och klistra in URL:en, eller sök).
 
-    ![Välj webbplats](assets/images-sv/chap09/6.png)
+    ![Välj webbplats](assets/images-sv/chap09_ny/6.png)
 
     * **Listnamn:** Välj **Begäran**.
 
-    ![Välj lista](assets/images-sv/chap09/7.png)
+    ![Välj lista](assets/images-sv/chap09_ny/7.png)
 
     * *Begränsa kolumner efter vy:* Låt vara som den är.
 
@@ -56,7 +56,7 @@ Vi börjar med att tala om för agenten vad den ska lyssna efter.
 
 8.  Klicka på **Skapa utlösare**.
 
-    ![Skapa utlösare](assets/images-sv/chap09/8.png)
+    ![Skapa utlösare](assets/images-sv/chap09_ny/8.png)
 
 ---
 
@@ -69,13 +69,13 @@ Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicer
 1.  I listan över utlösare på Översikt-sidan: Klicka på de **tre prickarna (...)** längst till höger på din nya utlösare.
 2.  Välj **Redigera i Power Automate**.
 
-    ![Redigera i Power Automate](assets/images-sv/chap09/9.png)
+    ![Redigera i Power Automate](assets/images-sv/chap09_ny/9.png)
 
     *Ett nytt fönster öppnas med ditt flöde.*
 
 3.  Du ser två noder. Klicka på den nedre noden: **Send a prompt to the specified copilot for processing**.
 
-    ![Öppna nod](assets/images-sv/chap09/10.png)
+    ![Öppna nod](assets/images-sv/chap09_ny/10.png)
     
     *En meny öppnas till vänster.*
 
@@ -84,7 +84,7 @@ Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicer
     * Ta bort texten `{Body}` som ligger där.
     * Skriv ett snedstreck `/` och välj **Infoga uttryck** (fx-ikonen).
 
-    ![Insert Expression](assets/images-sv/chap09/11.png)
+    ![Insert Expression](assets/images-sv/chap09_ny/11.png)
 
 5.  **Lägg till uttrycket:**
     En ny meny kommer upp. Klistra in exakt denna kod i rutan:
@@ -95,7 +95,7 @@ Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicer
 
     * Klicka på **Add**.
 
-    ![Insert Expression](assets/images-sv/chap09/12.png)
+    ![Insert Expression](assets/images-sv/chap09_ny/12.png)
 
     !!! info "Vad gör denna formel?" 
         När SharePoint skickar data till flödet kommer det som en stor, teknisk dataklump (JSON). För att göra det enkelt för agenten att läsa informationen gör vi två saker i denna formel:
@@ -106,7 +106,7 @@ Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicer
 
 6.  Klicka på **Save** högst upp till höger på sidan.
 
-    ![Spara flöde](assets/images-sv/chap09/13.png)
+    ![Spara flöde](assets/images-sv/chap09_ny/13.png)
 
     *När det är sparat kan du stänga fliken och gå tillbaka till Copilot Studio.*
 
@@ -118,25 +118,25 @@ Nu har agenten en utlösare, men den behöver ett verktyg för att kunna skicka 
 
 1.  Navigera till fliken **Ämnen** (eller Verktyg) och välj **+ Lägg till ett verktyg**.
 
-    ![Lägg till verktyg](assets/images-sv/chap09/14.png)
+    ![Lägg till verktyg](assets/images-sv/chap09_ny/14.png)
 
 2.  Sök efter 
     ```text
-    Skicka ett e-postmeddelande (V2)
+    Skicka e-postmeddelande (V2)
     ```
 
-    ![Sök e-post](assets/images-sv/chap09/15.png)
+    ![Sök e-post](assets/images-sv/chap09_ny/15.png)
 
 3.  Välj **Skicka ett e-postmeddelande (V2)** (Office 365 Outlook).
 
-    ![Välj e-post V2](assets/images-sv/chap09/16.png)
+    ![Välj e-post V2](assets/images-sv/chap09_ny/16.png)
 
 4.  Vänta på anslutningen genom att kontrollera att det är grönt till höger om den mejladress och klicka sedan på **Lägg till och konfigurera** (eller Nästa).
 
     !!! info "Ser du ingen grön bock?" 
         Om anslutningen inte är klar (ingen grön bock vid din mejladress), klicka på pilen eller de tre prickarna vid Anslutning-raden och välj att logga in/lägga till anslutning. Du kan inte klicka på Lägg till och konfigurera förrän anslutningen är aktiv.
 
-    ![Lägg till och konfigurera](assets/images-sv/chap09/17.png)
+    ![Lägg till och konfigurera](assets/images-sv/chap09_ny/17.png)
 
 5.  **Konfigurera verktyget:**
     * **Namn:**
@@ -148,7 +148,7 @@ Nu har agenten en utlösare, men den behöver ett verktyg för att kunna skicka 
       Det här verktyget skickar ett e-postmeddelande till IT-avdelningen med information om att en ny begäran har skapats.
       ```
 
-    ![Konfigurera verktyg](assets/images-sv/chap09/18.png)
+    ![Konfigurera verktyg](assets/images-sv/chap09_ny/18.png)
 
 6.  **Konfigurera Indata (Viktigt):**
     Vi måste vara tydliga med vad agenten ska fylla i.
@@ -158,18 +158,18 @@ Nu har agenten en utlösare, men den behöver ett verktyg för att kunna skicka 
     
     * Klicka på dropdown-menyn där det står *Fyll i dynamiskt med AI* och välj **Anpassat värde**.
 
-    ![Konfigurera Till-indata](assets/images-sv/chap09/19.png)
+    ![Konfigurera Till-indata](assets/images-sv/chap09_ny/19.png)
 
     * Skriv in din egen e-postadress i fältet (t.ex. `JoelThyberg@thybergai.onmicrosoft.com`).
 
-    ![Konfigurera Till-indata](assets/images-sv/chap09/20.png)
+    ![Konfigurera Till-indata](assets/images-sv/chap09_ny/20.png)
 
     **Konfigurera "Ämne" (Subject):**
     Låt stå på *Fyll i dynamiskt med AI*, men vi ska ge en instruktion.
     
     * Klicka på **Anpassa** bredvid Ämne.
 
-    ![Konfigurera ämne](assets/images-sv/chap09/21.png)
+    ![Konfigurera ämne](assets/images-sv/chap09_ny/21.png)
 
     * I fältet **Beskrivning**, skriv:
       ```text
@@ -177,7 +177,7 @@ Nu har agenten en utlösare, men den behöver ett verktyg för att kunna skicka 
       ```
     * Se till att **Identifiera som** är satt till *Användarens hela svar*.
 
-    ![Konfigurera ämnesdetaljer](assets/images-sv/chap09/22.png)
+    ![Konfigurera ämnesdetaljer](assets/images-sv/chap09_ny/22.png)
 
     * Stäng panelen för Ämne.
 
@@ -186,7 +186,7 @@ Nu har agenten en utlösare, men den behöver ett verktyg för att kunna skicka 
     
     * Klicka på **Anpassa**.
 
-    ![Konfigurera brödtext](assets/images-sv/chap09/23.png)
+    ![Konfigurera brödtext](assets/images-sv/chap09_ny/23.png)
 
     * I fältet **Beskrivning**, skriv:
       ```text
@@ -194,7 +194,7 @@ Nu har agenten en utlösare, men den behöver ett verktyg för att kunna skicka 
       ```
     * Se till att **Identifiera som** är satt till *Användarens hela svar*.
 
-    ![Konfigurera brödtextdetaljer](assets/images-sv/chap09/24.png)
+    ![Konfigurera brödtextdetaljer](assets/images-sv/chap09_ny/24.png)
 
     * Stäng panelen.
 

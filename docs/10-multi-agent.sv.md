@@ -19,7 +19,7 @@ Först måste agenten få en ny utlösare som lyssnar på inkommande mejl.
 1.  Gå till fliken **Översikt** och sektionen **Utlösare**.
 2.  Klicka **+ Lägg till utlösare**.
 
-    ![Lägg till utlösare](assets/images-sv/chap10/1.png)
+    ![Lägg till utlösare](assets/images-sv/chap10_ny/1.png)
 
 3.  Sök efter och välj:
     ```text
@@ -28,22 +28,22 @@ Först måste agenten få en ny utlösare som lyssnar på inkommande mejl.
 
 4.  Klicka på **När ett nytt e-postmeddelande tas emot (V3)** och därefter på **Nästa**.
 
-    ![Välj e-postutlösare](assets/images-sv/chap10/2.png)
+    ![Välj e-postutlösare](assets/images-sv/chap10_ny/2.png)
 
 5.  Kontrollera att anslutningen är grön (Ansluten) och klicka på **Nästa**.
 
-    ![Kontrollera anslutning](assets/images-sv/chap10/3.png)
+    ![Kontrollera anslutning](assets/images-sv/chap10_ny/3.png)
 
 6.  **Konfigurera utlösaren:**
     Idealiskt sett vill man kanske inte att agenten ska vakna av alla olika mejl, men i denna labb vill vi se agentens förmåga att filtrera och plocka upp relevanta mejl utan fördefinierade filter. Tanken är att denna ska agera som företagets centrala IT support. Därför konfigurerar vi den på följande vis:
 
     * **Mapp:** Klicka på mapp-ikonen och välj **Inkorg**.
 
-    ![Välj inkorg](assets/images-sv/chap10/4.png)
+    ![Välj inkorg](assets/images-sv/chap10_ny/4.png)
 
     * **Vikt:** Låt resterande vara oförändrade och klicka på **Skapa utlösare**.
 
-    ![Skapa utlösare](assets/images-sv/chap10/5.png)
+    ![Skapa utlösare](assets/images-sv/chap10_ny/5.png)
 
 ---
 
@@ -53,11 +53,11 @@ Nu vet vi att vår huvudagent lyssnar och tar emot inkommande mejl. För att gö
 
 1.  Stäng *Dags att testa din utlösare!* vilket leder tillbaka till agentens **Översikt**.
 
-    ![Ingen test](assets/images-sv/chap10/6.png)
+    ![Ingen test](assets/images-sv/chap10_ny/6.png)
 
 2.  Scrolla ner till **Agenter**-delen i **Översikt** och klicka på **+ Lägg till agent**.
 
-    ![Lägg till agent](assets/images-sv/chap10/7.png)
+    ![Lägg till agent](assets/images-sv/chap10_ny/7.png)
 
 3.  Rutan *Välj hur du vill utöka din agent* dyker upp.
     * Här ser vi alternativet **Skapa en underordnad agent**.
@@ -65,7 +65,7 @@ Nu vet vi att vår huvudagent lyssnar och tar emot inkommande mejl. För att gö
 
     * Klicka på **Ny underordnad agent**.
 
-    ![Ny underordnad agent](assets/images-sv/chap10/8.png)
+    ![Ny underordnad agent](assets/images-sv/chap10_ny/8.png)
 
     * **Namn:** Döp agenten till:
       ```text
@@ -82,7 +82,7 @@ Nu vet vi att vår huvudagent lyssnar och tar emot inkommande mejl. För att gö
 
     * Klicka sedan på **Spara** uppe i högra hörnet.
 
-    ![Spara](assets/images-sv/chap10/9.png)
+    ![Spara](assets/images-sv/chap10_ny/9.png)
 
 ---
 
@@ -92,21 +92,21 @@ För att agenten ska kunna utföra punkt 3 i sina instruktioner måste den ha et
 
 1.  Gå till delen **Verktyg** inne i din underordnade agent och klicka på **+ Lägg till**.
 
-    ![Verktyg](assets/images-sv/chap10/10.png)
+    ![Verktyg](assets/images-sv/chap10_ny/10.png)
 
 2.  Sök efter:
     ```text
     Publicera ett meddelande i en chatt eller kanal
     ```
-    ![Sök verktyg](assets/images-sv/chap10/11.png)
+    ![Sök verktyg](assets/images-sv/chap10_ny/11.png)
 
 3.  Välj **Publicera ett meddelande i en chatt eller kanal** genom att klicka på den.
 
-    ![Lägg till Teams-åtgärd](assets/images-sv/chap10/12.png)
+    ![Lägg till Teams-åtgärd](assets/images-sv/chap10_ny/12.png)
 
 4.  Kontrollera anslutningen och klicka **Lägg till och konfigurera**.
 
-    ![Lägg till och konfigurera](assets/images-sv/chap10/13.png)
+    ![Lägg till och konfigurera](assets/images-sv/chap10_ny/13.png)
 
 5.  **Konfigurera verktyget:**
     * **Namn:**
@@ -118,44 +118,44 @@ För att agenten ska kunna utföra punkt 3 i sina instruktioner måste den ha et
       Skickar ett meddelande till IT-supportens Teams-chatt med information från mejlet.
       ```
 
-    ![Konfigurera verktyg](assets/images-sv/chap10/14.png)
+    ![Konfigurera verktyg](assets/images-sv/chap10_ny/14.png)
 
 6.  **Konfigurera indata:**
     Vi vill göra det enkelt och säkert att detta fungerar.
 
     1. Klicka på **Fyll i dynamiskt med AI** bredvid **Publicera som** och välj **Anpassat värde**.
 
-    ![Konfigurera Publicera som](assets/images-sv/chap10/15.png)
+    ![Konfigurera Publicera som](assets/images-sv/chap10_ny/15.png)
 
     2. Klicka på **Välj ett alternativ** och välj **Flow bot**.
 
-    ![Välj Flow Bot](assets/images-sv/chap10/16.png)
+    ![Välj Flow Bot](assets/images-sv/chap10_ny/16.png)
 
     3. Klicka på **Fyll i dynamiskt med AI** bredvid **Publicera i** och välj **Anpassat värde**.
 
-    ![Konfigurera Publicera i](assets/images-sv/chap10/17.png)
+    ![Konfigurera Publicera i](assets/images-sv/chap10_ny/17.png)
 
     4. Klicka på **Välj ett alternativ** och välj **Chatta med Flow bot**.
 
-    ![Välj Chatta med Flow bot](assets/images-sv/chap10/18.png)
+    ![Välj Chatta med Flow bot](assets/images-sv/chap10_ny/18.png)
 
     5. Notera att en ny indata dyker upp: **Mottagare**. Välj även här att klicka på **Fyll i dynamiskt med AI** och sedan **Anpassat värde**.
 
-    ![Konfigurera mottagare](assets/images-sv/chap10/19.png)
+    ![Konfigurera mottagare](assets/images-sv/chap10_ny/19.png)
 
     6. Skriv in din e-postadress i fältet.
 
-    ![Ange e-post](assets/images-sv/chap10/20.png)
+    ![Ange e-post](assets/images-sv/chap10_ny/20.png)
 
     7. För **Meddelande**, låt stå kvar på **Fyll i dynamiskt med AI** men välj att klicka på **Anpassa**.
 
-    ![Redigera meddelande](assets/images-sv/chap10/21.png)
+    ![Redigera meddelande](assets/images-sv/chap10_ny/21.png)
 
     8. I rutan **Beskrivning** för Meddelande, skriv in följande:
        ```text
        En sammanfattning av e-postinnehållet inklusive syfte (Beställning/Support) och viktiga detaljer.
        ```
-    ![Meddelande](assets/images-sv/chap10/22.png)
+    ![Meddelande](assets/images-sv/chap10_ny/22.png)
 
     9. Stäng panelen för Meddelande.
 
@@ -169,7 +169,7 @@ Nu har vi skapat skalet för agenten samt ett verktyg. Nu ska vi ge den instrukt
 
 1.  Klicka på **<- Meddela IT-teamet**.
 
-    ![Meddela IT-teamet](assets/images-sv/chap10/23.png)
+    ![Meddela IT-teamet](assets/images-sv/chap10_ny/23.png)
 
 2.  **Ge instruktioner:**
     Hitta rutan för **Instruktioner** och klicka i den.
@@ -188,11 +188,11 @@ Nu har vi skapat skalet för agenten samt ett verktyg. Nu ska vi ge den instrukt
 
     * Ställ dig direkt efter ` /Meddela IT-teamet ` och välj **Meddela IT-teamet** verktyget genom att klicka på popupmenyn.
 
-    ![Agentinstruktioner](assets/images-sv/chap10/24.png)
+    ![Agentinstruktioner](assets/images-sv/chap10_ny/24.png)
 
     * Klicka på **Spara**.
 
-    ![Spara](assets/images-sv/chap10/25.png)
+    ![Spara](assets/images-sv/chap10_ny/25.png)
 
 ---
 
@@ -202,11 +202,11 @@ Nu är all logik för den underordnade agenten klar. Vi ska nu uppdatera huvudag
 
 1.  Navigera tillbaka till huvudagentens **Översikt**.
 
-    ![Huvudagent Översikt](assets/images-sv/chap10/26.png)
+    ![Huvudagent Översikt](assets/images-sv/chap10_ny/26.png)
 
 2.  Gå ner till **Instruktioner** och klicka på **Redigera**.
 
-    ![Huvudagent Instruktioner](assets/images-sv/chap10/27.png)
+    ![Huvudagent Instruktioner](assets/images-sv/chap10_ny/27.png)
 
 3.  Lägg till följande instruktioner i slutet:
 
@@ -220,11 +220,11 @@ Nu är all logik för den underordnade agenten klar. Vi ska nu uppdatera huvudag
     * Ställ dig precis bakom `/E-post agent` i texten du nyss skrev.
     * Klicka på **E-post agent** i popupmenyn.
 
-    ![Huvudagent instruktioner tillagda](assets/images-sv/chap10/28.png)
+    ![Huvudagent instruktioner tillagda](assets/images-sv/chap10_ny/28.png)
 
 5.  Klicka på **Spara**.
 
-    ![Spara](assets/images-sv/chap10/29.png)
+    ![Spara](assets/images-sv/chap10_ny/29.png)
 
 ---
 
