@@ -18,8 +18,8 @@ hide:
       <div class="hero-meta"><span>11 kapitel</span><span>Grundnivå</span><span>Bygg med själv</span></div>
     </div>
     <div class="course-hero__visual">
-      <div class="product-shot product-shot--dark">
-        <img src="../../assets/standard/images-sv/chap04/7.png" alt="Översikten för en agent i Copilot Studio">
+      <div class="product-shot">
+        <img src="../../assets/shared/portal/old-hero.png" alt="Startsidan i Copilot Studio med valet mellan agent och arbetsflöde">
       </div>
       <div class="floating-label"><strong>IT Support agent</strong><span>Kunskap · åtgärder · autonomi</span></div>
     </div>

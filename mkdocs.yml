@@ -4,9 +4,11 @@ site_url: https://tyto-official.github.io/copilot-studio-course/
 
 exclude_docs: |
   copilot-studio/standard/11-set-up-for-production.md
+  *.en.md
 
 theme:
   name: material
+  custom_dir: overrides
   language: sv
   features:
     - navigation.top
@@ -24,9 +26,6 @@ plugins:
         - locale: sv
           default: true
           name: Svenska
-          build: true
-        - locale: en
-          name: English
           build: true
 
 nav:

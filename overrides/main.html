@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{#
+  Sätter data-track på <html> innan sidan målas, så att varje utbildning
+  kan ha sin egen accentfärg i navigation, länkar och rubriker.
+  Färgerna definieras i docs/stylesheets/extra.css (html[data-track="..."]).
+#}
+{% block extrahead %}
+  {{ super() }}
+  {%- set track = "standard" if page and page.url.startswith("copilot-studio/standard/")
+                  else "nextgen" if page and page.url.startswith("copilot-studio/nextgen/")
+                  else "" -%}
+  {%- if track %}
+  <script>document.documentElement.setAttribute("data-track", "{{ track }}");</script>
+  {%- endif %}
+{% endblock %}

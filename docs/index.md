@@ -10,7 +10,6 @@ hide:
       <div class="eyebrow">MICROSOFT AI-UTBILDNINGAR</div>
       <h1>Lär dig Copilot Studio genom att <span>bygga på riktigt.</span></h1>
       <p>Praktiska, scenariobaserade utbildningar för dig som vill förstå hur Microsofts agenter fungerar – och kunna omsätta kunskapen direkt i din egen organisation.</p>
-      <a class="button button--primary" href="#utbildningar">Utforska utbildningarna</a>
     </div>
     <div class="portal-hero__composition" aria-hidden="true">
       <div class="orbit orbit--one"></div>
@@ -33,18 +32,10 @@ hide:
   <section class="course-grid" aria-label="Tillgängliga utbildningar">
     <article class="course-card course-card--standard">
       <div class="course-card__topline"><span>GRUNDKURS</span><span class="status status--available">Tillgänglig</span></div>
-      <div class="course-card__visual course-card__visual--standard">
-        <div class="mini-window">
-          <div class="mini-window__bar"><i></i><i></i><i></i></div>
-          <div class="mini-window__body">
-            <div class="mini-nav"></div>
-            <div class="mini-content"><b></b><span></span><span></span><span></span></div>
-            <div class="mini-chat"><b></b><span></span></div>
-          </div>
-        </div>
+      <div class="course-card__visual course-card__visual--image">
+        <img src="assets/shared/portal/old-hero.png" alt="Startsidan i Copilot Studio med valet mellan agent och arbetsflöde">
       </div>
       <div class="course-card__body">
-        <div class="course-card__number">01</div>
         <h3>Bygg en standardagent</h3>
         <p>Skapa en IT-supportagent med SharePoint, kunskap, ämnen, adaptiva kort, flöden, autonomi och multi-agent-orkestrering.</p>
         <div class="course-card__meta"><span>11 kapitel</span><span>Praktisk grundnivå</span></div>
@@ -58,7 +49,6 @@ hide:
         <img src="assets/shared/portal/nextgen-hero.png" alt="Nya Copilot Studio med alternativen agent och arbetsflöde">
       </div>
       <div class="course-card__body">
-        <div class="course-card__number">02</div>
         <h3>Bygg en instruktionsdriven agent</h3>
         <p>Arbeta med modell, instruktioner, PDF-kunskap, aktuell SharePoint-data, skills och arbetsflöden i den nya agentupplevelsen.</p>
         <div class="course-card__meta"><span>Scenariobaserad</span><span>Lunaro produktagent</span></div>
