@@ -1,0 +1,17 @@
+[
+  {
+    "source": "catalog-cover-environment.png",
+    "filename": "catalog-cover-environment-clean.png",
+    "prompt": "Remove every letter, word, line of typography, symbol, and printed mark from the walls. Replace those areas with clean plain warm off-white wall texture. Preserve the three lamps, furniture, room, lighting, colors, perspective, and composition exactly. Add no text or new objects."
+  },
+  {
+    "source": "table-lamps-environment.png",
+    "filename": "table-lamps-environment-clean.png",
+    "prompt": "Remove every letter, word, logo, symbol, and printed mark from the wall. Replace that area with clean plain light stone wall texture. Preserve the green table lamp, desk, notebook, lighting, colors, perspective, and composition exactly. Add no text or new objects."
+  },
+  {
+    "source": "floor-lamps-environment.png",
+    "filename": "floor-lamps-environment-clean.png",
+    "prompt": "Remove every letter, word, line of typography, symbol, and printed mark from the wall. Replace those areas with clean plain warm off-white wall texture. Preserve the black floor lamp, chair, rug, room, lighting, colors, perspective, and composition exactly. Add no text or new objects."
+  }
+]

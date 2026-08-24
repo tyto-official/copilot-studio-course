@@ -1,0 +1,27 @@
+[
+  {
+    "mode": "multi-edit",
+    "sources": [
+      "../base-models/pendant-lamp-01-dome.png",
+      "../color-variants/table-lamp-01-dome-forest-green.png",
+      "../base-models/floor-lamp-02-arc.png"
+    ],
+    "filename": "catalog-cover-environment.png",
+    "aspect_ratio": "3:4",
+    "prompt": "Create a premium editorial interior photograph for a contemporary lighting catalogue using the three supplied lamp designs. Place the green pendant above a pale oak meeting table, the small green table lamp on a sideboard, and the black arc floor lamp beside a simple lounge chair. Preserve the recognizable design and colors of all three lamps. Calm modern Scandinavian contract interior, warm off-white walls, pale oak, light stone floor, soft daylight, subtle warm lamp light, sophisticated but uncluttered. Vertical composition with generous clear space near the upper left for catalogue title text. No people, no logos, no text, no watermark."
+  },
+  {
+    "mode": "edit",
+    "source": "../color-variants/table-lamp-01-dome-forest-green.png",
+    "filename": "table-lamps-environment.png",
+    "aspect_ratio": "3:4",
+    "prompt": "Place this exact green table lamp on a clean pale-oak desk in a calm modern office. Preserve the lamp design, proportions, and forest-green color. Add a light stone wall, one closed notebook, and soft natural daylight from the side. Premium Scandinavian interior photography, uncluttered vertical composition, realistic scale, subtle warm light from the lamp. Leave clear space near the top for a section title. No people, no logos, no text, no watermark."
+  },
+  {
+    "mode": "edit",
+    "source": "../base-models/floor-lamp-02-arc.png",
+    "filename": "floor-lamps-environment.png",
+    "aspect_ratio": "3:4",
+    "prompt": "Place this exact black arc floor lamp beside a simple cream lounge chair in a refined modern reading area. Preserve the lamp design, proportions, and charcoal color. Add a warm off-white wall, pale wood floor, small wool rug, and soft evening daylight. Premium Scandinavian interior photography, uncluttered vertical composition, realistic scale, gentle warm light from the lamp. Leave clear space near the top for a section title. No people, no logos, no text, no watermark."
+  }
+]

@@ -1,9 +1,21 @@
-site_name: Copilot Studio
+site_name: Microsoft AI-utbildningar
+site_description: Praktiska utbildningar i Microsoft Copilot Studio – från grundläggande agentbygge till den nya instruktionsdrivna upplevelsen.
+site_url: https://tyto-official.github.io/copilot-studio-course/
+
+exclude_docs: |
+  copilot-studio/standard/11-set-up-for-production.md
+
 theme:
   name: material
   language: sv
   features:
+    - navigation.top
+    - navigation.sections
     - content.code.copy
+  palette:
+    scheme: default
+    primary: custom
+    accent: custom
 
 plugins:
   - i18n:
@@ -18,24 +30,32 @@ plugins:
           build: true
 
 nav:
-  - Hem: index.md
-  - Copilot Studio Kurs:
-    - 0. Begrepp och Teori: 00-concepts.md
-    - 1. Förbered SharePoint: 01-prepare-sharepoint.md
-    - 2. Hitta rätt i Copilot Studio: 02-tour-interface.md
-    - 3. Skapa Solution: 03-create-solution.md
-    - 4. Skapa Agent: 04-create-agent.md
-    - 5. Lägg till kunskap: 05-add-knowledge.md
-    - 6. Skapa Topic: 06-create-topic.md
-    - 7. Skapa Adaptive Card: 07-adaptive-card.md
-    - 8. Skapa Flow: 08-create-flow.md
-    - 9. Autonomi (Vakna till liv): 09-autonomy.md
-    - 10. Multi-Agent Orchestration (Finalen): 10-multi-agent.md
-  - Tips & Tricks:
+  - Start: index.md
+  - Copilot Studio:
+    - Standardagenten:
+      - Kursöversikt: copilot-studio/standard/index.md
+      - 0. Begrepp och teori: copilot-studio/standard/00-concepts.md
+      - 1. Förbered SharePoint: copilot-studio/standard/01-prepare-sharepoint.md
+      - 2. Hitta rätt i Copilot Studio: copilot-studio/standard/02-tour-interface.md
+      - 3. Skapa en lösning: copilot-studio/standard/03-create-solution.md
+      - 4. Skapa agenten: copilot-studio/standard/04-create-agent.md
+      - 5. Lägg till kunskap: copilot-studio/standard/05-add-knowledge.md
+      - 6. Skapa ett ämne: copilot-studio/standard/06-create-topic.md
+      - 7. Skapa ett adaptivt kort: copilot-studio/standard/07-adaptive-card.md
+      - 8. Skapa ett flöde: copilot-studio/standard/08-create-flow.md
+      - 9. Autonomi: copilot-studio/standard/09-autonomy.md
+      - 10. Multi-agent: copilot-studio/standard/10-multi-agent.md
+    - Instruktionsdriven agent:
+      - Kursöversikt: copilot-studio/nextgen/index.md
+  - Tips & fördjupning:
     - Översikt: tips/index.md
     - Kunskap på djupet: tips/knowledge.md
-  
+
+extra_css:
+  - stylesheets/extra.css
+
 markdown_extensions:
+  - attr_list
   - admonition
   - pymdownx.details
   - pymdownx.superfences:

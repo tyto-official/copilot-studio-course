@@ -1,0 +1,62 @@
+[
+  {
+    "source": "../base-models/table-lamp-01-dome.png",
+    "filename": "table-lamp-01-dome-forest-green.png",
+    "prompt": "Change only the warm-white painted metal parts of the lamp to matte forest green. Preserve the exact lamp design, shape, proportions, camera angle, lighting, white background, and shadow. Do not add or remove anything."
+  },
+  {
+    "source": "../base-models/table-lamp-02-task-v2.png",
+    "filename": "table-lamp-02-task-sand.png",
+    "prompt": "Change only the black painted metal parts of the lamp to matte warm sand beige. Preserve the exact lamp design, shape, proportions, joints, camera angle, lighting, white background, and shadow. Do not add or remove anything."
+  },
+  {
+    "source": "../base-models/table-lamp-04-cylinder-v2.png",
+    "filename": "table-lamp-04-cylinder-black-base.png",
+    "prompt": "Change only the brushed brass metal base to matte black. Keep the frosted ribbed glass completely unchanged. Preserve the exact lamp design, shape, proportions, camera angle, lighting, white background, and shadow. Do not add or remove anything."
+  },
+  {
+    "source": "../base-models/table-lamp-05-ceramic.png",
+    "filename": "table-lamp-05-ceramic-green.png",
+    "prompt": "Change only the beige ceramic base to deep forest green glazed ceramic. Keep the white fabric shade and all metal details unchanged. Preserve the exact lamp design, shape, proportions, camera angle, lighting, white background, and shadow. Do not add or remove anything."
+  },
+  {
+    "source": "../base-models/table-lamp-06-bar.png",
+    "filename": "table-lamp-06-bar-warm-white.png",
+    "prompt": "Change only the dark green painted metal parts of the lamp to matte warm white. Preserve the exact lamp design, shape, proportions, camera angle, lighting, pure white background, and shadow. Keep the lamp clearly visible against the background. Do not add or remove anything."
+  },
+  {
+    "source": "../base-models/table-lamp-07-cone.png",
+    "filename": "table-lamp-07-cone-brick-red.png",
+    "prompt": "Change only the dusty blue painted metal parts of the lamp to matte brick red. Preserve the exact lamp design, shape, proportions, camera angle, lighting, white background, and shadow. Do not add or remove anything."
+  },
+  {
+    "source": "../base-models/floor-lamp-01-dome.png",
+    "filename": "floor-lamp-01-dome-dusty-blue.png",
+    "prompt": "Change only the warm-white painted metal parts of the floor lamp to matte dusty blue. Preserve the exact lamp design, cable, shape, proportions, camera angle, lighting, white background, and shadow. Do not add or remove anything."
+  },
+  {
+    "source": "../base-models/floor-lamp-02-arc.png",
+    "filename": "floor-lamp-02-arc-warm-white.png",
+    "prompt": "Change only the charcoal painted metal parts of the floor lamp to matte warm white. Preserve the exact lamp design, shape, proportions, camera angle, lighting, pure white background, and shadow. Keep the lamp clearly visible against the background. Do not add or remove anything."
+  },
+  {
+    "source": "../base-models/floor-lamp-03-tripod.png",
+    "filename": "floor-lamp-03-tripod-sand-shade.png",
+    "prompt": "Change only the white fabric lampshade to warm sand beige fabric. Keep the light oak tripod legs and all metal details unchanged. Preserve the exact lamp design, shape, proportions, camera angle, lighting, white background, and shadow. Do not add or remove anything."
+  },
+  {
+    "source": "../base-models/wall-lamp-01-cone.png",
+    "filename": "wall-lamp-01-cone-dusty-blue.png",
+    "prompt": "Change only the black painted metal parts of the wall lamp to matte dusty blue. Preserve the exact lamp design, bulb, shape, proportions, camera angle, lighting, white background, and shadow. Do not add or remove anything."
+  },
+  {
+    "source": "../base-models/wall-lamp-02-opal.png",
+    "filename": "wall-lamp-02-opal-black.png",
+    "prompt": "Change only the brushed brass wall plate and arm to matte black. Keep the spherical opal-white glass shade completely unchanged. Preserve the exact lamp design, shape, proportions, camera angle, lighting, white background, and shadow. Do not add or remove anything."
+  },
+  {
+    "source": "../base-models/pendant-lamp-01-dome.png",
+    "filename": "pendant-lamp-01-dome-brick-red.png",
+    "prompt": "Change only the forest green outer metal shade to matte brick red. Keep the white inner shade, black cord, and black ceiling canopy unchanged. Preserve the exact lamp design, shape, proportions, camera angle, lighting, white background, and shadow. Do not add or remove anything."
+  }
+]

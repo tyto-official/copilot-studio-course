@@ -1,63 +1,82 @@
-# Copilot Studio
-
-Välkommen! I den här guiden ska vi tillsammans bygga en smart IT-supportagent i Copilot Studio.
-
-Vi börjar från grunden och bygger steg för steg på med nya funktioner. När vi är klara kommer du ha en agent som kan svara på frågor, hjälpa användare med beställningar, använda snygga formulär och till och med agera helt självständigt på inkommande mejl.
-
+---
+hide:
+  - navigation
+  - toc
 ---
 
-## Kurskapitel
+<div class="portal-home">
+  <section class="portal-hero">
+    <div class="portal-hero__copy">
+      <div class="eyebrow">MICROSOFT AI-UTBILDNINGAR</div>
+      <h1>Lär dig Copilot Studio genom att <span>bygga på riktigt.</span></h1>
+      <p>Praktiska, scenariobaserade utbildningar för dig som vill förstå hur Microsofts agenter fungerar – och kunna omsätta kunskapen direkt i din egen organisation.</p>
+      <a class="button button--primary" href="#utbildningar">Utforska utbildningarna</a>
+    </div>
+    <div class="portal-hero__composition" aria-hidden="true">
+      <div class="orbit orbit--one"></div>
+      <div class="orbit orbit--two"></div>
+      <div class="agent-node agent-node--main"><span>Agent</span><small>Resonerar och agerar</small></div>
+      <div class="agent-node agent-node--knowledge"><span>Kunskap</span></div>
+      <div class="agent-node agent-node--tools"><span>Verktyg</span></div>
+      <div class="agent-node agent-node--flow"><span>Flöden</span></div>
+    </div>
+  </section>
 
-??? note "0. Begrepp och Teori"
-    Mål: Förstå grundläggande koncept som LLMs, tokens, kontext och RAG.
-    [Läs kapitel →](00-concepts.md)
+  <section class="track-intro" id="utbildningar">
+    <div>
+      <div class="section-label">COPILOT STUDIO</div>
+      <h2>Välj den agentarkitektur du arbetar med</h2>
+    </div>
+    <p>Börja med den etablerade standardagenten eller utforska den nya instruktionsdrivna upplevelsen. Kurserna har samma pedagogiska grund men olika byggsätt och scenario.</p>
+  </section>
 
-??? note "1. Förbered SharePoint"
-    Mål: Sätta upp SharePoint-sajten med mallen IT Supportavdelning och lägga in testdata.
-    [Läs kapitel →](01-prepare-sharepoint.md)
+  <section class="course-grid" aria-label="Tillgängliga utbildningar">
+    <article class="course-card course-card--standard">
+      <div class="course-card__topline"><span>GRUNDKURS</span><span class="status status--available">Tillgänglig</span></div>
+      <div class="course-card__visual course-card__visual--standard">
+        <div class="mini-window">
+          <div class="mini-window__bar"><i></i><i></i><i></i></div>
+          <div class="mini-window__body">
+            <div class="mini-nav"></div>
+            <div class="mini-content"><b></b><span></span><span></span><span></span></div>
+            <div class="mini-chat"><b></b><span></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="course-card__body">
+        <div class="course-card__number">01</div>
+        <h3>Bygg en standardagent</h3>
+        <p>Skapa en IT-supportagent med SharePoint, kunskap, ämnen, adaptiva kort, flöden, autonomi och multi-agent-orkestrering.</p>
+        <div class="course-card__meta"><span>11 kapitel</span><span>Praktisk grundnivå</span></div>
+        <a class="text-link" href="copilot-studio/standard/">Öppna utbildningen <span>→</span></a>
+      </div>
+    </article>
 
-??? note "2. Hitta rätt i Copilot Studio"
-    Mål: Lära känna gränssnittet så du hittar bland Agenter, Flöden och Verktyg.
-    [Läs kapitel →](02-tour-interface.md)
+    <article class="course-card course-card--nextgen">
+      <div class="course-card__topline"><span>NY UPPLEVELSE</span><span class="status status--development">Under utveckling</span></div>
+      <div class="course-card__visual course-card__visual--image">
+        <img src="assets/shared/portal/nextgen-hero.png" alt="Nya Copilot Studio med alternativen agent och arbetsflöde">
+      </div>
+      <div class="course-card__body">
+        <div class="course-card__number">02</div>
+        <h3>Bygg en instruktionsdriven agent</h3>
+        <p>Arbeta med modell, instruktioner, PDF-kunskap, aktuell SharePoint-data, skills och arbetsflöden i den nya agentupplevelsen.</p>
+        <div class="course-card__meta"><span>Scenariobaserad</span><span>Lunaro produktagent</span></div>
+        <a class="text-link" href="copilot-studio/nextgen/">Se kursupplägget <span>→</span></a>
+      </div>
+    </article>
+  </section>
 
-??? note "3. Skapa en Lösning"
-    Mål: Skapa en Solution för att hålla ordning på allt vi bygger.
-    [Läs kapitel →](03-create-solution.md)
-
-??? note "4. Skapa Agenten"
-    Mål: Skapa vår huvudperson **IT Support agent**, ge den instruktioner och testa den för första gången.
-    [Läs kapitel →](04-create-agent.md)
-
-??? note "5. Lägg till Kunskap"
-    Mål: Koppla in dokument och filer så agenten kan svara på frågor direkt.
-    [Läs kapitel →](05-add-knowledge.md)
-
-??? note "6. Skapa en Styrd Dialog"
-    Mål: Bygga ett Ämne som guidar användaren genom en behovsanalys och hämtar data från SharePoint.
-    [Läs kapitel →](06-create-topic.md)
-
-??? note "7. Skapa ett Adaptivt Kort"
-    Mål: Skapa ett snyggt formulär direkt i chatten för att ta emot val och kommentarer.
-    [Läs kapitel →](07-adaptive-card.md)
-
-??? note "8. Skapa ett Agentflöde"
-    Mål: Bygga logiken som tar emot beställningen och skickar bekräftelsemejl via Power Automate.
-    [Läs kapitel →](08-create-flow.md)
-
-??? note "9. Autonomi"
-    Mål: Få agenten att vakna till liv och agera själv på händelser, utan att någon pratar med den först.
-    [Läs kapitel →](09-autonomy.md)
-
-??? note "10. Multi-Agent Orchestration"
-    Mål: Bygga finalen där huvudagenten delegerar arbete till en specialistagent som rapporterar i Teams.
-    [Läs kapitel →](10-multi-agent.md)
-
----
-
-## Tips & Tricks
-
-Fördjupningar och praktiska tips utöver kursmaterialet.
-
-??? tip "Kunskap på djupet"
-    Förstå hur RAG fungerar bakom kulisserna, när den vanliga kunskapssökningen räcker – och när du behöver bygga ett verktyg som hämtar hela dokument istället.
-    [Läs artikeln →](tips/knowledge.md)
+  <section class="method-section">
+    <div class="method-section__heading">
+      <div class="section-label section-label--light">SÅ FUNGERAR UTBILDNINGARNA</div>
+      <h2>Från förklaring till fungerande agent</h2>
+    </div>
+    <div class="method-grid">
+      <article><span>01</span><h3>Förstå</h3><p>Få den teori och kontext som krävs för att fatta rätt beslut.</p></article>
+      <article><span>02</span><h3>Bygg</h3><p>Följ en sammanhängande live-demo och bygg med i din egen miljö.</p></article>
+      <article><span>03</span><h3>Testa</h3><p>Se hur varje ny förmåga förändrar agentens svar och beteende.</p></article>
+      <article><span>04</span><h3>Tillämpa</h3><p>Ta med principerna tillbaka till den egna organisationens processer.</p></article>
+    </div>
+  </section>
+</div>

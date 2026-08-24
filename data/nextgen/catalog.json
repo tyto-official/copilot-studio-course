@@ -1,0 +1,371 @@
+{
+  "brand": "LUNARO",
+  "catalog_title": "LIGHTING COLLECTION 2026",
+  "language": "sv-SE",
+  "disclaimer": "Fiktivt utbildningsmaterial. Produkter, specifikationer och artikelnummer är skapade för en Copilot Studio-kurs.",
+  "models": [
+    {
+      "code": "T1",
+      "name": "Arcus",
+      "category": "Bordslampor",
+      "tagline": "Mjukt arbetsljus med lugn silhuett",
+      "description": "Arcus kombinerar en bred kupol med riktat, bländningsreducerat ljus. Den passar skrivbord, receptioner och mindre mötesytor där ett stillsamt uttryck är lika viktigt som ett jämnt arbetsljus.",
+      "best_for": ["Skrivbord", "Reception", "Mindre mötesbord"],
+      "specs": {
+        "Ljuskälla": "Integrerad LED, 8 W",
+        "Ljusflöde": "620 lm",
+        "Färgtemperatur": "2700 K",
+        "Färgåtergivning": "CRI 90",
+        "Dimring": "3 steg, touch",
+        "IP-klass": "IP20",
+        "Ström": "220-240 V, 50/60 Hz",
+        "Brytare": "Touch på bas",
+        "Storlek": "Ø 34 × H 41 cm",
+        "Material": "Pulverlackerad aluminium, stål",
+        "Vikt": "2,4 kg",
+        "Sladd": "200 cm",
+        "Garanti": "5 år",
+        "Förpackning": "39 × 39 × 48 cm | 3,2 kg"
+      },
+      "variants": [
+        {"sku": "LUN-T1-WW", "color": "Varmvit", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-01-dome.png"},
+        {"sku": "LUN-T1-FG", "color": "Skogsgrön", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-01-dome-forest-green.png"}
+      ]
+    },
+    {
+      "code": "T2",
+      "name": "Pivot",
+      "category": "Bordslampor",
+      "tagline": "Riktbar precision för fokuserat arbete",
+      "description": "Pivot har en enkel ledad arm och en kompakt skärm som kan riktas mot arbetsytan. Konstruktionen är avsiktligt okomplicerad och lämpar sig för individuella arbetsplatser och projektbord.",
+      "best_for": ["Fokuserat arbete", "Projektbord", "Hemmakontor"],
+      "specs": {
+        "Ljuskälla": "LED E14, max 8 W",
+        "Ljusflöde": "Rek. 500-700 lm",
+        "Färgtemperatur": "Rek. 2700-3000 K",
+        "Färgåtergivning": "Beror på ljuskälla",
+        "Dimring": "Beror på ljuskälla",
+        "IP-klass": "IP20",
+        "Ström": "220-240 V, 50/60 Hz",
+        "Brytare": "På sladd",
+        "Storlek": "B 22 × D 30 × H 52 cm",
+        "Material": "Pulverlackerat stål",
+        "Vikt": "2,1 kg",
+        "Sladd": "210 cm",
+        "Garanti": "3 år",
+        "Förpackning": "28 × 16 × 57 cm | 2,8 kg"
+      },
+      "variants": [
+        {"sku": "LUN-T2-BK", "color": "Mjuksvart", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-02-task-v2.png"},
+        {"sku": "LUN-T2-SA", "color": "Sand", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-02-task-sand.png"}
+      ]
+    },
+    {
+      "code": "T3",
+      "name": "Alba",
+      "category": "Bordslampor",
+      "tagline": "Opalglas med behagligt omgivningsljus",
+      "description": "Alba sprider ett mjukt ljus genom en låg opalglob. Den kompakta formen gör modellen lämplig för loungeytor, hyllor och hotellrum där ett varmt omgivningsljus önskas.",
+      "best_for": ["Lounge", "Hotellrum", "Hyllor"],
+      "specs": {
+        "Ljuskälla": "Integrerad LED, 6 W",
+        "Ljusflöde": "420 lm",
+        "Färgtemperatur": "2700 K",
+        "Färgåtergivning": "CRI 90",
+        "Dimring": "Ja, steglös",
+        "IP-klass": "IP20",
+        "Ström": "220-240 V, 50/60 Hz",
+        "Brytare": "Vridreglage på bas",
+        "Storlek": "Ø 28 × H 25 cm",
+        "Material": "Opalglas, borstad aluminium",
+        "Vikt": "2,8 kg",
+        "Sladd": "180 cm",
+        "Garanti": "5 år",
+        "Förpackning": "35 × 35 × 34 cm | 3,7 kg"
+      },
+      "variants": [
+        {"sku": "LUN-T3-OP", "color": "Opalvit / aluminium", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-03-globe.png"}
+      ]
+    },
+    {
+      "code": "T4",
+      "name": "Reed",
+      "category": "Bordslampor",
+      "tagline": "Räfflat glas i ett kompakt format",
+      "description": "Reed använder vertikalt räfflat glas för att ge ljuset struktur utan att skapa hårda skuggor. Den fungerar väl på mindre sidobord, i receptioner och på restaurangbord.",
+      "best_for": ["Sidobord", "Reception", "Restaurangbord"],
+      "specs": {
+        "Ljuskälla": "LED G9, max 5 W",
+        "Ljusflöde": "Rek. 350-500 lm",
+        "Färgtemperatur": "Rek. 2700 K",
+        "Färgåtergivning": "Beror på ljuskälla",
+        "Dimring": "Beror på ljuskälla",
+        "IP-klass": "IP20",
+        "Ström": "220-240 V, 50/60 Hz",
+        "Brytare": "På sladd",
+        "Storlek": "Ø 18 × H 28 cm",
+        "Material": "Räfflat glas, aluminium",
+        "Vikt": "1,9 kg",
+        "Sladd": "180 cm",
+        "Garanti": "3 år",
+        "Förpackning": "24 × 24 × 36 cm | 2,6 kg"
+      },
+      "variants": [
+        {"sku": "LUN-T4-BR", "color": "Opalvit / mässing", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-04-cylinder-v2.png"},
+        {"sku": "LUN-T4-BK", "color": "Opalvit / svart", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-04-cylinder-black-base.png"}
+      ]
+    },
+    {
+      "code": "T5",
+      "name": "Terra",
+      "category": "Bordslampor",
+      "tagline": "Taktil keramik och klassisk textilskärm",
+      "description": "Terra har en rundad keramisk bas och en textilskärm som ger ett varmt, välbekant ljus. Modellen passar representativa arbetsrum, loungeytor och hotellmiljöer.",
+      "best_for": ["Arbetsrum", "Lounge", "Hotell"],
+      "specs": {
+        "Ljuskälla": "LED E27, max 10 W",
+        "Ljusflöde": "Rek. 700-1000 lm",
+        "Färgtemperatur": "Rek. 2700 K",
+        "Färgåtergivning": "Beror på ljuskälla",
+        "Dimring": "Beror på ljuskälla",
+        "IP-klass": "IP20",
+        "Ström": "220-240 V, 50/60 Hz",
+        "Brytare": "På lamphållare",
+        "Storlek": "Ø 36 × H 53 cm",
+        "Material": "Glaserad keramik, textil, stål",
+        "Vikt": "4,1 kg",
+        "Sladd": "200 cm",
+        "Garanti": "3 år",
+        "Förpackning": "44 × 44 × 61 cm | 5,6 kg"
+      },
+      "variants": [
+        {"sku": "LUN-T5-BE", "color": "Beige keramik", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-05-ceramic.png"},
+        {"sku": "LUN-T5-FG", "color": "Skogsgrön keramik", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-05-ceramic-green.png"}
+      ]
+    },
+    {
+      "code": "T6",
+      "name": "Linea",
+      "category": "Bordslampor",
+      "tagline": "Minimal arbetsbelysning med låg visuell vikt",
+      "description": "Linea ger ett jämnt ljus över tangentbord och dokument genom en smal horisontell ljuslist. Den reducerade formen passar flexplatser och moderna kontorsmiljöer.",
+      "best_for": ["Flexplatser", "Bildskärmsarbete", "Studieplatser"],
+      "specs": {
+        "Ljuskälla": "Integrerad LED, 9 W",
+        "Ljusflöde": "760 lm",
+        "Färgtemperatur": "3000-4000 K",
+        "Färgåtergivning": "CRI 92",
+        "Dimring": "Ja, 4 steg",
+        "IP-klass": "IP20",
+        "Ström": "24 V DC, adapter ingår",
+        "Brytare": "Touch på bas",
+        "Storlek": "B 44 × D 18 × H 48 cm",
+        "Material": "Pulverlackerad aluminium",
+        "Vikt": "1,7 kg",
+        "Sladd": "190 cm",
+        "Garanti": "5 år",
+        "Förpackning": "50 × 24 × 54 cm | 2,5 kg"
+      },
+      "variants": [
+        {"sku": "LUN-T6-FG", "color": "Mörkgrön", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-06-bar.png"},
+        {"sku": "LUN-T6-WW", "color": "Varmvit", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-06-bar-warm-white.png"}
+      ]
+    },
+    {
+      "code": "T7",
+      "name": "Skift",
+      "category": "Bordslampor",
+      "tagline": "Enkel form med mjukt nedåtriktat ljus",
+      "description": "Skift är en okomplicerad bordslampa med bred konisk skärm. Ljuset riktas mot underlaget och modellen fungerar på mindre skrivbord, hotellbord och gemensamma arbetsytor.",
+      "best_for": ["Mindre skrivbord", "Hotellbord", "Gemensamma ytor"],
+      "specs": {
+        "Ljuskälla": "Integrerad LED, 7 W",
+        "Ljusflöde": "540 lm",
+        "Färgtemperatur": "2700 K",
+        "Färgåtergivning": "CRI 90",
+        "Dimring": "Ja, 3 steg",
+        "IP-klass": "IP20",
+        "Ström": "220-240 V, 50/60 Hz",
+        "Brytare": "Touch på skärm",
+        "Storlek": "Ø 30 × H 43 cm",
+        "Material": "Pulverlackerat stål",
+        "Vikt": "2,0 kg",
+        "Sladd": "200 cm",
+        "Garanti": "5 år",
+        "Förpackning": "36 × 36 × 50 cm | 2,9 kg"
+      },
+      "variants": [
+        {"sku": "LUN-T7-DB", "color": "Dämpad blå", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-07-cone.png"},
+        {"sku": "LUN-T7-RD", "color": "Tegelröd", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-07-cone-brick-red.png"}
+      ]
+    },
+    {
+      "code": "F1",
+      "name": "Halo",
+      "category": "Golvlampor",
+      "tagline": "Avskärmat ljus för lugna arbets- och mötesytor",
+      "description": "Halo är en smal golvlampa med kupolformad skärm. Den ger ett mjukt, nedåtriktat ljus vid mindre mötesplatser, soffgrupper och individuella arbetsytor.",
+      "best_for": ["Mötesplatser", "Soffgrupper", "Individuellt arbete"],
+      "specs": {
+        "Ljuskälla": "Integrerad LED, 14 W",
+        "Ljusflöde": "1180 lm",
+        "Färgtemperatur": "2700 K",
+        "Färgåtergivning": "CRI 90",
+        "Dimring": "Ja, fotdimmer",
+        "IP-klass": "IP20",
+        "Ström": "220-240 V, 50/60 Hz",
+        "Brytare": "Fotdimmer",
+        "Storlek": "Ø 42 × H 148 cm",
+        "Material": "Pulverlackerat stål, aluminium",
+        "Vikt": "7,8 kg",
+        "Sladd": "250 cm",
+        "Garanti": "5 år",
+        "Förpackning": "48 × 28 × 156 cm | 10,2 kg"
+      },
+      "variants": [
+        {"sku": "LUN-F1-WW", "color": "Varmvit", "image": "source-assets/nextgen/lighting-catalog/base-models/floor-lamp-01-dome.png"},
+        {"sku": "LUN-F1-DB", "color": "Dämpad blå", "image": "source-assets/nextgen/lighting-catalog/color-variants/floor-lamp-01-dome-dusty-blue.png"}
+      ]
+    },
+    {
+      "code": "F2",
+      "name": "Arc",
+      "category": "Golvlampor",
+      "tagline": "Ljus över sittplatsen utan takinstallation",
+      "description": "Arc för ljuset ut från väggen och in över en sitt- eller arbetsplats. Den välvda armen och tunga basen gör modellen lämplig för loungeytor och läshörnor.",
+      "best_for": ["Läshörnor", "Lounge", "Soffgrupper"],
+      "specs": {
+        "Ljuskälla": "2 × LED E27, max 10 W",
+        "Ljusflöde": "Rek. 1600-2200 lm totalt",
+        "Färgtemperatur": "Rek. 2700 K",
+        "Färgåtergivning": "Beror på ljuskälla",
+        "Dimring": "Beror på ljuskälla",
+        "IP-klass": "IP20",
+        "Ström": "220-240 V, 50/60 Hz",
+        "Brytare": "Fotbrytare",
+        "Storlek": "B 78 × D 42 × H 182 cm",
+        "Material": "Pulverlackerat stål",
+        "Vikt": "11,6 kg",
+        "Sladd": "280 cm",
+        "Garanti": "3 år",
+        "Förpackning": "92 × 52 × 34 cm | 14,9 kg"
+      },
+      "variants": [
+        {"sku": "LUN-F2-CH", "color": "Kolsvart", "image": "source-assets/nextgen/lighting-catalog/base-models/floor-lamp-02-arc.png"},
+        {"sku": "LUN-F2-WW", "color": "Varmvit", "image": "source-assets/nextgen/lighting-catalog/color-variants/floor-lamp-02-arc-warm-white.png"}
+      ]
+    },
+    {
+      "code": "F3",
+      "name": "Tripod",
+      "category": "Golvlampor",
+      "tagline": "Varmt omgivningsljus med trädetaljer",
+      "description": "Tripod kombinerar en generös textilskärm med tre ben i ljus ek. Den ger ett mjukt omgivningsljus och passar avslappnade mötesrum, loungeytor och hotellmiljöer.",
+      "best_for": ["Lounge", "Hotell", "Avslappnade mötesrum"],
+      "specs": {
+        "Ljuskälla": "LED E27, max 12 W",
+        "Ljusflöde": "Rek. 900-1200 lm",
+        "Färgtemperatur": "Rek. 2700 K",
+        "Färgåtergivning": "Beror på ljuskälla",
+        "Dimring": "Beror på ljuskälla",
+        "IP-klass": "IP20",
+        "Ström": "220-240 V, 50/60 Hz",
+        "Brytare": "Fotbrytare",
+        "Storlek": "Ø 58 × H 154 cm",
+        "Material": "Ek, textil, stål",
+        "Vikt": "6,4 kg",
+        "Sladd": "260 cm",
+        "Garanti": "3 år",
+        "Förpackning": "64 × 28 × 162 cm | 8,8 kg"
+      },
+      "variants": [
+        {"sku": "LUN-F3-WH", "color": "Vit skärm / ek", "image": "source-assets/nextgen/lighting-catalog/base-models/floor-lamp-03-tripod.png"},
+        {"sku": "LUN-F3-SA", "color": "Sandskärm / ek", "image": "source-assets/nextgen/lighting-catalog/color-variants/floor-lamp-03-tripod-sand-shade.png"}
+      ]
+    },
+    {
+      "code": "W1",
+      "name": "Beam",
+      "category": "Vägglampor",
+      "tagline": "Riktbart ljus i ett litet format",
+      "description": "Beam är en kompakt vägglampa med riktbar konisk skärm. Den kan användas som läslampa, punktbelysning eller diskret kompletterande ljus i korridorer och hotellrum.",
+      "best_for": ["Läsning", "Hotellrum", "Korridor"],
+      "specs": {
+        "Ljuskälla": "LED GU10, max 7 W",
+        "Ljusflöde": "Rek. 400-600 lm",
+        "Färgtemperatur": "Rek. 2700-3000 K",
+        "Färgåtergivning": "Beror på ljuskälla",
+        "Dimring": "Beror på installation",
+        "IP-klass": "IP20",
+        "Ström": "220-240 V, 50/60 Hz",
+        "Brytare": "Extern brytare",
+        "Storlek": "B 14 × D 20 × H 15 cm",
+        "Material": "Pulverlackerat stål",
+        "Vikt": "0,9 kg",
+        "Installation": "Fast vägganslutning",
+        "Garanti": "3 år",
+        "Förpackning": "24 × 19 × 20 cm | 1,3 kg"
+      },
+      "variants": [
+        {"sku": "LUN-W1-BK", "color": "Mjuksvart", "image": "source-assets/nextgen/lighting-catalog/base-models/wall-lamp-01-cone.png"},
+        {"sku": "LUN-W1-DB", "color": "Dämpad blå", "image": "source-assets/nextgen/lighting-catalog/color-variants/wall-lamp-01-cone-dusty-blue.png"}
+      ]
+    },
+    {
+      "code": "W2",
+      "name": "Orb",
+      "category": "Vägglampor",
+      "tagline": "Mjuk opalglob för jämnt allmänljus",
+      "description": "Orb kombinerar en liten opalglob med en ren cirkulär väggplatta. Den passar spegelzoner, korridorer, hotellrum och mindre sociala ytor.",
+      "best_for": ["Korridor", "Hotellrum", "Spegelzon"],
+      "specs": {
+        "Ljuskälla": "LED G9, max 5 W",
+        "Ljusflöde": "Rek. 350-500 lm",
+        "Färgtemperatur": "Rek. 2700 K",
+        "Färgåtergivning": "Beror på ljuskälla",
+        "Dimring": "Beror på installation",
+        "IP-klass": "IP20",
+        "Ström": "220-240 V, 50/60 Hz",
+        "Brytare": "Extern brytare",
+        "Storlek": "B 18 × D 19 × H 18 cm",
+        "Material": "Opalglas, aluminium",
+        "Vikt": "1,2 kg",
+        "Installation": "Fast vägganslutning",
+        "Garanti": "3 år",
+        "Förpackning": "25 × 25 × 27 cm | 1,8 kg"
+      },
+      "variants": [
+        {"sku": "LUN-W2-BR", "color": "Opalvit / mässing", "image": "source-assets/nextgen/lighting-catalog/base-models/wall-lamp-02-opal.png"},
+        {"sku": "LUN-W2-BK", "color": "Opalvit / svart", "image": "source-assets/nextgen/lighting-catalog/color-variants/wall-lamp-02-opal-black.png"}
+      ]
+    },
+    {
+      "code": "P1",
+      "name": "Canopy",
+      "category": "Taklampor",
+      "tagline": "Brett nedåtriktat ljus för bord och samlingsytor",
+      "description": "Canopy är en generös pendel med låg kupol och vit insida. Den sprider ljuset över mötesbord, restaurangbord och gemensamma arbetsytor utan att dominera rummet.",
+      "best_for": ["Mötesbord", "Restaurang", "Gemensamma arbetsytor"],
+      "specs": {
+        "Ljuskälla": "3 × LED E27, max 10 W",
+        "Ljusflöde": "Rek. 2400-3300 lm totalt",
+        "Färgtemperatur": "Rek. 2700-3000 K",
+        "Färgåtergivning": "Beror på ljuskälla",
+        "Dimring": "Beror på installation",
+        "IP-klass": "IP20",
+        "Ström": "220-240 V, 50/60 Hz",
+        "Brytare": "Extern brytare",
+        "Storlek": "Ø 68 × H 24 cm",
+        "Material": "Pulverlackerad aluminium",
+        "Vikt": "5,2 kg",
+        "Sladd": "300 cm, justerbar",
+        "Garanti": "3 år",
+        "Förpackning": "76 × 76 × 33 cm | 7,4 kg"
+      },
+      "variants": [
+        {"sku": "LUN-P1-FG", "color": "Skogsgrön", "image": "source-assets/nextgen/lighting-catalog/base-models/pendant-lamp-01-dome.png"},
+        {"sku": "LUN-P1-RD", "color": "Tegelröd", "image": "source-assets/nextgen/lighting-catalog/color-variants/pendant-lamp-01-dome-brick-red.png"}
+      ]
+    }
+  ]
+}

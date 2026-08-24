@@ -8,4 +8,5 @@ site/
 .venv
 venv/
 bra.txt
-docs/11-set-up-for-production.md
+docs/copilot-studio/standard/11-set-up-for-production.md
+artifacts/

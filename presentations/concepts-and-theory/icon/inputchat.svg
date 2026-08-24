@@ -1,0 +1,44 @@
+<svg width="960" height="140" viewBox="0 0 960 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="0" y="0" width="960" height="140" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="sendGrad" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F7CFF"/>
+      <stop offset="1" stop-color="#7A5CFF"/>
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <rect x="30" y="26" width="900" height="88" rx="28" fill="#FFFFFF"/>
+    <rect x="30.75" y="26.75" width="898.5" height="86.5" rx="27.25" stroke="#E5E7EB" stroke-width="1.5"/>
+  </g>
+
+  <!-- vänster ikon -->
+  <g>
+    <circle cx="82" cy="70" r="20" fill="#F3F4F6"/>
+    <path d="M82 61V79" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M73 70H91" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- placeholder text -->
+  <text x="122" y="76" fill="#9CA3AF" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="500">
+    Skriv ett meddelande...
+  </text>
+
+  <!-- liten ikon till höger -->
+  <g opacity="0.95">
+    <rect x="804" y="50" width="40" height="40" rx="20" fill="#F3F4F6"/>
+    <path d="M824 61C821.791 61 820 62.7909 820 65V71C820 73.2091 821.791 75 824 75C826.209 75 828 73.2091 828 71V65C828 62.7909 826.209 61 824 61Z" stroke="#6B7280" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M817 70V71C817 74.866 820.134 78 824 78C827.866 78 831 74.866 831 71V70" stroke="#6B7280" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M824 78V82" stroke="#6B7280" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M820.5 82H827.5" stroke="#6B7280" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+
+  <!-- send button -->
+  <g>
+    <rect x="856" y="42" width="56" height="56" rx="28" fill="url(#sendGrad)"/>
+    <path d="M884 81V59" stroke="white" stroke-width="3.6" stroke-linecap="round"/>
+    <path d="M876 67L884 59L892 67" stroke="white" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

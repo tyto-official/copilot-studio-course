@@ -2,7 +2,7 @@
 
 I kursen lärde vi oss lägga till kunskap via dokument och webbsidor. Men hur fungerar det egentligen bakom kulisserna? Och vad gör man när den vanliga kunskapssökningen inte räcker?
 
-![Kunskapskällor i Copilot Studio](../assets/images/tips-knowledge/1.png)
+![Kunskapskällor i Copilot Studio](../assets/standard/images/tips-knowledge/1.png)
 
 ---
 
@@ -130,17 +130,17 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 
 1.  Klicka på **Verktyg** i menyn och sedan på **+ Lägg till**.
 
-    ![Lägg till verktyg](../assets/images/tips-knowledge/2.png)
+    ![Lägg till verktyg](../assets/standard/images/tips-knowledge/2.png)
 
 2.  Välj **Agentflöden** för att skapa ett nytt agentflöde.
 
-    ![Välj agentflöden](../assets/images/tips-knowledge/3.png)
+    ![Välj agentflöden](../assets/standard/images/tips-knowledge/3.png)
 
 2.  Du ser två noder:
     - **När en agent anropar flödet** (Indata)
     - **Respond to the agent** (Utdata)
 
-    ![Två noder](../assets/images/tips-knowledge/3.png)
+    ![Två noder](../assets/standard/images/tips-knowledge/3.png)
 
 3.  **Viktigt:** Lägg **inte** till några indataparametrar. Flödet ska alltid hämta samma fil – ingen input behövs.
 
@@ -148,33 +148,33 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 
 1.  Klicka på **plus-tecknet (+)** mellan de två noderna.
 
-    ![Plus-tecknet](../assets/images/tips-knowledge/4.png)
+    ![Plus-tecknet](../assets/standard/images/tips-knowledge/4.png)
 
 2.  Sök efter **Hämta filinnehåll** – välj SharePoint- eller OneDrive-varianten beroende på var din fil ligger.
 
-    ![Sök hämta filinnehåll](../assets/images/tips-knowledge/5.png)
+    ![Sök hämta filinnehåll](../assets/standard/images/tips-knowledge/5.png)
 
 3.  Konfigurera noden:
     - **Webbplatsadress:** Välj din SharePoint-sida.
 
     - **Fil:** Navigera till den specifika filen du vill hämta.
 
-    ![Välj fil](../assets/images/tips-knowledge/6.png)
+    ![Välj fil](../assets/standard/images/tips-knowledge/6.png)
 
 #### 3. Konfigurera utdata
 
 1.  Klicka på noden **Respond to the agent**.
 
-    ![Respond to the agent](../assets/images/tips-knowledge/7.png)
+    ![Respond to the agent](../assets/standard/images/tips-knowledge/7.png)
 
 2.  Klicka **+ Lägg till utdata** → **Text**.
 
-    ![Lägg till utdata](../assets/images/tips-knowledge/8.png)
+    ![Lägg till utdata](../assets/standard/images/tips-knowledge/8.png)
 
 3.  Döp utdatan till ett passande namn, t.ex. `innehåll`.
 4.  Klicka på **fx**-symbolen (Infoga uttryck).
 
-    ![FX-symbolen](../assets/images/tips-knowledge/9.png)
+    ![FX-symbolen](../assets/standard/images/tips-knowledge/9.png)
 
 5.  Skriv in följande uttryck:
 
@@ -186,21 +186,21 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 
 6.  Klicka **Lägg till**.
 
-    ![Uttryck för filinnehåll](../assets/images/tips-knowledge/10.png)
+    ![Uttryck för filinnehåll](../assets/standard/images/tips-knowledge/10.png)
 
 #### 4. Spara och publicera
 
 1.  Klicka **Spara utkast**.
 
-    ![Spara utkast](../assets/images/tips-knowledge/12.png)
+    ![Spara utkast](../assets/standard/images/tips-knowledge/12.png)
 
 2.  Klicka på **Översikt** (till vänster om flödesnamnet).
 
-    ![Översikt](../assets/images/tips-knowledge/13.png)
+    ![Översikt](../assets/standard/images/tips-knowledge/13.png)
 
 3.  Klicka **Redigera** under *Detaljer*.
 
-    ![Redigera](../assets/images/tips-knowledge/14.png)
+    ![Redigera](../assets/standard/images/tips-knowledge/14.png)
 
 4.  Ge flödet ett passande namn, t.ex.:
 
@@ -216,34 +216,34 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 
 6.  Klicka **Spara**.
 
-    ![Spara detaljer](../assets/images/tips-knowledge/15.png)
+    ![Spara detaljer](../assets/standard/images/tips-knowledge/15.png)
 
 7.  Gå tillbaka till **Designer** och klicka på **Publicera**.
 
-    ![Designer](../assets/images/tips-knowledge/16.png)
+    ![Designer](../assets/standard/images/tips-knowledge/16.png)
 
-    ![Publicera](../assets/images/tips-knowledge/17.png)
+    ![Publicera](../assets/standard/images/tips-knowledge/17.png)
 
 8.  Om allt fungerar får du en grön bekräftelseruta.
 
-    ![Grön bekräftelse](../assets/images/tips-knowledge/18.png)
+    ![Grön bekräftelse](../assets/standard/images/tips-knowledge/18.png)
 
 #### 5. Lägg till som verktyg i agenten
 
 1.  Navigera till din agent.
 2.  Klicka på **Lägg till ett verktyg** → **Agentflöden**.
 
-    ![Lägg till verktyg](../assets/images/tips-knowledge/19.png)
+    ![Lägg till verktyg](../assets/standard/images/tips-knowledge/19.png)
 
-    ![Välj flöde](../assets/images/tips-knowledge/20.png)
+    ![Välj flöde](../assets/standard/images/tips-knowledge/20.png)
 
 3.  Välj ditt nyligen skapade flöde (**Produktinformation**).
 
-    ![Välj flöde](../assets/images/tips-knowledge/21.png)
+    ![Välj flöde](../assets/standard/images/tips-knowledge/21.png)
 
 4.  Klicka **Lägg till och konfigurera**.
 
-    ![Lägg till och konfigurera](../assets/images/tips-knowledge/22.png)
+    ![Lägg till och konfigurera](../assets/standard/images/tips-knowledge/22.png)
 
 5.  Kontrollera att **namn** och **beskrivning** stämmer:
     - **Namn:** `Produktinformation` (bör redan vara ifyllt)
@@ -252,7 +252,7 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
       Detta verktyg genererar hela texten för företagets produktinformationsdokument.
       ```
 
-    ![Konfigurera verktyg](../assets/images/tips-knowledge/23.png)
+    ![Konfigurera verktyg](../assets/standard/images/tips-knowledge/23.png)
 
 6.  **Spara** verktygskonfigurationen.
 
@@ -268,7 +268,7 @@ Ibland räcker det inte med RAG. Om agenten behöver se **hela dokumentets inneh
 
     *(Kom ihåg att välja verktyget från popupmenyn så att det blir en aktiv länk.)*
 
-    ![Instruktioner](../assets/images/tips-knowledge/24.png)
+    ![Instruktioner](../assets/standard/images/tips-knowledge/24.png)
 
 4.  Klicka **Spara**.
 
