@@ -1,16 +1,66 @@
 {% extends "base.html" %}
 
 {#
-  Sätter data-track på <html> innan sidan målas, så att varje utbildning
-  kan ha sin egen accentfärg i navigation, länkar och rubriker.
-  Färgerna definieras i docs/stylesheets/extra.css (html[data-track="..."]).
+  Två saker sätts på <html> redan i <head>, innan sidan målas:
+
+  1. data-track  – vilken utbildning sidan tillhör, så att kursens accentfärg
+                   slår igenom direkt utan färgblink. Färgerna definieras i
+                   docs/stylesheets/extra.css (html[data-track="..."]).
+  2. is-scrolled – headern är genomskinlig i vila och får sin frostade yta
+                   först när sidan scrollas. Materials egen .md-header--shadow
+                   duger inte här: den sätts redan vid scroll 0 när hero-ytan
+                   ligger bakom headern.
 #}
 {% block extrahead %}
   {{ super() }}
   {%- set track = "standard" if page and page.url.startswith("copilot-studio/standard/")
                   else "nextgen" if page and page.url.startswith("copilot-studio/nextgen/")
                   else "" -%}
-  {%- if track %}
-  <script>document.documentElement.setAttribute("data-track", "{{ track }}");</script>
-  {%- endif %}
+  <script>
+    (function () {
+      var root = document.documentElement;
+      {% if track %}root.setAttribute("data-track", "{{ track }}");{% endif %}
+      var sync = function () { root.classList.toggle("is-scrolled", window.scrollY > 8); };
+      addEventListener("scroll", sync, { passive: true });
+      addEventListener("DOMContentLoaded", sync);
+      sync();
+    })();
+  </script>
+  <script>
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-copy-value]");
+      if (!button) return;
+
+      var value = button.getAttribute("data-copy-value");
+      var label = button.querySelector(".copy-field__label");
+
+      var fallbackCopy = function () {
+        var input = document.createElement("textarea");
+        input.value = value;
+        input.setAttribute("readonly", "");
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+      };
+
+      var showCopied = function () {
+        label.textContent = "Kopierat";
+        button.classList.add("is-copied");
+        setTimeout(function () {
+          label.textContent = "Kopiera";
+          button.classList.remove("is-copied");
+        }, 1800);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).catch(fallbackCopy).then(showCopied);
+      } else {
+        fallbackCopy();
+        showCopied();
+      }
+    });
+  </script>
 {% endblock %}

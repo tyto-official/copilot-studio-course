@@ -14,7 +14,7 @@ from reportlab.pdfgen import canvas
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA_PATH = ROOT / "data" / "nextgen" / "catalog.json"
-OUTPUT_PATH = ROOT / "docs" / "downloads" / "nextgen" / "lunaro-lighting-collection-2026.pdf"
+OUTPUT_PATH = ROOT / "docs" / "downloads" / "nextgen" / "lyserno-lighting-collection-2026.pdf"
 
 PAGE_W, PAGE_H = A4
 MARGIN = 38
@@ -109,7 +109,7 @@ def draw_contain_image(c: canvas.Canvas, path: Path, x: float, y: float, w: floa
     c.drawImage(image, dx, dy, width=dw, height=dh, mask="auto")
 
 
-def footer(c: canvas.Canvas, page_number: int, label: str = "LUNARO LIGHTING") -> None:
+def footer(c: canvas.Canvas, page_number: int, label: str = "LYSERNO LIGHTING") -> None:
     c.setStrokeColor(LIGHT)
     c.setLineWidth(0.5)
     c.line(MARGIN, 24, PAGE_W - MARGIN, 24)
@@ -119,7 +119,7 @@ def footer(c: canvas.Canvas, page_number: int, label: str = "LUNARO LIGHTING") -
     c.drawRightString(PAGE_W - MARGIN, 12, str(page_number))
 
 
-def start_page(c: canvas.Canvas, page_number: int, label: str = "LUNARO LIGHTING") -> None:
+def start_page(c: canvas.Canvas, page_number: int, label: str = "LYSERNO LIGHTING") -> None:
     c.setFillColor(WHITE)
     c.rect(0, 0, PAGE_W, PAGE_H, stroke=0, fill=1)
     if page_number not in (1, 34):
@@ -165,14 +165,14 @@ def intro_page(c: canvas.Canvas, data: dict, page_number: int) -> None:
     c.drawString(MARGIN, PAGE_H - 112, "ARBETE OCH")
     c.drawString(MARGIN, PAGE_H - 142, "SAMVARO")
     c.setFont("Helvetica", 8)
-    c.drawString(MARGIN, 54, "LUNARO STUDIO")
+    c.drawString(MARGIN, 54, "LYSERNO STUDIO")
     x = PAGE_W * 0.43
     c.setFillColor(INK)
     c.setFont("Helvetica-Bold", 12)
     c.drawString(x, PAGE_H - 76, "EN SAMMANHÅLLEN KOLLEKTION")
     y = PAGE_H - 106
     paragraphs = [
-        "Lunaro är ett fiktivt belysningsvarumärke skapat för utbildning. Kollektionen visar hur stabil produktkunskap kan beskrivas i en omfattande katalog medan aktuella uppgifter om pris, lager och leverans hanteras separat.",
+        "Lyserno är ett fiktivt belysningsvarumärke skapat för utbildning. Kollektionen visar hur stabil produktkunskap kan beskrivas i en omfattande katalog medan aktuella uppgifter om pris, lager och leverans hanteras separat.",
         "De tretton modellfamiljerna är utvecklade för kontor, mötesplatser, hotell och gemensamma miljöer. Sortimentet omfattar bordslampor, golvlampor, vägglampor och en pendel.",
         "Katalogen beskriver egenskaper som mått, material, ljusflöde, färgtemperatur, dimring, IP-klass och installation. Alla uppgifter är fiktiva och ska inte användas som verklig produkt- eller säkerhetsdokumentation.",
     ]
@@ -302,7 +302,7 @@ def section_page(
 
 
 def product_page(c: canvas.Canvas, model: dict, page_number: int) -> None:
-    start_page(c, page_number, f"LUNARO | {model['category'].upper()}")
+    start_page(c, page_number, f"LYSERNO | {model['category'].upper()}")
     key = f"model-{model['code'].lower()}"
     add_bookmark(c, key, f"{model['name']} {model['code']}", level=1)
     c.setFillColor(INK)
@@ -310,7 +310,7 @@ def product_page(c: canvas.Canvas, model: dict, page_number: int) -> None:
     c.drawString(MARGIN, PAGE_H - 58, f"{model['name'].upper()} | {model['code']}")
     c.setFont("Helvetica", 8)
     c.setFillColor(MID)
-    c.drawString(MARGIN, PAGE_H - 76, "DESIGN: LUNARO STUDIO")
+    c.drawString(MARGIN, PAGE_H - 76, "DESIGN: LYSERNO STUDIO")
     c.setFont("Helvetica-Bold", 8.5)
     c.setFillColor(GREEN)
     c.drawRightString(PAGE_W - MARGIN, PAGE_H - 60, model["category"].upper())
@@ -625,7 +625,7 @@ def build() -> None:
     models = data["models"]
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     c = canvas.Canvas(str(OUTPUT_PATH), pagesize=A4, pageCompression=1)
-    c.setTitle("Lunaro Lighting Collection 2026")
+    c.setTitle("Lyserno Lighting Collection 2026")
     c.setAuthor("Tyto - fiktivt utbildningsmaterial")
     c.setSubject("Produktkatalog för Copilot Studio-utbildning")
     c.setCreator("ReportLab")

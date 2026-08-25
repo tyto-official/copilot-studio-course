@@ -1,5 +1,5 @@
 {
-  "brand": "LUNARO",
+  "brand": "LYSERNO",
   "catalog_title": "LIGHTING COLLECTION 2026",
   "language": "sv-SE",
   "disclaimer": "Fiktivt utbildningsmaterial. Produkter, specifikationer och artikelnummer är skapade för en Copilot Studio-kurs.",
@@ -28,8 +28,8 @@
         "Förpackning": "39 × 39 × 48 cm | 3,2 kg"
       },
       "variants": [
-        {"sku": "LUN-T1-WW", "color": "Varmvit", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-01-dome.png"},
-        {"sku": "LUN-T1-FG", "color": "Skogsgrön", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-01-dome-forest-green.png"}
+        {"sku": "LYS-T1-WW", "color": "Varmvit", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-01-dome.png"},
+        {"sku": "LYS-T1-FG", "color": "Skogsgrön", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-01-dome-forest-green.png"}
       ]
     },
     {
@@ -56,8 +56,8 @@
         "Förpackning": "28 × 16 × 57 cm | 2,8 kg"
       },
       "variants": [
-        {"sku": "LUN-T2-BK", "color": "Mjuksvart", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-02-task-v2.png"},
-        {"sku": "LUN-T2-SA", "color": "Sand", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-02-task-sand.png"}
+        {"sku": "LYS-T2-BK", "color": "Mjuksvart", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-02-task-v2.png"},
+        {"sku": "LYS-T2-SA", "color": "Sand", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-02-task-sand.png"}
       ]
     },
     {
@@ -84,7 +84,7 @@
         "Förpackning": "35 × 35 × 34 cm | 3,7 kg"
       },
       "variants": [
-        {"sku": "LUN-T3-OP", "color": "Opalvit / aluminium", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-03-globe.png"}
+        {"sku": "LYS-T3-OP", "color": "Opalvit / aluminium", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-03-globe.png"}
       ]
     },
     {
@@ -111,8 +111,8 @@
         "Förpackning": "24 × 24 × 36 cm | 2,6 kg"
       },
       "variants": [
-        {"sku": "LUN-T4-BR", "color": "Opalvit / mässing", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-04-cylinder-v2.png"},
-        {"sku": "LUN-T4-BK", "color": "Opalvit / svart", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-04-cylinder-black-base.png"}
+        {"sku": "LYS-T4-BR", "color": "Opalvit / mässing", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-04-cylinder-v2.png"},
+        {"sku": "LYS-T4-BK", "color": "Opalvit / svart", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-04-cylinder-black-base.png"}
       ]
     },
     {
@@ -139,8 +139,8 @@
         "Förpackning": "44 × 44 × 61 cm | 5,6 kg"
       },
       "variants": [
-        {"sku": "LUN-T5-BE", "color": "Beige keramik", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-05-ceramic.png"},
-        {"sku": "LUN-T5-FG", "color": "Skogsgrön keramik", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-05-ceramic-green.png"}
+        {"sku": "LYS-T5-BE", "color": "Beige keramik", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-05-ceramic.png"},
+        {"sku": "LYS-T5-FG", "color": "Skogsgrön keramik", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-05-ceramic-green.png"}
       ]
     },
     {
@@ -167,8 +167,8 @@
         "Förpackning": "50 × 24 × 54 cm | 2,5 kg"
       },
       "variants": [
-        {"sku": "LUN-T6-FG", "color": "Mörkgrön", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-06-bar.png"},
-        {"sku": "LUN-T6-WW", "color": "Varmvit", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-06-bar-warm-white.png"}
+        {"sku": "LYS-T6-FG", "color": "Mörkgrön", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-06-bar.png"},
+        {"sku": "LYS-T6-WW", "color": "Varmvit", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-06-bar-warm-white.png"}
       ]
     },
     {
@@ -195,8 +195,8 @@
         "Förpackning": "36 × 36 × 50 cm | 2,9 kg"
       },
       "variants": [
-        {"sku": "LUN-T7-DB", "color": "Dämpad blå", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-07-cone.png"},
-        {"sku": "LUN-T7-RD", "color": "Tegelröd", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-07-cone-brick-red.png"}
+        {"sku": "LYS-T7-DB", "color": "Dämpad blå", "image": "source-assets/nextgen/lighting-catalog/base-models/table-lamp-07-cone.png"},
+        {"sku": "LYS-T7-RD", "color": "Tegelröd", "image": "source-assets/nextgen/lighting-catalog/color-variants/table-lamp-07-cone-brick-red.png"}
       ]
     },
     {
@@ -223,8 +223,8 @@
         "Förpackning": "48 × 28 × 156 cm | 10,2 kg"
       },
       "variants": [
-        {"sku": "LUN-F1-WW", "color": "Varmvit", "image": "source-assets/nextgen/lighting-catalog/base-models/floor-lamp-01-dome.png"},
-        {"sku": "LUN-F1-DB", "color": "Dämpad blå", "image": "source-assets/nextgen/lighting-catalog/color-variants/floor-lamp-01-dome-dusty-blue.png"}
+        {"sku": "LYS-F1-WW", "color": "Varmvit", "image": "source-assets/nextgen/lighting-catalog/base-models/floor-lamp-01-dome.png"},
+        {"sku": "LYS-F1-DB", "color": "Dämpad blå", "image": "source-assets/nextgen/lighting-catalog/color-variants/floor-lamp-01-dome-dusty-blue.png"}
       ]
     },
     {
@@ -251,8 +251,8 @@
         "Förpackning": "92 × 52 × 34 cm | 14,9 kg"
       },
       "variants": [
-        {"sku": "LUN-F2-CH", "color": "Kolsvart", "image": "source-assets/nextgen/lighting-catalog/base-models/floor-lamp-02-arc.png"},
-        {"sku": "LUN-F2-WW", "color": "Varmvit", "image": "source-assets/nextgen/lighting-catalog/color-variants/floor-lamp-02-arc-warm-white.png"}
+        {"sku": "LYS-F2-CH", "color": "Kolsvart", "image": "source-assets/nextgen/lighting-catalog/base-models/floor-lamp-02-arc.png"},
+        {"sku": "LYS-F2-WW", "color": "Varmvit", "image": "source-assets/nextgen/lighting-catalog/color-variants/floor-lamp-02-arc-warm-white.png"}
       ]
     },
     {
@@ -279,8 +279,8 @@
         "Förpackning": "64 × 28 × 162 cm | 8,8 kg"
       },
       "variants": [
-        {"sku": "LUN-F3-WH", "color": "Vit skärm / ek", "image": "source-assets/nextgen/lighting-catalog/base-models/floor-lamp-03-tripod.png"},
-        {"sku": "LUN-F3-SA", "color": "Sandskärm / ek", "image": "source-assets/nextgen/lighting-catalog/color-variants/floor-lamp-03-tripod-sand-shade.png"}
+        {"sku": "LYS-F3-WH", "color": "Vit skärm / ek", "image": "source-assets/nextgen/lighting-catalog/base-models/floor-lamp-03-tripod.png"},
+        {"sku": "LYS-F3-SA", "color": "Sandskärm / ek", "image": "source-assets/nextgen/lighting-catalog/color-variants/floor-lamp-03-tripod-sand-shade.png"}
       ]
     },
     {
@@ -307,8 +307,8 @@
         "Förpackning": "24 × 19 × 20 cm | 1,3 kg"
       },
       "variants": [
-        {"sku": "LUN-W1-BK", "color": "Mjuksvart", "image": "source-assets/nextgen/lighting-catalog/base-models/wall-lamp-01-cone.png"},
-        {"sku": "LUN-W1-DB", "color": "Dämpad blå", "image": "source-assets/nextgen/lighting-catalog/color-variants/wall-lamp-01-cone-dusty-blue.png"}
+        {"sku": "LYS-W1-BK", "color": "Mjuksvart", "image": "source-assets/nextgen/lighting-catalog/base-models/wall-lamp-01-cone.png"},
+        {"sku": "LYS-W1-DB", "color": "Dämpad blå", "image": "source-assets/nextgen/lighting-catalog/color-variants/wall-lamp-01-cone-dusty-blue.png"}
       ]
     },
     {
@@ -335,8 +335,8 @@
         "Förpackning": "25 × 25 × 27 cm | 1,8 kg"
       },
       "variants": [
-        {"sku": "LUN-W2-BR", "color": "Opalvit / mässing", "image": "source-assets/nextgen/lighting-catalog/base-models/wall-lamp-02-opal.png"},
-        {"sku": "LUN-W2-BK", "color": "Opalvit / svart", "image": "source-assets/nextgen/lighting-catalog/color-variants/wall-lamp-02-opal-black.png"}
+        {"sku": "LYS-W2-BR", "color": "Opalvit / mässing", "image": "source-assets/nextgen/lighting-catalog/base-models/wall-lamp-02-opal.png"},
+        {"sku": "LYS-W2-BK", "color": "Opalvit / svart", "image": "source-assets/nextgen/lighting-catalog/color-variants/wall-lamp-02-opal-black.png"}
       ]
     },
     {
@@ -363,8 +363,8 @@
         "Förpackning": "76 × 76 × 33 cm | 7,4 kg"
       },
       "variants": [
-        {"sku": "LUN-P1-FG", "color": "Skogsgrön", "image": "source-assets/nextgen/lighting-catalog/base-models/pendant-lamp-01-dome.png"},
-        {"sku": "LUN-P1-RD", "color": "Tegelröd", "image": "source-assets/nextgen/lighting-catalog/color-variants/pendant-lamp-01-dome-brick-red.png"}
+        {"sku": "LYS-P1-FG", "color": "Skogsgrön", "image": "source-assets/nextgen/lighting-catalog/base-models/pendant-lamp-01-dome.png"},
+        {"sku": "LYS-P1-RD", "color": "Tegelröd", "image": "source-assets/nextgen/lighting-catalog/color-variants/pendant-lamp-01-dome-brick-red.png"}
       ]
     }
   ]

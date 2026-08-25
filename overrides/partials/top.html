@@ -1,0 +1,13 @@
+{#
+  Tillbaka-till-toppen visas bara på vanliga innehållssidor.
+  Portalen och kursöversikterna är helskärmssidor som döljer navigationen
+  (hide: navigation i frontmatter) – där ska knappen inte finnas alls.
+#}
+{%- set hidden = page.meta.hide if page and page.meta and page.meta.hide else [] -%}
+{%- if "navigation" not in hidden %}
+<button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  {% set icon = config.theme.icon.top or "material/arrow-up" %}
+  {% include ".icons/" ~ icon ~ ".svg" %}
+  {{ lang.t("top") }}
+</button>
+{%- endif %}

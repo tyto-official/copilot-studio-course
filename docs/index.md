@@ -14,10 +14,13 @@ hide:
     <div class="portal-hero__composition" aria-hidden="true">
       <div class="orbit orbit--one"></div>
       <div class="orbit orbit--two"></div>
-      <div class="agent-node agent-node--main"><span>Agent</span><small>Resonerar och agerar</small></div>
+      <div class="agent-node agent-node--instructions"><span>Instruktioner</span></div>
       <div class="agent-node agent-node--knowledge"><span>Kunskap</span></div>
       <div class="agent-node agent-node--tools"><span>Verktyg</span></div>
       <div class="agent-node agent-node--flow"><span>Flöden</span></div>
+      <div class="agent-node agent-node--skills"><span>Skills</span></div>
+      <div class="agent-node agent-node--sandbox"><span>Sandlåda</span></div>
+      <div class="agent-node agent-node--main"><span>Agent</span><small>Resonerar och agerar</small></div>
     </div>
   </section>
 
@@ -39,7 +42,7 @@ hide:
         <h3>Bygg en standardagent</h3>
         <p>Skapa en IT-supportagent med SharePoint, kunskap, ämnen, adaptiva kort, flöden, autonomi och multi-agent-orkestrering.</p>
         <div class="course-card__meta"><span>11 kapitel</span><span>Praktisk grundnivå</span></div>
-        <a class="text-link" href="copilot-studio/standard/">Öppna utbildningen <span>→</span></a>
+        <a class="text-link" href="copilot-studio/standard/">Öppna utbildningen</a>
       </div>
     </article>
 
@@ -51,10 +54,54 @@ hide:
       <div class="course-card__body">
         <h3>Bygg en instruktionsdriven agent</h3>
         <p>Arbeta med modell, instruktioner, PDF-kunskap, aktuell SharePoint-data, skills och arbetsflöden i den nya agentupplevelsen.</p>
-        <div class="course-card__meta"><span>Scenariobaserad</span><span>Lunaro produktagent</span></div>
-        <a class="text-link" href="copilot-studio/nextgen/">Se kursupplägget <span>→</span></a>
+        <div class="course-card__meta"><span>Scenariobaserad</span><span>Lyserno produktagent</span></div>
+        <a class="text-link" href="copilot-studio/nextgen/">Se kursupplägget</a>
       </div>
     </article>
+  </section>
+
+  <section class="compare-section" id="skillnader">
+    <div class="compare-section__heading">
+      <div class="section-label">SÅ SKILJER DE SIG</div>
+      <h2>Vilken av dem passar din uppgift?</h2>
+      <p>De två upplevelserna är byggda för olika sorters arbete, och båda finns kvar parallellt – Microsoft anger att agenter byggda med standardharnessen fortsatt har fullt stöd vid sidan av agenter som drivs av GitHub Copilot-harnessen. Det handlar alltså om ett vägval, inte om en nyare version som ersätter en äldre. Sammanställningen nedan följer Microsofts egen dokumentation.</p>
+    </div>
+
+    <div class="compare-picks">
+      <article class="compare-pick compare-pick--standard">
+        <h3>Välj standardagenten när…</h3>
+        <p>…scenariot är väldefinierat och regelbaserat och du vill ha konsekventa, förutsägbara svar. Du definierar själv ämnen, prompter och vägar, så att upplevelsen svarar likadant varje gång, och den kan använda befintligt promptbibliotek och verksamhetskunskap.</p>
+        <p class="compare-pick__example"><b>Microsofts exempel:</b> en intern helpdesk som svarar på vanliga frågor och skickar enklare ärenden vidare genom ett flöde.</p>
+      </article>
+      <article class="compare-pick compare-pick--nextgen">
+        <h3>Välj den instruktionsdrivna agenten när…</h3>
+        <p>…agenten behöver resonera genom längre uppgifter, arbeta över flera verktyg, hantera filer eller automatisera en affärsprocess från början till slut. Den tar ett mål, bryter ner det i steg och justerar när ett steg misslyckas eller förutsättningarna ändras.</p>
+        <p class="compare-pick__example"><b>Microsofts exempel:</b> en leverantörsreskontraprocess där agenten läser fakturor, matchar dem mot inköpsorder och skickar avvikelser vidare för godkännande.</p>
+      </article>
+    </div>
+
+    <div class="compare-table__scroll">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Egenskap</th>
+            <th scope="col" class="compare-col--standard">Standardagent<span>standard harness</span></th>
+            <th scope="col" class="compare-col--nextgen">Instruktionsdriven agent<span>GitHub Copilot harness</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Passar för</th><td>Regelbaserade agenter och strukturerade dialoger</td><td>Komplexa affärsprocesser i flera steg</td></tr>
+          <tr><th scope="row">Så arbetar den</th><td>Följer de ämnen och regler du definierar</td><td>Resonerar sig fram till målet på egen hand, steg för steg</td></tr>
+          <tr><th scope="row">När något går fel</th><td>Följer de vägar du har byggt</td><td>Försöker igen och hittar alternativa vägar automatiskt</td></tr>
+          <tr><th scope="row">Arbete med filer</th><td>Inte ett fokusområde</td><td>Skapar, redigerar och resonerar över Word, Excel, PowerPoint och PDF</td></tr>
+          <tr><th scope="row">Skills och minne</th><td>Inte ett fokusområde</td><td>Ingår</td></tr>
+          <tr><th scope="row">Publicering</th><td>Interna team eller externa kunder</td><td>Interna team eller externa kunder</td></tr>
+          <tr><th scope="row">Debitering</th><td>Enligt licensieringen för Copilot Studio</td><td>Copilot Credits, förbrukningsbaserat</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="compare-note">Valet görs när agenten skapas och går inte att ändra i efterhand – en agent kan inte flyttas mellan de två arkitekturerna. Utöver dessa finns en tredje variant, <i>Copilot chat harness</i>, för att utöka Microsoft 365 Copilot Chat med organisationens kunskap; den ingår inte i utbildningarna här. Källor: <a href="https://learn.microsoft.com/sv-se/microsoft-copilot-studio/harnesses-overview">Välj en harness</a> och <a href="https://learn.microsoft.com/sv-se/microsoft-copilot-studio/agents-experience/overview">Översikt över agenter</a> på Microsoft Learn.</p>
   </section>
 
   <section class="method-section">

@@ -19,6 +19,8 @@
   --ai-green: #234b3e;
   --ai-coral: #bd533f;
   --ai-radius: 24px;
+  --ai-header-h: 2.9rem;
+  --ai-arrow-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h14.5M12.8 6l6 6-6 6'/%3E%3C/svg%3E");
   --ai-logo-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.8 13.75 9.4c.13.55.3.72.85.85L22 12l-7.4 1.75c-.55.13-.72.3-.85.85L12 22.2l-1.75-7.6c-.13-.55-.3-.72-.85-.85L2 12l7.4-1.75c.55-.13.72-.3.85-.85z'/%3E%3C/svg%3E");
 }
 
@@ -31,6 +33,14 @@ html[data-track="standard"] {
   --ai-sky-deep: var(--ai-teal-dark);
   --ai-sky-soft: var(--ai-teal-soft);
   --ai-sky-pale: #f1faf7;
+}
+
+html[data-track="nextgen"] {
+  --ai-sky: #7a5af0;
+  --ai-sky-dark: var(--ai-violet);
+  --ai-sky-deep: var(--ai-violet-dark);
+  --ai-sky-soft: var(--ai-violet-soft);
+  --ai-sky-pale: #f7f5ff;
 }
 
 [data-md-color-scheme="default"] {
@@ -50,12 +60,22 @@ body {
 }
 
 .md-header {
-  height: 2.9rem;
+  height: var(--ai-header-h);
   color: var(--ai-ink);
-  background: rgba(250, 250, 248, 0.92);
-  border-bottom: 1px solid rgba(23, 23, 28, 0.07);
+  background: transparent;
+  border-bottom: 0;
   box-shadow: none;
-  backdrop-filter: blur(18px);
+  transition: background 200ms ease, box-shadow 200ms ease;
+}
+
+/* Headern ar helt genomskinlig i vila sa hero-ytan ligger obruten bakom den.
+   Forst nar sidan scrollas tonar en frostad yta med mjukt lyft fram.
+   .is-scrolled sätts i overrides/main.html - Materials egen .md-header--shadow
+   slar till redan vid scroll 0 och neutraliseras darfor av box-shadow: none ovan. */
+html.is-scrolled .md-header {
+  background: rgba(250, 250, 248, 0.82);
+  box-shadow: 0 3px 16px rgba(23, 23, 28, 0.07);
+  backdrop-filter: blur(18px) saturate(150%);
 }
 
 .md-header__inner { height: 100%; }
@@ -104,11 +124,9 @@ body {
 .md-main__inner { margin-top: 0; }
 .md-content__inner { padding-top: 2rem; }
 .md-content__inner:has(> .portal-home),
-.md-content__inner:has(> .course-landing) { margin: 0; padding: 0; }
+.md-content__inner:has(> .course-landing) { margin: calc(-1 * var(--ai-header-h)) 0 0; padding: 0; }
 .md-content__inner:has(> .portal-home)::before,
 .md-content__inner:has(> .course-landing)::before { display: none; }
-.md-main:has(.portal-home) .md-top,
-.md-main:has(.course-landing) .md-top { display: none; }
 .md-footer { background: var(--ai-ink); }
 .md-footer-meta { display: none; }
 
@@ -245,11 +263,12 @@ body {
 
 /* Course navigation, inspired by the calm hierarchy of Agent Academy. */
 @media screen and (min-width: 76.25em) {
+  /* .md-sidebar--primary ar bara nagra tiotal pixlar hog - scroll-ytan
+     spiller ut utanfor. Bakgrund eller ram har blir darfor en liten
+     vit rektangel hogst upp i navigationen i stallet for en hel spalt. */
   .md-sidebar--primary {
     width: 12.25rem;
     padding: 1rem 0.65rem 1.6rem 0.8rem;
-    background: #fbfcfd;
-    border-right: 1px solid rgba(23, 23, 28, 0.07);
   }
 
   .md-sidebar--primary .md-sidebar__scrollwrap {
@@ -368,7 +387,7 @@ body {
   letter-spacing: 0.16em;
 }
 
-.section-label--light { color: #8dd7ff; }
+.section-label--light { color: color-mix(in srgb, var(--ai-sky) 42%, #fff); }
 
 .button {
   display: inline-flex;
@@ -379,10 +398,10 @@ body {
   border-radius: 999px;
   font-weight: 760;
   text-decoration: none;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
 }
 
-.button:hover { transform: translateY(-2px); }
+.button:hover { transform: none; }
 .button:focus-visible,
 .text-link:focus-visible,
 .chapter-grid a:focus-visible,
@@ -391,14 +410,74 @@ body {
 .button--primary {
   color: #fff !important;
   background: var(--ai-sky-dark);
-  box-shadow: 0 14px 36px rgba(33, 143, 219, 0.24);
+  box-shadow: none;
+}
+
+.button--primary:hover { background: var(--ai-sky-deep); }
+
+.md-typeset .button--download {
+  box-shadow: none;
+  transition: background 160ms ease;
+}
+
+.md-typeset .button--download:hover {
+  background: var(--ai-sky-deep);
+  box-shadow: none;
+  transform: none;
+}
+
+.copy-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  max-width: 470px;
+  margin: 18px 0 24px;
+  padding: 7px 8px 7px 16px;
+  background: #fff;
+  border: 1px solid var(--ai-line);
+  border-radius: 11px;
+}
+
+.copy-field code {
+  padding: 0;
+  color: var(--ai-ink);
+  font-size: 0.82rem;
+  background: transparent;
+}
+
+.copy-field__button {
+  min-width: 88px;
+  padding: 9px 15px;
+  color: var(--ai-sky-deep);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 760;
+  cursor: pointer;
+  background: var(--ai-sky-pale);
+  border: 0;
+  border-radius: 8px;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.copy-field__button:hover,
+.copy-field__button.is-copied {
+  color: #fff;
+  background: var(--ai-sky-dark);
+}
+
+.copy-field__button:focus-visible {
+  outline: 3px solid #79cfff;
+  outline-offset: 3px;
 }
 
 .button--teal {
   color: #fff !important;
   background: var(--ai-teal);
-  box-shadow: 0 14px 36px rgba(8, 125, 120, 0.22);
+  box-shadow: none;
 }
+
+.button--teal:hover { background: var(--ai-teal-dark); }
 
 .button--ghost {
   color: var(--ai-ink) !important;
@@ -406,7 +485,10 @@ body {
   border: 1px solid var(--ai-line);
 }
 
+.button--ghost:hover { background: rgba(224, 243, 255, 0.9); }
+
 .button--light { color: var(--ai-ink) !important; background: #fff; }
+.button--light:hover { background: #eaf7ff; }
 
 /* Portal */
 .portal-hero {
@@ -416,7 +498,7 @@ body {
   align-items: center;
   gap: clamp(48px, 7vw, 110px);
   min-height: 720px;
-  padding: clamp(80px, 9vw, 132px) max(6vw, calc((100vw - 1320px) / 2));
+  padding: calc(clamp(80px, 9vw, 132px) + var(--ai-header-h)) max(6vw, calc((100vw - 1320px) / 2)) clamp(80px, 9vw, 132px);
   background:
     radial-gradient(circle at 78% 22%, rgba(33, 143, 219, 0.19), transparent 29%),
     radial-gradient(circle at 15% 85%, rgba(8, 125, 120, 0.11), transparent 31%),
@@ -464,30 +546,39 @@ body {
 
 .orbit {
   position: absolute;
-  inset: 50%;
+  top: 50%;
+  left: 50%;
+  aspect-ratio: 1;
   border: 1px solid rgba(33, 143, 219, 0.22);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
+  translate: -50% -50%;
 }
 
-.orbit--one { width: 390px; height: 390px; }
-.orbit--two { width: 520px; height: 520px; border-style: dashed; opacity: 0.58; }
+.orbit--one { width: min(64%, 374px); }
+
+.orbit--two {
+  width: min(84%, 490px);
+  border-style: dashed;
+  opacity: 0.58;
+}
 
 .agent-node {
   position: absolute;
   z-index: 1;
   display: grid;
   place-content: center;
-  min-width: 132px;
-  min-height: 76px;
-  padding: 14px 20px;
+  min-width: 112px;
+  min-height: 62px;
+  padding: 11px 16px;
   color: var(--ai-ink);
+  font-size: 0.78rem;
   text-align: center;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.95);
-  border-radius: 19px;
-  box-shadow: 0 22px 60px rgba(27, 92, 138, 0.15);
+  border-radius: 17px;
+  box-shadow: 0 18px 46px rgba(27, 92, 138, 0.14);
   backdrop-filter: blur(14px);
+  translate: -50% -50%;
 }
 
 .agent-node span { font-weight: 800; }
@@ -502,20 +593,27 @@ body {
   background: linear-gradient(145deg, #62c5f3, #0874c1);
   border: 0;
   border-radius: 34px;
-  transform: translate(-50%, -50%) rotate(-2deg);
+  translate: -50% -50%;
+  rotate: -2deg;
   box-shadow: 0 30px 80px rgba(8, 112, 189, 0.26);
 }
 
 .agent-node--main span { font-size: 1.6rem; }
 .agent-node--main small { color: rgba(255, 255, 255, 0.7); }
-.agent-node--knowledge { top: 5%; left: 8%; }
-.agent-node--tools { top: 13%; right: 0; }
-.agent-node--flow { right: 4%; bottom: 5%; }
+/* Utspridda for hand runt agenten - olika avstand och sma lutningar
+   sa gruppen inte laser som en jamn ring. */
+.agent-node--instructions { top: 13%; left: 25%; rotate: -3deg; }
+.agent-node--knowledge { top: 8%; left: 67%; rotate: 2.5deg; }
+.agent-node--tools { top: 34%; left: 90%; rotate: -2deg; }
+.agent-node--flow { top: 76%; left: 82%; rotate: 3deg; }
+.agent-node--sandbox { top: 92%; left: 47%; rotate: -2.5deg; }
+.agent-node--skills { top: 56%; left: 10%; rotate: 2deg; }
 
 .track-intro,
 .scenario-band {
   display: grid;
   grid-template-columns: 0.82fr 1fr;
+  align-items: end;
   gap: clamp(40px, 7vw, 100px);
   padding: 115px max(6vw, calc((100vw - 1320px) / 2)) 68px;
 }
@@ -525,6 +623,7 @@ body {
 .chapter-section h2,
 .journey-section h2,
 .method-section h2,
+.compare-section h2,
 .course-cta h2 {
   margin-top: 12px;
   font-size: clamp(2rem, 3.8vw, 3.8rem);
@@ -585,9 +684,141 @@ body {
 .course-card__meta span,
 .hero-meta span { padding: 7px 11px; color: var(--ai-muted); font-size: 0.7rem; font-weight: 700; background: #f4f4f1; border-radius: 999px; }
 
-.text-link { display: inline-flex; gap: 10px; margin-top: 28px; color: var(--ai-ink) !important; font-weight: 780; text-decoration: none; }
-.text-link span { color: var(--ai-sky-dark); transition: transform 160ms ease; }
-.text-link:hover span { transform: translateX(4px); }
+.text-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; color: var(--ai-ink) !important; font-weight: 780; text-decoration: none; }
+
+.arrow-glyph,
+.text-link::after,
+.button--arrow::after,
+.back-link::before {
+  width: 1.15em;
+  height: 1.15em;
+  content: "";
+  background: currentColor;
+  -webkit-mask: var(--ai-arrow-glyph) center / contain no-repeat;
+  mask: var(--ai-arrow-glyph) center / contain no-repeat;
+  transition: transform 160ms ease;
+}
+
+.text-link::after { background: var(--ai-sky-dark); }
+/* Korten pa portalen forhandsvisar respektive kurs accentfarg */
+.course-card--standard .text-link::after { background: var(--ai-teal); }
+.course-card--nextgen .text-link::after { background: var(--ai-violet); }
+.text-link:hover::after { transform: translateX(4px); }
+.button--arrow::after { margin-left: 11px; }
+.button--arrow:hover::after { transform: none; }
+.back-link::before { transform: scaleX(-1); }
+.back-link:hover::before { transform: scaleX(-1) translateX(3px); }
+
+/* Jamforelse mellan de tva upplevelserna (Microsoft Learn: harnesses-overview).
+   Bada spalterna har samma bredd och samma vikt - avsnittet ar ett vagval,
+   ingen rangordning. Kursfargerna knyter ihop det med korten ovanfor. */
+.compare-section {
+  position: relative;
+  padding: 0 max(6vw, calc((100vw - 1320px) / 2)) 122px;
+}
+
+/* Samma svaga cirkelmotiv som i hero:n, speglat till vanster sidan.
+   Innehallet lyfts ovanfor den med z-index. */
+.compare-section::before {
+  position: absolute;
+  top: 30px;
+  left: -230px;
+  z-index: 0;
+  width: 600px;
+  height: 600px;
+  content: "";
+  border: 1px solid rgba(33, 143, 219, 0.16);
+  border-radius: 50%;
+  box-shadow: 0 0 0 80px rgba(33, 143, 219, 0.03), 0 0 0 160px rgba(33, 143, 219, 0.018);
+}
+
+.compare-section > * { position: relative; z-index: 1; }
+
+.compare-section__heading { max-width: 780px; }
+.compare-section__heading > p { margin-top: 22px; color: var(--ai-muted); font-size: 1rem; line-height: 1.7; }
+
+.compare-picks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 54px;
+}
+
+.compare-pick {
+  padding: 26px 28px 29px;
+  background: #fff;
+  border: 1px solid var(--ai-line);
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(23, 23, 28, 0.05);
+}
+
+.compare-pick--standard { --pick-accent: var(--ai-teal); }
+.compare-pick--nextgen { --pick-accent: var(--ai-violet); }
+
+.compare-pick h3 { font-size: 1.1rem; line-height: 1.32; }
+.compare-pick p { margin-top: 13px; color: var(--ai-muted); font-size: 0.86rem; line-height: 1.68; }
+
+.compare-pick__example {
+  margin-top: 17px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(23, 23, 28, 0.07);
+  font-size: 0.81rem;
+}
+
+.compare-pick__example b { color: var(--pick-accent); font-weight: 780; }
+
+.compare-table__scroll {
+  margin-top: 16px;
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid var(--ai-line);
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(23, 23, 28, 0.05);
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 660px;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 15px 24px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(23, 23, 28, 0.07);
+}
+
+.compare-table thead th {
+  padding-top: 21px;
+  padding-bottom: 17px;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.compare-table thead th span {
+  display: block;
+  margin-top: 5px;
+  color: var(--ai-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.compare-col--standard { color: var(--ai-teal); }
+.compare-col--nextgen { color: var(--ai-violet); }
+
+.compare-table tbody th { width: 27%; color: var(--ai-ink); font-weight: 720; }
+.compare-table tbody td { width: 36.5%; color: var(--ai-muted); line-height: 1.6; }
+.compare-table tbody tr:last-child > * { border-bottom: 0; }
+
+.compare-note { margin-top: 24px; max-width: 940px; color: var(--ai-muted); font-size: 0.79rem; line-height: 1.75; }
+.compare-note a { color: var(--ai-sky-dark); }
 
 .method-section {
   padding: 110px max(6vw, calc((100vw - 1320px) / 2)) 120px;
@@ -605,11 +836,11 @@ body {
 /* Course landings */
 .course-hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(470px, 1.1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
   align-items: center;
   gap: clamp(46px, 7vw, 104px);
   min-height: 720px;
-  padding: 72px max(6vw, calc((100vw - 1320px) / 2)) 105px;
+  padding: calc(72px + var(--ai-header-h)) max(6vw, calc((100vw - 1320px) / 2)) 105px;
 }
 
 .course-hero--standard {
@@ -617,12 +848,12 @@ body {
 }
 
 .course-hero--nextgen {
-  background: radial-gradient(circle at 86% 15%, rgba(33, 143, 219, 0.19), transparent 29%), radial-gradient(circle at 20% 90%, rgba(103, 69, 223, 0.07), transparent 27%), linear-gradient(135deg, #fbfbfa 0%, #f1f8ff 58%, #eef7fb 100%);
+  background: radial-gradient(circle at 86% 15%, rgba(103, 69, 223, 0.17), transparent 29%), radial-gradient(circle at 18% 88%, rgba(33, 143, 219, 0.07), transparent 27%), linear-gradient(135deg, #fbfbfa 0%, #f4f1ff 58%, #f0eefb 100%);
 }
 
-.back-link { display: inline-block; margin-bottom: 45px; color: var(--ai-muted) !important; font-size: 0.76rem; font-weight: 720; text-decoration: none; }
+.back-link { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 45px; color: var(--ai-muted) !important; font-size: 0.76rem; font-weight: 720; text-decoration: none; }
 .course-hero__copy { position: relative; z-index: 2; }
-.course-hero h1 { margin-top: 20px; font-size: clamp(2.8rem, 5.2vw, 5.65rem); line-height: 0.97; letter-spacing: -0.06em; }
+.course-hero h1 { margin-top: 20px; font-size: clamp(2.6rem, 4.4vw, 78px); line-height: 0.98; letter-spacing: -0.055em; }
 .course-hero--standard h1 span { color: var(--ai-teal); }
 .course-hero--nextgen h1 span { color: var(--ai-sky-dark); }
 .course-hero__copy > p { max-width: 680px; margin-top: 28px; color: var(--ai-muted); font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.65; }
@@ -672,9 +903,9 @@ body {
 .journey-list h3 { font-size: 1.18rem; line-height: 1.25; }
 .journey-list p { margin-top: 7px; color: var(--ai-muted); line-height: 1.55; }
 
-.course-cta { display: grid; grid-template-columns: 1fr 0.8fr; align-items: center; gap: 80px; padding: 95px max(6vw, calc((100vw - 1320px) / 2)) 105px; color: #fff; }
+.course-cta { display: grid; grid-template-columns: 1fr 0.8fr; align-items: end; gap: 80px; padding: 95px max(6vw, calc((100vw - 1320px) / 2)) 105px; color: #fff; }
 .course-cta--teal { background: var(--ai-teal-dark); }
-.course-cta--purple { background: var(--ai-ink); }
+.course-cta--purple { background: var(--ai-violet-dark); }
 .course-cta h2 { color: #fff; }
 .course-cta > p { color: rgba(255, 255, 255, 0.68); font-size: 1rem; line-height: 1.7; }
 .course-cta > .button { justify-self: end; }
@@ -696,7 +927,7 @@ body {
 
 @media (max-width: 760px) {
   .portal-hero,
-  .course-hero { padding-top: 60px; padding-bottom: 78px; }
+  .course-hero { padding-top: calc(60px + var(--ai-header-h)); padding-bottom: 78px; }
   .portal-hero h1,
   .course-hero h1 { font-size: 2.75rem; }
   .portal-hero__composition { min-height: 370px; transform: scale(0.82); margin: -35px -55px; }
@@ -704,7 +935,8 @@ body {
   .course-grid,
   .chapter-grid,
   .method-grid,
-  .capability-grid { grid-template-columns: 1fr; }
+  .capability-grid,
+  .compare-picks { grid-template-columns: 1fr; }
   .track-intro,
   .scenario-band { padding-top: 80px; }
   .course-card__visual { height: 235px; }
@@ -721,5 +953,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { transition-duration: 0.01ms !important; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

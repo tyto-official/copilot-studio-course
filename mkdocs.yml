@@ -46,6 +46,10 @@ nav:
       - 10. Multi-agent: copilot-studio/standard/10-multi-agent.md
     - Instruktionsdriven agent:
       - Kursöversikt: copilot-studio/nextgen/index.md
+      - 0. Kursuppsättning: copilot-studio/nextgen/00-course-setup.md
+      - 1. Hitta rätt i nya Copilot Studio: copilot-studio/nextgen/01-navigate-new-experience.md
+      - 2. Skapa lösningen: copilot-studio/nextgen/02-create-solution.md
+      - 3. Skapa agenten: copilot-studio/nextgen/03-create-agent.md
   - Tips & fördjupning:
     - Översikt: tips/index.md
     - Kunskap på djupet: tips/knowledge.md
