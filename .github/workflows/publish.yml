@@ -12,8 +12,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
       - run: pip install mkdocs-material mkdocs-static-i18n
+      - name: Check whether Lyserno changed
+        id: indexnow
+        shell: bash
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: |
+          if git diff --quiet "$BEFORE_SHA" "$AFTER_SHA" -- \
+            docs/lyserno \
+            docs/stylesheets/lyserno.css \
+            docs/assets/nextgen/company \
+            docs/cb458d670bb7460ba6e78872fa536b1f.txt \
+            scripts/submit_indexnow.py \
+            scripts/mkdocs_hooks.py \
+            .github/workflows/publish.yml; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
       - run: mkdocs gh-deploy --force
+      - name: Notify IndexNow
+        if: steps.indexnow.outputs.changed == 'true'
+        run: python scripts/submit_indexnow.py --wait-for-deployment "$GITHUB_SHA"

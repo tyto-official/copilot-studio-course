@@ -1,6 +1,7 @@
 """Small post-build adjustments for static pages outside MkDocs navigation."""
 
 from datetime import date
+import os
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
@@ -8,11 +9,19 @@ import xml.etree.ElementTree as ET
 SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 XHTML_NS = "http://www.w3.org/1999/xhtml"
 LYSERNO_URL = "https://tyto-official.github.io/copilot-studio-course/lyserno/"
+DEPLOYMENT_MARKER = "deployment-version.txt"
 
 
 def on_post_build(config, **kwargs):
     """Ensure the standalone Lyserno page is discoverable in sitemap.xml."""
-    sitemap_path = Path(config["site_dir"]) / "sitemap.xml"
+    site_dir = Path(config["site_dir"])
+    commit_sha = os.environ.get("GITHUB_SHA")
+    if commit_sha:
+        (site_dir / DEPLOYMENT_MARKER).write_text(
+            f"{commit_sha}\n", encoding="utf-8"
+        )
+
+    sitemap_path = site_dir / "sitemap.xml"
     if not sitemap_path.exists():
         return
 
@@ -44,4 +53,3 @@ def on_post_build(config, **kwargs):
 
     ET.indent(tree, space="    ")
     tree.write(sitemap_path, encoding="UTF-8", xml_declaration=True)
-
