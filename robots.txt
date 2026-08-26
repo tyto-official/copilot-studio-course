@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tyto-official.github.io/copilot-studio-course/sitemap.xml

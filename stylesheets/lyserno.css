@@ -1,0 +1,473 @@
+:root {
+  color-scheme: light;
+  --ink: #17211c;
+  --muted: #5f6862;
+  --paper: #f6f3ed;
+  --surface: #fffdf9;
+  --line: #d9ddd8;
+  --green: #285c48;
+  --green-dark: #173f31;
+  --green-soft: #dfeae3;
+  --sand: #e7ddcd;
+  --white: #ffffff;
+  --max-width: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: Inter, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.site-header,
+.hero,
+.intro,
+.showrooms,
+.services,
+.contact,
+footer {
+  width: min(calc(100% - 40px), var(--max-width));
+  margin-inline: auto;
+}
+
+.site-header {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  font-size: 1.25rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  border: 9px solid var(--green);
+  border-radius: 50% 50% 50% 12%;
+  transform: rotate(-24deg);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+nav a {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  color: var(--green);
+}
+
+.hero {
+  min-height: 660px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+  align-items: center;
+  gap: 72px;
+  padding-block: 58px 92px;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  color: var(--green);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 680px;
+  margin-bottom: 28px;
+  font-size: clamp(3.2rem, 6.5vw, 6.4rem);
+  font-weight: 560;
+  letter-spacing: -0.065em;
+  line-height: 0.97;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: clamp(2.25rem, 4vw, 4.2rem);
+  font-weight: 560;
+  letter-spacing: -0.05em;
+  line-height: 1.04;
+}
+
+.hero-lead {
+  max-width: 610px;
+  margin-bottom: 34px;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.primary-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  color: var(--white);
+  background: var(--green);
+  font-size: 0.93rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 150ms ease;
+}
+
+.primary-link:hover,
+.primary-link:focus-visible {
+  background: var(--green-dark);
+}
+
+.hero-image {
+  margin: 0;
+}
+
+.hero-image img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.hero-image figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  padding-block: 110px;
+  border-top: 1px solid var(--line);
+}
+
+.intro p:last-child {
+  max-width: 660px;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 1.12rem;
+}
+
+.showrooms {
+  padding-block: 72px 120px;
+}
+
+.section-heading {
+  max-width: 720px;
+  margin-bottom: 64px;
+}
+
+.section-heading > p:last-child {
+  color: var(--muted);
+}
+
+.region-group + .region-group {
+  margin-top: 72px;
+}
+
+.region-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.region-heading h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.region-heading span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.showroom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.showroom-card {
+  padding: 34px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.card-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 32px;
+  color: var(--green);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.showroom-card h4 {
+  margin-bottom: 10px;
+  font-size: 1.9rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.showroom-card .focus {
+  min-height: 54px;
+  margin-bottom: 28px;
+  color: var(--muted);
+}
+
+dl {
+  margin: 0;
+}
+
+dl > div {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 16px;
+  padding-block: 12px;
+  border-top: 1px solid var(--line);
+}
+
+dt {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+dd {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+dd a {
+  overflow-wrap: anywhere;
+  color: var(--green-dark);
+}
+
+.services {
+  width: 100%;
+  max-width: none;
+  padding: 108px max(20px, calc((100% - var(--max-width)) / 2));
+  color: var(--white);
+  background: var(--green-dark);
+}
+
+.section-heading-light .eyebrow {
+  color: #a9cab8;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.service-grid article {
+  background: #214d3c;
+}
+
+.service-grid img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.service-grid article > div {
+  padding: 30px;
+}
+
+.service-grid h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.service-grid p {
+  margin-bottom: 0;
+  color: #d8e5de;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 90px;
+  padding-block: 112px;
+}
+
+.contact-details {
+  padding-top: 26px;
+}
+
+.contact-details p {
+  color: var(--muted);
+}
+
+.contact-details a,
+.contact-details span {
+  display: block;
+  margin-top: 12px;
+  color: var(--green-dark);
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  align-items: center;
+  gap: 30px;
+  min-height: 130px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+.brand-footer {
+  font-size: 1rem;
+}
+
+.brand-footer .brand-mark {
+  width: 25px;
+  height: 25px;
+  border-width: 7px;
+}
+
+@media (max-width: 880px) {
+  .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .hero-image img {
+    max-height: 680px;
+  }
+
+  .intro,
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .showroom-grid,
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .showroom-card .focus {
+    min-height: auto;
+  }
+
+  footer {
+    grid-template-columns: 1fr;
+    align-content: center;
+    padding-block: 30px;
+  }
+}
+
+@media (max-width: 620px) {
+  body {
+    font-size: 16px;
+  }
+
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-block: 20px;
+  }
+
+  nav {
+    width: 100%;
+    gap: 18px;
+    overflow-x: auto;
+  }
+
+  .hero {
+    padding-top: 38px;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 15vw, 4.5rem);
+  }
+
+  .intro,
+  .contact {
+    padding-block: 78px;
+  }
+
+  .showrooms {
+    padding-bottom: 88px;
+  }
+
+  .showroom-card {
+    padding: 25px 22px;
+  }
+
+  dl > div {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

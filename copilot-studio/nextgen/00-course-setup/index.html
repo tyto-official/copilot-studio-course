@@ -1,0 +1,2016 @@
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Praktiska utbildningar i Microsoft Copilot Studio – från grundläggande agentbygge till den nya instruktionsdrivna upplevelsen.">
+      
+      
+      
+        <link rel="canonical" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/00-course-setup/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../01-navigate-new-experience/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>0. Kursuppsättning - Microsoft AI-utbildningar</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.setAttribute("data-track", "nextgen");
+      var sync = function () { root.classList.toggle("is-scrolled", window.scrollY > 8); };
+      addEventListener("scroll", sync, { passive: true });
+      addEventListener("DOMContentLoaded", sync);
+      sync();
+    })();
+  </script>
+  <script>
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-copy-value]");
+      if (!button) return;
+
+      var value = button.getAttribute("data-copy-value");
+      var label = button.querySelector(".copy-field__label");
+
+      var fallbackCopy = function () {
+        var input = document.createElement("textarea");
+        input.value = value;
+        input.setAttribute("readonly", "");
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+      };
+
+      var showCopied = function () {
+        label.textContent = "Kopierat";
+        button.classList.add("is-copied");
+        setTimeout(function () {
+          label.textContent = "Kopiera";
+          button.classList.remove("is-copied");
+        }, 1800);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).catch(fallbackCopy).then(showCopied);
+      } else {
+        fallbackCopy();
+        showCopied();
+      }
+    });
+  </script>
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#0-kursuppsattning" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Sidhuvud">
+    <a href="../../.." title="Microsoft AI-utbildningar" class="md-header__button md-logo" aria-label="Microsoft AI-utbildningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Microsoft AI-utbildningar
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              0. Kursuppsättning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Microsoft AI-utbildningar" class="md-nav__button md-logo" aria-label="Microsoft AI-utbildningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Microsoft AI-utbildningar
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standardagenten
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Standardagenten
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Förbered SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa en lösning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa ett ämne
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa ett adaptivt kort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa ett flöde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruktionsdriven agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instruktionsdriven agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-1-aktivera-copilot-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Aktivera Copilot Studio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 1: Aktivera Copilot Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-starta-registreringen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Starta registreringen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ange-ditt-konto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ange ditt konto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-logga-in-eller-starta-utvarderingen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Logga in eller starta utvärderingen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-2-skapa-en-utvecklingsmiljo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Skapa en utvecklingsmiljö
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 2: Skapa en utvecklingsmiljö">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-registrera-developer-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Registrera Developer Plan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-kontrollera-miljon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Kontrollera miljön
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-3-skapa-lyserno-produktportal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Skapa Lyserno Produktportal
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 3: Skapa Lyserno Produktportal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-oppna-sharepoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Öppna SharePoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-valj-webbplatsmall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Välj webbplatsmall
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-konfigurera-webbplatsen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Konfigurera webbplatsen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-vanta-tills-webbplatsen-ar-klar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Vänta tills webbplatsen är klar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-4-importera-listan-centrallager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 4: Importera listan Centrallager
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 4: Importera listan Centrallager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-skapa-en-lista-fran-excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Skapa en lista från Excel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ladda-ner-och-valj-kursfilen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ladda ner och välj kursfilen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-anpassa-kolumntyperna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Anpassa kolumntyperna
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Anpassa kolumntyperna">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#currentunitprice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CurrentUnitPrice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nextrestockdate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NextRestockDate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#salesstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SalesStatus
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-skapa-listan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Skapa listan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-kontrollera-resultatet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Kontrollera resultatet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-stall-in-svenska-kronor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Ställ in svenska kronor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-navigate-new-experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hitta rätt i nya Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Skapa lösningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Lägg till produktkunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & fördjupning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & fördjupning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-1-aktivera-copilot-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Aktivera Copilot Studio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 1: Aktivera Copilot Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-starta-registreringen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Starta registreringen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ange-ditt-konto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ange ditt konto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-logga-in-eller-starta-utvarderingen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Logga in eller starta utvärderingen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-2-skapa-en-utvecklingsmiljo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Skapa en utvecklingsmiljö
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 2: Skapa en utvecklingsmiljö">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-registrera-developer-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Registrera Developer Plan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-kontrollera-miljon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Kontrollera miljön
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-3-skapa-lyserno-produktportal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Skapa Lyserno Produktportal
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 3: Skapa Lyserno Produktportal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-oppna-sharepoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Öppna SharePoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-valj-webbplatsmall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Välj webbplatsmall
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-konfigurera-webbplatsen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Konfigurera webbplatsen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-vanta-tills-webbplatsen-ar-klar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Vänta tills webbplatsen är klar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-4-importera-listan-centrallager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 4: Importera listan Centrallager
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 4: Importera listan Centrallager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-skapa-en-lista-fran-excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Skapa en lista från Excel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ladda-ner-och-valj-kursfilen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ladda ner och välj kursfilen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-anpassa-kolumntyperna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Anpassa kolumntyperna
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Anpassa kolumntyperna">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#currentunitprice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CurrentUnitPrice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nextrestockdate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NextRestockDate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#salesstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SalesStatus
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-skapa-listan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Skapa listan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-kontrollera-resultatet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Kontrollera resultatet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-stall-in-svenska-kronor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Ställ in svenska kronor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="0-kursuppsattning">0. Kursuppsättning</h1>
+<p>Innan vi börjar bygga agenten för <strong>Lyserno</strong> förbereder vi åtkomsten till Copilot Studio, skapar en personlig utvecklingsmiljö och lägger upp kursens datakälla i SharePoint.</p>
+<p>När kapitlet är klart har du:</p>
+<ul>
+<li>tillgång till Copilot Studio för att bygga och testa agenten</li>
+<li>en egen utvecklingsmiljö med Dataverse</li>
+<li>SharePoint-webbplatsen <strong>Lyserno Produktportal</strong></li>
+<li>SharePoint-listan <strong>Centrallager</strong> med kursens 25 produktvarianter</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Använd samma konto genom hela uppsättningen</p>
+<p>Du behöver en e-postadress för <strong>arbete eller skola</strong>. Personliga konton som <code>@outlook.com</code> och <code>@gmail.com</code> stöds inte för registreringen. Använd samma Microsoft 365-konto i Copilot Studio, Power Apps och SharePoint.</p>
+<p>Om din organisation har stängt av självbetjäningsregistrering behöver du hjälp av organisationens Microsoft 365- eller Power Platform-administratör.</p>
+</div>
+<hr />
+<h2 id="del-1-aktivera-copilot-studio">Del 1: Aktivera Copilot Studio</h2>
+<p>Om du redan har åtkomst till Copilot Studio kan du gå vidare till <a href="#del-2-skapa-en-utvecklingsmiljo">Del 2: Skapa en utvecklingsmiljö</a>.</p>
+<h3 id="1-starta-registreringen">1. Starta registreringen</h3>
+<ol>
+<li>Öppna <a href="https://www.microsoft.com/sv-se/microsoft-365-copilot/microsoft-copilot-studio?market=se">Microsoft Copilot Studio</a> i en ny flik.</li>
+<li>Välj <strong>Prova kostnadsfritt</strong>.</li>
+</ol>
+<p><img alt="Microsofts startsida för Copilot Studio med knappen Prova kostnadsfritt" src="../../../assets/nextgen/chap00/1.png" /></p>
+<h3 id="2-ange-ditt-konto">2. Ange ditt konto</h3>
+<ol>
+<li>Skriv in din e-postadress för arbete eller skola.</li>
+<li>Välj <strong>Nästa</strong>.</li>
+</ol>
+<p><img alt="Registreringen för Copilot Studio där en e-postadress anges" src="../../../assets/nextgen/chap00/2.png" /></p>
+<p>Microsoft kontrollerar nu om adressen redan tillhör ett befintligt Microsoft-konto.</p>
+<h3 id="3-logga-in-eller-starta-utvarderingen">3. Logga in eller starta utvärderingen</h3>
+<ul>
+<li>Om kontot redan finns väljer du <strong>Logga in</strong> och genomför den vanliga inloggningen.</li>
+<li>Om kontot ännu inte har Copilot Studio följer du registreringsflödet och startar en ny utvärderingsversion.</li>
+</ul>
+<p><img alt="Copilot Studio har identifierat ett befintligt Microsoft-konto och visar knappen Logga in" src="../../../assets/nextgen/chap00/3.png" /></p>
+<p>I det sista steget kan du behöva välja land eller region. Kontrollera uppgifterna och välj sedan <strong>Start free trial</strong> eller motsvarande svensk knapp.</p>
+<p><img alt="Sista registreringssteget med knappen Start free trial" src="../../../assets/nextgen/chap00/3-start-free-trial.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Om utvärderingsversionen</p>
+<p>Utvärderingsversionen gäller inledningsvis i 30 dagar. När perioden löper ut kan den förlängas med ytterligare 30 dagar, och Microsoft anger att agenten kan fortsätta fungera i upp till 90 dagar efter att utvärderingen löpt ut.</p>
+<p>Licensen låter dig <strong>bygga och testa</strong> agenten i testchatten, vilket är allt vi behöver under kursen. Den tillåter däremot inte publicering. Publiceringsbehörighet behandlas därför som ett valfritt moment i slutet av utbildningen. Läs mer i <a href="https://learn.microsoft.com/sv-se/microsoft-copilot-studio/requirements-licensing-subscriptions">Microsofts aktuella information om åtkomst och utvärderingslicenser</a>.</p>
+</div>
+<hr />
+<h2 id="del-2-skapa-en-utvecklingsmiljo">Del 2: Skapa en utvecklingsmiljö</h2>
+<p>Power Apps Developer Plan ger dig en kostnadsfri personlig miljö för utveckling och test. Vi använder den miljön när vi senare bygger agenten, verktygen och arbetsflödet.</p>
+<h3 id="1-registrera-developer-plan">1. Registrera Developer Plan</h3>
+<ol>
+<li>Öppna <a href="https://www.microsoft.com/sv-se/power-platform/products/power-apps/free">Power Apps Developer Plan</a> i en ny flik.</li>
+<li>Välj <strong>Börja använda kostnadsfritt</strong>.</li>
+</ol>
+<p><img alt="Startsidan för Power Apps Developer Plan" src="../../../assets/nextgen/chap00/4.png" /></p>
+<ol>
+<li>Skriv in samma e-postadress som du använde för Copilot Studio.</li>
+<li>Markera rutan för att godkänna informationen och avtalen.</li>
+<li>När knappen aktiveras väljer du <strong>Börja kostnadsfritt</strong>.</li>
+</ol>
+<p><img alt="Registreringsfönstret för Power Apps Developer Plan" src="../../../assets/nextgen/chap00/5.png" /></p>
+<p>När registreringen är klar skickas du vidare till Power Apps.</p>
+<h3 id="2-kontrollera-miljon">2. Kontrollera miljön</h3>
+<p>Den nya miljön får normalt ett namn baserat på ditt användarnamn, exempelvis <strong>Miljö för Joel Thyberg</strong>. Om en miljö med samma namn redan finns kan den nya få ett tillägg som <code>(1)</code>.</p>
+<p><img alt="Power Apps efter att utvecklingsmiljön har skapats" src="../../../assets/nextgen/chap00/6.png" /></p>
+<ol>
+<li>Välj miljöväljaren uppe i det högra hörnet.</li>
+<li>Leta efter din nya miljö under <strong>Skapa appar med Dataverse</strong> eller <strong>Andra miljöer</strong>.</li>
+<li>Välj miljön så att en bock visas bredvid namnet.</li>
+</ol>
+<p><img alt="Miljöväljaren i Power Apps med utvecklingsmiljön vald" src="../../../assets/nextgen/chap00/7.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Miljön kan behöva några minuter</p>
+<p>Det tar olika lång tid innan miljön skapas och visas. Uppdatera sidan om den saknas. I vissa klientorganisationer kan det ta upp till ungefär 10 minuter.</p>
+<p>Utvecklingsmiljön kan visas under både <strong>Skapa appar med Dataverse</strong> och <strong>Andra miljöer</strong>. Utgå därför från miljöns namn och välj din personliga utvecklingsmiljö, inte organisationens standardmiljö. Microsoft beskriver samma namn- och väntelogik i <a href="https://learn.microsoft.com/en-us/power-platform/developer/create-developer-environment">guiden för Power Apps Developer Plan</a>.</p>
+</div>
+<hr />
+<h2 id="del-3-skapa-lyserno-produktportal">Del 3: Skapa Lyserno Produktportal</h2>
+<p>Nu skapar vi kursens SharePoint-webbplats. Den blir den gemensamma platsen för den dynamiska information som agenten ska kunna hämta senare.</p>
+<h3 id="1-oppna-sharepoint">1. Öppna SharePoint</h3>
+<ol>
+<li>Välj appstartaren med de nio punkterna uppe till vänster i Power Apps.</li>
+<li>Välj <strong>SharePoint</strong>.</li>
+</ol>
+<p><img alt="Appstartaren i Power Apps med SharePoint bland Microsoft 365-apparna" src="../../../assets/nextgen/chap00/8.png" /></p>
+<ol>
+<li>När SharePoint har öppnats väljer du <strong>Version</strong> i vänsternavigeringen.</li>
+</ol>
+<p><img alt="Vänsternavigeringen i SharePoint med Version markerat" src="../../../assets/nextgen/chap00/9.png" /></p>
+<ol>
+<li>På sidan som öppnas väljer du <strong>Webbplats</strong>.</li>
+</ol>
+<p><img alt="SharePoints startsida för att skapa webbplatser" src="../../../assets/nextgen/chap00/10.png" /></p>
+<h3 id="2-valj-webbplatsmall">2. Välj webbplatsmall</h3>
+<ol>
+<li>Kontrollera att <strong>Gruppwebbplats</strong> är vald. En gruppwebbplats passar vårt interna kursscenario bättre än en kommunikationswebbplats.</li>
+<li>Välj mallen <strong>Butikshanteringsteam</strong>.</li>
+</ol>
+<p><img alt="Dialogen för att välja gruppwebbplats och webbplatsmall" src="../../../assets/nextgen/chap00/11.png" /></p>
+<ol>
+<li>Kontrollera förhandsgranskningen och välj <strong>Använd mall</strong> nere till höger.</li>
+</ol>
+<p><img alt="Förhandsgranskning av mallen Butikshanteringsteam" src="../../../assets/nextgen/chap00/12.png" /></p>
+<h3 id="3-konfigurera-webbplatsen">3. Konfigurera webbplatsen</h3>
+<p>Fyll i eller kontrollera följande uppgifter:</p>
+<p>Använd exakt följande webbplatsnamn:</p>
+<div class="copy-field">
+  <code>Lyserno Produktportal</code>
+  <button type="button" class="copy-field__button" data-copy-value="Lyserno Produktportal"><span class="copy-field__label" aria-live="polite">Kopiera</span></button>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Webbplatsnamn</td>
+<td><code>Lyserno Produktportal</code></td>
+</tr>
+<tr>
+<td>Webbplatsbeskrivning</td>
+<td>Lämnas tom</td>
+</tr>
+<tr>
+<td>Gruppens e-postadress</td>
+<td>Skapas automatiskt</td>
+</tr>
+<tr>
+<td>Webbplatsadress</td>
+<td>Skapas automatiskt och lämnas oförändrad</td>
+</tr>
+<tr>
+<td>Sekretess</td>
+<td><code>Privat - endast godkända medlemmar har åtkomst till webbplatsen</code></td>
+</tr>
+<tr>
+<td>Språk</td>
+<td><code>Svenska</code></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Konfigurationen av webbplatsen Lyserno Produktportal" src="../../../assets/nextgen/chap00/13.png" /></p>
+<div class="admonition important">
+<p class="admonition-title">Kontrollera språk och sekretess innan du skapar webbplatsen</p>
+<p><strong>Privat</strong> är normalt förvalt. Om något annat visas öppnar du listan och väljer alternativet där endast godkända medlemmar har åtkomst.</p>
+<p>Välj <strong>Svenska</strong> även om ett annat språk är förvalt. Språkvalet påverkar webbplatsens standardfält och gränssnitt och kan inte ändras lika enkelt i efterhand.</p>
+</div>
+<p>Välj <strong>Skapa webbplats</strong> nere till höger.</p>
+<h3 id="4-vanta-tills-webbplatsen-ar-klar">4. Vänta tills webbplatsen är klar</h3>
+<p>SharePoint tillämpar nu mallen. Under tiden kan du lägga till de kollegor som ska dela webbplatsen. Vid en gemensam utbildning inom samma organisation kan en deltagare skapa webbplatsen och bjuda in övriga, så behöver inte alla skapa varsin. Om varje deltagare arbetar separat kan ni hoppa över detta steg.</p>
+<p><img alt="SharePoint tillämpar den valda webbplatsmallen" src="../../../assets/nextgen/chap00/14.png" /></p>
+<p>När meddelandet <strong>Din webbplats är klar</strong> visas väljer du <strong>Gå till webbplatsen</strong>.</p>
+<hr />
+<h2 id="del-4-importera-listan-centrallager">Del 4: Importera listan Centrallager</h2>
+<p>Listan innehåller aktuell affärsdata som pris, lagersaldo, reservationer, inkommande antal och nästa påfyllnadsdatum. Produktens stabila specifikationer kommer senare från PDF-katalogen.</p>
+<p>När webbplatsen öppnas ser du startsidan för <strong>Lyserno Produktportal</strong>. Härifrån skapar vi nu kursens lista.</p>
+<p><img alt="Startsidan för den färdiga webbplatsen Lyserno Produktportal" src="../../../assets/nextgen/chap00/15.png" /></p>
+<h3 id="1-skapa-en-lista-fran-excel">1. Skapa en lista från Excel</h3>
+<ol>
+<li>På webbplatsens startsida väljer du <strong>+ Ny</strong>.</li>
+</ol>
+<p><img alt="Knappen Ny på startsidan för Lyserno Produktportal" src="../../../assets/nextgen/chap00/16.png" /></p>
+<ol>
+<li>Välj <strong>Lista</strong> i menyn.</li>
+<li>Under <strong>Importera från</strong> väljer du <strong>Excel</strong>.</li>
+</ol>
+<p><img alt="Dialogen Hur vill du börja med Excel under Importera från" src="../../../assets/nextgen/chap00/17.png" /></p>
+<h3 id="2-ladda-ner-och-valj-kursfilen">2. Ladda ner och välj kursfilen</h3>
+<p>Ladda först ner den färdiga arbetsboken och spara den på en plats du enkelt hittar:</p>
+<p><a class="button button--primary button--download" href="../../../downloads/nextgen/Centrallager.xlsx" download>Ladda ner Centrallager.xlsx</a></p>
+
+<p>Filen innehåller 25 produktvarianter och en intern Excel-tabell som redan heter <strong>Centrallager</strong>.</p>
+<ol>
+<li>Välj <strong>Ladda upp fil</strong> och leta upp <code>Centrallager.xlsx</code>.</li>
+<li>Om du i stället drar filen till uppladdningsytan markerar du den och väljer <strong>Nästa</strong> nere till höger.</li>
+<li>Kontrollera att tabellen <strong>Centrallager</strong> är vald när förhandsgranskningen visas.</li>
+</ol>
+<p><img alt="Förhandsgranskning av den importerade Excel-tabellen Centrallager" src="../../../assets/nextgen/chap00/18.png" /></p>
+<h3 id="3-anpassa-kolumntyperna">3. Anpassa kolumntyperna</h3>
+<p>SharePoint tolkar flera kolumner som enradig text. Ändra endast följande fyra kolumner:</p>
+<table>
+<thead>
+<tr>
+<th>Kolumn</th>
+<th>Ändra till</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Variant</code></td>
+<td><strong>Val</strong></td>
+</tr>
+<tr>
+<td><code>CurrentUnitPrice</code></td>
+<td><strong>Valuta</strong></td>
+</tr>
+<tr>
+<td><code>NextRestockDate</code></td>
+<td><strong>Datum och tid</strong></td>
+</tr>
+<tr>
+<td><code>SalesStatus</code></td>
+<td><strong>Val</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="variant">Variant</h4>
+<p>Öppna typväljaren för <code>Variant</code> och välj <strong>Val</strong>.</p>
+<p><img alt="Kolumnen Variant ändras från enradig text till Val" src="../../../assets/nextgen/chap00/19.png" /></p>
+<h4 id="currentunitprice">CurrentUnitPrice</h4>
+<p>Scrolla åt höger, öppna typväljaren för <code>CurrentUnitPrice</code> och välj <strong>Valuta</strong>.</p>
+<p><img alt="Kolumnen CurrentUnitPrice ändras till Valuta" src="../../../assets/nextgen/chap00/20.png" /></p>
+<h4 id="nextrestockdate">NextRestockDate</h4>
+<p>Fortsätt åt höger och ändra <code>NextRestockDate</code> till <strong>Datum och tid</strong>.</p>
+<p><img alt="Kolumnen NextRestockDate ändras till Datum och tid" src="../../../assets/nextgen/chap00/21.png" /></p>
+<h4 id="salesstatus">SalesStatus</h4>
+<p>Ändra slutligen <code>SalesStatus</code> till <strong>Val</strong> och välj därefter <strong>Nästa</strong>.</p>
+<p><img alt="Kolumnen SalesStatus ändras till Val" src="../../../assets/nextgen/chap00/22.png" /></p>
+<h3 id="4-skapa-listan">4. Skapa listan</h3>
+<p>Namnet ska redan vara hämtat från Excel-tabellen. Kontrollera att det står exakt:</p>
+<p><code>Centrallager</code></p>
+<p>Välj sedan <strong>Skapa</strong> nere till höger.</p>
+<p><img alt="Sista steget där SharePoint-listan får namnet Centrallager" src="../../../assets/nextgen/chap00/23.png" /></p>
+<h3 id="5-kontrollera-resultatet">5. Kontrollera resultatet</h3>
+<p>När listan öppnas ska du se 25 rader och bland annat följande kolumner:</p>
+<ul>
+<li><code>SKU</code> och <code>ProductModelID</code></li>
+<li><code>Variant</code> och <code>ImageSource</code></li>
+<li><code>CurrentUnitPrice</code></li>
+<li><code>OnHandQuantity</code>, <code>ReservedQuantity</code> och <code>IncomingQuantity</code></li>
+<li><code>NextRestockDate</code></li>
+<li><code>SalesStatus</code></li>
+</ul>
+<p><img alt="Den färdiga SharePoint-listan Centrallager med importerade produktvarianter" src="../../../assets/nextgen/chap00/24.png" /></p>
+<h3 id="6-stall-in-svenska-kronor">6. Ställ in svenska kronor</h3>
+<p><code>CurrentUnitPrice</code> är nu en valutakolumn, men SharePoint kan till en början visa priserna i dollar. Ändra därför kolumnens valutaformat till svenska kronor.</p>
+<ol>
+<li>Välj kolumnrubriken <strong>CurrentUnitPrice</strong>.</li>
+<li>Välj <strong>Kolumninställningar</strong> och sedan <strong>Redigera</strong>.</li>
+</ol>
+<p><img alt="Menyn för CurrentUnitPrice med Kolumninställningar och Redigera" src="../../../assets/nextgen/chap00/25.png" /></p>
+<ol>
+<li>I panelen <strong>Redigera kolumn</strong> öppnar du listan under <strong>Valutaformat</strong>.</li>
+</ol>
+<p><img alt="Panelen Redigera kolumn med inställningen Valutaformat" src="../../../assets/nextgen/chap00/26.png" /></p>
+<ol>
+<li>Scrolla i listan och välj <strong>123 456,00 kr (Sweden)</strong>.</li>
+</ol>
+<p><img alt="Valutaformatet svenska kronor i listan" src="../../../assets/nextgen/chap00/27.png" /></p>
+<ol>
+<li>Kontrollera att svenska kronor visas under <strong>Valutaformat</strong> och välj <strong>Spara</strong> längst ner i panelen.</li>
+</ol>
+<p><img alt="Svenska kronor valda i panelen Redigera kolumn" src="../../../assets/nextgen/chap00/28.png" /></p>
+<p>Priserna i <code>CurrentUnitPrice</code> visas nu i svenska kronor.</p>
+<p><img alt="Den färdiga Centrallager-listan med priser i svenska kronor" src="../../../assets/nextgen/chap00/29.png" /></p>
+<div class="admonition success">
+<p class="admonition-title">Kursmiljön är klar</p>
+<p>Du har nu tillgång till Copilot Studio, rätt utvecklingsmiljö, SharePoint-webbplatsen <strong>Lyserno Produktportal</strong> och listan <strong>Centrallager</strong>. Fortsätt till <a href="../01-navigate-new-experience/">nästa kapitel</a> för att hitta rätt i den nya agentupplevelsen.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          
+<button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Tillbaka till toppen
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopierat till urklipp", "clipboard.copy": "Kopiera till urklipp", "search.result.more.one": "1 till p\u00e5 denna sida", "search.result.more.other": "# till p\u00e5 denna sida", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.term.missing": "Saknas", "select.version": "V\u00e4lj version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
