@@ -40,8 +40,8 @@ hide:
       <article><span>02</span><div><h3>Skapa lösningen</h3><p>Samla agenten och kommande komponenter i en prioriterad Power Platform-lösning.</p></div></article>
       <article><span>03</span><div><h3>Skapa agentens grund</h3><p>Skapa Lyserno Produktassistent, konfigurera grundinställningarna och etablera ett första baslinjetest.</p></div></article>
       <article><span>04</span><div><h3>Lägg till produktkunskap</h3><p>Använd Lyserno-katalogen och testa hur agenten arbetar med ett längre dokument.</p></div></article>
-      <article><span>05</span><div><h3>Koppla SharePoint</h3><p>Hämta aktuell information om varianter, pris, lager och påfyllnad.</p></div></article>
-      <article><span>06</span><div><h3>Styr arbetet med en skill</h3><p>Gör verktygsanvändningen pålitlig och förfina instruktionerna efter testerna.</p></div></article>
+      <article><span>05</span><div><h3>Skapa den första skillen</h3><p>Fånga ett återanvändbart arbetssätt för behov, produktmatchning och rätt följdfrågor.</p></div></article>
+      <article><span>06</span><div><h3>Koppla SharePoint</h3><p>Hämta aktuell information om varianter, pris, lager och påfyllnad och bygg vidare på skillen.</p></div></article>
       <article><span>07</span><div><h3>Automatisera och utvärdera</h3><p>Koppla ett arbetsflöde, testa helheten och gå igenom vägen till publicering.</p></div></article>
     </div>
   </section>

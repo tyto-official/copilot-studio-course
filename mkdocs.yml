@@ -53,6 +53,7 @@ nav:
       - 1. Hitta rätt i nya Copilot Studio: copilot-studio/nextgen/01-navigate-new-experience.md
       - 2. Skapa lösningen: copilot-studio/nextgen/02-create-solution.md
       - 3. Skapa agenten: copilot-studio/nextgen/03-create-agent.md
+      - 4. Lägg till produktkunskap: copilot-studio/nextgen/04-add-knowledge.md
   - Tips & fördjupning:
     - Översikt: tips/index.md
     - Kunskap på djupet: tips/knowledge.md
