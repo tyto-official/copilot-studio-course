@@ -22,7 +22,7 @@ hide:
 
   <section class="scenario-band" id="scenariot">
     <div><div class="section-label">LYSERNO PRODUKTAGENT</div><h2>Från produktfråga till genomförd åtgärd</h2></div>
-    <p>Du bygger en agent för det fiktiva belysningsföretaget Lyserno. En omfattande PDF-katalog ger stabil produktkunskap, medan SharePoint ger aktuella priser, lagersaldon och leveransdatum.</p>
+    <p>Du bygger en agent för det fiktiva belysningsföretaget Lyserno. En omfattande PDF-katalog ger stabil produktkunskap, medan SharePoint ger aktuella priser, lagersaldon och leveransdatum. <a class="scenario-link" href="../../lyserno/">Besök Lysernos publika webbplats</a></p>
   </section>
 
   <section class="capability-grid" aria-label="Agentens förmågor">

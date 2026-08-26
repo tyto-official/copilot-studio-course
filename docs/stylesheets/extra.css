@@ -638,6 +638,20 @@ html.is-scrolled .md-header {
   line-height: 1.72;
 }
 
+.scenario-link {
+  display: table;
+  margin-top: 20px;
+  color: var(--ai-sky-deep);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.scenario-link:hover,
+.scenario-link:focus-visible {
+  color: var(--ai-blue);
+}
+
 .course-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

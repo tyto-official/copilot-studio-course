@@ -6,6 +6,9 @@ exclude_docs: |
   copilot-studio/standard/11-set-up-for-production.md
   *.en.md
 
+hooks:
+  - scripts/mkdocs_hooks.py
+
 theme:
   name: material
   custom_dir: overrides
