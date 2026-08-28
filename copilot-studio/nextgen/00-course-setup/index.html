@@ -689,6 +689,119 @@
                 
   
   
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avancerad standardagent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Avancerad standardagent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/00-course-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -704,10 +817,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
             
   
   
@@ -725,8 +838,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1070,6 +1183,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#replenishmentcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ReplenishmentCode
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1221,6 +1345,62 @@
     
   
     4. Lägg till produktkunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-first-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Skapa den första skillen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-add-sharepoint-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anslut Centrallager som verktyg
   
 
     
@@ -1630,6 +1810,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#replenishmentcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ReplenishmentCode
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1870,7 +2061,7 @@
 </ol>
 <p><img alt="Förhandsgranskning av den importerade Excel-tabellen Centrallager" src="../../../assets/nextgen/chap00/18.png" /></p>
 <h3 id="3-anpassa-kolumntyperna">3. Anpassa kolumntyperna</h3>
-<p>SharePoint tolkar flera kolumner som enradig text. Ändra endast följande fyra kolumner:</p>
+<p>SharePoint tolkar flera kolumner som enradig text. Ändra endast följande fem kolumner:</p>
 <table>
 <thead>
 <tr>
@@ -1895,6 +2086,10 @@
 <td><code>SalesStatus</code></td>
 <td><strong>Val</strong></td>
 </tr>
+<tr>
+<td><code>ReplenishmentCode</code></td>
+<td><strong>Val</strong></td>
+</tr>
 </tbody>
 </table>
 <h4 id="variant">Variant</h4>
@@ -1907,13 +2102,16 @@
 <p>Fortsätt åt höger och ändra <code>NextRestockDate</code> till <strong>Datum och tid</strong>.</p>
 <p><img alt="Kolumnen NextRestockDate ändras till Datum och tid" src="../../../assets/nextgen/chap00/21.png" /></p>
 <h4 id="salesstatus">SalesStatus</h4>
-<p>Ändra slutligen <code>SalesStatus</code> till <strong>Val</strong> och välj därefter <strong>Nästa</strong>.</p>
+<p>Ändra <code>SalesStatus</code> till <strong>Val</strong>.</p>
 <p><img alt="Kolumnen SalesStatus ändras till Val" src="../../../assets/nextgen/chap00/22.png" /></p>
+<h4 id="replenishmentcode">ReplenishmentCode</h4>
+<p>Ändra slutligen <code>ReplenishmentCode</code> till <strong>Val</strong> och välj därefter <strong>Nästa</strong>.</p>
+<p><img alt="Kolumnen ReplenishmentCode ändras till Val" src="../../../assets/nextgen/chap00/23.png" /></p>
 <h3 id="4-skapa-listan">4. Skapa listan</h3>
 <p>Namnet ska redan vara hämtat från Excel-tabellen. Kontrollera att det står exakt:</p>
 <p><code>Centrallager</code></p>
 <p>Välj sedan <strong>Skapa</strong> nere till höger.</p>
-<p><img alt="Sista steget där SharePoint-listan får namnet Centrallager" src="../../../assets/nextgen/chap00/23.png" /></p>
+<p><img alt="Sista steget där SharePoint-listan får namnet Centrallager" src="../../../assets/nextgen/chap00/24.png" /></p>
 <h3 id="5-kontrollera-resultatet">5. Kontrollera resultatet</h3>
 <p>När listan öppnas ska du se 25 rader och bland annat följande kolumner:</p>
 <ul>
@@ -1923,29 +2121,30 @@
 <li><code>OnHandQuantity</code>, <code>ReservedQuantity</code> och <code>IncomingQuantity</code></li>
 <li><code>NextRestockDate</code></li>
 <li><code>SalesStatus</code></li>
+<li><code>ReplenishmentCode</code></li>
 </ul>
-<p><img alt="Den färdiga SharePoint-listan Centrallager med importerade produktvarianter" src="../../../assets/nextgen/chap00/24.png" /></p>
+<p><img alt="Den färdiga SharePoint-listan Centrallager med importerade produktvarianter" src="../../../assets/nextgen/chap00/25.png" /></p>
 <h3 id="6-stall-in-svenska-kronor">6. Ställ in svenska kronor</h3>
 <p><code>CurrentUnitPrice</code> är nu en valutakolumn, men SharePoint kan till en början visa priserna i dollar. Ändra därför kolumnens valutaformat till svenska kronor.</p>
 <ol>
 <li>Välj kolumnrubriken <strong>CurrentUnitPrice</strong>.</li>
 <li>Välj <strong>Kolumninställningar</strong> och sedan <strong>Redigera</strong>.</li>
 </ol>
-<p><img alt="Menyn för CurrentUnitPrice med Kolumninställningar och Redigera" src="../../../assets/nextgen/chap00/25.png" /></p>
+<p><img alt="Menyn för CurrentUnitPrice med Kolumninställningar och Redigera" src="../../../assets/nextgen/chap00/26.png" /></p>
 <ol>
 <li>I panelen <strong>Redigera kolumn</strong> öppnar du listan under <strong>Valutaformat</strong>.</li>
 </ol>
-<p><img alt="Panelen Redigera kolumn med inställningen Valutaformat" src="../../../assets/nextgen/chap00/26.png" /></p>
+<p><img alt="Panelen Redigera kolumn med inställningen Valutaformat" src="../../../assets/nextgen/chap00/27.png" /></p>
 <ol>
 <li>Scrolla i listan och välj <strong>123 456,00 kr (Sweden)</strong>.</li>
 </ol>
-<p><img alt="Valutaformatet svenska kronor i listan" src="../../../assets/nextgen/chap00/27.png" /></p>
+<p><img alt="Valutaformatet svenska kronor i listan" src="../../../assets/nextgen/chap00/28.png" /></p>
 <ol>
 <li>Kontrollera att svenska kronor visas under <strong>Valutaformat</strong> och välj <strong>Spara</strong> längst ner i panelen.</li>
 </ol>
-<p><img alt="Svenska kronor valda i panelen Redigera kolumn" src="../../../assets/nextgen/chap00/28.png" /></p>
+<p><img alt="Svenska kronor valda i panelen Redigera kolumn" src="../../../assets/nextgen/chap00/29.png" /></p>
 <p>Priserna i <code>CurrentUnitPrice</code> visas nu i svenska kronor.</p>
-<p><img alt="Den färdiga Centrallager-listan med priser i svenska kronor" src="../../../assets/nextgen/chap00/29.png" /></p>
+<p><img alt="Den färdiga Centrallager-listan med priser i svenska kronor" src="../../../assets/nextgen/chap00/30.png" /></p>
 <div class="admonition success">
 <p class="admonition-title">Kursmiljön är klar</p>
 <p>Du har nu tillgång till Copilot Studio, rätt utvecklingsmiljö, SharePoint-webbplatsen <strong>Lyserno Produktportal</strong> och listan <strong>Centrallager</strong>. Fortsätt till <a href="../01-navigate-new-experience/">nästa kapitel</a> för att hitta rätt i den nya agentupplevelsen.</p>

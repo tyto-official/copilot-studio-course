@@ -43,6 +43,16 @@ html[data-track="nextgen"] {
   --ai-sky-pale: #f7f5ff;
 }
 
+/* Fordjupningen delar standardsparets accent. Fargen betyder arkitektur,
+   badgen pa kortet betyder niva. */
+html[data-track="standard-advanced"] {
+  --ai-sky: #0e9992;
+  --ai-sky-dark: var(--ai-teal);
+  --ai-sky-deep: var(--ai-teal-dark);
+  --ai-sky-soft: var(--ai-teal-soft);
+  --ai-sky-pale: #f1faf7;
+}
+
 [data-md-color-scheme="default"] {
   --md-default-bg-color: var(--ai-surface);
   --md-default-fg-color: var(--ai-ink);
@@ -652,12 +662,45 @@ html.is-scrolled .md-header {
   color: var(--ai-blue);
 }
 
+/* Portalen grupperas arkitektur forst, niva sedan. Varje grupp har sin egen
+   rubrik och sitt eget rutnat sa att korten star lika breda mellan grupperna. */
+.track-group { padding: 0 max(6vw, calc((100vw - 1320px) / 2)) 62px; }
+.track-group--last { padding-bottom: 125px; }
+
+.track-group__heading {
+  display: grid;
+  grid-template-columns: 0.82fr 1fr;
+  align-items: end;
+  gap: clamp(24px, 5vw, 90px);
+  margin-bottom: 30px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--ai-line);
+}
+
+.track-group__heading h3 {
+  margin-top: 10px;
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.track-group__heading > p {
+  color: var(--ai-muted);
+  font-size: 0.98rem;
+  line-height: 1.68;
+}
+
+.section-label--standard { color: var(--ai-teal); }
+.section-label--nextgen { color: var(--ai-violet); }
+
 .course-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
   padding: 0 max(6vw, calc((100vw - 1320px) / 2)) 125px;
 }
+
+.track-group .course-grid { padding: 0; }
 
 .course-card {
   overflow: hidden;
@@ -717,6 +760,7 @@ html.is-scrolled .md-header {
 /* Korten pa portalen forhandsvisar respektive kurs accentfarg */
 .course-card--standard .text-link::after { background: var(--ai-teal); }
 .course-card--nextgen .text-link::after { background: var(--ai-violet); }
+.course-card--advanced .text-link::after { background: var(--ai-teal); }
 .text-link:hover::after { transform: translateX(4px); }
 .button--arrow::after { margin-left: 11px; }
 .button--arrow:hover::after { transform: none; }
@@ -865,11 +909,16 @@ html.is-scrolled .md-header {
   background: radial-gradient(circle at 86% 15%, rgba(103, 69, 223, 0.17), transparent 29%), radial-gradient(circle at 18% 88%, rgba(33, 143, 219, 0.07), transparent 27%), linear-gradient(135deg, #fbfbfa 0%, #f4f1ff 58%, #f0eefb 100%);
 }
 
+.course-hero--advanced {
+  background: radial-gradient(circle at 86% 16%, rgba(8, 125, 120, 0.18), transparent 29%), linear-gradient(135deg, #fbfcfa 0%, #eef8f5 60%, #edf5f4 100%);
+}
+
 .back-link { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 45px; color: var(--ai-muted) !important; font-size: 0.76rem; font-weight: 720; text-decoration: none; }
 .course-hero__copy { position: relative; z-index: 2; }
 .course-hero h1 { margin-top: 20px; font-size: clamp(2.6rem, 4.4vw, 78px); line-height: 0.98; letter-spacing: -0.055em; }
 .course-hero--standard h1 span { color: var(--ai-teal); }
 .course-hero--nextgen h1 span { color: var(--ai-sky-dark); }
+.course-hero--advanced h1 span { color: var(--ai-teal); }
 .course-hero__copy > p { max-width: 680px; margin-top: 28px; color: var(--ai-muted); font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.65; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .hero-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
@@ -884,6 +933,7 @@ html.is-scrolled .md-header {
 
 .scenario-band { padding-top: 110px; }
 .course-landing--standard .scenario-band .section-label { color: var(--ai-teal); }
+.course-landing--advanced .scenario-band .section-label { color: var(--ai-teal); }
 
 .chapter-section,
 .journey-section { padding: 75px max(6vw, calc((100vw - 1320px) / 2)) 125px; }
@@ -904,6 +954,7 @@ html.is-scrolled .md-header {
 .capability--green { background: var(--ai-green); }
 .capability--blue { background: var(--ai-blue); }
 .capability--purple { background: var(--ai-violet-dark); }
+.capability--teal { background: var(--ai-teal-dark); }
 .capability--coral { background: var(--ai-coral); }
 .capability > span { color: rgba(255, 255, 255, 0.55); font-size: 0.7rem; font-weight: 850; letter-spacing: 0.14em; }
 .capability h3 { margin-top: 74px; color: #fff; font-size: 1.45rem; line-height: 1.2; }
@@ -953,6 +1004,7 @@ html.is-scrolled .md-header {
   .compare-picks { grid-template-columns: 1fr; }
   .track-intro,
   .scenario-band { padding-top: 80px; }
+  .track-group__heading { grid-template-columns: 1fr; gap: 14px; align-items: start; }
   .course-card__visual { height: 235px; }
   .capability { min-height: 240px; }
   .capability h3 { margin-top: 48px; }

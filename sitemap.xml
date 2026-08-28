@@ -2,199 +2,223 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/00-concepts/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/00-concepts/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/01-prepare-sharepoint/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/01-prepare-sharepoint/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/02-tour-interface/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/02-tour-interface/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/03-create-solution/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/03-create-solution/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/04-create-agent/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/04-create-agent/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/05-add-knowledge/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/05-add-knowledge/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/06-create-topic/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/06-create-topic/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/07-adaptive-card/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/07-adaptive-card/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/08-create-flow/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/08-create-flow/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/09-autonomy/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/09-autonomy/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/10-multi-agent/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/10-multi-agent/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/00-course-setup/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/00-course-setup/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/01-navigate-new-experience/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/01-navigate-new-experience/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/02-create-solution/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/02-create-solution/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/03-create-agent/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/03-create-agent/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/04-add-knowledge/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/04-add-knowledge/" />
     </url>
     <url>
+        <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/05-add-first-skill/</loc>
+        <lastmod>2026-08-28</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/05-add-first-skill/" />
+    </url>
+    <url>
+        <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/06-add-sharepoint-tool/</loc>
+        <lastmod>2026-08-28</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/06-add-sharepoint-tool/" />
+    </url>
+    <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/00-concepts/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/00-concepts/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/01-prepare-sharepoint/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/01-prepare-sharepoint/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/02-tour-interface/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/02-tour-interface/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/03-create-solution/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/03-create-solution/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/04-create-agent/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/04-create-agent/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/05-add-knowledge/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/05-add-knowledge/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/06-create-topic/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/06-create-topic/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/07-adaptive-card/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/07-adaptive-card/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/08-create-flow/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/08-create-flow/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/09-autonomy/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/09-autonomy/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/10-multi-agent/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard/10-multi-agent/" />
     </url>
     <url>
+        <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard-advanced/</loc>
+        <lastmod>2026-08-28</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard-advanced/" />
+    </url>
+    <url>
+        <loc>https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard-advanced/00-course-setup/</loc>
+        <lastmod>2026-08-28</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard-advanced/00-course-setup/" />
+    </url>
+    <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/tips/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/tips/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/tips/knowledge/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/tips/knowledge/" />
     </url>
     <url>
         <loc>https://tyto-official.github.io/copilot-studio-course/lyserno/</loc>
-        <lastmod>2026-08-26</lastmod>
+        <lastmod>2026-08-28</lastmod>
         <changefreq>weekly</changefreq>
         <xhtml:link rel="alternate" hreflang="sv" href="https://tyto-official.github.io/copilot-studio-course/lyserno/" />
     </url>
