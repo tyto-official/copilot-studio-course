@@ -1,0 +1,10 @@
+node_modules
+.next
+.vinext
+dist
+dist-api
+.data
+.azure-cli
+npm-debug.log*
+Dockerfile*
+infra

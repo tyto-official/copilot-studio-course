@@ -19,6 +19,7 @@ presentations/
 data/nextgen/          Strukturerad data för produktkatalogen
 scripts/nextgen/       Skript som bygger kursartefakter
 source-assets/nextgen/ Originalbilder och arbetsmaterial
+services/t-berg-du/    Demoaffärssystem, REST-API och MCP för den avancerade standardkursen
 ```
 
 Endast innehåll under `docs/` publiceras på webbplatsen. Övriga mappar innehåller redigerbart källmaterial.
@@ -34,3 +35,8 @@ mkdocs serve
 En push till `main` kör `.github/workflows/publish.yml` och publicerar webbplatsen till:
 
 `https://tyto-official.github.io/copilot-studio-course/`
+
+Ändringar under `services/t-berg-du/` byggs separat av
+`.github/workflows/publish-tberg-du-containers.yml` och publicerar webb- och
+API/MCP-images till GitHub Container Registry. Rena tjänsteändringar bygger inte
+om GitHub Pages.

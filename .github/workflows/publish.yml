@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - services/t-berg-du/**
 
 permissions:
   contents: write

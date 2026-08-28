@@ -1,0 +1,61 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "T-Berg D&U Object API",
+    "description": "Hämtar auktoritativ objektinformation till en Copilot Studio-agent. Samma tidsbegränsade T-Berg-testnyckel används för REST och MCP.",
+    "version": "0.2.0"
+  },
+  "host": "localhost:8787",
+  "basePath": "/api",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "workshopKey": {
+      "type": "apiKey",
+      "name": "x-workshop-key",
+      "in": "header"
+    }
+  },
+  "security": [{ "workshopKey": [] }],
+  "paths": {
+    "/assets/{assetId}": {
+      "get": {
+        "operationId": "GetAsset",
+        "summary": "Hämta ett objekt",
+        "description": "Hämtar kritikalitet, SLA, garanti, serviceform och kompetenskrav för ett verifierat objekt-ID.",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Objekt-ID som identifierats i användarens bild eller svar, exempelvis VA-12."
+          }
+        ],
+        "responses": {
+          "200": { "description": "Objektet hittades.", "schema": { "$ref": "#/definitions/Asset" } },
+          "404": { "description": "Objektet hittades inte." }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Asset": {
+      "type": "object",
+      "required": ["assetId", "name", "location", "criticality", "slaHours", "requiredSkill", "warrantyActive"],
+      "properties": {
+        "assetId": { "type": "string", "example": "VA-12" },
+        "name": { "type": "string", "example": "Ventilationsaggregat 12" },
+        "type": { "type": "string", "example": "Ventilation" },
+        "location": { "type": "string", "example": "Hall B" },
+        "criticality": { "type": "string", "example": "Hög" },
+        "slaHours": { "type": "integer", "format": "int32", "example": 8 },
+        "requiredSkill": { "type": "string", "example": "Ventilation" },
+        "warrantyActive": { "type": "boolean", "example": false },
+        "serviceType": { "type": "string", "example": "Intern" },
+        "status": { "type": "string", "example": "Drift" }
+      }
+    }
+  }
+}
