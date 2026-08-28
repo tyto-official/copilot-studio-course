@@ -143,8 +143,10 @@ Exempel:
 När webbappens Azure-adress är känd skapas en Cloudflare Turnstile-widget. Därefter kopplas nycklarna utan ombyggnad:
 
 ```powershell
-.\infra\configure-turnstile.ps1 -SiteKey DIN_SITEKEY -SecretKey DIN_HEMLIGA_NYCKEL
+.\infra\configure-turnstile.ps1 -SiteKey DIN_SITEKEY
 ```
+
+Skriptet frågar därefter efter Turnstile Secret Key med maskerad inmatning. Lägg inte hemligheten i kommandoraden, repot eller kursmaterialet.
 
 ## Inför publicering
 

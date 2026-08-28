@@ -3,8 +3,7 @@ param(
   [Parameter(Mandatory = $true)]
   [string]$SiteKey,
 
-  [Parameter(Mandatory = $true)]
-  [string]$SecretKey,
+  [Security.SecureString]$SecretKey,
 
   [string]$ResourceGroup = "rg-tberg-du-demo-neu",
   [string]$ApiAppName = "ca-tberg-du-api",
@@ -12,15 +11,34 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+
+if (-not $SecretKey) {
+  $SecretKey = Read-Host "Klistra in Turnstile Secret Key" -AsSecureString
+}
+
 $webFqdn = (& az containerapp show --resource-group $ResourceGroup --name $WebAppName --query properties.configuration.ingress.fqdn --output tsv)
 if ($LASTEXITCODE -ne 0 -or -not $webFqdn) { throw "Webbappens adress kunde inte läsas." }
 
-az containerapp secret set `
-  --resource-group $ResourceGroup `
-  --name $ApiAppName `
-  --secrets "turnstile-secret=$SecretKey" `
-  --output none
-if ($LASTEXITCODE -ne 0) { throw "Turnstile-hemligheten kunde inte sparas." }
+$secretPointer = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecretKey)
+$secretPlainText = $null
+
+try {
+  $secretPlainText = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($secretPointer)
+  if ([string]::IsNullOrWhiteSpace($secretPlainText)) {
+    throw "Turnstile-hemligheten får inte vara tom."
+  }
+
+  az containerapp secret set `
+    --resource-group $ResourceGroup `
+    --name $ApiAppName `
+    --secrets "turnstile-secret=$secretPlainText" `
+    --output none
+  if ($LASTEXITCODE -ne 0) { throw "Turnstile-hemligheten kunde inte sparas." }
+}
+finally {
+  $secretPlainText = $null
+  [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($secretPointer)
+}
 
 az containerapp update `
   --resource-group $ResourceGroup `
