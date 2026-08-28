@@ -196,7 +196,7 @@ Filen innehåller 25 produktvarianter och en intern Excel-tabell som redan heter
 
 ### 3. Anpassa kolumntyperna
 
-SharePoint tolkar flera kolumner som enradig text. Ändra endast följande fyra kolumner:
+SharePoint tolkar flera kolumner som enradig text. Ändra endast följande fem kolumner:
 
 | Kolumn | Ändra till |
 | --- | --- |
@@ -204,6 +204,7 @@ SharePoint tolkar flera kolumner som enradig text. Ändra endast följande fyra 
 | `CurrentUnitPrice` | **Valuta** |
 | `NextRestockDate` | **Datum och tid** |
 | `SalesStatus` | **Val** |
+| `ReplenishmentCode` | **Val** |
 
 #### Variant
 
@@ -225,9 +226,15 @@ Fortsätt åt höger och ändra `NextRestockDate` till **Datum och tid**.
 
 #### SalesStatus
 
-Ändra slutligen `SalesStatus` till **Val** och välj därefter **Nästa**.
+Ändra `SalesStatus` till **Val**.
 
 ![Kolumnen SalesStatus ändras till Val](../../assets/nextgen/chap00/22.png)
+
+#### ReplenishmentCode
+
+Ändra slutligen `ReplenishmentCode` till **Val** och välj därefter **Nästa**.
+
+![Kolumnen ReplenishmentCode ändras till Val](../../assets/nextgen/chap00/23.png)
 
 ### 4. Skapa listan
 
@@ -237,7 +244,7 @@ Namnet ska redan vara hämtat från Excel-tabellen. Kontrollera att det står ex
 
 Välj sedan **Skapa** nere till höger.
 
-![Sista steget där SharePoint-listan får namnet Centrallager](../../assets/nextgen/chap00/23.png)
+![Sista steget där SharePoint-listan får namnet Centrallager](../../assets/nextgen/chap00/24.png)
 
 ### 5. Kontrollera resultatet
 
@@ -249,8 +256,9 @@ När listan öppnas ska du se 25 rader och bland annat följande kolumner:
 - `OnHandQuantity`, `ReservedQuantity` och `IncomingQuantity`
 - `NextRestockDate`
 - `SalesStatus`
+- `ReplenishmentCode`
 
-![Den färdiga SharePoint-listan Centrallager med importerade produktvarianter](../../assets/nextgen/chap00/24.png)
+![Den färdiga SharePoint-listan Centrallager med importerade produktvarianter](../../assets/nextgen/chap00/25.png)
 
 ### 6. Ställ in svenska kronor
 
@@ -259,23 +267,23 @@ När listan öppnas ska du se 25 rader och bland annat följande kolumner:
 1. Välj kolumnrubriken **CurrentUnitPrice**.
 2. Välj **Kolumninställningar** och sedan **Redigera**.
 
-![Menyn för CurrentUnitPrice med Kolumninställningar och Redigera](../../assets/nextgen/chap00/25.png)
+![Menyn för CurrentUnitPrice med Kolumninställningar och Redigera](../../assets/nextgen/chap00/26.png)
 
 3. I panelen **Redigera kolumn** öppnar du listan under **Valutaformat**.
 
-![Panelen Redigera kolumn med inställningen Valutaformat](../../assets/nextgen/chap00/26.png)
+![Panelen Redigera kolumn med inställningen Valutaformat](../../assets/nextgen/chap00/27.png)
 
 4. Scrolla i listan och välj **123 456,00 kr (Sweden)**.
 
-![Valutaformatet svenska kronor i listan](../../assets/nextgen/chap00/27.png)
+![Valutaformatet svenska kronor i listan](../../assets/nextgen/chap00/28.png)
 
 5. Kontrollera att svenska kronor visas under **Valutaformat** och välj **Spara** längst ner i panelen.
 
-![Svenska kronor valda i panelen Redigera kolumn](../../assets/nextgen/chap00/28.png)
+![Svenska kronor valda i panelen Redigera kolumn](../../assets/nextgen/chap00/29.png)
 
 Priserna i `CurrentUnitPrice` visas nu i svenska kronor.
 
-![Den färdiga Centrallager-listan med priser i svenska kronor](../../assets/nextgen/chap00/29.png)
+![Den färdiga Centrallager-listan med priser i svenska kronor](../../assets/nextgen/chap00/30.png)
 
 !!! success "Kursmiljön är klar"
     Du har nu tillgång till Copilot Studio, rätt utvecklingsmiljö, SharePoint-webbplatsen **Lyserno Produktportal** och listan **Centrallager**. Fortsätt till [nästa kapitel](01-navigate-new-experience.md) för att hitta rätt i den nya agentupplevelsen.

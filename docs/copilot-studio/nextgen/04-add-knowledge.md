@@ -32,20 +32,6 @@ Förenklat sker informationshämtningen i tre steg:
 
 Hämtningsmetoden beror på källan. Uppladdade dokument förbereds för informationssökning, medan publika webbplatser söks via Bing. Microsoft beskriver den grundläggande RAG-processen som frågeomskrivning, hämtning, svarsgenerering och säkerhetskontroll. Läs mer i [Microsofts vägledning om RAG](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/retrieval-augmented-generation).
 
-### Kunskapssökning och filanalys är två olika steg
-
-Den första kunskapssökningen placerar inte automatiskt hela PDF-dokumentet i modellens kontext. Den letar först efter relevanta resultat och referenser.
-
-I den nya GitHub Copilot-harnessen kan agenten därefter hämta en matchad fil till sin sandbox och använda en filspecifik skill, exempelvis **analyzing-pdf**, för att undersöka hela PDF-filen. I agentens arbetssteg kan flödet därför se ut ungefär så här:
-
-```text
-Kunskapssökning → dokumentreferens → fil till sandbox → PDF-analys → svar
-```
-
-Det är en viktig skillnad: **Kunskap** hittar den relevanta källan, medan harnessen kan fortsätta arbetet med ett mer specialiserat sätt att läsa filen.
-
----
-
 ## Del 2: Ladda upp Lysernos produktkatalog
 
 Vi börjar med PDF-filen eftersom en större fil kan behöva bearbetas en stund innan den är fullt sökbar.
@@ -108,16 +94,15 @@ Fri webbsökning kan vara värdefull när agenten behöver aktuell och bred omv�
 Stäng därför av **Search all websites**. Vi börjar med Lysernos egen webbplats och kan senare aktivera bredare sökning om tester visar ett verkligt behov.
 
 !!! info "Advanced"
-    Under **Advanced** kan en miljö erbjuda en konfiguration för Bing Custom Search. Den kan ge större kontroll över vilka webbkällor Bing får söka i. Vi använder inte den funktionen i kursen.
+    Under **Advanced** kan en miljö erbjuda en konfiguration för Bing Custom Search. Den kan ge större kontroll över vilka webbkällor Bing får söka i och hur resultaten prioriteras. Vi använder inte funktionen i kursen. Läs mer i [Microsofts dokumentation om Bing Custom Search](https://learn.microsoft.com/en-us/microsoft-copilot-studio/knowledge-bing-custom-search).
 
 ### 2. Ange webbplatsens adress
 
-Klistra in följande adress under **Add public websites**:
+Klistra in följande adress under **Add public websites**. Använd kopieringsknappen i kodfältets övre högra hörn:
 
-<div class="copy-field">
-  <code>https://tyto-official.github.io/copilot-studio-course/lyserno/</code>
-  <button type="button" class="copy-field__button" data-copy-value="https://tyto-official.github.io/copilot-studio-course/lyserno/"><span class="copy-field__label" aria-live="polite">Kopiera</span></button>
-</div>
+```text
+https://tyto-official.github.io/copilot-studio-course/lyserno/
+```
 
 Välj **Add**.
 
@@ -191,6 +176,25 @@ Vi behöver fylla på showroom Göteborg med gröna bordslampor som passar för 
 ```
 
 När båda källorna fungerar ska agenten kunna använda webbplatsen för showroomkontext och katalogen för produktmatchningen. Aktuellt pris, disponibelt saldo och leveranstid saknas fortfarande. Det problemet löser vi senare genom att ansluta agenten till SharePoint.
+
+### Kunskapssökning och filanalys är två olika steg
+
+Öppna agentens arbetssteg för svaret på produktfrågan. Där kan du se att den nya agenten inte behöver stanna vid den första träffen från Kunskap.
+
+Den första kunskapssökningen placerar inte automatiskt hela PDF-dokumentet i modellens kontext. Den hittar relevanta resultat och en referens till dokumentet. I den nya GitHub Copilot-harnessen kan agenten därefter fortsätta arbetet genom att hämta den matchade filen till sin sandbox och använda en inbyggd filskill, exempelvis **analyzing-pdf**, för att undersöka dokumentet mer ingående.
+
+Arbetsgången kan därför se ut ungefär så här:
+
+```text
+Kunskapssökning → dokumentreferens → fil till sandbox → PDF-analys → svar
+```
+
+Detta skiljer sig från det vanliga kunskapsflödet i den tidigare standardagenten. Där utgjorde resultaten som hämtades av kunskapsmekanismen normalt underlaget som agenten fick arbeta vidare med. Om rätt information inte fanns i de hämtade resultaten kunde agenten därför fastna, trots att uppgiften fanns någon annanstans i dokumentet.
+
+Den nya harnessen har friare orkestrering och kan upptäcka att den första sökträffen inte räcker, välja ett mer specialiserat arbetssätt och analysera den matchade filen vidare. **Kunskap** hjälper alltså agenten att hitta rätt källa, medan harnessen kan välja hur källan behöver undersökas för att lösa uppgiften.
+
+!!! note "Jämför arbetsstegen, inte bara slutsvaret"
+    Den tydligaste demonstrationen är att öppna agentens arbetssteg och visa övergången från kunskapssökning till filanalys. Exakta verktygsnamn och steg kan variera mellan modeller och versioner av harnessen.
 
 !!! note "Bedöm källorna, inte den exakta formuleringen"
     Exakta svar och arbetssteg kan variera mellan modeller och medan källorna bearbetas. Kontrollera framför allt att agentens uppgifter kan verifieras i rätt källa och att den är tydlig med information som fortfarande saknas.

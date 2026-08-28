@@ -4,6 +4,8 @@ site_url: https://tyto-official.github.io/copilot-studio-course/
 
 exclude_docs: |
   copilot-studio/standard/11-set-up-for-production.md
+  downloads/nextgen/showroom-pafyllning-v1/SKILL.md
+  downloads/nextgen/showroom-pafyllning-v2/SKILL.md
   *.en.md
 
 hooks:
@@ -47,6 +49,9 @@ nav:
       - 8. Skapa ett flöde: copilot-studio/standard/08-create-flow.md
       - 9. Autonomi: copilot-studio/standard/09-autonomy.md
       - 10. Multi-agent: copilot-studio/standard/10-multi-agent.md
+    - Avancerad standardagent:
+      - Kursöversikt: copilot-studio/standard-advanced/index.md
+      - 0. Kursuppsättning: copilot-studio/standard-advanced/00-course-setup.md
     - Instruktionsdriven agent:
       - Kursöversikt: copilot-studio/nextgen/index.md
       - 0. Kursuppsättning: copilot-studio/nextgen/00-course-setup.md
@@ -54,6 +59,8 @@ nav:
       - 2. Skapa lösningen: copilot-studio/nextgen/02-create-solution.md
       - 3. Skapa agenten: copilot-studio/nextgen/03-create-agent.md
       - 4. Lägg till produktkunskap: copilot-studio/nextgen/04-add-knowledge.md
+      - 5. Skapa den första skillen: copilot-studio/nextgen/05-add-first-skill.md
+      - 6. Anslut Centrallager som verktyg: copilot-studio/nextgen/06-add-sharepoint-tool.md
   - Tips & fördjupning:
     - Översikt: tips/index.md
     - Kunskap på djupet: tips/knowledge.md

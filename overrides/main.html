@@ -13,7 +13,8 @@
 #}
 {% block extrahead %}
   {{ super() }}
-  {%- set track = "standard" if page and page.url.startswith("copilot-studio/standard/")
+  {%- set track = "standard-advanced" if page and page.url.startswith("copilot-studio/standard-advanced/")
+                  else "standard" if page and page.url.startswith("copilot-studio/standard/")
                   else "nextgen" if page and page.url.startswith("copilot-studio/nextgen/")
                   else "" -%}
   <script>
