@@ -11,13 +11,20 @@ export const assets: Asset[] = [
   { assetId: 'PR-31', name: 'Industriskrivare 31', type: 'Märkutrustning', location: 'Linje 2', criticality: 'Låg', slaHours: 48, requiredSkill: 'IT/OT', warrantyActive: true, serviceType: 'Extern', status: 'Drift' },
 ];
 
-export const technicians: Technician[] = [
-  { technicianId: 'T-101', name: 'Anna Ek', skills: ['Industrimekanik', 'Tryckluft'], area: 'Hall A–C', availableFrom: '2026-08-28T13:00:00+02:00', status: 'Tillgänglig' },
-  { technicianId: 'T-102', name: 'Oskar Berg', skills: ['Ventilation', 'Kyla'], area: 'Hela området', availableFrom: '2026-08-28T14:30:00+02:00', status: 'Tillgänglig' },
-  { technicianId: 'T-103', name: 'Nadia Saleh', skills: ['Automation', 'IT/OT'], area: 'Linje 1–2', availableFrom: '2026-08-28T15:00:00+02:00', status: 'På uppdrag' },
-  { technicianId: 'T-104', name: 'Erik Holm', skills: ['El', 'Automation'], area: 'Hall A–B', availableFrom: '2026-08-28T12:30:00+02:00', status: 'Tillgänglig' },
-  { technicianId: 'T-105', name: 'Maja Norén', skills: ['Lyftteknik', 'Industrimekanik'], area: 'Hall C', availableFrom: '2026-08-29T07:00:00+02:00', status: 'Frånvarande' },
+const technicianDefinitions: Array<Omit<Technician, 'availableFrom'> & { availableInMinutes: number }> = [
+  { technicianId: 'T-101', name: 'Anna Ek', skills: ['Industrimekanik', 'Tryckluft'], area: 'Hela området', availableInMinutes: 60, status: 'Tillgänglig' },
+  { technicianId: 'T-102', name: 'Oskar Berg', skills: ['Ventilation', 'Kyla'], area: 'Hela området', availableInMinutes: 90, status: 'Tillgänglig' },
+  { technicianId: 'T-103', name: 'Nadia Saleh', skills: ['Automation', 'IT/OT'], area: 'Hela området', availableInMinutes: 240, status: 'På uppdrag' },
+  { technicianId: 'T-104', name: 'Erik Holm', skills: ['El', 'Automation'], area: 'Hela området', availableInMinutes: 30, status: 'Tillgänglig' },
+  { technicianId: 'T-105', name: 'Maja Norén', skills: ['Lyftteknik', 'Industrimekanik'], area: 'Hela området', availableInMinutes: 24 * 60, status: 'Frånvarande' },
 ];
+
+export function buildTechnicians(now = new Date()): Technician[] {
+  return technicianDefinitions.map(({ availableInMinutes, ...technician }) => ({
+    ...technician,
+    availableFrom: new Date(now.getTime() + availableInMinutes * 60_000).toISOString(),
+  }));
+}
 
 export const faultHistory: FaultHistoryEntry[] = [
   { historyId: 'H-001', assetId: 'VA-12', date: '2026-05-14', errorCode: 'E37', symptom: 'Ojämnt luftflöde och röd indikator', action: 'Filter och rem byttes', downtimeHours: 3.5 },
@@ -28,10 +35,11 @@ export const faultHistory: FaultHistoryEntry[] = [
   { historyId: 'H-006', assetId: 'KP-08', date: '2026-01-22', symptom: 'Tryckfall under hög belastning', action: 'Luftfilter och ventil byttes', downtimeHours: 4 },
 ];
 
-export function seedWorkOrders(workspaceId: string): WorkOrder[] {
+export function seedWorkOrders(workspaceId: string, now = new Date()): WorkOrder[] {
+  const hoursAgo = (hours: number) => new Date(now.getTime() - hours * 60 * 60_000).toISOString();
   return [
-    { workOrderId: 'AO-1048', workspaceId, assetId: 'P-17', title: 'Onormalt lagerljud', description: 'Kontrollera pumpens lager och axeltätning.', priority: 'P2', technicianId: 'T-101', technicianName: 'Anna Ek', status: 'Pågår', createdAt: '2026-08-28T08:15:00+02:00' },
-    { workOrderId: 'AO-1047', workspaceId, assetId: 'VA-12', title: 'Planerad filterservice', description: 'Genomför filterbyte under planerat servicefönster.', priority: 'P3', technicianId: 'T-102', technicianName: 'Oskar Berg', status: 'Planerad', createdAt: '2026-08-27T14:30:00+02:00' },
-    { workOrderId: 'AO-1046', workspaceId, assetId: 'PK-04', title: 'Kontroll av säkerhetsbrytare', description: 'Inväntar leverantörens garantibesked.', priority: 'P2', technicianId: 'T-103', technicianName: 'Nadia Saleh', status: 'Väntar', createdAt: '2026-08-27T10:05:00+02:00' },
+    { workOrderId: 'AO-1048', workspaceId, assetId: 'P-17', title: 'Onormalt lagerljud', description: 'Kontrollera pumpens lager och axeltätning.', priority: 'P2', technicianId: 'T-101', technicianName: 'Anna Ek', status: 'Pågår', createdAt: hoursAgo(2) },
+    { workOrderId: 'AO-1047', workspaceId, assetId: 'VA-12', title: 'Planerad filterservice', description: 'Genomför filterbyte under planerat servicefönster.', priority: 'P3', technicianId: 'T-102', technicianName: 'Oskar Berg', status: 'Planerad', createdAt: hoursAgo(24) },
+    { workOrderId: 'AO-1046', workspaceId, assetId: 'PK-04', title: 'Kontroll av säkerhetsbrytare', description: 'Inväntar leverantörens garantibesked.', priority: 'P2', technicianId: 'T-103', technicianName: 'Nadia Saleh', status: 'Väntar', createdAt: hoursAgo(28) },
   ];
 }

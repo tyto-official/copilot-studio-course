@@ -3,8 +3,10 @@ import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/
 
 const baseUrl = process.env.API_BASE_URL || 'http://localhost:8787';
 type KeyResult = { key: string; workspaceId: string };
-type OrdersResult = { items: Array<{ workOrderId: string }> };
+type OrdersResult = { items: Array<{ workOrderId: string; createdAt: string }> };
 type AssetResult = { requiredSkill: string };
+type TechnicianResult = { items: Array<{ technicianId: string; area: string; availableFrom: string; status: string }> };
+type TechnicianToolResult = { count: number; technicians: Array<{ technicianId: string; status: string }> };
 
 async function request<T = unknown>(path: string, headers: Record<string, string> = {}, init: RequestInit = {}, expectedStatus = 200): Promise<T> {
   const response = await fetch(`${baseUrl}${path}`, { ...init, headers: { 'Content-Type': 'application/json', ...headers, ...(init.headers || {}) } });
@@ -30,7 +32,19 @@ async function main() {
   const asset = await request<AssetResult>('/api/assets/VA-12', firstHeaders);
   if (asset.requiredSkill !== 'Ventilation') throw new Error('Fel kompetenskrav för VA-12.');
 
+  const technicianResult = await request<TechnicianResult>('/api/technicians', firstHeaders);
+  const now = Date.now();
+  if (technicianResult.items.some((technician) => technician.area !== 'Hela området')) throw new Error('En tekniker har ett oväntat ansvarsområde.');
+  if (technicianResult.items.some((technician) => {
+    const availableFrom = Date.parse(technician.availableFrom);
+    return availableFrom < now - 60_000 || availableFrom > now + 25 * 60 * 60_000;
+  })) throw new Error('Teknikernas tillgänglighet är inte relativ till aktuell tid.');
+
   const secondBefore = await request<OrdersResult>('/api/work-orders', secondHeaders);
+  if (secondBefore.items.some((order) => {
+    const createdAt = Date.parse(order.createdAt);
+    return createdAt < now - 30 * 60 * 60_000 || createdAt > now + 60_000;
+  })) throw new Error('Startarbetsordrarnas datum är inte relativa till arbetsytans starttid.');
   await request('/api/work-orders', firstHeaders, {
     method: 'POST',
     body: JSON.stringify({ assetId: 'VA-12', title: 'Isoleringstest', description: 'Ska endast synas i den första arbetsytan.', priority: 'P3' }),
@@ -47,6 +61,13 @@ async function main() {
   if (tools.tools.length !== 3) throw new Error(`Förväntade 3 MCP-verktyg, fick ${tools.tools.length}.`);
   const history = await client.callTool({ name: 'get_fault_history', arguments: { assetId: 'VA-12', errorCode: 'E37' } });
   if (history.isError) throw new Error('Felhistorikverktyget misslyckades.');
+  const technicianMatches = await client.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'Automation' } });
+  if (technicianMatches.isError) throw new Error('Teknikerverktyget misslyckades.');
+  const matchedTechnicians = technicianMatches.structuredContent as TechnicianToolResult | undefined;
+  if (!matchedTechnicians || matchedTechnicians.count !== 1 || matchedTechnicians.technicians[0]?.technicianId !== 'T-104') {
+    throw new Error('Teknikerverktyget filtrerade inte på kompetens och tillgänglig status.');
+  }
+  if (matchedTechnicians.technicians.some((technician) => technician.status !== 'Tillgänglig')) throw new Error('Teknikerverktyget returnerade en otillgänglig tekniker.');
   const created = await client.callTool({
     name: 'create_work_order',
     arguments: { assetId: 'VA-12', title: 'MCP-test', description: 'Skapad efter godkännande.', priority: 'P2', approved: true },

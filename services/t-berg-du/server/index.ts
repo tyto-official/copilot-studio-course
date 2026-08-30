@@ -46,7 +46,7 @@ app.get('/', (_req, res) => {
     <main>
       <div class="mark">T</div>
       <h1>T-Berg D&amp;U API och MCP</h1>
-      <p>Den lokala tjänsten är startad. Skapa en tidsbegränsad testnyckel i webbgränssnittet och skicka den i <code>x-workshop-key</code>.</p>
+      <p>Tjänsten är igång. Skapa en tidsbegränsad testnyckel i webbgränssnittet och skicka den i <code>x-workshop-key</code>.</p>
       <div class="ok">Tjänsten fungerar</div>
       <ul>
         <li><code>GET /health</code><span>Hälsokontroll</span></li>

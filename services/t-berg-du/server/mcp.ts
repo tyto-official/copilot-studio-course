@@ -25,16 +25,15 @@ export function createTbergMcpServer(workspaceId: string, workOrderLimit: number
 
   server.registerTool('find_available_technicians', {
     title: 'Hitta tillgängliga tekniker',
-    description: 'Söker tekniker med den verifierade kompetens som objektet kräver. Använd verktyget först efter att connectorn har hämtat requiredSkill.',
+    description: 'Söker tillgängliga tekniker med den verifierade kompetens som objektet kräver och sorterar dem efter tidigaste möjliga tid. Använd verktyget först efter att connectorn har hämtat requiredSkill.',
     inputSchema: {
       requiredSkill: z.string().describe('Kompetenskravet från objektregistret.'),
-      location: z.string().optional().describe('Objektets verifierade plats.'),
     },
     annotations: { readOnlyHint: true, openWorldHint: false },
-  }, async ({ requiredSkill, location }) => {
+  }, async ({ requiredSkill }) => {
     const matches = findTechnicians(requiredSkill);
     return {
-      structuredContent: { requiredSkill, location, count: matches.length, technicians: matches },
+      structuredContent: { requiredSkill, count: matches.length, technicians: matches },
       content: [{ type: 'text', text: matches.length ? JSON.stringify(matches, null, 2) : `Ingen tekniker med kompetensen ${requiredSkill} hittades.` }],
     };
   });

@@ -1,7 +1,7 @@
 import { createHash, randomBytes } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { assets, faultHistory, seedWorkOrders, technicians } from './seed.js';
+import { assets, buildTechnicians, faultHistory, seedWorkOrders } from './seed.js';
 import type { AccessSession, CreateWorkOrderInput, RuntimeData, WorkOrder } from './types.js';
 
 const dataDirectory = path.resolve(process.cwd(), '.data');
@@ -73,14 +73,14 @@ function publicSession(session: AccessSession) {
 
 export function getAssets() { return assets; }
 export function getAsset(assetId: string) { return assets.find((asset) => asset.assetId.toUpperCase() === assetId.toUpperCase()); }
-export function getTechnicians() { return technicians; }
+export function getTechnicians() { return buildTechnicians(); }
 export function getFaultHistory(assetId: string, errorCode?: string) {
   return faultHistory.filter((entry) => entry.assetId === assetId && (!errorCode || entry.errorCode === errorCode));
 }
 
 export function findTechnicians(requiredSkill: string) {
-  return technicians
-    .filter((technician) => technician.skills.some((skill) => skill.toLowerCase() === requiredSkill.toLowerCase()))
+  return buildTechnicians()
+    .filter((technician) => technician.status === 'Tillgänglig' && technician.skills.some((skill) => skill.toLowerCase() === requiredSkill.toLowerCase()))
     .sort((a, b) => a.availableFrom.localeCompare(b.availableFrom));
 }
 
@@ -132,7 +132,7 @@ export async function createWorkOrder(input: CreateWorkOrderInput, maximumOrders
     const asset = getAsset(input.assetId);
     if (!asset) throw new Error(`Objektet ${input.assetId} finns inte.`);
 
-    const technician = input.technicianId ? technicians.find((item) => item.technicianId === input.technicianId) : undefined;
+    const technician = input.technicianId ? buildTechnicians().find((item) => item.technicianId === input.technicianId) : undefined;
     const order: WorkOrder = {
       workOrderId: `AO-${Date.now().toString(36).toUpperCase()}-${randomBytes(2).toString('hex').toUpperCase()}`,
       workspaceId: input.workspaceId,

@@ -55,7 +55,7 @@ async function mcpDemo(key: string) {
     console.log('\nMCP — FELHISTORIK');
     console.log(history.content);
 
-    const technicians = await client.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'Ventilation', location: 'Hall B' } });
+    const technicians = await client.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'Ventilation' } });
     console.log('\nMCP — TEKNIKER');
     console.log(technicians.content);
 

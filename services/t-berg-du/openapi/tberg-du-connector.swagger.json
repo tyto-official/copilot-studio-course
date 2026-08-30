@@ -5,9 +5,9 @@
     "description": "Hämtar auktoritativ objektinformation till en Copilot Studio-agent. Samma tidsbegränsade T-Berg-testnyckel används för REST och MCP.",
     "version": "0.2.0"
   },
-  "host": "localhost:8787",
+  "host": "ca-tberg-du-api.orangesmoke-45b4d851.swedencentral.azurecontainerapps.io",
   "basePath": "/api",
-  "schemes": ["http"],
+  "schemes": ["https"],
   "consumes": ["application/json"],
   "produces": ["application/json"],
   "securityDefinitions": {
