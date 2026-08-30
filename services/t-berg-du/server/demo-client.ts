@@ -66,7 +66,7 @@ async function mcpDemo(key: string) {
         title: 'Terminaltest via MCP',
         description: 'Tillfällig arbetsorder som verifierar MCP-skrivning i den privata arbetsytan.',
         priority: 'P2',
-        technicianId: 'T-104',
+        technicianId: 'T-102',
         approved: true,
       },
     });
