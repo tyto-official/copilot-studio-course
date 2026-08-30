@@ -38,6 +38,29 @@ function Pill({ children, tone }: { children: React.ReactNode; tone?: string }) 
   return <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ring-inset ${tone || 'bg-zinc-100 text-zinc-700 ring-zinc-200'}`}>{children}</span>;
 }
 
+function CopyButton({ value, label, className }: { value: string; label: string; className: string }) {
+  const [status, setStatus] = useState<'idle' | 'copied' | 'error'>('idle');
+  const resetTimer = useRef<number | undefined>(undefined);
+
+  useEffect(() => () => {
+    if (resetTimer.current) window.clearTimeout(resetTimer.current);
+  }, []);
+
+  async function copy() {
+    if (resetTimer.current) window.clearTimeout(resetTimer.current);
+    try {
+      await navigator.clipboard.writeText(value);
+      setStatus('copied');
+    } catch {
+      setStatus('error');
+    }
+    resetTimer.current = window.setTimeout(() => setStatus('idle'), 2_000);
+  }
+
+  const text = status === 'copied' ? 'Kopierad ✓' : status === 'error' ? 'Försök igen' : label;
+  return <button type="button" onClick={() => void copy()} aria-live="polite" className={className}>{text}</button>;
+}
+
 export default function Home() {
   const [runtimeConfig, setRuntimeConfig] = useState<RuntimeConfig | null>(null);
   const [view, setView] = useState<View>('Översikt');
@@ -181,7 +204,7 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <div className="hidden rounded-lg border border-white/15 px-3 py-1.5 text-xs text-white/70 sm:block">Arbetsyta <span className="ml-1 font-mono font-semibold text-white">{workspace}</span></div>
             <div className="hidden rounded-lg border border-white/15 px-3 py-1.5 text-xs text-white/70 md:block">Nyckeln gäller <span className="ml-1 font-mono font-semibold text-[#d6ff54]"><AccessCountdown expiresAt={access.expiresAt} /></span></div>
-            <button onClick={() => void navigator.clipboard.writeText(apiKey)} className="rounded-lg bg-white/10 px-3 py-2 text-xs font-semibold hover:bg-white/15">Kopiera nyckel</button>
+            <CopyButton value={apiKey} label="Kopiera nyckel" className="min-w-[108px] rounded-lg bg-white/10 px-3 py-2 text-xs font-semibold hover:bg-white/15" />
             <button onClick={() => void resetWorkspace()} className="rounded-lg bg-white/10 px-3 py-2 text-xs font-semibold hover:bg-white/15">Återställ</button>
             <button onClick={disconnect} className="rounded-lg bg-white/10 px-3 py-2 text-xs font-semibold hover:bg-white/15">Avsluta</button>
           </div>
@@ -365,7 +388,7 @@ function AccessGate({ apiBase, turnstileSiteKey, onAccess }: { apiBase: string; 
               <div className="mt-6 rounded-2xl border border-[#b9d6c6] bg-[#f1f8f3] p-4">
                 <p className="text-xs font-semibold text-zinc-500">T-Berg-testnyckel</p>
                 <code className="mt-2 block break-all text-sm font-bold text-[#173f31]">{issued.key}</code>
-                <button onClick={() => void navigator.clipboard.writeText(issued.key)} className="mt-4 rounded-lg bg-white px-3 py-2 text-xs font-bold text-[#173f31] ring-1 ring-[#b9d6c6]">Kopiera nyckeln</button>
+                <CopyButton value={issued.key} label="Kopiera nyckeln" className="mt-4 min-w-[112px] rounded-lg bg-white px-3 py-2 text-xs font-bold text-[#173f31] ring-1 ring-[#b9d6c6]" />
               </div>
               <div className="mt-4 grid grid-cols-2 gap-3 text-sm"><div className="rounded-xl bg-zinc-50 p-3"><p className="text-xs text-zinc-500">Arbetsyta</p><p className="mt-1 font-mono font-bold">{issued.workspaceId}</p></div><div className="rounded-xl bg-zinc-50 p-3"><p className="text-xs text-zinc-500">Giltig till</p><p className="mt-1 font-bold">{new Date(issued.expiresAt).toLocaleString('sv-SE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</p></div></div>
               <button onClick={() => onAccess(issued.key, issued)} className="mt-6 w-full rounded-xl bg-[#173f31] px-4 py-3 text-sm font-bold text-white">Öppna min arbetsyta</button>
