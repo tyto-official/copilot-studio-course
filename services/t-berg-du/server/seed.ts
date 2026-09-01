@@ -28,9 +28,9 @@ if (invalidAsset) throw new Error(`Objekt-ID ${invalidAsset.assetId} följer int
 if (new Set(assets.map((asset) => asset.assetId)).size !== assets.length) throw new Error('Objektregistret innehåller dubbla objekt-ID:n.');
 
 const technicianDefinitions: Array<Omit<Technician, 'availableFrom'> & { availableInMinutes: number }> = [
-  { technicianId: 'T-101', name: 'Anna Ek', skills: ['Industrimekanik', 'Tryckluft'], area: 'Hela området', availableInMinutes: 60, status: 'Tillgänglig' },
+  { technicianId: 'T-101', name: 'Anna Ek', skills: ['Industrimekanik', 'Tryckluft'], area: 'Hela området', availableInMinutes: 30, status: 'Tillgänglig' },
   { technicianId: 'T-102', name: 'Oskar Berg', skills: ['Ventilation', 'Kyla'], area: 'Hela området', availableInMinutes: 90, status: 'Tillgänglig' },
-  { technicianId: 'T-103', name: 'Nadia Saleh', skills: ['Automation', 'IT/OT'], area: 'Hela området', availableInMinutes: 240, status: 'På uppdrag' },
+  { technicianId: 'T-103', name: 'Nadia Saleh', skills: ['Industrimekanik', 'Automation', 'IT/OT'], area: 'Hela området', availableInMinutes: 60, status: 'Tillgänglig' },
   { technicianId: 'T-104', name: 'Erik Holm', skills: ['El', 'Automation'], area: 'Hela området', availableInMinutes: 30, status: 'Tillgänglig' },
   { technicianId: 'T-105', name: 'Maja Norén', skills: ['Lyftteknik', 'Industrimekanik'], area: 'Hela området', availableInMinutes: 24 * 60, status: 'Frånvarande' },
 ];
@@ -54,8 +54,8 @@ export const faultHistory: FaultHistoryEntry[] = [
 export function seedWorkOrders(workspaceId: string, now = new Date()): WorkOrder[] {
   const hoursAgo = (hours: number) => new Date(now.getTime() - hours * 60 * 60_000).toISOString();
   return [
-    { workOrderId: 'AO-1048', workspaceId, assetId: assetIds.circulationPump, title: 'Onormalt lagerljud', description: 'Kontrollera pumpens lager och axeltätning.', priority: 'P2', technicianId: 'T-101', technicianName: 'Anna Ek', status: 'Pågår', createdAt: hoursAgo(2) },
+    { workOrderId: 'AO-1048', workspaceId, assetId: assetIds.electricalPanel, title: 'Felsökning av elcentral', description: 'Kontrollera återkommande spänningsbortfall i elcentralen.', priority: 'P1', technicianId: 'T-104', technicianName: 'Erik Holm', status: 'Pågår', createdAt: hoursAgo(2) },
     { workOrderId: 'AO-1047', workspaceId, assetId: assetIds.ventilationUnit, title: 'Planerad filterservice', description: 'Genomför filterbyte under planerat servicefönster.', priority: 'P3', technicianId: 'T-102', technicianName: 'Oskar Berg', status: 'Planerad', createdAt: hoursAgo(24) },
-    { workOrderId: 'AO-1046', workspaceId, assetId: assetIds.packingMachine, title: 'Kontroll av säkerhetsbrytare', description: 'Inväntar leverantörens garantibesked.', priority: 'P2', technicianId: 'T-103', technicianName: 'Nadia Saleh', status: 'Väntar', createdAt: hoursAgo(28) },
+    { workOrderId: 'AO-1046', workspaceId, assetId: assetIds.packingMachine, title: 'Kontroll av säkerhetsbrytare', description: 'Inväntar leverantörens garantibesked.', priority: 'P2', status: 'Väntar', createdAt: hoursAgo(28) },
   ];
 }

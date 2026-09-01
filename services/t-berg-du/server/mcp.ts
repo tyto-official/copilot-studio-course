@@ -1,7 +1,17 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { ASSET_ID_INPUT_PATTERN } from './asset-id.js';
-import { createWorkOrder, findTechnicians, getAsset, getFaultHistory } from './store.js';
+import { createWorkOrder, findTechnicians, getAsset, getFaultHistory, getWorkOrders } from './store.js';
+
+function normalizeErrorCode(value: string) {
+  return value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+}
+
+function textContainsErrorCode(text: string, errorCode: string) {
+  const expected = normalizeErrorCode(errorCode);
+  const candidates = text.toUpperCase().match(/\b[A-Z]{1,3}[\s-]?\d{1,4}\b/g) || [];
+  return candidates.some((candidate) => normalizeErrorCode(candidate) === expected);
+}
 
 export function createTbergMcpServer(workspaceId: string, workOrderLimit: number) {
   const server = new McpServer({ name: 't-berg-du', version: '0.1.0' });
@@ -17,22 +27,49 @@ export function createTbergMcpServer(workspaceId: string, workOrderLimit: number
   }, async ({ assetId, errorCode }) => {
     const asset = getAsset(assetId);
     if (!asset) return { content: [{ type: 'text', text: `Objektet ${assetId} finns inte.` }], isError: true };
-    const entries = getFaultHistory(asset.assetId, errorCode);
+    const entries = getFaultHistory(asset.assetId);
+    const recentWorkOrders = (await getWorkOrders(workspaceId))
+      .filter((order) => order.assetId === asset.assetId)
+      .map((order) => ({
+        workOrderId: order.workOrderId,
+        createdAt: order.createdAt,
+        title: order.title,
+        description: order.description,
+        priority: order.priority,
+        status: order.status,
+      }));
+    const matchingHistoryCount = errorCode
+      ? entries.filter((entry) => entry.errorCode && normalizeErrorCode(entry.errorCode) === normalizeErrorCode(errorCode)).length
+      : 0;
+    const matchingWorkOrderCount = errorCode
+      ? recentWorkOrders.filter((order) => textContainsErrorCode(`${order.title} ${order.description}`, errorCode)).length
+      : 0;
+    const sameErrorCodeCount = matchingHistoryCount + matchingWorkOrderCount;
+    const structuredContent = {
+      assetId: asset.assetId,
+      totalCount: entries.length + recentWorkOrders.length,
+      historyCount: entries.length,
+      recentWorkOrderCount: recentWorkOrders.length,
+      queriedErrorCode: errorCode || '',
+      sameErrorCodeCount,
+      entries,
+      recentWorkOrders,
+    };
     return {
-      structuredContent: { assetId: asset.assetId, count: entries.length, entries },
-      content: [{ type: 'text', text: entries.length ? JSON.stringify(entries, null, 2) : `Ingen matchande felhistorik hittades för ${asset.assetId}.` }],
+      structuredContent,
+      content: [{ type: 'text', text: structuredContent.totalCount ? JSON.stringify(structuredContent, null, 2) : `Ingen tidigare felhistorik eller arbetsorder hittades för ${asset.assetId}.` }],
     };
   });
 
   server.registerTool('find_available_technicians', {
     title: 'Hitta tillgängliga tekniker',
-    description: 'Söker tillgängliga tekniker med den verifierade kompetens som objektet kräver och sorterar dem efter tidigaste möjliga tid. Använd verktyget först efter att connectorn har hämtat requiredSkill.',
+    description: 'Söker tekniker med rätt kompetens som inte är frånvarande eller arbetar med en pågående order. Tekniker med färre planerade order visas först. Använd verktyget först efter att connectorn har hämtat requiredSkill.',
     inputSchema: {
       requiredSkill: z.string().describe('Kompetenskravet från objektregistret.'),
     },
     annotations: { readOnlyHint: true, openWorldHint: false },
   }, async ({ requiredSkill }) => {
-    const matches = findTechnicians(requiredSkill);
+    const matches = await findTechnicians(workspaceId, requiredSkill);
     return {
       structuredContent: { requiredSkill, count: matches.length, technicians: matches },
       content: [{ type: 'text', text: matches.length ? JSON.stringify(matches, null, 2) : `Ingen tekniker med kompetensen ${requiredSkill} hittades.` }],

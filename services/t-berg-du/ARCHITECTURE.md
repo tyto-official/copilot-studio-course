@@ -79,7 +79,7 @@ Azure-läget använder lagringskontot `sttbergdudemo8053`, ett StorageV2-konto m
 | `TbergWorkspaces` | Arbetsytans livslängd. |
 | `TbergWorkOrders` | Startposter och arbetsordrar som skapats via webben, REST eller MCP. |
 
-Objektregistret, teknikerna och felhistoriken är demodata i applikationens kod. Teknikernas nästa tillgängliga tid räknas från tiden för anropet. Startarbetsordrarnas datum räknas från tiden då arbetsytan skapas. En ändring av själva demouppgifterna kräver en ny container-version. Testnycklar, arbetsytor och arbetsordrar ligger i Table Storage och finns kvar när en container startas om.
+Objektregistret, teknikernas kompetenser och den äldre felhistoriken är demodata i applikationens kod. Teknikernas nästa tillgängliga tid räknas från tiden för anropet. Statusen `Upptagen` räknas fram från arbetsordrar som pågår i deltagarens arbetsyta. Startarbetsordrarnas datum räknas från tiden då arbetsytan skapas. En ändring av själva demouppgifterna kräver en ny container-version. Testnycklar, arbetsytor och arbetsordrar ligger i Table Storage och finns kvar när en container startas om.
 
 API-appen använder en systemtilldelad Managed Identity med rollen `Storage Table Data Contributor`. Ingen anslutningssträng eller lagringskontonyckel behöver därför ligga i appens konfiguration.
 
@@ -97,7 +97,7 @@ REST-API:t används av webbgränssnittet och kan användas av ett custom connect
 | `GET /api/assets` | Hämtar alla objekt. |
 | `GET /api/assets/{assetId}` | Hämtar auktoritativ information om ett objekt. |
 | `GET /api/assets/{assetId}/history` | Hämtar objektets felhistorik. |
-| `GET /api/technicians` | Hämtar tekniker. |
+| `GET /api/technicians` | Hämtar tekniker och räknar ut deras status från arbetsytans order. |
 | `GET /api/work-orders` | Hämtar arbetsytans arbetsordrar. |
 | `POST /api/work-orders` | Skapar en arbetsorder i arbetsytan. |
 | `POST /api/reset` | Återställer arbetsytans arbetsordrar. |
@@ -137,11 +137,13 @@ MCP-servern exponerar tre verktyg:
 
 | Verktyg | Uppgift | Skriver data |
 | --- | --- | --- |
-| `get_fault_history` | Hämtar tidigare fel och åtgärder för ett identifierat objekt. | Nej |
-| `find_available_technicians` | Söker tillgängliga tekniker med den kompetens som connectorn hämtat från objektregistret och sorterar dem efter tidigaste möjliga tid. Alla tekniker arbetar i hela anläggningen. | Nej |
+| `get_fault_history` | Hämtar objektets äldre underhållshistorik och tidigare arbetsordrar i deltagarens arbetsyta. En felkod räknar matchningar utan att dölja övriga poster. | Nej |
+| `find_available_technicians` | Söker tekniker med rätt kompetens som inte är frånvarande eller arbetar med en pågående order. Färre planerade order går före nästa tillgängliga tid. | Nej |
 | `create_work_order` | Skapar en arbetsorder i deltagarens arbetsyta. | Ja |
 
 `create_work_order` kräver parametern `approved: true`. Det ersätter inte ett riktigt godkännandeflöde, men hindrar verktyget från att skriva innan agentens topic eller flow har genomfört kursens bekräftelse- och godkännandesteg.
+
+Teknikerns lagrade grundstatus är `Tillgänglig` eller `Frånvarande`. API:t visar `Upptagen` när teknikern har en arbetsorder med status `Pågår`. En tilldelad P1-order börjar som `Pågår`; en tilldelad P2–P4-order börjar som `Planerad`. En order utan tekniker får status `Väntar`.
 
 ## Nätverk och hemligheter
 

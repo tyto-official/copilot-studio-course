@@ -70,8 +70,8 @@ app.get('/api/assets/:assetId', requireAccess, (req, res) => {
   if (!asset) { res.status(404).json({ error: `Objektet ${assetId} finns inte.` }); return; }
   res.json(asset);
 });
-app.get('/api/assets/:assetId/history', requireAccess, (req, res) => res.json({ items: getFaultHistory(String(req.params.assetId), req.query.errorCode ? String(req.query.errorCode) : undefined) }));
-app.get('/api/technicians', requireAccess, (_req, res) => res.json({ items: getTechnicians() }));
+app.get('/api/assets/:assetId/history', requireAccess, (req, res) => res.json({ items: getFaultHistory(String(req.params.assetId)) }));
+app.get('/api/technicians', requireAccess, async (_req, res) => res.json({ items: await getTechnicians(res.locals.accessSession.workspaceId) }));
 app.get('/api/work-orders', requireAccess, async (_req, res) => {
   const { workspaceId } = res.locals.accessSession;
   res.json({ workspaceId, items: await getWorkOrders(workspaceId) });

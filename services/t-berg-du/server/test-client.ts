@@ -4,11 +4,12 @@ import { ASSET_ID_PATTERN } from './asset-id.js';
 
 const baseUrl = process.env.API_BASE_URL || 'http://localhost:8787';
 type KeyResult = { key: string; workspaceId: string };
-type OrdersResult = { items: Array<{ workOrderId: string; createdAt: string }> };
+type OrdersResult = { items: Array<{ workOrderId: string; createdAt: string; status: string; technicianId?: string }> };
 type AssetResult = { assetId: string; requiredSkill: string };
 type AssetsResult = { items: Array<{ assetId: string }> };
-type TechnicianResult = { items: Array<{ technicianId: string; area: string; availableFrom: string; status: string }> };
-type TechnicianToolResult = { count: number; technicians: Array<{ technicianId: string; status: string }> };
+type TechnicianResult = { items: Array<{ technicianId: string; area: string; availableFrom: string; status: string; plannedOrderCount: number; activeWorkOrderId?: string }> };
+type TechnicianToolResult = { count: number; technicians: Array<{ technicianId: string; status: string; plannedOrderCount: number }> };
+type HistoryToolResult = { totalCount: number; historyCount: number; recentWorkOrderCount: number; queriedErrorCode: string; sameErrorCodeCount: number };
 
 async function request<T = unknown>(path: string, headers: Record<string, string> = {}, init: RequestInit = {}, expectedStatus = 200): Promise<T> {
   const response = await fetch(`${baseUrl}${path}`, { ...init, headers: { 'Content-Type': 'application/json', ...headers, ...(init.headers || {}) } });
@@ -45,6 +46,10 @@ async function main() {
     const availableFrom = Date.parse(technician.availableFrom);
     return availableFrom < now - 60_000 || availableFrom > now + 25 * 60 * 60_000;
   })) throw new Error('Teknikernas tillgänglighet är inte relativ till aktuell tid.');
+  const busyTechnician = technicianResult.items.find((technician) => technician.technicianId === 'T-104');
+  if (busyTechnician?.status !== 'Upptagen' || busyTechnician.activeWorkOrderId !== 'AO-1048') throw new Error('Pågående arbetsorder gjorde inte Erik upptagen.');
+  if (technicianResult.items.find((technician) => technician.technicianId === 'T-101')?.status !== 'Tillgänglig') throw new Error('Anna ska vara tillgänglig i en ny arbetsyta.');
+  if (technicianResult.items.find((technician) => technician.technicianId === 'T-103')?.status !== 'Tillgänglig') throw new Error('Nadia ska vara tillgänglig i en ny arbetsyta.');
 
   const secondBefore = await request<OrdersResult>('/api/work-orders', secondHeaders);
   if (secondBefore.items.some((order) => {
@@ -67,13 +72,50 @@ async function main() {
   if (tools.tools.length !== 3) throw new Error(`Förväntade 3 MCP-verktyg, fick ${tools.tools.length}.`);
   const history = await client.callTool({ name: 'get_fault_history', arguments: { assetId: 'LO-VA-012', errorCode: 'E37' } });
   if (history.isError) throw new Error('Felhistorikverktyget misslyckades.');
-  const technicianMatches = await client.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'Automation' } });
+  const historyResult = history.structuredContent as HistoryToolResult | undefined;
+  if (!historyResult || historyResult.historyCount !== 2 || historyResult.sameErrorCodeCount !== 2) throw new Error('Felhistoriken räknade inte alla poster och felkodsträffar separat.');
+
+  const initialIndustrialMatches = await client.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'Industrimekanik' } });
+  const initialIndustrial = initialIndustrialMatches.structuredContent as TechnicianToolResult | undefined;
+  if (!initialIndustrial || initialIndustrial.technicians[0]?.technicianId !== 'T-101' || initialIndustrial.technicians[1]?.technicianId !== 'T-103') {
+    throw new Error('Anna och Nadia sorterades inte rätt i en ny arbetsyta.');
+  }
+
+  const p1Order = await request<{ status: string }>('/api/work-orders', firstHeaders, {
+    method: 'POST',
+    body: JSON.stringify({ assetId: 'LO-PU-017', title: 'Läckage E-42', description: 'Felkod E-42. Pumpen står stilla.', priority: 'P1', technicianId: 'T-101' }),
+  }, 201);
+  if (p1Order.status !== 'Pågår') throw new Error('En tilldelad P1-order fick inte status Pågår.');
+
+  const repeatHistory = await client.callTool({ name: 'get_fault_history', arguments: { assetId: 'LO-PU-017', errorCode: 'E42' } });
+  const repeatHistoryResult = repeatHistory.structuredContent as HistoryToolResult | undefined;
+  if (!repeatHistoryResult || repeatHistoryResult.historyCount !== 2 || repeatHistoryResult.recentWorkOrderCount !== 1 || repeatHistoryResult.sameErrorCodeCount !== 1) {
+    throw new Error('En tidigare arbetsorder med samma felkod hittades inte tillsammans med objektets historik.');
+  }
+
+  const technicianMatches = await client.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'Industrimekanik' } });
   if (technicianMatches.isError) throw new Error('Teknikerverktyget misslyckades.');
   const matchedTechnicians = technicianMatches.structuredContent as TechnicianToolResult | undefined;
-  if (!matchedTechnicians || matchedTechnicians.count !== 1 || matchedTechnicians.technicians[0]?.technicianId !== 'T-104') {
-    throw new Error('Teknikerverktyget filtrerade inte på kompetens och tillgänglig status.');
+  if (!matchedTechnicians || matchedTechnicians.count !== 1 || matchedTechnicians.technicians[0]?.technicianId !== 'T-103') {
+    throw new Error('Teknikerverktyget uteslöt inte Anna när hennes P1-order pågick.');
   }
   if (matchedTechnicians.technicians.some((technician) => technician.status !== 'Tillgänglig')) throw new Error('Teknikerverktyget returnerade en otillgänglig tekniker.');
+
+  const plannedOrder = await request<{ status: string }>('/api/work-orders', secondHeaders, {
+    method: 'POST',
+    body: JSON.stringify({ assetId: 'LO-PU-017', title: 'Planerad kontroll', description: 'Kontrollera pumpen vid nästa servicefönster.', priority: 'P3', technicianId: 'T-101' }),
+  }, 201);
+  if (plannedOrder.status !== 'Planerad') throw new Error('En tilldelad P3-order fick inte status Planerad.');
+
+  const secondClient = new Client({ name: 't-berg-local-test-second', version: '0.1.0' });
+  const secondTransport = new StreamableHTTPClientTransport(new URL(`${baseUrl}/mcp`), { requestInit: { headers: secondHeaders } });
+  await secondClient.connect(secondTransport);
+  const balancedMatches = await secondClient.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'Industrimekanik' } });
+  const balancedResult = balancedMatches.structuredContent as TechnicianToolResult | undefined;
+  if (!balancedResult || balancedResult.technicians[0]?.technicianId !== 'T-103' || balancedResult.technicians[1]?.technicianId !== 'T-101') {
+    throw new Error('Planerad belastning gjorde inte Nadia till första val.');
+  }
+  await secondClient.close();
   const created = await client.callTool({
     name: 'create_work_order',
     arguments: { assetId: 'LO-VA-012', title: 'MCP-test', description: 'Skapad efter godkännande.', priority: 'P2', approved: true },
@@ -83,9 +125,9 @@ async function main() {
 
   const finalFirst = await request<OrdersResult>('/api/work-orders', firstHeaders);
   const finalSecond = await request<OrdersResult>('/api/work-orders', secondHeaders);
-  if (finalFirst.items.length !== secondBefore.items.length + 2) throw new Error('MCP-arbetsordern hamnade inte i nyckelns arbetsyta.');
-  if (finalSecond.items.length !== secondBefore.items.length) throw new Error('MCP-arbetsordern läckte mellan arbetsytor.');
-  console.log('Nyckel-, isolerings-, REST- och MCP-tester godkända.');
+  if (finalFirst.items.length !== secondBefore.items.length + 3) throw new Error('MCP- och REST-arbetsordrarna hamnade inte i den första arbetsytan.');
+  if (finalSecond.items.length !== secondBefore.items.length + 1) throw new Error('Den andra arbetsytans planerade order saknas eller innehåller data från den första arbetsytan.');
+  console.log('Nyckel-, historik-, tekniker-, isolerings-, REST- och MCP-tester godkända.');
 }
 
 main().catch((error) => { console.error(error); process.exitCode = 1; });

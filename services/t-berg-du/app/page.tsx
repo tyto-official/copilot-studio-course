@@ -4,7 +4,7 @@ import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from 're
 
 type View = 'Översikt' | 'Objektregister' | 'Arbetsorder' | 'Tekniker' | 'Felhistorik';
 type Asset = { assetId: string; name: string; type: string; location: string; criticality: string; slaHours: number; requiredSkill: string; warrantyActive: boolean; serviceType: string; status: string };
-type Technician = { technicianId: string; name: string; skills: string[]; area: string; availableFrom: string; status: string };
+type Technician = { technicianId: string; name: string; skills: string[]; area: string; availableFrom: string; status: string; plannedOrderCount: number; activeWorkOrderId?: string };
 type WorkOrder = { workOrderId: string; assetId: string; title: string; description: string; priority: string; technicianId?: string; technicianName?: string; status: string; createdAt: string };
 type HistoryEntry = { historyId: string; assetId: string; date: string; errorCode?: string; symptom: string; action: string; downtimeHours: number };
 type AccessSession = { workspaceId: string; createdAt: string; expiresAt: string; requestsUsed: number; requestLimit: number; requestsRemaining: number; workOrderLimit: number };
@@ -28,7 +28,7 @@ function apiError(body: unknown, fallback: string) {
 }
 
 function statusTone(status: string) {
-  if (status === 'Pågår' || status === 'Tillsyn') return 'bg-amber-50 text-amber-800 ring-amber-200';
+  if (status === 'Pågår' || status === 'Upptagen' || status === 'Tillsyn') return 'bg-amber-50 text-amber-800 ring-amber-200';
   if (status === 'Planerad' || status === 'Service') return 'bg-sky-50 text-sky-800 ring-sky-200';
   if (status === 'Tillgänglig' || status === 'Drift') return 'bg-emerald-50 text-emerald-800 ring-emerald-200';
   return 'bg-zinc-100 text-zinc-700 ring-zinc-200';
@@ -262,7 +262,7 @@ export default function Home() {
       </div>
 
       {selectedAsset && <AssetDrawer asset={selectedAsset} history={selectedHistory} onClose={() => setSelectedAsset(null)} />}
-      {showForm && <WorkOrderModal assets={assets} technicians={technicians} onClose={() => setShowForm(false)} onSubmit={createOrder} />}
+      {showForm && <WorkOrderModal assets={assets} technicians={availableTechnicians} onClose={() => setShowForm(false)} onSubmit={createOrder} />}
     </main>
   );
 }
@@ -430,7 +430,7 @@ function OrderTable({ orders }: { orders: WorkOrder[] }) {
 }
 
 function TechnicianGrid({ technicians }: { technicians: Technician[] }) {
-  return <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{technicians.map((technician) => <article key={technician.technicianId} className="rounded-2xl border border-black/10 bg-white p-5"><div className="flex items-start justify-between"><div className="grid h-11 w-11 place-items-center rounded-full bg-[#e8f2eb] font-bold text-[#173f31]">{technician.name.split(' ').map((part) => part[0]).join('')}</div><Pill tone={statusTone(technician.status)}>{technician.status}</Pill></div><h2 className="mt-4 font-bold">{technician.name}</h2><p className="mt-1 text-xs text-zinc-500">{technician.technicianId} · {technician.area}</p><div className="mt-4 flex flex-wrap gap-2">{technician.skills.map((skill) => <Pill key={skill}>{skill}</Pill>)}</div><p className="mt-4 text-xs text-zinc-500">Tillgänglig {new Date(technician.availableFrom).toLocaleString('sv-SE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</p></article>)}</div>;
+  return <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{technicians.map((technician) => <article key={technician.technicianId} className="rounded-2xl border border-black/10 bg-white p-5"><div className="flex items-start justify-between"><div className="grid h-11 w-11 place-items-center rounded-full bg-[#e8f2eb] font-bold text-[#173f31]">{technician.name.split(' ').map((part) => part[0]).join('')}</div><Pill tone={statusTone(technician.status)}>{technician.status}</Pill></div><h2 className="mt-4 font-bold">{technician.name}</h2><p className="mt-1 text-xs text-zinc-500">{technician.technicianId} · {technician.area}</p><div className="mt-4 flex flex-wrap gap-2">{technician.skills.map((skill) => <Pill key={skill}>{skill}</Pill>)}</div><p className="mt-4 text-xs text-zinc-500">{technician.status === 'Upptagen' ? `Arbetar med ${technician.activeWorkOrderId}` : technician.status === 'Frånvarande' ? 'Inte tillgänglig för uppdrag' : `Tillgänglig ${new Date(technician.availableFrom).toLocaleString('sv-SE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}`}</p>{technician.plannedOrderCount > 0 && <p className="mt-1 text-xs text-zinc-500">{technician.plannedOrderCount} planerad arbetsorder</p>}</article>)}</div>;
 }
 
 function HistoryTable({ history, assets }: { history: HistoryEntry[]; assets: Asset[] }) {

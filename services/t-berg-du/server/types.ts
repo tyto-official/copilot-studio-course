@@ -20,7 +20,13 @@ export interface Technician {
   skills: string[];
   area: string;
   availableFrom: string;
-  status: 'Tillgänglig' | 'På uppdrag' | 'Frånvarande';
+  status: 'Tillgänglig' | 'Frånvarande';
+}
+
+export interface TechnicianAvailability extends Omit<Technician, 'status'> {
+  status: 'Tillgänglig' | 'Upptagen' | 'Frånvarande';
+  plannedOrderCount: number;
+  activeWorkOrderId?: string;
 }
 
 export interface FaultHistoryEntry {

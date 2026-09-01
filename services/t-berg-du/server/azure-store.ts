@@ -2,7 +2,8 @@ import { createHash, randomBytes } from 'node:crypto';
 import { DefaultAzureCredential } from '@azure/identity';
 import { TableClient, type TableEntity, type TransactionAction } from '@azure/data-tables';
 import { normalizeAssetId } from './asset-id.js';
-import { assets, buildTechnicians, faultHistory, seedWorkOrders } from './seed.js';
+import { assets, faultHistory, seedWorkOrders } from './seed.js';
+import { resolveTechnicianAssignment } from './technician-availability.js';
 import type { AccessSession, CreateWorkOrderInput, WorkOrder } from './types.js';
 
 const sessionHours = Number(process.env.ACCESS_SESSION_HOURS || 24);
@@ -248,7 +249,7 @@ export async function createWorkOrder(input: CreateWorkOrderInput, maximumOrders
     const asset = getAsset(input.assetId);
     if (!asset) throw new Error(`Objektet ${input.assetId} finns inte.`);
 
-    const technician = input.technicianId ? buildTechnicians().find((item) => item.technicianId === input.technicianId) : undefined;
+    const technician = resolveTechnicianAssignment(input.technicianId, asset, currentOrders);
     const order: WorkOrder = {
       workOrderId: `AO-${Date.now().toString(36).toUpperCase()}-${randomBytes(2).toString('hex').toUpperCase()}`,
       workspaceId: input.workspaceId,
@@ -258,7 +259,7 @@ export async function createWorkOrder(input: CreateWorkOrderInput, maximumOrders
       priority: input.priority,
       technicianId: technician?.technicianId,
       technicianName: technician?.name,
-      status: technician ? 'Planerad' : 'Väntar',
+      status: technician ? input.priority === 'P1' ? 'Pågår' : 'Planerad' : 'Väntar',
       createdAt: new Date().toISOString(),
     };
     await getClients().workOrders.createEntity(orderToEntity(order));
@@ -287,13 +288,7 @@ export async function cleanupExpiredSessions() {
 
 export function getAssets() { return assets; }
 export function getAsset(assetId: string) { return assets.find((asset) => asset.assetId === normalizeAssetId(assetId)); }
-export function getTechnicians() { return buildTechnicians(); }
-export function getFaultHistory(assetId: string, errorCode?: string) {
+export function getFaultHistory(assetId: string) {
   const normalizedAssetId = normalizeAssetId(assetId);
-  return faultHistory.filter((entry) => entry.assetId === normalizedAssetId && (!errorCode || entry.errorCode === errorCode));
-}
-export function findTechnicians(requiredSkill: string) {
-  return buildTechnicians()
-    .filter((technician) => technician.status === 'Tillgänglig' && technician.skills.some((skill) => skill.toLowerCase() === requiredSkill.toLowerCase()))
-    .sort((a, b) => a.availableFrom.localeCompare(b.availableFrom));
+  return faultHistory.filter((entry) => entry.assetId === normalizedAssetId);
 }

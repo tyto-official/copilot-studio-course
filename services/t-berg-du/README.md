@@ -5,7 +5,7 @@ Lokalt demosystem för en intern drift- och underhållsagent i Microsoft Copilot
 Systemet innehåller:
 
 - ett objektregister som används av en custom connector;
-- felhistorik och teknikertillgänglighet som MCP-verktyg;
+- felhistorik, tidigare arbetsordrar och teknikertillgänglighet som MCP-verktyg;
 - skapande av arbetsorder efter godkännande;
 - tidsbegränsade testnycklar och separata arbetsytor för kursdeltagare;
 - Turnstile-verifiering och begränsningar mot automatiserat missbruk.
@@ -52,6 +52,10 @@ Lokalt används en särskild utvecklingstoken när Turnstile-variablerna saknas.
 - `get_fault_history`
 - `find_available_technicians`
 - `create_work_order`
+
+`get_fault_history` returnerar all underhållshistorik för objektet och tidigare arbetsordrar i deltagarens arbetsyta. En angiven felkod används för att räkna träffar, inte för att filtrera bort annan historik.
+
+Tekniker som har en arbetsorder med status `Pågår` räknas som upptagna. Planerade order blockerar inte teknikern, men tekniker med färre planerade order visas först. En tilldelad P1-order får status `Pågår`; övriga tilldelade order får status `Planerad`.
 
 ## Test
 
