@@ -2,7 +2,7 @@ import { createHash, randomBytes } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { normalizeAssetId } from './asset-id.js';
-import { assets, faultHistory, seedWorkOrders } from './seed.js';
+import { assets, faultHistory, seedWorkOrders, sparePartsByAssetType } from './seed.js';
 import { resolveTechnicianAssignment } from './technician-availability.js';
 import type { AccessSession, CreateWorkOrderInput, RuntimeData, WorkOrder } from './types.js';
 
@@ -79,6 +79,7 @@ export function getFaultHistory(assetId: string) {
   const normalizedAssetId = normalizeAssetId(assetId);
   return faultHistory.filter((entry) => entry.assetId === normalizedAssetId);
 }
+export function getSpareParts(assetType: string) { return sparePartsByAssetType[assetType] || []; }
 
 export async function createAccessSession() {
   return mutateRuntime((runtime) => {

@@ -10,6 +10,7 @@ type AssetsResult = { items: Array<{ assetId: string }> };
 type TechnicianResult = { items: Array<{ technicianId: string; area: string; availableFrom: string; status: string; plannedOrderCount: number; activeWorkOrderId?: string }> };
 type TechnicianToolResult = { count: number; technicians: Array<{ technicianId: string; status: string; plannedOrderCount: number }> };
 type HistoryToolResult = { totalCount: number; historyCount: number; recentWorkOrderCount: number; queriedErrorCode: string; sameErrorCodeCount: number };
+type SparePartsToolResult = { assetId: string; assetType: string; serviceType: string; checkPerformed: boolean; count: number; parts: Array<{ partNumber: string; stock: number; leadTimeDays: number }> };
 
 async function request<T = unknown>(path: string, headers: Record<string, string> = {}, init: RequestInit = {}, expectedStatus = 200): Promise<T> {
   const response = await fetch(`${baseUrl}${path}`, { ...init, headers: { 'Content-Type': 'application/json', ...headers, ...(init.headers || {}) } });
@@ -69,7 +70,7 @@ async function main() {
   const transport = new StreamableHTTPClientTransport(new URL(`${baseUrl}/mcp`), { requestInit: { headers: firstHeaders } });
   await client.connect(transport);
   const tools = await client.listTools();
-  if (tools.tools.length !== 3) throw new Error(`Förväntade 3 MCP-verktyg, fick ${tools.tools.length}.`);
+  if (tools.tools.length !== 4) throw new Error(`Förväntade 4 MCP-verktyg, fick ${tools.tools.length}.`);
   const history = await client.callTool({ name: 'get_fault_history', arguments: { assetId: 'LO-VA-012', errorCode: 'E37' } });
   if (history.isError) throw new Error('Felhistorikverktyget misslyckades.');
   const historyResult = history.structuredContent as HistoryToolResult | undefined;
@@ -91,6 +92,43 @@ async function main() {
   const repeatHistoryResult = repeatHistory.structuredContent as HistoryToolResult | undefined;
   if (!repeatHistoryResult || repeatHistoryResult.historyCount !== 2 || repeatHistoryResult.recentWorkOrderCount !== 1 || repeatHistoryResult.sameErrorCodeCount !== 1) {
     throw new Error('En tidigare arbetsorder med samma felkod hittades inte tillsammans med objektets historik.');
+  }
+
+  const stoppedParts = await client.callTool({
+    name: 'find_spare_parts',
+    arguments: { assetId: 'LO-PU-017', impactLevel: 'Stoppad', sameErrorCodeCount: 0 },
+  });
+  const stoppedPartsResult = stoppedParts.structuredContent as SparePartsToolResult | undefined;
+  if (!stoppedPartsResult?.checkPerformed || stoppedPartsResult.assetType !== 'Pump' || stoppedPartsResult.count !== 2) {
+    throw new Error('Reservdelsverktyget kontrollerade inte delar för en stoppad intern pump.');
+  }
+  if (!stoppedPartsResult.parts.some((part) => part.partNumber === 'TATN-MEK-25' && part.stock === 0 && part.leadTimeDays === 5)) {
+    throw new Error('Reservdelsverktyget returnerade inte lager och ledtid för pumpens axeltätning.');
+  }
+
+  const recurringParts = await client.callTool({
+    name: 'find_spare_parts',
+    arguments: { assetId: 'LO-PU-017', impactLevel: 'Begränsad', sameErrorCodeCount: 1 },
+  });
+  if (!(recurringParts.structuredContent as SparePartsToolResult | undefined)?.checkPerformed) {
+    throw new Error('Reservdelsverktyget hoppade över ett återkommande fel på ett internt objekt.');
+  }
+
+  const unnecessaryParts = await client.callTool({
+    name: 'find_spare_parts',
+    arguments: { assetId: 'LO-PU-017', impactLevel: 'Begränsad', sameErrorCodeCount: 0 },
+  });
+  const unnecessaryPartsResult = unnecessaryParts.structuredContent as SparePartsToolResult | undefined;
+  if (!unnecessaryPartsResult || unnecessaryPartsResult.checkPerformed || unnecessaryPartsResult.count !== 0) {
+    throw new Error('Reservdelsverktyget kontrollerade delar utan stopp eller återkommande felkod.');
+  }
+
+  const externalParts = await client.callTool({
+    name: 'find_spare_parts',
+    arguments: { assetId: 'LO-PK-004', impactLevel: 'Stoppad', sameErrorCodeCount: 1 },
+  });
+  if ((externalParts.structuredContent as SparePartsToolResult | undefined)?.checkPerformed) {
+    throw new Error('Reservdelsverktyget kontrollerade interna delar för ett objekt med extern service.');
   }
 
   const technicianMatches = await client.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'Industrimekanik' } });
@@ -127,7 +165,7 @@ async function main() {
   const finalSecond = await request<OrdersResult>('/api/work-orders', secondHeaders);
   if (finalFirst.items.length !== secondBefore.items.length + 3) throw new Error('MCP- och REST-arbetsordrarna hamnade inte i den första arbetsytan.');
   if (finalSecond.items.length !== secondBefore.items.length + 1) throw new Error('Den andra arbetsytans planerade order saknas eller innehåller data från den första arbetsytan.');
-  console.log('Nyckel-, historik-, tekniker-, isolerings-, REST- och MCP-tester godkända.');
+  console.log('Nyckel-, historik-, tekniker-, reservdels-, isolerings-, REST- och MCP-tester godkända.');
 }
 
 main().catch((error) => { console.error(error); process.exitCode = 1; });

@@ -7,6 +7,7 @@ const selectedStore = process.env.STORAGE_BACKEND?.toLowerCase() === 'azure' ? a
 export const getAssets = localStore.getAssets;
 export const getAsset = localStore.getAsset;
 export const getFaultHistory = localStore.getFaultHistory;
+export const getSpareParts = localStore.getSpareParts;
 
 export const createAccessSession = selectedStore.createAccessSession;
 export const consumeAccessKey = selectedStore.consumeAccessKey;

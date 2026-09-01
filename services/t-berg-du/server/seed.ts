@@ -1,4 +1,4 @@
-import type { Asset, FaultHistoryEntry, Technician, WorkOrder } from './types.js';
+import type { Asset, FaultHistoryEntry, SparePart, Technician, WorkOrder } from './types.js';
 import { ASSET_ID_PATTERN } from './asset-id.js';
 
 export const assetIds = {
@@ -50,6 +50,29 @@ export const faultHistory: FaultHistoryEntry[] = [
   { historyId: 'H-005', assetId: assetIds.packingMachine, date: '2026-07-01', errorCode: 'S14', symptom: 'Säkerhetsbrytare löste ut', action: 'Extern garantiservice', downtimeHours: 6 },
   { historyId: 'H-006', assetId: assetIds.compressor, date: '2026-01-22', symptom: 'Tryckfall under hög belastning', action: 'Luftfilter och ventil byttes', downtimeHours: 4 },
 ];
+
+export const sparePartsByAssetType: Record<string, SparePart[]> = {
+  Ventilation: [
+    { partNumber: 'FILTER-F7-592', name: 'Påsfilter F7 592 x 592 mm', stock: 4, leadTimeDays: 0 },
+    { partNumber: 'REM-SPZ-1250', name: 'Kilrem SPZ 1250', stock: 1, leadTimeDays: 0 },
+  ],
+  Pump: [
+    { partNumber: 'LAGER-6204', name: 'Kullager 6204', stock: 3, leadTimeDays: 0 },
+    { partNumber: 'TATN-MEK-25', name: 'Mekanisk axeltätning 25 mm', stock: 0, leadTimeDays: 5 },
+  ],
+  Kompressor: [
+    { partNumber: 'FILTER-LUFT-08', name: 'Luftfilter till kompressor 08', stock: 2, leadTimeDays: 0 },
+    { partNumber: 'VENTIL-TRYCK-08', name: 'Tryckventil till kompressor 08', stock: 0, leadTimeDays: 7 },
+  ],
+  Elanläggning: [
+    { partNumber: 'SAKR-NH00-63A', name: 'NH-säkring 63 A', stock: 6, leadTimeDays: 0 },
+    { partNumber: 'KONTAKTOR-32A', name: 'Kontaktor 32 A', stock: 2, leadTimeDays: 0 },
+  ],
+  Lyftutrustning: [
+    { partNumber: 'GRANSLAGE-TR09', name: 'Gränslägesbrytare till travers 09', stock: 1, leadTimeDays: 0 },
+    { partNumber: 'BROMSBELAGG-TR09', name: 'Bromsbeläggssats till travers 09', stock: 0, leadTimeDays: 10 },
+  ],
+};
 
 export function seedWorkOrders(workspaceId: string, now = new Date()): WorkOrder[] {
   const hoursAgo = (hours: number) => new Date(now.getTime() - hours * 60 * 60_000).toISOString();

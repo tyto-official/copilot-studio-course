@@ -1,7 +1,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { ASSET_ID_INPUT_PATTERN } from './asset-id.js';
-import { createWorkOrder, findTechnicians, getAsset, getFaultHistory, getWorkOrders } from './store.js';
+import { createWorkOrder, findTechnicians, getAsset, getFaultHistory, getSpareParts, getWorkOrders } from './store.js';
 
 function normalizeErrorCode(value: string) {
   return value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
@@ -73,6 +73,56 @@ export function createTbergMcpServer(workspaceId: string, workOrderLimit: number
     return {
       structuredContent: { requiredSkill, count: matches.length, technicians: matches },
       content: [{ type: 'text', text: matches.length ? JSON.stringify(matches, null, 2) : `Ingen tekniker med kompetensen ${requiredSkill} hittades.` }],
+    };
+  });
+
+  server.registerTool('find_spare_parts', {
+    title: 'Kontrollera reservdelar',
+    description: 'Kontrollerar reservdelar när ett internt objekt har stoppat eller samma felkod har förekommit tidigare. Anropa verktyget efter get_fault_history när impactLevel är Stoppad eller sameErrorCodeCount är större än 0. Verktyget visar lagersaldo och ledtid men reserverar eller beställer inget.',
+    inputSchema: {
+      assetId: z.string().regex(ASSET_ID_INPUT_PATTERN).describe('Objektets verifierade ID i formatet LO-TT-NNN.'),
+      impactLevel: z.enum(['Liten', 'Begränsad', 'Stoppad', 'Säkerhetsrisk', 'Okänd']).describe('Påverkan som topicens fasta regler har satt.'),
+      sameErrorCodeCount: z.number().int().min(0).describe('Antalet tidigare träffar för samma felkod från get_fault_history.'),
+    },
+    annotations: { readOnlyHint: true, openWorldHint: false },
+  }, async ({ assetId, impactLevel, sameErrorCodeCount }) => {
+    const asset = getAsset(assetId);
+    if (!asset) return { content: [{ type: 'text', text: `Objektet ${assetId} finns inte.` }], isError: true };
+
+    const stopped = impactLevel === 'Stoppad';
+    const recurringError = sameErrorCodeCount > 0;
+    const internalService = asset.serviceType === 'Intern';
+    const checkPerformed = internalService && (stopped || recurringError);
+    const reason = !internalService
+      ? 'Objektet har extern service.'
+      : stopped && recurringError
+        ? 'Driften är stoppad och samma felkod har förekommit tidigare.'
+        : stopped
+          ? 'Driften är stoppad.'
+          : recurringError
+            ? 'Samma felkod har förekommit tidigare.'
+            : 'Driften är inte stoppad och samma felkod har inte förekommit tidigare.';
+    const parts = checkPerformed ? getSpareParts(asset.type) : [];
+    const structuredContent = {
+      assetId: asset.assetId,
+      assetType: asset.type,
+      serviceType: asset.serviceType,
+      checkPerformed,
+      reason,
+      count: parts.length,
+      parts,
+    };
+
+    return {
+      structuredContent,
+      content: [{
+        type: 'text',
+        text: checkPerformed
+          ? parts.length
+            ? JSON.stringify(structuredContent, null, 2)
+            : `Inga registrerade reservdelar hittades för ${asset.assetId}.`
+          : `Reservdelskontrollen hoppades över. ${reason}`,
+      }],
     };
   });
 

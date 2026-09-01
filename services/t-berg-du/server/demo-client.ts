@@ -59,6 +59,10 @@ async function mcpDemo(key: string) {
     console.log('\nMCP — TEKNIKER');
     console.log(technicians.content);
 
+    const parts = await client.callTool({ name: 'find_spare_parts', arguments: { assetId, impactLevel: 'Stoppad', sameErrorCodeCount: 0 } });
+    console.log('\nMCP — RESERVDELAR');
+    console.log(parts.content);
+
     const created = await client.callTool({
       name: 'create_work_order',
       arguments: {

@@ -39,6 +39,13 @@ export interface FaultHistoryEntry {
   downtimeHours: number;
 }
 
+export interface SparePart {
+  partNumber: string;
+  name: string;
+  stock: number;
+  leadTimeDays: number;
+}
+
 export interface WorkOrder {
   workOrderId: string;
   workspaceId: string;
