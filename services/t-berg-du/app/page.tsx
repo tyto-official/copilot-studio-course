@@ -3,7 +3,8 @@
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 type View = 'Översikt' | 'Objektregister' | 'Arbetsorder' | 'Tekniker' | 'Felhistorik';
-type Asset = { assetId: string; name: string; type: string; location: string; criticality: string; slaHours: number; requiredSkill: string; warrantyActive: boolean; serviceType: string };
+type SparePart = { partNumber: string; name: string; stock: number; leadTimeDays: number };
+type Asset = { assetId: string; name: string; type: string; location: string; criticality: string; slaHours: number; requiredSkill: string; warrantyActive: boolean; serviceType: string; spareParts: SparePart[] };
 type Technician = { technicianId: string; name: string; skills: string[]; area: string; availableFrom: string; status: string; plannedOrderCount: number; activeWorkOrderId?: string };
 type WorkOrder = { workOrderId: string; assetId: string; title: string; description: string; priority: string; technicianId?: string; technicianName?: string; status: string; createdAt: string };
 type HistoryEntry = { historyId: string; assetId: string; date: string; errorCode?: string; symptom: string; action: string; downtimeHours: number };
@@ -223,7 +224,7 @@ export default function Home() {
           <div className="mt-10 rounded-2xl bg-[#173f31] p-4 text-white">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#d6ff54]">Systemstatus</p>
             <p className="mt-3 text-sm font-semibold">{error ? 'Anslutningsproblem' : 'Alla tjänster fungerar'}</p>
-            <p className="mt-1 text-xs leading-5 text-white/60">REST-API och tre MCP-verktyg är aktiva.</p>
+            <p className="mt-1 text-xs leading-5 text-white/60">REST-API och fyra MCP-verktyg är aktiva.</p>
           </div>
         </aside>
 
@@ -438,7 +439,75 @@ function HistoryTable({ history, assets }: { history: HistoryEntry[]; assets: As
 }
 
 function AssetDrawer({ asset, history, onClose }: { asset: Asset; history: HistoryEntry[]; onClose: () => void }) {
-  return <div className="fixed inset-0 z-40 bg-black/35" onClick={onClose}><aside className="ml-auto h-full w-full max-w-md overflow-y-auto bg-white p-6 shadow-2xl" onClick={(event) => event.stopPropagation()}><div className="flex items-start justify-between"><div><p className="font-mono text-xs font-bold text-[#2d7b58]">{asset.assetId}</p><h2 className="mt-1 text-2xl font-bold">{asset.name}</h2><p className="mt-1 text-sm text-zinc-500">{asset.location}</p></div><button onClick={onClose} className="rounded-lg bg-zinc-100 px-3 py-2 text-sm">Stäng</button></div><div className="mt-6 grid grid-cols-2 gap-3">{[['Kritikalitet', asset.criticality], ['SLA', `${asset.slaHours} timmar`], ['Kompetens', asset.requiredSkill], ['Garanti', asset.warrantyActive ? 'Aktiv' : 'Saknas'], ['Serviceform', asset.serviceType]].map(([label, value]) => <div key={label} className="rounded-xl bg-zinc-50 p-3"><p className="text-xs text-zinc-500">{label}</p><p className="mt-1 text-sm font-semibold">{value}</p></div>)}</div><h3 className="mt-8 font-bold">Felhistorik</h3><div className="mt-3 space-y-3">{history.length ? history.map((item) => <article key={item.historyId} className="rounded-xl border border-black/10 p-4"><p className="text-xs font-semibold text-zinc-500">{item.date}{item.errorCode ? ` · ${item.errorCode}` : ''}</p><p className="mt-2 text-sm font-semibold">{item.symptom}</p><p className="mt-1 text-sm text-zinc-600">{item.action}</p></article>) : <p className="text-sm text-zinc-500">Ingen tidigare historik.</p>}</div></aside></div>;
+  return (
+    <div className="fixed inset-0 z-40 bg-black/35" onClick={onClose}>
+      <aside className="ml-auto h-full w-full max-w-md overflow-y-auto bg-white p-6 shadow-2xl" onClick={(event) => event.stopPropagation()}>
+        <div className="flex items-start justify-between">
+          <div>
+            <p className="font-mono text-xs font-bold text-[#2d7b58]">{asset.assetId}</p>
+            <h2 className="mt-1 text-2xl font-bold">{asset.name}</h2>
+            <p className="mt-1 text-sm text-zinc-500">{asset.location}</p>
+          </div>
+          <button onClick={onClose} className="rounded-lg bg-zinc-100 px-3 py-2 text-sm">Stäng</button>
+        </div>
+
+        <div className="mt-6 grid grid-cols-2 gap-3">
+          {[
+            ['Kritikalitet', asset.criticality],
+            ['SLA', `${asset.slaHours} timmar`],
+            ['Kompetens', asset.requiredSkill],
+            ['Garanti', asset.warrantyActive ? 'Aktiv' : 'Saknas'],
+            ['Serviceform', asset.serviceType],
+          ].map(([label, value]) => (
+            <div key={label} className="rounded-xl bg-zinc-50 p-3">
+              <p className="text-xs text-zinc-500">{label}</p>
+              <p className="mt-1 text-sm font-semibold">{value}</p>
+            </div>
+          ))}
+        </div>
+
+        <h3 className="mt-8 font-bold">Reservdelar</h3>
+        {asset.serviceType === 'Extern' ? (
+          <div className="mt-3 rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-900">
+            Reservdelar hanteras av extern servicepartner.
+          </div>
+        ) : asset.spareParts.length ? (
+          <div className="mt-3 space-y-3">
+            {asset.spareParts.map((part) => (
+              <article key={part.partNumber} className="rounded-xl border border-black/10 p-4">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-sm font-semibold">{part.name}</p>
+                    <p className="mt-1 font-mono text-xs text-zinc-500">{part.partNumber}</p>
+                  </div>
+                  <Pill tone={part.stock > 0 ? 'bg-emerald-50 text-emerald-800 ring-emerald-200' : 'bg-red-50 text-red-800 ring-red-200'}>
+                    {part.stock > 0 ? 'I lager' : 'Saknas'}
+                  </Pill>
+                </div>
+                <div className="mt-4 grid grid-cols-2 gap-3 text-xs">
+                  <div><p className="text-zinc-500">Lagersaldo</p><p className="mt-1 font-semibold">{part.stock} st</p></div>
+                  <div><p className="text-zinc-500">Ledtid</p><p className="mt-1 font-semibold">{part.leadTimeDays} dagar</p></div>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p className="mt-3 text-sm text-zinc-500">Inga reservdelar är registrerade för objekttypen.</p>
+        )}
+
+        <h3 className="mt-8 font-bold">Felhistorik</h3>
+        <div className="mt-3 space-y-3">
+          {history.length ? history.map((item) => (
+            <article key={item.historyId} className="rounded-xl border border-black/10 p-4">
+              <p className="text-xs font-semibold text-zinc-500">{item.date}{item.errorCode ? ` · ${item.errorCode}` : ''}</p>
+              <p className="mt-2 text-sm font-semibold">{item.symptom}</p>
+              <p className="mt-1 text-sm text-zinc-600">{item.action}</p>
+            </article>
+          )) : <p className="text-sm text-zinc-500">Ingen tidigare historik.</p>}
+        </div>
+      </aside>
+    </div>
+  );
 }
 
 function WorkOrderModal({ assets, technicians, onClose, onSubmit }: { assets: Asset[]; technicians: Technician[]; onClose: () => void; onSubmit: (event: FormEvent<HTMLFormElement>) => void }) {

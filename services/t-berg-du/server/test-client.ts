@@ -6,7 +6,7 @@ const baseUrl = process.env.API_BASE_URL || 'http://localhost:8787';
 type KeyResult = { key: string; workspaceId: string };
 type OrdersResult = { items: Array<{ workOrderId: string; createdAt: string; status: string; technicianId?: string }> };
 type AssetResult = { assetId: string; requiredSkill: string };
-type AssetsResult = { items: Array<{ assetId: string }> };
+type AssetsResult = { items: Array<{ assetId: string; serviceType: string; spareParts: Array<{ partNumber: string; stock: number; leadTimeDays: number }> }> };
 type TechnicianResult = { items: Array<{ technicianId: string; area: string; availableFrom: string; status: string; plannedOrderCount: number; activeWorkOrderId?: string }> };
 type TechnicianToolResult = { count: number; technicians: Array<{ technicianId: string; status: string; plannedOrderCount: number }> };
 type HistoryToolResult = { totalCount: number; historyCount: number; recentWorkOrderCount: number; queriedErrorCode: string; sameErrorCodeCount: number };
@@ -39,6 +39,14 @@ async function main() {
   if (lowercaseAsset.assetId !== 'LO-PU-017') throw new Error('API:t normaliserade inte objekt-ID till versaler.');
   const assetList = await request<AssetsResult>('/api/assets', firstHeaders);
   if (assetList.items.some((item) => !ASSET_ID_PATTERN.test(item.assetId))) throw new Error('Objektregistret innehåller ett ID som inte följer LO-TT-NNN.');
+  const pumpInList = assetList.items.find((item) => item.assetId === 'LO-PU-017');
+  if (!pumpInList || pumpInList.spareParts.length !== 2 || !pumpInList.spareParts.some((part) => part.partNumber === 'TATN-MEK-25' && part.stock === 0 && part.leadTimeDays === 5)) {
+    throw new Error('Objektlistan innehåller inte pumpens reservdelar med lager och ledtid.');
+  }
+  const externalAssetInList = assetList.items.find((item) => item.assetId === 'LO-PK-004');
+  if (!externalAssetInList || externalAssetInList.serviceType !== 'Extern' || externalAssetInList.spareParts.length !== 0) {
+    throw new Error('Objekt med extern service ska inte visa interna reservdelar.');
+  }
 
   const technicianResult = await request<TechnicianResult>('/api/technicians', firstHeaders);
   const now = Date.now();

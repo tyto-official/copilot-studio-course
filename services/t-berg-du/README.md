@@ -4,7 +4,7 @@ Lokalt demosystem för en intern drift- och underhållsagent i Microsoft Copilot
 
 Systemet innehåller:
 
-- ett objektregister som används av en custom connector;
+- ett objektregister där webbgränssnittet även visar registrerade reservdelar;
 - felhistorik, tidigare arbetsordrar, teknikertillgänglighet och reservdelar som MCP-verktyg;
 - skapande av arbetsorder efter godkännande;
 - tidsbegränsade testnycklar och separata arbetsytor för kursdeltagare;

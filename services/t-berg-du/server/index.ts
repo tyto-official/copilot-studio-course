@@ -3,7 +3,7 @@ import express from 'express';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { generalRateLimit, issueAccess, issueRateLimit, requireAccess } from './access.js';
 import { createTbergMcpServer } from './mcp.js';
-import { cleanupExpiredSessions, createWorkOrder, getAsset, getAssets, getFaultHistory, getTechnicians, getWorkOrders, resetWorkspace } from './store.js';
+import { cleanupExpiredSessions, createWorkOrder, getAsset, getAssets, getFaultHistory, getSpareParts, getTechnicians, getWorkOrders, resetWorkspace } from './store.js';
 
 const port = Number(process.env.PORT || 8787);
 const app = express();
@@ -63,7 +63,12 @@ app.get('/health', (_req, res) => res.json({ status: 'ok', service: 'T-Berg D&U'
 app.post('/access/sessions', issueRateLimit, issueAccess);
 app.get('/access/session', requireAccess, (_req, res) => res.json(res.locals.accessSession));
 
-app.get('/api/assets', requireAccess, (_req, res) => res.json({ items: getAssets() }));
+app.get('/api/assets', requireAccess, (_req, res) => res.json({
+  items: getAssets().map((asset) => ({
+    ...asset,
+    spareParts: asset.serviceType === 'Intern' ? getSpareParts(asset.type) : [],
+  })),
+}));
 app.get('/api/assets/:assetId', requireAccess, (req, res) => {
   const assetId = String(req.params.assetId);
   const asset = getAsset(assetId);

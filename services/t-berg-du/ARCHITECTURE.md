@@ -94,7 +94,7 @@ REST-API:t används av webbgränssnittet och kan användas av ett custom connect
 | `GET /health` | Publik hälsokontroll. |
 | `POST /access/sessions` | Skapar en testnyckel efter Turnstile-verifiering. |
 | `GET /access/session` | Kontrollerar nyckeln och visar återstående kvot. |
-| `GET /api/assets` | Hämtar alla objekt. |
+| `GET /api/assets` | Hämtar alla objekt och de reservdelar som webbgränssnittet visar för intern service. |
 | `GET /api/assets/{assetId}` | Hämtar auktoritativ information om ett objekt. |
 | `GET /api/assets/{assetId}/history` | Hämtar objektets felhistorik. |
 | `GET /api/technicians` | Hämtar tekniker och räknar ut deras status från arbetsytans order. |
@@ -106,6 +106,8 @@ OpenAPI-filen `openapi/tberg-du-connector.swagger.json` är avsedd för kursens 
 
 - `GetAsset` gör samma objektuppslag varje gång och returnerar bland annat kritikalitet, SLA, garanti, serviceform och kompetenskrav.
 - `CreateWorkOrder` skapar en arbetsorder efter att agentens godkännandeflöde har godkänt underlaget. Arbetsytan bestäms av testnyckeln och skickas därför inte som indata.
+
+Reservdelarna i objektlistan används bara av webbgränssnittet och ändrar inte custom connectorns operationer eller OpenAPI-fil.
 
 MCP-serverns `create_work_order` finns kvar för andra agentlösningar. I kursens agent stängs verktyget av, så att skrivningen bara kan ske genom det godkända flödet och connectorns `CreateWorkOrder`.
 
