@@ -1,5 +1,6 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
+import { ASSET_ID_INPUT_PATTERN } from './asset-id.js';
 import { createWorkOrder, findTechnicians, getAsset, getFaultHistory } from './store.js';
 
 export function createTbergMcpServer(workspaceId: string, workOrderLimit: number) {
@@ -9,7 +10,7 @@ export function createTbergMcpServer(workspaceId: string, workOrderLimit: number
     title: 'Hämta felhistorik',
     description: 'Hämtar tidigare fel och utförda åtgärder för ett redan identifierat objekt. Använd verktyget när topicen behöver bedöma om felet är återkommande.',
     inputSchema: {
-      assetId: z.string().describe('Objektets verifierade ID, exempelvis VA-12.'),
+      assetId: z.string().regex(ASSET_ID_INPUT_PATTERN).describe('Objektets verifierade ID i formatet LO-TT-NNN, exempelvis LO-VA-012.'),
       errorCode: z.string().optional().describe('Eventuell felkod som identifierats i bilden.'),
     },
     annotations: { readOnlyHint: true, openWorldHint: false },
@@ -42,7 +43,7 @@ export function createTbergMcpServer(workspaceId: string, workOrderLimit: number
     title: 'Skapa arbetsorder',
     description: 'Skapar den arbetsorder som användaren eller godkännaren redan har bekräftat. Verktyget får aldrig användas före topicens bekräftelse- och godkännandesteg.',
     inputSchema: {
-      assetId: z.string().describe('Verifierat objekt-ID.'),
+      assetId: z.string().regex(ASSET_ID_INPUT_PATTERN).describe('Verifierat objekt-ID i formatet LO-TT-NNN.'),
       title: z.string().min(3).describe('Kort rubrik för arbetsordern.'),
       description: z.string().min(3).describe('Sammanfattat fel och beslutad åtgärd.'),
       priority: z.enum(['P1', 'P2', 'P3', 'P4']).describe('Prioritet som topicens fasta regler har beslutat.'),

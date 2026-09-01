@@ -102,9 +102,24 @@ REST-API:t används av webbgränssnittet och kan användas av ett custom connect
 | `POST /api/work-orders` | Skapar en arbetsorder i arbetsytan. |
 | `POST /api/reset` | Återställer arbetsytans arbetsordrar. |
 
-OpenAPI-filen `openapi/tberg-du-connector.swagger.json` är avsedd för kursens custom connector. Den exponerar i nuläget operationen `GetAsset`, som alltid gör samma typ av uppslag och returnerar bland annat kritikalitet, SLA, garanti, serviceform och kompetenskrav.
+OpenAPI-filen `openapi/tberg-du-connector.swagger.json` är avsedd för kursens custom connector. Den exponerar två operationer:
+
+- `GetAsset` gör samma objektuppslag varje gång och returnerar bland annat kritikalitet, SLA, garanti, serviceform och kompetenskrav.
+- `CreateWorkOrder` skapar en arbetsorder efter att agentens godkännandeflöde har godkänt underlaget. Arbetsytan bestäms av testnyckeln och skickas därför inte som indata.
+
+MCP-serverns `create_work_order` finns kvar för andra agentlösningar. I kursens agent stängs verktyget av, så att skrivningen bara kan ske genom det godkända flödet och connectorns `CreateWorkOrder`.
 
 Filen använder API-appens Azure-hostname och `https`. Power Platform importerar custom connectors från OpenAPI 2.0. Säkerhetsdefinitionen i filen anger API-nyckel i headern `x-workshop-key`.
+
+### Objekt-ID
+
+Alla objekt-ID följer formatet `LO-TT-NNN`:
+
+- `LO` markerar ett Lyserno-objekt.
+- `TT` är en tvåställig typkod, exempelvis `PU` för pump eller `VA` för ventilation.
+- `NNN` är ett tresiffrigt löpnummer.
+
+Exempel: `LO-PU-017` och `LO-VA-012`. Formatet skiljer objekt från felkoder som `E-42`, tekniker som `T-101` och arbetsordrar som `AO-1048`. Objektregistret kontrollerar formatet och dubbla ID:n när API:t startar.
 
 ## MCP
 

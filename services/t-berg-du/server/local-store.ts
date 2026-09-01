@@ -1,6 +1,7 @@
 import { createHash, randomBytes } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { normalizeAssetId } from './asset-id.js';
 import { assets, buildTechnicians, faultHistory, seedWorkOrders } from './seed.js';
 import type { AccessSession, CreateWorkOrderInput, RuntimeData, WorkOrder } from './types.js';
 
@@ -72,10 +73,11 @@ function publicSession(session: AccessSession) {
 }
 
 export function getAssets() { return assets; }
-export function getAsset(assetId: string) { return assets.find((asset) => asset.assetId.toUpperCase() === assetId.toUpperCase()); }
+export function getAsset(assetId: string) { return assets.find((asset) => asset.assetId === normalizeAssetId(assetId)); }
 export function getTechnicians() { return buildTechnicians(); }
 export function getFaultHistory(assetId: string, errorCode?: string) {
-  return faultHistory.filter((entry) => entry.assetId === assetId && (!errorCode || entry.errorCode === errorCode));
+  const normalizedAssetId = normalizeAssetId(assetId);
+  return faultHistory.filter((entry) => entry.assetId === normalizedAssetId && (!errorCode || entry.errorCode === errorCode));
 }
 
 export function findTechnicians(requiredSkill: string) {

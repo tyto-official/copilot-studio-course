@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "title": "T-Berg D&U Object API",
-    "description": "Hämtar auktoritativ objektinformation till en Copilot Studio-agent. Samma tidsbegränsade T-Berg-testnyckel används för REST och MCP.",
-    "version": "0.2.0"
+    "description": "Hämtar objektinformation och skapar godkända arbetsordrar åt en Copilot Studio-agent. Samma tidsbegränsade T-Berg-testnyckel används för REST och MCP.",
+    "version": "0.3.0"
   },
   "host": "ca-tberg-du-api.orangesmoke-45b4d851.swedencentral.azurecontainerapps.io",
   "basePath": "/api",
@@ -30,12 +30,33 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "Objekt-ID som identifierats i användarens bild eller svar, exempelvis VA-12."
+            "description": "Objekt-ID som identifierats i användarens bild eller svar. Format: LO-TT-NNN, exempelvis LO-VA-012."
           }
         ],
         "responses": {
           "200": { "description": "Objektet hittades.", "schema": { "$ref": "#/definitions/Asset" } },
           "404": { "description": "Objektet hittades inte." }
+        }
+      }
+    },
+    "/work-orders": {
+      "post": {
+        "operationId": "CreateWorkOrder",
+        "summary": "Skapa en arbetsorder",
+        "description": "Skapar en arbetsorder efter att agentens godkännandeflöde har godkänt underlaget. Arbetsytan bestäms av testnyckeln och ska inte skickas i anropet.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/CreateWorkOrderRequest" }
+          }
+        ],
+        "responses": {
+          "201": { "description": "Arbetsordern skapades.", "schema": { "$ref": "#/definitions/WorkOrder" } },
+          "400": { "description": "Underlaget var ogiltigt eller arbetsytans gräns har nåtts.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "401": { "description": "Testnyckeln saknas eller är ogiltig.", "schema": { "$ref": "#/definitions/ErrorResponse" } },
+          "429": { "description": "Anropsgränsen har nåtts.", "schema": { "$ref": "#/definitions/ErrorResponse" } }
         }
       }
     }
@@ -45,7 +66,7 @@
       "type": "object",
       "required": ["assetId", "name", "location", "criticality", "slaHours", "requiredSkill", "warrantyActive"],
       "properties": {
-        "assetId": { "type": "string", "example": "VA-12" },
+        "assetId": { "type": "string", "example": "LO-VA-012" },
         "name": { "type": "string", "example": "Ventilationsaggregat 12" },
         "type": { "type": "string", "example": "Ventilation" },
         "location": { "type": "string", "example": "Hall B" },
@@ -55,6 +76,61 @@
         "warrantyActive": { "type": "boolean", "example": false },
         "serviceType": { "type": "string", "example": "Intern" },
         "status": { "type": "string", "example": "Drift" }
+      }
+    },
+    "CreateWorkOrderRequest": {
+      "type": "object",
+      "required": ["assetId", "title", "description", "priority"],
+      "properties": {
+        "assetId": {
+          "type": "string",
+          "description": "Verifierat objekt-ID från objektregistret.",
+          "example": "LO-PU-017"
+        },
+        "title": {
+          "type": "string",
+          "description": "Kort rubrik för arbetsordern.",
+          "example": "Läckage vid cirkulationspump"
+        },
+        "description": {
+          "type": "string",
+          "description": "Sammanfattning av felet och det godkända underlaget.",
+          "example": "Pump LO-PU-017 läcker vid kopplingen och ger ett onormalt lagerljud."
+        },
+        "priority": {
+          "type": "string",
+          "description": "Prioritet som ämnets fasta regler har satt.",
+          "enum": ["P1", "P2", "P3", "P4"],
+          "example": "P2"
+        },
+        "technicianId": {
+          "type": "string",
+          "description": "ID för den valda teknikern. Utelämna fältet om ingen tekniker har valts.",
+          "example": "TECH-002"
+        }
+      }
+    },
+    "WorkOrder": {
+      "type": "object",
+      "required": ["workOrderId", "workspaceId", "assetId", "title", "description", "priority", "status", "createdAt"],
+      "properties": {
+        "workOrderId": { "type": "string", "example": "AO-M1ABCDEF-12AB" },
+        "workspaceId": { "type": "string", "example": "LAB-01" },
+        "assetId": { "type": "string", "example": "LO-PU-017" },
+        "title": { "type": "string", "example": "Läckage vid cirkulationspump" },
+        "description": { "type": "string", "example": "Pump LO-PU-017 läcker vid kopplingen och ger ett onormalt lagerljud." },
+        "priority": { "type": "string", "enum": ["P1", "P2", "P3", "P4"], "example": "P2" },
+        "technicianId": { "type": "string", "example": "TECH-002" },
+        "technicianName": { "type": "string", "example": "Anna Ek" },
+        "status": { "type": "string", "enum": ["Väntar", "Planerad", "Pågår", "Avslutad"], "example": "Planerad" },
+        "createdAt": { "type": "string", "format": "date-time", "example": "2026-08-31T09:30:00.000Z" }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "required": ["error"],
+      "properties": {
+        "error": { "type": "string", "example": "Arbetsordern kunde inte skapas." }
       }
     }
   }

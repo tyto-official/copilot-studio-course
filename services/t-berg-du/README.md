@@ -77,9 +77,11 @@ npm run demo:mcp
 Återanvänd en nyckel från webbgränssnittet med exempelvis:
 
 ```powershell
-npm run demo:connector -- --key tberg_DIN_NYCKEL --asset VA-12
+npm run demo:connector -- --key tberg_DIN_NYCKEL --asset LO-VA-012
 npm run demo:mcp -- --key tberg_DIN_NYCKEL
 ```
+
+Objekt-ID följer formatet `LO-TT-NNN`: `LO` markerar ett Lyserno-objekt, `TT` är en tvåställig typkod och `NNN` är ett tresiffrigt löpnummer. Exempel: `LO-PU-017` och `LO-VA-012`.
 
 OpenAPI 2.0-reserven för custom connector finns i `openapi/tberg-du-connector.swagger.json`.
 

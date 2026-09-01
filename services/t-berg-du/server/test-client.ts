@@ -1,10 +1,12 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
+import { ASSET_ID_PATTERN } from './asset-id.js';
 
 const baseUrl = process.env.API_BASE_URL || 'http://localhost:8787';
 type KeyResult = { key: string; workspaceId: string };
 type OrdersResult = { items: Array<{ workOrderId: string; createdAt: string }> };
-type AssetResult = { requiredSkill: string };
+type AssetResult = { assetId: string; requiredSkill: string };
+type AssetsResult = { items: Array<{ assetId: string }> };
 type TechnicianResult = { items: Array<{ technicianId: string; area: string; availableFrom: string; status: string }> };
 type TechnicianToolResult = { count: number; technicians: Array<{ technicianId: string; status: string }> };
 
@@ -21,7 +23,7 @@ async function issueKey() {
 
 async function main() {
   await request('/health');
-  await request('/api/assets/VA-12', {}, {}, 401);
+  await request('/api/assets/LO-VA-012', {}, {}, 401);
 
   const first = await issueKey();
   const second = await issueKey();
@@ -29,8 +31,12 @@ async function main() {
   const firstHeaders = { 'x-workshop-key': first.key };
   const secondHeaders = { 'x-workshop-key': second.key };
 
-  const asset = await request<AssetResult>('/api/assets/VA-12', firstHeaders);
-  if (asset.requiredSkill !== 'Ventilation') throw new Error('Fel kompetenskrav för VA-12.');
+  const asset = await request<AssetResult>('/api/assets/LO-VA-012', firstHeaders);
+  if (asset.requiredSkill !== 'Ventilation') throw new Error('Fel kompetenskrav för LO-VA-012.');
+  const lowercaseAsset = await request<AssetResult>('/api/assets/lo-pu-017', firstHeaders);
+  if (lowercaseAsset.assetId !== 'LO-PU-017') throw new Error('API:t normaliserade inte objekt-ID till versaler.');
+  const assetList = await request<AssetsResult>('/api/assets', firstHeaders);
+  if (assetList.items.some((item) => !ASSET_ID_PATTERN.test(item.assetId))) throw new Error('Objektregistret innehåller ett ID som inte följer LO-TT-NNN.');
 
   const technicianResult = await request<TechnicianResult>('/api/technicians', firstHeaders);
   const now = Date.now();
@@ -47,7 +53,7 @@ async function main() {
   })) throw new Error('Startarbetsordrarnas datum är inte relativa till arbetsytans starttid.');
   await request('/api/work-orders', firstHeaders, {
     method: 'POST',
-    body: JSON.stringify({ assetId: 'VA-12', title: 'Isoleringstest', description: 'Ska endast synas i den första arbetsytan.', priority: 'P3' }),
+    body: JSON.stringify({ assetId: 'LO-VA-012', title: 'Isoleringstest', description: 'Ska endast synas i den första arbetsytan.', priority: 'P3' }),
   }, 201);
   const firstAfter = await request<OrdersResult>('/api/work-orders', firstHeaders);
   const secondAfter = await request<OrdersResult>('/api/work-orders', secondHeaders);
@@ -59,7 +65,7 @@ async function main() {
   await client.connect(transport);
   const tools = await client.listTools();
   if (tools.tools.length !== 3) throw new Error(`Förväntade 3 MCP-verktyg, fick ${tools.tools.length}.`);
-  const history = await client.callTool({ name: 'get_fault_history', arguments: { assetId: 'VA-12', errorCode: 'E37' } });
+  const history = await client.callTool({ name: 'get_fault_history', arguments: { assetId: 'LO-VA-012', errorCode: 'E37' } });
   if (history.isError) throw new Error('Felhistorikverktyget misslyckades.');
   const technicianMatches = await client.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'Automation' } });
   if (technicianMatches.isError) throw new Error('Teknikerverktyget misslyckades.');
@@ -70,7 +76,7 @@ async function main() {
   if (matchedTechnicians.technicians.some((technician) => technician.status !== 'Tillgänglig')) throw new Error('Teknikerverktyget returnerade en otillgänglig tekniker.');
   const created = await client.callTool({
     name: 'create_work_order',
-    arguments: { assetId: 'VA-12', title: 'MCP-test', description: 'Skapad efter godkännande.', priority: 'P2', approved: true },
+    arguments: { assetId: 'LO-VA-012', title: 'MCP-test', description: 'Skapad efter godkännande.', priority: 'P2', approved: true },
   });
   if (created.isError) throw new Error('MCP kunde inte skapa arbetsordern.');
   await client.close();

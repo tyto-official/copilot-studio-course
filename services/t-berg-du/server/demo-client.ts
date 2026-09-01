@@ -8,7 +8,7 @@ const option = (name: string) => {
 };
 const mode = option('--mode') || 'all';
 const baseUrl = process.env.API_BASE_URL || 'http://localhost:8787';
-const assetId = option('--asset') || 'VA-12';
+const assetId = option('--asset') || 'LO-VA-012';
 
 async function jsonRequest<T>(path: string, key?: string, init: RequestInit = {}): Promise<T> {
   const response = await fetch(`${baseUrl}${path}`, {
