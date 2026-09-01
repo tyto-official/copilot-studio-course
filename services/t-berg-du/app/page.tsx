@@ -3,7 +3,7 @@
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 type View = 'Översikt' | 'Objektregister' | 'Arbetsorder' | 'Tekniker' | 'Felhistorik';
-type Asset = { assetId: string; name: string; type: string; location: string; criticality: string; slaHours: number; requiredSkill: string; warrantyActive: boolean; serviceType: string; status: string };
+type Asset = { assetId: string; name: string; type: string; location: string; criticality: string; slaHours: number; requiredSkill: string; warrantyActive: boolean; serviceType: string };
 type Technician = { technicianId: string; name: string; skills: string[]; area: string; availableFrom: string; status: string; plannedOrderCount: number; activeWorkOrderId?: string };
 type WorkOrder = { workOrderId: string; assetId: string; title: string; description: string; priority: string; technicianId?: string; technicianName?: string; status: string; createdAt: string };
 type HistoryEntry = { historyId: string; assetId: string; date: string; errorCode?: string; symptom: string; action: string; downtimeHours: number };
@@ -28,9 +28,9 @@ function apiError(body: unknown, fallback: string) {
 }
 
 function statusTone(status: string) {
-  if (status === 'Pågår' || status === 'Upptagen' || status === 'Tillsyn') return 'bg-amber-50 text-amber-800 ring-amber-200';
-  if (status === 'Planerad' || status === 'Service') return 'bg-sky-50 text-sky-800 ring-sky-200';
-  if (status === 'Tillgänglig' || status === 'Drift') return 'bg-emerald-50 text-emerald-800 ring-emerald-200';
+  if (status === 'Pågår' || status === 'Upptagen') return 'bg-amber-50 text-amber-800 ring-amber-200';
+  if (status === 'Planerad') return 'bg-sky-50 text-sky-800 ring-sky-200';
+  if (status === 'Tillgänglig') return 'bg-emerald-50 text-emerald-800 ring-emerald-200';
   return 'bg-zinc-100 text-zinc-700 ring-zinc-200';
 }
 
@@ -418,7 +418,7 @@ function Section({ title, subtitle, action, children }: { title: string; subtitl
 }
 
 function AssetTable({ assets, onSelect }: { assets: Asset[]; onSelect: (asset: Asset) => void }) {
-  return <article className="overflow-hidden rounded-2xl border border-black/10 bg-white"><div className="overflow-x-auto"><table className="w-full min-w-[700px] text-left text-sm"><thead className="bg-zinc-50 text-xs uppercase tracking-wide text-zinc-500"><tr><th className="px-5 py-3">Objekt</th><th className="px-5 py-3">Plats</th><th className="px-5 py-3">Kritikalitet</th><th className="px-5 py-3">SLA</th><th className="px-5 py-3">Status</th></tr></thead><tbody className="divide-y divide-black/5">{assets.map((asset) => <tr key={asset.assetId} onClick={() => onSelect(asset)} className="cursor-pointer hover:bg-[#f7faf7]"><td className="px-5 py-4"><p className="font-semibold">{asset.name}</p><p className="mt-0.5 font-mono text-xs text-zinc-500">{asset.assetId}</p></td><td className="px-5 py-4 text-zinc-600">{asset.location}</td><td className="px-5 py-4 font-medium">{asset.criticality}</td><td className="px-5 py-4 text-zinc-600">{asset.slaHours} h</td><td className="px-5 py-4"><Pill tone={statusTone(asset.status)}>{asset.status}</Pill></td></tr>)}</tbody></table></div></article>;
+  return <article className="overflow-hidden rounded-2xl border border-black/10 bg-white"><div className="overflow-x-auto"><table className="w-full min-w-[620px] text-left text-sm"><thead className="bg-zinc-50 text-xs uppercase tracking-wide text-zinc-500"><tr><th className="px-5 py-3">Objekt</th><th className="px-5 py-3">Plats</th><th className="px-5 py-3">Kritikalitet</th><th className="px-5 py-3">SLA</th></tr></thead><tbody className="divide-y divide-black/5">{assets.map((asset) => <tr key={asset.assetId} onClick={() => onSelect(asset)} className="cursor-pointer hover:bg-[#f7faf7]"><td className="px-5 py-4"><p className="font-semibold">{asset.name}</p><p className="mt-0.5 font-mono text-xs text-zinc-500">{asset.assetId}</p></td><td className="px-5 py-4 text-zinc-600">{asset.location}</td><td className="px-5 py-4 font-medium">{asset.criticality}</td><td className="px-5 py-4 text-zinc-600">{asset.slaHours} h</td></tr>)}</tbody></table></div></article>;
 }
 
 function OrderList({ orders }: { orders: WorkOrder[] }) {
@@ -438,7 +438,7 @@ function HistoryTable({ history, assets }: { history: HistoryEntry[]; assets: As
 }
 
 function AssetDrawer({ asset, history, onClose }: { asset: Asset; history: HistoryEntry[]; onClose: () => void }) {
-  return <div className="fixed inset-0 z-40 bg-black/35" onClick={onClose}><aside className="ml-auto h-full w-full max-w-md overflow-y-auto bg-white p-6 shadow-2xl" onClick={(event) => event.stopPropagation()}><div className="flex items-start justify-between"><div><p className="font-mono text-xs font-bold text-[#2d7b58]">{asset.assetId}</p><h2 className="mt-1 text-2xl font-bold">{asset.name}</h2><p className="mt-1 text-sm text-zinc-500">{asset.location}</p></div><button onClick={onClose} className="rounded-lg bg-zinc-100 px-3 py-2 text-sm">Stäng</button></div><div className="mt-6 grid grid-cols-2 gap-3">{[['Kritikalitet', asset.criticality], ['SLA', `${asset.slaHours} timmar`], ['Kompetens', asset.requiredSkill], ['Garanti', asset.warrantyActive ? 'Aktiv' : 'Saknas'], ['Serviceform', asset.serviceType], ['Status', asset.status]].map(([label, value]) => <div key={label} className="rounded-xl bg-zinc-50 p-3"><p className="text-xs text-zinc-500">{label}</p><p className="mt-1 text-sm font-semibold">{value}</p></div>)}</div><h3 className="mt-8 font-bold">Felhistorik</h3><div className="mt-3 space-y-3">{history.length ? history.map((item) => <article key={item.historyId} className="rounded-xl border border-black/10 p-4"><p className="text-xs font-semibold text-zinc-500">{item.date}{item.errorCode ? ` · ${item.errorCode}` : ''}</p><p className="mt-2 text-sm font-semibold">{item.symptom}</p><p className="mt-1 text-sm text-zinc-600">{item.action}</p></article>) : <p className="text-sm text-zinc-500">Ingen tidigare historik.</p>}</div></aside></div>;
+  return <div className="fixed inset-0 z-40 bg-black/35" onClick={onClose}><aside className="ml-auto h-full w-full max-w-md overflow-y-auto bg-white p-6 shadow-2xl" onClick={(event) => event.stopPropagation()}><div className="flex items-start justify-between"><div><p className="font-mono text-xs font-bold text-[#2d7b58]">{asset.assetId}</p><h2 className="mt-1 text-2xl font-bold">{asset.name}</h2><p className="mt-1 text-sm text-zinc-500">{asset.location}</p></div><button onClick={onClose} className="rounded-lg bg-zinc-100 px-3 py-2 text-sm">Stäng</button></div><div className="mt-6 grid grid-cols-2 gap-3">{[['Kritikalitet', asset.criticality], ['SLA', `${asset.slaHours} timmar`], ['Kompetens', asset.requiredSkill], ['Garanti', asset.warrantyActive ? 'Aktiv' : 'Saknas'], ['Serviceform', asset.serviceType]].map(([label, value]) => <div key={label} className="rounded-xl bg-zinc-50 p-3"><p className="text-xs text-zinc-500">{label}</p><p className="mt-1 text-sm font-semibold">{value}</p></div>)}</div><h3 className="mt-8 font-bold">Felhistorik</h3><div className="mt-3 space-y-3">{history.length ? history.map((item) => <article key={item.historyId} className="rounded-xl border border-black/10 p-4"><p className="text-xs font-semibold text-zinc-500">{item.date}{item.errorCode ? ` · ${item.errorCode}` : ''}</p><p className="mt-2 text-sm font-semibold">{item.symptom}</p><p className="mt-1 text-sm text-zinc-600">{item.action}</p></article>) : <p className="text-sm text-zinc-500">Ingen tidigare historik.</p>}</div></aside></div>;
 }
 
 function WorkOrderModal({ assets, technicians, onClose, onSubmit }: { assets: Asset[]; technicians: Technician[]; onClose: () => void; onSubmit: (event: FormEvent<HTMLFormElement>) => void }) {
