@@ -2,6 +2,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { ASSET_ID_INPUT_PATTERN } from './asset-id.js';
 import { createWorkOrder, findTechnicians, getAsset, getFaultHistory, getSpareParts, getWorkOrders } from './store.js';
+import { UNASSIGNED_TECHNICIAN_ID } from './technician-availability.js';
 
 function normalizeErrorCode(value: string) {
   return value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
@@ -18,10 +19,10 @@ export function createTbergMcpServer(workspaceId: string, workOrderLimit: number
 
   server.registerTool('get_fault_history', {
     title: 'Hämta felhistorik',
-    description: 'Hämtar tidigare fel och utförda åtgärder för ett redan identifierat objekt. Använd verktyget när topicen behöver bedöma om felet är återkommande.',
+    description: 'Hämtar felhistorik och befintliga arbetsordrar för ett verifierat objekt. Använd verktyget efter att ämnet har lämnat MaintenanceContext. Svaret innehåller historiken, arbetsordrarna och antalet träffar för den angivna felkoden utan att filtrera bort övriga poster.',
     inputSchema: {
-      assetId: z.string().regex(ASSET_ID_INPUT_PATTERN).describe('Objektets verifierade ID i formatet LO-TT-NNN, exempelvis LO-VA-012.'),
-      errorCode: z.string().optional().describe('Eventuell felkod som identifierats i bilden.'),
+      assetId: z.string().regex(ASSET_ID_INPUT_PATTERN).describe('Verifierat objekt-ID från MaintenanceContext.'),
+      errorCode: z.string().optional().describe('Felkod från MaintenanceContext. Används för att räkna träffar med samma felkod och filtrerar inte bort övrig historik.'),
     },
     annotations: { readOnlyHint: true, openWorldHint: false },
   }, async ({ assetId, errorCode }) => {
@@ -63,26 +64,32 @@ export function createTbergMcpServer(workspaceId: string, workOrderLimit: number
 
   server.registerTool('find_available_technicians', {
     title: 'Hitta tillgängliga tekniker',
-    description: 'Söker tekniker med rätt kompetens som inte är frånvarande eller arbetar med en pågående order. Tekniker med färre planerade order visas först. Använd verktyget först efter att connectorn har hämtat requiredSkill.',
+    description: 'Söker tekniker med rätt kompetens som inte är frånvarande eller har en pågående arbetsorder. Använd verktyget när MaintenanceContext innehåller requiredSkill. Svaret innehåller en sorterad teknikerlista och technicianId med den första teknikerns ID eller UNASSIGNED.',
     inputSchema: {
-      requiredSkill: z.string().describe('Kompetenskravet från objektregistret.'),
+      requiredSkill: z.string().describe('Kompetenskrav från MaintenanceContext.'),
     },
     annotations: { readOnlyHint: true, openWorldHint: false },
   }, async ({ requiredSkill }) => {
     const matches = await findTechnicians(workspaceId, requiredSkill);
+    const structuredContent = {
+      requiredSkill,
+      count: matches.length,
+      technicianId: matches[0]?.technicianId ?? UNASSIGNED_TECHNICIAN_ID,
+      technicians: matches,
+    };
     return {
-      structuredContent: { requiredSkill, count: matches.length, technicians: matches },
-      content: [{ type: 'text', text: matches.length ? JSON.stringify(matches, null, 2) : `Ingen tekniker med kompetensen ${requiredSkill} hittades.` }],
+      structuredContent,
+      content: [{ type: 'text', text: JSON.stringify(structuredContent, null, 2) }],
     };
   });
 
   server.registerTool('find_spare_parts', {
     title: 'Kontrollera reservdelar',
-    description: 'Kontrollerar reservdelar när ett internt objekt har stoppat eller samma felkod har förekommit tidigare. Anropa verktyget efter get_fault_history när impactLevel är Stoppad eller sameErrorCodeCount är större än 0. Verktyget visar lagersaldo och ledtid men reserverar eller beställer inget.',
+    description: 'Kontrollerar reservdelar, lagersaldo och ledtid för ett internt objekt. Använd verktyget efter get_fault_history när serviceType är Intern och antingen impactLevel är Stoppad eller sameErrorCodeCount är större än 0. Svaret visar om kontrollen utfördes och vilka reservdelar som hittades; inget reserveras eller beställs.',
     inputSchema: {
-      assetId: z.string().regex(ASSET_ID_INPUT_PATTERN).describe('Objektets verifierade ID i formatet LO-TT-NNN.'),
-      impactLevel: z.enum(['Liten', 'Begränsad', 'Stoppad', 'Säkerhetsrisk', 'Okänd']).describe('Påverkan som topicens fasta regler har satt.'),
-      sameErrorCodeCount: z.number().int().min(0).describe('Antalet tidigare träffar för samma felkod från get_fault_history.'),
+      assetId: z.string().regex(ASSET_ID_INPUT_PATTERN).describe('Verifierat objekt-ID från MaintenanceContext.'),
+      impactLevel: z.enum(['Liten', 'Begränsad', 'Stoppad', 'Säkerhetsrisk', 'Okänd']).describe('Påverkan från MaintenanceContext.'),
+      sameErrorCodeCount: z.number().int().min(0).describe('Antal tidigare träffar för samma felkod från get_fault_history.'),
     },
     annotations: { readOnlyHint: true, openWorldHint: false },
   }, async ({ assetId, impactLevel, sameErrorCodeCount }) => {
@@ -128,14 +135,14 @@ export function createTbergMcpServer(workspaceId: string, workOrderLimit: number
 
   server.registerTool('create_work_order', {
     title: 'Skapa arbetsorder',
-    description: 'Skapar den arbetsorder som användaren eller godkännaren redan har bekräftat. Verktyget får aldrig användas före topicens bekräftelse- och godkännandesteg.',
+    description: 'Skapar en arbetsorder från ett verifierat underlag. Använd verktyget först efter att användaren har bekräftat underlaget och approved är true. Svaret innehåller den skapade arbetsorderns uppgifter.',
     inputSchema: {
       assetId: z.string().regex(ASSET_ID_INPUT_PATTERN).describe('Verifierat objekt-ID i formatet LO-TT-NNN.'),
       title: z.string().min(3).describe('Kort rubrik för arbetsordern.'),
       description: z.string().min(3).describe('Sammanfattat fel och beslutad åtgärd.'),
-      priority: z.enum(['P1', 'P2', 'P3', 'P4']).describe('Prioritet som topicens fasta regler har beslutat.'),
-      technicianId: z.string().optional().describe('Vald tekniker, om en tekniker har godkänts.'),
-      approved: z.boolean().describe('Måste vara true efter mänskligt godkännande.'),
+      priority: z.enum(['P1', 'P2', 'P3', 'P4']).describe('Prioritet som ämnets fasta regler har satt. Värdet får inte räknas om.'),
+      technicianId: z.string().optional().describe('Tekniker-ID från find_available_technicians eller UNASSIGNED när ingen tekniker är tillgänglig.'),
+      approved: z.boolean().describe('Sätt till true först efter att användaren har bekräftat underlaget.'),
     },
     annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
   }, async ({ approved, ...input }) => {

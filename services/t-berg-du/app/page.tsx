@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 type View = 'Översikt' | 'Objektregister' | 'Arbetsorder' | 'Tekniker' | 'Felhistorik';
@@ -23,6 +24,14 @@ declare global {
 }
 
 const views: View[] = ['Översikt', 'Objektregister', 'Arbetsorder', 'Tekniker', 'Felhistorik'];
+
+function TbergLogo({ className }: { className: string }) {
+  return (
+    <div className={`inline-flex items-center justify-center rounded-xl bg-white px-2 py-1.5 ${className}`}>
+      <Image src="/logo/logo.svg" alt="T-Berg D&U" width={158} height={98} priority className="h-auto w-full" />
+    </div>
+  );
+}
 
 function apiError(body: unknown, fallback: string) {
   return typeof body === 'object' && body !== null && 'error' in body && typeof body.error === 'string' ? body.error : fallback;
@@ -199,8 +208,8 @@ export default function Home() {
       <header className="border-b border-black/10 bg-[#173f31] text-white">
         <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-4 lg:px-8">
           <div className="flex items-center gap-4">
-            <div className="grid h-11 w-11 place-items-center rounded-xl bg-[#d6ff54] text-lg font-black text-[#173f31]">T</div>
-            <div><p className="text-lg font-bold tracking-tight">T-Berg D&amp;U</p><p className="text-xs text-white/60">Drift &amp; underhåll</p></div>
+            <TbergLogo className="w-[88px]" />
+            <p className="hidden text-xs text-white/60 sm:block">Drift &amp; underhåll</p>
           </div>
           <div className="flex items-center gap-2">
             <div className="hidden rounded-lg border border-white/15 px-3 py-1.5 text-xs text-white/70 sm:block">Arbetsyta <span className="ml-1 font-mono font-semibold text-white">{workspace}</span></div>
@@ -371,9 +380,8 @@ function AccessGate({ apiBase, turnstileSiteKey, onAccess }: { apiBase: string; 
     <main className="min-h-screen bg-[#eef1ed] px-5 py-8 text-[#17211b] sm:py-14">
       <div className="mx-auto max-w-5xl overflow-hidden rounded-[28px] border border-black/10 bg-white shadow-[0_24px_80px_rgba(23,63,49,0.12)] lg:grid lg:grid-cols-[0.9fr_1.1fr]">
         <section className="bg-[#173f31] p-8 text-white sm:p-12">
-          <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#d6ff54] text-lg font-black text-[#173f31]">T</div>
-          <p className="mt-10 text-xs font-bold uppercase tracking-[0.18em] text-[#d6ff54]">T-Berg D&amp;U</p>
-          <h1 className="mt-3 text-4xl font-bold leading-tight tracking-[-0.04em]">Din privata testmiljö för drift och underhåll.</h1>
+          <TbergLogo className="w-36" />
+          <h1 className="mt-10 text-4xl font-bold leading-tight tracking-[-0.04em]">Din privata testmiljö för drift och underhåll.</h1>
           <p className="mt-5 max-w-md text-sm leading-7 text-white/70">En testnyckel fungerar i dashboarden, REST-connectorn och MCP-servern. Din arbetsyta isoleras från andra deltagare och rensas automatiskt.</p>
           <div className="mt-10 grid gap-3 text-sm text-white/80">
             {['Gäller i 24 timmar', '500 API- och MCP-anrop', 'Högst 20 arbetsordrar', 'Ingen registrering eller e-post'].map((item) => <div key={item} className="flex items-center gap-3"><span className="grid h-6 w-6 place-items-center rounded-full bg-white/10 text-[#d6ff54]">✓</span>{item}</div>)}

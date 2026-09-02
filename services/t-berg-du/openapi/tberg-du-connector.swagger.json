@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "T-Berg D&U Object API",
-    "description": "Hämtar objektinformation och skapar godkända arbetsordrar åt en Copilot Studio-agent. Samma tidsbegränsade T-Berg-testnyckel används för REST och MCP.",
-    "version": "0.3.0"
+    "title": "T-Berg D&U API",
+    "description": "Ger Lysernos driftassistent tillgång till objektinformation i T-Berg D&U och skapar godkända arbetsordrar. Samma tidsbegränsade T-Berg-testnyckel används för REST och MCP.",
+    "version": "0.4.0"
   },
   "host": "ca-tberg-du-api.orangesmoke-45b4d851.swedencentral.azurecontainerapps.io",
   "basePath": "/api",
@@ -22,15 +22,15 @@
     "/assets/{assetId}": {
       "get": {
         "operationId": "GetAsset",
-        "summary": "Hämta ett objekt",
-        "description": "Hämtar kritikalitet, SLA, garanti, serviceform och kompetenskrav för ett verifierat objekt-ID.",
+        "summary": "Verifiera och hämta objekt",
+        "description": "Hämtar objektets namn, plats, kritikalitet, SLA, serviceform och kompetenskrav. Använd åtgärden för att verifiera ett objekt-ID mot objektregistret.",
         "parameters": [
           {
             "name": "assetId",
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "Objekt-ID som identifierats i användarens bild eller svar. Format: LO-TT-NNN, exempelvis LO-VA-012."
+            "description": "Möjligt objekt-ID i formatet LO-TT-NNN, till exempel LO-VA-012. Åtgärden verifierar att objektet finns."
           }
         ],
         "responses": {
@@ -42,8 +42,8 @@
     "/work-orders": {
       "post": {
         "operationId": "CreateWorkOrder",
-        "summary": "Skapa en arbetsorder",
-        "description": "Skapar en arbetsorder efter att agentens godkännandeflöde har godkänt underlaget. Arbetsytan bestäms av testnyckeln och ska inte skickas i anropet.",
+        "summary": "Skapa arbetsorder",
+        "description": "Skapar en arbetsorder från ett verifierat och bekräftat underlag. Arbetsytan bestäms av testnyckeln och ska inte skickas i anropet.",
         "parameters": [
           {
             "name": "body",
@@ -64,7 +64,7 @@
   "definitions": {
     "Asset": {
       "type": "object",
-      "required": ["assetId", "name", "location", "criticality", "slaHours", "requiredSkill", "warrantyActive"],
+      "required": ["assetId", "name", "location", "criticality", "slaHours", "requiredSkill", "warrantyActive", "serviceType"],
       "properties": {
         "assetId": { "type": "string", "example": "LO-VA-012" },
         "name": { "type": "string", "example": "Ventilationsaggregat 12" },
@@ -80,7 +80,7 @@
     },
     "CreateWorkOrderRequest": {
       "type": "object",
-      "required": ["assetId", "title", "description", "priority"],
+      "required": ["assetId", "title", "description", "priority", "technicianId"],
       "properties": {
         "assetId": {
           "type": "string",
@@ -105,8 +105,8 @@
         },
         "technicianId": {
           "type": "string",
-          "description": "ID för den valda teknikern. Utelämna fältet om ingen tekniker har valts.",
-          "example": "TECH-002"
+          "description": "ID för den valda teknikern, eller UNASSIGNED när ingen tekniker är tillgänglig.",
+          "example": "T-101"
         }
       }
     },
@@ -120,7 +120,7 @@
         "title": { "type": "string", "example": "Läckage vid cirkulationspump" },
         "description": { "type": "string", "example": "Pump LO-PU-017 läcker vid kopplingen och ger ett onormalt lagerljud." },
         "priority": { "type": "string", "enum": ["P1", "P2", "P3", "P4"], "example": "P2" },
-        "technicianId": { "type": "string", "example": "TECH-002" },
+        "technicianId": { "type": "string", "example": "T-101" },
         "technicianName": { "type": "string", "example": "Anna Ek" },
         "status": { "type": "string", "enum": ["Väntar", "Planerad", "Pågår", "Avslutad"], "example": "Planerad" },
         "createdAt": { "type": "string", "format": "date-time", "example": "2026-08-31T09:30:00.000Z" }

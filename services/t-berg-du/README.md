@@ -1,6 +1,6 @@
 # T-Berg D&U
 
-Lokalt demosystem för en intern drift- och underhållsagent i Microsoft Copilot Studio.
+Lokalt demosystem för T-Berg D&U, det externa drift- och underhållssystem som Lysernos agent ansluter till i Microsoft Copilot Studio.
 
 Systemet innehåller:
 
@@ -56,7 +56,7 @@ Lokalt används en särskild utvecklingstoken när Turnstile-variablerna saknas.
 
 `get_fault_history` returnerar all underhållshistorik för objektet och tidigare arbetsordrar i deltagarens arbetsyta. En angiven felkod används för att räkna träffar, inte för att filtrera bort annan historik.
 
-Tekniker som har en arbetsorder med status `Pågår` räknas som upptagna. Planerade order blockerar inte teknikern, men tekniker med färre planerade order visas först. En tilldelad P1-order får status `Pågår`; övriga tilldelade order får status `Planerad`.
+Tekniker som har en arbetsorder med status `Pågår` räknas som upptagna. Planerade order blockerar inte teknikern, men tekniker med färre planerade order visas först. `find_available_technicians` returnerar den första teknikerns ID i `technicianId` eller `UNASSIGNED` när listan är tom. En tilldelad P1-order får status `Pågår`; övriga tilldelade order får status `Planerad`. En order med `UNASSIGNED` får ingen tekniker och status `Väntar`.
 
 `find_spare_parts` kontrollerar reservdelar för interna objekt när driften är stoppad eller samma felkod har förekommit tidigare. Svaret innehåller artikelnummer, lagersaldo och ledtid. Verktyget reserverar eller beställer inget.
 

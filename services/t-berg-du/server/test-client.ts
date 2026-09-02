@@ -8,7 +8,7 @@ type OrdersResult = { items: Array<{ workOrderId: string; createdAt: string; sta
 type AssetResult = { assetId: string; requiredSkill: string };
 type AssetsResult = { items: Array<{ assetId: string; serviceType: string; spareParts: Array<{ partNumber: string; stock: number; leadTimeDays: number }> }> };
 type TechnicianResult = { items: Array<{ technicianId: string; area: string; availableFrom: string; status: string; plannedOrderCount: number; activeWorkOrderId?: string }> };
-type TechnicianToolResult = { count: number; technicians: Array<{ technicianId: string; status: string; plannedOrderCount: number }> };
+type TechnicianToolResult = { technicianId: string; count: number; technicians: Array<{ technicianId: string; status: string; plannedOrderCount: number }> };
 type HistoryToolResult = { totalCount: number; historyCount: number; recentWorkOrderCount: number; queriedErrorCode: string; sameErrorCodeCount: number };
 type SparePartsToolResult = { assetId: string; assetType: string; serviceType: string; checkPerformed: boolean; count: number; parts: Array<{ partNumber: string; stock: number; leadTimeDays: number }> };
 
@@ -65,10 +65,11 @@ async function main() {
     const createdAt = Date.parse(order.createdAt);
     return createdAt < now - 30 * 60 * 60_000 || createdAt > now + 60_000;
   })) throw new Error('Startarbetsordrarnas datum är inte relativa till arbetsytans starttid.');
-  await request('/api/work-orders', firstHeaders, {
+  const unassignedOrder = await request<{ status: string; technicianId?: string }>('/api/work-orders', firstHeaders, {
     method: 'POST',
-    body: JSON.stringify({ assetId: 'LO-VA-012', title: 'Isoleringstest', description: 'Ska endast synas i den första arbetsytan.', priority: 'P3' }),
+    body: JSON.stringify({ assetId: 'LO-VA-012', title: 'Isoleringstest', description: 'Ska endast synas i den första arbetsytan.', priority: 'P3', technicianId: 'UNASSIGNED' }),
   }, 201);
+  if (unassignedOrder.status !== 'Väntar' || unassignedOrder.technicianId) throw new Error('UNASSIGNED skapade inte en otilldelad arbetsorder med status Väntar.');
   const firstAfter = await request<OrdersResult>('/api/work-orders', firstHeaders);
   const secondAfter = await request<OrdersResult>('/api/work-orders', secondHeaders);
   if (firstAfter.items.length !== secondBefore.items.length + 1) throw new Error('Arbetsordern skapades inte i den första arbetsytan.');
@@ -86,8 +87,13 @@ async function main() {
 
   const initialIndustrialMatches = await client.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'Industrimekanik' } });
   const initialIndustrial = initialIndustrialMatches.structuredContent as TechnicianToolResult | undefined;
-  if (!initialIndustrial || initialIndustrial.technicians[0]?.technicianId !== 'T-101' || initialIndustrial.technicians[1]?.technicianId !== 'T-103') {
+  if (!initialIndustrial || initialIndustrial.technicianId !== 'T-101' || initialIndustrial.technicians[0]?.technicianId !== 'T-101' || initialIndustrial.technicians[1]?.technicianId !== 'T-103') {
     throw new Error('Anna och Nadia sorterades inte rätt i en ny arbetsyta.');
+  }
+  const unavailableElectricalMatches = await client.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'El' } });
+  const unavailableElectrical = unavailableElectricalMatches.structuredContent as TechnicianToolResult | undefined;
+  if (!unavailableElectrical || unavailableElectrical.count !== 0 || unavailableElectrical.technicianId !== 'UNASSIGNED') {
+    throw new Error('En tom teknikerlista returnerade inte UNASSIGNED.');
   }
 
   const p1Order = await request<{ status: string }>('/api/work-orders', firstHeaders, {
@@ -142,7 +148,7 @@ async function main() {
   const technicianMatches = await client.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'Industrimekanik' } });
   if (technicianMatches.isError) throw new Error('Teknikerverktyget misslyckades.');
   const matchedTechnicians = technicianMatches.structuredContent as TechnicianToolResult | undefined;
-  if (!matchedTechnicians || matchedTechnicians.count !== 1 || matchedTechnicians.technicians[0]?.technicianId !== 'T-103') {
+  if (!matchedTechnicians || matchedTechnicians.count !== 1 || matchedTechnicians.technicianId !== 'T-103' || matchedTechnicians.technicians[0]?.technicianId !== 'T-103') {
     throw new Error('Teknikerverktyget uteslöt inte Anna när hennes P1-order pågick.');
   }
   if (matchedTechnicians.technicians.some((technician) => technician.status !== 'Tillgänglig')) throw new Error('Teknikerverktyget returnerade en otillgänglig tekniker.');
@@ -158,7 +164,7 @@ async function main() {
   await secondClient.connect(secondTransport);
   const balancedMatches = await secondClient.callTool({ name: 'find_available_technicians', arguments: { requiredSkill: 'Industrimekanik' } });
   const balancedResult = balancedMatches.structuredContent as TechnicianToolResult | undefined;
-  if (!balancedResult || balancedResult.technicians[0]?.technicianId !== 'T-103' || balancedResult.technicians[1]?.technicianId !== 'T-101') {
+  if (!balancedResult || balancedResult.technicianId !== 'T-103' || balancedResult.technicians[0]?.technicianId !== 'T-103' || balancedResult.technicians[1]?.technicianId !== 'T-101') {
     throw new Error('Planerad belastning gjorde inte Nadia till första val.');
   }
   await secondClient.close();

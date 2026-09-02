@@ -1,6 +1,8 @@
 import { buildTechnicians } from './seed.js';
 import type { Asset, TechnicianAvailability, WorkOrder } from './types.js';
 
+export const UNASSIGNED_TECHNICIAN_ID = 'UNASSIGNED';
+
 function hasSkill(skills: string[], requiredSkill: string) {
   const normalizedRequiredSkill = requiredSkill.trim().toLocaleLowerCase('sv-SE');
   return skills.some((skill) => skill.toLocaleLowerCase('sv-SE') === normalizedRequiredSkill);
@@ -28,10 +30,11 @@ export function findAvailableTechnicians(requiredSkill: string, workOrders: Work
 }
 
 export function resolveTechnicianAssignment(technicianId: string | undefined, asset: Asset, workOrders: WorkOrder[]) {
-  if (!technicianId) return undefined;
+  const normalizedTechnicianId = technicianId?.trim();
+  if (!normalizedTechnicianId || normalizedTechnicianId.toUpperCase() === UNASSIGNED_TECHNICIAN_ID) return undefined;
 
-  const technician = buildTechnicianAvailability(workOrders).find((item) => item.technicianId === technicianId);
-  if (!technician) throw new Error(`Teknikern ${technicianId} finns inte.`);
+  const technician = buildTechnicianAvailability(workOrders).find((item) => item.technicianId === normalizedTechnicianId);
+  if (!technician) throw new Error(`Teknikern ${normalizedTechnicianId} finns inte.`);
   if (!hasSkill(technician.skills, asset.requiredSkill)) throw new Error(`${technician.name} saknar kompetensen ${asset.requiredSkill}.`);
   if (technician.status === 'Frånvarande') throw new Error(`${technician.name} är frånvarande och kan inte tilldelas.`);
   if (technician.status === 'Upptagen') throw new Error(`${technician.name} arbetar redan med arbetsorder ${technician.activeWorkOrderId}.`);

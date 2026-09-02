@@ -2,7 +2,7 @@
 
 Det här dokumentet beskriver hur T-Berg D&U är uppbyggt, hur testnycklar fungerar och vilka gränser som finns i tjänsten. Beskrivningen gäller den publicerade miljön i Azure den 30 augusti 2026.
 
-T-Berg D&U är ett fiktivt drift- och underhållssystem för utbildning. Det innehåller objekt, tekniker, felhistorik och arbetsordrar. Deltagarna kan använda samma testnyckel i webbgränssnittet, en REST-baserad custom connector och MCP.
+T-Berg D&U är ett fiktivt externt drift- och underhållssystem som Lyserno använder i utbildningen. Det innehåller Lysernos objekt, tekniker, felhistorik och arbetsordrar. Deltagarna kan använda samma testnyckel i webbgränssnittet, en REST-baserad custom connector och MCP.
 
 ## Översikt
 
@@ -107,6 +107,8 @@ OpenAPI-filen `openapi/tberg-du-connector.swagger.json` är avsedd för kursens 
 - `GetAsset` gör samma objektuppslag varje gång och returnerar bland annat kritikalitet, SLA, garanti, serviceform och kompetenskrav.
 - `CreateWorkOrder` skapar en arbetsorder efter att agentens godkännandeflöde har godkänt underlaget. Arbetsytan bestäms av testnyckeln och skickas därför inte som indata.
 
+I Power Platform heter REST-connectorn **T-Berg DU**. MCP-anslutningen heter **T-Berg DU MCP**. Agenten och ämnet behåller Lysernos namn eftersom de tillhör Lysernos lösning, medan integrationerna döps efter systemet de ansluter till.
+
 Reservdelarna i objektlistan används bara av webbgränssnittet och ändrar inte custom connectorns operationer eller OpenAPI-fil.
 
 MCP-serverns `create_work_order` finns kvar för andra agentlösningar. I kursens agent stängs verktyget av, så att skrivningen bara kan ske genom det godkända flödet och connectorns `CreateWorkOrder`.
@@ -135,6 +137,15 @@ Samma `x-workshop-key` används som för REST-API:t. Servern är stateless: varj
 
 Copilot Studios MCP-guide stöder Streamable HTTP och API-nyckel i en header. I onboarding-guiden anges därför serveradressen ovan, autentiseringstypen **API key**, typen **Header** och namnet `x-workshop-key`.
 
+MCP-anslutningen konfigureras med följande uppgifter i Copilot Studio:
+
+| Fält | Värde |
+| --- | --- |
+| Servernamn | `T-Berg DU MCP` |
+| Serverbeskrivning | `Ger Lysernos driftassistent tillgång till felhistorik, tillgängliga tekniker och reservdelar i T-Berg D&U. Använd servern efter att ämnet Rapportera utrustningsfel har lämnat ett verifierat MaintenanceContext.` |
+| API-nyckelns etikett | `T-Berg-testnyckel` |
+| Headernamn | `x-workshop-key` |
+
 MCP-servern exponerar fyra verktyg:
 
 | Verktyg | Uppgift | Skriver data |
@@ -144,9 +155,9 @@ MCP-servern exponerar fyra verktyg:
 | `find_spare_parts` | Kontrollerar reservdelar för interna objekt när driften är stoppad eller samma felkod har förekommit tidigare. Returnerar lager och ledtid utan att reservera något. | Nej |
 | `create_work_order` | Skapar en arbetsorder i deltagarens arbetsyta. | Ja |
 
-`create_work_order` kräver parametern `approved: true`. Det ersätter inte ett riktigt godkännandeflöde, men hindrar verktyget från att skriva innan agentens topic eller flow har genomfört kursens bekräftelse- och godkännandesteg.
+`create_work_order` kräver parametern `approved: true`. Det ersätter inte ett riktigt godkännandeflöde, men hindrar verktyget från att skriva innan agentens ämne eller flöde har genomfört kursens bekräftelse- och godkännandesteg.
 
-Teknikerns lagrade grundstatus är `Tillgänglig` eller `Frånvarande`. API:t visar `Upptagen` när teknikern har en arbetsorder med status `Pågår`. En tilldelad P1-order börjar som `Pågår`; en tilldelad P2–P4-order börjar som `Planerad`. En order utan tekniker får status `Väntar`.
+Teknikerns lagrade grundstatus är `Tillgänglig` eller `Frånvarande`. API:t visar `Upptagen` när teknikern har en arbetsorder med status `Pågår`. `find_available_technicians` returnerar den första teknikerns ID i `technicianId` eller `UNASSIGNED` när listan är tom. En tilldelad P1-order börjar som `Pågår`; en tilldelad P2–P4-order börjar som `Planerad`. Backend tolkar `UNASSIGNED` som ingen tekniker och ger ordern status `Väntar`.
 
 `find_spare_parts` tar emot objekt-ID, påverkan och `sameErrorCodeCount` från `get_fault_history`. Servern gör bara kontrollen om objektet har intern service och påverkan är `Stoppad` eller antalet tidigare träffar för samma felkod är större än noll. Resultatet kan läggas i arbetsorderns befintliga `description` och visas i bekräftelsemejlet.
 
