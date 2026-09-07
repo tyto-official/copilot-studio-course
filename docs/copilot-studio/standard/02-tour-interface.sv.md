@@ -1,106 +1,158 @@
 # 2. Hitta rätt i Copilot Studio
 
-Nu när vi har datan på plats ska vi bekanta oss med verktyget vi ska jobba i. Copilot Studio utvecklas snabbt, så det är bra att veta var de olika delarna bor.
+I det här kapitlet öppnar vi Copilot Studio, väljer kursens utvecklingsmiljö och går igenom delarna som vi använder senare. Det är här vi ska bygga **Lyserno IT-assistent**.
+
+När kapitlet är klart har du hittat:
+
+- kursens utvecklingsmiljö
+- alternativen på startsidan
+- Handläggare, Flöden och Verktyg
+- Lösningar under menyn med fler val
 
 ---
 
-## Steg 1: Logga in och säkra miljön
+## Del 1: Öppna Copilot Studio
 
-Vi börjar med att säkerställa att vi är på rätt ställe.
+Öppna Copilot Studio med samma konto som du använde i kursuppsättningen:
 
-1. Gå till [copilotstudio.microsoft.com](https://copilotstudio.microsoft.com).
-2. Du möts nu av **Startsidan**.
+<p><a class="button button--primary" href="https://copilotstudio.microsoft.com/" target="_blank" rel="noopener">Öppna Microsoft Copilot Studio</a></p>
 
-![Startsidan i Copilot Studio](../../assets/standard/images-sv/chap02/1.png)
+Startsidan visar vad du kan skapa och de agenter som senast ändrades i den valda miljön.
 
-### Kontrollera miljön (Igen!)
-Det första du **alltid** ska göra är att titta uppe i högra hörnet.
+![Startsidan i Copilot Studio med Agent valt](../../assets/standard/images-sv/chap02/1.png)
 
-![Miljöväljaren uppe till höger](../../assets/standard/images-sv/chap02/2.png)
+Du kan få upp en rad om den nya Copilot Studio-upplevelsen. Välj inte **Testa nu** under den här kursen. Vi använder standardupplevelsen.
 
-1. Klicka på miljöväljaren.
-2. Se till att du ligger i din **Utvecklarmiljö** (den vi skapade i kapitel 0).
-3. Om du ligger i "Standard" eller fel miljö – byt nu.
+!!! warning "Att byta upplevelse ändrar inte en befintlig agent"
+    Den nya upplevelsen och standardupplevelsen är två olika sätt att bygga. Att byta vy konverterar inte en agent som redan har skapats. Skapa därför kursens agent först när du har kontrollerat att du är kvar i standardupplevelsen.
 
 ---
 
-## Steg 2: Startsidan (Start)
+## Del 2: Kontrollera utvecklingsmiljön
 
-I mitten av skärmen ser du en stor chattruta.
-Här kan du använda "Beskriv för att bygga" – alltså chatta med Copilot för att låta den bygga grunden åt dig.
+Miljön avgör var agenten, flödena, anslutningarna och lösningen sparas.
 
-![Agent](../../assets/standard/images-sv/chap02/3.png) 
+1. Välj miljönamnet uppe till höger.
+2. Leta upp den personliga utvecklingsmiljö som du skapade i kapitel 1, exempelvis **Miljö för Joel Thyberg**.
+3. Välj miljön och vänta tills Copilot Studio har laddat om.
 
-**Växlingsknappen:** Ovanför rutan (se bilderna ovan) kan du växla mellan att be den bygga en **Agent** (en AI-agent) eller ett **Arbetsflöde** (ett flöde).
+![Miljöväljaren i Copilot Studio](../../assets/standard/images-sv/chap02/2.png)
 
-![Arbetsflöde](../../assets/standard/images-sv/chap02/4.png) 
+Skärmbilderna i kursen använder miljön **Training**. Du ska använda miljön som du skapade under kursuppsättningen, om inte kursledaren har gett dig en särskild träningsmiljö.
 
-Under chattrutan har du tre genvägar för att börja från noll (Börja bygga från grunden):
-
-![Skapa](../../assets/standard/images-sv/chap02/5.png)
-
-1. **Skapa arbetsflöde:** Skapa en automatiserad process.
-2. **Skapa en agent:** Skapa en AI-agent.
-3. **Skapa datorbaserad agent:** En agent som kan styra en dator.
-
-Längre ner på sidan ser du dina senast uppdaterade agenter och länkar till dokumentation.
+!!! warning "Välj rätt miljö innan du börjar bygga"
+    Välj din personliga utvecklingsmiljö och inte organisationens standardmiljö. Om du är osäker jämför du namnet med miljön som du valde i Power Apps.
 
 ---
 
-## Steg 3: Navigera i vänstermenyn
+## Del 3: Startsidan och sätten att börja bygga
 
-Tittar vi till vänster ser vi huvudmenyn. De viktigaste delarna är **Agenter (Handläggare)**, **Flöden** och **Verktyg**.
+Högst upp på startsidan kan du välja **Agent** eller **Arbetsflöde**. Textfältet ändras beroende på vad du väljer.
 
-![Vänstermenyn](../../assets/standard/images-sv/chap02/5.5.png)
+Med **Agent** valt kan du beskriva vad agenten ska göra och låta Copilot Studio skapa ett första utkast. I kursen använder vi inte den vägen eftersom vi vill gå igenom inställningarna själva.
 
-### Agenter
-Klicka på **Handläggare** i menyn.
+![Startsidan med Agent valt och fältet för att beskriva vad agenten ska göra](../../assets/standard/images-sv/chap02/3.png)
 
-![Agenter](../../assets/standard/images-sv/chap02/6.png)
+Välj **Arbetsflöde** för att se motsvarande textfält för agentflöden. Där kan du beskriva en uppgift eller process som ska automatiseras.
 
-* Längst upp kan du återigen få hjälp av Copilot att skapa en ny agent.
-* Uppe till höger finns knappen **+ Skapa tom agent** och möjlighet att **Importera** en agent.
-* I listan ser du dina befintliga agenter.
-* Längre ner finns färdiga mallar från Microsoft som du kan utgå ifrån.
+![Startsidan med Arbetsflöde valt och fältet för att beskriva ett flöde](../../assets/standard/images-sv/chap02/4.png)
 
-### Flöden
-Klicka på **Flöden**.
+Under rubriken **Börja bygga från grunden** finns tre alternativ:
 
-![Flöden](../../assets/standard/images-sv/chap02/7.png)
+- **Agent** skapar en agent som kan svara på frågor och utföra åtgärder.
+- **Datoranvändande agent** skapar en agent som kan arbeta mellan appar och webbplatser.
+- **Nytt agentflöde** skapar en automatisering med bestämda steg.
 
-Här bor logiken för **Agentflöden**. I Copilot Studio betyder flöden deterministiska processer bestående av AI-driven automation. Medan flöden i **Power Automate** är mer flexibla och kan användas för att automatisera processer utan inblandning av AI.
+![Alternativen Agent, Datoranvändande agent och Nytt agentflöde](../../assets/standard/images-sv/chap02/5.png)
 
----
-
-## Steg 4: Verktyg – Agentens verktygslåda
-
-Klicka på **Verktyg**. Detta är kanske den mest spännande delen. Här ser du en lista på alla verktyg dina agenter kan använda.
-
-![Översikt av Verktyg-sidan](../../assets/standard/images-sv/chap02/8.png)
-
-Klicka på **+ Nytt verktyg** för att se vad vi kan skapa.
-
-![Menyn för att skapa nya verktyg](../../assets/standard/images-sv/chap02/9.png)
-
-Här ser du de olika typerna av verktyg:
-
-* **Prompt:** Här använder vi AI-modellernas förmåga att analysera och generera, exempelvis för en specifik uppgift. T.ex. "Sammanfatta detta mejl" eller "Klassificera detta ärende".
-* **Agentflöde:** Här använder vi ett flöde som ett verktyg. Eftersom agentflöden är deterministiska är detta perfekt när agenten behöver utföra något strikt.
-* **Modellkontextprotokoll (MCP):** Ett standardiserat sätt att koppla AI-agenter och AI-system till verktyg och datakällor. Man kan se MCP som en slags **USB-C-kontakt** för AI-agenter, alltså ett gemensamt sätt att ansluta olika system.
-* **Anpassad anslutning:** Kopplingar till externa tjänster och datakällor (utanför Microsoft 365).
-* **Rest API:** Detta är en mycket flexibel lösning som kan användas för att hämta data från olika system.
-
+!!! note "Skapa inget ännu"
+    Här bekantar vi oss bara med gränssnittet. I nästa kapitel skapar vi först en lösning. Därefter skapar vi agenten så att den hamnar i rätt lösning.
 
 ---
 
-## Steg 5: Fler tjänster
+## Del 4: Handläggare
 
-Slutligen, om du klickar på de **tre prickarna (...)** längst ner i menyn (under Verktyg).
+Välj **Handläggare** i vänsternavigeringen. Microsoft använder både orden *agent* och *handläggare* i gränssnittet. De syftar på samma typ av komponent här.
 
-![Menyn Mer med fler alternativ](../../assets/standard/images-sv/chap02/10.png)
+![Sidan Handläggare i Copilot Studio](../../assets/standard/images-sv/chap02/6.png)
 
-Här ser du genvägar till andra Microsoft-tjänster och appar som ofta används tillsammans med agentbyggande, t.ex. Power Apps eller Power Automate.
+Högst upp på sidan finns samma möjlighet att beskriva vad agenten ska göra och få hjälp av Copilot Studio att bygga den.
+
+Under textfältet visas följande delar:
+
+- **Mina agenter** visar agenter som redan finns i den valda miljön.
+- **Installera en hanterad handläggare** visar färdiga agenter som organisationen har gjort tillgängliga.
+- **Börja med en agentmall** innehåller mallar för olika typer av agenter.
+
+Uppe till höger finns **Skapa tom agent** och **Importera handläggare**. Vi använder **Skapa tom agent** när det är dags att bygga kursens agent.
+
+Listan kan vara tom om ingen agent har skapats i miljön tidigare.
 
 ---
 
-*Nu hittar vi i gränssnittet. I nästa kapitel ska vi trycka på knappen **Skapa agent** och börja bygga på riktigt!*
+## Del 5: Flöden
+
+Välj **Flöden** i vänsternavigeringen.
+
+![Sidan Agentflöden i Copilot Studio](../../assets/standard/images-sv/chap02/7.png)
+
+Här ser du agentflöden som finns i miljön. Du kan skapa ett flöde genom att beskriva vad det ska göra i textfältet eller välja **Nytt agentflöde** och bygga det från grunden.
+
+Ett agentflöde passar när samma bestämda steg ska köras varje gång. Senare i kursen bygger vi ett sådant flöde för supportärenden.
+
+---
+
+## Del 6: Verktyg
+
+Välj **Verktyg** i vänsternavigeringen.
+
+![Sidan Verktyg med befintliga flöden och prompter](../../assets/standard/images-sv/chap02/8.png)
+
+Sidan samlar verktyg som har skapats i miljön. På skärmbilden finns bara agentflöden och prompter, så filtren **Flöde** och **Prompt** visas. Vilka filter som finns beror på vilka typer av verktyg som redan ligger i miljön.
+
+Välj **+ Nytt verktyg** för att se vilka typer som går att skapa.
+
+![Fönstret Nytt verktyg med de tillgängliga verktygstyperna](../../assets/standard/images-sv/chap02/9.png)
+
+Följande alternativ visas på skärmbilden:
+
+- **Prompt** använder en AI-modell för att exempelvis analysera, sammanfatta eller omvandla innehåll.
+- **Agentflöde** kör en förutsägbar automatisering med bestämda steg.
+- **Datoranvändning** låter agenten arbeta direkt i webb- och datorprogram.
+- **Model Context Protocol** ansluter en MCP-server och dess verktyg.
+- **Anpassat anslutningsprogram** kopplar agenten till externa tjänster och datakällor.
+- **REST-API** ansluter agenten direkt till ett API.
+
+Vilka alternativ du ser kan bero på miljön, licensen och vilka funktioner administratören har aktiverat. Skapa inget verktyg nu.
+
+---
+
+## Del 7: Hitta lösningar
+
+Välj de tre punkterna längst ner i vänsternavigeringen.
+
+![Menyn med Lösningar, Power Platform-tjänster och länkar om AI-integrering](../../assets/standard/images-sv/chap02/10.png)
+
+Menyn är indelad i tre delar:
+
+- Under **Utforska** finns bland annat **Komponentsamlingar** och **Lösningar**.
+- Under **Power Platform** finns genvägar till Power Apps, Power Automate, Power BI, Power Pages och administrationscentret för Power Platform.
+- Under **Läs mer om AI-integrering** finns länkar till fler Microsoft-tjänster och utvecklingsverktyg.
+
+Välj **Lösningar**. Lösningsutforskaren öppnas och visar lösningarna i den valda miljön.
+
+En miljö och en lösning är inte samma sak:
+
+```text
+Klientorganisation
+└── Miljö                         Var vi bygger
+    └── Lösning                   Vad som hör ihop
+        ├── Agent
+        ├── Agentflöde
+        └── Övriga komponenter
+```
+
+Miljön skiljer resurser, data och behörigheter åt. Lösningen samlar komponenterna som hör till samma bygge. I nästa kapitel skapar vi lösningen **Lyserno IT-support**.
+
+!!! success "Du är på rätt plats"
+    Du har valt kursens utvecklingsmiljö och hittat startsidan, Handläggare, Flöden, Verktyg och Lösningar. Fortsätt till nästa kapitel och skapa lösningen **Lyserno IT-support**.

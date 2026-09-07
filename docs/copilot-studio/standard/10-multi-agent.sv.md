@@ -1,284 +1,196 @@
-# 10. Multi-Agent Orchestration (Finalen)
+# 10. Koppla en underordnad agent
 
-Nu är vi framme vid finalen! Vi ska sluta cirkeln och visa hur agenter kan samarbeta.
+I det här kapitlet kopplar vi en underordnad agent till **Lyserno IT-assistent**. När ett nytt mejl kommer in lämnar huvudagenten över mejlet till **Mejlagent**. Mejlagent bedömer om mejlet gäller en enhetsbeställning eller ett supportärende och publicerar en sammanfattning i Teams.
 
-Vi ska bygga ett scenario där:
+Flödet blir:
 
-1.  Din huvudagent tar emot ett viktigt mejl (beställningar och felanmälan).
+1. Ett nytt mejl kommer till inkorgen.
+2. E-postutlösaren skickar mejlet till Lyserno IT-assistent.
+3. Huvudagenten lämnar över mejlet till Mejlagent.
+4. Mejlagent sammanfattar mejlet och använder ett Teams-verktyg.
+5. IT får sammanfattningen i en Teams-chatt.
 
-2.  Istället för att hantera det själv delegerar den uppgiften till en *Specialist* (en dedikerad *Underordnad agent*).
+## Del 1: Skapa e-postutlösaren
 
-3.  Specialisten analyserar mejlet och skickar en notis i Microsoft Teams.
+Gå till agentens **Översikt**. Under **Utlösare** klickar du på **Lägg till utlösare**.
 
----
+![Lägg till en utlösare från agentens översikt](../../assets/standard/images-sv/chap10/1.png)
 
-## 10.1 Skapa e-post-triggern (Lyssnaren)
+Sök efter:
 
-Först måste agenten få en ny utlösare som lyssnar på inkommande mejl.
+```text
+När ett nytt e-postmeddelande tas emot
+```
 
-1.  Gå till fliken **Översikt** och sektionen **Utlösare**.
-2.  Klicka **+ Lägg till utlösare**.
+Välj **När ett nytt e-postmeddelande tas emot (V3)** och klicka på **Nästa**.
 
-    ![Lägg till utlösare](../../assets/standard/images-sv/chap10_ny/1.png)
+![Välj utlösaren När ett nytt e-postmeddelande tas emot](../../assets/standard/images-sv/chap10/2.png)
 
-3.  Sök efter och välj:
-    ```text
-    När ett nytt e-postmeddelande tas emot
-    ```
+Kontrollera att anslutningarna till Copilot Studio och Office 365 Outlook är klara. Klicka sedan på **Nästa**.
 
-4.  Klicka på **När ett nytt e-postmeddelande tas emot (V3)** och därefter på **Nästa**.
+![Kontrollera utlösarens anslutningar](../../assets/standard/images-sv/chap10/3.png)
 
-    ![Välj e-postutlösare](../../assets/standard/images-sv/chap10_ny/2.png)
+Öppna fältet **Mapp** och välj **Inkorg**. Om du använder flera inkorgar väljer du den som agenten ska bevaka.
 
-5.  Kontrollera att anslutningen är grön (Ansluten) och klicka på **Nästa**.
+![Välj Inkorg som mapp för e-postutlösaren](../../assets/standard/images-sv/chap10/4.png)
 
-    ![Kontrollera anslutning](../../assets/standard/images-sv/chap10_ny/3.png)
+Låt de övriga filtren vara tomma. Då kan agenten ta emot både enhetsbeställningar och supportärenden. Klicka på **Skapa utlösare**.
 
-6.  **Konfigurera utlösaren:**
-    Idealiskt sett vill man kanske inte att agenten ska vakna av alla olika mejl, men i denna labb vill vi se agentens förmåga att filtrera och plocka upp relevanta mejl utan fördefinierade filter. Tanken är att denna ska agera som företagets centrala IT support. Därför konfigurerar vi den på följande vis:
+![Skapa den konfigurerade e-postutlösaren](../../assets/standard/images-sv/chap10/5.png)
 
-    * **Mapp:** Klicka på mapp-ikonen och välj **Inkorg**.
+## Del 2: Skapa Mejlagent
 
-    ![Välj inkorg](../../assets/standard/images-sv/chap10_ny/4.png)
+När utlösaren har skapats visas den på agentens översikt. Scrolla ner till **Agenter** och klicka på **Lägg till agent**.
 
-    * **Vikt:** Låt resterande vara oförändrade och klicka på **Skapa utlösare**.
+![Öppna området Agenter från översikten](../../assets/standard/images-sv/chap10/6.png)
 
-    ![Skapa utlösare](../../assets/standard/images-sv/chap10_ny/5.png)
+Här kan du antingen välja en agent som redan finns i miljön eller skapa en ny underordnad agent. Välj **Ny underordnad agent**.
 
----
+![Välj Ny underordnad agent](../../assets/standard/images-sv/chap10/7.png)
 
-## 10.2 Skapa Teams-verktyget (Underordnad agent)
+Ange följande namn:
 
-Nu vet vi att vår huvudagent lyssnar och tar emot inkommande mejl. För att göra huvudagenten smart och effektiv kommer vi delegera analysen av dessa mejl till en så kallad *Underordnad agent*.
+```text
+Mejlagent
+```
 
-1.  Stäng *Dags att testa din utlösare!* vilket leder tillbaka till agentens **Översikt**.
+Låt **När ska detta användas?** stå kvar på alternativet där agenten väljer baserat på beskrivningen.
 
-    ![Ingen test](../../assets/standard/images-sv/chap10_ny/6.png)
+Ange sedan följande beskrivning:
 
-2.  Scrolla ner till **Agenter**-delen i **Översikt** och klicka på **+ Lägg till agent**.
+```text
+Läser inkommande mejl, avgör om de gäller en enhetsbeställning eller ett supportärende och meddelar IT i Teams.
+```
 
-    ![Lägg till agent](../../assets/standard/images-sv/chap10_ny/7.png)
+![Ange namn och beskrivning för Mejlagent](../../assets/standard/images-sv/chap10/8.png)
 
-3.  Rutan *Välj hur du vill utöka din agent* dyker upp.
-    * Här ser vi alternativet **Skapa en underordnad agent**.
-    * Notera: Eftersom vi i början gjorde en dedikerad *Lösning* ser vi att inga andra agenter är valbara, eftersom de tillhör en annan miljö.
+## Del 3: Lägg till Teams-verktyget
 
-    * Klicka på **Ny underordnad agent**.
+Scrolla ner till **Verktyg** i Mejlagent och klicka på **Lägg till**.
 
-    ![Ny underordnad agent](../../assets/standard/images-sv/chap10_ny/8.png)
+![Lägg till ett verktyg i Mejlagent](../../assets/standard/images-sv/chap10/9.png)
 
-    * **Namn:** Döp agenten till:
-      ```text
-      E-post agent
-      ```
+Sök efter:
 
-    * **När ska den här användas:** Låt vara som standard (dvs **Agenten väljer baserat på beskrivning**). Detta är viktigt för orkestreringen.
+```text
+Publicera meddelande i en chatt eller en kanal
+```
 
-    * **Beskrivning:** Det här är avgörande. Det är denna text som huvudagenten läser för att förstå när den ska lämna över jobbet. Skriv:
+![Sök efter Teams-verktyget](../../assets/standard/images-sv/chap10/10.png)
 
-    ```text
-    Använd denna agent för att hantera och analysera inkommande e-postmeddelanden som rör beställningar eller supportärenden. Denna agent kan analysera innehållet och notifiera via Teams.
-    ```
+Välj **Publicera meddelande i en chatt eller en kanal** under **Microsoft Teams**.
 
-    * Klicka sedan på **Spara** uppe i högra hörnet.
+![Välj Teams-åtgärden Publicera meddelande i en chatt eller en kanal](../../assets/standard/images-sv/chap10/11.png)
 
-    ![Spara](../../assets/standard/images-sv/chap10_ny/9.png)
+Kontrollera Teams-anslutningen och klicka på **Lägg till och konfigurera**.
 
----
+![Kontrollera anslutningen och lägg till Teams-verktyget](../../assets/standard/images-sv/chap10/12.png)
 
-## 10.3 Lägg till Teams-verktyg
+## Del 4: Konfigurera Teams-verktyget
 
-För att agenten ska kunna utföra punkt 3 i sina instruktioner måste den ha ett verktyg.
+Under **Detaljer** anger du följande namn:
 
-1.  Gå till delen **Verktyg** inne i din underordnade agent och klicka på **+ Lägg till**.
+```text
+Meddela IT i Teams
+```
 
-    ![Verktyg](../../assets/standard/images-sv/chap10_ny/10.png)
+Ange följande beskrivning:
 
-2.  Sök efter:
-    ```text
-    Publicera ett meddelande i en chatt eller kanal
-    ```
-    ![Sök verktyg](../../assets/standard/images-sv/chap10_ny/11.png)
+```text
+Publicerar en sammanfattning av ett inkommet mejl i IT-supportens Teams-chatt.
+```
 
-3.  Välj **Publicera ett meddelande i en chatt eller kanal** genom att klicka på den.
+Klicka på **Spara** innan du går vidare till indatan.
 
-    ![Lägg till Teams-åtgärd](../../assets/standard/images-sv/chap10_ny/12.png)
+![Ange namn och beskrivning för Teams-verktyget](../../assets/standard/images-sv/chap10/13.png)
 
-4.  Kontrollera anslutningen och klicka **Lägg till och konfigurera**.
+Öppna **Indata**. Till en början visas fälten **Post as**, **Post in** och **Post message request**. Vilka fält som visas ändras när du gör dina val.
 
-    ![Lägg till och konfigurera](../../assets/standard/images-sv/chap10_ny/13.png)
+![Verktygets ursprungliga indatafält](../../assets/standard/images-sv/chap10/14.png)
 
-5.  **Konfigurera verktyget:**
-    * **Namn:**
-      ```text
-      Meddela IT-teamet
-      ```
-    * **Beskrivning:**
-      ```text
-      Skickar ett meddelande till IT-supportens Teams-chatt med information från mejlet.
-      ```
+Vid **Post as** klickar du på **Dynamisk ifyllning med AI** och väljer **Anpassat värde**.
 
-    ![Konfigurera verktyg](../../assets/standard/images-sv/chap10_ny/14.png)
+![Ändra Post as till Anpassat värde](../../assets/standard/images-sv/chap10/15.png)
 
-6.  **Konfigurera indata:**
-    Vi vill göra det enkelt och säkert att detta fungerar.
+Välj sedan **Flow bot** som värde.
 
-    1. Klicka på **Fyll i dynamiskt med AI** bredvid **Publicera som** och välj **Anpassat värde**.
+![Välj Flow bot för Post as](../../assets/standard/images-sv/chap10/16.png)
 
-    ![Konfigurera Publicera som](../../assets/standard/images-sv/chap10_ny/15.png)
+Ändra även **Post in** till **Anpassat värde** och välj **Chatta med en flowbot**.
 
-    2. Klicka på **Välj ett alternativ** och välj **Flow bot**.
+![Välj Chatta med en flowbot för Post in](../../assets/standard/images-sv/chap10/17.png)
 
-    ![Välj Flow Bot](../../assets/standard/images-sv/chap10_ny/16.png)
+När de två valen är gjorda visas fältet **Recipient**. Ändra det till **Anpassat värde** och ange din egen e-postadress. Låt **Message** fyllas i dynamiskt med AI och klicka på **Anpassa**.
 
-    3. Klicka på **Fyll i dynamiskt med AI** bredvid **Publicera i** och välj **Anpassat värde**.
+![Ange mottagare och öppna inställningarna för Message](../../assets/standard/images-sv/chap10/18.png)
 
-    ![Konfigurera Publicera i](../../assets/standard/images-sv/chap10_ny/17.png)
+Ange följande beskrivning för **Message**:
 
-    4. Klicka på **Välj ett alternativ** och välj **Chatta med Flow bot**.
+```text
+Sammanfattning av mejlet: om det gäller en enhetsbeställning eller ett supportärende, vem som skrev och vad som efterfrågas.
+```
 
-    ![Välj Chatta med Flow bot](../../assets/standard/images-sv/chap10_ny/18.png)
+Välj **Användarens hela svar** under **Identifiera som**. Stäng panelen och spara verktyget.
 
-    5. Notera att en ny indata dyker upp: **Mottagare**. Välj även här att klicka på **Fyll i dynamiskt med AI** och sedan **Anpassat värde**.
+![Anpassa hur Message ska fyllas i](../../assets/standard/images-sv/chap10/19.png)
 
-    ![Konfigurera mottagare](../../assets/standard/images-sv/chap10_ny/19.png)
+## Del 5: Ge Mejlagent instruktioner
 
-    6. Skriv in din e-postadress i fältet.
+Gå tillbaka till Mejlagents översikt. Klistra in följande under **Instruktioner**:
 
-    ![Ange e-post](../../assets/standard/images-sv/chap10_ny/20.png)
+```text
+Du är Lysernos mejlagent. Du hanterar inkommande mejl som huvudagenten skickar till dig.
 
-    7. För **Meddelande**, låt stå kvar på **Fyll i dynamiskt med AI** men välj att klicka på **Anpassa**.
+1. Avgör om mejlet gäller en enhetsbeställning eller ett supportärende.
+2. Plocka ut den information som IT behöver:
+   - För en enhetsbeställning: önskad modell och vem som beställer.
+   - För ett supportärende: vem som behöver hjälp och en beskrivning av felet.
+3. Använd /Meddela IT i Teams för att publicera en kort sammanfattning i IT-supportens Teams-chatt.
+```
 
-    ![Redigera meddelande](../../assets/standard/images-sv/chap10_ny/21.png)
+![Lägg in instruktionerna i Mejlagent](../../assets/standard/images-sv/chap10/20.png)
 
-    8. I rutan **Beskrivning** för Meddelande, skriv in följande:
-       ```text
-       En sammanfattning av e-postinnehållet inklusive syfte (Beställning/Support) och viktiga detaljer.
-       ```
-    ![Meddelande](../../assets/standard/images-sv/chap10_ny/22.png)
+Placera markören direkt efter `/Meddela IT i Teams`. Välj verktyget **Meddela IT i Teams** i listan som visas. Då ersätts den vanliga texten med en länk till verktyget.
 
-    9. Stäng panelen för Meddelande.
+![Välj Teams-verktyget i agentens instruktioner](../../assets/standard/images-sv/chap10/21.png)
 
-7.  Klicka **Spara**.
+Kontrollera att verktygets namn visas som ett länkat objekt och klicka på **Spara**.
 
----
+![Kontrollera de färdiga instruktionerna och spara Mejlagent](../../assets/standard/images-sv/chap10/22.png)
 
-## 10.4 Konfigurera den underordnade agenten
+## Del 6: Uppdatera huvudagentens instruktioner
 
-Nu har vi skapat skalet för agenten samt ett verktyg. Nu ska vi ge den instruktioner så den förstår vem den är och vad den ska och kan göra.
+Gå tillbaka till översikten för **Lyserno IT-assistent** och redigera agentens instruktioner. Lägg till följande punkt sist i instruktionerna:
 
-1.  Klicka på **<- Meddela IT-teamet**.
+```text
+- För inkommande mejl som gäller enhetsbeställningar eller supportärenden, delegera till /Mejlagent och skicka med hela mejlets innehåll.
+```
 
-    ![Meddela IT-teamet](../../assets/standard/images-sv/chap10_ny/23.png)
+Placera markören direkt efter `/Mejlagent` och välj **Mejlagent** i listan.
 
-2.  **Ge instruktioner:**
-    Hitta rutan för **Instruktioner** och klicka i den.
+![Lägg till Mejlagent i huvudagentens instruktioner](../../assets/standard/images-sv/chap10/23.png)
 
-    Klistra in följande instruktioner som talar om hur den ska bete sig:
+Kontrollera att **Mejlagent** visas som ett länkat objekt. Klicka sedan på **Spara**.
 
-    ```text
-    Du är en Email Triage Specialist. Din uppgift är att analysera innehållet i inkommande mejl som skickas till dig från huvudagenten.
+![Kontrollera den länkade agenten och spara instruktionerna](../../assets/standard/images-sv/chap10/24.png)
 
-    1. Identifiera vilken typ av ärende det gäller (Ny beställning eller Supportärende).
-    2. Extrahera viktig information:
-       - Om det är en beställning: Vilken modell och vem som beställer.
-       - Om det är support: Vad felet är.
-    3. Använd verktyget /Meddela IT-teamet för att skicka en sammanfattning till Teams-chatten.
-    ```
+## Del 7: Testa hela kedjan
 
-    * Ställ dig direkt efter ` /Meddela IT-teamet ` och välj **Meddela IT-teamet** verktyget genom att klicka på popupmenyn.
+Börja i agentens testpanel och genomför en vanlig enhetsbeställning. Välj en enhet i det adaptiva kortet och skicka beställningen. Vänta tills mejlet med den nya enhetsförfrågan har kommit till inkorgen.
 
-    ![Agentinstruktioner](../../assets/standard/images-sv/chap10_ny/24.png)
+Gå sedan tillbaka till agentens **Översikt**. Klicka på testikonen vid utlösaren **När ett nytt e-postmeddelande tas emot (V3)**.
 
-    * Klicka på **Spara**.
+![Öppna testet för e-postutlösaren](../../assets/standard/images-sv/chap10/25.png)
 
-    ![Spara](../../assets/standard/images-sv/chap10_ny/25.png)
+Välj mejlet med enhetsförfrågan. Om det inte visas klickar du på uppdateringsikonen vid **Senast uppdaterad**. Klicka sedan på **Börja testa**.
 
----
+![Välj det inkomna mejlet och starta testet](../../assets/standard/images-sv/chap10/26.png)
 
-## 10.5 Uppdatera huvudagenten
+I testresultatet kan du följa hur huvudagenten lämnar över mejlet till **Mejlagent** och hur Mejlagent använder **Meddela IT i Teams**.
 
-Nu är all logik för den underordnade agenten klar. Vi ska nu uppdatera huvudagenten så att den förstår att den ska delegera jobbet.
+![Kontrollera att Mejlagent och Teams-verktyget har körts](../../assets/standard/images-sv/chap10/27.png)
 
-1.  Navigera tillbaka till huvudagentens **Översikt**.
+Öppna Teams och kontrollera chatten med **Workflows**. Där ska det finnas ett meddelande som sammanfattar enhetsbeställningen.
 
-    ![Huvudagent Översikt](../../assets/standard/images-sv/chap10_ny/26.png)
-
-2.  Gå ner till **Instruktioner** och klicka på **Redigera**.
-
-    ![Huvudagent Instruktioner](../../assets/standard/images-sv/chap10_ny/27.png)
-
-3.  Lägg till följande instruktioner i slutet:
-
-    ```text
-    - För inkommande mejl, delegera vidare direkt till /E-post agent och skicka med all information.
-    ```
-
-4.  Skapa länkningen (Viktigt):
-    Texten du nyss klistrade in är bara vanlig text. Vi måste göra om namnet till en aktiv länk så att AI:n förstår att vi menar objektet.
-
-    * Ställ dig precis bakom `/E-post agent` i texten du nyss skrev.
-    * Klicka på **E-post agent** i popupmenyn.
-
-    ![Huvudagent instruktioner tillagda](../../assets/standard/images-sv/chap10_ny/28.png)
-
-5.  Klicka på **Spara**.
-
-    ![Spara](../../assets/standard/images-sv/chap10_ny/29.png)
-
----
-
-## 10.6 The Grand Finale (Testa alltihop)
-
-Nu knyter vi ihop säcken. Vi ska simulera hela kedjan:
-Beställning -> Mejl -> Utlösare -> Huvudagent -> Underordnad agent -> Teams.
-
-1.  **Testa enhetsförfrågan**
-    1. Klicka på **Testa** i högra hörnet om testpanelen inte redan är uppe.
-    2. Om det redan ligger en chatt där, klicka på **Starta ny session**.
-    3. Skriv:
-       ```text
-       Hej jag behöver en ny bärbar dator
-       ```
-    4. Välj **Standard (Office/Admin)** varianten.
-    5. Skriv:
-       ```text
-       Ja, tack!
-       ```
-    6. Välj ett av alternativen, exempelvis **Surface Laptop 13**, men lämna rutan för ytterligare information tom.
-    7. Klicka **Skicka**.
-    8. Invänta svaret. Öppna därefter din inkorg för att se nästa *Enhetsförfrågan-mejlet*.
-
-2.  **Testa felanmälan**
-    1. Gå in i SharePoint.
-    2. Klicka på **Lägg till nytt objekt**.
-    3. Under **Ärende** skriv in:
-       ```text
-       Wi-Fi problem
-       ```
-    4. För **Ärendebeskrivning** skriv:
-       ```text
-       Kan inte logga in på Wi-Fi för tillfället.
-       ```
-    5. Sätt **Prioritet** till **High**.
-
-3.  **Testa dina utlösare**
-    1. Gå tillbaka till Copilot Studio och till **Översikt**.
-    2. Klicka på **Testa utlösare** bredvid *När ett objekt skapas*.
-    3. Välj den senaste posten och klicka **Starta testning**.
-    4. Kolla din inkorg igen. Förhoppningsvis ligger nya *Ny supportbegäran*-mejlet där.
-
-4.  **Testa den underordnade agenten**
-    1. Gå tillbaka till **Översikt**.
-    2. Klicka nu på **Testa utlösare** bredvid *När ett nytt e-postmeddelande tas emot (V3)*.
-    3. Förhoppningsvis ser vi två valmöjliga poster nu. Den äldsta borde vara mejlet angående ny enhetsbegäran och den nyare borde vara gällande ny supportbegäran.
-    4. Börja med att klicka på den äldsta och klicka **Starta testning**.
-    5. Öppna Teams och se om du har ett nytt meddelande under **Chattar** från **Workflows**. Om du ser detta fungerar systemet end to end.
-    6. Gå tillbaka till **Översikt** och klicka nu igen på **Testa utlösare** bredvid *När ett nytt e-postmeddelande tas emot (V3)*, men välj nu det senaste mejlet.
-    7. Öppna Teams igen och se nu om du fått ett nytt meddelande i samma chatt men nu gällande nytt supportärende.
-
-!!! success "MISSION COMPLETE"
-    Grattis! Du har nu byggt en **Multi-Agent lösning** med:
-    * **Autonomi:** Agenten lyssnar och agerar självständigt.
-    * **Orkestrering:** Huvudagenten delegerar till specialister.
-    * **Integration:** Hela flödet knyter ihop SharePoint, Outlook och Teams.
+!!! success "Klart"
+    Du har nu kopplat ihop Outlook, huvudagenten, en underordnad agent och Teams. Ett inkommande mejl kan tas emot av huvudagenten, lämnas över till Mejlagent och sammanfattas i en Teams-chatt.

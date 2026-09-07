@@ -1,478 +1,473 @@
-# 8. Skapa ett Agentflöde
+# 8. Skapa ett agentflöde
 
-Nu ska vi bygga motorn som faktiskt utför beställningen. När användaren klickar på "Skicka" i det adaptiva kortet, ska agenten anropa ett **Agentflöde**.
+Nu ska vi koppla ett agentflöde till ämnet **Begär enhet**. Flödet tar emot valet från det adaptiva kortet, hämtar den valda enheten från SharePoint, skickar ett mejl till IT och lämnar tillbaka modellnamnet till agenten.
 
-Skillnaden mot ett vanligt flöde är att ett Agentflöde är skräddarsytt för att ta emot data direkt från din agent, utföra arbete, och sedan svara agenten med ett resultat.
+När kapitlet är klart har du en kedja från användarens val i chatten till ett mejl med rätt enhetsuppgifter.
 
-Detta Agentflöde ska:
-1.  Ta emot information från chatten (Vilken dator? Vem beställer?).
-2.  Hämta detaljer om datorn från SharePoint (för att dubbelkolla att den finns och hämta pris).
-3.  Skicka ett beställningsmejl till IT-avdelningen.
-4.  Skicka tillbaka en bekräftelse till chatten.
+## Del 1: Skapa agentflödet
 
----
+Öppna ämnet **Begär enhet**. Klicka på **plusikonen** under det adaptiva kortet.
 
-## 8.1 Skapa ett nytt Agentflöde
+![Plusikonen under det adaptiva kortet](../../assets/standard/images-sv/chap08/1.png)
 
-Vi börjar inifrån ditt ämne **Begär enhet** som vi jobbade med sist.
+Välj **Lägg till ett verktyg** och sedan **Nytt agentflöde**.
 
-1.  Gå till **Ämnen** och öppna **Begär enhet**.
-2.  Scrolla längst ner i flödet (under `Fråga med adaptivt kort`).
-3.  Klicka på **plus-tecknet (+)**.
-4.  Välj **Lägg till ett verktyg** -> **Nytt agentflöde**.
-    *(Ibland kan det heta "Anropa en åtgärd" -> "Skapa ett flöde" beroende på version).*
+![Valet Nytt agentflöde](../../assets/standard/images-sv/chap08/2.png)
 
-    ![Skapa flöde](../../assets/standard/images-sv/chap08_ny/1.png)
+Agentflödet öppnas i designern. Från början består det av två noder:
 
-    *Detta öppnar ett nytt fönster där vi kan bygga vårt Agentflöde.*
+- **När en agent anropar flödet** tar emot information från agenten.
+- **Respond to the agent** skickar information tillbaka till agenten.
 
----
+Flikarna **Översikt**, **Aktivitet** och **Analys** blir tillgängliga först när flödet har sparats.
 
-## 8.2 Definiera Indata (Utlösare)
+![Ett nytt agentflöde i designern](../../assets/standard/images-sv/chap08/3.png)
 
-Väl inne i **Agentflöden** kan vi se två noder.
+## Del 2: Lägg till flödets indata
 
-* Den övre noden: **När en agent anropar flödet**. Här bestämmer vi vad agenten ska skicka *in* i processen.
+Klicka på **När en agent anropar flödet** och välj **Lägg till indata**.
 
-* Den nedre noden: **Respond to the agent**. Här bestämmer vi vad som skickas *tillbaka* till agenten.
+![Lägg till indata i flödets utlösare](../../assets/standard/images-sv/chap08/4.png)
 
-Vi börjar med att definiera indata. Vi behöver tre saker: ID på datorn, vem användaren är, och eventuella kommentarer.
+Välj datatypen **Text**.
 
-1.  Klicka på noden **När en agent anropar flödet** för att öppna inställningarna.
+![Text som typ av indata](../../assets/standard/images-sv/chap08/5.png)
 
-    ![Öppnar noden](../../assets/standard/images-sv/chap08_ny/2.png)
+Skapa först indatafältet för enhetens ID.
 
-2.  Klicka på **+ Lägg till indata**.
+Namn:
 
-    ![Lägg till indata](../../assets/standard/images-sv/chap08_ny/3.png)
+~~~text
+ValdEnhetId
+~~~
 
-3.  Du ser nu ett gäng olika typer av indata. Välj **Text**.
+Beskrivning:
 
-    ![Lägg till indata text](../../assets/standard/images-sv/chap08_ny/4.png)
+~~~text
+ID för den enhet som användaren valde i det adaptiva kortet.
+~~~
 
-4.  Ställ dig i textrutan (där det står "Användarens indata") och döp om den till:
-    ```text
-    ValdEnhetId
-    ```
-    *Här skickar vi in ID:t från SharePoint.*
+![Indatafältet ValdEnhetId](../../assets/standard/images-sv/chap08/6.png)
 
-    ![Input ValdEnhetId](../../assets/standard/images-sv/chap08_ny/5.png)
+Lägg sedan till ytterligare två indatafält av typen **Text**.
 
-5.  Gör om proceduren. Klicka **+ Lägg till indata** -> **Text**. Döp den till:
-    ```text
-    Bestallare
-    ```
-    *Här skickar vi in användarens namn.*
+Namn:
 
-    ![Input Bestallare](../../assets/standard/images-sv/chap08_ny/6.png)
+~~~text
+Bestallare
+~~~
 
-6.  Gör om proceduren igen. Klicka **+ Lägg till indata** -> **Text**. Döp den till:
-    ```text
-    Kommentar
-    ```
+Beskrivning:
 
-    ![Input Kommentar](../../assets/standard/images-sv/chap08_ny/7.png)
+~~~text
+Namnet på den medarbetare som begär enheten.
+~~~
 
-7.  **Gör kommentaren frivillig:**
+Namn:
 
-    Eftersom användaren kanske inte skriver någon kommentar, måste vi göra detta fält valfritt.
+~~~text
+Kommentar
+~~~
 
-    * Klicka på de **tre prickarna (...)** bredvid fältet *Kommentar*.
+Beskrivning:
 
-    * Välj **Gör fältet valfritt**.
+~~~text
+Användarens egna önskemål eller kommentar. Värdet kan vara tomt.
+~~~
 
-    ![Gör indata valfri](../../assets/standard/images-sv/chap08_ny/8.png)
+Klicka på de tre punkterna vid **Kommentar** och välj **Gör fältet valfritt**.
 
----
+![Tre indatafält och valet Gör fältet valfritt](../../assets/standard/images-sv/chap08/7.png)
 
-## 8.3 Hämta enhetsdetaljer (Get Item)
+När fältet är valfritt ändras menyvalet till **Gör fältet obligatoriskt**. Låt fältet vara valfritt.
 
-Agenten skickar bara ett ID (t.ex. "4"). För att mejlet ska bli snyggt måste vi slå upp vad "4" är för dator (Modell, Pris, etc).
+![Kommentar är ett valfritt fält](../../assets/standard/images-sv/chap08/8.png)
 
-1.  Klicka på **plus-tecknet (+)** under utlösare-noden.
-2.  Sök efter **Hämta objektet** och välj **Hämta objektet (SharePoint)**.
-    *(Obs: Välj "Hämta objektet" i singular och bestämd form, inte "Hämta objekten" i plural, eftersom vi bara ska hämta en specifik rad).*
+## Del 3: Hämta den valda enheten
 
-    ![Hämta objekt-åtgärd](../../assets/standard/images-sv/chap08_ny/9.png)
+Klicka på **plusikonen** under utlösaren och sök efter:
 
-3.  **Konfigurera steget:**
-    * **Webbplatsadress:** Välj din IT Supporten-sida.
+~~~text
+Hämta objektet
+~~~
 
-    ![Webbplatsadress](../../assets/standard/images-sv/chap08_ny/10.png)
+Välj SharePoint-åtgärden **Hämta objektet**. I ett engelskt gränssnitt heter den **Get item**. Välj inte **Hämta objekten** eller **Get items**, eftersom flödet ska hämta en enda post med ett bestämt ID.
 
-    * **Listnamn:** Välj listan **Enheter**.
+![Välj SharePoint-åtgärden Hämta objektet](../../assets/standard/images-sv/chap08/9.png)
 
-    ![Listnamn](../../assets/standard/images-sv/chap08_ny/11.png)
+Klicka på de tre punkterna i nodens övre högra hörn och välj **Byt namn**.
 
-    * **Id:** Vi måste koppla detta till vårt indatavärde. Klicka på **fx** (eller blixten) längst till vänster i Id-rutan.
+![Byt namn på SharePoint-noden](../../assets/standard/images-sv/chap08/10.png)
 
-    ![Id fx](../../assets/standard/images-sv/chap08_ny/12.png)
+Ange namnet:
 
-    * Välj **Dynamiskt innehåll** och sök efter:
-    ```text
-    ValdEnhetId
-    ```
-    ![Mappa ID](../../assets/standard/images-sv/chap08_ny/13.png)
+~~~text
+Hämta enhetsuppgifter
+~~~
 
-    * Notera att syntaxen `triggerBody()?['text']` (eller liknande) används när du klickar på **ValdEnhetId**. Klicka nu på **Lägg till**.
+Välj sedan **Lyserno IT-support** under **Webbplatsadress**.
 
-    ![Lägg till-knapp](../../assets/standard/images-sv/chap08_ny/14.png)
+![Välj webbplatsen Lyserno IT-support](../../assets/standard/images-sv/chap08/11.png)
 
-4.  **Avancerade inställningar:**
-    * Klicka på **Visa alla** i inställningarna för *Hämta objekt*.
-    ![Visa alla](../../assets/standard/images-sv/chap08_ny/15.png)
-    * Hitta **Begränsa kolumner efter vy**.
-    * Välj **Alla objekt**.
-    ![Begränsa kolumner efter vy](../../assets/standard/images-sv/chap08_ny/16.png)
-    *(Detta säkerställer att vi får tillgång till alla kolumner).*
+Välj **Enheter** under **Listnamn**.
 
----
+![Välj listan Enheter](../../assets/standard/images-sv/chap08/13.png)
 
-## 8.4 Skicka Beställningsmejl
+Klicka på **fx** vid fältet **ID** och välj **Dynamiskt innehåll**. Sök efter:
 
-Nu när vi har all data ska vi skicka ordern. För att göra det enkelt och robust i denna övning använder vi e-post.
+~~~text
+ValdEnhetId
+~~~
 
-1.  Klicka på **plus-tecknet (+)** under *Hämta objekt*.
-2.  Sök efter:
-    ```text
-    Skicka ett e-postmeddelande (V2)
-    ```
-    ![Skicka ett e-postmeddelande](../../assets/standard/images-sv/chap08_ny/17.png)
+Välj **ValdEnhetId** från utlösaren.
 
-    Välj **Skicka ett e-postmeddelande (V2)** (Office 365 Outlook).
-    *(Logga in om det behövs).*
+![Koppla ValdEnhetId till fältet ID](../../assets/standard/images-sv/chap08/14.png)
 
-3.  Döp om noden till:
-    ```text
-    Skicka mejl till IT
-    ```
+## Del 4: Skicka förfrågan med e-post
 
-    ![Skicka mejl till IT](../../assets/standard/images-sv/chap08_ny/18.png)
+Klicka på **plusikonen** under SharePoint-noden och sök efter:
 
-4.  **Konfigurera mejlet:**
-    Vi ska nu bygga mailet med hjälp av **Dynamiskt innehåll** (värden som hämtas från tidigare steg).
+~~~text
+Skicka e-postmeddelande (V2)
+~~~
 
-    * **Till:** Klicka på **Ange anpassat värde** och skriv in **din egen e-postadress**.
+![Sök efter Skicka e-postmeddelande V2](../../assets/standard/images-sv/chap08/15.png)
 
-    ![Till-fält](../../assets/standard/images-sv/chap08_ny/19.png)
+Välj **Skicka e-postmeddelande (V2)** från anslutningsprogrammet **Office 365 Outlook**. Om åtgärden inte visas direkt kan du först öppna Office 365 Outlook och sedan välja den därifrån.
 
-    *(I verkligheten hade detta gått till en funktionsbrevlåda för IT).*
+![Välj e-poståtgärden från Office 365 Outlook](../../assets/standard/images-sv/chap08/16.png)
 
-    * **Ämne:** Skriv följande text:
-    ```text
-    Typ av förfrågan: Ny enhet
-    ```
-    ![Ämnesfält](../../assets/standard/images-sv/chap08_ny/20.png)
+Klicka på de tre punkterna i e-postnodens övre högra hörn och välj **Byt namn**.
 
-    * **Brödtext:** Här bygger vi meddelandet. Kopiera först in grundtexten nedan:
+![Byt namn på e-postnoden](../../assets/standard/images-sv/chap08/17.png)
 
-    ```text
-    Hej IT-supporten!
+Ange namnet:
 
-    En ny beställning har inkommit.
+~~~text
+Skicka enhetsförfrågan till IT
+~~~
 
-    Beställare:
-    Enhet:
-    Pris:
+Under **Till** anger du din egen e-postadress. Under utbildningen skickar du mejlet till dig själv så att du enkelt kan kontrollera resultatet.
 
-    Kommentar från användaren:
-    ```
+Skriv följande i ämnesraden:
 
-    ![E-postbrödtext](../../assets/standard/images-sv/chap08_ny/21.png)
+~~~text
+Ny enhetsförfrågan från
+~~~
 
-    **Nu ska vi fylla i hålen med data:**
+Lägg till ett mellanslag efter texten och öppna **Dynamiskt innehåll**. Sök efter:
 
-    **1. Lägg till Beställare:**
+~~~text
+Bestallare
+~~~
 
-    * Sätt markören efter "Beställare: ".
+Välj **Bestallare**.
 
-    * Klicka på **blixt-ikonen** (Dynamiskt innehåll) eller `fx`.
-    
-    ![Dynamiskt innehåll-ikon](../../assets/standard/images-sv/chap08_ny/22.png)
-    
-    * Sök efter `Bestallare` och välj den från listan (under "När en agent anropar flödet").
-    
-    ```text
-    Bestallare
-    ```
-    
-    ![Välj Bestallare](../../assets/standard/images-sv/chap08_ny/23.png)
+![Mottagare och dynamisk beställare i ämnesraden](../../assets/standard/images-sv/chap08/18.png)
 
-    **2. Lägg till Enhet:**
+Kopiera in följande grundtext i mejlets brödtext:
 
-    * Sätt markören efter "Enhet: ".
+~~~text
+Hej IT-supporten!
 
-    * Klicka på blixten.
+En ny enhetsförfrågan har kommit in.
 
-    * Sök efter `Modell` (från steget *Hämta objekt*) och välj den.
-    
-    ```text
-    Modell
-    ```
-    
-    ![Välj Model](../../assets/standard/images-sv/chap08_ny/24.png)
+Beställare:
+Enhet:
+Pris:
 
-    **3. Lägg till Pris:**
+Kommentar från användaren:
+~~~
 
-    * Sätt markören efter "Pris: ".
+![Grundtexten i mejlet](../../assets/standard/images-sv/chap08/19.png)
 
-    * Klicka på blixten.
+Placera markören efter **Beställare:** och öppna **Dynamiskt innehåll**. Sök efter:
 
-    * Sök efter `Inköpspris` (från steget *Hämta objekt*) och välj den.
-    
-    ```text
-    Inköpspris
-    ```
-    
-    ![Välj Price](../../assets/standard/images-sv/chap08_ny/25.png)
+~~~text
+Bestallare
+~~~
 
-    **4. Lägg till Kommentar (Avancerat - Hantera tomma svar):**
+Välj **Bestallare**.
 
-    Vi vill kontrollera om användaren lämnade fältet tomt. Om det är tomt skriver vi "Ingen kommentar", annars visar vi kommentaren. Vi gör detta med ett uttryck (Expression).
+![Lägg till Bestallare i mejlet](../../assets/standard/images-sv/chap08/20.png)
 
-    * Sätt markören efter "Kommentar från användaren: ".
+Placera markören efter **Enhet:** och öppna **Dynamiskt innehåll**. Sök efter:
 
-    * Klicka på **fx** (Infoga uttryck).
+~~~text
+Modell
+~~~
 
-    * I rutan för Funktion/Uttryck, skriv in följande start:
+Välj **Modell** från steget **Hämta enhetsuppgifter**.
 
-      ```powerfx
-      if(empty())
-      ```
-      *Detta startar en "Om"-sats som kollar "Om tomt...".*
+![Lägg till Modell i mejlet](../../assets/standard/images-sv/chap08/21.png)
 
-    ![Välj Kommentar](../../assets/standard/images-sv/chap08_ny/26.png)
+Placera markören efter **Pris:** och öppna **Dynamiskt innehåll**. Sök efter:
 
-    * Klicka nu på fliken **Dynamiskt innehåll**. Sök efter `Kommentar` och klicka på den.
+~~~text
+Inköpspris
+~~~
 
-    ```text
-    Kommentar
-    ``` 
+Välj **Inköpspris** från steget **Hämta enhetsuppgifter**.
 
-    ![Välj Kommentar](../../assets/standard/images-sv/chap08_ny/27.png)
+![Lägg till Inköpspris i mejlet](../../assets/standard/images-sv/chap08/22.png)
 
-      *Din formel fylls nu på med referensen till indatafältet.*
+### Hantera en tom kommentar
 
-    * Gå tillbaka till formelfältet och skriv in resten av logiken efter parentesen (efter första stängda parentesen):
+Om användaren inte skrev någon kommentar ska mejlet visa **Ingen kommentar**. Placera markören efter **Kommentar från användaren:**, klicka på **fx** och börja med:
 
-      ```powerfx
-      , 'Ingen kommentar',
-      ```
+~~~text
+if(empty())
+~~~
 
-      *Detta betyder: Om det är tomt -> Skriv 'Ingen kommentar'. Nu ska vi ange vad som händer om det INTE är tomt (Else).*
+Ställ markören mellan parenteserna och öppna **Dynamiskt innehåll**. Sök efter:
 
-    ![Välj Kommentar](../../assets/standard/images-sv/chap08_ny/28.png)
+~~~text
+Kommentar
+~~~
 
-    * Klicka på fliken **Dynamiskt innehåll** igen. Sök upp och välj `Kommentar` en gång till.
+Välj **Kommentar**.
 
-    ```text
-    Kommentar
-    ```
-    * Klicka på **Lägg till** (eller OK).
+![Börja bygga uttrycket för Kommentar](../../assets/standard/images-sv/chap08/23.png)
 
-    ![Uttryckslogik](../../assets/standard/images-sv/chap08_ny/29.png)
+Kopiera in följande efter den första stängda parentesen:
 
-    *Nu är mejlet klart och dynamiskt!*
+~~~text
+, 'Ingen kommentar',
+~~~
 
---- 
+Detta blir resultatet när kommentarsfältet är tomt.
 
-## 8.5 Skicka svar till Agenten (Utdata)
+![Uttrycket med Ingen kommentar](../../assets/standard/images-sv/chap08/24.png)
 
-Slutligen måste vårt Agentflöde berätta för agenten att allt gick bra. Vi skickar också tillbaka namnet på den valda modellen för att kunna använda det i bekräftelsen.
+Öppna **Dynamiskt innehåll** igen och sök efter:
 
-1.  Klicka på sista noden **Respons to the agent**.
-2.  Klicka **+ Lägg till utdata**.
+~~~text
+Kommentar
+~~~
 
-    ![Lägg till utdata](../../assets/standard/images-sv/chap08_ny/30.png)
+Välj **Kommentar** en gång till som resultat när fältet inte är tomt.
 
-3.  Klicka på **Text**.
+![Det färdiga uttrycket för Kommentar](../../assets/standard/images-sv/chap08/25.png)
 
-    ![Lägg till utdata Text](../../assets/standard/images-sv/chap08_ny/31.png)
+Om dina indata skapades i samma ordning som i kursen kan du i stället kopiera hela uttrycket:
 
-4.  Döp utdatan till:
-    ```text
-    ValdModell
-    ```
+~~~text
+if(empty(triggerBody()?['text_2']), 'Ingen kommentar', triggerBody()?['text_2'])
+~~~
 
-5.  I värdefältet, klicka på **blixt-ikonen** (Dynamiskt innehåll) eller `fx`.
+!!! warning "Kontrollera det interna fältnamnet"
+    **text_2** är det interna namnet som skapades i det här flödet. Om ditt fält har fått ett annat internt namn bygger du uttrycket med **Dynamiskt innehåll** enligt bilderna ovan. Då infogas rätt referens automatiskt.
 
-    ![Lägg till utdatavärde](../../assets/standard/images-sv/chap08_ny/32.png)
+Kontrollera att mejlnoden innehåller beställare, modell, inköpspris och kommentarsuttrycket.
 
-6.  Sök efter `Modell` (från steget *Hämta objekt*) och välj den.
+![Den färdigkonfigurerade e-postnoden](../../assets/standard/images-sv/chap08/26.png)
 
-    ```text
-    Modell
-    ```
+## Del 5: Skicka modellnamnet tillbaka till agenten
 
-    ![Välj ValdModell](../../assets/standard/images-sv/chap08_ny/33.png)
+Öppna noden **Respond to the agent** och välj **Lägg till utdata**.
 
----
+![Lägg till utdata i Respond to the agent](../../assets/standard/images-sv/chap08/27.png)
 
-## 8.6 Spara och konfigurera Agentflödet
+Välj datatypen **Text**.
 
-Nu ska vi spara arbetet, namnge flödet korrekt och publicera det.
+![Text som typ av utdata](../../assets/standard/images-sv/chap08/28.png)
 
-1.  Längst upp till vänster, klicka på namnet **Spara utkast**.
+Ange namnet:
 
-    ![Spara utkast](../../assets/standard/images-sv/chap08_ny/34.png)
+~~~text
+ValdModell
+~~~
 
-2.  Klicka nu på **Översikt** (till vänster om namnet).
+Klicka i värdefältet och öppna **Dynamiskt innehåll**. Sök efter:
 
-    ![Översikt](../../assets/standard/images-sv/chap08_ny/35.png)
+~~~text
+Modell
+~~~
 
-3.  Väl inne i översikten, klicka på **Redigera** under *Detaljer*.
+Välj **Modell** från steget **Hämta enhetsuppgifter**.
 
-    ![Redigera detaljer](../../assets/standard/images-sv/chap08_ny/36.png)
+![Koppla Modell till utdatan ValdModell](../../assets/standard/images-sv/chap08/29.png)
 
-4.  I fältet *Flödesnamn*, skriv in:
-    ```text
-    Skicka e-post med enhetsförfrågan
-    ```
+Kontrollera att **ValdModell** nu får värdet **Modell**.
 
-5.  I fältet *Beskrivning*, skriv in:
-    ```text
-    Det här flödet skickar en enhetsförfrågan via e-post till IT-avdelningen för granskning.
-    ```
+![Den färdiga utdatan ValdModell](../../assets/standard/images-sv/chap08/30.png)
 
-6.  Klicka på **Spara**.
+Flödet ska nu innehålla utlösaren, SharePoint-noden, e-postnoden och svaret till agenten.
 
-    ![Spara detaljer](../../assets/standard/images-sv/chap08_ny/37.png)
+![Det färdigkonfigurerade agentflödet](../../assets/standard/images-sv/chap08/31.png)
 
-7.  Viktigt: För att flödet ska fungera måste det publiceras. Klicka på **Publicera** i verktygsfältet (oftast uppe till vänster).
-    *(Ibland måste du gå in i Designer-läget igen för att se Publicera-knappen).*
+## Del 6: Namnge och publicera agentflödet
 
-    ![Publicera flöde](../../assets/standard/images-sv/chap08_ny/38.png)
+Klicka på **Spara utkast**. När flödet har sparats blir flikarna **Översikt**, **Aktivitet** och **Analys** tillgängliga.
 
----
+![Agentflödet har sparats som utkast](../../assets/standard/images-sv/chap08/32.png)
 
-## 8.7 Koppla ditt Agentflöde i Ämnet
+Öppna **Översikt** och klicka på **Redigera** under **Information**.
 
-Nu måste vi gå tillbaka till Copilot Studio och koppla in vårt nya Agentflöde i vårt ämne.
+![Redigera flödets information](../../assets/standard/images-sv/chap08/33.png)
 
-1.  **Navigera till ämnet *Begär enhet*:**
-    * Gå tillbaka till Agent-vyn genom att klicka på **Agenter** i menyn till vänster.
+Ange följande namn:
 
-    ![Agenter-meny](../../assets/standard/images-sv/chap08_ny/39.png)
+~~~text
+Hantera enhetsförfrågan
+~~~
 
-    * Välj din agent **IT Support agent**.
+Beskrivning:
 
-    ![IT Support agent](../../assets/standard/images-sv/chap08_ny/40.png)
+~~~text
+Hämtar den valda enhetens uppgifter från SharePoint, skickar förfrågan till IT-avdelningen och returnerar modellnamnet till agenten.
+~~~
 
-    * Gå till fliken **Ämnen** i menyn högst upp.
+Under **Planera** väljer du **Copilot Studio** i stället för **Användaren som kör flödet**.
 
-    ![Ämnen-flik](../../assets/standard/images-sv/chap08_ny/41.png)
+![Namn, beskrivning och planering för agentflödet](../../assets/standard/images-sv/chap08/34.png)
 
-    * Klicka på **Begär enhet**.
+Kontrollera att **Copilot Studio** är valt och spara ändringarna.
 
-    ![Begär enhet-ämne](../../assets/standard/images-sv/chap08_ny/42.png)
+![Copilot Studio valt under Planera](../../assets/standard/images-sv/chap08/35.png)
 
-2.  **Lägg till flödet:**
-    * Gå längst ner i flödet, under det adaptiva kortet.
-    * Klicka på **plus-tecknet (+) -> Lägg till ett verktyg**.
-    * Välj ditt nyligen skapade flöde: **Skicka e-post med enhetsförfrågan**.
+Gå tillbaka till **Designer** och klicka på **Publicera**.
 
-    ![Lägg till anpassat flöde](../../assets/standard/images-sv/chap08_ny/43.png)
+![Publicera agentflödet](../../assets/standard/images-sv/chap08/36.png)
 
-3.  **Mappa indata:**
-    Nu frågar agenten: "Vad ska jag stoppa in i de tre indatahål du byggde?"
+## Del 7: Lägg till flödet i ämnet
 
-    **ValdEnhetId:**
+Gå till **Handläggare** och öppna **Lyserno IT-assistent**.
 
-    * Klicka på pilen `>` (eller rutan) bredvid *ValdEnhetId*.
-    * Välj variabeln `kortValdEnhetId` (den kommer från ditt adaptiva kort).
+![Välj Lyserno IT-assistent](../../assets/standard/images-sv/chap08/37.png)
 
-    ![Mappa ValdEnhetId](../../assets/standard/images-sv/chap08_ny/44.png)
+Du kommer till agentens översikt.
 
-    **Bestallare:**
+![Översikten för Lyserno IT-assistent](../../assets/standard/images-sv/chap08/38.png)
 
-    * Klicka på pilen `>` bredvid *Bestallare*.
-    * Navigera till fliken **System**.
-    * Sök efter och välj `User.DisplayName`.
+Öppna **Ämnen** och välj **Begär enhet**.
 
-    ![Mappa Bestallare](../../assets/standard/images-sv/chap08_ny/45.png)
+![Öppna ämnet Begär enhet](../../assets/standard/images-sv/chap08/39.png)
 
-    **Kommentar (Avancerat):**
-    Vi vill hantera fallet att användaren inte skrev någon kommentar alls. Om vi skickar in ett tomt värde kan det bli fel i vissa system, så vi använder en formel för att skicka en tom textsträng ("") istället för *null* om det saknas.
+Klicka på **plusikonen** under det adaptiva kortet och välj **Lägg till ett verktyg**. Sök efter:
 
-    * Klicka på pilen `>` bredvid *Kommentar*.
-    * Välj fliken **Formel** och klicka på expandera-ikonen (pilen) för att få mer plats.
+~~~text
+Hantera enhetsförfrågan
+~~~
 
-    ![Mappa kommentarer](../../assets/standard/images-sv/chap08_ny/46.png)
+Välj agentflödet i sökresultatet.
 
-    * Skriv in följande formel:
-    ```powerfx
-    If(IsBlank(Topic.kortKommentar), "", Topic.kortKommentar)
-    ```
-    * Kontrollera att du har en grön bock (inget syntaxfel). Klicka sedan på **Infoga**.
+![Lägg till Hantera enhetsförfrågan i ämnet](../../assets/standard/images-sv/chap08/40.png)
 
-    ![Infoga formel](../../assets/standard/images-sv/chap08_ny/47.png)
+## Del 8: Koppla ämnets variabler till flödet
 
-    !!! info "Varför gjorde vi detta?"
-        Formeln betyder: "Om variabeln *kortKommentar* är blank (tom), skicka en tom textsträng. Annars, skicka innehållet i *kortKommentar*." Detta gör flödet mer robust.
+Under **ValdEnhetId** öppnar du variabelväljaren och söker efter:
 
----
+~~~text
+kortValdEnhetId
+~~~
 
-## 8.8 Förbättra användarupplevelsen (Bekräftelse)
+Välj den anpassade variabeln **kortValdEnhetId** från det adaptiva kortet.
 
-Vi ska nu lägga till en nod för att ge användaren en tydlig och personlig bekräftelse på att beställningen är mottagen.
+![Koppla kortValdEnhetId till ValdEnhetId](../../assets/standard/images-sv/chap08/41.png)
 
-1.  Klicka på **plus-tecknet (+)** under din Agentflöde-nod och välj **Skicka ett meddelande**.
+Under **Bestallare** öppnar du variabelväljaren, går till **System** och söker efter:
 
-    ![Lägg till meddelande](../../assets/standard/images-sv/chap08_ny/48.png)
+~~~text
+User
+~~~
 
-2.  Vi ska nu bygga meddelandet steg för steg för att få in dynamiska värden:
+Välj **User.DisplayName**.
 
-    * Börja med att skriva:
-    ```text
-    Tack 
-    ```
-    *(Glöm inte mellanslaget efter Tack)*
+![Koppla User Display Name till Bestallare](../../assets/standard/images-sv/chap08/42.png)
 
-    * Klicka på ikonen **{X} (Infoga variabel)**.
-    * Välj fliken **System** och sök efter `User`. Välj **User.DisplayName**.
+Öppna **Avancerad indata**. Vid **Kommentar** klickar du på de tre punkterna och väljer **Formel**.
 
-    ![Infoga användarnamn](../../assets/standard/images-sv/chap08_ny/49.png)
+![Öppna en formel för Kommentar](../../assets/standard/images-sv/chap08/43.png)
 
-    * Fortsätt skriva texten:
-    ```text
-    . Din valda enhet, 
-    ```
-    
-    * Klicka på **{X} (Infoga variabel)** igen.
-    * Välj fliken **Anpassat** och sök efter `ValdModell`. Välj **ValdModell**.
-    *(Detta är variabeln vi fick tillbaka från vårt Agentflöde).*
+Expandera formelredigeraren och skriv:
 
-    ![Infoga modell](../../assets/standard/images-sv/chap08_ny/50.png)
+~~~powerfx
+If(IsBlank(Topic.kortKommentar), "", Topic.kortKommentar)
+~~~
 
-    * Avsluta meningen med att skriva:
-    ```text
-    , har skickats in och kommer att granskas av IT-ansvarig.
-    ```
+Kontrollera att formeln godkänns och klicka på **Infoga**.
 
-3.  Granska meddelandet. Det ska nu se ut ungefär så här i editorn:
+![Formeln som skickar en tom sträng när Kommentar saknas](../../assets/standard/images-sv/chap08/44.png)
 
-    > Tack {User.DisplayName}. Din valda enhet, {ValdModell}, har skickats in och kommer att granskas av IT-ansvarig.
+Formeln skickar användarens kommentar när den finns. Om kommentaren är tom skickar den en tom textsträng i stället för ett tomt värde.
 
-    ![Färdigt meddelande](../../assets/standard/images-sv/chap08_ny/51.png)
+## Del 9: Lägg till en bekräftelse
 
-!!! success "Snyggt!"
-    Nu får användaren en personlig bekräftelse med sitt eget namn och namnet på datorn de valt.
+Klicka på **plusikonen** under agentflödet och välj **Skicka ett meddelande**.
 
-### Testa allt!
-1.  Öppna testpanelen. Starta om med **Starta ny session**-ikonen högst upp.
-2.  Skriv:
-    ```text
-    Jag vill ha en bärbar dator
-    ```
-3.  När listan visas och agenten frågar om beställning, svara `Ja`.
-4.  Välj en dator i det adaptiva kortet.
-5.  I kommentarsfältet, skriv:
-    ```text
-    Jag vill ha så mycket RAM-minne som möjligt!
-    ```
-6.  Klicka **Skicka**.
-7.  *Nu ska agenten tänka en liten stund, anropa ditt Agentflöde, och sedan svara med bekräftelsen. Samtidigt ska det plinga till i din mejlkorg!*
+![Lägg till noden Skicka ett meddelande](../../assets/standard/images-sv/chap08/45.png)
 
-!!! success "Grattis!"
-    Du har nu byggt en fullständig kedja med ett **Agentflöde**:
-    AI (Förstår) -> Logik (Styr) -> Data (SharePoint) -> GUI (Adaptivt kort) -> Agentflöde (Power Automate) -> Verkligheten (E-post).
+Skriv:
+
+~~~text
+Tack
+~~~
+
+Lägg till ett mellanslag efter ordet. Klicka på variabelikonen, öppna **System** och sök efter:
+
+~~~text
+User
+~~~
+
+Välj **User.DisplayName**.
+
+![Lägg till användarens visningsnamn](../../assets/standard/images-sv/chap08/46.png)
+
+Skriv sedan:
+
+~~~text
+. Din valda enhet,
+~~~
+
+Lägg till ett mellanslag efter kommatecknet. Klicka på variabelikonen igen och sök efter:
+
+~~~text
+ValdModell
+~~~
+
+Välj **ValdModell** bland de anpassade variablerna.
+
+![Lägg till ValdModell i bekräftelsen](../../assets/standard/images-sv/chap08/47.png)
+
+Avsluta med:
+
+~~~text
+, har skickats in och kommer att granskas av IT-ansvarig.
+~~~
+
+Det färdiga meddelandet består av vanlig text och två variabler:
+
+> Tack {User.DisplayName}. Din valda enhet, {ValdModell}, har skickats in och kommer att granskas av IT-ansvarig.
+
+![Det färdiga bekräftelsemeddelandet](../../assets/standard/images-sv/chap08/48.png)
+
+Klicka på **plusikonen** under bekräftelsen. Öppna **Ämneshantering** och välj **Avsluta alla ämnen**.
+
+![Välj Avsluta alla ämnen efter bekräftelsen](../../assets/standard/images-sv/chap08/51.png)
+
+Bekräftelsen är ämnets slutliga svar. När alla ämnen avslutas försöker agenten inte skapa ytterligare ett svar efter att beställningen är klar.
+
+## Del 10: Testa hela flödet
+
+Starta en ny testsession och be agenten visa en tillgänglig enhetstyp, till exempel:
+
+~~~text
+Jag vill ha en laptop
+~~~
+
+När agenten frågar om du vill begära en enhet svarar du ja. Välj en enhet i det adaptiva kortet och skriv till exempel:
+
+~~~text
+med extra minne
+~~~
+
+Skicka kortet. Agenten ska anropa flödet och visa bekräftelsen med ditt namn och den valda modellen.
+
+![Agentens bekräftelse efter att kortet har skickats](../../assets/standard/images-sv/chap08/49.png)
+
+Öppna din inkorg och kontrollera att mejlet innehåller beställare, enhet, pris och kommentar.
+
+![Mejlet med den färdiga enhetsförfrågan](../../assets/standard/images-sv/chap08/50.png)
+
+Du har nu kopplat ihop det adaptiva kortet, SharePoint och Office 365 Outlook i ett agentflöde. Agenten skickar förfrågan till IT och bekräftar valet i chatten.

@@ -1,399 +1,365 @@
-# 7. Skapa ett Adaptivt Kort för Beställning
+# 7. Skapa ett adaptivt kort
 
-Vi har nu en agent som kan hitta datorer. Nästa steg är att låta användaren **beställa** en av dem.
-För att göra detta snyggt och användarvänligt ska vi använda ett **Adaptive Card**. Det är ett litet formulär direkt i chatten där användaren kan välja en dator och skriva en kommentar.
+Agenten kan nu hitta tillgängliga enheter. I det här kapitlet skapar du ämnet **Begär enhet** och lägger till ett adaptivt kort där användaren kan välja en enhet och skriva en kommentar.
 
----
-
-## 7.1 Skapa Ämne för Beställning
-
-Vi skapar ett separat ämne för själva beställningen för att hålla logiken ren.
-
-1.  Navigera till dina **Ämnen** i Copilot Studio.
-
-    ![Navigera till Ämnen](../../assets/standard/images-sv/chap07_ny/1.png)
-
-2.  Välj **+ Lägg till ett ämne** -> **Från tom**.
-
-    ![Välj Lägg till ett ämne](../../assets/standard/images-sv/chap07_ny/2.png)
-
-3.  Döp ämnet till:
-    ```text
-    Begär enhet
-    ```
-
-    ![Skapa ämne](../../assets/standard/images-sv/chap07_ny/3.png)
-
-3.  I rutan **Beskrivning** (under Utlösare), klistra in följande beskrivning:
-    ```text
-    Detta ämne hjälper användare att beställa en enhet när de svarar ja på frågan om de vill göra en beställning av en av de visade enheterna.
-    ```
-
-    ![Beskrivning](../../assets/standard/images-sv/chap07_ny/4.png)
+Först bygger du kortet med vanlig JSON och fasta exempelvärden. Sedan byter du till Power Fx så att alternativen hämtas från SharePoint-resultatet i `Global.HamtadeEnheter`.
 
 ---
 
-## 7.2 Bygga Kortet (Visuell redigerare)
+## Del 1: Skapa ämnet Begär enhet
 
-Nu ska vi lägga till själva kortet.
+Gå till fliken **Ämnen**. Klicka på **+ Lägg till ett ämne** och välj **Från tomt**.
 
-1.  Klicka på **plus-tecknet (+)** under Utlösare-noden.
-2.  Välj **Fråga med adaptivt kort**.
+![Menyn Lägg till ett ämne med alternativet Från tomt](../../assets/standard/images-sv/chap07/1.png)
 
-    ![Välj Adaptivt kort](../../assets/standard/images-sv/chap07_ny/5.png)
+Ge ämnet följande namn:
 
-3.  Klicka på de tre prickarna på kort-noden och välj **Egenskaper**.
+```text
+Begär enhet
+```
 
-    ![Kort Egenskaper](../../assets/standard/images-sv/chap07_ny/6.png)
+Skriv följande under **Beskriv kortfattat vad ämnet gör**:
 
-4.  I panelen till höger, klicka på knappen **Redigera adaptivt kort**.
+```text
+Använd ämnet när användaren vill begära en enhet som redan har visats. Tillgängliga enheter måste ha körts först. Samla in användarens val och eventuella kommentar och skicka förfrågan till IT.
+```
 
-    ![Redigera kort](../../assets/standard/images-sv/chap07_ny/7.png)
+Klicka på **Spara**.
 
-### Testa verktyget (Valfritt men lärorikt)
-Nu öppnas en stor editor. Till vänster har du komponenter (text, bilder, inputs) och i mitten ser du ditt kort.
-
-![Editor](../../assets/standard/images-sv/chap07_ny/8.png)
-
-1.  Prova att dra in ett **TextBlock** från vänstermenyn till kortet.
-
-    ![Dra in text](../../assets/standard/images-sv/chap07_ny/9.png)
-
-2.  Testa att ändra texten till något annat, t.ex. "Tillgängliga enheter" i menyn till höger.
-
-    ![Text](../../assets/standard/images-sv/chap07_ny/10.png)
-
-3.  Ändra **Horisontell justering** till **Centrerat**.
-
-    ![Horisontell justering](../../assets/standard/images-sv/chap07_ny/11.png)
-
-4.  Prova att dra in en **Input.ChoiceSet** under texten.
-
-    ![Dra in val](../../assets/standard/images-sv/chap07_ny/12.png)
-
-5.  Ändra **Stil** till **Expanderat** för att se hur det ser ut som en lista med radioknappar.
-
-    ![Format](../../assets/standard/images-sv/chap07_ny/13.png)
-
-6.  Klicka på **Preview** högst upp för att se hur det skulle se ut i chatten.
-
-    ![Förhandsgranskning](../../assets/standard/images-sv/chap07_ny/14.png)
-
-7.  Klicka på **Preview** igen för att gå tillbaka.
+![Ämnet Begär enhet med namn och beskrivning](../../assets/standard/images-sv/chap07/2.png)
 
 ---
 
-## 7.3 Klistra in JSON (Snabbvägen)
+## Del 2: Lägg till ett adaptivt kort
 
-Att bygga hela kortet för hand tar tid. Vi ska använda färdig kod (JSON) för att få en snygg grundstruktur.
+Klicka på **plusknappen (+)** under utlösaren och välj **Fråga med adaptivt kort**.
 
-1.  Längst ner i fönstret ser du **Redigerare för kortets nyttolast**. (Dra upp kanten om den är liten).
+![Menyn under utlösaren med alternativet Fråga med adaptivt kort](../../assets/standard/images-sv/chap07/3.png)
 
-    ![Payload Editor](../../assets/standard/images-sv/chap07_ny/15.png)
+När noden har lagts till klickar du på de tre punkterna i nodens övre högra hörn och väljer **Egenskaper**.
 
-2.  Radera **allt** som står i editorn.
-3.  Kopiera och klistra in följande kod:
+![Menyn på det adaptiva kortet med alternativet Egenskaper](../../assets/standard/images-sv/chap07/4.png)
 
-    ```json
-    {
-        "type": "AdaptiveCard",
-        "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
-        "version": "1.5",
-        "backgroundImage": {
-            "url": "https://adaptivecards.io/content/backgroundImage.png",
-            "verticalAlignment": "Center"
-        },
-        "body": [
-            {
-                "type": "Container",
-                "style": "emphasis",
-                "bleed": true,
-                "items": [
-                    {
-                        "type": "TextBlock",
-                        "weight": "Bolder",
-                        "size": "Large",
-                        "wrap": true,
-                        "text": "Enhetsval",
-                        "horizontalAlignment": "Center"
-                    }
-                ]
-            },
-            {
-                "type": "Container",
-                "style": "default",
-                "items": [
-                    {
-                        "type": "TextBlock",
-                        "wrap": true,
-                        "size": "Medium",
-                        "text": "Vänligen välj vilken enhet du vill begära:"
-                    }
-                ],
-                "spacing": "None"
-            },
-            {
-                "type": "Container",
-                "spacing": "None",
-                "items": [
-                    {
-                        "type": "Input.ChoiceSet",
-                        "id": "kortValdEnhetId",
-                        "style": "expanded",
-                        "choices": [
-                            {
-                                "title": "Surface Laptop 13",
-                                "value": "1"
-                            },
-                            {
-                                "title": "Surface Laptop 15",
-                                "value": "2"
-                            },
-                            {
-                                "title": "Surface Studio",
-                                "value": "3"
-                            },
-                            {
-                                "title": "Surface Pro",
-                                "value": "4"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "Container",
-                "spacing": "None",
-                "style": "emphasis",
-                "items": [
-                    {
-                        "type": "TextBlock",
-                        "wrap": true,
-                        "text": "Ytterligare information"
-                    }
-                ]
-            },
-            {
-                "type": "Input.Text",
-                "id": "kortKommentar",
-                "placeholder": "Vänligen ange eventuella specifika krav eller övriga kommentarer",
-                "isMultiline": true,
-                "spacing": "Small"
-            },
-            {
-                "type": "FactSet",
-                "facts": [
-                    {
-                        "title": "Typ av förfrågan",
-                        "value": "Ny enhet"
-                    },
-                    {
-                        "title": "Svarstid:",
-                        "value": "3-5 arbetsdagar"
-                    }
-                ],
-                "spacing": "Small"
-            }
-        ],
-        "actions": [
-            {
-                "type": "Action.Submit",
-                "title": "Skicka"
-            }
-        ]
-    }
-    ```
+Kontrollera att formatet är **JSON-kort** och klicka på **Redigera adaptivt kort**. Du behöver inte öppna **Redigera schema** i den här övningen.
 
-4.  Klicka på **Preview** för att se ditt snygga kort!
-    *Just nu är listan på datorer "Hårdkodad" (Surface Laptop 13, 15 etc). Det ska vi ändra på nu.*
-
-    ![Förhandsgranskning](../../assets/standard/images-sv/chap07_ny/16.png)
+![Egenskaperna för det adaptiva kortet med knappen Redigera adaptivt kort](../../assets/standard/images-sv/chap07/5.png)
 
 ---
 
-## 7.4 Göra kortet Dynamiskt (Power Fx)
+## Del 3: Skapa kortets grund med JSON
 
-Vi vill att listan i kortet ska baseras på vad vi faktiskt hittade i SharePoint (i föregående kapitel). För att göra det måste vi byta från statisk JSON till dynamisk **Power Fx**.
+Nu öppnas **Adaptive Card Designer**. Här kan du bygga kortet visuellt eller skriva hela kortet som JSON.
 
-1.  Stäng Förhandsgranskningsläge.
-2.  Längst upp till höger i editor-fönstret (ovanför koden), klicka på **JSON** och ändra till **Formel**.
+- Till vänster finns element och inmatningsfält som du kan dra in i kortet.
+- I mitten visas kortet.
+- Till höger visas kortets struktur och egenskaperna för det markerade elementet.
+- Längst ner finns **Redigerare för kortets nyttolast**. Där skriver du kortets JSON-kod.
 
-    ![Ändra till Formel](../../assets/standard/images-sv/chap07_ny/17.png)
+![Ett tomt kort i Adaptive Card Designer](../../assets/standard/images-sv/chap07/6.png)
 
-3.  Klicka på **Expandera**-ikonen (pilarna) för att göra formelfältet större.
+Markera all kod i **Redigerare för kortets nyttolast** och ersätt den med följande JSON:
 
-    ![Expandera formel](../../assets/standard/images-sv/chap07_ny/18.png)
-
-4.  Radera all kod i fönstret.
-5.  Klistra in denna Power Fx-kod istället:
-
-    ```powerfx
-    {
-      type: "AdaptiveCard",
-      '$schema': "https://adaptivecards.io/schemas/adaptive-card.json",
-      version: "1.5",
-      backgroundImage: {
-        url: "https://adaptivecards.io/content/backgroundImage.png",
-        verticalAlignment: "Center"
-      },
-      body: [
+```json
+{
+    "type": "AdaptiveCard",
+    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.5",
+    "backgroundImage": {
+        "url": "https://adaptivecards.io/content/backgroundImage.png",
+        "verticalAlignment": "Center"
+    },
+    "body": [
         {
-          type: "Container",
-          style: "emphasis",
-          bleed: true,
-          items: [
-            {
-              type: "TextBlock",
-              text: "Enhetsval",
-              weight: "Bolder",
-              size: "Large",
-              wrap: true,
-              horizontalAlignment: "Center"
-            }
-          ]
-        },
-        {
-          type: "Container",
-          style: "default",
-          items: [
-            {
-              type: "TextBlock",
-              text: "Vänligen välj vilken enhet du vill begära:",
-              wrap: true,
-              size: "Medium"
-            }
-          ],
-          spacing: "None"
-        },
-        {
-          type: "Container",
-          spacing: "None",
-          items: [
-            {
-              type: "Input.ChoiceSet",
-              id: "kortValdEnhetId",
-              style: "expanded",
-              choices: ForAll(
-                Global.HamtadeEnheter.value,
+            "type": "Container",
+            "style": "emphasis",
+            "bleed": true,
+            "items": [
                 {
-                  title: If(IsBlank(Model), "Okänd modell", Model),
-                  value: If(IsBlank(ID), "NA", Text(ID))
+                    "type": "TextBlock",
+                    "weight": "Bolder",
+                    "size": "Large",
+                    "wrap": true,
+                    "text": "Enhetsval",
+                    "horizontalAlignment": "Center"
                 }
-              )
-            }
-          ]
+            ]
         },
         {
-          type: "Container",
-          spacing: "None",
-          style: "emphasis",
-          items: [
-            {
-              type: "TextBlock",
-              text: "Ytterligare information",
-              wrap: true
-            },
-            {
-              type: "Input.Text",
-              id: "kortKommentar",
-              placeholder: "Vänligen ange eventuella specifika krav eller övriga kommentarer",
-              isMultiline: true,
-              spacing: "Small"
-            }
-          ]
-        },
-        {
-          type: "Container",
-          spacing: "Medium",
-          items: [
-            {
-              type: "FactSet",
-              facts: [
+            "type": "Container",
+            "style": "default",
+            "items": [
                 {
-                  title: "Typ av förfrågan:",
-                  value: "Ny enhet"
+                    "type": "TextBlock",
+                    "wrap": true,
+                    "size": "Medium",
+                    "text": "Vänligen välj vilken enhet du vill begära:"
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "Container",
+            "spacing": "None",
+            "items": [
+                {
+                    "type": "Input.ChoiceSet",
+                    "id": "kortValdEnhetId",
+                    "style": "expanded",
+                    "choices": [
+                        {
+                            "title": "Surface Laptop 13",
+                            "value": "1"
+                        },
+                        {
+                            "title": "Surface Laptop 15",
+                            "value": "2"
+                        },
+                        {
+                            "title": "Surface Studio",
+                            "value": "3"
+                        },
+                        {
+                            "title": "Surface Pro",
+                            "value": "4"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "spacing": "None",
+            "style": "emphasis",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "wrap": true,
+                    "text": "Ytterligare information"
+                }
+            ]
+        },
+        {
+            "type": "Input.Text",
+            "id": "kortKommentar",
+            "placeholder": "Vänligen ange eventuella specifika krav eller övriga kommentarer",
+            "isMultiline": true,
+            "spacing": "Small"
+        },
+        {
+            "type": "FactSet",
+            "facts": [
+                {
+                    "title": "Typ av förfrågan",
+                    "value": "Ny enhet"
                 },
                 {
-                  title: "Svarstid:",
-                  value: "3 till 5 arbetsdagar"
+                    "title": "Svarstid:",
+                    "value": "3-5 arbetsdagar"
                 }
-              ],
-              spacing: "Small"
-            }
-          ]
+            ],
+            "spacing": "Small"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Skicka"
+        }
+    ]
+}
+```
+
+Kortet uppdateras direkt när JSON-koden är giltig. Du ska nu se de fyra fasta enhetsvalen, kommentarsfältet och knappen **Skicka**. Klicka på **Save** högst upp.
+
+![Det adaptiva kortet efter att JSON-koden har klistrats in](../../assets/standard/images-sv/chap07/7.png)
+
+Klicka på **Preview** för att kontrollera kortet i flera bredder. Kontrollera framför allt att rubriken, alternativen och kommentarsfältet går att läsa i de mindre formaten. Stäng sedan förhandsgranskningen och klicka på **Save** igen om du har gjort någon ändring.
+
+![Förhandsgranskning av det adaptiva kortet i flera bredder](../../assets/standard/images-sv/chap07/8.png)
+
+När du kommer tillbaka till ämnesredigeraren ser du tre utdatavariabler under kortet:
+
+- `actionSubmitId` visar vilken åtgärd som skickade kortet.
+- `kortKommentar` innehåller användarens kommentar.
+- `kortValdEnhetId` innehåller ID:t för den valda enheten.
+
+Variablerna skapas från de ID:n som finns i kortets JSON. De används senare när beställningen skickas vidare till ett agentflöde.
+
+![Det adaptiva kortets tre utdatavariabler](../../assets/standard/images-sv/chap07/9.png)
+
+---
+
+## Del 4: Gör enhetslistan dynamisk med Power Fx
+
+JSON-versionen visar hur kortet är uppbyggt, men enhetslistan är hårdkodad. Nu ska du ersätta den med en lista som byggs från de enheter som ämnet **Tillgängliga enheter** hämtade från SharePoint.
+
+I egenskapspanelen öppnar du menyn **JSON-kort** under **Format** och väljer **Formel**.
+
+![Menyn för att byta från JSON till Formel](../../assets/standard/images-sv/chap07/10.png)
+
+Kortet visas nu som en Power Fx-formel. Klicka på expandera-ikonen i formelfältets övre högra hörn.
+
+![Det adaptiva kortet som formelkort med knappen för att expandera](../../assets/standard/images-sv/chap07/11.png)
+
+Markera hela formeln och ersätt den med följande kod:
+
+```powerfx
+{
+  type: "AdaptiveCard",
+  '$schema': "https://adaptivecards.io/schemas/adaptive-card.json",
+  version: "1.5",
+  backgroundImage: {
+    url: "https://adaptivecards.io/content/backgroundImage.png",
+    verticalAlignment: "Center"
+  },
+  body: [
+    {
+      type: "Container",
+      style: "emphasis",
+      bleed: true,
+      items: [
+        {
+          type: "TextBlock",
+          text: "Enhetsval",
+          weight: "Bolder",
+          size: "Large",
+          wrap: true,
+          horizontalAlignment: "Center"
+        }
+      ]
+    },
+    {
+      type: "Container",
+      style: "default",
+      items: [
+        {
+          type: "TextBlock",
+          text: "Vänligen välj vilken enhet du vill begära:",
+          wrap: true,
+          size: "Medium"
         }
       ],
-      actions: [
+      spacing: "None"
+    },
+    {
+      type: "Container",
+      spacing: "None",
+      items: [
         {
-          type: "Action.Submit",
-          title: "Skicka"
+          type: "Input.ChoiceSet",
+          id: "kortValdEnhetId",
+          style: "expanded",
+          choices: ForAll(
+            Global.HamtadeEnheter.value,
+            {
+              title: If(IsBlank(Model), "Okänd modell", Model),
+              value: If(IsBlank(ID), "NA", Text(ID))
+            }
+          )
+        }
+      ]
+    },
+    {
+      type: "Container",
+      spacing: "None",
+      style: "emphasis",
+      items: [
+        {
+          type: "TextBlock",
+          text: "Ytterligare information",
+          wrap: true
+        },
+        {
+          type: "Input.Text",
+          id: "kortKommentar",
+          placeholder: "Vänligen ange eventuella specifika krav eller övriga kommentarer",
+          isMultiline: true,
+          spacing: "Small"
+        }
+      ]
+    },
+    {
+      type: "Container",
+      spacing: "Medium",
+      items: [
+        {
+          type: "FactSet",
+          facts: [
+            {
+              title: "Typ av förfrågan:",
+              value: "Ny enhet"
+            },
+            {
+              title: "Svarstid:",
+              value: "3 till 5 arbetsdagar"
+            }
+          ],
+          spacing: "Small"
         }
       ]
     }
-    ```
+  ],
+  actions: [
+    {
+      type: "Action.Submit",
+      title: "Skicka"
+    }
+  ]
+}
+```
 
-    !!! info "Vad hände nu?"
-        Titta på delen med `choices: ForAll(...)`.
-        Istället för en fast lista säger vi nu: "Loopa igenom vår globala variabel `Global.HamtadeEnheter.value`. För varje rad, skapa ett val där titeln är modellnamnet och värdet är ID:t."
-        Detta gör kortet levande!
+Kontrollera att en grön bock visas vid **Utdata**. Den visar att formeln kan skapa ett giltigt kort.
 
-6.  Kontrollera att du har en **grön bock** nere i hörnet (inga syntaxfel).
+![Den expanderade Power Fx-formeln med ett giltigt resultat](../../assets/standard/images-sv/chap07/12.png)
 
-    ![Grön bock](../../assets/standard/images-sv/chap07_ny/19.png)
+!!! info "Vad ändrade vi?"
+    `ForAll(Global.HamtadeEnheter.value, ...)` går igenom alla rader som SharePoint hämtade i föregående kapitel. För varje rad skapas ett val där `Model` blir texten som användaren ser och `ID` blir värdet som sparas när användaren väljer enheten.
 
-7.  Klicka på **Spara kort** (eller stäng krysset om knappen saknas, det sparas ofta automatiskt) och stäng sedan det adaptiva kortets egenskaper.
+    `If(IsBlank(...))` ger reservvärden om en rad saknar modell eller ID. Kortet kan då fortfarande skapas utan att formeln bryts.
 
-    ![Spara och stäng](../../assets/standard/images-sv/chap07_ny/20.png)
+Stäng den expanderade formelredigeraren och kontrollera kortet i noden. Förhandsvisningen i ämnesredigeraren kan ibland visa själva uttrycket `Global.HamtadeEnheter.value.Model` i stället för enhetsnamnen. Det är testpanelen som visar hur den dynamiska listan ser ut när ämnet körs med riktiga SharePoint-data.
 
-### Viktigt: Utdatavariabler
-Om du tittar längst ner i Egenskapspanelen för din kort-nod, ser du sektionen **Utdata**.
-Här bör du se två variabler:
-* `kortValdEnhetId` (Vilken enhet användaren valde)
-* `kortKommentar` (Vad användaren skrev)
+![Det dynamiska kortet i ämnesredigeraren](../../assets/standard/images-sv/chap07/13.png)
 
-Dessa skapades automatiskt baserat på ID:n i koden vi klistrade in. Vi kommer att använda dem i nästa kapitel när vi skickar beställningen vidare till ett agentflöde.
-
-![Utdatavariabler](../../assets/standard/images-sv/chap07_ny/21.png)
-
-8.  Klicka **Spara** för att spara ditt ämne.
+Klicka på **Spara** för att spara ämnet.
 
 ---
 
-## 7.5 Uppdatera Agentens Instruktioner
+## Del 5: Koppla ämnet till agentens instruktioner
 
-Nu har vi ett ämne för att visa enheter (**Tillgängliga Enheter**) och ett för att beställa (**Begär enhet**). Vi måste lära agenten hur de hänger ihop.
+Gå tillbaka till fliken **Översikt** och klicka på **Redigera** vid agentens instruktioner. Lägg till följande punkt under **Arbetssätt**:
 
-1.  Gå till fliken **Översikt**.
+```text
+- Om användaren svarar ja på frågan om att beställa en enhet, använd /Begär enhet. Om användaren inte vill gå vidare, avsluta vänligt.
+```
 
-    ![Översikt](../../assets/standard/images-sv/chap07_ny/22.png)
+Ämnet måste infogas som en riktig referens. När du kommer till ämnesnamnet skriver du `/` och väljer **Begär enhet** i listan med förslag.
 
-2.  Vid **Instruktioner**, klicka på **Redigera**.
+![Ämnet Begär enhet visas i listan med förslag](../../assets/standard/images-sv/chap07/14.png)
 
-    ![Redigera instruktioner](../../assets/standard/images-sv/chap07_ny/23.png)
+Kontrollera att ämnesnamnet visas som en markerad referens och klicka på **Spara**.
 
-3.  Leta upp raden du lade till sist. Vi ska uppdatera den så att den länkar vidare till vårt nya ämne.
-    
-    *Ändra den sista punkten till följande:*
+![Instruktionen med en referens till ämnet Begär enhet](../../assets/standard/images-sv/chap07/15.png)
 
-    ```text
-    - Om användaren svarar ja på frågan om att beställa en enhet, trigga [Begär enhet]. Om de svarar nej, avsluta på ett vänligt vis.
-    ```
+---
 
-4.  **Viktigt:** Du måste göra länkarna "blåa".
-    * Sudda ut `[Begär enhet]`. Skriv `/Beg` och välj **Begär enhet** från listan.
+## Testa ämnet
 
-5.  Klicka **Spara**.
+Öppna testpanelen och starta en ny testsession. Be först agenten visa en tillgänglig enhetstyp, till exempel:
 
-    ![Spara](../../assets/standard/images-sv/chap07_ny/24.png)
+```text
+Jag behöver en bärbar dator
+```
 
-### Testa flödet
-Nu är det dags att se magin hända!
+När agenten frågar om du vill begära en av enheterna svarar du:
 
-1.  Öppna **Testa**-panelen. Klicka på ikonen för **Karta** (Aktivitetskarta) och slå på **Spåra mellan ämnen**.
-2.  Skriv: `Jag behöver en bärbar dator`
-    *Agenten bör visa listan och fråga om du vill beställa.*
-3.  Svara: `Ja tack`
-    *Nu ska agenten automatiskt hoppa över till ditt nya ämne **Begär enhet** och visa formuläret.*
+```text
+Ja
+```
 
-!!! success "Snyggt!"
-    Du har nu byggt ett dynamiskt formulär som anpassar sig efter vad som finns i lagret. I nästa kapitel ska vi se till att det faktiskt händer något när man klickar på "Skicka"!
+Agenten ska då använda ämnet **Begär enhet** och visa det adaptiva kortet. Alternativen i kortet ska vara de enheter som hämtades från SharePoint i föregående ämne.
+
+![Testpanelen med det dynamiska adaptiva kortet](../../assets/standard/images-sv/chap07/16.png)
+
+!!! success "Det adaptiva kortet är klart"
+    Du har skapat ett ämne som visar ett dynamiskt kort med enhetsval och ett kommentarsfält. I nästa kapitel använder du kortets utdata för att skicka beställningen vidare.

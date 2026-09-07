@@ -38,7 +38,7 @@ hide:
     </div>
     <div class="chapter-grid">
       <a href="00-concepts/"><span>00</span><div><h3>Begrepp och teori</h3><p>LLM, tokens, kontext och RAG.</p></div></a>
-      <a href="01-prepare-sharepoint/"><span>01</span><div><h3>Förbered SharePoint</h3><p>Skapa webbplatsen och lägg in testdata.</p></div></a>
+      <a href="01-prepare-sharepoint/"><span>01</span><div><h3>Kursuppsättning</h3><p>Aktivera åtkomst, skapa miljön och förbered SharePoint.</p></div></a>
       <a href="02-tour-interface/"><span>02</span><div><h3>Hitta rätt</h3><p>Lär känna Copilot Studios gränssnitt.</p></div></a>
       <a href="03-create-solution/"><span>03</span><div><h3>Skapa en lösning</h3><p>Samla kursens komponenter på rätt plats.</p></div></a>
       <a href="04-create-agent/"><span>04</span><div><h3>Skapa agenten</h3><p>Ge agenten identitet och instruktioner.</p></div></a>

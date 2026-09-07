@@ -39,7 +39,7 @@ nav:
     - Standardagenten:
       - Kursöversikt: copilot-studio/standard/index.md
       - 0. Begrepp och teori: copilot-studio/standard/00-concepts.md
-      - 1. Förbered SharePoint: copilot-studio/standard/01-prepare-sharepoint.md
+      - 1. Kursuppsättning: copilot-studio/standard/01-prepare-sharepoint.md
       - 2. Hitta rätt i Copilot Studio: copilot-studio/standard/02-tour-interface.md
       - 3. Skapa en lösning: copilot-studio/standard/03-create-solution.md
       - 4. Skapa agenten: copilot-studio/standard/04-create-agent.md

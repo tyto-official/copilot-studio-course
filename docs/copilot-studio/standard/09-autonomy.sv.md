@@ -1,220 +1,225 @@
-# 9. Autonomi (Vakna till liv)
+# 9. Autonomi
 
-Hittills har din agent varit reaktiv. Nu ska vi göra den **proaktiv**.
-Vi ska skapa en funktion där agenten automatiskt reagerar när en ny supportbegäran skapas i SharePoint, och genast notifierar IT-avdelningen via mejl.
+Hittills har agenten svarat när någon skriver till den. Nu ska den också reagera när ett nytt supportärende skapas i SharePoint.
 
----
+Vi skapar en SharePoint-utlösare som skickar ärendet till agenten. Agenten använder sedan ett e-postverktyg för att meddela IT-avdelningen utan att vänta på ett meddelande från användaren.
 
-## 9.1 Skapa SharePoint-triggern
+## Del 1: Skapa en SharePoint-utlösare
 
-Vi börjar med att tala om för agenten vad den ska lyssna efter.
+Öppna agentens **Översikt** och gå till avsnittet **Utlösare**. Klicka på **Lägg till utlösare**.
 
-1.  Navigera till fliken **Översikt**.
+![Avsnittet Utlösare på agentens översikt](../../assets/standard/images-sv/chap09/1.png)
 
-    ![Översikt](../../assets/standard/images-sv/chap09_ny/1.png)
+Under **Utvalt** finns normalt SharePoint-utlösaren **När ett objekt skapas**. Om den inte syns kan du använda sökfältet uppe till höger och söka efter:
 
-2.  Leta upp sektionen **Utlösare** och klicka på **+ Lägg till utlösare**.
+~~~text
+När ett objekt skapas
+~~~
 
-    ![Lägg till utlösare](../../assets/standard/images-sv/chap09_ny/2.png)
+![Välj utlösaren När ett objekt skapas](../../assets/standard/images-sv/chap09/2.png)
 
-3.  Sök efter 
-    ```text
-    När ett objekt skapas
-    ```
+Markera **När ett objekt skapas** från SharePoint och klicka på **Nästa**.
 
-    ![Sök utlösare](../../assets/standard/images-sv/chap09_ny/3.png)
+![Utlösaren är markerad](../../assets/standard/images-sv/chap09/3.png)
 
-4.  Välj **När ett objekt skapas (SharePoint)** och klicka **Nästa**.
+Kontrollera utlösarens namn och anslutningarna till Microsoft Copilot Studio och SharePoint. En grön bock visar att anslutningen är klar. Klicka på **Nästa**.
 
-    ![Välj utlösare](../../assets/standard/images-sv/chap09_ny/4.png)
+![Utlösarens namn och anslutningar](../../assets/standard/images-sv/chap09/4.png)
 
-5.  Vänta tills anslutningen konfigureras och klicka sedan på **Nästa**.
+På nästa sida ska du välja webbplats, lista och vilka instruktioner agenten får när utlösaren körs.
 
-    ![Konfigurera anslutning](../../assets/standard/images-sv/chap09_ny/5.png)
+![Inställningarna för SharePoint-utlösaren](../../assets/standard/images-sv/chap09/5.png)
 
-6.  **Konfigurera Utlösaren:**
-    * **Webbplatsadress:** Klicka på dropdown-menyn och välj **IT Supporten**. (Om du inte ser den, klicka på *Lägg till ett anpassat objekt* och klistra in URL:en, eller sök).
+Under **Webbplatsadress** väljer du **Lyserno IT-support**.
 
-    ![Välj webbplats](../../assets/standard/images-sv/chap09_ny/6.png)
+![Välj webbplatsen Lyserno IT-support](../../assets/standard/images-sv/chap09/6.png)
 
-    * **Listnamn:** Välj **Begäran**.
+Under **Listnamn** väljer du **Begäran**.
 
-    ![Välj lista](../../assets/standard/images-sv/chap09_ny/7.png)
+![Välj listan Begäran](../../assets/standard/images-sv/chap09/7.png)
 
-    * *Begränsa kolumner efter vy:* Låt vara som den är.
+Låt **Begränsa kolumner efter vy** vara oförändrat. Ta bort den förifyllda texten under **Ytterligare instruktioner till agenten när den anropas av den här utlösaren** och kopiera in:
 
-7.  **Instruktioner till Agenten:**
-    I rutan **Ytterligare instruktioner till agenten...** klistrar du in följande:
+~~~text
+En ny supportbegäran har skapats i SharePoint:
 
-    ```text
-    Ny supportbegäran skapad i SharePoint: {Body}
-    
-    Använd verktyget 'Bekräfta SharePoint-ärende' för att meddela IT-avdelningen om detta.
-    
-    VIKTIGT: Vänta inte på någon användarinmatning. Arbeta helt autonomt.
-    ```
+{Body}
 
-8.  Klicka på **Skapa utlösare**.
+Använd /Meddela IT om nytt supportärende för att informera IT-avdelningen. Vänta inte på användarinmatning.
+~~~
 
-    ![Skapa utlösare](../../assets/standard/images-sv/chap09_ny/8.png)
+Instruktionen säger åt agenten att använda e-postverktyget som vi skapar senare i kapitlet. Snedstrecket kopplar instruktionen till verktyget.
 
----
+Klicka på **Skapa utlösare**.
 
-## 9.2 Redigera Utlösaren (Power Automate)
+![Den färdigkonfigurerade SharePoint-utlösaren](../../assets/standard/images-sv/chap09/8.png)
 
-Agenten behöver mer detaljer än vad standardinställningen ger. Vi ska injicera en formel som plockar ut exakt den data vi vill ha (Vem, Vad, Prioritet).
+## Del 2: Formatera informationen i Power Automate
 
-**Vänta tills utlösaren är skapad. Testa den inte än.**
+När utlösaren har skapats går du tillbaka till agentens **Översikt**. Klicka på de tre punkterna till höger om **När ett objekt skapas** och välj **Redigera i Power Automate**.
 
-1.  I listan över utlösare på Översikt-sidan: Klicka på de **tre prickarna (...)** längst till höger på din nya utlösare.
-2.  Välj **Redigera i Power Automate**.
+![Redigera utlösaren i Power Automate](../../assets/standard/images-sv/chap09/9.png)
 
-    ![Redigera i Power Automate](../../assets/standard/images-sv/chap09_ny/9.png)
+Flödet öppnas i Power Automate. Det innehåller SharePoint-utlösaren och steget **Sends a prompt to the specified copilot for processing**.
 
-    *Ett nytt fönster öppnas med ditt flöde.*
+![Utlösarflödet i Power Automate](../../assets/standard/images-sv/chap09/10.png)
 
-3.  Du ser två noder. Klicka på den nedre noden: **Send a prompt to the specified copilot for processing**.
+Klicka på **Sends a prompt to the specified copilot for processing**. Under **Meddelande** ser du instruktionen som skapades i Copilot Studio.
 
-    ![Öppna nod](../../assets/standard/images-sv/chap09_ny/10.png)
-    
-    *En meny öppnas till vänster.*
+![Meddelandet som skickas till agenten](../../assets/standard/images-sv/chap09/11.png)
 
-4.  **Redigera meddelandet:**
-    * Klicka i rutan **Body/Message**.
-    * Ta bort texten `{Body}` som ligger där.
-    * Skriv ett snedstreck `/` och välj **Infoga uttryck** (fx-ikonen).
+Ta bort värdet **{Body}** från meddelandet. Ställ markören på samma plats, skriv ett snedstreck och välj **Infoga uttryck**.
 
-    ![Insert Expression](../../assets/standard/images-sv/chap09_ny/11.png)
+![Välj Infoga uttryck i meddelandet](../../assets/standard/images-sv/chap09/12.png)
 
-5.  **Lägg till uttrycket:**
-    En ny meny kommer upp. Klistra in exakt denna kod i rutan:
+Kopiera in följande uttryck:
 
-    ```powerfx
-    concat('Submitted By Name: ', first(triggerOutputs()?['body/value'])?['Author/DisplayName'], '\nSubmitted By Email: ', first(triggerOutputs()?['body/value'])?['Author/Email'], '\nTitle: ', first(triggerOutputs()?['body/value'])?['Title'], '\nIssue Description: ', first(triggerOutputs()?['body/value'])?['Description'], '\nPriority: ', first(triggerOutputs()?['body/value'])?['Priority/Value'],'\nTicket ID : ', first(triggerOutputs()?['body/value'])?['ID'])
-    ```
+~~~text
+concat('Submitted By Name: ', first(triggerOutputs()?['body/value'])?['Author/DisplayName'], '\nSubmitted By Email: ', first(triggerOutputs()?['body/value'])?['Author/Email'], '\nTitle: ', first(triggerOutputs()?['body/value'])?['Title'], '\nIssue Description: ', first(triggerOutputs()?['body/value'])?['Description'], '\nPriority: ', first(triggerOutputs()?['body/value'])?['Priority/Value'],'\nTicket ID : ', first(triggerOutputs()?['body/value'])?['ID'])
+~~~
 
-    * Klicka på **Add**.
+Klicka på **Lägg till** längst ner i uttrycksrutan.
 
-    ![Insert Expression](../../assets/standard/images-sv/chap09_ny/12.png)
+![Uttrycket som hämtar ärendets uppgifter](../../assets/standard/images-sv/chap09/13.png)
 
-    !!! info "Vad gör denna formel?" 
-        När SharePoint skickar data till flödet kommer det som en stor, teknisk dataklump (JSON). För att göra det enkelt för agenten att läsa informationen gör vi två saker i denna formel:
-        1.  **Plockar russinen ur kakan:** Vi hämtar specifika fält som *Titel*, *Avsändare* och *Beskrivning*.
-        2.  **Formaterar:** Vi använder `concat` (slå ihop) för att skapa en prydlig textlista med radbrytningar (`\n`). 
+Uttrycket hämtar anmälarens namn och e-postadress samt ärendets rubrik, beskrivning, prioritet och ID. Informationen sätts ihop till en text som agenten kan använda när den fyller i e-postverktyget.
 
-        Resultatet blir en ren text som agenten lätt kan förstå, typ: *"Title: VPN nere, Priority: High"*.
+Kontrollera att uttrycket har lagts till i meddelandet och klicka på **Spara** uppe till höger.
 
-6.  Klicka på **Save** högst upp till höger på sidan.
+![Uttrycket har lagts till i meddelandet](../../assets/standard/images-sv/chap09/14.png)
 
-    ![Spara flöde](../../assets/standard/images-sv/chap09_ny/13.png)
+Gå sedan tillbaka till Copilot Studio.
 
-    *När det är sparat kan du stänga fliken och gå tillbaka till Copilot Studio.*
+## Del 3: Lägg till e-postverktyget
 
----
+Öppna agentens **Översikt**, gå till avsnittet **Verktyg** och klicka på **Lägg till verktyg**.
 
-## 9.3 Skapa Notifierings-verktyget
+![Lägg till ett verktyg från översikten](../../assets/standard/images-sv/chap09/15.png)
 
-Nu har agenten en utlösare, men den behöver ett verktyg för att kunna skicka mejlet till IT-avdelningen.
+Sök efter:
 
-1.  Navigera till fliken **Ämnen** (eller Verktyg) och välj **+ Lägg till ett verktyg**.
+~~~text
+Skicka e-postmeddelande (V2)
+~~~
 
-    ![Lägg till verktyg](../../assets/standard/images-sv/chap09_ny/14.png)
+Starta sökningen med pilen till höger om sökfältet.
 
-2.  Sök efter 
-    ```text
-    Skicka e-postmeddelande (V2)
-    ```
+![Sök efter Skicka e-postmeddelande V2](../../assets/standard/images-sv/chap09/16.png)
 
-    ![Sök e-post](../../assets/standard/images-sv/chap09_ny/15.png)
+Välj **Skicka e-postmeddelande (V2)** under **Office 365 Outlook**. Om åtgärden inte syns direkt kan du öppna Office 365 Outlook i resultatlistan och välja den där.
 
-3.  Välj **Skicka ett e-postmeddelande (V2)** (Office 365 Outlook).
+![Välj Skicka e-postmeddelande V2 från Office 365 Outlook](../../assets/standard/images-sv/chap09/17.png)
 
-    ![Välj e-post V2](../../assets/standard/images-sv/chap09_ny/16.png)
+Kontrollera att rätt anslutning används. En grön bock vid e-postadressen visar att anslutningen fungerar. Klicka på **Lägg till och konfigurera**.
 
-4.  Vänta på anslutningen genom att kontrollera att det är grönt till höger om den mejladress och klicka sedan på **Lägg till och konfigurera** (eller Nästa).
+![Kontrollera anslutningen och lägg till verktyget](../../assets/standard/images-sv/chap09/18.png)
 
-    !!! info "Ser du ingen grön bock?" 
-        Om anslutningen inte är klar (ingen grön bock vid din mejladress), klicka på pilen eller de tre prickarna vid Anslutning-raden och välj att logga in/lägga till anslutning. Du kan inte klicka på Lägg till och konfigurera förrän anslutningen är aktiv.
+## Del 4: Konfigurera e-postverktyget
 
-    ![Lägg till och konfigurera](../../assets/standard/images-sv/chap09_ny/17.png)
+Under **Detaljer** anger du följande namn:
 
-5.  **Konfigurera verktyget:**
-    * **Namn:**
-      ```text
-      Bekräfta SharePoint-ärende
-      ```
-    * **Beskrivning:**
-      ```text
-      Det här verktyget skickar ett e-postmeddelande till IT-avdelningen med information om att en ny begäran har skapats.
-      ```
+~~~text
+Meddela IT om nytt supportärende
+~~~
 
-    ![Konfigurera verktyg](../../assets/standard/images-sv/chap09_ny/18.png)
+Beskrivning:
 
-6.  **Konfigurera Indata (Viktigt):**
-    Vi måste vara tydliga med vad agenten ska fylla i.
+~~~text
+Skickar ett mejl till IT-avdelningen när ett nytt supportärende har skapats i SharePoint. Används av SharePoint-utlösaren, inte i vanliga chattsamtal.
+~~~
 
-    **Konfigurera "Till" (Mottagare):**
-    Här ska vi ange vem som ska ta emot mejlet. Eftersom det är en notifiering till IT (dig), hårdkodar vi adressen så agenten slipper gissa.
-    
-    * Klicka på dropdown-menyn där det står *Fyll i dynamiskt med AI* och välj **Anpassat värde**.
+Klicka på **Spara**.
 
-    ![Konfigurera Till-indata](../../assets/standard/images-sv/chap09_ny/19.png)
+![Namn och beskrivning för e-postverktyget](../../assets/standard/images-sv/chap09/19.png)
 
-    * Skriv in din egen e-postadress i fältet (t.ex. `JoelThyberg@thybergai.onmicrosoft.com`).
+Gå till **Indata**. Verktyget har tre indatafält:
 
-    ![Konfigurera Till-indata](../../assets/standard/images-sv/chap09_ny/20.png)
+- **To** är mottagarens e-postadress.
+- **Subject** är mejlets ämnesrad.
+- **Body** är mejlets innehåll.
 
-    **Konfigurera "Ämne" (Subject):**
-    Låt stå på *Fyll i dynamiskt med AI*, men vi ska ge en instruktion.
-    
-    * Klicka på **Anpassa** bredvid Ämne.
+![E-postverktygets tre indatafält](../../assets/standard/images-sv/chap09/20.png)
 
-    ![Konfigurera ämne](../../assets/standard/images-sv/chap09_ny/21.png)
+### Ange mottagaren
 
-    * I fältet **Beskrivning**, skriv:
-      ```text
-      En kort ämnesrad som inkluderar begäranstiteln
-      ```
-    * Se till att **Identifiera som** är satt till *Användarens hela svar*.
+Öppna listan **Dynamisk ifyllning med AI** vid **To** och välj **Anpassat värde**.
 
-    ![Konfigurera ämnesdetaljer](../../assets/standard/images-sv/chap09_ny/22.png)
+![Ändra To till Anpassat värde](../../assets/standard/images-sv/chap09/21.png)
 
-    * Stäng panelen för Ämne.
+Ange din egen e-postadress i värdefältet. Under utbildningen skickar du mejlet till dig själv så att du kan kontrollera resultatet.
 
-    **Konfigurera "Brödtext" (Body):**
-    Vi gör samma sak här.
-    
-    * Klicka på **Anpassa**.
+![Den fasta mottagaradressen](../../assets/standard/images-sv/chap09/22.png)
 
-    ![Konfigurera brödtext](../../assets/standard/images-sv/chap09_ny/23.png)
+### Beskriv ämnesraden
 
-    * I fältet **Beskrivning**, skriv:
-      ```text
-      En sammanfattning av den nya begäran, inklusive titel, prioritet och beskrivning.
-      ```
-    * Se till att **Identifiera som** är satt till *Användarens hela svar*.
+Låt **Subject** stå kvar på **Dynamisk ifyllning med AI** och klicka på **Anpassa**. Låt visningsnamnet vara **Subject** och kopiera in följande beskrivning:
 
-    ![Konfigurera brödtextdetaljer](../../assets/standard/images-sv/chap09_ny/24.png)
+~~~text
+Ämnesrad för mejlet. Börja med Ny begäran och lägg till begärans rubrik.
+~~~
 
-    * Stäng panelen.
+Låt **Identifiera som** vara **Användarens hela svar**.
 
-7.  Klicka **Spara**.
+![Beskrivningen för Subject](../../assets/standard/images-sv/chap09/23.png)
 
----
+### Beskriv mejlets innehåll
 
-## 9.4 Testa Autonomin
+Stäng inställningarna för **Subject** och klicka på **Anpassa** vid **Body**. Låt visningsnamnet vara **Body** och kopiera in:
 
-Nu testar vi om agenten vaknar till liv när vi skapar en begäran.
+~~~text
+Sammanfattning av begäran i löpande text: rubrik, prioritet, vem som anmälde ärendet och en kort beskrivning av felet.
+~~~
 
-1.  Gå till **Översikt** i Copilot Studio.
-2.  Vid din utlösare, klicka på ikonen **Testa utlösare** (blixt/play). Testpanelen öppnas och väntar.
-3.  Öppna en ny flik i webbläsaren och gå till din SharePoint-lista **Begäran**.
-4.  Skapa en ny rad (+ Nytt):
-    * **Rubrik:** `VPN nere`
-    * **Beskrivning:** `Jag kommer inte åt nätverket.`
-    * **Prioritet:** `High`
-5.  Spara raden.
-6.  Gå tillbaka till Copilot Studio. Vänta och klicka **Uppdatera** i testpanelen tills utlösaren syns.
-7.  Klicka **Starta testning**.
+Låt **Identifiera som** vara **Användarens hela svar**.
 
-**Resultat:** Agenten ska läsa in begäran, formulera ett mejl med informationen om "VPN nere" och skicka det till dig (IT-avdelningen).
+![Beskrivningen för Body](../../assets/standard/images-sv/chap09/24.png)
+
+Klicka på **Spara**. Låt **Efter körning** stå kvar på **Svara inte (standardinställning)**.
+
+![Det färdigkonfigurerade e-postverktyget](../../assets/standard/images-sv/chap09/25.png)
+
+## Del 5: Testa utlösaren
+
+Innan du startar testet behöver SharePoint-utlösaren en ny händelse att läsa.
+
+Öppna SharePoint-webbplatsen **Lyserno IT-support** och gå till listan **Begäran**. Klicka på **Nytt**, fyll i ett testärende och spara det. Du kan använda följande värden:
+
+Rubrik:
+
+~~~text
+VPN är nere
+~~~
+
+Beskrivning:
+
+~~~text
+Kan inte koppla upp till min VPN.
+~~~
+
+Prioritet:
+
+~~~text
+Normal
+~~~
+
+Gå tillbaka till agentens **Översikt** och avsnittet **Utlösare**. Klicka på provrörsikonen till höger om **När ett objekt skapas**.
+
+![Öppna testet för utlösaren](../../assets/standard/images-sv/chap09/26.png)
+
+Panelen **Testa din utlösare** visar tidigare tillfällen då utlösaren har körts. Om den nya begäran inte syns klickar du på uppdateringsikonen vid **Senast uppdaterad**.
+
+Markera den senaste händelsen och klicka på **Börja testa**.
+
+![Välj den senaste händelsen och börja testa](../../assets/standard/images-sv/chap09/27.png)
+
+Agenten ska läsa ärendet och använda **Meddela IT om nytt supportärende**. I det expanderade testfönstret kan du kontrollera vilka värden agenten skickade till verktyget.
+
+Första gången kan du behöva godkänna att agenten använder din Office 365 Outlook-anslutning. Klicka i så fall på **Tillåt**.
+
+![Det slutförda testet i Copilot Studio](../../assets/standard/images-sv/chap09/28.png)
+
+Öppna din inkorg och kontrollera att mejlet innehåller ärendets rubrik, prioritet, anmälare, beskrivning och ID.
+
+![Mejlet som skickades av den autonoma utlösaren](../../assets/standard/images-sv/chap09/29.png)
+
+Agenten kan nu reagera på ett nytt SharePoint-ärende utan att någon först behöver skriva i chatten.

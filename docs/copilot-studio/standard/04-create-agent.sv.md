@@ -1,165 +1,202 @@
-# 4. Skapa Agenten
+# 4. Skapa Lyserno IT-assistent
 
-Nu har vi gjort klart all nödvändig setup. Vi har datan, vi har miljön och vi har vår Solution. Nu är det dags att börja bygga!
-
-Vi ska bygga en **IT Support agent**. I början kommer den fokusera på hårdvara (det vi lade i SharePoint), men tanken är att den ska växa och kunna hantera alla möjliga IT-frågor framöver.
+Nu ska du skapa kursens agent och ge den ett tydligt uppdrag. Du kontrollerar också att agenten använder rätt lösning, språk och orkestrering innan du börjar lägga till kunskap och verktyg.
 
 ---
 
-## Vägval: Hur skapar vi agenten?
+## Del 1: Skapa agenten
 
-Eftersom vi i förra kapitlet ställde in din Solution som **Föredragen**, spelar det ingen roll varifrån du skapar agenten. Den kommer automatiskt hamna i rätt "låda".
+Gå till startsidan i Copilot Studio. Under **Börja bygga från grunden** väljer du **Agent**.
 
-Vi rekommenderar att du använder huvudmenyn (den vanliga vägen), men för kännedom kan man även göra det inifrån sin Solution.
+![Välj Agent under Börja bygga från grunden](../../assets/standard/images-sv/chap04/1.png)
 
-??? info "Alternativ väg: Skapa direkt inifrån din Solution (Klicka för att se)"
-    Om du vill vara 100% säker på var agenten hamnar, eller om du inte använder "Föredragen lösning"-funktionen, gör du så här:
-
-    **1. Gå in i din Solution**
-    Navigera till **Lösningar** i menyn och klicka på din lösning (`IT Support Agent`).
-    
-    ![Lista med lösningar](../../assets/standard/images-sv/chap04/1.png)
-
-    **2. Klicka på Nytt**
-    Väl inne i lösningen ser du allt som ingår i den. Klicka på **+ Nytt** i toppmenyn.
-    
-    ![Inne i solution](../../assets/standard/images-sv/chap04/2.png)
-
-    **3. Välj Agent**
-    I menyn som fälls ut, välj **Agent** -> **Agent**.
-    
-    ![Menyval för att skapa agent](../../assets/standard/images-sv/chap04/3.png)
-    
-    **4. Förhandsvisning och Val**
-    Detta tar dig till en vy där du startar skapandet. Här ser du "Beskriv"-fliken där du kan låta Copilot skapa grunderna åt dig via chatten.
-    
-    ![Förhandsvisning av skapa agent](../../assets/standard/images-sv/chap04/4.png)
-    
-    Alternativt kan du klicka på fliken **Konfigurera** (eller Hoppa till konfiguration) för att manuellt bestämma namn och inställningar direkt. När du är nöjd klickar du på **Skapa** för att officiellt skapa agenten.
-    
-    ![Konfigurera-fliken](../../assets/standard/images-sv/chap04/5.png)
-
----
-
-## Steg 1: Skapa från grunden (Skapa tom agent)
-
-Vi väljer att gå den vanliga vägen via huvudmenyn. När man skapar en agent finns det huvudsakligen tre vägar att gå:
-
-1.  **Beskriv för att bygga:** Du chattar med Copilot ("Skapa en agent som...") och låter AI:n bygga grunden åt dig.
-2.  **Mallar:** Du utgår från en färdig mall för ett specifikt syfte (t.ex. en reseagent).
-3.  **Skapa tom agent:** Du startar med ett helt tomt papper.
-
-Vi kommer att välja alternativ 3: **Skapa tom agent**.
-
-!!! tip "Varför Skapa tom agent?"
-    Även om det är smidigt att låta AI:n eller en mall göra jobbet, ger det oss mindre kontroll. AI:n gissar ofta vilka verktyg som behövs, vilket kan leda till en rörig konfiguration.
-    
-    Genom att välja **Skapa tom agent** får vi en helt tom agent där vi själva bestämmer exakt vad den ska heta, vad den ska göra och vilka verktyg den får använda. Det är det bästa sättet att lära sig verktyget på riktigt.
-
-**Gör så här:**
-
-1. Om du varit inne i Lösningar nyss: Klicka på **Copilot Studio**-loggan uppe till vänster.
-2. Klicka på **Handläggare** i vänstermenyn.
-3. Klicka på **+ Skapa tom agent** (uppe i högra hörnet).
-
-    ![Klicka på Skapa tom agent](../../assets/standard/images-sv/chap04/6.png)
-
-*Agenten skapas nu direkt och du skickas till översiktsvyn.*
-
----
-
-## Steg 2: Hitta runt i gränssnittet
-
-Nu landar du i översiktsvyn för din nya agent. Innan vi fyller i något, låt oss gå igenom vad de olika delarna betyder.
-
-![Översikt av agenten](../../assets/standard/images-sv/chap04/7.png)
-
-Här är de viktigaste komponenterna:
-
-* **Namn och Beskrivning:** Agentens identitet utåt.
-* **Utlösare:** Det som får agenten att vakna eller agera på en viss händelse (t.ex. när ett mejl kommer).
-* **Instruktioner:** Detta är "System Prompten". Här beskriver vi agentens personlighet, regler och beteende.
-* **Kunskap:** Agentens minne. Här kopplar vi bland annat in dokument, webbsidor och SharePoint-listor.
-* **Verktyg (Åtgärder):** Agentens händer. Här lägger vi till verktyg om den ska kunna *göra* saker (t.ex. skicka ett mejl).
-* **Agenter:** Här kan vi koppla ihop vår agent med andra agenter, eller skapa så kallade **Underordnade agenter**.
-* **Ämnen:** Detta är "hårda" manus. Om vi vill att en konversation ska följa en exakt mall (t.ex. en returprocess) bygger vi det här.
-* **Föreslagna promptar:** De förslag på frågor som syns i chattrutan för användaren (Konversationsstartare).
-
-Till höger ser du **Testa din agent**. Det är din sandlåda där du kan chatta med agenten medan du bygger för att se hur den beter sig.
-
----
-
-## Steg 3: Grundkonfiguration
-
-Nu ska vi ge agenten dess identitet. Fyll i följande i fälten på skärmen:
-
-1.  **Namn:** `IT Support agent`
-2.  **Beskrivning:**
-    ```text
-    En professionell IT-supportagent som hjälper användare med frågor om hårdvara och nätverk osv.
-    ```
-3.  **Modell:** Låt den stå på `GPT-4.1` (Vilket är Standard).
-
----
-
-## Steg 4: Sätt upp Instruktioner
-
-Nu ska vi ge agenten en enkel "hjärna". Gå till rutan för **Instruktioner** och klistra in följande:
+Ange följande namn:
 
 ```text
-Du är en hjälpsam och professionell IT-supportassistent för företaget.
-Din uppgift är att hjälpa anställda med frågor rörande IT, hårdvara och felsökning.
-
-Riktlinjer för dina svar:
-- Var alltid vänlig och pedagogisk.
-- Svara på samma språk som användaren ställer frågan på.
-- Använd endast information från din kunskapsbank.
-- Om du inte hittar svaret i din kunskapsbank, ska du tydligt informera användaren om att du saknar den informationen. Hitta aldrig på fakta.
-- Använd punktlistor för att göra teknisk information lättläst.
+Lyserno IT-assistent
 ```
+
+Öppna sedan **Agentinställningar** och kontrollera följande:
+
+- **Språk:** Svenska (Sverige)
+- **Lösning:** Copilot Studio Utbildning Lyserno IT
+- **Schemanamn:** skapas automatiskt
+
+Om en annan lösning är vald byter du till lösningen som du skapade i förra kapitlet. Låt det automatiska schemanamnet vara kvar och välj sedan **Skapa**.
+
+![Namn, språk, lösning och schemanamn för agenten](../../assets/standard/images-sv/chap04/2.png)
 
 ---
 
-## Steg 5: Testa Agenten
+## Del 2: Kontrollera att agenten har skapats
 
-Vi har nu skapat agentens "hjärna" (instruktionerna), och nu är det dags att testa hur den beter sig.
+När agenten är klar öppnas dess översikt. Vänta tills statusen högst upp visar **Ready**. Det kan också visas ett meddelande om att agenten har etablerats.
 
-### Steg 1: Öppna testpanelen
-Om du inte redan ser chatten till höger:
-1. Klicka på **Testa**-knappen högst upp till höger i Copilot Studio.
+På översikten finns bland annat agentens information, instruktioner, kunskap och verktyg. Till höger finns testpanelen som du använder under resten av kursen.
 
-![Testpanelen](../../assets/standard/images-sv/chap04/8.png)
+![Översikten för Lyserno IT-assistent med statusen Ready](../../assets/standard/images-sv/chap04/3.png)
 
-### Steg 2: Hälsa på agenten
-Vi börjar med att kolla att den förstår sin roll.
+---
 
-1. Skriv i chatten:
-    > *Vem är du?*
+## Del 3: Kontrollera orkestreringen
 
-2. **Förväntat resultat:**
-    Agenten ska presentera sig som **IT Support agent** (eller det namn du valde) och erbjuda hjälp. Den ska vara trevlig och professionell.
+Öppna **Inställningar** och gå till **Generativ AI**. Under **Orkestrering** ska alternativet **Ja – svaren blir dynamiska med hjälp av verktyg och kunskap efter behov** vara valt.
 
-![Agenten hälsar](../../assets/standard/images-sv/chap04/9.png)
+![Generativ orkestrering är vald i agentens inställningar](../../assets/standard/images-sv/chap04/4.png)
 
-*Ser det bra ut? Då vet vi att systemprompten ("Du är en hjälpsam assistent...") fungerar.*
+Med generativ orkestrering kan agenten själv avgöra vilka ämnen, kunskapskällor och verktyg som behövs för en fråga. Alternativet **Nej – klassisk** bygger i stället på mer styrda utlösarfraser och flöden. Den här kursen använder generativ orkestrering.
 
-### Steg 3: Hallucinationstestet
-Nu ska vi ställa en fråga som agenten **inte** har svaret på. Vi har inte laddat upp några öppettider eller dokument än.
+Gå tillbaka till agentens översikt när kontrollen är klar.
 
-En dålig AI skulle gissa ("Vi har öppet 8-17"). En bra agent (med våra instruktioner) ska erkänna att den inte vet.
+---
 
-1. Skriv i chatten:
-    > *Vilka tider har IT-supporten öppet?*
+## Del 4: Lägg till en beskrivning
 
-2. **Förväntat resultat:**
-    Agenten ska svara något i stil med:
-    > *"Jag hittar tyvärr ingen information om öppettiderna i mina system."*
+Beskrivningen hjälper dig och andra skapare att förstå agentens syfte. Den är inte samma sak som instruktionerna som styr agentens svar.
 
-![Agenten vet inte svaret](../../assets/standard/images-sv/chap04/10.png)
+Välj **Redigera** vid **Information** och skriv följande:
 
-### Varför är detta bra?
-Om agenten hade svarat *"Vi har öppet 08:00 - 17:00"*, hade den ljugit (hallucinerat). Det är farligt i en företagskontext.
-Eftersom vi skrev i instruktionerna: *"Hitta aldrig på fakta"*, så skyddar agenten oss genom att vara ärlig.
+```text
+Lysernos interna IT-assistent som hjälper medarbetare med frågor om enheter, IT och vanlig felsökning.
+```
 
-!!! success "Bra jobbat!"
-    Att agenten svarar "Jag vet inte" är precis vad vi vill! Det betyder att den följer din regel om att **inte hitta på fakta**. I nästa kapitel ska vi ge den svaren genom att koppla in SharePoint.
+Välj sedan **Spara**.
+
+![Beskrivning för Lyserno IT-assistent](../../assets/standard/images-sv/chap04/5.png)
+
+---
+
+## Del 5: Välj modell
+
+Öppna modellväljaren på agentens översikt och välj **GPT-5.5 Chat** om den finns tillgänglig.
+
+Vilka modeller som visas kan skilja sig mellan organisationer och miljöer. Om **GPT-5.5 Chat** saknas kan du använda den GPT-chattmodell som redan är vald. Du kan byta modell senare.
+
+![Tillgängliga modeller i agentens modellväljare](../../assets/standard/images-sv/chap04/6.png)
+
+??? info "Valfritt: Aktivera Anthropic-modeller"
+    Anthropic-modeller kräver inställningar på tre nivåer och de måste göras i den här ordningen. Du behöver bara följa detta avsnitt om organisationen vill använda en Anthropic-modell.
+
+    Microsoft anger att Anthropic-modeller är avstängda som standard för organisationer i EU, EFTA och Storbritannien. Organisationen behöver också bedöma reglerna för databehandling innan modellerna aktiveras.
+
+    ### 1. Tillåt Anthropic i Microsoft 365-administrationscentret
+
+    Du behöver rollen **AI-administratör** eller **global administratör**.
+
+    1. Öppna Microsoft 365-administrationscentret.
+    2. Välj **Visa alla** i menyn om alla menyval inte visas.
+
+        ![Visa alla menyval i Microsoft 365-administrationscentret](../../assets/standard/images-sv/chap04/Antropic/1.png)
+
+        ![Utökad meny i Microsoft 365-administrationscentret](../../assets/standard/images-sv/chap04/Antropic/2.png)
+
+    3. Öppna **Copilot** och välj **Inställningar**.
+
+        ![Copilot-menyn i Microsoft 365-administrationscentret](../../assets/standard/images-sv/chap04/Antropic/3.png)
+
+        ![Copilot-inställningar i Microsoft 365-administrationscentret](../../assets/standard/images-sv/chap04/Antropic/4.png)
+
+    4. Välj fliken **Visa alla** och öppna **AI-leverantörer som fungerar som Microsoft-underprocessorer**.
+
+        ![Inställningen för AI-leverantörer som fungerar som Microsoft-underprocessorer](../../assets/standard/images-sv/chap04/Antropic/5.png)
+
+    5. Välj **Anthropic** under tillgängliga underprocessorer och spara.
+    6. Under valet för åtkomst väljer du alla användare eller de användare och grupper som ska få använda modellerna. Spara igen.
+
+        ![Anthropic aktiverat för valda användare](../../assets/standard/images-sv/chap04/Antropic/6.png)
+
+    Läs mer i [Anthropic-modeller i Microsoft Online Services](https://learn.microsoft.com/sv-se/microsoft-365/copilot/connect-to-ai-subprocessor) och [Ansluta till AI-modeller](https://learn.microsoft.com/sv-se/microsoft-365/copilot/connect-to-ai-models).
+
+    ### 2. Tillåt Anthropic i Power Platform-administrationscentret
+
+    1. Öppna Power Platform-administrationscentret och välj **Hantera**.
+
+        ![Hantera i Power Platform-administrationscentret](../../assets/standard/images-sv/chap04/Antropic/7.png)
+
+    2. Välj **Miljöer** och öppna miljön som används i kursen.
+
+        ![Lista över miljöer i Power Platform-administrationscentret](../../assets/standard/images-sv/chap04/Antropic/8.png)
+
+        ![Den valda miljön i Power Platform-administrationscentret](../../assets/standard/images-sv/chap04/Antropic/9.png)
+
+    3. Välj **Inställningar** och öppna **Produkt**.
+
+        ![Miljöns inställningar i Power Platform-administrationscentret](../../assets/standard/images-sv/chap04/Antropic/10.png)
+
+        ![Inställningar under Produkt](../../assets/standard/images-sv/chap04/Antropic/11.png)
+
+    4. Välj **Funktioner**, aktivera **Tillåt Anthropic-modeller** och spara.
+
+        ![Tillåt Anthropic-modeller för miljön](../../assets/standard/images-sv/chap04/Antropic/12.png)
+
+    Om miljön ingår i en miljögrupp kan inställningen i stället styras genom **Hantera** > **Miljögrupper** > välj gruppen > **Regler** > **Externa modeller**. Aktivera modellfamiljen, välj **Spara** och sedan **Publicera regler**. Miljön måste vara hanterad för att kunna ingå i en miljögrupp.
+
+    Läs mer i [Tillåt externa språkmodeller för generativa svar](https://learn.microsoft.com/sv-se/power-platform/admin/allow-llm-generative-responses).
+
+    ### 3. Välj modellen i Copilot Studio
+
+    När administratörerna har aktiverat Anthropic och gett dig åtkomst kan du gå tillbaka till agentens översikt, öppna modellväljaren och välja en tillgänglig Anthropic-modell.
+
+    Läs mer i [Välj en extern modell som primär AI-modell](https://learn.microsoft.com/sv-se/microsoft-copilot-studio/authoring-select-external-response-model).
+
+---
+
+## Del 6: Lägg till instruktioner
+
+Instruktionerna beskriver vad agenten ska göra, hur den ska svara och vilka gränser den ska följa.
+
+Välj **Redigera** vid **Instruktioner** och klistra in följande:
+
+```text
+Du är Lyserno IT-assistent. Du hjälper Lysernos medarbetare med frågor om IT, enheter och vanlig felsökning.
+
+Arbetssätt
+
+- Svara på samma språk som användaren.
+- Var vänlig, tydlig och pedagogisk.
+- Ställ en kort följdfråga när viktig information saknas.
+- Använd tillgängliga kunskapskällor, ämnen och verktyg när de är relevanta.
+- Om du saknar underlag för ett svar ska du säga det tydligt. Hitta inte på fakta.
+- Använd punktlistor när de gör teknisk information lättare att följa.
+
+Omfattning
+
+Hjälp bara till med IT-relaterade frågor för Lyserno. Förklara vänligt när en fråga ligger utanför ditt område.
+```
+
+Välj **Spara**.
+
+![Instruktioner för Lyserno IT-assistent](../../assets/standard/images-sv/chap04/7.png)
+
+---
+
+## Del 7: Testa agenten
+
+Använd testpanelen till höger. Om en tidigare konversation visas kan du starta en ny testsession innan du fortsätter.
+
+### Kontrollera agentens roll
+
+Skriv:
+
+```text
+Vem är du?
+```
+
+Agenten ska beskriva sig som Lysernos IT-assistent och erbjuda hjälp med IT-relaterade frågor.
+
+![Agenten beskriver sin roll i testpanelen](../../assets/standard/images-sv/chap04/8.png)
+
+### Kontrollera att agenten inte hittar på
+
+Skriv sedan:
+
+```text
+Vilka tider har IT-supporten öppet?
+```
+
+Agenten har ännu ingen Lyserno-specifik information om öppettider. Den ska därför säga att den saknar underlag i stället för att gissa en öppettid.
+
+![Agenten säger att den saknar information om öppettider](../../assets/standard/images-sv/chap04/9.png)
+
+!!! success "Agentens grund är klar"
+    Agenten har nu rätt namn, lösning, språk, orkestrering, beskrivning och instruktioner. I nästa kapitel lägger du till kunskap som agenten kan använda i sina svar.
