@@ -264,7 +264,7 @@ https://tyto-official.github.io/copilot-studio-course/assets/standard/images/pro
 
 #### 2. Surface Laptop 13.8
 
-![Surface Laptop 13.8](../../assets/standard/images-sv/chap01/enkal-sharepoint/Surface-Laptop-13-8.jpg)
+![Surface Laptop 13.8](../../assets/standard/images/products/surface-laptop-13-8.jpg)
 
 | Fält | Värde |
 | --- | --- |
@@ -281,7 +281,7 @@ https://tyto-official.github.io/copilot-studio-course/assets/standard/images/pro
 Kopiera bildlänken till fältet **Bild**:
 
 ```text
-https://tyto-official.github.io/copilot-studio-course/assets/standard/images-sv/chap01/enkal-sharepoint/Surface-Laptop-13-8.jpg
+https://tyto-official.github.io/copilot-studio-course/assets/standard/images/products/surface-laptop-13-8.jpg
 ```
 
 Den här enheten har statusen `Bokat` och ska därför inte visas när agenten senare söker efter tillgängliga enheter.
