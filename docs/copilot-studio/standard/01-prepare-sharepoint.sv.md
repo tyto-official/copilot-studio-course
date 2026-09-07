@@ -197,7 +197,7 @@ Kontrollera att startsidan för **Lyserno IT-support** öppnas.
 
 ## Del 5: Förbered listan Enheter
 
-Mallen har redan skapat listan **Enheter**. Vi lägger till en kolumn för bildlänkar och fyller sedan listan med fem enheter. En av dem får statusen `Reserved`, så att vi senare kan kontrollera att agenten bara visar enheter som är tillgängliga.
+Mallen har redan skapat listan **Enheter**. Vi lägger till en kolumn för bildlänkar och fyller sedan listan med fem enheter. En av dem får statusen `Bokat`, så att vi senare kan kontrollera att agenten bara visar enheter som är tillgängliga.
 
 ### 1. Öppna listan Enheter
 
@@ -247,7 +247,7 @@ Använd de engelska värdena `Laptop`, `Desktop` och `Tablet` för **Resurstyp**
 | Fält | Värde |
 | --- | --- |
 | Rubrik | `Surface Laptop 13` |
-| Status | `Available` |
+| Status | `Tillgänglig` |
 | Tillverkare | `Microsoft` |
 | Modell | `Surface Laptop 13` |
 | Resurstyp | `Laptop` |
@@ -269,7 +269,7 @@ https://tyto-official.github.io/copilot-studio-course/assets/standard/images/pro
 | Fält | Värde |
 | --- | --- |
 | Rubrik | `Surface Laptop 13.8` |
-| Status | `Reserved` |
+| Status | `Bokat` |
 | Tillverkare | `Microsoft` |
 | Modell | `Surface Laptop 13.8` |
 | Resurstyp | `Laptop` |
@@ -284,7 +284,7 @@ Kopiera bildlänken till fältet **Bild**:
 https://tyto-official.github.io/copilot-studio-course/assets/standard/images-sv/chap01/enkal-sharepoint/Surface-Laptop-13-8.jpg
 ```
 
-Den här enheten har statusen `Reserved` och ska därför inte visas när agenten senare söker efter tillgängliga enheter.
+Den här enheten har statusen `Bokat` och ska därför inte visas när agenten senare söker efter tillgängliga enheter.
 
 #### 3. Surface Laptop 15
 
@@ -293,7 +293,7 @@ Den här enheten har statusen `Reserved` och ska därför inte visas när agente
 | Fält | Värde |
 | --- | --- |
 | Rubrik | `Surface Laptop 15` |
-| Status | `Available` |
+| Status | `Tillgänglig` |
 | Tillverkare | `Microsoft` |
 | Modell | `Surface Laptop 15` |
 | Resurstyp | `Laptop` |
@@ -315,7 +315,7 @@ https://tyto-official.github.io/copilot-studio-course/assets/standard/images/pro
 | Fält | Värde |
 | --- | --- |
 | Rubrik | `Surface Studio` |
-| Status | `Available` |
+| Status | `Tillgänglig` |
 | Tillverkare | `Microsoft` |
 | Modell | `Surface Studio` |
 | Resurstyp | `Desktop` |
@@ -337,7 +337,7 @@ https://tyto-official.github.io/copilot-studio-course/assets/standard/images/pro
 | Fält | Värde |
 | --- | --- |
 | Rubrik | `Surface Pro` |
-| Status | `Available` |
+| Status | `Tillgänglig` |
 | Tillverkare | `Microsoft` |
 | Modell | `Surface Pro` |
 | Resurstyp | `Tablet` |
@@ -356,8 +356,8 @@ https://tyto-official.github.io/copilot-studio-course/assets/standard/images/pro
 
 När du är klar ska listan **Enheter** innehålla fem enheter. Kontrollera att:
 
-- fyra enheter har statusen `Available`
-- Surface Laptop 13.8 har statusen `Reserved`
+- fyra enheter har statusen `Tillgänglig`
+- Surface Laptop 13.8 har statusen `Bokat`
 - resurstypen är `Laptop`, `Desktop` eller `Tablet`
 - varje rad har en länk i kolumnen **Bild**
 - fältet **Enhetsfoto** är tomt
