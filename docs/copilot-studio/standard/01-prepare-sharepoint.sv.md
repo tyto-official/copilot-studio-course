@@ -1,257 +1,366 @@
-# 0. Förberedelser och Miljö
+# 1. Kursuppsättning
 
-Innan vi börjar bygga måste vi se till att du har rätt förutsättningar. Vi ska skapa en **Developer Environment**.
+Innan vi börjar bygga Lysernos IT-supportagent förbereder vi åtkomsten till Copilot Studio, skapar en personlig utvecklingsmiljö och lägger upp kursens data i SharePoint.
 
-!!! info "Varför Developer Plan?"
-    När du aktiverar denna plan får du en personlig "sandlåda" där du har fulla admin-rättigheter. Det viktigaste är att denna miljö automatiskt inkluderar databasen **Dataverse**, vilket krävs för att vår agent ska kunna minnas saker och hantera godkännanden.
+När kapitlet är klart har du:
 
----
+- tillgång till Copilot Studio för att bygga och testa agenten
+- en egen utvecklingsmiljö med Dataverse
+- kontrollerat att AI-nav går att öppna
+- SharePoint-webbplatsen **Lyserno IT-support**
+- SharePoint-listan **Enheter** med kursens fem enheter
 
-## Steg 1: Aktivera din miljö
+!!! important "Använd samma konto genom hela uppsättningen"
+    Du behöver en e-postadress för **arbete eller skola**. Personliga konton som `@outlook.com` och `@gmail.com` stöds inte för registreringen. Använd samma Microsoft 365-konto i Copilot Studio, Power Apps och SharePoint.
 
-1. Öppna en ny flik och gå till [Power Apps Developer Plan](https://www.microsoft.com/sv-se/power-platform/products/power-apps?market=se).
-2. Klicka på den blå knappen **Prova kostnadsfritt**.
-
-   ![Startsidan för Power Apps Developer Plan](../../assets/standard/images-sv/chap01/1.png)
-3. Ange din jobbmail, kryssa i rutan för att godkänna avtalen och klicka på **Börja kostnadsfritt**.
-
-   ![Formulär för registrering](../../assets/standard/images-sv/chap01/2.png)
-
-När du registrerat dig skickas du vidare till Power Apps startsida.
-
-*Om du skickas direkt vidare utan att behöva fylla i något betyder det att du redan har licensen aktiverad sen tidigare. Det är inga problem, gå bara vidare till Steg 2.*
+    Om organisationen har stängt av självbetjäningsregistrering behöver du hjälp av en Microsoft 365- eller Power Platform-administratör.
 
 ---
 
-## Steg 2: Kontrollera och välj miljö
+## Del 1: Aktivera Copilot Studio
 
-Nu ska vi se till att din nya miljö finns tillgänglig och välja den. Detta gör vi direkt inifrån Power Apps.
+Om du redan har åtkomst till Copilot Studio kan du gå vidare till [Del 2: Skapa en utvecklingsmiljö](#del-2-skapa-en-utvecklingsmiljo).
 
-1. Titta uppe i högra hörnet på sidan. Klicka på väljaren för **Miljö** (där ditt namn eller ett miljönamn står).
+### 1. Starta registreringen
 
-   ![Pilen visar miljöväljaren i menyn](../../assets/standard/images-sv/chap01/3.png)
-2. En lista fälls ut. Titta under rubriken **App skapad med Dataverse**. Där ska din utvecklingsmiljö ligga. Klicka på den för att välja den.
+1. Öppna [Microsoft Copilot Studio](https://www.microsoft.com/sv-se/microsoft-365-copilot/microsoft-copilot-studio?market=se) i en ny flik.
+2. Välj **Prova kostnadsfritt**.
 
-**Viktigt om namngivning:**
-I mina screenshots heter miljön "CopilotLab". Din miljö kommer troligen heta **"[Ditt Namn]s miljö"**.
-    ![Välj din Developer-miljö i listan under Dataverse-rubriken](../../assets/standard/images-sv/chap01/4.png)
-Om du redan hade en utvecklingsmiljö sedan tidigare kommer systemet *inte* skapa en ny, utan du använder bara den gamla. Det viktiga är att miljön du väljer ligger under rubriken **App skapad med Dataverse** och inte under "Andra miljöer".
+![Microsofts startsida för Copilot Studio med knappen Prova kostnadsfritt](../../assets/standard/images-sv/chap01/1.png)
 
----
+### 2. Ange ditt konto
 
-## Steg 3: Verifiera Dataverse
+1. Skriv in din e-postadress för arbete eller skola.
+2. Välj **Nästa**.
 
-Nu gör vi ett snabbt test för att se att databasen (Dataverse) är installerad och fungerar.
+![Registreringen för Copilot Studio där en e-postadress anges](../../assets/standard/images-sv/chap01/2.png)
 
-1. Se till att du står i din nya miljö (enligt Steg 2).
-2. Klicka på **AI-nav** i menyn längst till vänster.
+Microsoft kontrollerar om adressen redan tillhör ett befintligt Microsoft-konto.
 
-   ![Klicka på AI-nav i menyn](../../assets/standard/images-sv/chap01/5.png)
-3. **Titta på resultatet:**
+### 3. Logga in eller starta utvärderingen
 
-**✅ Det ser ut så här (Succé):**
-Du ser en sida med rutor för "AI-modeller", "Promptar" eller en lista. Inga felmeddelanden.
-![Lyckat resultat i AI-nav](../../assets/standard/images-sv/chap01/6.png)
-*Grattis! Din miljö är redo. Du kan gå vidare till nästa kapitel.*
+- Om kontot redan finns väljer du **Logga in** och genomför den vanliga inloggningen.
+- Om kontot ännu inte har Copilot Studio följer du registreringsflödet och startar en utvärderingsversion.
 
-**❌ Det ser ut så här (Fel):**
-Du möts av en bild på en burk och texten **"Ingen databas hittades"**.
-![Misslyckat resultat - databas saknas](../../assets/standard/images-sv/chap01/7.png)
+![Copilot Studio har identifierat ett befintligt Microsoft-konto och visar knappen Logga in](../../assets/standard/images-sv/chap01/3.png)
 
----
+I det sista steget kan du behöva välja land eller region. Kontrollera uppgifterna och välj sedan **Start free trial** eller motsvarande svensk knapp.
 
-## 🛑 Felsökning
+![Sista registreringssteget med knappen Start free trial](../../assets/standard/images-sv/chap01/4.png)
 
-**Jag fick "Ingen databas hittades" i Steg 3?**
-Då har du troligen valt fel miljö (t.ex. Standardmiljön) eller så har installationen av din Developer-miljö inte blivit klar än.
+!!! info "Om utvärderingsversionen"
+    Utvärderingsversionen gäller inledningsvis i 30 dagar. När perioden löper ut kan den förlängas med ytterligare 30 dagar, och Microsoft anger att agenten kan fortsätta fungera i upp till 90 dagar efter att utvärderingen löpt ut.
 
-1. Dubbelkolla i menyn **Miljö** (uppe till höger) att du INTE är i "(standard)".
-2. Om du är i rätt miljö men ändå får felet: Vänta 5-10 minuter och uppdatera sidan (F5). Ibland tar det en stund för databasen att skapas första gången.
-
-**Jag får felmeddelande när jag försöker signa upp i Steg 1?**
-Om din IT-avdelning har blockerat detta får du använda din **Standard**-miljö.
-*OBS: Meddela kursledaren om du måste göra detta.*
-
-# 1. Förbered SharePoint
-
-Vår IT support agent behöver data för att kunna svara på frågor. Vi ska nu skapa en SharePoint-sajt som innehåller information om hårdvara (Laptops, skärmar etc.).
-
-För att spara tid använder vi en färdig mall från Microsoft.
+    Licensen låter dig bygga och testa agenten i testchatten, vilket räcker under kursen. Den tillåter däremot inte publicering. Läs mer i [Microsofts aktuella information om åtkomst och utvärderingslicenser](https://learn.microsoft.com/sv-se/microsoft-copilot-studio/requirements-licensing-subscriptions).
 
 ---
 
-## Steg 1: Gå till SharePoint
+## Del 2: Skapa en utvecklingsmiljö
 
-Vi navigerar dit direkt från Power Apps.
+Power Apps Developer Plan ger dig en kostnadsfri personlig miljö för utveckling och test. Vi använder den när vi bygger agenten, verktygen och agentflödet.
 
-1. Klicka på **Våfflan** (Appstartaren) bestående av 9 prickar högst upp i vänstra hörnet.
+### 1. Registrera Developer Plan
 
-   ![Klicka på våfflan](../../assets/standard/images-sv/chap01/7.5.png)
-2. I menyn som fälls ut, klicka på **SharePoint**.
+1. Öppna [Power Apps Developer Plan](https://www.microsoft.com/sv-se/power-platform/products/power-apps/free) i en ny flik.
+2. Välj **Börja använda kostnadsfritt**.
 
-   ![Välj SharePoint i menyn](../../assets/standard/images-sv/chap01/8.png)
-3. Du hamnar nu på startsidan för SharePoint. Klicka på **+ Skapa webbplats**.
+![Startsidan för Power Apps Developer Plan](../../assets/standard/images-sv/chap01/5.png)
 
-   ![SharePoint startsida](../../assets/standard/images-sv/chap01/9.png)
+3. Skriv in samma e-postadress som du använde för Copilot Studio.
+4. Markera rutan för att godkänna informationen och avtalen.
+5. När knappen aktiveras väljer du **Börja kostnadsfritt**.
 
----
+![Registreringsfönstret för Power Apps Developer Plan](../../assets/standard/images-sv/chap01/6.png)
 
-## Steg 2: Välj mallen "IT Supportavdelning"
+När registreringen är klar skickas du vidare till Power Apps.
 
-Nu ska vi välja rätt mall.
+### 2. Kontrollera miljön
 
-1. Du får två val. Välj **Gruppwebbplats**.
+Den nya miljön får normalt ett namn baserat på ditt användarnamn, exempelvis **Miljö för Joel Thyberg**. Om en miljö med samma namn redan finns kan den nya få ett tillägg som `(1)`.
 
-   ![Välj Gruppwebbplats](../../assets/standard/images-sv/chap01/10.png)
-2. Klicka på fliken **Mallar** högst upp.
-3. Scrolla ner och klicka på rutan för **IT Supportavdelning**.
+![Power Apps efter att utvecklingsmiljön har skapats](../../assets/standard/images-sv/chap01/7.png)
 
-   ![Välj mallen IT Support i galleriet](../../assets/standard/images-sv/chap01/11.png)
-4. Klicka på knappen **Använd mall**.
+1. Välj miljöväljaren uppe i det högra hörnet.
+2. Leta efter den nya miljön under **Skapa appar med Dataverse** eller **Andra miljöer**.
+3. Välj din personliga utvecklingsmiljö så att en bock visas bredvid namnet.
 
-   ![Välj mallen IT Support i galleriet](../../assets/standard/images-sv/chap01/12.png)
+![Miljöväljaren i Power Apps med utvecklingsmiljön vald](../../assets/standard/images-sv/chap01/8.png)
 
-*(Om du inte ser mallen, kontakta kursledaren för instruktioner om hur man skapar listan manuellt).*
+!!! warning "Miljön kan behöva några minuter"
+    Uppdatera sidan om miljön inte visas direkt. I vissa klientorganisationer kan det ta upp till ungefär tio minuter innan miljön är klar.
 
----
-
-## Steg 3: Konfigurera namn och språk
-
-Nu ska vi döpa sajten och välja språk.
-
-1. **Webbplatsnamn:** Döp den till `IT Supporten`.
-2. **Webbplatsbeskrivning:** (Valfritt) Skriv en kort beskrivning om du vill.
-3. Klicka på knappen **Nästa**.
-
-   ![Fyll i namn och klicka Nästa](../../assets/standard/images-sv/chap01/13.png)
-4. Nu får du välja språk. Välj **Svenska**.
-
-   ![Välj Svenska under språkinställningarna](../../assets/standard/images-sv/chap01/14.png)
-
-   !!! info "Språkval"
-   Eftersom vi kör med svenskt gränssnitt i den här versionen av kursen väljer vi **Svenska** här. Kolumnnamnen i SharePoint-listan kommer då heta saker som `Enhetstyp` istället för `DeviceType`. Instruktionerna i resten av kursen är anpassade för detta.
-5. Klicka på **Skapa webbplats**.
-
-   *Vänta några sekunder medan sajten skapas...*
-6. När sajten är skapad kommer en ruta där du kan lägga till medlemmar. Vi behöver inte göra det nu. Klicka bara på **Slutför**.
-
-   ![Klicka på Slutför för att skapa sajten](../../assets/standard/images-sv/chap01/15.png)
-
-   *Du skickas nu automatiskt till den nya sajten.*
+    Utgå från miljöns namn. Välj din personliga utvecklingsmiljö, inte organisationens standardmiljö. Microsoft beskriver samma namn- och väntelogik i [guiden för Power Apps Developer Plan](https://learn.microsoft.com/en-us/power-platform/developer/create-developer-environment).
 
 ---
 
-## Steg 4: Anpassa listan "Enheter"
+## Del 3: Kontrollera Dataverse och AI-nav
 
-Mallen har skapat en lista åt oss som heter **Enheter**, men vi behöver lägga till bilder på produkterna.
+Agenten och dess komponenter sparas i Dataverse. Innan vi fortsätter kontrollerar vi därför att rätt miljö är vald och att AI-nav går att öppna.
 
-1. På din nya sajt, klicka på fliken **Enheter** i toppmenyn (eller under "Webbplatsinnehåll").
+### 1. Öppna AI-nav
 
-   ![Hitta listan Devices](../../assets/standard/images-sv/chap01/16.png)
-2. Scrolla längst till höger i listan tills du ser knappen **+ Lägg till kolumn**. Klicka på den.
+1. Kontrollera att din personliga utvecklingsmiljö fortfarande är vald uppe till höger.
+2. Välj **AI-nav** i vänsternavigeringen.
 
-   ![Klicka på Lägg till kolumn längst till höger](../../assets/standard/images-sv/chap01/17.png)
-3. I menyn som dyker upp, scrolla ner och välj **Hyperlänk**.
+![Power Apps med AI-nav i vänsternavigeringen](../../assets/standard/images-sv/chap01/9.png)
 
-   ![Välj datatypen Hyperlänk](../../assets/standard/images-sv/chap01/18.png)
-4. Döp kolumnen till `Bild`.
-5. Klicka på **Spara**.
+### 2. Kontrollera resultatet
 
-   ![Döp kolumnen till Image och spara](../../assets/standard/images-sv/chap01/19.png)
+AI Builder-sidan ska öppnas och visa områden som **Prompter**, **AI-modeller**, **Dokumentautomatisering** och **Övervakningsaktivitet**.
 
-   !!! info "Varför gör vi detta?"
-   För att vår AI-agent ska kunna visa bilder i chatten behöver den en direktlänk (URL) till bilden. Det inbyggda bildfältet i SharePoint är svårt för agenten att läsa, så vi skapar en enkel länkkolumn istället.
+![AI-nav öppet i Power Apps](../../assets/standard/images-sv/chap01/10.png)
+
+Det räcker att sidan laddar. Du ska inte skapa någon prompt eller modell här.
+
+Om du i stället ser meddelandet **Ingen databas hittades** saknar den valda miljön en Dataverse-databas.
+
+![AI-nav visar meddelandet Ingen databas hittades](../../assets/standard/images-sv/chap01/11.png)
+
+!!! warning "Om ingen databas hittas"
+    Kontrollera först att du har valt din personliga utvecklingsmiljö och inte organisationens standardmiljö. Vänta några minuter och uppdatera sedan sidan.
+
+    Om meddelandet ligger kvar behöver miljön få en Dataverse-databas. Välj **Skapa en databas** om du har behörighet. Annars ber du en Power Platform-administratör kontrollera miljön och dina behörigheter innan du fortsätter.
 
 ---
 
-## Steg 5: Lägg in testdata
+## Del 4: Skapa Lyserno IT-support
 
-Nu ska vi fylla listan med 4 produkter.
+Nu skapar vi SharePoint-webbplatsen som innehåller Lysernos supportbegäranden och enhetsregister. Vi använder mallen för en IT-supportavdelning eftersom listan **Begäran** behövs senare i kursen.
 
-1. Klicka på knappen **+ Lägg till nytt objekt** (eller *Nytt*) uppe till vänster i listan.
+### 1. Öppna SharePoint
 
-   ![Klicka på Lägg till nytt objekt](../../assets/standard/images-sv/chap01/20.png)
-2. En ruta öppnas till höger. Här fyller du i informationen för produkten (se tabellerna nedan).
+1. Välj appstartaren med de nio punkterna uppe till vänster i Power Apps.
+2. Välj **SharePoint**.
 
-   ![Fyll i informationen i formuläret](../../assets/standard/images-sv/chap01/21.png)
+![Appstartaren i Power Apps med SharePoint valt](../../assets/standard/images-sv/chap01/12.png)
 
-!!! tip "Viktigt om bilder"
-    **Lämna fältet 'Device photo' tomt!** Vi ska inte ladda upp några filer.
+SharePoint öppnas i en ny flik. Du står normalt på **Utforska** när sidan öppnas.
 
-    Gör istället så här:
-    1. Scrolla ner i formuläret till fältet**Image** (som vi skapade i förra steget).
-    2. Kopiera länken (URL:en) från rutan under respektive produkt här nedanför.
-    3. Klistra in den i **Image**-fältet i SharePoint.
+![SharePoints startsida med Utforska valt](../../assets/standard/images-sv/chap01/13.png)
 
-### 1. Surface Laptop 13
+### 2. Börja skapa webbplatsen
+
+1. Välj **Version** i vänsternavigeringen.
+2. Under **Börja utveckla** väljer du **Webbplats**.
+
+![SharePoint med Version valt och alternativet Webbplats under Börja utveckla](../../assets/standard/images-sv/chap01/14.png)
+
+### 3. Välj webbplatsmall
+
+1. Kontrollera att **Gruppwebbplats** är valt. Byt från **Kommunikationswebbplats** om det alternativet visas.
+2. Leta upp Microsoft-mallen **IT-supportavdelning** och välj den.
+
+![Valet Gruppwebbplats med mallen IT-supportavdelning](../../assets/standard/images-sv/chap01/15.png)
+
+3. Kontrollera förhandsgranskningen och välj **Använd mall**.
+
+![Förhandsgranskningen av mallen IT-supportavdelning](../../assets/standard/images-sv/chap01/16.png)
+
+### 4. Konfigurera webbplatsen
+
+Ange följande webbplatsnamn:
+
+```text
+Lyserno IT-support
+```
+
+Ange följande beskrivning:
+
+```text
+Intern IT-support och hantering av enheter för Lyserno
+```
+
+Gruppens e-postadress och webbadressen fylls i automatiskt. Välj sedan:
+
+- **Sekretessinställningar:** Privat – endast godkända medlemmar har åtkomst till webbplatsen
+- **Välj språk:** Svenska
+
+![Konfigurationen av webbplatsen Lyserno IT-support](../../assets/standard/images-sv/chap01/17.png)
+
+Kontrollera språk och sekretess innan du fortsätter. Välj därefter **Skapa webbplats**.
+
+### 5. Öppna webbplatsen
+
+Medan SharePoint skapar webbplatsen kan du lägga till ägare och medlemmar. Om du arbetar själv lämnar du fälten tomma. Välj sedan **Gå till webbplatsen**.
+
+![Webbplatsen är skapad och kan öppnas](../../assets/standard/images-sv/chap01/18.png)
+
+Kontrollera att startsidan för **Lyserno IT-support** öppnas.
+
+![Startsidan för Lyserno IT-support](../../assets/standard/images-sv/chap01/19.png)
+
+!!! note "Listorna från mallen"
+    Mallen skapar listorna **Enheter** och **Begäran**. I nästa del fyller du **Enheter** med kursens testdata. **Begäran** används senare när agenten ska reagera på nya supportärenden, så låt den ligga kvar.
+
+---
+
+
+## Del 5: Förbered listan Enheter
+
+Mallen har redan skapat listan **Enheter**. Vi lägger till en kolumn för bildlänkar och fyller sedan listan med fem enheter. En av dem får statusen `Reserved`, så att vi senare kan kontrollera att agenten bara visar enheter som är tillgängliga.
+
+### 1. Öppna listan Enheter
+
+Välj **Enheter** i menyn högst upp på webbplatsen.
+
+![Startsidan för Lyserno IT-support med Enheter i menyn](../../assets/standard/images-sv/chap01/enkal-sharepoint/1.png)
+
+Listan är tom när den öppnas första gången.
+
+![Den tomma SharePoint-listan Enheter](../../assets/standard/images-sv/chap01/enkal-sharepoint/2.png)
+
+### 2. Lägg till kolumnen Bild
+
+1. Scrolla längst till höger i listan och välj **+ Lägg till kolumn**.
+2. Välj **Hyperlänk**.
+3. Välj **Nästa**.
+
+![Hyperlänk vald som typ för den nya kolumnen](../../assets/standard/images-sv/chap01/enkal-sharepoint/3.png)
+
+Ange följande kolumnnamn:
+
+```text
+Bild
+```
+
+Lämna beskrivningen tom och kontrollera att typen är **Hyperlänk**. Välj sedan **Spara**.
+
+![Kolumnen Bild med typen Hyperlänk](../../assets/standard/images-sv/chap01/enkal-sharepoint/4.png)
+
+!!! info "Varför använder vi en hyperlänkskolumn?"
+    Agenten behöver en direktlänk till varje produktbild. Det inbyggda fältet **Enhetsfoto** är svårare att använda i agentens adaptiva kort, så vi lämnar det tomt och sparar länken i kolumnen **Bild**.
+
+### 3. Lägg till enheterna
+
+Välj **+ Nytt**. SharePoint öppnar formuläret **Nytt objekt**.
+
+![Formuläret Nytt objekt i listan Enheter](../../assets/standard/images-sv/chap01/enkal-sharepoint/5.png)
+
+Fyll i värdena nedan och välj **Spara**. Upprepa steget för varje enhet. Lämna **Enhetsfoto**, **Inköpsdatum** och övriga fält som inte finns i tabellerna tomma.
+
+Använd de engelska värdena `Laptop`, `Desktop` och `Tablet` för **Resurstyp**. De används senare i agentens filter.
+
+#### 1. Surface Laptop 13
 
 ![Surface Laptop 13](../../assets/standard/images/products/surface-laptop-13.png)
 
-* **Rubrik:** Surface Laptop 13
-* **Status:** Available
-* **Tillverkare:** Microsoft
-* **Modell:** Surface Laptop 13
-* **Resurstyp:** Laptop
-* **Färg:** Silver
-* **Serienummer:** 1
-* **Inköpspris:** 1500
-* **Beställningsnr:** 10001
-* **Bild:**
-  `https://tyto-official.github.io/copilot-studio-course/assets/standard/images/products/surface-laptop-13.png`
+| Fält | Värde |
+| --- | --- |
+| Rubrik | `Surface Laptop 13` |
+| Status | `Available` |
+| Tillverkare | `Microsoft` |
+| Modell | `Surface Laptop 13` |
+| Resurstyp | `Laptop` |
+| Färg | `Silver` |
+| Serienummer | `1` |
+| Inköpspris | `1500` |
+| Beställningsnr. | `10001` |
 
----
+Kopiera bildlänken till fältet **Bild**:
 
-### 2. Surface Laptop 15
+```text
+https://tyto-official.github.io/copilot-studio-course/assets/standard/images/products/surface-laptop-13.png
+```
+
+#### 2. Surface Laptop 13.8
+
+![Surface Laptop 13.8](../../assets/standard/images-sv/chap01/enkal-sharepoint/Surface-Laptop-13-8.jpg)
+
+| Fält | Värde |
+| --- | --- |
+| Rubrik | `Surface Laptop 13.8` |
+| Status | `Reserved` |
+| Tillverkare | `Microsoft` |
+| Modell | `Surface Laptop 13.8` |
+| Resurstyp | `Laptop` |
+| Färg | `Blue` |
+| Serienummer | `5` |
+| Inköpspris | `1800` |
+| Beställningsnr. | `10005` |
+
+Kopiera bildlänken till fältet **Bild**:
+
+```text
+https://tyto-official.github.io/copilot-studio-course/assets/standard/images-sv/chap01/enkal-sharepoint/Surface-Laptop-13-8.jpg
+```
+
+Den här enheten har statusen `Reserved` och ska därför inte visas när agenten senare söker efter tillgängliga enheter.
+
+#### 3. Surface Laptop 15
 
 ![Surface Laptop 15](../../assets/standard/images/products/surface-laptop-15.png)
 
-* **Rubrik:** Surface Laptop 15
-* **Status:** Available
-* **Tillverkare:** Microsoft
-* **Modell:** Surface Laptop 15
-* **Resurstyp:** Laptop
-* **Färg:** Black
-* **Serienummer:** 2
-* **Inköpspris:** 2000
-* **Beställningsnr:** 10002
-* **Bild:**
-  `https://tyto-official.github.io/copilot-studio-course/assets/standard/images/products/surface-laptop-15.png`
+| Fält | Värde |
+| --- | --- |
+| Rubrik | `Surface Laptop 15` |
+| Status | `Available` |
+| Tillverkare | `Microsoft` |
+| Modell | `Surface Laptop 15` |
+| Resurstyp | `Laptop` |
+| Färg | `Black` |
+| Serienummer | `2` |
+| Inköpspris | `2000` |
+| Beställningsnr. | `10002` |
 
----
+Kopiera bildlänken till fältet **Bild**:
 
-### 3. Surface Studio
+```text
+https://tyto-official.github.io/copilot-studio-course/assets/standard/images/products/surface-laptop-15.png
+```
+
+#### 4. Surface Studio
 
 ![Surface Studio](../../assets/standard/images/products/surface-studio.png)
 
-* **Rubrik:** Surface Studio
-* **Status:** Available
-* **Tillverkare:** Microsoft
-* **Modell:** Surface Studio
-* **Resurstyp:** Desktop
-* **Färg:** Silver
-* **Serienummer:** 3
-* **Inköpspris:** 2500
-* **Beställningsnr:** 10003
-* **Bild:**
-  `https://tyto-official.github.io/copilot-studio-course/assets/standard/images/products/surface-studio.png`
+| Fält | Värde |
+| --- | --- |
+| Rubrik | `Surface Studio` |
+| Status | `Available` |
+| Tillverkare | `Microsoft` |
+| Modell | `Surface Studio` |
+| Resurstyp | `Desktop` |
+| Färg | `Silver` |
+| Serienummer | `3` |
+| Inköpspris | `2500` |
+| Beställningsnr. | `10003` |
 
----
+Kopiera bildlänken till fältet **Bild**:
 
-### 4. Surface Pro
+```text
+https://tyto-official.github.io/copilot-studio-course/assets/standard/images/products/surface-studio.png
+```
+
+#### 5. Surface Pro
 
 ![Surface Pro](../../assets/standard/images/products/surface-pro-12.png)
 
-* **Rubrik:** Surface Pro
-* **Status:** Available
-* **Tillverkare:** Microsoft
-* **Modell:** Surface Pro
-* **Resurstyp:** Tablet
-* **Färg:** Pink
-* **Serienummer:** 4
-* **Inköpspris:** 1000
-* **Beställningsnr:** 10004
-* **Bild:**
-  `https://tyto-official.github.io/copilot-studio-course/assets/standard/images/products/surface-pro-12.png`
+| Fält | Värde |
+| --- | --- |
+| Rubrik | `Surface Pro` |
+| Status | `Available` |
+| Tillverkare | `Microsoft` |
+| Modell | `Surface Pro` |
+| Resurstyp | `Tablet` |
+| Färg | `Pink` |
+| Serienummer | `4` |
+| Inköpspris | `1000` |
+| Beställningsnr. | `10004` |
 
-!!! success "Klart!"
-    Nu har du en databas fylld med hårdvara. I nästa kapitel ska vi börja bygga själva agenten!
+Kopiera bildlänken till fältet **Bild**:
+
+```text
+https://tyto-official.github.io/copilot-studio-course/assets/standard/images/products/surface-pro-12.png
+```
+
+### 4. Kontrollera listan
+
+När du är klar ska listan **Enheter** innehålla fem enheter. Kontrollera att:
+
+- fyra enheter har statusen `Available`
+- Surface Laptop 13.8 har statusen `Reserved`
+- resurstypen är `Laptop`, `Desktop` eller `Tablet`
+- varje rad har en länk i kolumnen **Bild**
+- fältet **Enhetsfoto** är tomt
+
+!!! success "Kursmiljön är klar"
+    Du har nu tillgång till Copilot Studio, en personlig utvecklingsmiljö, SharePoint-webbplatsen **Lyserno IT-support** och fem enheter i listan **Enheter**. I nästa kapitel öppnar vi Copilot Studio och kontrollerar att standardupplevelsen används.
