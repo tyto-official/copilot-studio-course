@@ -126,7 +126,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#3-skapa-en-losning-solution" class="md-skip">
+        <a href="#3-skapa-en-losning" class="md-skip">
           Gå till innehållet
         </a>
       
@@ -413,7 +413,7 @@
   <span class="md-ellipsis">
     
   
-    1. Förbered SharePoint
+    1. Kursuppsättning
   
 
     
@@ -522,10 +522,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#steg-1-hitta-till-solution-explorer" class="md-nav__link">
+  <a href="#del-1-oppna-losningar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Steg 1: Hitta till Solution Explorer
+        Del 1: Öppna Lösningar
       
     </span>
   </a>
@@ -533,10 +533,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#steg-2-skapa-en-publisher-utgivare" class="md-nav__link">
+  <a href="#del-2-skapa-en-utgivare" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Steg 2: Skapa en Publisher (Utgivare)
+        Del 2: Skapa en utgivare
       
     </span>
   </a>
@@ -544,10 +544,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#steg-3-skapa-din-solution" class="md-nav__link">
+  <a href="#del-3-skapa-losningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Steg 3: Skapa din Solution
+        Del 3: Skapa lösningen
       
     </span>
   </a>
@@ -555,10 +555,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#steg-4-kontrollera-och-aktivera" class="md-nav__link">
+  <a href="#del-4-kontrollera-losningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Steg 4: Kontrollera och aktivera
+        Del 4: Kontrollera lösningen
       
     </span>
   </a>
@@ -1321,10 +1321,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#steg-1-hitta-till-solution-explorer" class="md-nav__link">
+  <a href="#del-1-oppna-losningar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Steg 1: Hitta till Solution Explorer
+        Del 1: Öppna Lösningar
       
     </span>
   </a>
@@ -1332,10 +1332,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#steg-2-skapa-en-publisher-utgivare" class="md-nav__link">
+  <a href="#del-2-skapa-en-utgivare" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Steg 2: Skapa en Publisher (Utgivare)
+        Del 2: Skapa en utgivare
       
     </span>
   </a>
@@ -1343,10 +1343,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#steg-3-skapa-din-solution" class="md-nav__link">
+  <a href="#del-3-skapa-losningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Steg 3: Skapa din Solution
+        Del 3: Skapa lösningen
       
     </span>
   </a>
@@ -1354,10 +1354,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#steg-4-kontrollera-och-aktivera" class="md-nav__link">
+  <a href="#del-4-kontrollera-losningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Steg 4: Kontrollera och aktivera
+        Del 4: Kontrollera lösningen
       
     </span>
   </a>
@@ -1381,86 +1381,76 @@
 
 
 
-<h1 id="3-skapa-en-losning-solution">3. Skapa en Lösning (Solution)</h1>
-<p>Innan vi börjar bygga själva agenten ska vi skapa en "Lösning" (Solution). Tänk på detta som en <strong>digital portfölj</strong> eller en mapp där vi samlar allt som hör till vårt projekt.</p>
-<p>Om vi inte gör detta hamnar allt i en stor röra som heter "Default Solution", vilket gör det omöjligt att flytta eller hantera agenten senare.</p>
-<div class="admonition tip">
-<p class="admonition-title">Varför Solution?</p>
+<h1 id="3-skapa-en-losning">3. Skapa en lösning</h1>
+<p>Innan vi skapar agenten samlar vi kursens komponenter i en lösning. Lösningen gör det lättare att hålla ihop agenten, ämnena och flödena och att flytta dem mellan Power Platform-miljöer.</p>
+<p>När kapitlet är klart har du:</p>
 <ul>
-<li><strong>Ordning:</strong> Allt som hör till din agent (chatboten, flöden, anslutningar) samlas på ett ställe.</li>
-<li><strong>Flyttbarhet:</strong> Vill du flytta din agent från din Developer-miljö till företagets riktiga miljö? Då <strong>måste</strong> den ligga i en Solution.</li>
+<li>skapat en egen utgivare med ett unikt prefix</li>
+<li>skapat lösningen <strong>Copilot Studio Utbildning Lyserno IT</strong></li>
+<li>angett lösningen som prioriterad</li>
+<li>kontrollerat att den nya lösningen är tom och redo att användas</li>
 </ul>
+<hr />
+<h2 id="del-1-oppna-losningar">Del 1: Öppna Lösningar</h2>
+<p>Om menyn från förra kapitlet fortfarande är öppen väljer du <strong>Lösningar</strong> under <strong>Utforska</strong>. Annars väljer du de tre punkterna längst ner i vänsternavigeringen och sedan <strong>Lösningar</strong>.</p>
+<p><img alt="Menyn med Lösningar under Utforska" src="../../../assets/standard/images-sv/chap03/1.png" /></p>
+<p>Sidan visar lösningarna som finns i den valda miljön. Högst upp ser du vilken lösning som är aktuell, och i tabellen kan du växla mellan ohanterade, hanterade och alla lösningar.</p>
+<p><img alt="Översikten över lösningar i den valda miljön" src="../../../assets/standard/images-sv/chap03/2.png" /></p>
+<p>Välj <strong>+ Ny lösning</strong> uppe till vänster. Panelen <strong>Ny lösning</strong> öppnas till höger.</p>
+<hr />
+<h2 id="del-2-skapa-en-utgivare">Del 2: Skapa en utgivare</h2>
+<p>En utgivare anger vem som har skapat komponenterna och ger dem ett tekniskt prefix. Prefixet minskar risken för namnkonflikter när flera lösningar används i samma miljö.</p>
+<p>I panelen <strong>Ny lösning</strong> väljer du <strong>+ Ny utgivare</strong> under fältet <strong>Utgivare</strong>.</p>
+<p><img alt="Panelen Ny lösning med valet Ny utgivare" src="../../../assets/standard/images-sv/chap03/3.png" /></p>
+<p>Panelen <strong>Ny utgivare</strong> öppnas. Använd dina egna initialer. Exemplen nedan använder <strong>JT</strong> för Joel Thyberg.</p>
+<p><strong>Visningsnamn</strong><br>
+Skriv <code>Lyserno [initialer]</code>, exempelvis <code>Lyserno JT</code>.</p>
+<p><strong>Namn</strong><br>
+Använd samma namn utan mellanslag, exempelvis <code>LysernoJT</code>.</p>
+<p><strong>Beskrivning</strong><br>
+Beskrivningen är samma för alla:</p>
+<div class="highlight"><pre><span></span><code>Utgivare för Copilot Studio-utbildning
+</code></pre></div>
+<p><strong>Prefix</strong><br>
+Använd <code>l</code> följt av initialerna med små bokstäver, exempelvis <code>ljt</code>.</p>
+<p><strong>Prefix för valvärde</strong><br>
+Låt det automatiskt skapade talet vara kvar. Du behöver inte fylla i något under fliken <strong>Kontakt</strong>.</p>
+<div class="admonition important">
+<p class="admonition-title">Använd dina egna initialer</p>
+<p>Heter du Anna Svensson använder du <code>Lyserno AS</code>, <code>LysernoAS</code> och prefixet <code>las</code>. Prefixet måste vara unikt i miljön. Om två deltagare använder samma prefix kan deras tekniska komponentnamn krocka.</p>
 </div>
+<p><img alt="Den nya utgivaren ifylld med Lyserno JT och prefixet ljt" src="../../../assets/standard/images-sv/chap03/4.png" /></p>
+<p>Välj <strong>Spara</strong>. När panelen stängs kommer du tillbaka till den nya lösningen, och utgivaren ska vara vald.</p>
 <hr />
-<h2 id="steg-1-hitta-till-solution-explorer">Steg 1: Hitta till Solution Explorer</h2>
-<p>Vi kan hantera detta direkt inifrån Copilot Studio.</p>
+<h2 id="del-3-skapa-losningen">Del 3: Skapa lösningen</h2>
+<p>Ange följande visningsnamn:</p>
+<div class="highlight"><pre><span></span><code>Copilot Studio Utbildning Lyserno IT
+</code></pre></div>
+<p>Fältet <strong>Namn</strong> fylls normalt i automatiskt som <code>CopilotStudioUtbildningLysernoIT</code>. Om det inte fylls i anger du visningsnamnet utan mellanslag.</p>
+<p>Kontrollera resten av inställningarna:</p>
 <ol>
-<li>I vänstermenyn, klicka på de <strong>tre prickarna (...)</strong>.</li>
-<li>Klicka på <strong>Lösningar</strong> (under rubriken "Utforska").</li>
+<li><strong>Utgivare</strong> ska visa utgivaren som du nyss skapade, exempelvis <code>Lyserno JT (LysernoJT)</code>. Välj den manuellt om den inte redan är vald.</li>
+<li>Låt <strong>Version</strong> stå kvar på <code>1.0.0.0</code>.</li>
+<li>Markera <strong>Ange som prioriterad lösning</strong>.</li>
+<li>Låt <strong>Fler alternativ</strong> vara oförändrat.</li>
 </ol>
-<p><img alt="Hitta Lösningar i menyn" src="../../../assets/standard/images-sv/chap03/1.png" /></p>
-<ol>
-<li>Nu ser du en lista på alla lösningar i miljön. Klicka på <strong>+ Ny lösning</strong>.</li>
-</ol>
-<p><img alt="Klicka på Ny lösning" src="../../../assets/standard/images-sv/chap03/2.png" /></p>
+<p><img alt="Den nya lösningen ifylld och angiven som prioriterad" src="../../../assets/standard/images-sv/chap03/5.png" /></p>
+<p>När en lösning är prioriterad hamnar nya komponenter där som standard, även när du skapar dem från Copilot Studios startsida.</p>
+<p>Välj <strong>Skapa</strong>.</p>
 <hr />
-<h2 id="steg-2-skapa-en-publisher-utgivare">Steg 2: Skapa en Publisher (Utgivare)</h2>
-<p>En "Publisher" är din signatur. Det visar vem som byggt agenten och lägger till ett prefix (t.ex. <code>alab_</code>) på alla dina tekniska komponenter för att undvika namnkonflikter med Microsofts system.</p>
-<ol>
-<li>I rutan som dyker upp, leta efter fältet <strong>Utgivare</strong>.</li>
-<li>Klicka på <strong>+ Ny utgivare</strong>.</li>
-</ol>
-<p><img alt="Skapa ny utgivare" src="../../../assets/standard/images-sv/chap03/3.png" /></p>
-<ol>
-<li>
-<p>Fyll i följande uppgifter under fliken <strong>Egenskaper</strong>:</p>
-<ul>
-<li><strong>Visningsnamn:</strong> Använd dina initialer, t.ex. <code>Agent JT</code></li>
-<li><strong>Namn:</strong> Samma utan mellanslag, t.ex. <code>AgentJT</code> <em>(Inga mellanslag)</em></li>
-<li><strong>Prefix:</strong> Dina initialer i gemener, t.ex. <code>jt</code> <em>(Detta kommer stå framför alla dina databasnamn, t.ex. jt_minTabell)</em></li>
-<li><strong>Valalternativprefix:</strong> Den slumpade siffran som redan står där fungerar bra. Du kan även ändra den till <code>10000</code> om du vill ha ett renare nummer.
-  <em>(Detta styr vilka sifferkoder dina valalternativ får i databasen).</em></li>
-</ul>
-</li>
-<li>
-<p>Du behöver <strong>inte</strong> fylla i något under fliken <em>Kontakt</em>.</p>
-</li>
-<li>Klicka på <strong>Spara</strong>.</li>
-</ol>
-<p><img alt="Spara utgivare" src="../../../assets/standard/images-sv/chap03/4.png" /></p>
-<p><em>(Rutan stängs och du kommer tillbaka till Ny lösning-rutan. Din nya utgivare ska nu vara vald).</em></p>
-<hr />
-<h2 id="steg-3-skapa-din-solution">Steg 3: Skapa din Solution</h2>
-<p>Nu skapar vi själva lådan där vår agent ska bo.</p>
-<ol>
-<li><strong>Visningsnamn:</strong> <code>IT Support Agent</code></li>
-<li><strong>Namn:</strong> <code>ITSupportAgent</code> (fylls i automatiskt)</li>
-<li><strong>Utgivare:</strong> Välj den du nyss skapade (<code>Agent JT</code>).</li>
-<li><strong>Version:</strong> <code>1.0.0.0</code> (Låt det vara).</li>
-</ol>
-<p><strong>Viktigt steg:</strong>
-5. Kryssa i rutan: <strong>Ange som din föredragna lösning</strong>.
-    * <em>Varför?</em> Detta gör att allt du bygger framöver automatiskt sparas i denna lösning, även om du skapar saker från startsidan. Det förhindrar att dina filer hamnar i den stökiga "Standardlösningen".</p>
-<p><img alt="Fyll i lösningsdetaljer" src="../../../assets/standard/images-sv/chap03/5.png" /></p>
-<ol>
-<li><strong>Fler alternativ:</strong> Du kan ignorera denna del (lämna fälten tomma). Vi behöver ingen konfigurationssida för denna labb.</li>
-<li>Klicka på <strong>Skapa</strong>.</li>
-</ol>
-<hr />
-<h2 id="steg-4-kontrollera-och-aktivera">Steg 4: Kontrollera och aktivera</h2>
-<p>Nu ska vi verifiera att lösningen är skapad och att den är inställd som standard.</p>
-<ol>
-<li>Klicka på <strong>pilen</strong> (Tillbaka) längst upp till vänster (eller på "Lösningar" i brödsmulorna) för att komma tillbaka till översikten.</li>
-</ol>
-<p><img alt="Gå tillbaka till översikten" src="../../../assets/standard/images-sv/chap03/6.png" /></p>
-<ol>
-<li>Titta högst upp på sidan. Du ska nu se en ruta där det står <strong>Aktuell föredragen lösning: IT Helpdesk Agent</strong>.</li>
-</ol>
-<p><img alt="Verifiera föredragen lösning-banner" src="../../../assets/standard/images-sv/chap03/7.png" /></p>
-<p><em>Eftersom vi kryssade i rutan "Ange som föredragen" tidigare ser vi nu detta meddelande. Det bekräftar att Copilot Studio vet att alla nya agenter ska läggas i just denna låda.</em></p>
+<h2 id="del-4-kontrollera-losningen">Del 4: Kontrollera lösningen</h2>
+<p>När lösningen har skapats öppnas den automatiskt. Den ska vara tom eftersom vi ännu inte har skapat några komponenter.</p>
+<p><img alt="Den nya lösningen utan några komponenter" src="../../../assets/standard/images-sv/chap03/6.png" /></p>
+<p>Välj bakåtpilen uppe till vänster för att gå tillbaka till lösningsöversikten.</p>
+<p>Kontrollera att kortet högst upp visar <strong>Copilot Studio Utbildning Lyserno IT</strong> som aktuell lösning och att lösningen är märkt som <strong>Önskad lösning</strong> i listan.</p>
+<p><img alt="Lösningsöversikten med Lyserno IT som aktuell önskad lösning" src="../../../assets/standard/images-sv/chap03/7.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Prioriterad och önskad lösning</p>
+<p>I panelen där du skapar lösningen heter valet <strong>Ange som prioriterad lösning</strong>. På översikten kan samma inställning visas som <strong>Aktuell önskad lösning</strong> eller <strong>Önskad lösning</strong>.</p>
+</div>
 <div class="admonition success">
-<p class="admonition-title">Klart!</p>
-<p>Nu har du en professionell grundstruktur på plats. I nästa kapitel ska vi äntligen skapa vår agent!</p>
+<p class="admonition-title">Lösningen är klar</p>
+<p>Kursens nya komponenter kan nu sparas i <strong>Copilot Studio Utbildning Lyserno IT</strong>. I nästa kapitel skapar vi <strong>Lyserno IT-assistent</strong>.</p>
 </div>
 
 
