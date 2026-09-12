@@ -1,0 +1,2093 @@
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Praktiska utbildningar i Microsoft Copilot Studio – från grundläggande agentbygge till den nya instruktionsdrivna upplevelsen.">
+      
+      
+      
+        <link rel="canonical" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard-advanced/07-connect-tberg-mcp/">
+      
+      
+        <link rel="prev" href="../06-connect-tberg-api/">
+      
+      
+        <link rel="next" href="../08-review-and-create-work-order/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>7. Anslut T-Berg DU MCP och fördjupa utredningen - Microsoft AI-utbildningar</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.setAttribute("data-track", "standard-advanced");
+      var sync = function () { root.classList.toggle("is-scrolled", window.scrollY > 8); };
+      addEventListener("scroll", sync, { passive: true });
+      addEventListener("DOMContentLoaded", sync);
+      sync();
+    })();
+  </script>
+  <script>
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-copy-value]");
+      if (!button) return;
+
+      var value = button.getAttribute("data-copy-value");
+      var label = button.querySelector(".copy-field__label");
+
+      var fallbackCopy = function () {
+        var input = document.createElement("textarea");
+        input.value = value;
+        input.setAttribute("readonly", "");
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+      };
+
+      var showCopied = function () {
+        label.textContent = "Kopierat";
+        button.classList.add("is-copied");
+        setTimeout(function () {
+          label.textContent = "Kopiera";
+          button.classList.remove("is-copied");
+        }, 1800);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).catch(fallbackCopy).then(showCopied);
+      } else {
+        fallbackCopy();
+        showCopied();
+      }
+    });
+  </script>
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-anslut-t-berg-du-mcp-och-fordjupa-utredningen" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Sidhuvud">
+    <a href="../../.." title="Microsoft AI-utbildningar" class="md-header__button md-logo" aria-label="Microsoft AI-utbildningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Microsoft AI-utbildningar
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. Anslut T-Berg DU MCP och fördjupa utredningen
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Microsoft AI-utbildningar" class="md-nav__button md-logo" aria-label="Microsoft AI-utbildningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Microsoft AI-utbildningar
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standardagenten
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Standardagenten
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa en lösning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa ett ämne
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa ett adaptivt kort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa ett flöde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avancerad standardagent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Avancerad standardagent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-course-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-navigate-copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Skapa lösningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-create-topic-and-prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa ämnet och analysera felbilden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-collect-missing-information/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Samla in objekt och påverkan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-connect-tberg-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anslut T-Berg DU API och verifiera objektet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Anslut T-Berg DU MCP och fördjupa utredningen
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Anslut T-Berg DU MCP och fördjupa utredningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-1-oppna-guiden-for-en-ny-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Öppna guiden för en ny MCP-server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-2-ange-serverns-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Ange serverns information
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-3-konfigurera-api-nyckeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Konfigurera API-nyckeln
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-4-skapa-anslutningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 4: Skapa anslutningen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 4: Skapa anslutningen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kopiera-testnyckeln-igen-vid-behov" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kopiera testnyckeln igen vid behov
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-5-oppna-serverns-verktyg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 5: Öppna serverns verktyg
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-6-uppdatera-agentens-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 6: Uppdatera agentens instruktioner
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-7-oppna-det-skapade-anslutningsprogrammet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 7: Öppna det skapade anslutningsprogrammet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-8-lagg-till-ikon-och-kontrollera-connectorn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 8: Lägg till ikon och kontrollera connectorn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-9-testa-den-fordjupade-utredningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 9: Testa den fördjupade utredningen
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-review-and-create-work-order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Granska och skapa arbetsorder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-create-work-order-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Skapa arbetsorder med ett agentflöde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-connect-flow-and-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Koppla flödet till ämnet och testa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruktionsdriven agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instruktionsdriven agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/00-course-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/01-navigate-new-experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hitta rätt i nya Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/02-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Skapa lösningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/03-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/04-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Lägg till produktkunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/05-add-first-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Skapa den första skillen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/06-add-sharepoint-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anslut Centrallager som verktyg
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & fördjupning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & fördjupning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-1-oppna-guiden-for-en-ny-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Öppna guiden för en ny MCP-server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-2-ange-serverns-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Ange serverns information
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-3-konfigurera-api-nyckeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Konfigurera API-nyckeln
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-4-skapa-anslutningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 4: Skapa anslutningen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 4: Skapa anslutningen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kopiera-testnyckeln-igen-vid-behov" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kopiera testnyckeln igen vid behov
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-5-oppna-serverns-verktyg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 5: Öppna serverns verktyg
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-6-uppdatera-agentens-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 6: Uppdatera agentens instruktioner
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-7-oppna-det-skapade-anslutningsprogrammet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 7: Öppna det skapade anslutningsprogrammet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-8-lagg-till-ikon-och-kontrollera-connectorn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 8: Lägg till ikon och kontrollera connectorn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-9-testa-den-fordjupade-utredningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 9: Testa den fördjupade utredningen
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="7-anslut-t-berg-du-mcp-och-fordjupa-utredningen">7. Anslut T-Berg DU MCP och fördjupa utredningen</h1>
+<p>Ämnet kan nu verifiera objektet och lämna ett strukturerat <code>MaintenanceContext</code> till agenten. I det här kapitlet ansluter vi T-Berg DU MCP, väljer vilka verktyg agenten får använda och låter agenten hämta felhistorik, tillgängliga tekniker och reservdelar.</p>
+<p>När kapitlet är klart har du:</p>
+<ul>
+<li>anslutit <strong>T-Berg DU MCP</strong> med din tidsbegränsade testnyckel</li>
+<li>granskat serverns fyra verktyg och stängt av skrivverktyget <code>create_work_order</code></li>
+<li>instruerat agenten att använda MCP-verktygen i rätt ordning</li>
+<li>lagt till T-Berg D&amp;U-loggan på det anslutningsprogram som skapades automatiskt</li>
+<li>kontrollerat MCP-anropet i Power Platform</li>
+<li>testat att agenten fördjupar felanmälan med information från T-Berg D&amp;U</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">MCP-server, anslutning och nyckel är tre olika saker</p>
+<p>Servern heter <code>T-Berg DU MCP</code>. Anslutningen heter <code>T-Berg-testnyckel</code>. I anslutningen sparas det riktiga värdet som börjar med <code>tberg_</code>. Samma testnyckel används för både REST-connectorn och MCP-servern.</p>
+</div>
+<hr />
+<h2 id="del-1-oppna-guiden-for-en-ny-mcp-server">Del 1: Öppna guiden för en ny MCP-server</h2>
+<p>Gå till agentens <strong>Översikt</strong>. Under <strong>Verktyg</strong> väljer du <strong>Lägg till verktyg</strong>.</p>
+<p><img alt="Agentens översikt med knappen Lägg till verktyg" src="../../../assets/standard-advanced/chap07/1.png" /></p>
+<p>I verktygspanelen väljer du <strong>Lägg till ny MCP</strong>.</p>
+<p><img alt="Verktygspanelen med valet Lägg till ny MCP" src="../../../assets/standard-advanced/chap07/2.png" /></p>
+<hr />
+<h2 id="del-2-ange-serverns-information">Del 2: Ange serverns information</h2>
+<p>Fyll i följande värden:</p>
+<p>Servernamn:</p>
+<div class="highlight"><pre><span></span><code>T-Berg DU MCP
+</code></pre></div>
+<p>Serverbeskrivning:</p>
+<div class="highlight"><pre><span></span><code>Ger Lyserno Driftassistent tillgång till felhistorik, tillgängliga tekniker och reservdelar i T-Berg D&amp;U. Använd servern efter att ämnet Rapportera utrustningsfel har lämnat ett verifierat MaintenanceContext.
+</code></pre></div>
+<p>Server-URL:</p>
+<div class="highlight"><pre><span></span><code>https://ca-tberg-du-api.orangesmoke-45b4d851.swedencentral.azurecontainerapps.io/mcp
+</code></pre></div>
+<p><img alt="Guiden för en ny MCP-server med namn, beskrivning och server-URL" src="../../../assets/standard-advanced/chap07/3.png" /></p>
+<p>Server-URL:en pekar direkt på MCP-slutpunkten. REST-connectorn från föregående kapitel använder <code>/api</code>, medan MCP-servern använder <code>/mcp</code>.</p>
+<hr />
+<h2 id="del-3-konfigurera-api-nyckeln">Del 3: Konfigurera API-nyckeln</h2>
+<p>Under <strong>Autentisering</strong> väljer du <strong>API-nyckel</strong>. Ange att nyckeln ska skickas som ett sidhuvud och skriv följande huvudnamn:</p>
+<div class="highlight"><pre><span></span><code>x-workshop-key
+</code></pre></div>
+<p><img alt="MCP-guiden med API-nyckel i sidhuvudet x-workshop-key" src="../../../assets/standard-advanced/chap07/4.png" /></p>
+<p><code>x-workshop-key</code> är HTTP-headern som T-Berg D&amp;U läser vid varje anrop. Skriv inte själva testnyckeln i det här fältet.</p>
+<p>Välj <strong>Skapa</strong>.</p>
+<hr />
+<h2 id="del-4-skapa-anslutningen">Del 4: Skapa anslutningen</h2>
+<p>MCP-servern har nu skapats, men den saknar en anslutning med din testnyckel.</p>
+<p><img alt="Den skapade MCP-servern utan anslutning" src="../../../assets/standard-advanced/chap07/5.png" /></p>
+<p>Öppna listan vid <strong>Anslutning</strong> och välj <strong>Skapa ny anslutning</strong>.</p>
+<p><img alt="Anslutningslistan med valet Skapa ny anslutning" src="../../../assets/standard-advanced/chap07/6.png" /></p>
+<h3 id="kopiera-testnyckeln-igen-vid-behov">Kopiera testnyckeln igen vid behov</h3>
+<p>Om du inte har kvar testnyckeln öppnar du T-Berg D&amp;U och kopierar den från arbetsytans övre högra hörn:</p>
+<p><a class="button button--primary" href="https://ca-tberg-du-web.orangesmoke-45b4d851.swedencentral.azurecontainerapps.io" target="_blank" rel="noopener">Öppna T-Berg D&amp;U</a></p>
+
+<p><img alt="T-Berg D&amp;U med knappen Kopiera nyckel" src="../../../assets/standard-advanced/chap07/7.png" /></p>
+<p>Om nyckeln har gått ut skapar du en ny. En testnyckel gäller i 24 timmar och samma nyckel kan användas i både REST-anslutningen och MCP-anslutningen.</p>
+<p>I dialogrutan anger du följande visningsnamn:</p>
+<div class="highlight"><pre><span></span><code>T-Berg-testnyckel
+</code></pre></div>
+<p>Klistra sedan in hela testnyckeln, inklusive prefixet <code>tberg_</code>, i det obligatoriska nyckelfältet och välj <strong>Skapa</strong>.</p>
+<p><img alt="Dialogrutan för anslutningen med visningsnamn och testnyckel" src="../../../assets/standard-advanced/chap07/8.png" /></p>
+<p>När anslutningen visas som ansluten väljer du <strong>Lägg till</strong>.</p>
+<p><img alt="Den anslutna T-Berg-testnyckeln och knappen Lägg till" src="../../../assets/standard-advanced/chap07/9.png" /></p>
+<hr />
+<h2 id="del-5-oppna-serverns-verktyg">Del 5: Öppna serverns verktyg</h2>
+<p>På agentens översikt visas nu <code>T-Berg DU MCP</code> under <strong>Verktyg</strong>. Öppna servern.</p>
+<p><img alt="Agentens verktyg med T-Berg DU MCP" src="../../../assets/standard-advanced/chap07/10.png" /></p>
+<p>Rulla ner till avsnittet <strong>Verktyg</strong>. Servern innehåller fyra verktyg:</p>
+<table>
+<thead>
+<tr>
+<th>Verktyg</th>
+<th>Beskrivning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get_fault_history</code></td>
+<td>Hämtar felhistorik och befintliga arbetsordrar för ett verifierat objekt. Använd verktyget efter att ämnet har lämnat <code>MaintenanceContext</code>. Svaret innehåller historiken, arbetsordrarna och antalet träffar för den angivna felkoden utan att filtrera bort övriga poster.</td>
+</tr>
+<tr>
+<td><code>find_available_technicians</code></td>
+<td>Söker tekniker med rätt kompetens som inte är frånvarande eller har en pågående arbetsorder. Använd verktyget när <code>MaintenanceContext</code> innehåller <code>requiredSkill</code>. Svaret innehåller en sorterad teknikerlista och <code>technicianId</code> med den första teknikerns ID eller <code>UNASSIGNED</code>.</td>
+</tr>
+<tr>
+<td><code>find_spare_parts</code></td>
+<td>Kontrollerar reservdelar, lagersaldo och ledtid för ett internt objekt. Använd verktyget efter <code>get_fault_history</code> när <code>serviceType</code> är <code>Intern</code> och antingen <code>impactLevel</code> är <code>Stoppad</code> eller <code>sameErrorCodeCount</code> är större än <code>0</code>. Svaret visar om kontrollen utfördes och vilka reservdelar som hittades. Inget reserveras eller beställs.</td>
+</tr>
+<tr>
+<td><code>create_work_order</code></td>
+<td>Skapar en arbetsorder från ett verifierat underlag. Använd verktyget först efter att användaren har bekräftat underlaget och <code>approved</code> är <code>true</code>. Svaret innehåller den skapade arbetsorderns uppgifter. Det här verktyget ska inte användas i kapitlets agent.</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="MCP-serverns fyra tillgängliga verktyg" src="../../../assets/standard-advanced/chap07/11.png" /></p>
+<p>Slå på reglaget som tillåter alla verktyg. Stäng sedan av <code>create_work_order</code> separat. Tre verktyg ska vara aktiva:</p>
+<ul>
+<li><code>get_fault_history</code></li>
+<li><code>find_available_technicians</code></li>
+<li><code>find_spare_parts</code></li>
+</ul>
+<p><img alt="Tre aktiva MCP-verktyg och create_work_order avstängt" src="../../../assets/standard-advanced/chap07/12.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Varför stänger vi av create_work_order?</p>
+<p>MCP-servern kan skapa en arbetsorder, men kursens agent ska inte skriva till underhållssystemet utan godkännande. I nästa kapitel bygger vi ett granskningsämne som hämtar användarens godkännande. I kapitel 9 bygger vi agentflödet som använder REST-connectorns skrivåtgärd. MCP-verktygen används här bara för att hämta underlag.</p>
+</div>
+<hr />
+<h2 id="del-6-uppdatera-agentens-instruktioner">Del 6: Uppdatera agentens instruktioner</h2>
+<p>Gå tillbaka till agentens <strong>Översikt</strong> och öppna instruktionerna. Lägg in följande block efter det befintliga avsnittet <strong>Felanmälan</strong> och före <strong>Regler</strong>:</p>
+<div class="highlight"><pre><span></span><code>Efter verifieringen
+När /Rapportera utrustningsfel returnerar answered som false ska du följa dessa steg i ordning:
+
+1. Anropa get_fault_history med assetId och errorCode från MaintenanceContext.
+2. Anropa find_available_technicians med requiredSkill från MaintenanceContext.
+3. Bedöm om felet verkar återkommande och identifiera relevanta tidigare åtgärder. Använd det technicianId som find_available_technicians returnerar. Värdet kan vara UNASSIGNED.
+4. Anropa find_spare_parts endast när serviceType är Intern och antingen impactLevel är Stoppad eller sameErrorCodeCount är större än 0.
+5. Om reservdelar kontrollerades ska artikel, lagersaldo och ledtid ingå i underlaget. Ta inte med reservdelsinformation om ingen kontroll gjordes.
+
+Behåll assetId, impactLevel, priority och technicianId oförändrade.
+
+Hitta inte på felhistorik, tekniker, tillgänglighet, reservdelar, lagersaldo eller ledtid. Visa inte råa fältnamn eller verktygssvar för användaren.
+</code></pre></div>
+<p>Skriv <code>/</code> före <code>Rapportera utrustningsfel</code> och välj ämnet i listan.</p>
+<p><img alt="Instruktionsfältet med ämnet Rapportera utrustningsfel i referenslistan" src="../../../assets/standard-advanced/chap07/13.png" /></p>
+<p>Ämnesnamnet ska visas som ett markerat objekt. MCP-verktygens namn ska däremot vara vanlig text utan <code>/</code> framför.</p>
+<p><img alt="De uppdaterade instruktionerna med avsnittet Efter verifieringen" src="../../../assets/standard-advanced/chap07/14.png" /></p>
+<p>Välj <strong>Spara</strong>.</p>
+<hr />
+<h2 id="del-7-oppna-det-skapade-anslutningsprogrammet">Del 7: Öppna det skapade anslutningsprogrammet</h2>
+<p>Guiden i Copilot Studio har skapat ett anpassat anslutningsprogram i Power Platform. Vi öppnar det för att lägga till T-Berg D&amp;U-loggan och kontrollera den tekniska konfigurationen.</p>
+<p>Välj <strong>Verktyg</strong> i Copilot Studios vänstermeny.</p>
+<p><img alt="Copilot Studios vänstermeny med Verktyg" src="../../../assets/standard-advanced/chap07/15.png" /></p>
+<p>Leta upp <code>T-Berg DU MCP</code>. Öppna menyn med de tre punkterna och välj <strong>Redigera</strong>.</p>
+<p><img alt="Verktygssidan med redigeringsmenyn för T-Berg DU MCP" src="../../../assets/standard-advanced/chap07/16.png" /></p>
+<p>Power Platform öppnar det anpassade anslutningsprogrammet.</p>
+<hr />
+<h2 id="del-8-lagg-till-ikon-och-kontrollera-connectorn">Del 8: Lägg till ikon och kontrollera connectorn</h2>
+<p>På fliken <strong>Allmänt</strong> laddar du upp T-Berg D&amp;U-loggan:</p>
+<p><a class="button button--primary button--download" href="../../../downloads/standard-advanced/tberg-du-logo.png" download>Ladda ner T-Berg D&amp;U-loggan</a></p>
+
+<p>Ange följande bakgrundsfärg:</p>
+<div class="highlight"><pre><span></span><code>#fefefe
+</code></pre></div>
+<p>Kontrollera att <strong>Anslut via lokal datagateway</strong> inte är markerad och att följande värden visas:</p>
+<table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beskrivning</td>
+<td><code>Ger Lyserno Driftassistent tillgång till felhistorik, tillgängliga tekniker och reservdelar i T-Berg D&amp;U. Använd servern efter att ämnet Rapportera utrustningsfel har lämnat ett verifierat MaintenanceContext.</code></td>
+</tr>
+<tr>
+<td>Schema</td>
+<td><code>HTTPS</code></td>
+</tr>
+<tr>
+<td>Värd</td>
+<td><code>ca-tberg-du-api.orangesmoke-45b4d851.swedencentral.azurecontainerapps.io</code></td>
+</tr>
+<tr>
+<td>Bas-URL</td>
+<td><code>/</code></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Det genererade MCP-anslutningsprogrammets allmänna information" src="../../../assets/standard-advanced/chap07/17.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Låt säkerhetsinställningarna vara</p>
+<p>MCP-guiden har redan skapat API-nyckelautentiseringen med headern <code>x-workshop-key</code>. I det genererade anslutningsprogrammet kan parameteretiketten vara låst eller se tom ut. Försök inte ändra den här. Namnet <code>T-Berg-testnyckel</code> angav du när du skapade den separata anslutningen.</p>
+</div>
+<p>Välj <strong>Definition</strong>. Under <strong>Allmänt</strong> ska en åtgärd visas med följande värden:</p>
+<table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sammanfattning</td>
+<td><code>T-Berg DU MCP</code></td>
+</tr>
+<tr>
+<td>Åtgärds-ID</td>
+<td><code>InvokeServer</code></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Definitionen för MCP-åtgärden InvokeServer" src="../../../assets/standard-advanced/chap07/18.png" /></p>
+<p>Under <strong>Förfrågan</strong> ska metoden vara <code>POST</code> och URL:en ska sluta med <code>/mcp</code>.</p>
+<p><img alt="MCP-åtgärdens POST-förfrågan till mcp-slutpunkten" src="../../../assets/standard-advanced/chap07/19.png" /></p>
+<p>Under <strong>Svar</strong> ska status <code>200</code> med texten <code>Immediate Response</code> visas. Kontrollera också att valideringen är klar.</p>
+<p><img alt="MCP-åtgärdens svar och godkända validering" src="../../../assets/standard-advanced/chap07/20.png" /></p>
+<p>Gör inga ändringar på fliken <strong>Kod</strong>. Välj <strong>Uppdatera anslutningsprogrammet</strong> för att spara ikonen och stäng sedan redigeraren.</p>
+<p>Vi använder inte fliken <strong>Testa</strong> här. <code>InvokeServer</code> är MCP-transporten, inte ett vanligt affärsanrop med egna testfält. Den riktiga kontrollen görs från agenten i Copilot Studio.</p>
+<hr />
+<h2 id="del-9-testa-den-fordjupade-utredningen">Del 9: Testa den fördjupade utredningen</h2>
+<p>Gå tillbaka till Copilot Studio och öppna testchatten. Kör igenom samma felanmälan med felbild som i föregående kapitel och svara på agentens följdfrågor.</p>
+<p>Agenten ska nu:</p>
+<ol>
+<li>verifiera objektet genom ämnet</li>
+<li>hämta felhistorik</li>
+<li>söka efter en tillgänglig tekniker med rätt kompetens</li>
+<li>bara kontrollera reservdelar när villkoren i instruktionen är uppfyllda</li>
+<li>visa ett läsbart underlag utan råa verktygssvar</li>
+</ol>
+<p><img alt="Testchatten med felhistorik, föreslagen tekniker och samlat underlag" src="../../../assets/standard-advanced/chap07/21.png" /></p>
+<p>Formuleringen kan variera. Kontrollera att objekt-ID, påverkan och prioritet fortfarande kommer från det verifierade <code>MaintenanceContext</code>, att teknikern kommer från MCP-resultatet och att agenten inte påstår att en arbetsorder har skapats.</p>
+<div class="admonition info">
+<p class="admonition-title">Ett tillfälligt testsvar</p>
+<p>I det här kapitlet kan agenten visa MCP-underlaget direkt eftersom granskningsämnet ännu inte är byggt. I den färdiga lösningen visas det samlade underlaget en gång, i det adaptiva kortet i ämnet <strong>Granska och skapa arbetsorder</strong>.</p>
+</div>
+<hr />
+<div class="admonition success">
+<p class="admonition-title">Agenten kan nu fördjupa felanmälan</p>
+<p>Agenten hämtar felhistorik och tillgängliga tekniker och kontrollerar reservdelar när reglerna kräver det. Den kan fortfarande inte skapa en arbetsorder på egen hand. I nästa kapitel bygger vi ämnet som visar underlaget och hämtar användarens godkännande.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          
+<button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Tillbaka till toppen
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopierat till urklipp", "clipboard.copy": "Kopiera till urklipp", "search.result.more.one": "1 till p\u00e5 denna sida", "search.result.more.other": "# till p\u00e5 denna sida", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.term.missing": "Saknas", "select.version": "V\u00e4lj version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

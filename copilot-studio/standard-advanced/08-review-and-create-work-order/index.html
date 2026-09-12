@@ -1,0 +1,2333 @@
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Praktiska utbildningar i Microsoft Copilot Studio – från grundläggande agentbygge till den nya instruktionsdrivna upplevelsen.">
+      
+      
+      
+        <link rel="canonical" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard-advanced/08-review-and-create-work-order/">
+      
+      
+        <link rel="prev" href="../07-connect-tberg-mcp/">
+      
+      
+        <link rel="next" href="../09-create-work-order-flow/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>8. Granska och skapa arbetsorder - Microsoft AI-utbildningar</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.setAttribute("data-track", "standard-advanced");
+      var sync = function () { root.classList.toggle("is-scrolled", window.scrollY > 8); };
+      addEventListener("scroll", sync, { passive: true });
+      addEventListener("DOMContentLoaded", sync);
+      sync();
+    })();
+  </script>
+  <script>
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-copy-value]");
+      if (!button) return;
+
+      var value = button.getAttribute("data-copy-value");
+      var label = button.querySelector(".copy-field__label");
+
+      var fallbackCopy = function () {
+        var input = document.createElement("textarea");
+        input.value = value;
+        input.setAttribute("readonly", "");
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+      };
+
+      var showCopied = function () {
+        label.textContent = "Kopierat";
+        button.classList.add("is-copied");
+        setTimeout(function () {
+          label.textContent = "Kopiera";
+          button.classList.remove("is-copied");
+        }, 1800);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).catch(fallbackCopy).then(showCopied);
+      } else {
+        fallbackCopy();
+        showCopied();
+      }
+    });
+  </script>
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#8-granska-och-skapa-arbetsorder" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Sidhuvud">
+    <a href="../../.." title="Microsoft AI-utbildningar" class="md-header__button md-logo" aria-label="Microsoft AI-utbildningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Microsoft AI-utbildningar
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8. Granska och skapa arbetsorder
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Microsoft AI-utbildningar" class="md-nav__button md-logo" aria-label="Microsoft AI-utbildningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Microsoft AI-utbildningar
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standardagenten
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Standardagenten
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa en lösning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa ett ämne
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa ett adaptivt kort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa ett flöde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avancerad standardagent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Avancerad standardagent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-course-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-navigate-copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Skapa lösningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-create-topic-and-prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa ämnet och analysera felbilden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-collect-missing-information/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Samla in objekt och påverkan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-connect-tberg-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anslut T-Berg DU API och verifiera objektet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-connect-tberg-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Anslut T-Berg DU MCP och fördjupa utredningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Granska och skapa arbetsorder
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Granska och skapa arbetsorder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-1-skapa-amnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Skapa ämnet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-2-kontrollera-amnesinformationen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Kontrollera ämnesinformationen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-3-lagg-till-amnets-indata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Lägg till ämnets indata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 3: Lägg till ämnets indata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-objekt-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Objekt-ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rubrik" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Rubrik
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-beskrivning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Beskrivning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-prioritet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Prioritet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-tekniker-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Tekniker-ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-4-lagg-till-det-adaptiva-kortet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 4: Lägg till det adaptiva kortet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-5-byt-till-ett-dynamiskt-formelkort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 5: Byt till ett dynamiskt formelkort
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-6-spara-anvandarens-val" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 6: Spara användarens val
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-7-lagg-till-villkoret" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 7: Lägg till villkoret
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-8-bygg-avbrottsgrenen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 8: Bygg avbrottsgrenen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-9-starta-agentflodet-i-den-godkanda-grenen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 9: Starta agentflödet i den godkända grenen
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-create-work-order-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Skapa arbetsorder med ett agentflöde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-connect-flow-and-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Koppla flödet till ämnet och testa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruktionsdriven agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instruktionsdriven agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/00-course-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/01-navigate-new-experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hitta rätt i nya Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/02-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Skapa lösningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/03-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/04-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Lägg till produktkunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/05-add-first-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Skapa den första skillen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/06-add-sharepoint-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anslut Centrallager som verktyg
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & fördjupning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & fördjupning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-1-skapa-amnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Skapa ämnet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-2-kontrollera-amnesinformationen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Kontrollera ämnesinformationen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-3-lagg-till-amnets-indata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Lägg till ämnets indata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 3: Lägg till ämnets indata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-objekt-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Objekt-ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rubrik" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Rubrik
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-beskrivning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Beskrivning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-prioritet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Prioritet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-tekniker-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Tekniker-ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-4-lagg-till-det-adaptiva-kortet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 4: Lägg till det adaptiva kortet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-5-byt-till-ett-dynamiskt-formelkort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 5: Byt till ett dynamiskt formelkort
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-6-spara-anvandarens-val" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 6: Spara användarens val
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-7-lagg-till-villkoret" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 7: Lägg till villkoret
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-8-bygg-avbrottsgrenen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 8: Bygg avbrottsgrenen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-9-starta-agentflodet-i-den-godkanda-grenen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 9: Starta agentflödet i den godkända grenen
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="8-granska-och-skapa-arbetsorder">8. Granska och skapa arbetsorder</h1>
+<p>Agenten kan nu verifiera objektet och hämta felhistorik, tekniker och reservdelar. Innan den får skapa en arbetsorder behöver användaren se det samlade underlaget och fatta ett tydligt beslut. I det här kapitlet bygger vi därför ett separat ämne för granskning och godkännande.</p>
+<p>När kapitlet är klart har du:</p>
+<ul>
+<li>skapat ämnet <strong>Granska och skapa arbetsorder</strong></li>
+<li>lagt till fem indatavariabler för det verifierade underlaget</li>
+<li>byggt ett adaptivt kort med knapparna <strong>Godkänn och skapa</strong> och <strong>Avbryt</strong></li>
+<li>sparat användarens val i variabeln <code>approvalChoice</code></li>
+<li>avslutat processen utan att skapa en arbetsorder när användaren avbryter</li>
+<li>startat ett nytt agentflöde i den godkända grenen</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Varför använder vi ett eget ämne?</p>
+<p>Ämnet gör godkännandet förutsägbart. Kortet visar samma fält varje gång, och villkoret avgör vilken gren som får fortsätta. Agenten kan inte hoppa över godkännandet eller tolka ett avbrott som ett godkännande.</p>
+</div>
+<hr />
+<h2 id="del-1-skapa-amnet">Del 1: Skapa ämnet</h2>
+<p>Gå till <strong>Ämnen</strong> i agenten och välj <strong>Lägg till ett ämne</strong> &gt; <strong>Från tomt</strong>.</p>
+<p><img alt="Menyn Lägg till ett ämne med valet Från tomt" src="../../../assets/standard-advanced/chap08/1.png" /></p>
+<p>Ge ämnet följande namn:</p>
+<div class="highlight"><pre><span></span><code>Granska och skapa arbetsorder
+</code></pre></div>
+<p>Ange följande modellbeskrivning i utlösaren:</p>
+<div class="highlight"><pre><span></span><code>Använd ämnet när felanmälan är verifierad och MCP-uppslagen är klara. Ämnet visar arbetsorderunderlaget och låter användaren godkänna eller avbryta. Vid godkännande skapar ämnet arbetsordern.
+</code></pre></div>
+<p><img alt="Det nya ämnet med namn och modellbeskrivning" src="../../../assets/standard-advanced/chap08/2.png" /></p>
+<p>Välj <strong>Spara</strong>.</p>
+<hr />
+<h2 id="del-2-kontrollera-amnesinformationen">Del 2: Kontrollera ämnesinformationen</h2>
+<p>Öppna <strong>Detaljer</strong> uppe till höger. På fliken <strong>Ämnesinformation</strong> kontrollerar du följande:</p>
+<table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Namn</td>
+<td><code>Granska och skapa arbetsorder</code></td>
+</tr>
+<tr>
+<td>Visningsnamn för modell</td>
+<td><code>Granska och skapa arbetsorder</code></td>
+</tr>
+<tr>
+<td>Modellbeskrivning</td>
+<td>Texten du nyss angav i utlösaren</td>
+</tr>
+<tr>
+<td>Fråga användaren innan det här verktyget körs</td>
+<td><code>Av</code></td>
+</tr>
+<tr>
+<td>Status</td>
+<td><code>På</code></td>
+</tr>
+</tbody>
+</table>
+<p>Fältet <strong>Beskrivning</strong> kan lämnas tomt. Modellbeskrivningen talar om för agenten när ämnet ska användas.</p>
+<p><img alt="Ämnesinformationen för Granska och skapa arbetsorder" src="../../../assets/standard-advanced/chap08/3.png" /></p>
+<p>Gå sedan till fliken <strong>Indata</strong> och välj <strong>Skapa en ny variabel</strong>.</p>
+<p><img alt="Fliken Indata med knappen Skapa en ny variabel" src="../../../assets/standard-advanced/chap08/4.png" /></p>
+<hr />
+<h2 id="del-3-lagg-till-amnets-indata">Del 3: Lägg till ämnets indata</h2>
+<p>Ämnet ska ta emot fem textvärden. Använd följande inställningar för samtliga variabler:</p>
+<ul>
+<li><strong>Hur ska handläggare fylla i dessa indata?</strong>: <code>Fyll i dynamiskt med bästa alternativet (standard)</code></li>
+<li><strong>Variabel datatyp</strong>: <code>String</code></li>
+<li><strong>Identifiera som</strong>: lämnas tomt</li>
+<li><strong>Känsliga data</strong>: <code>Av</code></li>
+</ul>
+<p>Skapa variablerna en i taget.</p>
+<h3 id="1-objekt-id">1. Objekt-ID</h3>
+<p>Variabelnamn och visningsnamn:</p>
+<div class="highlight"><pre><span></span><code>assetId
+</code></pre></div>
+<p>Beskrivning:</p>
+<div class="highlight"><pre><span></span><code>Verifierat objekt-ID från MaintenanceContext. Skicka värdet oförändrat.
+</code></pre></div>
+<p><img alt="Indatavariabeln assetId med beskrivning" src="../../../assets/standard-advanced/chap08/5.png" /></p>
+<h3 id="2-rubrik">2. Rubrik</h3>
+<p>Variabelnamn och visningsnamn:</p>
+<div class="highlight"><pre><span></span><code>title
+</code></pre></div>
+<p>Beskrivning:</p>
+<div class="highlight"><pre><span></span><code>Kort rubrik som sammanfattar faultSummary. Lägg inte till uppgifter som saknas i det verifierade underlaget.
+</code></pre></div>
+<p><img alt="Indatavariabeln title med beskrivning" src="../../../assets/standard-advanced/chap08/6.png" /></p>
+<h3 id="3-beskrivning">3. Beskrivning</h3>
+<p>Variabelnamn och visningsnamn:</p>
+<div class="highlight"><pre><span></span><code>description
+</code></pre></div>
+<p>Beskrivning:</p>
+<div class="highlight"><pre><span></span><code>Samlad arbetsorderbeskrivning från det verifierade underlaget och MCP-resultaten. Ta med felkod, relevant felhistorik och reservdelsresultat när en kontroll gjordes. Lägg inte till obekräftade uppgifter.
+</code></pre></div>
+<p><img alt="Indatavariabeln description med beskrivning" src="../../../assets/standard-advanced/chap08/7.png" /></p>
+<h3 id="4-prioritet">4. Prioritet</h3>
+<p>Variabelnamn och visningsnamn:</p>
+<div class="highlight"><pre><span></span><code>priority
+</code></pre></div>
+<p>Beskrivning:</p>
+<div class="highlight"><pre><span></span><code>Prioritet P1–P4 från MaintenanceContext. Skicka värdet oförändrat.
+</code></pre></div>
+<p><img alt="Indatavariabeln priority med beskrivning" src="../../../assets/standard-advanced/chap08/8.png" /></p>
+<h3 id="5-tekniker-id">5. Tekniker-ID</h3>
+<p>Variabelnamn och visningsnamn:</p>
+<div class="highlight"><pre><span></span><code>technicianId
+</code></pre></div>
+<p>Beskrivning:</p>
+<div class="highlight"><pre><span></span><code>Tekniker-ID som find_available_technicians returnerade. Skicka exakt det värdet. Det kan vara UNASSIGNED och får inte lämnas tomt.
+</code></pre></div>
+<p><img alt="Indatavariabeln technicianId med beskrivning" src="../../../assets/standard-advanced/chap08/9.png" /></p>
+<p>Stäng ämnesinformationen när alla fem variabler är klara. Lägg inte till någon utdatavariabel för ämnet. Varje gren kommer senare att ge användaren ett eget meddelande och avsluta alla ämnen.</p>
+<hr />
+<h2 id="del-4-lagg-till-det-adaptiva-kortet">Del 4: Lägg till det adaptiva kortet</h2>
+<p>Ställ dig under utlösaren och välj <strong>Fråga med adaptivt kort</strong>.</p>
+<p><img alt="Menyn under utlösaren med valet Fråga med adaptivt kort" src="../../../assets/standard-advanced/chap08/10.png" /></p>
+<p>Byt namn på noden till:</p>
+<div class="highlight"><pre><span></span><code>Granska arbetsorderunderlag
+</code></pre></div>
+<p>Öppna nodens meny med de tre punkterna och välj <strong>Egenskaper</strong>. Kontrollera att formatet är <strong>JSON-kort</strong> och välj <strong>Redigera adaptivt kort</strong>.</p>
+<p><img alt="Det adaptiva kortets nod och egenskaper för JSON-kort" src="../../../assets/standard-advanced/chap08/11.png" /></p>
+<p>Markera allt i <strong>Redigerare för kortets nyttolast</strong>, ta bort det och klistra in följande JSON:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://adaptivecards.microsoft.com/schemas/adaptive-card.json"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextBlock"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kontrollera underlaget"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bolder"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Large"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"wrap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextBlock"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kontrollera uppgifterna innan arbetsordern skapas."</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"wrap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"spacing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Small"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"isSubtle"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FactSet"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"spacing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Medium"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"facts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Objekt-ID:"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LO-PU-017"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rubrik:"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cirkulationspump 17 med läckage"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prioritet:"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P3"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tekniker-ID:"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T-103"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rapportör:"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joel Thyberg"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextBlock"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beskrivning"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bolder"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"spacing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Medium"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"wrap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextBlock"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pumpen fungerar inte som den ska. Felkod E-42 visas och ett läckage syns vid flänsen."</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"wrap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"spacing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Small"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextBlock"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Godkänn för att skapa arbetsordern. Avbryt för att avsluta utan att skapa någon arbetsorder."</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"wrap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"spacing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Medium"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Action.Submit"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approveWorkOrderButton"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Godkänn och skapa"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"positive"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"actionSubmitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approve_work_order"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Action.Submit"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelWorkOrderButton"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avbryt"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"actionSubmitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancel_work_order"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="Adaptive Card Designer med JSON-kortet och dess förhandsvisning" src="../../../assets/standard-advanced/chap08/12.png" /></p>
+<p>Välj <strong>Save</strong> och sedan <strong>Close</strong>.</p>
+<p>Kortet visas nu i noden. Rulla längst ner och kontrollera att <strong>Utdata (1)</strong> innehåller textfältet <code>actionSubmitId</code>.</p>
+<p><img alt="Det sparade kortet med utdatan actionSubmitId" src="../../../assets/standard-advanced/chap08/14.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Varför börjar vi med JSON?</p>
+<p>JSON-versionen gör mer än att skapa kortets utseende. När kortet sparas läser Copilot Studio värdet <code>actionSubmitId</code> i knapparnas <code>data</code> och skapar kortets utdataschema. Därför visas <code>actionSubmitId</code> under <strong>Utdata</strong>.</p>
+<p>Om vi börjar direkt med en formel kan kortet visas korrekt, men Copilot Studio vet inte vilket utdatavärde knapptryckningen ska lämna. Det kan ge fel om att <code>output</code> eller <code>outputType</code> saknas. Vi sparar därför JSON-versionen först och byter sedan till formeln som hämtar ämnets riktiga värden. Utdataschemat finns då kvar.</p>
+</div>
+<hr />
+<h2 id="del-5-byt-till-ett-dynamiskt-formelkort">Del 5: Byt till ett dynamiskt formelkort</h2>
+<p>Öppna kortets egenskaper igen. Öppna listan <strong>Format</strong> och byt från <strong>JSON-kort</strong> till <strong>Formel</strong>.</p>
+<p><img alt="Formatlistan med valet Formel" src="../../../assets/standard-advanced/chap08/15.png" /></p>
+<p>Välj formelfältet och öppna den utökade redigeraren med expansionsikonen.</p>
+<p><img alt="Kortets egenskaper med formelfältet" src="../../../assets/standard-advanced/chap08/16.png" /></p>
+<p>Ersätt den befintliga formeln med följande:</p>
+<div class="highlight"><pre><span></span><code>{
+    '$schema': "https://adaptivecards.microsoft.com/schemas/adaptive-card.json",
+    type: "AdaptiveCard",
+    version: "1.5",
+    body: [
+        {
+            type: "TextBlock",
+            text: "Kontrollera underlaget",
+            weight: "Bolder",
+            size: "Large",
+            wrap: true
+        },
+        {
+            type: "TextBlock",
+            text: "Kontrollera uppgifterna innan arbetsordern skapas.",
+            wrap: true,
+            spacing: "Small",
+            isSubtle: true
+        },
+        {
+            type: "FactSet",
+            spacing: "Medium",
+            facts: [
+                {
+                    title: "Objekt-ID:",
+                    value: Topic.assetId
+                },
+                {
+                    title: "Rubrik:",
+                    value: Topic.title
+                },
+                {
+                    title: "Prioritet:",
+                    value: Topic.priority
+                },
+                {
+                    title: "Tekniker-ID:",
+                    value: Topic.technicianId
+                },
+                {
+                    title: "Rapportör:",
+                    value: System.User.DisplayName
+                }
+            ]
+        },
+        {
+            type: "TextBlock",
+            text: "Beskrivning",
+            weight: "Bolder",
+            separator: true,
+            spacing: "Medium",
+            wrap: true
+        },
+        {
+            type: "TextBlock",
+            text: Topic.description,
+            wrap: true,
+            spacing: "Small"
+        },
+        {
+            type: "TextBlock",
+            text: "Godkänn för att skapa arbetsordern. Avbryt för att avsluta utan att skapa någon arbetsorder.",
+            wrap: true,
+            spacing: "Medium",
+            separator: true
+        }
+    ],
+    actions: [
+        {
+            type: "Action.Submit",
+            id: "approveWorkOrderButton",
+            title: "Godkänn och skapa",
+            style: "positive",
+            data: {
+                actionSubmitId: "approve_work_order"
+            }
+        },
+        {
+            type: "Action.Submit",
+            id: "cancelWorkOrderButton",
+            title: "Avbryt",
+            data: {
+                actionSubmitId: "cancel_work_order"
+            }
+        }
+    ]
+}
+</code></pre></div>
+<p>Formeln ersätter exempelvärdena med ämnets indatavariabler. Rapportörens namn hämtas från <code>System.User.DisplayName</code>.</p>
+<p>Kontrollera den gröna bocken och förhandsvisningen. Stäng sedan formelredigeraren.</p>
+<p><img alt="Det dynamiska formelkortet med Topic- och System-värden" src="../../../assets/standard-advanced/chap08/17.png" /></p>
+<hr />
+<h2 id="del-6-spara-anvandarens-val">Del 6: Spara användarens val</h2>
+<p>Under <strong>Utdata (1)</strong> ska fältet på vänster sida fortfarande heta <code>actionSubmitId</code>. Det är fältnamnet som kommer från kortet och ska inte ändras.</p>
+<p>Öppna variabeln till höger om likhetstecknet och byt variabelnamn till:</p>
+<div class="highlight"><pre><span></span><code>approvalChoice
+</code></pre></div>
+<p>Välj <strong>Ämne (begränsad omfattning)</strong>. Variabeln ska inte vara global.</p>
+<p><img alt="Kortets utdata kopplad till ämnesvariabeln approvalChoice" src="../../../assets/standard-advanced/chap08/18.png" /></p>
+<p>Efter ändringen visar raden att <code>actionSubmitId</code> kopplas till <code>Topic.approvalChoice</code>.</p>
+<p>Knapparnas interna värden är <code>approve_work_order</code> och <code>cancel_work_order</code>. De synliga knapptexterna är på svenska, men värdena ska vara kvar på engelska eftersom villkoret använder dem.</p>
+<hr />
+<h2 id="del-7-lagg-till-villkoret">Del 7: Lägg till villkoret</h2>
+<p>Ställ dig under det adaptiva kortet och välj <strong>Lägg till ett villkor</strong>.</p>
+<p><img alt="Menyn under kortet med valet Lägg till ett villkor" src="../../../assets/standard-advanced/chap08/19.png" /></p>
+<p>Byt namn på villkorsgruppen till:</p>
+<div class="highlight"><pre><span></span><code>Kontrollera godkännande
+</code></pre></div>
+<p>Öppna variabelväljaren och välj <code>approvalChoice</code> under <strong>Anpassad</strong>.</p>
+<p><img alt="Variabelväljaren med approvalChoice" src="../../../assets/standard-advanced/chap08/20.png" /></p>
+<p>Kontrollera att operatorn är <strong>är lika med</strong>. Den är normalt förvald. Om en annan operator visas öppnar du listan och väljer <strong>är lika med</strong>.</p>
+<p>I fältet <strong>Ange eller välj ett värde</strong> klistrar du in:</p>
+<div class="highlight"><pre><span></span><code>approve_work_order
+</code></pre></div>
+<p>Endast värdet <code>approve_work_order</code> får fortsätta i den godkända grenen. <code>cancel_work_order</code>, ett tomt värde och alla oväntade värden går till avbrottsgrenen.</p>
+<hr />
+<h2 id="del-8-bygg-avbrottsgrenen">Del 8: Bygg avbrottsgrenen</h2>
+<p>Byt namn på grenen <strong>Alla övriga villkor</strong> till:</p>
+<div class="highlight"><pre><span></span><code>Meddela att arbetsordern avbröts
+</code></pre></div>
+<p><img alt="Villkorsgruppen med godkännande- och avbrottsgren" src="../../../assets/standard-advanced/chap08/21.png" /></p>
+<p>Under <strong>Meddela att arbetsordern avbröts</strong> väljer du <strong>Skicka ett meddelande</strong>.</p>
+<p><img alt="Menyn i avbrottsgrenen med valet Skicka ett meddelande" src="../../../assets/standard-advanced/chap08/22.png" /></p>
+<p>Byt namn på meddelandenoden till:</p>
+<div class="highlight"><pre><span></span><code>Meddela att arbetsordern avbröts
+</code></pre></div>
+<p>Skriv följande meddelande:</p>
+<div class="highlight"><pre><span></span><code>Ingen arbetsorder skapades.
+
+Om något i underlaget behöver ändras behöver felanmälan göras om, så att objekt, påverkan, prioritet och övriga uppgifter kan verifieras på nytt.
+</code></pre></div>
+<p><img alt="Avbrottsgrenen med meddelandet till användaren" src="../../../assets/standard-advanced/chap08/23.png" /></p>
+<p>Lägg till nästa nod under meddelandet. Välj <strong>Ämneshantering</strong> &gt; <strong>Avsluta alla ämnen</strong>.</p>
+<p><img alt="Ämneshantering med valet Avsluta alla ämnen" src="../../../assets/standard-advanced/chap08/24.png" /></p>
+<p>Avbrottsgrenen ska sluta här. Den ska inte återansluta till stegen som skapar arbetsordern.</p>
+<hr />
+<h2 id="del-9-starta-agentflodet-i-den-godkanda-grenen">Del 9: Starta agentflödet i den godkända grenen</h2>
+<p>Gå till grenen under <strong>Kontrollera godkännande</strong>. Välj <strong>Lägg till ett verktyg</strong> och sedan <strong>Nytt agentflöde</strong>.</p>
+<p><img alt="Verktygsmenyn i den godkända grenen med valet Nytt agentflöde" src="../../../assets/standard-advanced/chap08/25.png" /></p>
+<p>Copilot Studio öppnar ett nytt agentflöde. Låt ämnesfliken vara kvar. I nästa kapitel bygger vi flödet som skapar arbetsordern och skickar bekräftelsemejlet.</p>
+<hr />
+<div class="admonition success">
+<p class="admonition-title">Godkännandet är på plats</p>
+<p>Ämnet tar emot det verifierade underlaget, visar det i ett adaptivt kort och fortsätter bara när användaren väljer <strong>Godkänn och skapa</strong>. Vid alla andra svar visas avbrottsmeddelandet och processen avslutas utan att någon arbetsorder skapas.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          
+<button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Tillbaka till toppen
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopierat till urklipp", "clipboard.copy": "Kopiera till urklipp", "search.result.more.one": "1 till p\u00e5 denna sida", "search.result.more.other": "# till p\u00e5 denna sida", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.term.missing": "Saknas", "select.version": "V\u00e4lj version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

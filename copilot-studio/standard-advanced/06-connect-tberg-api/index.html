@@ -1,0 +1,2610 @@
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Praktiska utbildningar i Microsoft Copilot Studio – från grundläggande agentbygge till den nya instruktionsdrivna upplevelsen.">
+      
+      
+      
+        <link rel="canonical" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard-advanced/06-connect-tberg-api/">
+      
+      
+        <link rel="prev" href="../05-collect-missing-information/">
+      
+      
+        <link rel="next" href="../07-connect-tberg-mcp/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>6. Anslut T-Berg DU API och verifiera objektet - Microsoft AI-utbildningar</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.setAttribute("data-track", "standard-advanced");
+      var sync = function () { root.classList.toggle("is-scrolled", window.scrollY > 8); };
+      addEventListener("scroll", sync, { passive: true });
+      addEventListener("DOMContentLoaded", sync);
+      sync();
+    })();
+  </script>
+  <script>
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-copy-value]");
+      if (!button) return;
+
+      var value = button.getAttribute("data-copy-value");
+      var label = button.querySelector(".copy-field__label");
+
+      var fallbackCopy = function () {
+        var input = document.createElement("textarea");
+        input.value = value;
+        input.setAttribute("readonly", "");
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+      };
+
+      var showCopied = function () {
+        label.textContent = "Kopierat";
+        button.classList.add("is-copied");
+        setTimeout(function () {
+          label.textContent = "Kopiera";
+          button.classList.remove("is-copied");
+        }, 1800);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).catch(fallbackCopy).then(showCopied);
+      } else {
+        fallbackCopy();
+        showCopied();
+      }
+    });
+  </script>
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-anslut-t-berg-du-api-och-verifiera-objektet" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Sidhuvud">
+    <a href="../../.." title="Microsoft AI-utbildningar" class="md-header__button md-logo" aria-label="Microsoft AI-utbildningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Microsoft AI-utbildningar
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. Anslut T-Berg DU API och verifiera objektet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Microsoft AI-utbildningar" class="md-nav__button md-logo" aria-label="Microsoft AI-utbildningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Microsoft AI-utbildningar
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standardagenten
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Standardagenten
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa en lösning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa ett ämne
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa ett adaptivt kort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa ett flöde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avancerad standardagent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Avancerad standardagent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-course-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-navigate-copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Skapa lösningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-create-topic-and-prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa ämnet och analysera felbilden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-collect-missing-information/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Samla in objekt och påverkan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anslut T-Berg DU API och verifiera objektet
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anslut T-Berg DU API och verifiera objektet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-1-oppna-anpassade-anslutningsprogram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Öppna anpassade anslutningsprogram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-2-importera-openapi-filen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Importera OpenAPI-filen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-3-kontrollera-den-allmanna-informationen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Kontrollera den allmänna informationen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 3: Kontrollera den allmänna informationen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ladda-upp-connectorns-ikon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ladda upp connectorns ikon
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-4-konfigurera-api-nyckeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 4: Konfigurera API-nyckeln
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-5-kontrollera-atgarderna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 5: Kontrollera åtgärderna
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 5: Kontrollera åtgärderna">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getasset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetAsset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createworkorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CreateWorkOrder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-6-skapa-connectorn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 6: Skapa connectorn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-7-skapa-en-t-berg-testnyckel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 7: Skapa en T-Berg-testnyckel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 7: Skapa en T-Berg-testnyckel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#se-vad-testmiljon-innehaller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Se vad testmiljön innehåller
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-8-skapa-anslutningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 8: Skapa anslutningen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-9-testa-objektuppslaget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 9: Testa objektuppslaget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-10-lagg-till-objektuppslaget-i-amnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 10: Lägg till objektuppslaget i ämnet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 10: Lägg till objektuppslaget i ämnet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#koppla-objekt-id-som-indata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla objekt-ID som indata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dop-om-utdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Döp om utdata
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-11-berakna-prioritet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 11: Beräkna prioritet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-12-skapa-maintenancecontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 12: Skapa MaintenanceContext
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-13-undersok-maintenancecontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 13: Undersök MaintenanceContext
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-14-lamna-arendet-till-agenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 14: Lämna ärendet till agenten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-15-uppdatera-agentens-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 15: Uppdatera agentens instruktioner
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-16-testa-och-ta-bort-kontrollmeddelandet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 16: Testa och ta bort kontrollmeddelandet
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-connect-tberg-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Anslut T-Berg DU MCP och fördjupa utredningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-review-and-create-work-order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Granska och skapa arbetsorder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-create-work-order-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Skapa arbetsorder med ett agentflöde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-connect-flow-and-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Koppla flödet till ämnet och testa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruktionsdriven agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instruktionsdriven agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/00-course-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/01-navigate-new-experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hitta rätt i nya Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/02-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Skapa lösningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/03-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/04-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Lägg till produktkunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/05-add-first-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Skapa den första skillen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/06-add-sharepoint-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anslut Centrallager som verktyg
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & fördjupning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & fördjupning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-1-oppna-anpassade-anslutningsprogram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Öppna anpassade anslutningsprogram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-2-importera-openapi-filen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Importera OpenAPI-filen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-3-kontrollera-den-allmanna-informationen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Kontrollera den allmänna informationen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 3: Kontrollera den allmänna informationen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ladda-upp-connectorns-ikon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ladda upp connectorns ikon
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-4-konfigurera-api-nyckeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 4: Konfigurera API-nyckeln
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-5-kontrollera-atgarderna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 5: Kontrollera åtgärderna
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 5: Kontrollera åtgärderna">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getasset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetAsset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createworkorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CreateWorkOrder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-6-skapa-connectorn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 6: Skapa connectorn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-7-skapa-en-t-berg-testnyckel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 7: Skapa en T-Berg-testnyckel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 7: Skapa en T-Berg-testnyckel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#se-vad-testmiljon-innehaller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Se vad testmiljön innehåller
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-8-skapa-anslutningen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 8: Skapa anslutningen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-9-testa-objektuppslaget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 9: Testa objektuppslaget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-10-lagg-till-objektuppslaget-i-amnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 10: Lägg till objektuppslaget i ämnet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 10: Lägg till objektuppslaget i ämnet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#koppla-objekt-id-som-indata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla objekt-ID som indata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dop-om-utdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Döp om utdata
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-11-berakna-prioritet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 11: Beräkna prioritet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-12-skapa-maintenancecontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 12: Skapa MaintenanceContext
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-13-undersok-maintenancecontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 13: Undersök MaintenanceContext
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-14-lamna-arendet-till-agenten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 14: Lämna ärendet till agenten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-15-uppdatera-agentens-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 15: Uppdatera agentens instruktioner
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-16-testa-och-ta-bort-kontrollmeddelandet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 16: Testa och ta bort kontrollmeddelandet
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="6-anslut-t-berg-du-api-och-verifiera-objektet">6. Anslut T-Berg DU API och verifiera objektet</h1>
+<p>Ämnet har nu ett objekt-ID och ett värde för påverkan, men objektet har ännu inte verifierats mot underhållssystemet. Nu importerar vi T-Berg DU API som ett anpassat anslutningsprogram, skapar en anslutning och använder objektinformationen i ämnet.</p>
+<p>När kapitlet är klart har du:</p>
+<ul>
+<li>importerat och konfigurerat <strong>T-Berg DU API</strong></li>
+<li>skapat en tidsbegränsad testnyckel och anslutit den till connectorn</li>
+<li>testat objektuppslaget med <code>LO-PU-017</code></li>
+<li>verifierat ämnets <code>AssetId</code> mot T-Berg D&amp;U</li>
+<li>beräknat prioritet från påverkan och objektets kritikalitet</li>
+<li>byggt och kontrollerat <code>MaintenanceContext</code> i testchatten</li>
+<li>tagit bort det tillfälliga kontrollmeddelandet och lämnat underlaget tillbaka till agenten</li>
+<li>uppdaterat agentens instruktioner med en riktig referens till ämnet</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Spara efter varje färdig nod</p>
+<p>När du är tillbaka i ämnesbyggaren väljer du <strong>Spara</strong> efter varje färdig nod. Då blir det enklare att hitta var ett fel uppstod.</p>
+</div>
+<hr />
+<h2 id="del-1-oppna-anpassade-anslutningsprogram">Del 1: Öppna anpassade anslutningsprogram</h2>
+<p>Stå vid plustecknet under <code>Sätt vald påverkan</code>, efter att grenarna har gått ihop. Välj <strong>Lägg till ett verktyg</strong> och öppna fliken <strong>Verktyg</strong> längst till höger.</p>
+<p><img alt="Menyn under ämnet med Lägg till ett verktyg och fliken Verktyg" src="../../../assets/standard-advanced/chap06/1.png" /></p>
+<p>Välj <strong>Lägg till ett verktyg</strong>.</p>
+<p><img alt="Fliken Verktyg med valet Lägg till ett verktyg" src="../../../assets/standard-advanced/chap06/2.png" /></p>
+<p>I verktygspanelen väljer du <strong>Visa fler</strong> under <strong>Lägg till ny MCP</strong>.</p>
+<p><img alt="Verktygspanelen med länken Visa fler" src="../../../assets/standard-advanced/chap06/3.png" /></p>
+<p>Välj sedan <strong>Lägg till ny Anpassat anslutningsprogram</strong>.</p>
+<p><img alt="Den utökade verktygspanelen med Anpassat anslutningsprogram" src="../../../assets/standard-advanced/chap06/4.png" /></p>
+<p>Power Apps öppnas på sidan <strong>Anpassade anslutningsprogram</strong>.</p>
+<p><img alt="Sidan Anpassade anslutningsprogram i Power Apps" src="../../../assets/standard-advanced/chap06/5.png" /></p>
+<p>Välj <strong>Ny anpassad anslutning</strong> uppe till höger. I menyn väljer du <strong>Importera en OpenAPI-fil</strong>.</p>
+<p><img alt="Menyn Ny anpassad anslutning med valet Importera en OpenAPI-fil" src="../../../assets/standard-advanced/chap06/6.png" /></p>
+<hr />
+<h2 id="del-2-importera-openapi-filen">Del 2: Importera OpenAPI-filen</h2>
+<p>Ladda först ner kursens OpenAPI-fil:</p>
+<p><a class="button button--primary button--download" href="../../../downloads/standard-advanced/tberg-du-connector.swagger.json" download>Ladda ner tberg-du-connector.swagger.json</a></p>
+
+<p>I dialogrutan anger du namnet:</p>
+<div class="highlight"><pre><span></span><code>T-Berg DU API
+</code></pre></div>
+<p>Välj <strong>Importera</strong> och öppna filen <code>tberg-du-connector.swagger.json</code>. När filnamnet visas i dialogrutan väljer du <strong>Fortsätt</strong>.</p>
+<p><img alt="Dialogrutan Importera en OpenAPI-fil med namn och vald fil" src="../../../assets/standard-advanced/chap06/7.png" /></p>
+<p>OpenAPI-filen är kontraktet mellan Power Platform och T-Berg D&amp;U. Den beskriver adressen, autentiseringen, åtgärderna och vilka fält som skickas och returneras. Därför behöver du inte skriva in varje API-detalj för hand.</p>
+<hr />
+<h2 id="del-3-kontrollera-den-allmanna-informationen">Del 3: Kontrollera den allmänna informationen</h2>
+<p>Efter importen öppnas connectorns konfiguration på fliken <strong>Allmänt</strong>.</p>
+<h3 id="ladda-upp-connectorns-ikon">Ladda upp connectorns ikon</h3>
+<p>Ladda ner T-Berg D&amp;U-loggan:</p>
+<p><a class="button button--primary button--download" href="../../../downloads/standard-advanced/tberg-du-logo.png" download>Ladda ner T-Berg D&amp;U-loggan</a></p>
+
+<p>Välj <strong>Ladda upp</strong> och använd den nedladdade PNG-filen. Ange sedan bakgrundsfärgen:</p>
+<div class="highlight"><pre><span></span><code>#fefefe
+</code></pre></div>
+<p>Kontrollera att <strong>Anslut via lokal datagateway</strong> inte är markerad. API:t är publikt tillgängligt över HTTPS och använder därför ingen lokal gateway.</p>
+<p>Följande värden ska visas:</p>
+<table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beskrivning</td>
+<td><code>Ger Lysernos driftassistent tillgång till objektinformation i T-Berg D&amp;U och skapar godkända arbetsordrar. Samma tidsbegränsade T-Berg-testnyckel används för REST och MCP.</code></td>
+</tr>
+<tr>
+<td>Schema</td>
+<td><code>HTTPS</code></td>
+</tr>
+<tr>
+<td>Värd</td>
+<td><code>ca-tberg-du-api.orangesmoke-45b4d851.swedencentral.azurecontainerapps.io</code></td>
+</tr>
+<tr>
+<td>Bas-URL</td>
+<td><code>/api</code></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Connectorns allmänna information med ikon, beskrivning och API-adress" src="../../../assets/standard-advanced/chap06/8.png" /></p>
+<p>Välj <strong>Säkerhet</strong>.</p>
+<hr />
+<h2 id="del-4-konfigurera-api-nyckeln">Del 4: Konfigurera API-nyckeln</h2>
+<p>Kontrollera att autentiseringstypen är <strong>API-nyckel</strong>. Om ett annat värde visas väljer du <strong>API-nyckel</strong> i listan.</p>
+<p>Ändra <strong>Parameteretikett</strong> från det generiska namnet <code>API-nyckel</code> till:</p>
+<div class="highlight"><pre><span></span><code>T-Berg-testnyckel
+</code></pre></div>
+<p>Kontrollera samtidigt följande värden:</p>
+<table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parameternamn</td>
+<td><code>x-workshop-key</code></td>
+</tr>
+<tr>
+<td>Parameterplats</td>
+<td><code>Sidhuvud</code></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Säkerhetsfliken med API-nyckeln T-Berg-testnyckel" src="../../../assets/standard-advanced/chap06/9.png" /></p>
+<p>Parameteretiketten är namnet deltagaren ser när anslutningen skapas. <code>x-workshop-key</code> är det riktiga HTTP-headernamnet som API:t läser. Ändra inte headernamnet.</p>
+<p>Välj <strong>Definition</strong>.</p>
+<hr />
+<h2 id="del-5-kontrollera-atgarderna">Del 5: Kontrollera åtgärderna</h2>
+<p>OpenAPI-filen har skapat två åtgärder. Vi ändrar inget här, men går igenom båda för att se vad connectorn kan göra.</p>
+<h3 id="getasset">GetAsset</h3>
+<p>Välj <code>GetAsset</code> under <strong>Åtgärder</strong>. Under <strong>Allmänt</strong> ska följande information visas:</p>
+<table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sammanfattning</td>
+<td><code>Verifiera och hämta objekt</code></td>
+</tr>
+<tr>
+<td>Åtgärds-ID</td>
+<td><code>GetAsset</code></td>
+</tr>
+</tbody>
+</table>
+<p>Beskrivning:</p>
+<div class="highlight"><pre><span></span><code>Hämtar objektets namn, plats, kritikalitet, SLA, serviceform och kompetenskrav. Använd åtgärden för att verifiera ett objekt-ID mot objektregistret.
+</code></pre></div>
+<p><img alt="GetAsset med sammanfattning, beskrivning och åtgärds-ID" src="../../../assets/standard-advanced/chap06/10.png" /></p>
+<p>Under <strong>Förfrågan</strong> ser du att åtgärden använder <code>GET</code> och tar emot ett obligatoriskt <code>assetId</code> i sökvägen.</p>
+<p><img alt="Förfrågan för GetAsset med metoden GET och parametern assetId" src="../../../assets/standard-advanced/chap06/11.png" /></p>
+<p>Under <strong>Svar</strong> finns <code>200</code> när objektet hittas och <code>404</code> när det saknas. Den gröna markeringen under <strong>Validering</strong> visar att definitionen är giltig.</p>
+<p><img alt="Svar och validering för GetAsset" src="../../../assets/standard-advanced/chap06/12.png" /></p>
+<h3 id="createworkorder">CreateWorkOrder</h3>
+<p>Välj <code>CreateWorkOrder</code> under <strong>Åtgärder</strong>. Under <strong>Allmänt</strong> ska följande information visas:</p>
+<table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sammanfattning</td>
+<td><code>Skapa arbetsorder</code></td>
+</tr>
+<tr>
+<td>Åtgärds-ID</td>
+<td><code>CreateWorkOrder</code></td>
+</tr>
+</tbody>
+</table>
+<p>Beskrivning:</p>
+<div class="highlight"><pre><span></span><code>Skapar en arbetsorder från ett verifierat och bekräftat underlag. Arbetsytan bestäms av testnyckeln och ska inte skickas i anropet.
+</code></pre></div>
+<p><img alt="CreateWorkOrder med sammanfattning, beskrivning och åtgärds-ID" src="../../../assets/standard-advanced/chap06/13.png" /></p>
+<p>Under <strong>Förfrågan</strong> ser du att åtgärden använder <code>POST</code> och skickar arbetsorderns uppgifter i anropets body.</p>
+<p><img alt="Förfrågan för CreateWorkOrder med metoden POST och body" src="../../../assets/standard-advanced/chap06/14.png" /></p>
+<p>Under <strong>Svar</strong> finns statuskoderna <code>201</code>, <code>400</code>, <code>401</code> och <code>429</code>. Valideringen ska vara grön även här.</p>
+<p><img alt="Svar och validering för CreateWorkOrder" src="../../../assets/standard-advanced/chap06/15.png" /></p>
+<p>Vi använder inte <code>CreateWorkOrder</code> i ämnet. Den skrivande åtgärden läggs senare i ett agentflöde med användarbekräftelse.</p>
+<hr />
+<h2 id="del-6-skapa-connectorn">Del 6: Skapa connectorn</h2>
+<p>Hoppa över fliken <strong>Kod</strong> och öppna <strong>Testa</strong>. Sidan visar att connectorn måste skapas innan den kan testas.</p>
+<p><img alt="Testfliken innan det anpassade anslutningsprogrammet har skapats" src="../../../assets/standard-advanced/chap06/16.png" /></p>
+<p>Välj <strong>Skapa anslutning</strong> uppe till höger. När connectorn har skapats visas teståtgärderna, men ingen anslutning är vald ännu.</p>
+<p><img alt="Testfliken med GetAsset och valet Ny anslutning" src="../../../assets/standard-advanced/chap06/17.png" /></p>
+<p>Innan du väljer <strong>Ny anslutning</strong> behöver du en testnyckel från T-Berg D&amp;U.</p>
+<hr />
+<h2 id="del-7-skapa-en-t-berg-testnyckel">Del 7: Skapa en T-Berg-testnyckel</h2>
+<p>Öppna T-Berg D&amp;U i en ny flik:</p>
+<p><a class="button button--primary" href="https://ca-tberg-du-web.orangesmoke-45b4d851.swedencentral.azurecontainerapps.io" target="_blank" rel="noopener">Öppna T-Berg D&amp;U</a></p>
+
+<p>På startsidan bekräftar du att du är en människa.</p>
+<p><img alt="Startsidan i T-Berg D&amp;U med verifiering och knappen Skapa testnyckel" src="../../../assets/standard-advanced/chap06/18.png" /></p>
+<p>När verifieringen visar <strong>Klart!</strong> väljer du <strong>Skapa testnyckel</strong>.</p>
+<p><img alt="Verifieringen är klar och testnyckeln kan skapas" src="../../../assets/standard-advanced/chap06/19.png" /></p>
+<p>Kopiera testnyckeln direkt. Du använder samma nyckel till webbgränssnittet, REST-connectorn och MCP-servern.</p>
+<p><img alt="Den skapade testnyckeln med arbetsyta och giltighetstid" src="../../../assets/standard-advanced/chap06/20.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Spara nyckeln medan den visas</p>
+<p>Testnyckeln ger åtkomst till din privata arbetsyta. Klistra inte in den i kursmaterial, skärmbilder eller meddelanden. Om den försvinner kan du skapa en ny.</p>
+</div>
+<p>En testnyckel gäller i <strong>24 timmar</strong>. Den har en gräns på <strong>500 API- och MCP-anrop</strong> och <strong>20 arbetsordrar</strong>. Varje nyckel får en separat arbetsyta som rensas automatiskt.</p>
+<p>Välj <strong>Öppna min arbetsyta</strong>. På översikten ser du bland annat nyckelns återstående giltighetstid och status för systemet.</p>
+<p><img alt="T-Berg D&amp;U med driftöversikt för den privata arbetsytan" src="../../../assets/standard-advanced/chap06/21.png" /></p>
+<h3 id="se-vad-testmiljon-innehaller">Se vad testmiljön innehåller</h3>
+<p>Under <strong>Objektregister</strong> finns produktionsobjekten som connectorn kan verifiera.</p>
+<p><img alt="Objektregistret i T-Berg D&amp;U" src="../../../assets/standard-advanced/chap06/22.png" /></p>
+<p>Under <strong>Arbetsordrar</strong> visas arbetsordrarna för din testyta. Nya arbetsordrar som agenten skapar senare hamnar här.</p>
+<p><img alt="Arbetsordrar i T-Berg D&amp;U" src="../../../assets/standard-advanced/chap06/23.png" /></p>
+<p>Under <strong>Tekniker</strong> finns teknikernas kompetenser, tillgänglighet och planerade arbete.</p>
+<p><img alt="Tekniker i T-Berg D&amp;U" src="../../../assets/standard-advanced/chap06/24.png" /></p>
+<p>Under <strong>Felhistorik</strong> finns tidigare fel och åtgärder för objekten.</p>
+<p><img alt="Felhistorik i T-Berg D&amp;U" src="../../../assets/standard-advanced/chap06/25.png" /></p>
+<p>De här delarna används mer i nästa kapitel. Nu går vi tillbaka till connectorn och ansluter testnyckeln.</p>
+<hr />
+<h2 id="del-8-skapa-anslutningen">Del 8: Skapa anslutningen</h2>
+<p>Gå tillbaka till fliken <strong>Testa</strong> i Power Apps. Om ingen anslutning visas väljer du <strong>Ny anslutning</strong>.</p>
+<p><img alt="Testfliken utan vald anslutning" src="../../../assets/standard-advanced/chap06/26.png" /></p>
+<p>Klistra in nyckeln i fältet <strong>T-Berg-testnyckel</strong> och välj <strong>Skapa</strong>.</p>
+<p><img alt="Dialogrutan för en ny T-Berg DU API-anslutning" src="../../../assets/standard-advanced/chap06/27.png" /></p>
+<p>När anslutningen har skapats skickas du till sidan <strong>Anslutningar</strong>. <code>T-Berg DU API</code> ska ha statusen <strong>Anslutet</strong>.</p>
+<p><img alt="Sidan Anslutningar med T-Berg DU API anslutet" src="../../../assets/standard-advanced/chap06/28.png" /></p>
+<p>Power Apps går inte automatiskt tillbaka till connectorns testflik. Vi öppnar connectorn igen.</p>
+<p>Välj <strong>Mer</strong> i vänstermenyn.</p>
+<p><img alt="Menyn Mer i Power Apps" src="../../../assets/standard-advanced/chap06/29.png" /></p>
+<p>Om <strong>Anpassade anslutningsprogram</strong> inte redan är fäst väljer du <strong>Upptäck allt</strong>. Under området <strong>Data</strong> väljer du <strong>Anpassade anslutningsprogram</strong>.</p>
+<p><img alt="Sidan Upptäck allt med Anpassade anslutningsprogram under Data" src="../../../assets/standard-advanced/chap06/30.png" /></p>
+<p>Leta upp <code>T-Berg DU API</code> och välj pennan under <strong>Åtgärder</strong> för att redigera connectorn.</p>
+<p><img alt="Listan med anpassade anslutningsprogram och T-Berg DU API" src="../../../assets/standard-advanced/chap06/31.png" /></p>
+<p>Connectorns inställningar öppnas igen.</p>
+<p><img alt="T-Berg DU API öppnat för redigering" src="../../../assets/standard-advanced/chap06/32.png" /></p>
+<p>Öppna fliken <strong>Testa</strong>. Kontrollera att den skapade anslutningen är vald under <strong>Markerad anslutning</strong>.</p>
+<p><img alt="Testfliken med den skapade anslutningen vald" src="../../../assets/standard-advanced/chap06/33.png" /></p>
+<hr />
+<h2 id="del-9-testa-objektuppslaget">Del 9: Testa objektuppslaget</h2>
+<p>Välj åtgärden <code>GetAsset</code> och ange följande <code>assetId</code>:</p>
+<div class="highlight"><pre><span></span><code>LO-PU-017
+</code></pre></div>
+<p>Välj <strong>Teståtgärd</strong>.</p>
+<p><img alt="GetAsset med objekt-ID LO-PU-017" src="../../../assets/standard-advanced/chap06/34.png" /></p>
+<p>Ett lyckat anrop ger status <code>200</code>. I meddelandetexten ska du bland annat se objektets namn, plats, kritikalitet och kompetenskrav.</p>
+<p><img alt="Det lyckade GetAsset-svaret med status 200 och objektinformation" src="../../../assets/standard-advanced/chap06/35.png" /></p>
+<div class="admonition success">
+<p class="admonition-title">Connectorn kan läsa från T-Berg D&amp;U</p>
+<p>Testet visar att OpenAPI-definitionen, anslutningen och testnyckeln fungerar tillsammans. Vi kan nu använda samma åtgärd i ämnet.</p>
+</div>
+<hr />
+<h2 id="del-10-lagg-till-objektuppslaget-i-amnet">Del 10: Lägg till objektuppslaget i ämnet</h2>
+<p>Gå tillbaka till Copilot Studio och öppna ämnet <code>Rapportera utrustningsfel</code>.</p>
+<p>Om panelen från början av kapitlet fortfarande är öppen stänger du den. Välj sedan plustecknet efter att påverkan-grenarna har gått ihop och gå till <strong>Lägg till ett verktyg</strong> &gt; <strong>Anslutningsprogram</strong>.</p>
+<p>Sök efter:</p>
+<div class="highlight"><pre><span></span><code>T-Berg DU API
+</code></pre></div>
+<p>Välj åtgärden <strong>Verifiera och hämta objekt</strong>.</p>
+<p><img alt="Verktygssökningen med åtgärden Verifiera och hämta objekt" src="../../../assets/standard-advanced/chap06/36.png" /></p>
+<p>Åtgärden läggs till som en ny nod. Öppna nodens meny med tre punkter och välj <strong>Egenskaper</strong>.</p>
+<p><img alt="Noden Verifiera och hämta objekt med menyn Egenskaper" src="../../../assets/standard-advanced/chap06/37.png" /></p>
+<p>Under <strong>Initiering</strong> kan du kontrollera åtgärd och anslutning. Standardvärdena kan behållas.</p>
+<p><img alt="Initieringen för Verifiera och hämta objekt" src="../../../assets/standard-advanced/chap06/38.png" /></p>
+<h3 id="koppla-objekt-id-som-indata">Koppla objekt-ID som indata</h3>
+<p>Öppna fliken <strong>Indata</strong>. Vid <code>assetId</code> öppnar du variabelväljaren. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>AssetId
+</code></pre></div>
+<p>Välj ämnesvariabeln under <strong>Anpassad</strong>.</p>
+<p><img alt="Variabelväljaren med AssetId under Anpassad" src="../../../assets/standard-advanced/chap06/39.png" /></p>
+<p>Indatan ska nu visa <code>AssetId</code> med typen <strong>String</strong>.</p>
+<p><img alt="Indatan assetId kopplad till AssetId" src="../../../assets/standard-advanced/chap06/40.png" /></p>
+<h3 id="dop-om-utdata">Döp om utdata</h3>
+<p>Öppna fliken <strong>Utdata</strong>. Välj recordvariabeln <code>GetAsset</code>.</p>
+<p><img alt="Utdata från GetAsset som ett record" src="../../../assets/standard-advanced/chap06/41.png" /></p>
+<p>Byt namn på variabeln till:</p>
+<div class="highlight"><pre><span></span><code>VerifiedAsset
+</code></pre></div>
+<p>Behåll användningen <strong>Ämne (begränsad omfattning)</strong>. Variabeln används bara i det här ämnet och ska inte vara global.</p>
+<p><img alt="Egenskaper för variabeln VerifiedAsset" src="../../../assets/standard-advanced/chap06/42.png" /></p>
+<p>Stäng egenskaperna och välj <strong>Spara</strong>.</p>
+<hr />
+<h2 id="del-11-berakna-prioritet">Del 11: Beräkna prioritet</h2>
+<p>Lägg till <strong>Variabelhantering</strong> &gt; <strong>Ange ett variabelvärde</strong> under connectornoden.</p>
+<p><img alt="Menyn Variabelhantering med Ange ett variabelvärde" src="../../../assets/standard-advanced/chap06/43.png" /></p>
+<p>Byt namn på noden till:</p>
+<div class="highlight"><pre><span></span><code>Beräkna prioritet
+</code></pre></div>
+<p>Öppna <strong>Ange variabel</strong> och välj <strong>Skapa en ny variabel</strong>.</p>
+<p><img alt="Noden Beräkna prioritet med valet Skapa en ny variabel" src="../../../assets/standard-advanced/chap06/44.png" /></p>
+<p>Variabeln får först ett tillfälligt namn.</p>
+<p><img alt="Den nya variabeln med det tillfälliga namnet Var1" src="../../../assets/standard-advanced/chap06/45.png" /></p>
+<p>Öppna variabelns egenskaper och byt namn till:</p>
+<div class="highlight"><pre><span></span><code>Priority
+</code></pre></div>
+<p><img alt="Variabeln har fått namnet Priority" src="../../../assets/standard-advanced/chap06/46.png" /></p>
+<p>Under <strong>Till värde</strong> öppnar du fliken <strong>Formel</strong> och expanderar formelfönstret.</p>
+<p><img alt="Formelfliken för Priority" src="../../../assets/standard-advanced/chap06/47.png" /></p>
+<p>Klistra in följande formel:</p>
+<div class="highlight"><pre><span></span><code>Switch(
+    Topic.ImpactLevel,
+    "Säkerhetsrisk",
+    "P1",
+    "Stoppad",
+    If(
+        Or(
+            Topic.VerifiedAsset.criticality = "Hög",
+            Topic.VerifiedAsset.criticality = "Kritisk"
+        ),
+        "P1",
+        "P2"
+    ),
+    "Begränsad",
+    If(
+        Or(
+            Topic.VerifiedAsset.criticality = "Hög",
+            Topic.VerifiedAsset.criticality = "Kritisk"
+        ),
+        "P2",
+        "P3"
+    ),
+    "Liten",
+    If(
+        Or(
+            Topic.VerifiedAsset.criticality = "Hög",
+            Topic.VerifiedAsset.criticality = "Kritisk"
+        ),
+        "P3",
+        "P4"
+    ),
+    "P2"
+)
+</code></pre></div>
+<p>Formelfönstret ska visa typen <strong>String</strong> och en grön bock vid <strong>Utdata</strong>. Välj <strong>Infoga</strong>.</p>
+<p><img alt="Prioritetsformeln med godkänd utdata" src="../../../assets/standard-advanced/chap06/48.png" /></p>
+<p>Noden visar nu att <code>Priority</code> får sitt värde från <code>Switch</code>-formeln.</p>
+<p><img alt="Den färdiga noden Beräkna prioritet" src="../../../assets/standard-advanced/chap06/49.png" /></p>
+<p>Regeln använder både användarens påverkan och objektets verifierade kritikalitet. Agenten ska därför inte räkna om eller gissa prioriteten senare.</p>
+<p>Välj <strong>Spara</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">Varför använder vi Switch?</p>
+<p><code>Switch</code> lägger prioritetsregeln i ämnet. Samma påverkan och kritikalitet ger då alltid samma prioritet, oavsett hur agenten formulerar eller tolkar ärendet.</p>
+</div>
+<hr />
+<h2 id="del-12-skapa-maintenancecontext">Del 12: Skapa MaintenanceContext</h2>
+<p>Lägg till ännu en nod med <strong>Variabelhantering</strong> &gt; <strong>Ange ett variabelvärde</strong>.</p>
+<p>Byt namn på noden till:</p>
+<div class="highlight"><pre><span></span><code>Skapa verifierat underlag
+</code></pre></div>
+<p>Öppna <strong>Ange variabel</strong> och sök efter:</p>
+<div class="highlight"><pre><span></span><code>MaintenanceContext
+</code></pre></div>
+<p>Välj den befintliga utdatavariabeln.</p>
+<p><img alt="Noden Skapa verifierat underlag med MaintenanceContext valt" src="../../../assets/standard-advanced/chap06/50.png" /></p>
+<p>Under <strong>Till värde</strong> öppnar du fliken <strong>Formel</strong> och expanderar formelfönstret.</p>
+<p><img alt="Formelfönstret för MaintenanceContext" src="../../../assets/standard-advanced/chap06/51.png" /></p>
+<p>Klistra in följande formel:</p>
+<div class="highlight"><pre><span></span><code>JSON(
+    {
+        assetId: Topic.VerifiedAsset.assetId,
+        assetName: Topic.VerifiedAsset.name,
+        location: Topic.VerifiedAsset.location,
+        criticality: Topic.VerifiedAsset.criticality,
+        slaHours: Topic.VerifiedAsset.slaHours,
+        requiredSkill: Topic.VerifiedAsset.requiredSkill,
+        serviceType: Topic.VerifiedAsset.serviceType,
+        faultSummary: Topic.FaultAnalysis.structuredOutput.faultSummary,
+        errorCode: Coalesce(
+            Topic.FaultAnalysis.structuredOutput.errorCode,
+            ""
+        ),
+        impactLevel: Topic.ImpactLevel,
+        priority: Topic.Priority
+    },
+    JSONFormat.Compact
+)
+</code></pre></div>
+<p>Formeln samlar de värden som nästa verktyg behöver i en kompakt JSON-sträng. Välj <strong>Infoga</strong> när formelfönstret visar typen <strong>String</strong> och en grön bock.</p>
+<p><img alt="JSON-formeln för det verifierade underlaget" src="../../../assets/standard-advanced/chap06/52.png" /></p>
+<p>Välj <strong>Spara</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">Varför samlar vi värdena som JSON?</p>
+<p><code>MaintenanceContext</code> ska lämna flera verifierade värden till agenten i en enda utdata. JSON ger varje värde ett fast fältnamn, så att agenten kan använda rätt uppgift i nästa verktygsanrop utan att tolka om underlaget.</p>
+</div>
+<hr />
+<h2 id="del-13-undersok-maintenancecontext">Del 13: Undersök MaintenanceContext</h2>
+<p>Innan ämnet lämnar underlaget till agenten ska vi kontrollera att <code>MaintenanceContext</code> innehåller rätt värden. Lägg därför till en tillfällig nod med <strong>Skicka ett meddelande</strong> direkt under <code>Skapa verifierat underlag</code>.</p>
+<p><img alt="Menyn med valet Skicka ett meddelande" src="../../../assets/standard-advanced/chap06/53.png" /></p>
+<p>Byt namn på noden till:</p>
+<div class="highlight"><pre><span></span><code>Undersök MaintenanceContext
+</code></pre></div>
+<p>Välj variabelknappen <strong>{x}</strong> i meddelandefältet. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>MaintenanceContext
+</code></pre></div>
+<p>Välj ämnesvariabeln <code>Topic.MaintenanceContext</code> under <strong>Anpassad</strong>.</p>
+<p><img alt="Variabelväljaren med MaintenanceContext" src="../../../assets/standard-advanced/chap06/54.png" /></p>
+<p>Meddelandet ska nu bestå av variabeln <code>MaintenanceContext</code>. Välj <strong>Spara</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">Varför visar vi MaintenanceContext i chatten?</p>
+<p>Kontrollmeddelandet visar exakt vad ämnet lämnar vidare. Då kan du upptäcka saknade eller felaktiga värden innan nästa verktyg använder underlaget. Noden är bara till för testet och tas bort när kontrollen är klar.</p>
+</div>
+<hr />
+<h2 id="del-14-lamna-arendet-till-agenten">Del 14: Lämna ärendet till agenten</h2>
+<p>Lägg till en nod under kontrollmeddelandet med <strong>Variabelhantering</strong> &gt; <strong>Ange ett variabelvärde</strong>.</p>
+<p><img alt="Menyn för att lägga till den sista variabelnoden" src="../../../assets/standard-advanced/chap06/55.png" /></p>
+<p>Byt namn på noden till:</p>
+<div class="highlight"><pre><span></span><code>Lämna ärendet till agenten
+</code></pre></div>
+<p>Öppna <strong>Ange variabel</strong> och sök efter:</p>
+<div class="highlight"><pre><span></span><code>answered
+</code></pre></div>
+<p>Välj ämnets befintliga utdatavariabel.</p>
+<p><img alt="Variabelväljaren med ämnets answered-utdata" src="../../../assets/standard-advanced/chap06/56.png" /></p>
+<p>Under <strong>Till värde</strong> öppnar du fliken <strong>Formel</strong> och anger:</p>
+<div class="highlight"><pre><span></span><code>false
+</code></pre></div>
+<p><img alt="Formeln false med typen Boolean och godkänd utdata" src="../../../assets/standard-advanced/chap06/57.png" /></p>
+<p>Kontrollera att formelfönstret visar typen <strong>Boolean</strong> och en grön bock. Välj sedan <strong>Infoga</strong>.</p>
+<p>Avslutningen ska nu innehålla det tillfälliga kontrollmeddelandet mellan <code>Skapa verifierat underlag</code> och <code>Lämna ärendet till agenten</code>.</p>
+<p><img alt="Ämnets avslutning med det tillfälliga kontrollmeddelandet" src="../../../assets/standard-advanced/chap06/58.png" /></p>
+<p><code>answered = false</code> betyder inte att ämnet misslyckades. Det betyder att ämnet har verifierat underlaget och att agenten ska fortsätta med nästa del av processen.</p>
+<p>Välj <strong>Spara</strong>.</p>
+<hr />
+<h2 id="del-15-uppdatera-agentens-instruktioner">Del 15: Uppdatera agentens instruktioner</h2>
+<p>Gå tillbaka till agentens <strong>Översikt</strong> och öppna instruktionerna. Lägg in följande block före avsnittet <strong>Regler</strong>:</p>
+<div class="highlight"><pre><span></span><code>Felanmälan
+Använd /Rapportera utrustningsfel när användaren rapporterar fel, skada, läckage, driftstopp, onormalt ljud eller en annan avvikelse på produktionsutrustning.
+
+När ämnet har körts ska du läsa dess answered-utdata:
+
+- Om värdet är true har ämnet redan hanterat begäran. Upprepa inte svaret.
+- Om värdet är false ska du fortsätta med MaintenanceContext som verifierat underlag.
+
+Ändra eller gissa inte värden som ämnet har verifierat eller räknat fram.
+</code></pre></div>
+<p>Skriv <code>/</code> efter ordet <strong>Använd</strong> och välj ämnet <code>Rapportera utrustningsfel</code> i listan.</p>
+<p><img alt="Instruktionsfältets meny med ämnet Rapportera utrustningsfel" src="../../../assets/standard-advanced/chap06/59.png" /></p>
+<p>Ämnesnamnet visas som ett markerat objekt när referensen har infogats. Då pekar instruktionen på det riktiga ämnet i stället för att bara nämna namnet som vanlig text.</p>
+<p><img alt="Instruktionerna med en riktig referens till Rapportera utrustningsfel" src="../../../assets/standard-advanced/chap06/60.png" /></p>
+<p>Välj <strong>Spara</strong>.</p>
+<hr />
+<h2 id="del-16-testa-och-ta-bort-kontrollmeddelandet">Del 16: Testa och ta bort kontrollmeddelandet</h2>
+<p>Öppna testchatten och kör igenom en felanmälan med en felbild. Fortsätt tills ämnet har verifierat objektet och påverkan.</p>
+<p>Kontrollmeddelandet ska först visa en kompakt JSON-sträng med <code>MaintenanceContext</code>. Därefter kan agenten sammanfatta samma underlag med läsbara namn och värden. Formuleringen kan variera, men kontrollera särskilt att objekt-ID, felbeskrivning, påverkan, prioritet, kompetenskrav och serviceform stämmer.</p>
+<p><img alt="Testchatten med MaintenanceContext och agentens sammanfattning" src="../../../assets/standard-advanced/chap06/61.png" /></p>
+<p>När värdena stämmer går du tillbaka till ämnet. Öppna menyn på noden <code>Undersök MaintenanceContext</code> och välj <strong>Ta bort</strong>.</p>
+<p><img alt="Menyn för att ta bort kontrollmeddelandet" src="../../../assets/standard-advanced/chap06/62.png" /></p>
+<p>Välj <strong>Spara</strong>. Den råa JSON-strängen ska inte visas för användaren i det färdiga flödet. Agenten får fortfarande samma värden genom ämnets utdata <code>MaintenanceContext</code>.</p>
+<hr />
+<div class="admonition success">
+<p class="admonition-title">Objektet verifieras nu mot T-Berg D&amp;U</p>
+<p>Ämnet kan verifiera objekt-ID, hämta objektdata, beräkna prioritet och lämna ett strukturerat <code>MaintenanceContext</code> till agenten. I nästa kapitel ansluter vi T-Berg DU MCP för att hämta felhistorik, tekniker och reservdelar.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          
+<button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Tillbaka till toppen
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopierat till urklipp", "clipboard.copy": "Kopiera till urklipp", "search.result.more.one": "1 till p\u00e5 denna sida", "search.result.more.other": "# till p\u00e5 denna sida", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.term.missing": "Saknas", "select.version": "V\u00e4lj version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

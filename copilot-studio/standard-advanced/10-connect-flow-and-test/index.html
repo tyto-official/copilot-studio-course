@@ -1,0 +1,2250 @@
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Praktiska utbildningar i Microsoft Copilot Studio – från grundläggande agentbygge till den nya instruktionsdrivna upplevelsen.">
+      
+      
+      
+        <link rel="canonical" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/standard-advanced/10-connect-flow-and-test/">
+      
+      
+        <link rel="prev" href="../09-create-work-order-flow/">
+      
+      
+        <link rel="next" href="../../nextgen/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>10. Koppla flödet till ämnet och testa - Microsoft AI-utbildningar</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.setAttribute("data-track", "standard-advanced");
+      var sync = function () { root.classList.toggle("is-scrolled", window.scrollY > 8); };
+      addEventListener("scroll", sync, { passive: true });
+      addEventListener("DOMContentLoaded", sync);
+      sync();
+    })();
+  </script>
+  <script>
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-copy-value]");
+      if (!button) return;
+
+      var value = button.getAttribute("data-copy-value");
+      var label = button.querySelector(".copy-field__label");
+
+      var fallbackCopy = function () {
+        var input = document.createElement("textarea");
+        input.value = value;
+        input.setAttribute("readonly", "");
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+      };
+
+      var showCopied = function () {
+        label.textContent = "Kopierat";
+        button.classList.add("is-copied");
+        setTimeout(function () {
+          label.textContent = "Kopiera";
+          button.classList.remove("is-copied");
+        }, 1800);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).catch(fallbackCopy).then(showCopied);
+      } else {
+        fallbackCopy();
+        showCopied();
+      }
+    });
+  </script>
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#10-koppla-flodet-till-amnet-och-testa-hela-kedjan" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Sidhuvud">
+    <a href="../../.." title="Microsoft AI-utbildningar" class="md-header__button md-logo" aria-label="Microsoft AI-utbildningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Microsoft AI-utbildningar
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              10. Koppla flödet till ämnet och testa
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Microsoft AI-utbildningar" class="md-nav__button md-logo" aria-label="Microsoft AI-utbildningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Microsoft AI-utbildningar
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standardagenten
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Standardagenten
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa en lösning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa ett ämne
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa ett adaptivt kort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa ett flöde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avancerad standardagent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Avancerad standardagent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-course-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-navigate-copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Skapa lösningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-create-topic-and-prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa ämnet och analysera felbilden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-collect-missing-information/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Samla in objekt och påverkan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-connect-tberg-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anslut T-Berg DU API och verifiera objektet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-connect-tberg-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Anslut T-Berg DU MCP och fördjupa utredningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-review-and-create-work-order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Granska och skapa arbetsorder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-create-work-order-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Skapa arbetsorder med ett agentflöde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Koppla flödet till ämnet och testa
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Koppla flödet till ämnet och testa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-1-lagg-till-det-publicerade-flodet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Lägg till det publicerade flödet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-2-koppla-amnets-indata-till-flodet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Koppla ämnets indata till flödet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 2: Koppla ämnets indata till flödet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#koppla-assetid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla assetId
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#koppla-title" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla title
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#koppla-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#koppla-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla priority
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#koppla-technicianid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla technicianId
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#koppla-reportername" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla reporterName
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-3-lagg-till-meddelandet-efter-skapad-arbetsorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Lägg till meddelandet efter skapad arbetsorder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-4-ersatt-platshallarna-med-flodets-utdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 4: Ersätt platshållarna med flödets utdata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 4: Ersätt platshållarna med flödets utdata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arbetsorder-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arbetsorder-ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objekt-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objekt-ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tekniker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tekniker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skapad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skapad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-5-avsluta-processen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 5: Avsluta processen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-6-uppdatera-agentens-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 6: Uppdatera agentens instruktioner
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-7-testa-hela-processen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 7: Testa hela processen
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruktionsdriven agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instruktionsdriven agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/00-course-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/01-navigate-new-experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hitta rätt i nya Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/02-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Skapa lösningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/03-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/04-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Lägg till produktkunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/05-add-first-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Skapa den första skillen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextgen/06-add-sharepoint-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anslut Centrallager som verktyg
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & fördjupning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & fördjupning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-1-lagg-till-det-publicerade-flodet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Lägg till det publicerade flödet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-2-koppla-amnets-indata-till-flodet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Koppla ämnets indata till flödet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 2: Koppla ämnets indata till flödet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#koppla-assetid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla assetId
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#koppla-title" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla title
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#koppla-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#koppla-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla priority
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#koppla-technicianid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla technicianId
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#koppla-reportername" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Koppla reporterName
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-3-lagg-till-meddelandet-efter-skapad-arbetsorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Lägg till meddelandet efter skapad arbetsorder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-4-ersatt-platshallarna-med-flodets-utdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 4: Ersätt platshållarna med flödets utdata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Del 4: Ersätt platshållarna med flödets utdata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arbetsorder-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arbetsorder-ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objekt-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objekt-ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tekniker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tekniker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skapad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skapad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-5-avsluta-processen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 5: Avsluta processen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-6-uppdatera-agentens-instruktioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 6: Uppdatera agentens instruktioner
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-7-testa-hela-processen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 7: Testa hela processen
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="10-koppla-flodet-till-amnet-och-testa-hela-kedjan">10. Koppla flödet till ämnet och testa hela kedjan</h1>
+<p>Ämnet kan nu samla in användarens godkännande, och agentflödet kan skapa arbetsordern. I det här kapitlet kopplar vi ihop dem. Därefter visar ämnet resultatet, avslutar processen och vi testar hela vägen från felanmälan till arbetsorder och bekräftelsemejl.</p>
+<p>När kapitlet är klart har du:</p>
+<ul>
+<li>lagt till <strong>Skapa godkänd arbetsorder</strong> i den godkända grenen</li>
+<li>kopplat ämnets indata till agentflödets indata</li>
+<li>byggt ett slutmeddelande med flödets utdata</li>
+<li>hanterat en saknad tekniker med ett Power Fx-uttryck</li>
+<li>avslutat alla ämnen efter en skapad arbetsorder</li>
+<li>uppdaterat agentens instruktioner</li>
+<li>verifierat resultatet i chatten, mejlet och T-Berg D&amp;U</li>
+</ul>
+<hr />
+<h2 id="del-1-lagg-till-det-publicerade-flodet">Del 1: Lägg till det publicerade flödet</h2>
+<p>Gå tillbaka till ämnet <strong>Granska och skapa arbetsorder</strong>. Ställ dig vid plustecknet i den godkända grenen under villkoret <strong>Kontrollera godkännande</strong>.</p>
+<p>Välj <strong>Lägg till ett verktyg</strong>. Det publicerade flödet <strong>Skapa godkänd arbetsorder</strong> ska visas i listan. Om det inte syns direkt kan du söka efter namnet.</p>
+<p>Välj flödet. Nodens namn är redan rätt och ska inte ändras.</p>
+<p><img alt="Det publicerade flödet Skapa godkänd arbetsorder väljs i ämnets godkända gren" src="../../../assets/standard-advanced/chap10/1.png" /></p>
+<hr />
+<h2 id="del-2-koppla-amnets-indata-till-flodet">Del 2: Koppla ämnets indata till flödet</h2>
+<p>Flödet behöver sex värden. De första fem kommer från ämnets indatavariabler. Rapportörens namn hämtas från den inloggade användaren.</p>
+<h3 id="koppla-assetid">Koppla assetId</h3>
+<p>Öppna variabelväljaren för <code>assetId</code>. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>assetId
+</code></pre></div>
+<p>Välj <code>assetId</code> under <strong>Anpassad</strong>. Fältet ska visa <code>Topic.assetId</code>.</p>
+<p><img alt="Indatan assetId kopplad till Topic assetId" src="../../../assets/standard-advanced/chap10/2.png" /></p>
+<h3 id="koppla-title">Koppla title</h3>
+<p>Öppna variabelväljaren för <code>title</code>, sök efter följande värde och välj det under <strong>Anpassad</strong>:</p>
+<div class="highlight"><pre><span></span><code>title
+</code></pre></div>
+<p><img alt="Indatan title kopplad till Topic title" src="../../../assets/standard-advanced/chap10/3.png" /></p>
+<h3 id="koppla-description">Koppla description</h3>
+<p>Öppna variabelväljaren för <code>description</code>, sök efter följande värde och välj det under <strong>Anpassad</strong>:</p>
+<div class="highlight"><pre><span></span><code>description
+</code></pre></div>
+<p><img alt="Indatan description kopplad till Topic description" src="../../../assets/standard-advanced/chap10/4.png" /></p>
+<h3 id="koppla-priority">Koppla priority</h3>
+<p>Öppna variabelväljaren för <code>priority</code>, sök efter följande värde och välj det under <strong>Anpassad</strong>:</p>
+<div class="highlight"><pre><span></span><code>priority
+</code></pre></div>
+<p><img alt="Indatan priority kopplad till Topic priority" src="../../../assets/standard-advanced/chap10/5.png" /></p>
+<h3 id="koppla-technicianid">Koppla technicianId</h3>
+<p>Öppna variabelväljaren för <code>technicianId</code>, sök efter följande värde och välj det under <strong>Anpassad</strong>:</p>
+<div class="highlight"><pre><span></span><code>technicianId
+</code></pre></div>
+<p><img alt="Indatan technicianId kopplad till Topic technicianId" src="../../../assets/standard-advanced/chap10/6.png" /></p>
+<h3 id="koppla-reportername">Koppla reporterName</h3>
+<p>Öppna variabelväljaren för <code>reporterName</code> och gå till fliken <strong>System</strong>. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>user
+</code></pre></div>
+<p>Välj <strong>User.DisplayName</strong>. Fältet ska visa <code>System.User.DisplayName</code>.</p>
+<p><img alt="Indatan reporterName kopplad till System User DisplayName" src="../../../assets/standard-advanced/chap10/7.png" /></p>
+<p>Kontrollera också att flödets utdata är kopplade till följande ämnesvariabler:</p>
+<table>
+<thead>
+<tr>
+<th>Utdata från flödet</th>
+<th>Ämnesvariabel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>workorderid</code></td>
+<td><code>workOrderId</code></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>status</code></td>
+</tr>
+<tr>
+<td><code>assetid</code></td>
+<td><code>assetId</code></td>
+</tr>
+<tr>
+<td><code>technicianname</code></td>
+<td><code>technicianName</code></td>
+</tr>
+<tr>
+<td><code>createdat</code></td>
+<td><code>createdAt</code></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>description</code></td>
+</tr>
+</tbody>
+</table>
+<p>Variablerna används efter flödesnoden. De ska vara ämnesspecifika, inte globala.</p>
+<hr />
+<h2 id="del-3-lagg-till-meddelandet-efter-skapad-arbetsorder">Del 3: Lägg till meddelandet efter skapad arbetsorder</h2>
+<p>Ställ dig under flödesnoden och välj <strong>Skicka ett meddelande</strong>.</p>
+<p><img alt="Menyn under flödesnoden med valet Skicka ett meddelande" src="../../../assets/standard-advanced/chap10/8.png" /></p>
+<p>Byt namn på noden till:</p>
+<div class="highlight"><pre><span></span><code>Bekräfta skapad arbetsorder
+</code></pre></div>
+<p>Klistra in följande text i meddelandet:</p>
+<div class="highlight"><pre><span></span><code>Arbetsordern har skapats.
+
+Arbetsorder-ID: [workOrderId]
+Objekt-ID: [assetId]
+Status: [status]
+Tekniker: [technicianName]
+Skapad: [createdAt]
+
+Ett bekräftelsemejl har skickats.
+</code></pre></div>
+<p><img alt="Meddelandenoden med text och platshållare" src="../../../assets/standard-advanced/chap10/9.png" /></p>
+<p>Markera de fem raderna från <strong>Arbetsorder-ID</strong> till <strong>Skapad</strong> och välj <strong>Punktlista</strong> i verktygsfältet.</p>
+<p><img alt="De fem resultatraderna markerade för att göras till en punktlista" src="../../../assets/standard-advanced/chap10/10.png" /></p>
+<p>Kontrollera att endast resultatraderna ingår i punktlistan.</p>
+<p><img alt="Meddelandet med arbetsorderns resultat som punktlista" src="../../../assets/standard-advanced/chap10/11.png" /></p>
+<hr />
+<h2 id="del-4-ersatt-platshallarna-med-flodets-utdata">Del 4: Ersätt platshållarna med flödets utdata</h2>
+<p>Ta bort en platshållare i taget och låt markören stå kvar efter etiketten. Öppna variabelväljaren med <strong>{x}</strong>, sök efter variabeln och välj den under <strong>Anpassad</strong>.</p>
+<h3 id="arbetsorder-id">Arbetsorder-ID</h3>
+<p>Ersätt <code>[workOrderId]</code> med:</p>
+<div class="highlight"><pre><span></span><code>workOrderId
+</code></pre></div>
+<p>Välj <code>Topic.workOrderId</code>.</p>
+<p><img alt="workOrderId väljs från ämnets variabler" src="../../../assets/standard-advanced/chap10/12.png" /></p>
+<h3 id="objekt-id">Objekt-ID</h3>
+<p>Ersätt <code>[assetId]</code> med:</p>
+<div class="highlight"><pre><span></span><code>assetId
+</code></pre></div>
+<p>Välj <code>Topic.assetId</code>.</p>
+<p><img alt="assetId väljs från ämnets variabler" src="../../../assets/standard-advanced/chap10/13.png" /></p>
+<h3 id="status">Status</h3>
+<p>Ersätt <code>[status]</code> med:</p>
+<div class="highlight"><pre><span></span><code>status
+</code></pre></div>
+<p>Välj <code>Topic.status</code>.</p>
+<p><img alt="status väljs från ämnets variabler" src="../../../assets/standard-advanced/chap10/14.png" /></p>
+<h3 id="tekniker">Tekniker</h3>
+<p><code>technicianName</code> kan vara tomt när ingen tekniker har tilldelats. Ta bort <code>[technicianName]</code>, välj <strong>fx</strong> och klistra in följande formel:</p>
+<div class="highlight"><pre><span></span><code>If(
+    IsBlank(Topic.technicianName),
+    "Ej tilldelad",
+    Topic.technicianName
+)
+</code></pre></div>
+<p>Kontrollera den gröna bocken och välj <strong>Infoga</strong>.</p>
+<p><img alt="Power Fx-formeln som visar teknikern eller Ej tilldelad" src="../../../assets/standard-advanced/chap10/15.png" /></p>
+<h3 id="skapad">Skapad</h3>
+<p>Ersätt <code>[createdAt]</code> med:</p>
+<div class="highlight"><pre><span></span><code>createdAt
+</code></pre></div>
+<p>Välj <code>Topic.createdAt</code>.</p>
+<p><img alt="createdAt väljs från ämnets variabler" src="../../../assets/standard-advanced/chap10/16.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Varför kontrollerar vi technicianName?</p>
+<p>Flödet kan skapa en arbetsorder med <code>technicianId</code> satt till <code>UNASSIGNED</code>. Då kan connectorn returnera ett tomt <code>technicianName</code>. Formeln visar <strong>Ej tilldelad</strong> i stället för en tom punkt i bekräftelsen.</p>
+</div>
+<hr />
+<h2 id="del-5-avsluta-processen">Del 5: Avsluta processen</h2>
+<p>Ställ dig under meddelandenoden. Välj <strong>Ämneshantering</strong> &gt; <strong>Avsluta alla ämnen</strong>.</p>
+<p><img alt="Ämneshantering med valet Avsluta alla ämnen" src="../../../assets/standard-advanced/chap10/17.png" /></p>
+<p>Processen ska sluta efter bekräftelsen. Då fortsätter inte agenten med ett extra genererat svar efter att arbetsordern har skapats.</p>
+<p>Välj <strong>Spara</strong>.</p>
+<hr />
+<h2 id="del-6-uppdatera-agentens-instruktioner">Del 6: Uppdatera agentens instruktioner</h2>
+<p>Gå tillbaka till agentens <strong>Översikt</strong> och öppna instruktionerna. Lägg in följande block efter avsnittet <strong>Efter verifieringen</strong> och före <strong>Regler</strong>:</p>
+<div class="highlight"><pre><span></span><code>Skapa arbetsorder
+När MCP-uppslagen är klara ska du använda /Granska och skapa arbetsorder. Fyll ämnets indata med det verifierade underlaget från MaintenanceContext och resultaten från MCP-verktygen.
+</code></pre></div>
+<p>Skriv snedstrecket och börja skriva ämnets namn. Välj <strong>Granska och skapa arbetsorder</strong> i förslagslistan så att texten blir en riktig ämnesreferens.</p>
+<p><img alt="Förslagslistan där ämnet Granska och skapa arbetsorder väljs" src="../../../assets/standard-advanced/chap10/18.png" /></p>
+<p>Kontrollera att ämnet visas som en referens i instruktionen och välj <strong>Spara</strong>.</p>
+<p><img alt="Den uppdaterade instruktionen med en referens till ämnet" src="../../../assets/standard-advanced/chap10/19.png" /></p>
+<hr />
+<h2 id="del-7-testa-hela-processen">Del 7: Testa hela processen</h2>
+<p>Öppna testchatten och gör en fullständig felanmälan. Låt agenten verifiera objektet och genomföra MCP-uppslagen. När det adaptiva kortet visas väljer du <strong>Godkänn och skapa</strong>.</p>
+<p>Efter en lyckad körning ska chatten visa:</p>
+<ul>
+<li>arbetsorder-ID</li>
+<li>objekt-ID</li>
+<li>status</li>
+<li>teknikerns namn eller <strong>Ej tilldelad</strong></li>
+<li>tidpunkten då arbetsordern skapades</li>
+<li>att ett bekräftelsemejl har skickats</li>
+</ul>
+<p><img alt="Testchatten med godkännande och bekräftelsen på den skapade arbetsordern" src="../../../assets/standard-advanced/chap10/20.png" /></p>
+<p>Öppna mejlet och kontrollera att arbetsorder-ID, objekt, status, prioritet, tekniker och beskrivning stämmer med underlaget i chatten.</p>
+<p><img alt="Bekräftelsemejlet för den skapade arbetsordern" src="../../../assets/standard-advanced/chap10/21.png" /></p>
+<p>Öppna slutligen sidan <strong>Arbetsorder</strong> i T-Berg D&amp;U. Kontrollera att samma arbetsorder finns där och att objekt, prioritet, tekniker och status stämmer.</p>
+<p><img alt="Den nya arbetsordern i T-Berg D&amp;U" src="../../../assets/standard-advanced/chap10/22.png" /></p>
+<hr />
+<div class="admonition success">
+<p class="admonition-title">Hela kedjan fungerar</p>
+<p>Agenten verifierar felanmälan, hämtar beslutsunderlag via MCP och lämnar uppgifterna till granskningsämnet. Arbetsordern skapas först efter användarens godkännande. Resultatet visas i chatten, skickas via mejl och sparas i T-Berg D&amp;U.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          
+<button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Tillbaka till toppen
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopierat till urklipp", "clipboard.copy": "Kopiera till urklipp", "search.result.more.one": "1 till p\u00e5 denna sida", "search.result.more.other": "# till p\u00e5 denna sida", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.term.missing": "Saknas", "select.version": "V\u00e4lj version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
