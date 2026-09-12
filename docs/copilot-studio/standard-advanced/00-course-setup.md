@@ -1,6 +1,6 @@
 # 0. Kursuppsättning
 
-Innan vi börjar bygga serviceagenten förbereder vi åtkomsten till Copilot Studio, skapar en personlig utvecklingsmiljö och kontrollerar att kursens två viktigaste byggblock finns på plats.
+Innan vi börjar bygga serviceagenten förbereder vi åtkomsten till Copilot Studio, skapar en personlig utvecklingsmiljö och kontrollerar att de två byggblock kursen vilar på går att skapa.
 
 När kapitlet är klart har du:
 
@@ -94,7 +94,7 @@ Den nya miljön får normalt ett namn baserat på ditt användarnamn, exempelvis
 
 ## Del 3: Kontrollera att du kan skapa AI-promptar
 
-Kursens tredje kapitel bygger på en AI-prompt som analyserar en bild. Vi kontrollerar redan nu att den går att skapa, så att ingen fastnar mitt i bygget.
+Kursens fjärde kapitel bygger på en AI-prompt som analyserar en bild. Vi kontrollerar redan nu att den går att skapa, så att ingen fastnar mitt i bygget.
 
 ### 1. Öppna AI-nav
 
@@ -108,7 +108,7 @@ Sidan som öppnas ska visa rutorna **Prompter**, **AI-modeller**, **Dokumentauto
 
 ![AI Builder-startsidan med rutan Prompter synlig](../../assets/standard-advanced/chap00/9.png)
 
-Att sidan över huvud taget laddar är den viktiga signalen. Att listan under *Nyligen skapade* är tom är helt normalt — du har inte byggt något än.
+Det räcker att sidan laddar. Listan under *Nyligen skapade* är tom, eftersom du inte har byggt något än.
 
 ### 3. Öppna Prompter
 
@@ -116,7 +116,7 @@ Välj rutan **Prompter**.
 
 ![Sidan Promptar med knappen Skapa en egen prompt och färdiga mallar](../../assets/standard-advanced/chap00/10.png)
 
-Ser du **Skapa en egen prompt** och listan med färdiga mallar är kontrollen godkänd. Du behöver inte skapa någon prompt nu — det gör vi i kapitel 3.
+Ser du **Skapa en egen prompt** och listan med färdiga mallar är kontrollen godkänd. Du behöver inte skapa någon prompt nu. Det gör vi i kapitel 4.
 
 !!! question "Om Prompter inte dyker upp"
     Det behöver inte betyda att kursen är blockerad. Copilot Studio har en **egen** väg till promptar, via *Verktyg → Nytt verktyg → Prompt*, och den kan fungera även när vyn i Power Apps ser tom eller otillgänglig ut.
@@ -125,7 +125,7 @@ Ser du **Skapa en egen prompt** och listan med färdiga mallar är kontrollen go
 
     1. **Kontrollera miljön först.** Står du i standardmiljön i stället för din utvecklingsmiljö saknas ofta både Dataverse och AI Builder. Det är den vanligaste orsaken.
     2. **Vänta och uppdatera.** Dataverse kan behöva upp till tio minuter på sig första gången.
-    3. **Testa i Copilot Studio i stället.** Det är där vi faktiskt bygger prompten, så det är det avgörande provet.
+    3. **Testa i Copilot Studio i stället.** Det är där prompten byggs, så det är det provet som räknas.
 
     Kvarstår problemet efter alla tre är det troligen en spärr i klientorganisationen, och då behöver du hjälp av din administratör.
 
@@ -133,7 +133,7 @@ Ser du **Skapa en egen prompt** och listan med färdiga mallar är kontrollen go
 
 ## Del 4: Kontrollera att du kan skapa anslutningar
 
-I kapitel 4 bygger du ett eget anslutningsprogram mot kursens affärssystem. Här kontrollerar vi bara att behörigheten finns.
+I kapitel 6 bygger du ett eget anslutningsprogram mot kursens affärssystem. Här kontrollerar vi bara att behörigheten finns.
 
 ### 1. Öppna Anslutningar
 
@@ -149,21 +149,19 @@ Anslutningar ligger inte i vänstermenyn från början.
 
 ### 2. Så ser sidan ut
 
-Du landar på en översikt över dina anslutningar. Är den tom är allt som det ska — du har inte skapat någon än.
+Du landar på en översikt över dina anslutningar. Är den tom är allt som det ska, eftersom du inte har skapat någon än.
 
 ![Sidan Anslutningar i Power Apps](../../assets/standard-advanced/chap00/12.png)
 
 ### 3. Testa att skapa en anslutning
 
-Välj **Ny anslutning**. En lista över tillgängliga anslutningsprogram ska visas — SharePoint, OneDrive, SQL Server och många fler.
+Välj **Ny anslutning**. En lista över tillgängliga anslutningsprogram ska visas: SharePoint, OneDrive, SQL Server och många fler.
 
 ![Sidan Ny anslutning med listan över tillgängliga anslutningsprogram](../../assets/standard-advanced/chap00/13.png)
 
-Laddar listan är kontrollen godkänd. **Skapa ingen anslutning nu** — vi gör det i kapitel 4, mot kursens eget system.
+Visas listan har du behörigheten. **Skapa ingen anslutning nu.** Vi gör det i kapitel 6, mot kursens eget system.
 
 ---
-
-## Klar
 
 Du har nu allt som behövs:
 
@@ -171,7 +169,8 @@ Du har nu allt som behövs:
 |---|---|---|
 | Copilot Studio | Egen inloggning | Här byggs agenten |
 | Utvecklingsmiljö med Dataverse | Power Apps | Här lever allt du bygger |
-| AI-promptar | AI-nav → Prompter | Kapitel 3 |
-| Anslutningar | Mer → Anslutningar | Kapitel 4 |
+| AI-promptar | AI-nav → Prompter | Kapitel 4 |
+| Anslutningar | Mer → Anslutningar | Kapitel 6 |
 
-I nästa kapitel går vi igenom vad vi ska bygga under dagen — och varför just den här sortens agent ska byggas deterministiskt.
+!!! success "Kursmiljön är klar"
+    Copilot Studio är aktiverat, du har en egen utvecklingsmiljö med Dataverse, och både AI-promptar och anslutningar går att skapa. Fortsätt till [nästa kapitel](01-navigate-copilot-studio.md) för att hitta rätt i Copilot Studio.

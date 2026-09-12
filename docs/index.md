@@ -9,7 +9,7 @@ hide:
     <div class="portal-hero__copy">
       <div class="eyebrow">MICROSOFT AI-UTBILDNINGAR</div>
       <h1>Lär dig Copilot Studio genom att <span>bygga på riktigt.</span></h1>
-      <p>Praktiska, scenariobaserade utbildningar för dig som vill förstå hur Microsofts agenter fungerar – och kunna omsätta kunskapen direkt i din egen organisation.</p>
+      <p>Praktiska, scenariobaserade utbildningar där du lär dig hur Microsofts agenter fungerar och bygger lösningar som du kan använda i din egen organisation.</p>
     </div>
     <div class="portal-hero__composition" aria-hidden="true">
       <div class="orbit orbit--one"></div>
@@ -27,7 +27,7 @@ hide:
   <section class="track-intro" id="utbildningar">
     <div>
       <div class="section-label">COPILOT STUDIO</div>
-      <h2>Välj arkitektur — och sedan nivå</h2>
+      <h2>Välj arkitektur och nivå</h2>
     </div>
     <p>Börja med att välja vilken sorts agent du arbetar med. Inom varje arkitektur finns en grundkurs och en fördjupning. Kurserna är fristående: du kan gå fördjupningen utan att ha gått grunden.</p>
   </section>
@@ -62,8 +62,8 @@ hide:
         </div>
         <div class="course-card__body">
           <h3>Bygg en avancerad standardagent</h3>
-          <p>En intern serviceagent som analyserar en bild, hämtar data ur ett affärssystem via eget anslutningsprogram och MCP, och skapar ett godkänt serviceuppdrag.</p>
-          <div class="course-card__meta"><span>Prompt · Connector · MCP</span><span>Fördjupningsnivå</span></div>
+          <p>Koppla standardagenten till externa system. Du bygger en serviceagent som verifierar utrustning via ett eget anslutningsprogram, hämtar beslutsunderlag via MCP och skapar en arbetsorder efter användarens godkännande.</p>
+          <div class="course-card__meta"><span>11 kapitel</span><span>Fördjupningsnivå</span><span>Prompt · Connector · MCP</span></div>
           <a class="text-link" href="copilot-studio/standard-advanced/">Se kursupplägget</a>
         </div>
       </article>
@@ -99,18 +99,18 @@ hide:
     <div class="compare-section__heading">
       <div class="section-label">SÅ SKILJER DE SIG</div>
       <h2>Vilken av dem passar din uppgift?</h2>
-      <p>De två upplevelserna är byggda för olika sorters arbete, och båda finns kvar parallellt – Microsoft anger att agenter byggda med standardharnessen fortsatt har fullt stöd vid sidan av agenter som drivs av GitHub Copilot-harnessen. Det handlar alltså om ett vägval, inte om en nyare version som ersätter en äldre. Sammanställningen nedan följer Microsofts egen dokumentation.</p>
+      <p>De två upplevelserna är byggda för olika sorters arbete och finns kvar parallellt. Microsoft anger att agenter byggda med standardharnessen fortsatt har fullt stöd vid sidan av agenter som drivs av GitHub Copilot-harnessen. Det är ett vägval, inte en nyare version som ersätter en äldre. Sammanställningen nedan följer Microsofts egen dokumentation.</p>
     </div>
 
     <div class="compare-picks">
       <article class="compare-pick compare-pick--standard">
-        <h3>Välj standardagenten när…</h3>
-        <p>…scenariot är väldefinierat och regelbaserat och du vill ha konsekventa, förutsägbara svar. Du definierar själv ämnen, prompter och vägar, så att upplevelsen svarar likadant varje gång, och den kan använda befintligt promptbibliotek och verksamhetskunskap.</p>
+        <h3>Välj standardagenten när</h3>
+        <p>Scenariot är väldefinierat och regelbaserat och du vill ha konsekventa, förutsägbara svar. Du definierar själv ämnen, prompter och vägar. Agenten kan också använda befintliga prompter och verksamhetskunskap.</p>
         <p class="compare-pick__example"><b>Microsofts exempel:</b> en intern helpdesk som svarar på vanliga frågor och skickar enklare ärenden vidare genom ett flöde.</p>
       </article>
       <article class="compare-pick compare-pick--nextgen">
-        <h3>Välj den instruktionsdrivna agenten när…</h3>
-        <p>…agenten behöver resonera genom längre uppgifter, arbeta över flera verktyg, hantera filer eller automatisera en affärsprocess från början till slut. Den tar ett mål, bryter ner det i steg och justerar när ett steg misslyckas eller förutsättningarna ändras.</p>
+        <h3>Välj den instruktionsdrivna agenten när</h3>
+        <p>Agenten behöver resonera genom längre uppgifter, arbeta med flera verktyg, hantera filer eller automatisera en affärsprocess från början till slut. Den tar ett mål, bryter ner det i steg och justerar arbetssättet när ett steg misslyckas eller förutsättningarna ändras.</p>
         <p class="compare-pick__example"><b>Microsofts exempel:</b> en leverantörsreskontraprocess där agenten läser fakturor, matchar dem mot inköpsorder och skickar avvikelser vidare för godkännande.</p>
       </article>
     </div>
@@ -136,7 +136,7 @@ hide:
       </table>
     </div>
 
-    <p class="compare-note">Valet görs när agenten skapas och går inte att ändra i efterhand – en agent kan inte flyttas mellan de två arkitekturerna. Utöver dessa finns en tredje variant, <i>Copilot chat harness</i>, för att utöka Microsoft 365 Copilot Chat med organisationens kunskap; den ingår inte i utbildningarna här. Källor: <a href="https://learn.microsoft.com/sv-se/microsoft-copilot-studio/harnesses-overview">Välj en harness</a> och <a href="https://learn.microsoft.com/sv-se/microsoft-copilot-studio/agents-experience/overview">Översikt över agenter</a> på Microsoft Learn.</p>
+    <p class="compare-note">Valet görs när agenten skapas och går inte att ändra i efterhand. En agent kan inte flyttas mellan de två arkitekturerna. Det finns också en tredje variant, <i>Copilot chat harness</i>, som utökar Microsoft 365 Copilot Chat med organisationens kunskap. Den ingår inte i utbildningarna här. Källor: <a href="https://learn.microsoft.com/sv-se/microsoft-copilot-studio/harnesses-overview">Välj en harness</a> och <a href="https://learn.microsoft.com/sv-se/microsoft-copilot-studio/agents-experience/overview">Översikt över agenter</a> på Microsoft Learn.</p>
   </section>
 
   <section class="method-section">

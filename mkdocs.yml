@@ -52,6 +52,16 @@ nav:
     - Avancerad standardagent:
       - Kursöversikt: copilot-studio/standard-advanced/index.md
       - 0. Kursuppsättning: copilot-studio/standard-advanced/00-course-setup.md
+      - 1. Hitta rätt i Copilot Studio: copilot-studio/standard-advanced/01-navigate-copilot-studio.md
+      - 2. Skapa lösningen: copilot-studio/standard-advanced/02-create-solution.md
+      - 3. Skapa agenten: copilot-studio/standard-advanced/03-create-agent.md
+      - 4. Skapa ämnet och analysera felbilden: copilot-studio/standard-advanced/04-create-topic-and-prompt.md
+      - 5. Samla in objekt och påverkan: copilot-studio/standard-advanced/05-collect-missing-information.md
+      - 6. Anslut T-Berg DU API och verifiera objektet: copilot-studio/standard-advanced/06-connect-tberg-api.md
+      - 7. Anslut T-Berg DU MCP och fördjupa utredningen: copilot-studio/standard-advanced/07-connect-tberg-mcp.md
+      - 8. Granska och skapa arbetsorder: copilot-studio/standard-advanced/08-review-and-create-work-order.md
+      - 9. Skapa arbetsorder med ett agentflöde: copilot-studio/standard-advanced/09-create-work-order-flow.md
+      - 10. Koppla flödet till ämnet och testa: copilot-studio/standard-advanced/10-connect-flow-and-test.md
     - Instruktionsdriven agent:
       - Kursöversikt: copilot-studio/nextgen/index.md
       - 0. Kursuppsättning: copilot-studio/nextgen/00-course-setup.md
