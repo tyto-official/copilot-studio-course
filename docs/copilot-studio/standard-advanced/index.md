@@ -8,8 +8,8 @@ hide:
   <section class="course-hero course-hero--advanced">
     <div class="course-hero__copy">
       <a class="back-link" href="../../">Alla utbildningar</a>
-      <div class="eyebrow">COPILOT STUDIO · FÖRDJUPNING</div>
-      <h1>Bygg en <span>avancerad standardagent</span></h1>
+      <div class="eyebrow">STANDARDHARNESSEN · FÖRDJUPNING</div>
+      <h1>Bygg en <span>driftassistent med externa system</span></h1>
       <p>En fördjupningskurs där du kopplar en standardagent till externa system. Du bygger en intern serviceagent som analyserar en bild, verifierar utrustning via ett eget anslutningsprogram, hämtar beslutsunderlag via MCP och skapar en arbetsorder efter användarens godkännande.</p>
       <div class="hero-actions">
         <a class="button button--primary" href="00-course-setup/">Starta kursen</a>

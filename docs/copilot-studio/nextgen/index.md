@@ -8,8 +8,8 @@ hide:
   <section class="course-hero course-hero--nextgen">
     <div class="course-hero__copy">
       <a class="back-link" href="../../">Alla utbildningar</a>
-      <div class="eyebrow">COPILOT STUDIO · NY AGENTUPPLEVELSE</div>
-      <h1>Bygg en <span>instruktionsdriven agent</span></h1>
+      <div class="eyebrow">GITHUB COPILOT-HARNESSEN · GRUNDKURS</div>
+      <h1>Bygg en <span>produktagent</span></h1>
       <p>En praktisk grundkurs där du kombinerar tydliga instruktioner, produktkunskap, aktuell SharePoint-data, skills och ett fungerande arbetsflöde.</p>
       <div class="hero-actions"><a class="button button--primary" href="00-course-setup/">Starta kursen</a><a class="button button--ghost" href="#scenariot">Vad du bygger</a></div>
       <div class="hero-meta"><span>Grundnivå</span><span>Live-demo</span><span>Bygg med själv</span></div>

@@ -8,8 +8,8 @@ hide:
   <section class="course-hero course-hero--standard">
     <div class="course-hero__copy">
       <a class="back-link" href="../../">Alla utbildningar</a>
-      <div class="eyebrow">COPILOT STUDIO · GRUNDKURS</div>
-      <h1>Bygg en <span>standardagent</span> från grunden</h1>
+      <div class="eyebrow">STANDARDHARNESSEN · GRUNDKURS</div>
+      <h1>Bygg en <span>IT-supportagent</span></h1>
       <p>En praktisk kurs där du bygger en komplett IT-supportagent – från SharePoint och kunskap till flöden, autonomi och samarbete mellan flera agenter.</p>
       <div class="hero-actions">
         <a class="button button--teal" href="00-concepts/">Starta kursen</a>

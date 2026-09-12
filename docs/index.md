@@ -35,7 +35,7 @@ hide:
   <section class="track-group" aria-labelledby="spar-standard">
     <div class="track-group__heading">
       <div>
-        <div class="section-label section-label--standard">STANDARDAGENT</div>
+        <div class="section-label section-label--standard">STANDARDHARNESSEN</div>
         <h3 id="spar-standard">Standardharnessen</h3>
       </div>
       <p>Du definierar ämnen, regler och vägar. Passar när svaret måste bli detsamma varje gång och du ska kunna visa varför.</p>
@@ -48,7 +48,7 @@ hide:
           <img src="assets/shared/portal/old-hero.png" alt="Startsidan i Copilot Studio med valet mellan agent och arbetsflöde">
         </div>
         <div class="course-card__body">
-          <h3>Bygg en standardagent</h3>
+          <h3>Bygg en IT-supportagent</h3>
           <p>Skapa en IT-supportagent med SharePoint, kunskap, ämnen, adaptiva kort, flöden, autonomi och multi-agent-orkestrering.</p>
           <div class="course-card__meta"><span>11 kapitel</span><span>Grundnivå</span></div>
           <a class="text-link" href="copilot-studio/standard/">Öppna utbildningen</a>
@@ -61,7 +61,7 @@ hide:
           <img src="assets/shared/portal/old-hero.png" alt="Startsidan i Copilot Studio med valet mellan agent och arbetsflöde">
         </div>
         <div class="course-card__body">
-          <h3>Bygg en avancerad standardagent</h3>
+          <h3>Bygg en driftassistent med externa system</h3>
           <p>Koppla standardagenten till externa system. Du bygger en serviceagent som verifierar utrustning via ett eget anslutningsprogram, hämtar beslutsunderlag via MCP och skapar en arbetsorder efter användarens godkännande.</p>
           <div class="course-card__meta"><span>11 kapitel</span><span>Fördjupningsnivå</span><span>Prompt · Connector · MCP</span></div>
           <a class="text-link" href="copilot-studio/standard-advanced/">Se kursupplägget</a>
@@ -73,7 +73,7 @@ hide:
   <section class="track-group track-group--last" aria-labelledby="spar-nextgen">
     <div class="track-group__heading">
       <div>
-        <div class="section-label section-label--nextgen">INSTRUKTIONSDRIVEN AGENT</div>
+        <div class="section-label section-label--nextgen">GITHUB COPILOT-HARNESSEN</div>
         <h3 id="spar-nextgen">GitHub Copilot-harnessen</h3>
       </div>
       <p>Agenten tar ett mål, bryter ner det i steg och justerar vägen själv. Passar längre uppgifter över flera verktyg.</p>
@@ -86,10 +86,20 @@ hide:
           <img src="assets/shared/portal/nextgen-hero.png" alt="Nya Copilot Studio med alternativen agent och arbetsflöde">
         </div>
         <div class="course-card__body">
-          <h3>Bygg en instruktionsdriven agent</h3>
+          <h3>Bygg en produktagent</h3>
           <p>Arbeta med modell, instruktioner, PDF-kunskap, aktuell SharePoint-data, skills och arbetsflöden i den nya agentupplevelsen.</p>
           <div class="course-card__meta"><span>Scenariobaserad</span><span>Lyserno produktagent</span></div>
           <a class="text-link" href="copilot-studio/nextgen/">Se kursupplägget</a>
+        </div>
+      </article>
+
+      <article class="course-card course-card--planned">
+        <div class="course-card__topline"><span>FÖRDJUPNING</span><span class="status status--planned">Kommer senare</span></div>
+        <div class="course-card__visual course-card__visual--planned" aria-hidden="true"><span>Fler kurser är på väg</span></div>
+        <div class="course-card__body">
+          <h3>Kommer senare</h3>
+          <p>Här lägger vi kommande fördjupningskurser för GitHub Copilot-harnessen.</p>
+          <div class="course-card__meta"><span>Fördjupningsnivå</span></div>
         </div>
       </article>
     </div>
