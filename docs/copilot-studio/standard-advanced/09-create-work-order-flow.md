@@ -582,3 +582,12 @@ Välj **Spara utkast** igen och sedan **Publicera**.
 
 !!! success "Agentflödet är publicerat"
     Flödet tar emot arbetsorderunderlaget, skapar arbetsordern, skickar bekräftelsemejlet och returnerar resultatet. I nästa kapitel kopplar vi det publicerade flödet till den godkända grenen i ämnet.
+
+!!! info "Testunderlag inför sluttestet"
+    I nästa kapitel testar du hela kedjan med någon av bilderna från kapitel 6 och följande meddelande:
+
+    ```text
+    En pump fungerar inte som den ska.
+    ```
+
+    Flödet är publicerat men ännu inte kopplat till ämnet, så sluttestet görs först i kapitel 10.

@@ -236,7 +236,13 @@ Vi använder inte fliken **Testa** här. `InvokeServer` är MCP-transporten, int
 
 ## Del 9: Testa den fördjupade utredningen
 
-Gå tillbaka till Copilot Studio och öppna testchatten. Kör igenom samma felanmälan med felbild som i föregående kapitel och svara på agentens följdfrågor.
+Gå tillbaka till Copilot Studio och öppna testchatten. Skriv samma testmeddelande som i föregående kapitel:
+
+```text
+En pump fungerar inte som den ska.
+```
+
+Bifoga en av testbilderna som du laddade ner i kapitel 6 och svara på agentens följdfrågor.
 
 Agenten ska nu:
 

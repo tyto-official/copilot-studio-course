@@ -253,7 +253,13 @@ Kontrollera att ämnet visas som en referens i instruktionen och välj **Spara**
 
 ## Del 7: Testa hela processen
 
-Öppna testchatten och gör en fullständig felanmälan. Låt agenten verifiera objektet och genomföra MCP-uppslagen. När det adaptiva kortet visas väljer du **Godkänn och skapa**.
+Öppna testchatten och skriv:
+
+```text
+En pump fungerar inte som den ska.
+```
+
+Bifoga en av testbilderna som du laddade ner i kapitel 6. Låt agenten verifiera objektet och genomföra MCP-uppslagen. När det adaptiva kortet visas väljer du **Godkänn och skapa**.
 
 Efter en lyckad körning ska chatten visa:
 

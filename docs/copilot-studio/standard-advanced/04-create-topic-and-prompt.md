@@ -150,7 +150,7 @@ Exempel på en tydlig bild
 och adressen:
 
 ```text
-https://tyto-official.github.io/copilot-studio-course/assets/standard-advanced/chap04/bra_exempel.png
+https://tyto-official.github.io/copilot-studio-course/assets/standard-advanced/shared/fault-photo-good.png
 ```
 
 ![Egenskaperna för den tydliga exempelbilden](../../assets/standard-advanced/chap04/20.png)
@@ -164,7 +164,7 @@ Exempel på en otydlig bild
 och adressen:
 
 ```text
-https://tyto-official.github.io/copilot-studio-course/assets/standard-advanced/chap04/daligt_exempel.png
+https://tyto-official.github.io/copilot-studio-course/assets/standard-advanced/shared/fault-photo-bad.png
 ```
 
 ![Egenskaperna för den otydliga exempelbilden](../../assets/standard-advanced/chap04/22.png)

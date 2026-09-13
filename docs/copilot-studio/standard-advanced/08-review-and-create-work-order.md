@@ -488,3 +488,12 @@ Copilot Studio öppnar ett nytt agentflöde. Låt ämnesfliken vara kvar. I näs
 
 !!! success "Godkännandet är på plats"
     Ämnet tar emot det verifierade underlaget, visar det i ett adaptivt kort och fortsätter bara när användaren väljer **Godkänn och skapa**. Vid alla andra svar visas avbrottsmeddelandet och processen avslutas utan att någon arbetsorder skapas.
+
+!!! info "Testunderlag inför sluttestet"
+    I kapitel 10 testar du hela kedjan med någon av bilderna från kapitel 6 och följande meddelande:
+
+    ```text
+    En pump fungerar inte som den ska.
+    ```
+
+    Än så länge är agentflödet inte byggt, så det fullständiga testet kan inte köras här.

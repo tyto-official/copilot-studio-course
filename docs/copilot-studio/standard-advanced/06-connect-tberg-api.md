@@ -611,7 +611,21 @@ Välj **Spara**.
 
 ## Del 16: Testa och ta bort kontrollmeddelandet
 
-Öppna testchatten och kör igenom en felanmälan med en felbild. Fortsätt tills ämnet har verifierat objektet och påverkan.
+Ladda ner de två testbilderna:
+
+<p><a class="button button--primary button--download" href="../../../assets/standard-advanced/shared/pump-lo-pu-017-e42-leak.png" download>Ladda ner bilden med läsbart objekt-ID</a></p>
+
+<p><a class="button button--primary button--download" href="../../../assets/standard-advanced/shared/pump-unreadable-id-e42-leak.png" download>Ladda ner bilden med oläsbart objekt-ID</a></p>
+
+Öppna testchatten och skriv:
+
+```text
+En pump fungerar inte som den ska.
+```
+
+Bifoga först bilden med läsbart objekt-ID. Agenten ska hitta `LO-PU-017` och inte fråga vilket objekt felet gäller. Kör sedan testet igen med bilden där objekt-ID:t inte går att läsa. Då ska agenten fråga efter objekt-ID innan den fortsätter.
+
+Fortsätt tills ämnet har verifierat objektet och påverkan.
 
 Kontrollmeddelandet ska först visa en kompakt JSON-sträng med `MaintenanceContext`. Därefter kan agenten sammanfatta samma underlag med läsbara namn och värden. Formuleringen kan variera, men kontrollera särskilt att objekt-ID, felbeskrivning, påverkan, prioritet, kompetenskrav och serviceform stämmer.
 
