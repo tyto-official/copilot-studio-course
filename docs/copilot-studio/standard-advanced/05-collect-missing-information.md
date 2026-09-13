@@ -87,7 +87,7 @@ Typen står som **unknown** tills du har valt ett värde.
 I **Till värde** väljer du:
 
 ```text
-Topic.FaultAnalysis.structuredOutput.assetIdCandidate
+FaultAnalysis.structuredOutput.assetIdCandidate
 ```
 
 !!! tip "Sök i stället för att bläddra"
@@ -230,7 +230,7 @@ ImpactLevel
 I **Till värde** väljer du:
 
 ```text
-Topic.FaultAnalysis.structuredOutput.impactLevel
+FaultAnalysis.structuredOutput.impactLevel
 ```
 
 !!! tip "Sök även här"
