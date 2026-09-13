@@ -2822,7 +2822,16 @@ När ämnet har körts ska du läsa dess answered-utdata:
 <p>Välj <strong>Spara</strong>.</p>
 <hr />
 <h2 id="del-16-testa-och-ta-bort-kontrollmeddelandet">Del 16: Testa och ta bort kontrollmeddelandet</h2>
-<p>Öppna testchatten och kör igenom en felanmälan med en felbild. Fortsätt tills ämnet har verifierat objektet och påverkan.</p>
+<p>Ladda ner de två testbilderna:</p>
+<p><a class="button button--primary button--download" href="../../../assets/standard-advanced/shared/pump-lo-pu-017-e42-leak.png" download>Ladda ner bilden med läsbart objekt-ID</a></p>
+
+<p><a class="button button--primary button--download" href="../../../assets/standard-advanced/shared/pump-unreadable-id-e42-leak.png" download>Ladda ner bilden med oläsbart objekt-ID</a></p>
+
+<p>Öppna testchatten och skriv:</p>
+<div class="highlight"><pre><span></span><code>En pump fungerar inte som den ska.
+</code></pre></div>
+<p>Bifoga först bilden med läsbart objekt-ID. Agenten ska hitta <code>LO-PU-017</code> och inte fråga vilket objekt felet gäller. Kör sedan testet igen med bilden där objekt-ID:t inte går att läsa. Då ska agenten fråga efter objekt-ID innan den fortsätter.</p>
+<p>Fortsätt tills ämnet har verifierat objektet och påverkan.</p>
 <p>Kontrollmeddelandet ska först visa en kompakt JSON-sträng med <code>MaintenanceContext</code>. Därefter kan agenten sammanfatta samma underlag med läsbara namn och värden. Formuleringen kan variera, men kontrollera särskilt att objekt-ID, felbeskrivning, påverkan, prioritet, kompetenskrav och serviceform stämmer.</p>
 <p><img alt="Testchatten med MaintenanceContext och agentens sammanfattning" src="../../../assets/standard-advanced/chap06/61.png" /></p>
 <p>När värdena stämmer går du tillbaka till ämnet. Öppna menyn på noden <code>Undersök MaintenanceContext</code> och välj <strong>Ta bort</strong>.</p>
