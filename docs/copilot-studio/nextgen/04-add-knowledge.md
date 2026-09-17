@@ -101,7 +101,7 @@ Stäng därför av **Search all websites**. Vi börjar med Lysernos egen webbpla
 Klistra in följande adress under **Add public websites**. Använd kopieringsknappen i kodfältets övre högra hörn:
 
 ```text
-https://tyto-official.github.io/copilot-studio-course/lyserno/
+https://tyto.se/lyserno
 ```
 
 Välj **Add**.
