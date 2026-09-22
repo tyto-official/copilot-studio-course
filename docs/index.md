@@ -81,15 +81,15 @@ hide:
 
     <div class="course-grid">
       <article class="course-card course-card--nextgen">
-        <div class="course-card__topline"><span>GRUNDKURS</span><span class="status status--development">Under utveckling</span></div>
+        <div class="course-card__topline"><span>GRUNDKURS</span><span class="status status--available">Tillgänglig</span></div>
         <div class="course-card__visual course-card__visual--image">
           <img src="assets/shared/portal/nextgen-hero.png" alt="Nya Copilot Studio med alternativen agent och arbetsflöde">
         </div>
         <div class="course-card__body">
           <h3>Bygg en produktagent</h3>
-          <p>Arbeta med modell, instruktioner, PDF-kunskap, aktuell SharePoint-data, skills och arbetsflöden i den nya agentupplevelsen.</p>
-          <div class="course-card__meta"><span>Scenariobaserad</span><span>Lyserno produktagent</span></div>
-          <a class="text-link" href="copilot-studio/nextgen/">Se kursupplägget</a>
+          <p>Bygg Lyserno Produktassistent med produktkunskap, aktuell lagerdata från SharePoint, skills, interna regler och ett agentflöde för showroompåfyllning.</p>
+          <div class="course-card__meta"><span>11 kapitel</span><span>Grundnivå</span><span>Skills · SharePoint · Agentflöde</span></div>
+          <a class="text-link" href="copilot-studio/nextgen/">Öppna utbildningen</a>
         </div>
       </article>
 

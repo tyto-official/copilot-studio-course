@@ -1,35 +1,32 @@
 # 2. Skapa lösningen
 
-I det här kapitlet skapar vi lösningen som ska samla Lyserno-agenten och de komponenter vi bygger senare i kursen. Vi skapar också en egen utgivare, så att våra komponenter får ett tydligt och unikt prefix.
+I det här kapitlet skapar vi lösningen som ska samla Lyserno-agenten och de komponenter vi bygger senare i kursen. Vi skapar också en egen utgivare, så att komponenterna får ett eget prefix.
 
 När kapitlet är klart har du:
 
-- skapat en egen utgivare med dina initialer
-- skapat lösningen **Copilot Studio Utbildning Lyserno**
+- skapat en utgivare med dina initialer
+- skapat lösningen **Copilot Studio Utbildning Lyserno Produkt**
 - angett lösningen som prioriterad
-- kontrollerat att du arbetar i rätt lösning
+- kontrollerat att rätt lösning visas som aktuell
 
 !!! info "Varför bygger vi i en lösning?"
-    Lösningen håller ihop agenten, arbetsflödena och andra Power Platform-komponenter som hör till samma implementation. Det gör lösningen enklare att förvalta och senare flytta mellan olika miljöer.
+    Lösningen samlar agenten, arbetsflödena och andra Power Platform-komponenter som hör ihop. Det förenklar förvaltning och gör det möjligt att senare flytta komponenterna mellan miljöer.
 
 ---
 
-## Del 1: Öppna Solutions
+## Del 1: Öppna Lösningar
 
-1. Öppna de **tre punkterna** längst ner i Copilot Studios vänsternavigering.
-2. Välj **Solutions**.
+I förra kapitlet öppnade du menyn med de tre punkterna längst ner i Copilot Studios vänsternavigering. Välj **Lösningar**.
 
-![Menyn med de tre punkterna i Copilot Studio där Solutions kan väljas](../../assets/nextgen/chap02/1.png)
+![Menyn med de tre punkterna där Lösningar är markerat](../../assets/nextgen/chap02/1.png)
 
-Du kommer nu till sidan **Lösningar**. Här visas de lösningar som finns i den valda miljön. Till vänster, under rubriken **Lösningar**, ser du även vilken lösning som för närvarande är prioriterad.
+Sidan **Lösningar** öppnas. Här visas lösningarna i den valda miljön och vilken lösning som är aktuell. Kontrollera att kursens utvecklingsmiljö visas högst upp till höger.
 
-![Startsidan för Lösningar med tillgängliga lösningar och aktuell prioriterad lösning](../../assets/nextgen/chap02/2.png)
-
-Kontrollera att rätt utvecklingsmiljö visas högst upp till höger. Bilden visar miljön **Training**, men du ska använda den personliga utvecklingsmiljö som valdes i föregående kapitel.
+Bildens miljö heter **Training**. Du ska använda den personliga utvecklingsmiljö som du valde i föregående kapitel.
 
 Välj **+ Ny lösning** högst upp till vänster.
 
-![Knappen Ny lösning högst upp till vänster på sidan Lösningar](../../assets/nextgen/chap02/3.png)
+![Sidan Lösningar med befintliga lösningar, aktuell lösning och knappen Ny lösning](../../assets/nextgen/chap02/2.png)
 
 ---
 
@@ -37,98 +34,93 @@ Välj **+ Ny lösning** högst upp till vänster.
 
 Panelen **Ny lösning** öppnas från höger.
 
-Fyll i följande visningsnamn. Använd kopieringsikonen i kodrutan:
+Fyll i följande visningsnamn:
 
 ```text
-Copilot Studio Utbildning Lyserno
+Copilot Studio Utbildning Lyserno Produkt
 ```
 
-| Fält | Värde |
-| --- | --- |
-| **Visningsnamn** | `Copilot Studio Utbildning Lyserno` |
-| **Namn** | `CopilotStudioUtbildningLyserno` |
+Fältet **Namn** fylls normalt i automatiskt när du lämnar fältet **Visningsnamn**:
 
-Fältet **Namn** skapas normalt automatiskt från visningsnamnet. Om det inte fylls i automatiskt anger du samma namn utan mellanslag.
+```text
+CopilotStudioUtbildningLysernoProdukt
+```
 
-Under **Utgivare** ska vi inte använda standardutgivaren. Välj i stället **+ Ny utgivare**.
+Om namnet inte skapas automatiskt anger du visningsnamnet utan mellanslag.
 
-![Panelen Ny lösning med lösningsnamnet ifyllt och valet Ny utgivare](../../assets/nextgen/chap02/4.png)
+Använd inte standardutgivaren. Välj **+ Ny utgivare** under fältet **Utgivare**.
+
+![Panelen Ny lösning med visningsnamn, automatiskt namn och valet Ny utgivare](../../assets/nextgen/chap02/3.png)
 
 ---
 
 ## Del 3: Skapa en utgivare
 
-En ny panel med rubriken **Ny utgivare** öppnas. Utgivaren identifierar vem som har skapat komponenterna och ger dem ett eget prefix.
+Panelen **Ny utgivare** öppnas. Utgivaren anger vem som har skapat komponenterna och ger dem ett eget prefix.
 
 Använd dina initialer. Exemplen nedan använder **JT** för Joel Thyberg.
 
-**Visningsnamn**<br>
-Skriv `Lyserno [initialer]`, exempelvis `Lyserno JT`.
+| Fält | Värde |
+| --- | --- |
+| **Visningsnamn** | `Lyserno JT` |
+| **Namn** | `LysernoJT` |
+| **Beskrivning** | `Utgivare för Copilot Studio-utbildning` |
+| **Prefix** | `ljt` |
+| **Prefix för valvärde** | Lämna det automatiskt skapade värdet oförändrat |
 
-**Namn**<br>
-Använd samma namn utan mellanslag, exempelvis `LysernoJT`.
+Prefixet består av `l` följt av dina initialer med små bokstäver. Om du exempelvis heter Anna Svensson använder du `Lyserno AS`, `LysernoAS` och prefixet `las`.
 
-**Beskrivning**<br>
-Beskrivningen är samma för alla. Kopiera följande text:
+Under **Förhandsgranskning av nytt objektnamn** ser du hur prefixet kommer att användas, exempelvis `ljt_Object`.
 
-```text
-Utgivare för Copilot Studio-utbildning
-```
+Välj **Spara**.
 
-**Prefix**<br>
-Använd `l` följt av initialerna med små bokstäver, exempelvis `ljt`.
-
-**Prefix för valvärde**<br>
-Lämna det automatiskt skapade värdet oförändrat, exempelvis `85414`.
-
-!!! tip "Byt ut JT mot dina egna initialer"
-    Om du exempelvis heter Anna Svensson använder du `Lyserno AS`, `LysernoAS` och prefixet `las`. Prefixet måste vara unikt i miljön.
-
-Under **Förhandsgranskning av nytt objektnamn** kan du se hur prefixet används, exempelvis `ljt_Object`.
-
-Välj **Spara** längst ner i panelen.
-
-![Panelen Ny utgivare med Lyserno JT, beskrivning och prefixet ljt](../../assets/nextgen/chap02/5.png)
+![Panelen Ny utgivare med Lyserno JT, beskrivning, prefix och prefix för valvärde](../../assets/nextgen/chap02/4.png)
 
 ---
 
 ## Del 4: Slutför lösningen
 
-Du kommer nu tillbaka till panelen **Ny lösning**. Kontrollera följande:
+Du kommer tillbaka till panelen **Ny lösning**. Den nya utgivaren brukar väljas automatiskt. Om fältet fortfarande är tomt väljer du utgivaren i listan.
 
-- **Visningsnamn:** `Copilot Studio Utbildning Lyserno`
-- **Namn:** `CopilotStudioUtbildningLyserno`
-- **Utgivare:** din nya Lyserno-utgivare, exempelvis `Lyserno JT (LysernoJT)`
-- **Version:** lämna standardvärdet `1.0.0.0`
+Kontrollera följande:
 
-Markera sedan **Ange som prioriterad lösning**.
+| Fält | Värde |
+| --- | --- |
+| **Visningsnamn** | `Copilot Studio Utbildning Lyserno Produkt` |
+| **Namn** | `CopilotStudioUtbildningLysernoProdukt` |
+| **Utgivare** | Din nya Lyserno-utgivare, exempelvis `Lyserno JT (LysernoJT)` |
+| **Version** | `1.0.0.0` |
 
-![Den färdiga lösningskonfigurationen med Lyserno-utgivaren och Ange som prioriterad lösning markerat](../../assets/nextgen/chap02/6.png)
+Markera **Ange som prioriterad lösning** och välj sedan **Skapa**.
 
-Välj **Skapa** längst ner i panelen.
+![Den färdiga lösningskonfigurationen med utgivare, version och prioriterad lösning](../../assets/nextgen/chap02/5.png)
 
 ---
 
-## Del 5: Kontrollera den nya lösningen
+## Del 5: Kontrollera lösningen
 
-När lösningen har skapats öppnas den automatiskt. Rubriken visar **Copilot Studio Utbildning Lyserno** och listan är än så länge tom. Det är korrekt – vi har inte skapat agenten eller några andra komponenter ännu.
+När lösningen har skapats öppnas den automatiskt. Rubriken visar **Copilot Studio Utbildning Lyserno Produkt** och listan är tom. Det är väntat eftersom vi ännu inte har skapat agenten eller några andra komponenter.
 
-![Den nya och tomma lösningen Copilot Studio Utbildning Lyserno](../../assets/nextgen/chap02/7.png)
+![Den nya och tomma lösningen Copilot Studio Utbildning Lyserno Produkt](../../assets/nextgen/chap02/6.png)
 
-Välj **bakåtpilen** längst till vänster, under menyikonen, för att återvända till sidan **Lösningar**.
+Välj bakåtpilen i vänsternavigeringen för att återvända till sidan **Lösningar**.
 
-Nu ska **Copilot Studio Utbildning Lyserno** visas både i listan och i rutan **Aktuell önskad lösning**.
+Kontrollera att:
 
-![Lösningslistan där Copilot Studio Utbildning Lyserno är aktuell prioriterad lösning](../../assets/nextgen/chap02/8.png)
+- **Copilot Studio Utbildning Lyserno Produkt** finns i listan
+- lösningen är märkt som **Önskad lösning**
+- kortet **Aktuell önskad lösning** visar samma lösning
+
+![Lösningslistan där Copilot Studio Utbildning Lyserno Produkt är aktuell önskad lösning](../../assets/nextgen/chap02/7.png)
 
 !!! success "Lösningen är klar"
-    Lyserno-lösningen är skapad och prioriterad. Komponenterna vi bygger framöver kan nu samlas på samma plats.
+    Lyserno-lösningen är skapad och prioriterad. Komponenterna vi bygger i kommande kapitel kan nu samlas på samma plats.
 
 ## Återvänd till Copilot Studio
 
 Du kan återvända till den nya Copilot Studio-upplevelsen på något av följande sätt:
 
-- gå tillbaka till den tidigare webbläsarfliken där Copilot Studio fortfarande är öppet
-- välj **Copilot Studio-ikonen** högst upp till vänster på sidan
+- gå tillbaka till den tidigare webbläsarfliken där Copilot Studio är öppet
+- välj **Copilot Studio** högst upp till vänster
 
-I [nästa kapitel](03-create-agent.md) skapar vi **Lyserno Produktassistent**, konfigurerar agentens grundinställningar och genomför ett första baslinjetest.
+I [nästa kapitel](03-create-agent.md) skapar vi **Lyserno Produktassistent**, konfigurerar grundinställningarna och genomför ett första test.

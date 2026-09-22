@@ -1,203 +1,174 @@
 # 4. Lägg till produktkunskap
 
-Lyserno Produktassistent har nu ett tydligt uppdrag, men saknar fortfarande företagets egna informationskällor. I det här kapitlet ger vi agenten två typer av stabil kunskap:
+Lyserno Produktassistent har ett tydligt uppdrag, men saknar fortfarande företagets egna informationskällor. I det här kapitlet lägger vi till:
 
-- **Lysernos produktkatalog**, som innehåller modeller, varianter, användningsområden och tekniska egenskaper
-- **Lysernos publika webbplats**, som innehåller showroom, adresser, regioner och öppettider
+- **Lysernos produktkatalog**, med modeller, varianter, användningsområden och tekniska egenskaper
+- **Lysernos publika webbplats**, med showroomnamn, typer, länder, regioner, adresser och öppettider
 
 När kapitlet är klart har du:
 
-- förstått vilken roll Kunskap har i agenten
-- laddat upp den längre PDF-katalogen
-- stängt av fri webbsökning och avgränsat agenten till en bestämd webbplats
-- kompletterat agentens instruktioner för showroomfrågor
-- kontrollerat källornas status och förberett nästa test
+- sett vilka typer av kunskapskällor som finns
+- laddat upp produktkatalogen som PDF
+- ersatt den fria webbsökningen med Lysernos webbplats
+- kompletterat instruktionerna för showroomfrågor
+- testat hur agenten söker i och analyserar PDF-filen
 
-!!! info "Stabil information först"
-    Produktkatalogen och showroominformationen förändras relativt sällan och passar därför som **Kunskap**. Aktuellt pris, lagersaldo och leveranstid förändras löpande. Den informationen hämtar vi senare via ett verktyg mot SharePoint.
+!!! info "Stabil information passar som kunskap"
+    Produktkatalogen och showroominformationen förändras relativt sällan. Aktuellt pris, lagersaldo och leveranstid förändras oftare och hämtas senare med ett verktyg mot SharePoint.
 
 ---
 
-## Del 1: Förstå Kunskap i den nya agentupplevelsen
+## Del 1: Öppna Kunskap
 
-Kunskap är de informationskällor som agenten får använda för att grunda sina svar. En källa kan exempelvis vara en uppladdad fil, en publik webbplats, SharePoint eller en ansluten företagstjänst.
+Gå till fliken **Bygg**. I panelen till höger väljer du plustecknet vid **Kunskap**.
 
-Vilka källor som visas under **Featured** och **Advanced** kan variera mellan miljöer, licenser och tidpunkter. I kursen använder vi en uppladdad PDF och en publik webbplats.
+![Kunskap i agentens högra panel](../../assets/nextgen/chap04/1.png)
 
-Förenklat sker informationshämtningen i tre steg:
+Dialogrutan **Lägg till kunskap** öppnas. Här kan du dra in en fil, söka efter en kunskapskälla eller välja en källa i listan.
 
-1. Agenten tolkar frågan och skapar en mer sökbar formulering.
-2. Relevanta resultat hämtas från de anslutna kunskapskällorna.
-3. Agenten använder resultaten tillsammans med sina instruktioner för att formulera svaret eller välja nästa arbetssteg.
+Under **Aktuellt** visas vanliga källor, exempelvis offentliga webbplatser, SharePoint, OneDrive för företag, Salesforce och Azure SQL. Under **Avancerat** finns fler alternativ som kan variera mellan miljöer och licenser.
 
-Hämtningsmetoden beror på källan. Uppladdade dokument förbereds för informationssökning, medan publika webbplatser söks via Bing. Microsoft beskriver den grundläggande RAG-processen som frågeomskrivning, hämtning, svarsgenerering och säkerhetskontroll. Läs mer i [Microsofts vägledning om RAG](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/retrieval-augmented-generation).
+![Dialogrutan Lägg till kunskap med filuppladdning och tillgängliga källor](../../assets/nextgen/chap04/2.png)
+
+Vi använder en uppladdad PDF och en offentlig webbplats.
+
+---
 
 ## Del 2: Ladda upp Lysernos produktkatalog
 
-Vi börjar med PDF-filen eftersom en större fil kan behöva bearbetas en stund innan den är fullt sökbar.
-
-Gå till agentens flik **Bygg** och välj plustecknet vid **Kunskap**.
-
-![Lyserno Produktassistent på fliken Bygg med Kunskap i den högra panelen](../../assets/nextgen/chap04/1.png)
-
-Dialogrutan **Add knowledge** öppnas. Överst kan du dra in en fil eller klicka i uppladdningsytan. Under ytan visas tillgängliga källor under **Featured** och **Advanced**.
-
-![Dialogrutan Add knowledge med filuppladdning och tillgängliga kunskapskällor](../../assets/nextgen/chap04/2.png)
-
-### 1. Ladda ner katalogen
-
-Ladda ner kursens produktkatalog och spara den på en plats där du enkelt hittar den.
+Ladda först ner kursens produktkatalog och spara den på en plats där du hittar den.
 
 <p><a class="button button--primary button--download" href="../../../downloads/nextgen/lyserno-lighting-collection-2026.pdf" download>Ladda ner Lysernos produktkatalog</a></p>
 
-### 2. Välj PDF-filen
+Dra filen `lyserno-lighting-collection-2026.pdf` till uppladdningsytan. Du kan också klicka i ytan och välja filen på enheten.
 
-Dra in `lyserno-lighting-collection-2026.pdf` i uppladdningsytan eller välj **browse your device** och leta upp filen.
+När filen visas i listan väljer du **Lägg till i agent**.
 
-När filen visas i listan väljer du **Add to agent**.
+![Produktkatalogen vald för uppladdning](../../assets/nextgen/chap04/3.png)
 
-![Lysernos PDF-katalog vald för uppladdning till agenten](../../assets/nextgen/chap04/3.png)
+PDF-filen visas nu under **Kunskap** i agentens högra panel.
 
-Katalogen visas nu under **Kunskap** i agentens högra panel.
+![Produktkatalogen tillagd under Kunskap](../../assets/nextgen/chap04/4.png)
 
-![Produktkatalogen tillagd som kunskapskälla](../../assets/nextgen/chap04/4.png)
+Välj PDF-källan för att öppna dess detaljer. Copilot Studio skapar automatiskt ett namn och en beskrivning. Behåll dessa värden.
 
-### 3. Kontrollera bearbetningen
+För en större fil kan statusen vara **Pågående** medan innehållet indexeras.
 
-Välj PDF-källan för att öppna dess detaljer. För en större fil kan statusen vara **In progress** medan innehållet förbereds för sökning.
+![PDF-källans detaljer med statusen Pågående](../../assets/nextgen/chap04/5.png)
 
-![PDF-källans detaljer med statusen In progress](../../assets/nextgen/chap04/5.png)
+Stäng dialogrutan.
 
-Namnet och beskrivningen skapas automatiskt. Vi låter dem vara oförändrade i kursen. Stäng dialogrutan med krysset eller **Cancel**.
-
-!!! warning "Vänta inte passivt på PDF-filen"
-    Bearbetningen kan ta från några minuter till betydligt längre tid. Fortsätt med webbplatsen medan PDF-källan arbetar. En fråga kan ibland hitta filen innan statusen har ändrats, men för ett reproducerbart test bör du vänta tills källan är klar.
+!!! note "Indexeringen kan ta tid"
+    Du behöver inte vänta på PDF-filen nu. Fortsätt med webbplatsen och återkom till testet när källan är sökbar.
 
 ---
 
 ## Del 3: Lägg till Lysernos publika webbplats
 
-Välj plustecknet vid **Kunskap** igen. Dialogrutan öppnas med samma tillgängliga källor.
+Välj plustecknet vid **Kunskap** igen.
 
-![Dialogrutan Add knowledge inför tillägget av en publik webbplats](../../assets/nextgen/chap04/6.png)
+![Dialogrutan Lägg till kunskap inför tillägget av webbplatsen](../../assets/nextgen/chap04/6.png)
 
-Välj **Public websites**.
+Välj **Offentliga webbplatser**.
 
-### 1. Stäng av fri webbsökning
+### Stäng av fri webbsökning
 
-I början är **Search all websites** påslaget. När inställningen är aktiv skapar agenten en sökfråga och skickar den till Bing. Bing returnerar rankade webbresultat som agenten kan använda tillsammans med övriga källor.
+Inställningen **Sök på alla webbplatser** är på från början. Då kan agenten söka brett på webben.
 
-![Public websites med Search all websites aktiverat](../../assets/nextgen/chap04/7.png)
+![Offentliga webbplatser med fri webbsökning aktiverad](../../assets/nextgen/chap04/7.png)
 
-Fri webbsökning kan vara värdefull när agenten behöver aktuell och bred omvärldsinformation. För en avgränsad företagsagent kan den däremot fylla kontexten med konkurrerande eller irrelevant information som vi inte kontrollerar.
+Den här agenten ska i första hand använda Lysernos egen webbplats. Stäng därför av **Sök på alla webbplatser**.
 
-Stäng därför av **Search all websites**. Vi börjar med Lysernos egen webbplats och kan senare aktivera bredare sökning om tester visar ett verkligt behov.
-
-!!! info "Advanced"
-    Under **Advanced** kan en miljö erbjuda en konfiguration för Bing Custom Search. Den kan ge större kontroll över vilka webbkällor Bing får söka i och hur resultaten prioriteras. Vi använder inte funktionen i kursen. Läs mer i [Microsofts dokumentation om Bing Custom Search](https://learn.microsoft.com/en-us/microsoft-copilot-studio/knowledge-bing-custom-search).
-
-### 2. Ange webbplatsens adress
-
-Klistra in följande adress under **Add public websites**. Använd kopieringsknappen i kodfältets övre högra hörn:
+Klistra sedan in följande adress:
 
 ```text
 https://tyto.se/lyserno
 ```
 
-Välj **Add**.
+Välj **Lägg till**.
 
-![Fri webbsökning avstängd och Lysernos webbadress ifylld](../../assets/nextgen/chap04/8.png)
+![Fri webbsökning avstängd och Lysernos adress ifylld](../../assets/nextgen/chap04/8.png)
 
-Webbplatsen läggs till i listan. Copilot Studio skapar automatiskt ett namn och en beskrivning. Dessa hjälper orkestreringen att avgöra när källan är relevant. Eftersom vi bara lägger till en webbplats behåller vi standardvärdena.
+Webbplatsen visas i listan med ett automatiskt namn och en beskrivning. Behåll standardvärdena och välj **Lägg till i agent**.
 
-Välj **Add to agent**.
-
-![Lysernos webbplats tillagd i listan med automatiskt namn och beskrivning](../../assets/nextgen/chap04/9.png)
+![Lysernos webbplats tillagd i listan](../../assets/nextgen/chap04/9.png)
 
 Webbplatsen och produktkatalogen visas nu tillsammans under **Kunskap**.
 
-![Lysernos webbplats och produktkatalog anslutna till agenten](../../assets/nextgen/chap04/10.png)
+![Produktkatalogen och Lysernos webbplats under Kunskap](../../assets/nextgen/chap04/10.png)
 
-### 3. Kontrollera webbkällan
+Välj webbkällan för att öppna detaljerna. Statusen **Klart** visar att källan har lagts till i agenten.
 
-Välj webbkällan för att öppna detaljerna. Statusen **Ready** betyder att källan har lagts till korrekt i agenten.
+![Lysernos webbplats med statusen Klart](../../assets/nextgen/chap04/11.png)
 
-![Lysernos publika webbplats med statusen Ready](../../assets/nextgen/chap04/11.png)
-
-!!! warning "Ready betyder inte alltid indexerad av Bing"
-    Copilot Studio använder Bing för att hämta information från publika webbplatser. **Ready** bekräftar att källan är konfigurerad, men en helt ny sida kan fortfarande behöva upptäckas, crawlas och indexeras av Bing innan agenten får träffar. Läs mer om [webbsökning i Copilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/data-privacy-security-web-search).
+!!! warning "Klart betyder inte alltid att sidan redan går att hitta"
+    Copilot Studio använder Bing för offentliga webbplatser. En ny eller nyligen ändrad sida kan behöva indexeras innan agenten hittar innehållet.
 
 Stäng dialogrutan när kontrollen är klar.
 
 ---
 
-## Del 4: Komplettera agentens instruktioner
+## Del 4: Komplettera instruktionerna
 
-Agenten har nu en källa för showroom, adresser och öppettider. Vi kompletterar därför instruktionerna med hur just den informationen ska användas.
-
-Gå till fältet **Instruktioner** och lägg till följande stycke under rubriken **Arbetssätt**, direkt efter den första raden om följdfrågor:
+Agenten har nu en källa för showroomnamn, typer, länder, regioner, adresser och öppettider. Lägg till följande stycken under rubriken **Arbetssätt** i agentens instruktioner:
 
 ```text
-Använd Lysernos publika webbplats som primär källa för att verifiera showroomnamn, region, adress och öppettider. Om flera showroom matchar användarens beskrivning ska du ställa en kort följdfråga för att avgöra vilket showroom som avses.
+Använd Lysernos publika webbplats som primär källa för att verifiera showroomets namn, typ, land, region, adress och öppettider. Fråga inte efter uppgifter som redan kan verifieras.
+
+Om flera showroom matchar användarens beskrivning och rätt showroom inte kan identifieras ska du ställa en kort följdfråga.
 ```
+
+![Agentens instruktioner med regeln för showroominformation](../../assets/nextgen/chap04/12.png)
 
 Välj **Spara**.
 
-Den nya regeln gör två saker:
-
-- den pekar ut rätt källa för platsinformation
-- den gör tvetydiga formuleringar som *showroom Göteborg* till en naturlig följdfråga när flera platser matchar
+Reglerna talar om vilken källa agenten ska använda för showroominformation. De hindrar också agenten från att fråga efter sådant som redan går att hitta på webbplatsen. En följdfråga behövs först när flera showroom matchar och rätt showroom inte kan identifieras.
 
 ---
 
-## Del 5: Kontrollera läget och fortsätt kursen
+## Del 5: Testa produktkatalogen
 
-Kontrollera källorna under **Kunskap**:
+Vänta tills PDF-källan är sökbar. Öppna sedan **Förhandsgranska**, starta en ny chatt och ställ samma fråga som i förra kapitlet:
 
-- webbkällan bör visa **Ready**
-- PDF-källan kan fortfarande visa **In progress**
+```text
+Vi behöver fylla på showroom Göteborg med gröna bordslampor. Vilka modeller i sortimentet kan vi välja mellan för vanlig showroompåfyllning?
+```
 
-Vi låter inte bearbetningstiden blockera resten av kursen. Om PDF-filen fortfarande arbetar kan du ta en kort paus eller fortsätta till nästa kapitel, där vi skapar agentens första skill. Återkom till testet när källorna är tillgängliga.
+Låt **Förhandsversion för slutanvändare** vara avstängd så att arbetsstegen visas.
 
-### Testkontroll när källorna är redo
+### Följ kunskapssökningen
 
-Starta en **Ny chatt** i förhandsgranskningen och använd först en avgränsad webbfråga:
+Öppna steget **Searched knowledge**. Där syns frågan som agenten skickade till kunskapskällan och resultatet som pekar på produktkatalogen.
+
+I exemplet hämtas den matchande PDF-filen till agentens tillfälliga arbetsyta för fortsatt analys.
+
+![Kunskapssökningen hittar produktkatalogen och hämtar PDF-filen](../../assets/nextgen/chap04/13.png)
+
+Nästa arbetssteg visar att agenten laddar färdigheten **analyzing-pdf** för att läsa filens innehåll.
+
+![Agenten laddar färdigheten analyzing-pdf](../../assets/nextgen/chap04/14.png)
+
+Kunskapssökningen behöver alltså inte ge agenten hela dokumentet direkt. Den hittar rätt källa, varefter agenten kan hämta filen och välja ett arbetssätt som passar filtypen:
+
+```text
+Kunskapssökning → dokumentreferens → PDF-fil → PDF-analys → svar
+```
+
+Det exakta antalet arbetssteg och deras namn kan ändras mellan modeller och versioner.
+
+### Kontrollera svaret
+
+Agenten ska nu kunna hitta de gröna bordslamporna i katalogen. Den kan däremot ännu inte kontrollera aktuellt lagersaldo, produktstatus eller vilka modeller som får användas i den vanliga showroomprocessen.
+
+![Agentens svar baserat på produktkatalogen](../../assets/nextgen/chap04/15.png)
+
+Det är rätt resultat i det här skedet. Produktkatalogen ger stabil produktinformation, men den aktuella lagerinformationen saknas fortfarande.
+
+För att testa webbplatsen separat kan du använda följande fråga:
 
 ```text
 Vilka showroom har Lyserno i region Väst? Ange showroomtyp, adress och torsdagens öppettider.
 ```
 
-Den frågan isolerar webbplatskällan och gör det lätt att kontrollera om Bing-baserad hämtning fungerar.
-
-Starta därefter ytterligare en ny chatt och ställ produktfrågan från baslinjetestet igen:
-
-```text
-Vi behöver fylla på showroom Göteborg med gröna bordslampor som passar för fokuserat arbete. Vilka modeller i sortimentet är mest relevanta?
-```
-
-När båda källorna fungerar ska agenten kunna använda webbplatsen för showroomkontext och katalogen för produktmatchningen. Aktuellt pris, disponibelt saldo och leveranstid saknas fortfarande. Det problemet löser vi senare genom att ansluta agenten till SharePoint.
-
-### Kunskapssökning och filanalys är två olika steg
-
-Öppna agentens arbetssteg för svaret på produktfrågan. Där kan du se att den nya agenten inte behöver stanna vid den första träffen från Kunskap.
-
-Den första kunskapssökningen placerar inte automatiskt hela PDF-dokumentet i modellens kontext. Den hittar relevanta resultat och en referens till dokumentet. I den nya GitHub Copilot-harnessen kan agenten därefter fortsätta arbetet genom att hämta den matchade filen till sin sandbox och använda en inbyggd filskill, exempelvis **analyzing-pdf**, för att undersöka dokumentet mer ingående.
-
-Arbetsgången kan därför se ut ungefär så här:
-
-```text
-Kunskapssökning → dokumentreferens → fil till sandbox → PDF-analys → svar
-```
-
-Detta skiljer sig från det vanliga kunskapsflödet i den tidigare standardagenten. Där utgjorde resultaten som hämtades av kunskapsmekanismen normalt underlaget som agenten fick arbeta vidare med. Om rätt information inte fanns i de hämtade resultaten kunde agenten därför fastna, trots att uppgiften fanns någon annanstans i dokumentet.
-
-Den nya harnessen har friare orkestrering och kan upptäcka att den första sökträffen inte räcker, välja ett mer specialiserat arbetssätt och analysera den matchade filen vidare. **Kunskap** hjälper alltså agenten att hitta rätt källa, medan harnessen kan välja hur källan behöver undersökas för att lösa uppgiften.
-
-!!! note "Jämför arbetsstegen, inte bara slutsvaret"
-    Den tydligaste demonstrationen är att öppna agentens arbetssteg och visa övergången från kunskapssökning till filanalys. Exakta verktygsnamn och steg kan variera mellan modeller och versioner av harnessen.
-
-!!! note "Bedöm källorna, inte den exakta formuleringen"
-    Exakta svar och arbetssteg kan variera mellan modeller och medan källorna bearbetas. Kontrollera framför allt att agentens uppgifter kan verifieras i rätt källa och att den är tydlig med information som fortfarande saknas.
-
-!!! success "Kunskapsgrunden är på plats"
-    Agenten har nu en produktkatalog och en avgränsad publik webbkälla. Nästa steg är att fånga ett återanvändbart arbetssätt i agentens första skill.
+!!! success "Kunskapskällorna är anslutna"
+    Agenten kan nu använda produktkatalogen och Lysernos publika webbplats. I nästa kapitel ansluter vi Centrallager så att agenten även kan hämta aktuella priser och lagersaldon.

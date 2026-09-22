@@ -6,6 +6,7 @@ exclude_docs: |
   copilot-studio/standard/11-set-up-for-production.md
   downloads/nextgen/showroom-pafyllning-v1/SKILL.md
   downloads/nextgen/showroom-pafyllning-v2/SKILL.md
+  downloads/nextgen/showroom-pafyllning-v3/SKILL.md
   *.en.md
 
 hooks:
@@ -72,10 +73,14 @@ nav:
           - 0. Kursuppsättning: copilot-studio/nextgen/00-course-setup.md
           - 1. Hitta rätt i nya Copilot Studio: copilot-studio/nextgen/01-navigate-new-experience.md
           - 2. Skapa lösningen: copilot-studio/nextgen/02-create-solution.md
-          - 3. Skapa agenten: copilot-studio/nextgen/03-create-agent.md
+          - 3. Skapa Lyserno Produktassistent: copilot-studio/nextgen/03-create-agent.md
           - 4. Lägg till produktkunskap: copilot-studio/nextgen/04-add-knowledge.md
-          - 5. Skapa den första skillen: copilot-studio/nextgen/05-add-first-skill.md
-          - 6. Anslut Centrallager som verktyg: copilot-studio/nextgen/06-add-sharepoint-tool.md
+          - 5. Anslut Centrallager som verktyg: copilot-studio/nextgen/05-add-sharepoint-tool.md
+          - 6. Skapa agentens första skill: copilot-studio/nextgen/06-add-first-skill.md
+          - 7. Lägg till styrdokumentet och uppdatera skillen: copilot-studio/nextgen/07-add-policy-and-update-skill.md
+          - 8. Skapa agentflödet: copilot-studio/nextgen/08-create-showroom-flow.md
+          - 9. Slutför agentflödet: copilot-studio/nextgen/09-complete-showroom-flow.md
+          - 10. Koppla flödet och slutför skillen: copilot-studio/nextgen/10-connect-flow-and-finalize-skill.md
   - Tips & fördjupning:
     - Översikt: tips/index.md
     - Kunskap på djupet: tips/knowledge.md

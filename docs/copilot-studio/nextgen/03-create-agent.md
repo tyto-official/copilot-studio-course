@@ -1,128 +1,85 @@
 # 3. Skapa Lyserno Produktassistent
 
-I det här kapitlet skapar vi grunden till **Lyserno Produktassistent**. Vi konfigurerar agentens identitet innan den sparas första gången, skriver tydliga instruktioner och genomför ett första test utan Lysernos produktdata.
+I det här kapitlet skapar vi **Lyserno Produktassistent**. Vi väljer rätt lösning och språk, lägger in agentens grundinstruktioner och testar vad den kan göra innan Lysernos egna informationskällor ansluts.
 
 När kapitlet är klart har du:
 
 - skapat agenten i rätt lösning och med svenska som förstaspråk
-- fått en överblick över agentbyggarens viktigaste delar
-- valt en modell som passar agentens uppgift
-- gett agenten ett tydligt uppdrag, arbetssätt och säkerhetsramar
-- lagt till ett hälsningsmeddelande
-- genomfört ett baslinjetest som visar varför agenten behöver företagsspecifik kunskap
+- gått igenom agentens grundinställningar
+- lagt till namn, hälsning och instruktioner
+- sett var du väljer modell och ändrar agentens ikon
+- genomfört ett första test i utvecklarvyn
 
-!!! warning "Spara inte agenten direkt"
-    Agentens identitetsvärden anges när agenten sparas första gången och kan därefter inte ändras. Kontrollera därför **Lösning** och **Förstaspråk** innan du väljer **Spara**.
+!!! warning "Kontrollera inställningarna före första sparningen"
+    Schemanamn, lösning och förstaspråk anges när agenten sparas första gången och kan inte ändras efteråt. Kontrollera därför dessa värden innan du sparar.
 
 ---
 
-## Del 1: Öppna agentbyggaren
+## Del 1: Skapa en ny agent
 
-Gå till [Microsoft Copilot Studio](https://copilotstudio.microsoft.com) och kontrollera att du använder den nya upplevelsen och rätt utvecklingsmiljö.
+Gå till [Microsoft Copilot Studio](https://copilotstudio.microsoft.com) och kontrollera att du använder rätt miljö.
 
 Välj **Agent** på startsidan.
 
 ![Startsidan i nya Copilot Studio med valet Agent](../../assets/nextgen/chap03/1.png)
 
-Agentbyggaren öppnas med en ny, namnlös agent. Gör inga ändringar och välj inte **Spara** ännu.
+Agentbyggaren öppnas med en namnlös agent utan beskrivning eller instruktioner.
 
-![Agentbyggaren innan agenten har fått namn eller instruktioner](../../assets/nextgen/chap03/2.png)
+![Agentbyggaren med en ny namnlös agent](../../assets/nextgen/chap03/2.png)
 
----
+På fliken **Bygg** finns agentens namn och instruktioner i mitten. Till höger finns bland annat modell, kanaler, skills, verktyg, kunskap, anslutna agenter och minne.
 
-## Del 2: Hitta rätt i agentbyggaren
-
-I mitten av sidan finns agentens **namn** och fältet **Instruktioner**. Instruktionerna beskriver hur agenten ska bete sig, vad den ska hjälpa till med och hur den ska svara.
-
-Copilot Studios inbyggda vägledning lyfter bland annat fram:
-
-- agentens roll och mål
-- vad som ingår och inte ingår i agentens område
-- ton och svarsstil
-- när agenten ska ställa följdfrågor, använda kunskap eller vidta åtgärder
-
-Textfältet har stöd för bland annat rubriker, fetstil, kursiv stil, listor, länkar och kod. Vi använder en tydlig struktur i instruktionerna, men börjar med en hanterbar grund som kan förbättras efter testerna.
-
-!!! info "Bra instruktioner utvecklas stegvis"
-    Börja med ett tydligt uppdrag och konkreta gränser. Testa sedan agenten och komplettera instruktionerna när du ser ett faktiskt behov. Microsoft rekommenderar bland annat att beskriva roll, syfte, ton, otydliga frågor och när agenten ska avböja eller lämna över. Läs mer i [Microsofts vägledning för agentinstruktioner](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/authoring-instructions).
-
-### Agentens byggblock
-
-Till höger visas de komponenter som kan kopplas till agenten:
-
-| Komponent | Funktion |
-| --- | --- |
-| **Modell** | Agentens språkmodell – den resonerande kärnan som tolkar uppgiften och formulerar svaret. |
-| **Skills** | Återanvändbara arbetssätt och instruktioner för hur en uppgift ska utföras. |
-| **Verktyg** | Agentens möjlighet att hämta data eller utföra åtgärder i anslutna system. |
-| **Kunskap** | Dokument, webbplatser och andra informationskällor som agenten kan grunda sina svar i. |
-| **Anslutna agenter** | Andra agenter som kan anropas för avgränsade uppgifter. |
-| **Minne** | Information som agenten kan komma ihåg mellan interaktioner. Funktionen visas som förhandsversion. |
-
-I sidhuvudet finns flikarna **Bygg**, **Förhandsgranska**, **Utvärdera** och **Övervaka**. Till höger finns bland annat **Spara**, delningsalternativ, **Fler alternativ** och **Publicera**. Utvärdering och övervakning blir relevanta först när agenten har sparats och börjat användas.
+Högst upp finns flikarna **Bygg**, **Förhandsgranska**, **Utvärdera** och **Övervaka**. Vissa funktioner blir tillgängliga först när agenten har sparats.
 
 ---
 
-## Del 3: Konfigurera agenten före första sparningen
+## Del 2: Konfigurera agentinställningarna
 
-Välj **Fler alternativ** – de tre punkterna högst upp till höger.
+För muspekaren över de tre punkterna bredvid **Publicera**. Knappen heter **Fler alternativ**.
 
-![Knappen Fler alternativ i agentbyggarens sidhuvud](../../assets/nextgen/chap03/3.png)
+![Knappen Fler alternativ bredvid Publicera](../../assets/nextgen/chap03/3.png)
 
-Välj **Inställningar**.
+Öppna menyn och välj **Inställningar**. Här finns också **Tangentbordskommandon** och **Ladda ner**.
 
-![Menyn Fler alternativ med valet Inställningar](../../assets/nextgen/chap03/4.png)
+![Menyn Fler alternativ med Inställningar, Tangentbordskommandon och Ladda ner](../../assets/nextgen/chap03/4.png)
 
 ### Agentinformation
 
-Under **Agentinformation** kontrollerar du följande:
+Under **Agentinformation** visas agentens identitet:
 
-1. **Lösning** ska vara `Copilot Studio Utbildning Lyserno`.
-2. Öppna **Förstaspråk**.
+- **Schemanamn** är agentens unika systemnamn. Lämna fältet tomt så skapas namnet automatiskt från agentnamnet när agenten sparas första gången.
+- **Lösning** ska vara `Copilot Studio Utbildning Lyserno Produkt`.
+- **Förstaspråk** ska vara svenska.
 
-![Agentinformation med Lyserno-lösningen vald och engelska som förstaspråk](../../assets/nextgen/chap03/5.png)
+Om rätt lösning inte redan är vald väljer du den i listan.
 
-Välj **Svenska** i listan.
+![Agentinformation med kursens lösning vald och engelska som förstaspråk](../../assets/nextgen/chap03/5.png)
 
-![Språklistan där Svenska väljs som förstaspråk](../../assets/nextgen/chap03/6.png)
+Öppna listan **Förstaspråk** och välj **Swedish**.
 
-Kontrollera att **Svenska** nu visas i fältet.
-
-![Agentinformation med Svenska valt som förstaspråk](../../assets/nextgen/chap03/7.png)
-
-!!! danger "Kontrollera innan första sparningen"
-    Schemanamn, lösning och förstaspråk hör till agentens identitet. Copilot Studio låser dessa värden efter den första sparningen. Om språket eller lösningen är fel behöver du normalt skapa om agenten.
+![Språklistan där Swedish väljs som förstaspråk](../../assets/nextgen/chap03/6.png)
 
 ### AI och beteende
 
-Öppna **AI och beteende**. Här finns bland annat:
+Öppna **AI och beteende**. Här finns inställningarna **Tillåt att andra agenter ansluter** och **Modereringsnivå**.
 
-- **Tillåt andra agenter att ansluta**, som avgör om andra agenter i organisationen får anropa agenten som ett verktyg
-- **Moderationsnivå**, som styr hur strikt osäkert innehåll filtreras
+Låt värdena vara oförändrade. Modereringsnivån ska stå på **Medel**.
 
-Standardnivån är **Medel**. Alternativen sträcker sig från **Minimal** till **Maximal**. Låt standardvärdena vara oförändrade under kursen.
-
-![Inställningar för andra agenters åtkomst och moderationsnivå](../../assets/nextgen/chap03/8.png)
+![Inställningar för anslutna agenter och modereringsnivå](../../assets/nextgen/chap03/7.png)
 
 ### Säkerhet och åtkomst
 
-Under **Säkerhet och åtkomst** visas bland annat:
+Under **Säkerhet och åtkomst** visas inställningar för autentisering, webbkanalssäkerhet och feedback från användare. Vi ändrar inget här.
 
-- autentisering med Microsoft eller utan autentisering
-- webbkanalssäkerhet för Direct Line API
-- om användare ska kunna lämna feedback med tummen upp eller ned
-
-Vi ändrar inga av dessa värden nu.
-
-![Inställningar för autentisering, webbkanalssäkerhet och feedback](../../assets/nextgen/chap03/9.png)
+![Inställningar för autentisering, webbkanalssäkerhet och feedback](../../assets/nextgen/chap03/8.png)
 
 ### Hälsning och uppmaningar
 
-Öppna **Hälsning och uppmaningar**. Det förvalda hälsningsmeddelandet är generellt och ska ersättas.
+Öppna **Hälsning och uppmaningar**. Hälsningsmeddelandet är det första användaren ser när en ny chatt startar.
 
-![Det förvalda hälsningsmeddelandet i agentinställningarna](../../assets/nextgen/chap03/10.png)
+![Det förvalda hälsningsmeddelandet](../../assets/nextgen/chap03/9.png)
 
-Klistra in följande text i **Hälsningsmeddelande**:
+Ersätt den förvalda texten med:
 
 ```text
 Hej! Jag är Lysernos produktassistent. Jag hjälper dig att hitta och jämföra produkter, kontrollera lager och leveransinformation samt ta fram underlag för inkommande förfrågningar. Vad vill du ha hjälp med?
@@ -130,140 +87,107 @@ Hej! Jag är Lysernos produktassistent. Jag hjälper dig att hitta och jämföra
 
 Lämna **Föreslagna prompter** tomt tills vidare.
 
-![Lysernos hälsningsmeddelande ifyllt i agentinställningarna](../../assets/nextgen/chap03/11.png)
+![Lysernos hälsningsmeddelande ifyllt](../../assets/nextgen/chap03/10.png)
 
-Välj **Avbryt** för att stänga inställningarna utan att spara själva agenten ännu. Inställningarna träder i kraft när agenten senare sparas.
+Välj **Klart** när inställningarna är färdiga.
 
 ---
 
-## Del 4: Namnge, välj modell och instruera agenten
+## Del 3: Namnge och instruera agenten
 
-Markera det befintliga namnet högst upp till vänster och ersätt det med:
+Ge agenten följande namn:
 
 ```text
 Lyserno Produktassistent
 ```
 
-![Namnet Lyserno Produktassistent ifyllt i agentbyggaren](../../assets/nextgen/chap03/12.png)
+![Agenten med namnet Lyserno Produktassistent och tomma instruktioner](../../assets/nextgen/chap03/11.png)
 
-Det går även att ändra agentens ikon via knappen bredvid namnet.
+### Agentikon
 
-![Agenten har fått namnet Lyserno Produktassistent och knappen för att ändra ikon visas](../../assets/nextgen/chap03/13.png)
+För muspekaren över agentens ikon för att visa knappen **Redigera agentikon**.
 
-Vi behåller den förvalda ikonen. Om dialogrutan **Ändra agentikon** öppnas väljer du **Stäng**.
+![Knappen Redigera agentikon vid agentens ikon](../../assets/nextgen/chap03/12.png)
 
-![Dialogrutan för att ändra agentens ikon](../../assets/nextgen/chap03/14.png)
+Dialogrutan **Ändra agentikon** innehåller färdiga ikoner och färger. Du kan också ladda upp en egen ikon. Vi behåller standardikonen i kursen, så stäng dialogrutan utan att ändra något.
 
-### Välj modell efter uppgiften
+![Dialogrutan Ändra agentikon](../../assets/nextgen/chap03/13.png)
 
-Öppna **Modell** för att se vilka modeller som är tillgängliga i din miljö.
+### Modell
 
-![Modellväljaren med hanterade modeller och tillgängliga Anthropic-modeller](../../assets/nextgen/chap03/15.png)
+Öppna listan **Modell** för att se vilka modeller som finns i din miljö.
 
-Modellen kan förenklat beskrivas som agentens hjärna. Välj den efter både **uppgiftens komplexitet** och **hur snabbt agenten behöver svara eller agera**.
+![Modellväljaren med hanterade modeller och Anthropic-modeller](../../assets/nextgen/chap03/14.png)
 
-- För enklare frågor och tydligt avgränsade uppgifter räcker ofta en snabb chattmodell utan utökat resonemang.
-- För uppgifter där agenten behöver väga flera villkor, planera eller lösa komplexa problem passar en reasoning-modell bättre.
-- För tidskänsliga interaktioner kan ett snabbare svar vara mer värdefullt än maximal resonemangskapacitet.
+Listan kan ändras när nya modeller blir tillgängliga. Där finns normalt hanterade modeller från OpenAI. Anthropic-modeller visas om de har lagts till i miljön.
 
-Den mest avancerade modellen är därför inte automatiskt det bästa valet. Målet är att matcha modellens kapacitet och svarstid mot agentens faktiska arbete. Modellerna i listan och deras namn kan skilja sig mellan miljöer och förändras över tid.
+Behåll den förvalda modellen i den här delen av kursen.
 
-I kursen behåller vi den förvalda modellen, som i exemplet är **GPT-5.6 Reasoning**.
-
-### Lägg till instruktionerna
+### Instruktioner
 
 Klistra in följande text i fältet **Instruktioner**:
 
 ```text
-Du är Lyserno Produktassistent, ett internt stöd för medarbetare som arbetar med produkter, lager och inkommande förfrågningar.
+Du är Lyserno Produktassistent, ett internt stöd för medarbetare som arbetar med produkter, lager och produktförfrågningar.
 
-Syfte och uppgifter
+Uppgift
 
-Hjälp användaren att hitta och jämföra produkter, kontrollera aktuell pris-, lager- och leveransinformation samt ta fram relevanta produktförslag. Använd tillgängliga kunskapskällor och verktyg som primär källa.
+Hjälp användaren att hitta och jämföra produkter, kontrollera aktuellt pris, lager och leveransinformation samt ta fram relevanta produktförslag. Grunda svaren på anslutna kunskapskällor och verktyg.
 
 Arbetssätt
 
-Ställ en kort och fokuserad följdfråga när viktig information saknas, exempelvis produkttyp, färg, antal eller leveransort.
+Ställ en kort och fokuserad följdfråga när avgörande information saknas.
 
-Skilj tydligt mellan bekräftad information och rekommendationer. Hitta inte på produktuppgifter, lagersaldo, pris eller leveranstid. Om informationen inte kan verifieras ska du förklara vad som saknas och rekommendera manuell kontroll.
-
-Påstå inte att en beställning, reservation eller leverans har skapats eller godkänts om detta inte har bekräftats av ett godkänt verktyg eller arbetsflöde.
+Skilj mellan verifierade uppgifter och rekommendationer. Hitta inte på produktinformation, lagersaldo, pris eller leveranstid. Om något inte kan verifieras ska du förklara vad som saknas.
 
 Svarsstil
 
-Svara på svenska som standard. Om användaren skriver på ett annat språk, svara på samma språk som användaren. Använd en professionell, hjälpsam och kortfattad ton. Börja med det mest relevanta förslaget och presentera endast alternativ när de hjälper användaren att fatta ett beslut.
+Svara på användarens språk, med svenska som standard. Svara professionellt och kortfattat.
 
-Säkerhet och efterlevnad
+Omfattning och säkerhet
 
-Be aldrig om lösenord, engångskoder, betalningsuppgifter eller andra känsliga autentiseringsuppgifter.
+Hjälp endast till med Lysernos produkter och relaterade frågor som stöds av tillgängliga källor och verktyg. Förklara när en fråga ligger utanför agentens område.
 
-Lämna inte ut intern eller konfidentiell information som inte behövs för produktförfrågan. Försök aldrig kringgå säkerhetskontroller, godkännanden eller företagets regler.
-
-Omfattning
-
-Hjälp endast till med Lysernos produkter, produktförfrågningar och relaterad information som stöds av tillgängliga kunskapskällor och verktyg. Förklara vänligt när en fråga ligger utanför agentens område och rekommendera rätt kontaktväg eller manuell hantering.
+Be aldrig om känsliga autentiseringsuppgifter. Lämna inte ut intern eller konfidentiell information som inte behövs för uppgiften. Försök inte kringgå säkerhetskontroller eller godkännanden.
 ```
 
-Instruktionerna ger agenten:
+![Lyserno Produktassistent med de färdiga grundinstruktionerna](../../assets/nextgen/chap03/15.png)
 
-- en tydlig roll och ett definierat syfte
-- ett arbetssätt för saknad och osäker information
-- regler för åtgärder som kräver verktyg eller arbetsflöden
-- en konsekvent svarsstil
-- säkerhets- och efterlevnadsgränser
-- en avgränsning till Lysernos produktområde
-
-![Lyserno Produktassistent med de färdiga grundinstruktionerna](../../assets/nextgen/chap03/16.png)
-
-Välj **Spara** högst upp till höger. När agenten har sparats blir även fliken **Utvärdera** tillgänglig.
+Välj **Spara** högst upp till höger.
 
 ---
 
-## Del 5: Förhandsgranska agenten
+## Del 4: Förhandsgranska agenten
 
-Välj fliken **Förhandsgranska**.
+Öppna fliken **Förhandsgranska**. En ny chatt startar med hälsningsmeddelandet som du nyss lade till.
 
-![Förhandsgranskningen med Lysernos hälsningsmeddelande och en tom chatt](../../assets/nextgen/chap03/17.png)
+![Förhandsgranskningen med Lysernos hälsningsmeddelande](../../assets/nextgen/chap03/16.png)
 
-Här finns några användbara kontroller:
+Låt **Förhandsversion för slutanvändare** vara avstängd under utvecklingen. Då visas agentens arbetssteg, så att du kan följa vilka källor och verktyg den använder. När reglaget är på ser du i stället en vy som ligger närmare slutanvändarens.
 
-- **Ny chatt** startar en ny session utan tidigare frågor och svar i konversationens kontext
-- **Historik** visar tidigare sessioner när sådan historik finns
-- **Förhandsversion för slutanvändare** döljer information som endast är avsedd för den som bygger agenten
-
-Låt **Förhandsversion för slutanvändare** vara avstängd under utvecklingen. Då kan du se agentens arbetssteg och enklare förstå varför den ger ett visst svar.
-
-Längst ner finns meddelandefältet. Där kan du skriva en fråga, bifoga en fil och skicka meddelandet till agenten.
+Du kan använda **Ny chatt** för att börja om och **Historik** för att öppna tidigare sessioner när sådan historik finns.
 
 ---
 
-## Del 6: Genomför ett baslinjetest
+## Del 5: Genomför ett första test
 
-Vi har ännu inte anslutit Lysernos produktkatalog eller centrallager. Testet ska därför visa vad agenten kan – och framför allt inte kan – verifiera i nuläget.
+Agenten har ännu inte tillgång till Lysernos produktkatalog eller centrallager. Testet visar vad den kan verifiera innan dessa källor ansluts.
 
-Klistra in följande fråga:
+Skriv följande fråga:
 
 ```text
-Vi behöver fylla på showroom Göteborg med gröna bordslampor som passar för fokuserat arbete. Vilka modeller i sortimentet är mest relevanta?
+Vi behöver fylla på showroom Göteborg med gröna bordslampor. Vilka modeller i sortimentet kan vi välja mellan för vanlig showroompåfyllning?
 ```
 
-![Testfrågan inskriven i meddelandefältet före den skickas](../../assets/nextgen/chap03/18.png)
+![Testfrågan inskriven i förhandsgranskningen](../../assets/nextgen/chap03/17.png)
 
-Skicka frågan. Det exakta svaret kan variera, men agenten bör förklara att den inte kan verifiera några specifika Lyserno-modeller med de källor som finns tillgängliga.
+Skicka frågan. Det exakta svaret kan variera, men agenten ska inte hitta på produktmodeller eller lageruppgifter. Den bör förklara att den saknar tillgång till den information som behövs.
 
-![Agentens baslinjesvar utan ansluten Lyserno-kunskap](../../assets/nextgen/chap03/19.png)
+![Agentens svar när Lysernos produkt- och lagerdata saknas](../../assets/nextgen/chap03/18.png)
 
-Det är ett bra resultat. Agenten följer instruktionen att inte hitta på produktnamn, lagersaldo, pris eller leveranstid.
+Eftersom **Förhandsversion för slutanvändare** är avstängd kan du öppna arbetsstegen. Där visas bland annat vilka kunskapskällor agenten har sökt i och vilka frågor den skickat till dem.
 
-### Vad gjorde agenten?
+![Ett expanderat arbetssteg i utvecklarvyn](../../assets/nextgen/chap03/19.png)
 
-I arbetsstegen visas att agenten först läser in den inbyggda skillen **search-before-answer**. Den styr agenten att söka i tillgängliga kunskapskällor innan den besvarar frågor som kan vara källbaserade.
-
-Vi har inte lagt till denna skill själva. Den är en del av den nya agentupplevelsens arbetssätt och blir synlig i spårningen när agenten förhandsgranskas.
-
-Eftersom ingen Lyserno-källa är ansluten söker agenten i den publika webben, som för närvarande är tillgänglig under **Kunskap**. Sökningen hittar allmän information och externa återförsäljare, men inte Lysernos sortiment.
-
-![Ett expanderat söksteg som visar resultat från den publika webben](../../assets/nextgen/chap03/20.png)
-
-!!! success "Baslinjen är etablerad"
-    Agenten har ett tydligt uppdrag och vägrar att gissa när företagets data saknas. I nästa kapitel lägger vi till Lysernos produktkatalog som kunskapskälla och ställer samma typ av fråga igen. Då kan vi jämföra resultatet mot denna baslinje.
+!!! success "Agentens grund är klar"
+    Lyserno Produktassistent finns i rätt lösning, har svenska som förstaspråk och vet att den inte ska hitta på uppgifter som saknas. I nästa kapitel ansluter vi Lysernos produktkatalog och publika webbplats som kunskapskällor.

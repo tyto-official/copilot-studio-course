@@ -50,7 +50,7 @@ I det sista steget kan du behöva välja land eller region. Kontrollera uppgifte
 !!! info "Om utvärderingsversionen"
     Utvärderingsversionen gäller inledningsvis i 30 dagar. När perioden löper ut kan den förlängas med ytterligare 30 dagar, och Microsoft anger att agenten kan fortsätta fungera i upp till 90 dagar efter att utvärderingen löpt ut.
 
-    Licensen låter dig **bygga och testa** agenten i testchatten, vilket är allt vi behöver under kursen. Den tillåter däremot inte publicering. Publiceringsbehörighet behandlas därför som ett valfritt moment i slutet av utbildningen. Läs mer i [Microsofts aktuella information om åtkomst och utvärderingslicenser](https://learn.microsoft.com/sv-se/microsoft-copilot-studio/requirements-licensing-subscriptions).
+    Licensen låter dig **bygga och testa** agenten i testchatten, vilket räcker för kursen. Den tillåter däremot inte att själva agenten publiceras till användare eller kanaler. När vi senare publicerar agentflödet gör vi flödet tillgängligt för agentens testkörning. Agenten publiceras inte. Publicering av själva agenten är därför ett valfritt moment som kräver rätt licens. Läs mer i [Microsofts aktuella information om åtkomst och utvärderingslicenser](https://learn.microsoft.com/sv-se/microsoft-copilot-studio/requirements-licensing-subscriptions).
 
 ---
 
