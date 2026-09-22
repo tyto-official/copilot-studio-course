@@ -1553,10 +1553,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#del-1-oppna-solutions" class="md-nav__link">
+  <a href="#del-1-oppna-losningar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Del 1: Öppna Solutions
+        Del 1: Öppna Lösningar
       
     </span>
   </a>
@@ -1597,10 +1597,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#del-5-kontrollera-den-nya-losningen" class="md-nav__link">
+  <a href="#del-5-kontrollera-losningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Del 5: Kontrollera den nya lösningen
+        Del 5: Kontrollera lösningen
       
     </span>
   </a>
@@ -1641,7 +1641,7 @@
   <span class="md-ellipsis">
     
   
-    3. Skapa agenten
+    3. Skapa Lyserno Produktassistent
   
 
     
@@ -1690,14 +1690,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-add-first-skill/" class="md-nav__link">
+      <a href="../05-add-sharepoint-tool/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. Skapa den första skillen
+    5. Anslut Centrallager som verktyg
   
 
     
@@ -1718,14 +1718,126 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-add-sharepoint-tool/" class="md-nav__link">
+      <a href="../06-add-first-skill/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    6. Anslut Centrallager som verktyg
+    6. Skapa agentens första skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-add-policy-and-update-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Lägg till styrdokumentet och uppdatera skillen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-create-showroom-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa agentflödet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-complete-showroom-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Slutför agentflödet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-connect-flow-and-finalize-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Koppla flödet och slutför skillen
   
 
     
@@ -1912,10 +2024,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#del-1-oppna-solutions" class="md-nav__link">
+  <a href="#del-1-oppna-losningar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Del 1: Öppna Solutions
+        Del 1: Öppna Lösningar
       
     </span>
   </a>
@@ -1956,10 +2068,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#del-5-kontrollera-den-nya-losningen" class="md-nav__link">
+  <a href="#del-5-kontrollera-losningen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Del 5: Kontrollera den nya lösningen
+        Del 5: Kontrollera lösningen
       
     </span>
   </a>
@@ -1995,36 +2107,42 @@
 
 
 <h1 id="2-skapa-losningen">2. Skapa lösningen</h1>
-<p>I det här kapitlet skapar vi lösningen som ska samla Lyserno-agenten och de komponenter vi bygger senare i kursen. Vi skapar också en egen utgivare, så att våra komponenter får ett tydligt och unikt prefix.</p>
+<p>I det här kapitlet skapar vi lösningen som ska samla Lyserno-agenten och de komponenter vi bygger senare i kursen. Vi skapar också en egen utgivare, så att komponenterna får ett eget prefix.</p>
 <p>När kapitlet är klart har du:</p>
 <ul>
-<li>skapat en egen utgivare med dina initialer</li>
-<li>skapat lösningen <strong>Copilot Studio Utbildning Lyserno</strong></li>
+<li>skapat en utgivare med dina initialer</li>
+<li>skapat lösningen <strong>Copilot Studio Utbildning Lyserno Produkt</strong></li>
 <li>angett lösningen som prioriterad</li>
-<li>kontrollerat att du arbetar i rätt lösning</li>
+<li>kontrollerat att rätt lösning visas som aktuell</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Varför bygger vi i en lösning?</p>
-<p>Lösningen håller ihop agenten, arbetsflödena och andra Power Platform-komponenter som hör till samma implementation. Det gör lösningen enklare att förvalta och senare flytta mellan olika miljöer.</p>
+<p>Lösningen samlar agenten, arbetsflödena och andra Power Platform-komponenter som hör ihop. Det förenklar förvaltning och gör det möjligt att senare flytta komponenterna mellan miljöer.</p>
 </div>
 <hr />
-<h2 id="del-1-oppna-solutions">Del 1: Öppna Solutions</h2>
-<ol>
-<li>Öppna de <strong>tre punkterna</strong> längst ner i Copilot Studios vänsternavigering.</li>
-<li>Välj <strong>Solutions</strong>.</li>
-</ol>
-<p><img alt="Menyn med de tre punkterna i Copilot Studio där Solutions kan väljas" src="../../../assets/nextgen/chap02/1.png" /></p>
-<p>Du kommer nu till sidan <strong>Lösningar</strong>. Här visas de lösningar som finns i den valda miljön. Till vänster, under rubriken <strong>Lösningar</strong>, ser du även vilken lösning som för närvarande är prioriterad.</p>
-<p><img alt="Startsidan för Lösningar med tillgängliga lösningar och aktuell prioriterad lösning" src="../../../assets/nextgen/chap02/2.png" /></p>
-<p>Kontrollera att rätt utvecklingsmiljö visas högst upp till höger. Bilden visar miljön <strong>Training</strong>, men du ska använda den personliga utvecklingsmiljö som valdes i föregående kapitel.</p>
+<h2 id="del-1-oppna-losningar">Del 1: Öppna Lösningar</h2>
+<p>I förra kapitlet öppnade du menyn med de tre punkterna längst ner i Copilot Studios vänsternavigering. Välj <strong>Lösningar</strong>.</p>
+<p><img alt="Menyn med de tre punkterna där Lösningar är markerat" src="../../../assets/nextgen/chap02/1.png" /></p>
+<p>Sidan <strong>Lösningar</strong> öppnas. Här visas lösningarna i den valda miljön och vilken lösning som är aktuell. Kontrollera att kursens utvecklingsmiljö visas högst upp till höger.</p>
+<p>Bildens miljö heter <strong>Training</strong>. Du ska använda den personliga utvecklingsmiljö som du valde i föregående kapitel.</p>
 <p>Välj <strong>+ Ny lösning</strong> högst upp till vänster.</p>
-<p><img alt="Knappen Ny lösning högst upp till vänster på sidan Lösningar" src="../../../assets/nextgen/chap02/3.png" /></p>
+<p><img alt="Sidan Lösningar med befintliga lösningar, aktuell lösning och knappen Ny lösning" src="../../../assets/nextgen/chap02/2.png" /></p>
 <hr />
 <h2 id="del-2-ange-losningens-namn">Del 2: Ange lösningens namn</h2>
 <p>Panelen <strong>Ny lösning</strong> öppnas från höger.</p>
-<p>Fyll i följande visningsnamn. Använd kopieringsikonen i kodrutan:</p>
-<div class="highlight"><pre><span></span><code>Copilot Studio Utbildning Lyserno
+<p>Fyll i följande visningsnamn:</p>
+<div class="highlight"><pre><span></span><code>Copilot Studio Utbildning Lyserno Produkt
 </code></pre></div>
+<p>Fältet <strong>Namn</strong> fylls normalt i automatiskt när du lämnar fältet <strong>Visningsnamn</strong>:</p>
+<div class="highlight"><pre><span></span><code>CopilotStudioUtbildningLysernoProdukt
+</code></pre></div>
+<p>Om namnet inte skapas automatiskt anger du visningsnamnet utan mellanslag.</p>
+<p>Använd inte standardutgivaren. Välj <strong>+ Ny utgivare</strong> under fältet <strong>Utgivare</strong>.</p>
+<p><img alt="Panelen Ny lösning med visningsnamn, automatiskt namn och valet Ny utgivare" src="../../../assets/nextgen/chap02/3.png" /></p>
+<hr />
+<h2 id="del-3-skapa-en-utgivare">Del 3: Skapa en utgivare</h2>
+<p>Panelen <strong>Ny utgivare</strong> öppnas. Utgivaren anger vem som har skapat komponenterna och ger dem ett eget prefix.</p>
+<p>Använd dina initialer. Exemplen nedan använder <strong>JT</strong> för Joel Thyberg.</p>
 <table>
 <thead>
 <tr>
@@ -2035,70 +2153,85 @@
 <tbody>
 <tr>
 <td><strong>Visningsnamn</strong></td>
-<td><code>Copilot Studio Utbildning Lyserno</code></td>
+<td><code>Lyserno JT</code></td>
 </tr>
 <tr>
 <td><strong>Namn</strong></td>
-<td><code>CopilotStudioUtbildningLyserno</code></td>
+<td><code>LysernoJT</code></td>
+</tr>
+<tr>
+<td><strong>Beskrivning</strong></td>
+<td><code>Utgivare för Copilot Studio-utbildning</code></td>
+</tr>
+<tr>
+<td><strong>Prefix</strong></td>
+<td><code>ljt</code></td>
+</tr>
+<tr>
+<td><strong>Prefix för valvärde</strong></td>
+<td>Lämna det automatiskt skapade värdet oförändrat</td>
 </tr>
 </tbody>
 </table>
-<p>Fältet <strong>Namn</strong> skapas normalt automatiskt från visningsnamnet. Om det inte fylls i automatiskt anger du samma namn utan mellanslag.</p>
-<p>Under <strong>Utgivare</strong> ska vi inte använda standardutgivaren. Välj i stället <strong>+ Ny utgivare</strong>.</p>
-<p><img alt="Panelen Ny lösning med lösningsnamnet ifyllt och valet Ny utgivare" src="../../../assets/nextgen/chap02/4.png" /></p>
-<hr />
-<h2 id="del-3-skapa-en-utgivare">Del 3: Skapa en utgivare</h2>
-<p>En ny panel med rubriken <strong>Ny utgivare</strong> öppnas. Utgivaren identifierar vem som har skapat komponenterna och ger dem ett eget prefix.</p>
-<p>Använd dina initialer. Exemplen nedan använder <strong>JT</strong> för Joel Thyberg.</p>
-<p><strong>Visningsnamn</strong><br>
-Skriv <code>Lyserno [initialer]</code>, exempelvis <code>Lyserno JT</code>.</p>
-<p><strong>Namn</strong><br>
-Använd samma namn utan mellanslag, exempelvis <code>LysernoJT</code>.</p>
-<p><strong>Beskrivning</strong><br>
-Beskrivningen är samma för alla. Kopiera följande text:</p>
-<div class="highlight"><pre><span></span><code>Utgivare för Copilot Studio-utbildning
-</code></pre></div>
-<p><strong>Prefix</strong><br>
-Använd <code>l</code> följt av initialerna med små bokstäver, exempelvis <code>ljt</code>.</p>
-<p><strong>Prefix för valvärde</strong><br>
-Lämna det automatiskt skapade värdet oförändrat, exempelvis <code>85414</code>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Byt ut JT mot dina egna initialer</p>
-<p>Om du exempelvis heter Anna Svensson använder du <code>Lyserno AS</code>, <code>LysernoAS</code> och prefixet <code>las</code>. Prefixet måste vara unikt i miljön.</p>
-</div>
-<p>Under <strong>Förhandsgranskning av nytt objektnamn</strong> kan du se hur prefixet används, exempelvis <code>ljt_Object</code>.</p>
-<p>Välj <strong>Spara</strong> längst ner i panelen.</p>
-<p><img alt="Panelen Ny utgivare med Lyserno JT, beskrivning och prefixet ljt" src="../../../assets/nextgen/chap02/5.png" /></p>
+<p>Prefixet består av <code>l</code> följt av dina initialer med små bokstäver. Om du exempelvis heter Anna Svensson använder du <code>Lyserno AS</code>, <code>LysernoAS</code> och prefixet <code>las</code>.</p>
+<p>Under <strong>Förhandsgranskning av nytt objektnamn</strong> ser du hur prefixet kommer att användas, exempelvis <code>ljt_Object</code>.</p>
+<p>Välj <strong>Spara</strong>.</p>
+<p><img alt="Panelen Ny utgivare med Lyserno JT, beskrivning, prefix och prefix för valvärde" src="../../../assets/nextgen/chap02/4.png" /></p>
 <hr />
 <h2 id="del-4-slutfor-losningen">Del 4: Slutför lösningen</h2>
-<p>Du kommer nu tillbaka till panelen <strong>Ny lösning</strong>. Kontrollera följande:</p>
-<ul>
-<li><strong>Visningsnamn:</strong> <code>Copilot Studio Utbildning Lyserno</code></li>
-<li><strong>Namn:</strong> <code>CopilotStudioUtbildningLyserno</code></li>
-<li><strong>Utgivare:</strong> din nya Lyserno-utgivare, exempelvis <code>Lyserno JT (LysernoJT)</code></li>
-<li><strong>Version:</strong> lämna standardvärdet <code>1.0.0.0</code></li>
-</ul>
-<p>Markera sedan <strong>Ange som prioriterad lösning</strong>.</p>
-<p><img alt="Den färdiga lösningskonfigurationen med Lyserno-utgivaren och Ange som prioriterad lösning markerat" src="../../../assets/nextgen/chap02/6.png" /></p>
-<p>Välj <strong>Skapa</strong> längst ner i panelen.</p>
+<p>Du kommer tillbaka till panelen <strong>Ny lösning</strong>. Den nya utgivaren brukar väljas automatiskt. Om fältet fortfarande är tomt väljer du utgivaren i listan.</p>
+<p>Kontrollera följande:</p>
+<table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Visningsnamn</strong></td>
+<td><code>Copilot Studio Utbildning Lyserno Produkt</code></td>
+</tr>
+<tr>
+<td><strong>Namn</strong></td>
+<td><code>CopilotStudioUtbildningLysernoProdukt</code></td>
+</tr>
+<tr>
+<td><strong>Utgivare</strong></td>
+<td>Din nya Lyserno-utgivare, exempelvis <code>Lyserno JT (LysernoJT)</code></td>
+</tr>
+<tr>
+<td><strong>Version</strong></td>
+<td><code>1.0.0.0</code></td>
+</tr>
+</tbody>
+</table>
+<p>Markera <strong>Ange som prioriterad lösning</strong> och välj sedan <strong>Skapa</strong>.</p>
+<p><img alt="Den färdiga lösningskonfigurationen med utgivare, version och prioriterad lösning" src="../../../assets/nextgen/chap02/5.png" /></p>
 <hr />
-<h2 id="del-5-kontrollera-den-nya-losningen">Del 5: Kontrollera den nya lösningen</h2>
-<p>När lösningen har skapats öppnas den automatiskt. Rubriken visar <strong>Copilot Studio Utbildning Lyserno</strong> och listan är än så länge tom. Det är korrekt – vi har inte skapat agenten eller några andra komponenter ännu.</p>
-<p><img alt="Den nya och tomma lösningen Copilot Studio Utbildning Lyserno" src="../../../assets/nextgen/chap02/7.png" /></p>
-<p>Välj <strong>bakåtpilen</strong> längst till vänster, under menyikonen, för att återvända till sidan <strong>Lösningar</strong>.</p>
-<p>Nu ska <strong>Copilot Studio Utbildning Lyserno</strong> visas både i listan och i rutan <strong>Aktuell önskad lösning</strong>.</p>
-<p><img alt="Lösningslistan där Copilot Studio Utbildning Lyserno är aktuell prioriterad lösning" src="../../../assets/nextgen/chap02/8.png" /></p>
+<h2 id="del-5-kontrollera-losningen">Del 5: Kontrollera lösningen</h2>
+<p>När lösningen har skapats öppnas den automatiskt. Rubriken visar <strong>Copilot Studio Utbildning Lyserno Produkt</strong> och listan är tom. Det är väntat eftersom vi ännu inte har skapat agenten eller några andra komponenter.</p>
+<p><img alt="Den nya och tomma lösningen Copilot Studio Utbildning Lyserno Produkt" src="../../../assets/nextgen/chap02/6.png" /></p>
+<p>Välj bakåtpilen i vänsternavigeringen för att återvända till sidan <strong>Lösningar</strong>.</p>
+<p>Kontrollera att:</p>
+<ul>
+<li><strong>Copilot Studio Utbildning Lyserno Produkt</strong> finns i listan</li>
+<li>lösningen är märkt som <strong>Önskad lösning</strong></li>
+<li>kortet <strong>Aktuell önskad lösning</strong> visar samma lösning</li>
+</ul>
+<p><img alt="Lösningslistan där Copilot Studio Utbildning Lyserno Produkt är aktuell önskad lösning" src="../../../assets/nextgen/chap02/7.png" /></p>
 <div class="admonition success">
 <p class="admonition-title">Lösningen är klar</p>
-<p>Lyserno-lösningen är skapad och prioriterad. Komponenterna vi bygger framöver kan nu samlas på samma plats.</p>
+<p>Lyserno-lösningen är skapad och prioriterad. Komponenterna vi bygger i kommande kapitel kan nu samlas på samma plats.</p>
 </div>
 <h2 id="atervand-till-copilot-studio">Återvänd till Copilot Studio</h2>
 <p>Du kan återvända till den nya Copilot Studio-upplevelsen på något av följande sätt:</p>
 <ul>
-<li>gå tillbaka till den tidigare webbläsarfliken där Copilot Studio fortfarande är öppet</li>
-<li>välj <strong>Copilot Studio-ikonen</strong> högst upp till vänster på sidan</li>
+<li>gå tillbaka till den tidigare webbläsarfliken där Copilot Studio är öppet</li>
+<li>välj <strong>Copilot Studio</strong> högst upp till vänster</li>
 </ul>
-<p>I <a href="../03-create-agent/">nästa kapitel</a> skapar vi <strong>Lyserno Produktassistent</strong>, konfigurerar agentens grundinställningar och genomför ett första baslinjetest.</p>
+<p>I <a href="../03-create-agent/">nästa kapitel</a> skapar vi <strong>Lyserno Produktassistent</strong>, konfigurerar grundinställningarna och genomför ett första test.</p>
 
 
 

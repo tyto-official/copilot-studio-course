@@ -1,0 +1,2748 @@
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Praktiska utbildningar i Microsoft Copilot Studio för standardharnessen och GitHub Copilot-harnessen.">
+      
+      
+      
+        <link rel="canonical" href="https://tyto-official.github.io/copilot-studio-course/copilot-studio/nextgen/08-create-showroom-flow/">
+      
+      
+        <link rel="prev" href="../07-add-policy-and-update-skill/">
+      
+      
+        <link rel="next" href="../09-complete-showroom-flow/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>8. Skapa agentflödet - Microsoft AI-utbildningar</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.setAttribute("data-track", "nextgen");
+      var sync = function () { root.classList.toggle("is-scrolled", window.scrollY > 8); };
+      addEventListener("scroll", sync, { passive: true });
+      addEventListener("DOMContentLoaded", sync);
+      sync();
+    })();
+  </script>
+  <script>
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-copy-value]");
+      if (!button) return;
+
+      var value = button.getAttribute("data-copy-value");
+      var label = button.querySelector(".copy-field__label");
+
+      var fallbackCopy = function () {
+        var input = document.createElement("textarea");
+        input.value = value;
+        input.setAttribute("readonly", "");
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+      };
+
+      var showCopied = function () {
+        label.textContent = "Kopierat";
+        button.classList.add("is-copied");
+        setTimeout(function () {
+          label.textContent = "Kopiera";
+          button.classList.remove("is-copied");
+        }, 1800);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).catch(fallbackCopy).then(showCopied);
+      } else {
+        fallbackCopy();
+        showCopied();
+      }
+    });
+  </script>
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#8-skapa-agentflodet" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Sidhuvud">
+    <a href="../../.." title="Microsoft AI-utbildningar" class="md-header__button md-logo" aria-label="Microsoft AI-utbildningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Microsoft AI-utbildningar
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8. Skapa agentflödet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Microsoft AI-utbildningar" class="md-nav__button md-logo" aria-label="Microsoft AI-utbildningar" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Microsoft AI-utbildningar
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Copilot Studio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standardharnessen
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Standardharnessen
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grundkurs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Grundkurs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_1_1" id="__nav_2_1_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bygg en IT-supportagent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bygg en IT-supportagent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/00-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Begrepp och teori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/01-prepare-sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/02-tour-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/03-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa en lösning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/04-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/05-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Lägg till kunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/06-create-topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa ett ämne
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/07-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Skapa ett adaptivt kort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/08-create-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa ett flöde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/09-autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Autonomi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/10-multi-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Multi-agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fördjupning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fördjupning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2_1" id="__nav_2_1_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bygg en driftassistent med externa system
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bygg en driftassistent med externa system
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/00-course-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/01-navigate-copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hitta rätt i Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/02-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Skapa lösningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/03-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa agenten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/04-create-topic-and-prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Skapa ämnet och analysera felbilden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/05-collect-missing-information/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Samla in objekt och påverkan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/06-connect-tberg-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Anslut T-Berg DU API och verifiera objektet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/07-connect-tberg-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Anslut T-Berg DU MCP och fördjupa utredningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/08-review-and-create-work-order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Granska och skapa arbetsorder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/09-create-work-order-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Skapa arbetsorder med ett agentflöde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard-advanced/10-connect-flow-and-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Koppla flödet till ämnet och testa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Copilot-harnessen
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GitHub Copilot-harnessen
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grundkurs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Grundkurs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1_1" id="__nav_2_2_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bygg en produktagent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_2_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bygg en produktagent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kursöversikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-course-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Kursuppsättning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-navigate-new-experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hitta rätt i nya Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-create-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Skapa lösningen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-create-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Skapa Lyserno Produktassistent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-add-knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Lägg till produktkunskap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-sharepoint-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Anslut Centrallager som verktyg
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-add-first-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Skapa agentens första skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-add-policy-and-update-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Lägg till styrdokumentet och uppdatera skillen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa agentflödet
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Skapa agentflödet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-1-skapa-ett-arbetsflode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Skapa ett arbetsflöde
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-2-lagg-till-flodets-indata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Lägg till flödets indata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-3-hamta-den-valda-produktvarianten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Hämta den valda produktvarianten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-4-testa-sharepoint-noden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 4: Testa SharePoint-noden
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-5-berakna-kvarvarande-disponibelt-saldo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 5: Beräkna kvarvarande disponibelt saldo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-6-lagg-till-villkorsnoden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 6: Lägg till villkorsnoden
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-7-konfigurera-svensk-showroomstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 7: Konfigurera svensk showroomstudio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-8-konfigurera-svenskt-flagship-showroom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 8: Konfigurera svenskt flagship-showroom
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-9-konfigurera-internationell-showroomstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 9: Konfigurera internationell showroomstudio
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-complete-showroom-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Slutför agentflödet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-connect-flow-and-finalize-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Koppla flödet och slutför skillen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips & fördjupning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tips & fördjupning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Översikt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kunskap på djupet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#del-1-skapa-ett-arbetsflode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 1: Skapa ett arbetsflöde
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-2-lagg-till-flodets-indata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 2: Lägg till flödets indata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-3-hamta-den-valda-produktvarianten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 3: Hämta den valda produktvarianten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-4-testa-sharepoint-noden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 4: Testa SharePoint-noden
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-5-berakna-kvarvarande-disponibelt-saldo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 5: Beräkna kvarvarande disponibelt saldo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-6-lagg-till-villkorsnoden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 6: Lägg till villkorsnoden
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-7-konfigurera-svensk-showroomstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 7: Konfigurera svensk showroomstudio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-8-konfigurera-svenskt-flagship-showroom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 8: Konfigurera svenskt flagship-showroom
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#del-9-konfigurera-internationell-showroomstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Del 9: Konfigurera internationell showroomstudio
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="8-skapa-agentflodet">8. Skapa agentflödet</h1>
+<p>Agenten kan nu hitta en produkt, kontrollera lagret och bedöma om en begäran passar standardprocessen. Nästa steg är att bygga arbetsflödet som hämtar produktvarianten på nytt och kontrollerar aktuellt saldo samt reglerna för antal och lagerbuffert när användaren vill gå vidare.</p>
+<p>Arbetsflödet ska senare kunna reservera det önskade antalet eller skicka begäran för manuell granskning. I den här första delen skapar du flödet, definierar dess indata, hämtar produktvarianten och bygger villkorslogiken.</p>
+<p>När den här delen är klar har du:</p>
+<ul>
+<li>skapat arbetsflödet <strong>Hantera showroompåfyllning</strong></li>
+<li>lagt till de fem värden som agenten ska skicka</li>
+<li>hämtat rätt produktvariant från Centrallager</li>
+<li>beräknat kvarvarande disponibelt saldo och totalt produktpris</li>
+<li>byggt tre grenar för standardprocessen</li>
+<li>lämnat övriga giltiga begäranden till grenen för manuell granskning</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Skillen och arbetsflödet kontrollerar olika delar</p>
+<p>I kursens lösning ansvarar skillen för att produkten är tillåten för vanlig showroompåfyllning. Arbetsflödet hämtar produktvarianten på nytt och kontrollerar aktuellt saldo samt reglerna för antal och lagerbuffert innan något ändras. Det utgår från att agenten skickar ett positivt heltal. En produktionslösning bör även kontrollera <code>SalesStatus</code>, <code>ReplenishmentCode</code> och att <code>Quantity</code> är ett positivt heltal direkt i arbetsflödet.</p>
+</div>
+<hr />
+<h2 id="del-1-skapa-ett-arbetsflode">Del 1: Skapa ett arbetsflöde</h2>
+<p>Gå till fliken <strong>Bygg</strong> för Lyserno Produktassistent. Välj plustecknet vid <strong>Verktyg</strong> i panelen till höger.</p>
+<p><img alt="Plustecknet vid Verktyg i agentens högra panel" src="../../../assets/nextgen/chap08/1.png" /></p>
+<p>Välj <strong>Lägg till</strong> och sedan <strong>Arbetsflöde</strong>.</p>
+<p><img alt="Arbetsflöde väljs i dialogrutan Lägg till ett verktyg" src="../../../assets/nextgen/chap08/2.png" /></p>
+<p>Copilot Studio öppnar ett nytt agentflöde med en utlösare och en svarsnod.</p>
+<p><img alt="Ett nytt agentflöde med utlösare och svarsnod" src="../../../assets/nextgen/chap08/3.png" /></p>
+<p>Byt namn på arbetsflödet till:</p>
+<div class="highlight"><pre><span></span><code>Hantera showroompåfyllning
+</code></pre></div>
+<p><img alt="Arbetsflödet har fått namnet Hantera showroompåfyllning" src="../../../assets/nextgen/chap08/4.png" /></p>
+<hr />
+<h2 id="del-2-lagg-till-flodets-indata">Del 2: Lägg till flödets indata</h2>
+<p>Öppna utlösaren <strong>När en agent anropar arbetsflödet</strong>. Namnet hör till utlösartypen och kan inte ändras.</p>
+<p><img alt="Utlösaren När en agent anropar arbetsflödet" src="../../../assets/nextgen/chap08/5.png" /></p>
+<p>Välj <strong>Lägg till indata</strong> och börja med typen <strong>Number</strong>.</p>
+<p><img alt="Tillgängliga indatatyper med Number markerat" src="../../../assets/nextgen/chap08/6.png" /></p>
+<p>Skapa först <code>ItemID</code>.</p>
+<p>Namn:</p>
+<div class="highlight"><pre><span></span><code>ItemID
+</code></pre></div>
+<p>Beskrivning:</p>
+<div class="highlight"><pre><span></span><code>SharePoint-ID för den valda produktvarianten i listan Centrallager. Använd inte SKU eller ProductModelID.
+</code></pre></div>
+<p><img alt="ItemID har lagts till som numerisk indata" src="../../../assets/nextgen/chap08/7.png" /></p>
+<p>Välj <strong>Lägg till indata</strong> igen och välj <strong>Number</strong>.</p>
+<p><img alt="En andra numerisk indata läggs till" src="../../../assets/nextgen/chap08/8.png" /></p>
+<p>Namn:</p>
+<div class="highlight"><pre><span></span><code>Quantity
+</code></pre></div>
+<p>Beskrivning:</p>
+<div class="highlight"><pre><span></span><code>Antal enheter som användaren har bekräftat. Måste vara ett positivt heltal.
+</code></pre></div>
+<p><img alt="ItemID och Quantity är klara och typen Text kan väljas" src="../../../assets/nextgen/chap08/9.png" /></p>
+<p>Välj <strong>Lägg till indata</strong>, välj <strong>Text</strong> och skapa <code>ShowroomName</code>.</p>
+<p>Namn:</p>
+<div class="highlight"><pre><span></span><code>ShowroomName
+</code></pre></div>
+<p>Beskrivning:</p>
+<div class="highlight"><pre><span></span><code>Verifierat exakt namn på det showroom som ska ta emot produkterna.
+</code></pre></div>
+<p><img alt="ShowroomName har lagts till som textindata" src="../../../assets/nextgen/chap08/10.png" /></p>
+<p>Lägg till ännu en indata av typen <strong>Text</strong>.</p>
+<p>Namn:</p>
+<div class="highlight"><pre><span></span><code>ShowroomType
+</code></pre></div>
+<p>Beskrivning:</p>
+<div class="highlight"><pre><span></span><code>Verifierad showroomtyp: Showroomstudio eller Flagship.
+</code></pre></div>
+<p><img alt="ShowroomType har lagts till som textindata" src="../../../assets/nextgen/chap08/11.png" /></p>
+<p>Avsluta med en indata av typen <strong>Text</strong>.</p>
+<p>Namn:</p>
+<div class="highlight"><pre><span></span><code>Country
+</code></pre></div>
+<p>Beskrivning:</p>
+<div class="highlight"><pre><span></span><code>Verifierat mottagarland: Sverige eller Norge.
+</code></pre></div>
+<p>Kontrollera att alla fem värden har rätt namn, typ och beskrivning.</p>
+<p><img alt="Utlösaren innehåller ItemID, Quantity, ShowroomName, ShowroomType och Country" src="../../../assets/nextgen/chap08/12.png" /></p>
+<hr />
+<h2 id="del-3-hamta-den-valda-produktvarianten">Del 3: Hämta den valda produktvarianten</h2>
+<p>Välj plustecknet mellan utlösaren och svarsnoden och sedan <strong>Lägg till ett steg</strong>.</p>
+<p><img alt="Ett nytt steg läggs till efter utlösaren" src="../../../assets/nextgen/chap08/13.png" /></p>
+<p>Sök efter:</p>
+<div class="highlight"><pre><span></span><code>Hämta objektet
+</code></pre></div>
+<p>Välj SharePoint-åtgärden med det namnet.</p>
+<p><img alt="SharePoint-åtgärden Hämta objektet i åtgärdslistan" src="../../../assets/nextgen/chap08/14.png" /></p>
+<p>Åtgärden behöver anslutning, webbplatsadress, listnamn och objektets ID.</p>
+<p><img alt="Konfigurationen för SharePoint-åtgärden Hämta objektet" src="../../../assets/nextgen/chap08/15.png" /></p>
+<p>Byt namn på noden till:</p>
+<div class="highlight"><pre><span></span><code>Hämta vald produktvariant
+</code></pre></div>
+<p><img alt="SharePoint-noden har fått namnet Hämta vald produktvariant" src="../../../assets/nextgen/chap08/18.png" /></p>
+<p>Välj <strong>Lyserno Produktportal</strong> under <strong>Webbplatsadress</strong> och <strong>Centrallager</strong> under <strong>Listnamn</strong>.</p>
+<p><img alt="Lyserno Produktportal och Centrallager är valda" src="../../../assets/nextgen/chap08/16.png" /></p>
+<p>Klicka i fältet <strong>ID</strong> och öppna dynamiskt innehåll. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>ItemID
+</code></pre></div>
+<p>Välj värdet under <strong>When an agent calls the flow</strong>.</p>
+<p><img alt="ItemID från utlösaren väljs som SharePoint-objektets ID" src="../../../assets/nextgen/chap08/17.png" /></p>
+<p>Kontrollera den färdiga konfigurationen.</p>
+<p><img alt="Hämta vald produktvariant är färdigkonfigurerad" src="../../../assets/nextgen/chap08/19.png" /></p>
+<hr />
+<h2 id="del-4-testa-sharepoint-noden">Del 4: Testa SharePoint-noden</h2>
+<p>Öppna fliken <strong>Kör nod</strong>. Ange följande testvärde för <code>ItemID</code>:</p>
+<div class="highlight"><pre><span></span><code>1
+</code></pre></div>
+<p>Övriga indata behövs inte för att testa just den här noden.</p>
+<p><img alt="Hämta vald produktvariant testas med ItemID 1" src="../../../assets/nextgen/chap08/20.png" /></p>
+<p>Kör noden och kontrollera att ett objekt returneras från Centrallager. Utdata ska bland annat innehålla produktnamn, SKU, <code>OnHandQuantity</code> och <code>ReservedQuantity</code>.</p>
+<p><img alt="Testet returnerar produktvariantens värden från Centrallager" src="../../../assets/nextgen/chap08/21.png" /></p>
+<p>Gå tillbaka till arbetsytan när testet är klart.</p>
+<p><img alt="Hämta vald produktvariant ligger mellan utlösaren och svarsnoden" src="../../../assets/nextgen/chap08/22.png" /></p>
+<hr />
+<h2 id="del-5-berakna-kvarvarande-disponibelt-saldo">Del 5: Beräkna kvarvarande disponibelt saldo</h2>
+<p>Lägg till ett steg efter <strong>Hämta vald produktvariant</strong>. Välj åtgärden <strong>Variabel</strong>.</p>
+<p><img alt="Variabel väljs i listan över åtgärder" src="../../../assets/nextgen/chap08/23.png" /></p>
+<p>Byt namn på noden till:</p>
+<div class="highlight"><pre><span></span><code>Beräkna värden och initiera resultat
+</code></pre></div>
+<p>Den första variabeln ska heta:</p>
+<div class="highlight"><pre><span></span><code>RemainingAvailableQuantity
+</code></pre></div>
+<p><img alt="Noden Beräkna värden och initiera resultat med en tom variabel" src="../../../assets/nextgen/chap08/24.png" /></p>
+<p>Välj typen <strong>Float</strong>. SharePoints nummerfält returneras som decimaltal även när värdena visas som heltal.</p>
+<p><img alt="RemainingAvailableQuantity får typen Float" src="../../../assets/nextgen/chap08/25.png" /></p>
+<p>Välj ikonen <strong>Växla till uttrycksläge</strong> vid fältet <strong>Värde</strong>.</p>
+<p><img alt="Värdefältet växlas till uttrycksläge" src="../../../assets/nextgen/chap08/26.png" /></p>
+<p>Beräkningen är <code>OnHandQuantity − ReservedQuantity − Quantity</code>.</p>
+<p>Börja med att skriva den nästlade funktionen:</p>
+<div class="highlight"><pre><span></span><code>sub(sub())
+</code></pre></div>
+<p><img alt="Den nästlade funktionen sub sub har skrivits in" src="../../../assets/nextgen/chap08/27.png" /></p>
+<p>Placera markören i den innersta funktionen och öppna dynamiskt innehåll. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>OnHandQuantity
+</code></pre></div>
+<p>Välj värdet från <strong>Hämta vald produktvariant</strong>.</p>
+<p><img alt="OnHandQuantity väljs från Hämta vald produktvariant" src="../../../assets/nextgen/chap08/28.png" /></p>
+<p>Skriv ett kommatecken efter värdet.</p>
+<p><img alt="OnHandQuantity är den första parametern i den innersta sub-funktionen" src="../../../assets/nextgen/chap08/29.png" /></p>
+<p>Öppna dynamiskt innehåll och sök efter:</p>
+<div class="highlight"><pre><span></span><code>ReservedQuantity
+</code></pre></div>
+<p>Välj värdet från samma SharePoint-nod.</p>
+<p><img alt="ReservedQuantity väljs från Hämta vald produktvariant" src="../../../assets/nextgen/chap08/30.png" /></p>
+<p>Flytta markören utanför den innersta funktionens avslutande parentes och skriv ett nytt kommatecken.</p>
+<p><img alt="OnHandQuantity minus ReservedQuantity är färdigbyggt" src="../../../assets/nextgen/chap08/31.png" /></p>
+<p>Öppna dynamiskt innehåll och sök efter:</p>
+<div class="highlight"><pre><span></span><code>Quantity
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="Quantity väljs från When an agent calls the flow" src="../../../assets/nextgen/chap08/32.png" /></p>
+<p>Det färdiga uttrycket ska motsvara följande:</p>
+<div class="highlight"><pre><span></span><code>@sub(sub(outputs('Hämta_vald_produktvariant')?['body/field_6'],outputs('Hämta_vald_produktvariant')?['body/field_7']),triggerOutputs()?['body/number_1'])
+</code></pre></div>
+<p>Du kan bygga uttrycket med dynamiskt innehåll enligt stegen ovan eller klistra in hela uttrycket i uttrycksläget.</p>
+<p><img alt="Det färdiga uttrycket för RemainingAvailableQuantity" src="../../../assets/nextgen/chap08/33.png" /></p>
+<p>Kontrollera variabelns namn, typ och värde.</p>
+<p><img alt="RemainingAvailableQuantity är färdigkonfigurerad" src="../../../assets/nextgen/chap08/34.png" /></p>
+<p>Välj <strong>Initiera variabel</strong>. Ange följande namn:</p>
+<div class="highlight"><pre><span></span><code>ResultStatus
+</code></pre></div>
+<p>Välj typen <strong>String</strong> och lämna värdet tomt.</p>
+<p><img alt="ResultStatus har lagts till som en tom sträng" src="../../../assets/nextgen/chap08/35.png" /></p>
+<p>Välj <strong>Initiera variabel</strong> igen och ange namnet:</p>
+<div class="highlight"><pre><span></span><code>ResultMessage
+</code></pre></div>
+<p>Välj typen <strong>String</strong> och lämna värdet tomt.</p>
+<p><img alt="Noden innehåller RemainingAvailableQuantity, ResultStatus och ResultMessage" src="../../../assets/nextgen/chap08/36.png" /></p>
+<p>Välj <strong>Initiera variabel</strong> igen och ange namnet:</p>
+<div class="highlight"><pre><span></span><code>TotalProductPrice
+</code></pre></div>
+<p>Välj typen <strong>Float</strong>.</p>
+<p><img alt="TotalProductPrice får typen Float" src="../../../assets/nextgen/chap08/mul.png" /></p>
+<p>Välj ikonen <strong>Växla till uttrycksläge</strong> vid fältet <strong>Värde</strong>.</p>
+<p><img alt="Värdefältet för TotalProductPrice växlas till uttrycksläge" src="../../../assets/nextgen/chap08/mul2.png" /></p>
+<p>Beräkningen är <code>CurrentUnitPrice × Quantity</code>. Börja med att skriva funktionen:</p>
+<div class="highlight"><pre><span></span><code>mul()
+</code></pre></div>
+<p><img alt="Funktionen mul har skrivits in" src="../../../assets/nextgen/chap08/mul3.png" /></p>
+<p>Placera markören mellan parenteserna och öppna dynamiskt innehåll. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>CurrentUnitPrice
+</code></pre></div>
+<p>Välj värdet från <strong>Hämta vald produktvariant</strong>.</p>
+<p><img alt="CurrentUnitPrice väljs från Hämta vald produktvariant" src="../../../assets/nextgen/chap08/mul4.png" /></p>
+<p>Skriv ett kommatecken efter värdet. Öppna sedan dynamiskt innehåll och sök efter:</p>
+<div class="highlight"><pre><span></span><code>Quantity
+</code></pre></div>
+<p>Välj värdet från <strong>When an agent calls the flow</strong>.</p>
+<p><img alt="Quantity väljs som den andra parametern i mul-funktionen" src="../../../assets/nextgen/chap08/mul5.png" /></p>
+<p>Det färdiga uttrycket ska motsvara följande:</p>
+<div class="highlight"><pre><span></span><code>@mul(outputs('Hämta_vald_produktvariant')?['body/field_5'],triggerOutputs()?['body/number_1'])
+</code></pre></div>
+<p>Kontrollera att variabeln heter <code>TotalProductPrice</code>, har typen <strong>Float</strong> och innehåller båda parametrarna.</p>
+<p><img alt="TotalProductPrice är färdigkonfigurerad" src="../../../assets/nextgen/chap08/mul6.png" /></p>
+<hr />
+<h2 id="del-6-lagg-till-villkorsnoden">Del 6: Lägg till villkorsnoden</h2>
+<p>Lägg till ett steg efter variabelnoden och välj <strong>Om/annars</strong>.</p>
+<p><img alt="Om annars väljs i listan över åtgärder" src="../../../assets/nextgen/chap08/37.png" /></p>
+<p>Byt namn på noden till:</p>
+<div class="highlight"><pre><span></span><code>Avgör standardprocess eller manuell granskning
+</code></pre></div>
+<p><img alt="Villkorsnoden har lagts till i arbetsflödet" src="../../../assets/nextgen/chap08/38.png" /></p>
+<p>Villkorsnoden innehåller en första gren med namnet <code>If</code>. Klicka på namnet för att ändra det.</p>
+<p><img alt="Namnet på den första villkorsgrenen kan ändras" src="../../../assets/nextgen/chap08/39.png" /></p>
+<p>Ange:</p>
+<div class="highlight"><pre><span></span><code>Standard – svensk showroomstudio
+</code></pre></div>
+<p>Kontrollera att operatorn mellan raderna är <strong>AND</strong>.</p>
+<p><img alt="Den första grenen heter Standard svensk showroomstudio" src="../../../assets/nextgen/chap08/40.png" /></p>
+<hr />
+<h2 id="del-7-konfigurera-svensk-showroomstudio">Del 7: Konfigurera svensk showroomstudio</h2>
+<p>Grenen ska bara matcha en svensk showroomstudio när antalet är mellan 1 och 5 och minst 2 exemplar blir kvar disponibla.</p>
+<p>Klicka på blixtikonen i fältet <strong>Egenskap</strong>. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>ShowroomType
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="ShowroomType väljs som den första egenskapen" src="../../../assets/nextgen/chap08/41.png" /></p>
+<p>Behåll operatorn <strong>Är lika med</strong>.</p>
+<p><img alt="Operatorn Är lika med används för showroomtypen" src="../../../assets/nextgen/chap08/42.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>Showroomstudio
+</code></pre></div>
+<p><img alt="ShowroomType ska vara lika med Showroomstudio" src="../../../assets/nextgen/chap08/43.png" /></p>
+<p>Lägg till en rad och öppna dynamiskt innehåll. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>Country
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="Country väljs som nästa egenskap" src="../../../assets/nextgen/chap08/44.png" /></p>
+<p>Behåll operatorn <strong>Är lika med</strong>.</p>
+<p><img alt="Operatorn Är lika med används för Country" src="../../../assets/nextgen/chap08/45.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>Sverige
+</code></pre></div>
+<p><img alt="Country ska vara lika med Sverige" src="../../../assets/nextgen/chap08/46.png" /></p>
+<p>Lägg till en tredje rad och öppna dynamiskt innehåll. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>Quantity
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="Quantity väljs för den övre mängdgränsen" src="../../../assets/nextgen/chap08/47.png" /></p>
+<p>Byt operator till <strong>Mindre än eller lika med</strong>.</p>
+<p><img alt="Operatorn Mindre än eller lika med väljs" src="../../../assets/nextgen/chap08/48.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>5
+</code></pre></div>
+<p><img alt="Quantity ska vara mindre än eller lika med 5" src="../../../assets/nextgen/chap08/49.png" /></p>
+<p>Lägg till ännu en rad och sök efter:</p>
+<div class="highlight"><pre><span></span><code>Quantity
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="Quantity väljs för den undre mängdgränsen" src="../../../assets/nextgen/chap08/50.png" /></p>
+<p>Byt operator till <strong>Större än eller lika med</strong>.</p>
+<p><img alt="Operatorn Större än eller lika med väljs för den undre mängdgränsen" src="../../../assets/nextgen/chap08/51.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>1
+</code></pre></div>
+<p><img alt="Quantity ska vara större än eller lika med 1" src="../../../assets/nextgen/chap08/52.png" /></p>
+<p>Lägg till en femte rad och öppna dynamiskt innehåll. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>RemainingAvailableQuantity
+</code></pre></div>
+<p>Välj variabeln under <strong>Variables</strong>.</p>
+<p><img alt="RemainingAvailableQuantity väljs från Variables" src="../../../assets/nextgen/chap08/53.png" /></p>
+<p>Byt operator till <strong>Större än eller lika med</strong>.</p>
+<p><img alt="Operatorn Större än eller lika med väljs för lagerbufferten" src="../../../assets/nextgen/chap08/54.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>2
+</code></pre></div>
+<p><img alt="Den svenska showroomstudions fem villkor är färdiga" src="../../../assets/nextgen/chap08/55.png" /></p>
+<p>Den färdiga grenen ska innehålla:</p>
+<table>
+<thead>
+<tr>
+<th>Egenskap</th>
+<th>Operator</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ShowroomType</code></td>
+<td>Är lika med</td>
+<td><code>Showroomstudio</code></td>
+</tr>
+<tr>
+<td><code>Country</code></td>
+<td>Är lika med</td>
+<td><code>Sverige</code></td>
+</tr>
+<tr>
+<td><code>Quantity</code></td>
+<td>Mindre än eller lika med</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>Quantity</code></td>
+<td>Större än eller lika med</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>RemainingAvailableQuantity</code></td>
+<td>Större än eller lika med</td>
+<td><code>2</code></td>
+</tr>
+</tbody>
+</table>
+<p>Välj <strong>Lägg till en gren</strong>.</p>
+<p><img alt="En ny villkorsgren kan läggas till efter den svenska showroomstudion" src="../../../assets/nextgen/chap08/56.png" /></p>
+<hr />
+<h2 id="del-8-konfigurera-svenskt-flagship-showroom">Del 8: Konfigurera svenskt flagship-showroom</h2>
+<p>Byt namn på den nya grenen från <code>Branch 2</code> till:</p>
+<div class="highlight"><pre><span></span><code>Standard – svenskt flagship-showroom
+</code></pre></div>
+<p><img alt="Den andra grenen kan byta namn" src="../../../assets/nextgen/chap08/57.png" /></p>
+<p>Klicka på blixtikonen i fältet <strong>Egenskap</strong>. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>ShowroomType
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="ShowroomType väljs för flagship-grenen" src="../../../assets/nextgen/chap08/58.png" /></p>
+<p>Behåll operatorn <strong>Är lika med</strong>.</p>
+<p><img alt="Operatorn Är lika med används för showroomtypen" src="../../../assets/nextgen/chap08/59.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>Flagship
+</code></pre></div>
+<p><img alt="ShowroomType ska vara lika med Flagship" src="../../../assets/nextgen/chap08/60.png" /></p>
+<p>Lägg till en rad och öppna dynamiskt innehåll. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>Country
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="Country väljs för flagship-grenen" src="../../../assets/nextgen/chap08/61.png" /></p>
+<p>Behåll operatorn <strong>Är lika med</strong>.</p>
+<p><img alt="Operatorn Är lika med används för Country" src="../../../assets/nextgen/chap08/62.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>Sverige
+</code></pre></div>
+<p><img alt="Country ska vara lika med Sverige" src="../../../assets/nextgen/chap08/63.png" /></p>
+<p>Lägg till en tredje rad och öppna dynamiskt innehåll. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>Quantity
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="Quantity väljs för flagships övre mängdgräns" src="../../../assets/nextgen/chap08/64.png" /></p>
+<p>Välj operatorn <strong>Mindre än eller lika med</strong>.</p>
+<p><img alt="Operatorn Mindre än eller lika med väljs för Quantity" src="../../../assets/nextgen/chap08/65.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>10
+</code></pre></div>
+<p><img alt="Quantity ska vara mindre än eller lika med 10" src="../../../assets/nextgen/chap08/66.png" /></p>
+<p>Lägg till ännu en rad och sök efter:</p>
+<div class="highlight"><pre><span></span><code>Quantity
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="Quantity väljs för den undre mängdgränsen" src="../../../assets/nextgen/chap08/67.png" /></p>
+<p>Välj operatorn <strong>Större än eller lika med</strong>.</p>
+<p><img alt="Operatorn Större än eller lika med väljs för Quantity" src="../../../assets/nextgen/chap08/68.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>1
+</code></pre></div>
+<p><img alt="Quantity ska vara större än eller lika med 1" src="../../../assets/nextgen/chap08/69.png" /></p>
+<p>Lägg till en femte rad och öppna dynamiskt innehåll. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>RemainingAvailableQuantity
+</code></pre></div>
+<p>Välj variabeln under <strong>Variables</strong>.</p>
+<p><img alt="RemainingAvailableQuantity väljs från Variables" src="../../../assets/nextgen/chap08/70.png" /></p>
+<p>Byt operator till <strong>Större än eller lika med</strong>.</p>
+<p><img alt="Operatorn Större än eller lika med väljs för det disponibla saldot" src="../../../assets/nextgen/chap08/71.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>0
+</code></pre></div>
+<p><img alt="Det disponibla saldot efter reservationen ska vara minst 0" src="../../../assets/nextgen/chap08/72.png" /></p>
+<p>Flagship-grenen ska alltså innehålla:</p>
+<table>
+<thead>
+<tr>
+<th>Egenskap</th>
+<th>Operator</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ShowroomType</code></td>
+<td>Är lika med</td>
+<td><code>Flagship</code></td>
+</tr>
+<tr>
+<td><code>Country</code></td>
+<td>Är lika med</td>
+<td><code>Sverige</code></td>
+</tr>
+<tr>
+<td><code>Quantity</code></td>
+<td>Mindre än eller lika med</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>Quantity</code></td>
+<td>Större än eller lika med</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>RemainingAvailableQuantity</code></td>
+<td>Större än eller lika med</td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<p>Välj sedan <strong>Lägg till en gren</strong>.</p>
+<p><img alt="En tredje villkorsgren kan läggas till efter flagship-grenen" src="../../../assets/nextgen/chap08/73.png" /></p>
+<hr />
+<h2 id="del-9-konfigurera-internationell-showroomstudio">Del 9: Konfigurera internationell showroomstudio</h2>
+<p>Byt namn på <code>Branch 3</code> till:</p>
+<div class="highlight"><pre><span></span><code>Standard – internationell showroomstudio
+</code></pre></div>
+<p><img alt="Den tredje grenen kan byta namn" src="../../../assets/nextgen/chap08/74.png" /></p>
+<p>Klicka på blixtikonen i fältet <strong>Egenskap</strong>. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>ShowroomType
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="ShowroomType väljs för den internationella grenen" src="../../../assets/nextgen/chap08/75.png" /></p>
+<p>Behåll operatorn <strong>Är lika med</strong>.</p>
+<p><img alt="Operatorn Är lika med används för showroomtypen" src="../../../assets/nextgen/chap08/76.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>Showroomstudio
+</code></pre></div>
+<p><img alt="ShowroomType ska vara lika med Showroomstudio" src="../../../assets/nextgen/chap08/77.png" /></p>
+<p>Lägg till en rad och öppna dynamiskt innehåll. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>Country
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="Country väljs för den internationella grenen" src="../../../assets/nextgen/chap08/78.png" /></p>
+<p>Byt operator till <strong>Inte lika med</strong>.</p>
+<p><img alt="Operatorn Inte lika med väljs för Country" src="../../../assets/nextgen/chap08/79.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>Sverige
+</code></pre></div>
+<p><img alt="Country ska inte vara lika med Sverige" src="../../../assets/nextgen/chap08/80.png" /></p>
+<p>Lägg till en tredje rad och öppna dynamiskt innehåll. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>Quantity
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="Quantity väljs för den internationella mängdgränsen" src="../../../assets/nextgen/chap08/81.png" /></p>
+<p>Välj operatorn <strong>Mindre än eller lika med</strong>.</p>
+<p><img alt="Operatorn Mindre än eller lika med väljs för Quantity" src="../../../assets/nextgen/chap08/82.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>3
+</code></pre></div>
+<p><img alt="Quantity ska vara mindre än eller lika med 3" src="../../../assets/nextgen/chap08/83.png" /></p>
+<p>Lägg till ännu en rad och sök efter:</p>
+<div class="highlight"><pre><span></span><code>Quantity
+</code></pre></div>
+<p>Välj värdet från utlösaren.</p>
+<p><img alt="Quantity väljs för den undre mängdgränsen" src="../../../assets/nextgen/chap08/84.png" /></p>
+<p>Välj operatorn <strong>Större än eller lika med</strong>.</p>
+<p><img alt="Operatorn Större än eller lika med väljs för Quantity" src="../../../assets/nextgen/chap08/85.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>1
+</code></pre></div>
+<p><img alt="Quantity ska vara större än eller lika med 1" src="../../../assets/nextgen/chap08/86.png" /></p>
+<p>Lägg till en femte rad och öppna dynamiskt innehåll. Sök efter:</p>
+<div class="highlight"><pre><span></span><code>RemainingAvailableQuantity
+</code></pre></div>
+<p>Välj variabeln under <strong>Variables</strong>.</p>
+<p><img alt="RemainingAvailableQuantity väljs för lagerbufferten" src="../../../assets/nextgen/chap08/87.png" /></p>
+<p>Välj operatorn <strong>Större än eller lika med</strong>.</p>
+<p><img alt="Operatorn Större än eller lika med väljs för RemainingAvailableQuantity" src="../../../assets/nextgen/chap08/88.png" /></p>
+<p>Ange värdet:</p>
+<div class="highlight"><pre><span></span><code>2
+</code></pre></div>
+<p><img alt="Den internationella showroomstudions fem villkor är färdiga" src="../../../assets/nextgen/chap08/89.png" /></p>
+<p>Den färdiga grenen ska innehålla:</p>
+<table>
+<thead>
+<tr>
+<th>Egenskap</th>
+<th>Operator</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ShowroomType</code></td>
+<td>Är lika med</td>
+<td><code>Showroomstudio</code></td>
+</tr>
+<tr>
+<td><code>Country</code></td>
+<td>Inte lika med</td>
+<td><code>Sverige</code></td>
+</tr>
+<tr>
+<td><code>Quantity</code></td>
+<td>Mindre än eller lika med</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>Quantity</code></td>
+<td>Större än eller lika med</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>RemainingAvailableQuantity</code></td>
+<td>Större än eller lika med</td>
+<td><code>2</code></td>
+</tr>
+</tbody>
+</table>
+<p>Alla andra giltiga begäranden fortsätter genom den automatiska <strong>Annars</strong>-grenen. I nästa del använder vi den grenen för manuell granskning och kopplar standardgrenarna till reservationen.</p>
+<p>Kontrollera att noden innehåller de tre namngivna standardgrenarna och grenen <strong>Annars</strong>.</p>
+<p><img alt="Villkorsnoden innehåller tre standardgrenar och grenen Annars" src="../../../assets/nextgen/chap08/90.png" /></p>
+<div class="admonition success">
+<p class="admonition-title">Flödets indata och beslut är klara</p>
+<p>Arbetsflödet kan nu hämta rätt produktvariant, räkna ut kvarvarande disponibelt saldo och totalt produktpris samt avgöra om begäran uppfyller någon av standardprocessens tre regelkombinationer. Ingen lagerpost har ändrats ännu.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          
+<button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Tillbaka till toppen
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Kopierat till urklipp", "clipboard.copy": "Kopiera till urklipp", "search.result.more.one": "1 till p\u00e5 denna sida", "search.result.more.other": "# till p\u00e5 denna sida", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.term.missing": "Saknas", "select.version": "V\u00e4lj version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
