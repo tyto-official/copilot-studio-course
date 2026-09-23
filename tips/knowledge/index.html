@@ -13,8 +13,10 @@
         <link rel="canonical" href="https://tyto-official.github.io/copilot-studio-course/tips/knowledge/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../../copilot-studio/nextgen/10-connect-flow-and-finalize-skill/">
       
+      
+        <link rel="next" href="../agentdokumentation/">
       
       
         
@@ -1817,34 +1819,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Översikt
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -2093,6 +2067,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentdokumentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agentdokumentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2322,7 +2324,7 @@
 
 <h1 id="kunskap-i-copilot-studio-pa-djupet">Kunskap i Copilot Studio – på djupet</h1>
 <p>I kursen lärde vi oss lägga till kunskap via dokument och webbsidor. Men hur fungerar det egentligen bakom kulisserna? Och vad gör man när den vanliga kunskapssökningen inte räcker?</p>
-<p><img alt="Kunskapskällor i Copilot Studio" src="../../assets/standard/images/tips-knowledge/1.png" /></p>
+<p><img alt="Kunskapskällor i Copilot Studio" src="../../assets/tips-trix/kunskap-pa-djupet/1.png" /></p>
 <hr />
 <h2 id="steg-1-vad-hander-nar-du-laddar-upp-ett-dokument">Steg 1: Vad händer när du laddar upp ett dokument?</h2>
 <p>Innan vi pratar om hur sökningen fungerar måste vi förstå vad som händer redan <strong>när du lägger till ett dokument</strong> som kunskap.</p>
@@ -2427,11 +2429,11 @@ Denna kan ha <strong>över 1 000 dimensioner</strong> – långt bortom vad vi k
 <ol>
 <li>
 <p>Klicka på <strong>Verktyg</strong> i menyn och sedan på <strong>+ Lägg till</strong>.</p>
-<p><img alt="Lägg till verktyg" src="../../assets/standard/images/tips-knowledge/2.png" /></p>
+<p><img alt="Lägg till verktyg" src="../../assets/tips-trix/kunskap-pa-djupet/2.png" /></p>
 </li>
 <li>
 <p>Välj <strong>Agentflöden</strong> för att skapa ett nytt agentflöde.</p>
-<p><img alt="Välj agentflöden" src="../../assets/standard/images/tips-knowledge/3.png" /></p>
+<p><img alt="Välj agentflöden" src="../../assets/tips-trix/kunskap-pa-djupet/3.png" /></p>
 </li>
 <li>
 <p>Du ser två noder:</p>
@@ -2439,7 +2441,7 @@ Denna kan ha <strong>över 1 000 dimensioner</strong> – långt bortom vad vi k
 <li><strong>När en agent anropar flödet</strong> (Indata)</li>
 <li><strong>Respond to the agent</strong> (Utdata)</li>
 </ul>
-<p><img alt="Två noder" src="../../assets/standard/images/tips-knowledge/3.png" /></p>
+<p><img alt="Två noder" src="../../assets/tips-trix/kunskap-pa-djupet/3.png" /></p>
 </li>
 <li>
 <p><strong>Viktigt:</strong> Lägg <strong>inte</strong> till några indataparametrar. Flödet ska alltid hämta samma fil – ingen input behövs.</p>
@@ -2449,11 +2451,11 @@ Denna kan ha <strong>över 1 000 dimensioner</strong> – långt bortom vad vi k
 <ol>
 <li>
 <p>Klicka på <strong>plus-tecknet (+)</strong> mellan de två noderna.</p>
-<p><img alt="Plus-tecknet" src="../../assets/standard/images/tips-knowledge/4.png" /></p>
+<p><img alt="Plus-tecknet" src="../../assets/tips-trix/kunskap-pa-djupet/4.png" /></p>
 </li>
 <li>
 <p>Sök efter <strong>Hämta filinnehåll</strong> – välj SharePoint- eller OneDrive-varianten beroende på var din fil ligger.</p>
-<p><img alt="Sök hämta filinnehåll" src="../../assets/standard/images/tips-knowledge/5.png" /></p>
+<p><img alt="Sök hämta filinnehåll" src="../../assets/tips-trix/kunskap-pa-djupet/5.png" /></p>
 </li>
 <li>
 <p>Konfigurera noden:</p>
@@ -2465,25 +2467,25 @@ Denna kan ha <strong>över 1 000 dimensioner</strong> – långt bortom vad vi k
 <p><strong>Fil:</strong> Navigera till den specifika filen du vill hämta.</p>
 </li>
 </ul>
-<p><img alt="Välj fil" src="../../assets/standard/images/tips-knowledge/6.png" /></p>
+<p><img alt="Välj fil" src="../../assets/tips-trix/kunskap-pa-djupet/6.png" /></p>
 </li>
 </ol>
 <h4 id="3-konfigurera-utdata">3. Konfigurera utdata</h4>
 <ol>
 <li>
 <p>Klicka på noden <strong>Respond to the agent</strong>.</p>
-<p><img alt="Respond to the agent" src="../../assets/standard/images/tips-knowledge/7.png" /></p>
+<p><img alt="Respond to the agent" src="../../assets/tips-trix/kunskap-pa-djupet/7.png" /></p>
 </li>
 <li>
 <p>Klicka <strong>+ Lägg till utdata</strong> → <strong>Text</strong>.</p>
-<p><img alt="Lägg till utdata" src="../../assets/standard/images/tips-knowledge/8.png" /></p>
+<p><img alt="Lägg till utdata" src="../../assets/tips-trix/kunskap-pa-djupet/8.png" /></p>
 </li>
 <li>
 <p>Döp utdatan till ett passande namn, t.ex. <code>innehåll</code>.</p>
 </li>
 <li>
 <p>Klicka på <strong>fx</strong>-symbolen (Infoga uttryck).</p>
-<p><img alt="FX-symbolen" src="../../assets/standard/images/tips-knowledge/9.png" /></p>
+<p><img alt="FX-symbolen" src="../../assets/tips-trix/kunskap-pa-djupet/9.png" /></p>
 </li>
 <li>
 <p>Skriv in följande uttryck:</p>
@@ -2493,22 +2495,22 @@ Denna kan ha <strong>över 1 000 dimensioner</strong> – långt bortom vad vi k
 </li>
 <li>
 <p>Klicka <strong>Lägg till</strong>.</p>
-<p><img alt="Uttryck för filinnehåll" src="../../assets/standard/images/tips-knowledge/10.png" /></p>
+<p><img alt="Uttryck för filinnehåll" src="../../assets/tips-trix/kunskap-pa-djupet/10.png" /></p>
 </li>
 </ol>
 <h4 id="4-spara-och-publicera">4. Spara och publicera</h4>
 <ol>
 <li>
 <p>Klicka <strong>Spara utkast</strong>.</p>
-<p><img alt="Spara utkast" src="../../assets/standard/images/tips-knowledge/12.png" /></p>
+<p><img alt="Spara utkast" src="../../assets/tips-trix/kunskap-pa-djupet/12.png" /></p>
 </li>
 <li>
 <p>Klicka på <strong>Översikt</strong> (till vänster om flödesnamnet).</p>
-<p><img alt="Översikt" src="../../assets/standard/images/tips-knowledge/13.png" /></p>
+<p><img alt="Översikt" src="../../assets/tips-trix/kunskap-pa-djupet/13.png" /></p>
 </li>
 <li>
 <p>Klicka <strong>Redigera</strong> under <em>Detaljer</em>.</p>
-<p><img alt="Redigera" src="../../assets/standard/images/tips-knowledge/14.png" /></p>
+<p><img alt="Redigera" src="../../assets/tips-trix/kunskap-pa-djupet/14.png" /></p>
 </li>
 <li>
 <p>Ge flödet ett passande namn, t.ex.:</p>
@@ -2522,16 +2524,16 @@ Denna kan ha <strong>över 1 000 dimensioner</strong> – långt bortom vad vi k
 </li>
 <li>
 <p>Klicka <strong>Spara</strong>.</p>
-<p><img alt="Spara detaljer" src="../../assets/standard/images/tips-knowledge/15.png" /></p>
+<p><img alt="Spara detaljer" src="../../assets/tips-trix/kunskap-pa-djupet/15.png" /></p>
 </li>
 <li>
 <p>Gå tillbaka till <strong>Designer</strong> och klicka på <strong>Publicera</strong>.</p>
-<p><img alt="Designer" src="../../assets/standard/images/tips-knowledge/16.png" /></p>
-<p><img alt="Publicera" src="../../assets/standard/images/tips-knowledge/17.png" /></p>
+<p><img alt="Designer" src="../../assets/tips-trix/kunskap-pa-djupet/16.png" /></p>
+<p><img alt="Publicera" src="../../assets/tips-trix/kunskap-pa-djupet/17.png" /></p>
 </li>
 <li>
 <p>Om allt fungerar får du en grön bekräftelseruta.</p>
-<p><img alt="Grön bekräftelse" src="../../assets/standard/images/tips-knowledge/18.png" /></p>
+<p><img alt="Grön bekräftelse" src="../../assets/tips-trix/kunskap-pa-djupet/18.png" /></p>
 </li>
 </ol>
 <h4 id="5-lagg-till-som-verktyg-i-agenten">5. Lägg till som verktyg i agenten</h4>
@@ -2539,16 +2541,16 @@ Denna kan ha <strong>över 1 000 dimensioner</strong> – långt bortom vad vi k
 <li>Navigera till din agent.</li>
 <li>
 <p>Klicka på <strong>Lägg till ett verktyg</strong> → <strong>Agentflöden</strong>.</p>
-<p><img alt="Lägg till verktyg" src="../../assets/standard/images/tips-knowledge/19.png" /></p>
-<p><img alt="Välj flöde" src="../../assets/standard/images/tips-knowledge/20.png" /></p>
+<p><img alt="Lägg till verktyg" src="../../assets/tips-trix/kunskap-pa-djupet/19.png" /></p>
+<p><img alt="Välj flöde" src="../../assets/tips-trix/kunskap-pa-djupet/20.png" /></p>
 </li>
 <li>
 <p>Välj ditt nyligen skapade flöde (<strong>Produktinformation</strong>).</p>
-<p><img alt="Välj flöde" src="../../assets/standard/images/tips-knowledge/21.png" /></p>
+<p><img alt="Välj flöde" src="../../assets/tips-trix/kunskap-pa-djupet/21.png" /></p>
 </li>
 <li>
 <p>Klicka <strong>Lägg till och konfigurera</strong>.</p>
-<p><img alt="Lägg till och konfigurera" src="../../assets/standard/images/tips-knowledge/22.png" /></p>
+<p><img alt="Lägg till och konfigurera" src="../../assets/tips-trix/kunskap-pa-djupet/22.png" /></p>
 </li>
 <li>
 <p>Kontrollera att <strong>namn</strong> och <strong>beskrivning</strong> stämmer:</p>
@@ -2558,7 +2560,7 @@ Denna kan ha <strong>över 1 000 dimensioner</strong> – långt bortom vad vi k
   <div class="highlight"><pre><span></span><code>Detta verktyg genererar hela texten för företagets produktinformationsdokument.
 </code></pre></div></li>
 </ul>
-<p><img alt="Konfigurera verktyg" src="../../assets/standard/images/tips-knowledge/23.png" /></p>
+<p><img alt="Konfigurera verktyg" src="../../assets/tips-trix/kunskap-pa-djupet/23.png" /></p>
 </li>
 <li>
 <p><strong>Spara</strong> verktygskonfigurationen.</p>
@@ -2573,7 +2575,7 @@ Denna kan ha <strong>över 1 000 dimensioner</strong> – långt bortom vad vi k
 <div class="highlight"><pre><span></span><code>- Använd verktyget /Produktinformation för att se all information om företagets produkter.
 </code></pre></div>
 <p><em>(Kom ihåg att välja verktyget från popupmenyn så att det blir en aktiv länk.)</em></p>
-<p><img alt="Instruktioner" src="../../assets/standard/images/tips-knowledge/24.png" /></p>
+<p><img alt="Instruktioner" src="../../assets/tips-trix/kunskap-pa-djupet/24.png" /></p>
 </li>
 <li>
 <p>Klicka <strong>Spara</strong>.</p>
