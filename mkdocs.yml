@@ -82,8 +82,8 @@ nav:
           - 9. Slutför agentflödet: copilot-studio/nextgen/09-complete-showroom-flow.md
           - 10. Koppla flödet och slutför skillen: copilot-studio/nextgen/10-connect-flow-and-finalize-skill.md
   - Tips & fördjupning:
-    - Översikt: tips/index.md
     - Kunskap på djupet: tips/knowledge.md
+    - Agentdokumentation: tips/agentdokumentation.md
 
 extra_css:
   - stylesheets/extra.css
