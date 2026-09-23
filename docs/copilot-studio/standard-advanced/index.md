@@ -10,18 +10,18 @@ hide:
       <a class="back-link" href="../../">Alla utbildningar</a>
       <div class="eyebrow">STANDARDHARNESSEN · FÖRDJUPNING</div>
       <h1>Bygg en <span>driftassistent med externa system</span></h1>
-      <p>En fördjupningskurs där du kopplar en standardagent till externa system. Du bygger en intern serviceagent som analyserar en bild, verifierar utrustning via ett eget anslutningsprogram, hämtar beslutsunderlag via MCP och skapar en arbetsorder efter användarens godkännande.</p>
+      <p>Bygg en intern driftassistent som kopplas till ett externt underhållssystem. Agenten tar emot felanmälningar med bild, kontrollerar utrustningen och skapar en arbetsorder först efter användarens godkännande. Kursen är fristående; du behöver inte ha gått grundkursen.</p>
       <div class="hero-actions">
         <a class="button button--primary" href="00-course-setup/">Starta kursen</a>
         <a class="button button--ghost" href="#kursresan">Se alla kapitel</a>
       </div>
-      <div class="hero-meta"><span>11 kapitel</span><span>Fördjupningsnivå</span><span>Prompt · Connector · MCP</span></div>
+      <div class="hero-meta"><span>11 kapitel</span><span>Fördjupningsnivå</span><span>Externa system</span></div>
     </div>
     <div class="course-hero__visual">
       <div class="product-shot">
         <img src="../../assets/shared/portal/old-hero.png" alt="Startsidan i Copilot Studio med valet mellan agent och arbetsflöde">
       </div>
-      <div class="floating-label"><strong>Serviceagent</strong><span>Analys · uppslag · beslut</span></div>
+      <div class="floating-label"><strong>Driftassistent</strong><span>Analys · uppslag · beslut</span></div>
     </div>
   </section>
 
@@ -60,8 +60,4 @@ hide:
     </div>
   </section>
 
-  <section class="course-cta course-cta--teal">
-    <div><div class="section-label section-label--light">MÅLET</div><h2>En agent som följer samma beslutsregler varje gång och kan visa varför.</h2></div>
-    <div><p>Kursen är fristående. Du behöver inte ha gått grundkursen, men den som har det känner igen sig.</p><a class="button button--light button--arrow" href="00-course-setup/">Börja med kursuppsättningen</a></div>
-  </section>
 </div>
