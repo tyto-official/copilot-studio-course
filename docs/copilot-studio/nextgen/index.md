@@ -15,8 +15,12 @@ hide:
       <div class="hero-meta"><span>11 kapitel</span><span>Grundnivå</span><span>Microsoft 365 internt</span></div>
     </div>
     <div class="course-hero__visual">
-      <div class="product-shot"><img src="../../assets/shared/portal/nextgen-hero.png" alt="Nya Copilot Studio med alternativen agent och arbetsflöde"></div>
-      <div class="floating-label"><strong>Produktagent</strong><span>Kunskap · lager · påfyllning</span></div>
+      <div class="product-shot product-shot--video">
+        <video class="course-film" autoplay loop muted playsinline controls preload="metadata" poster="../../assets/shared/course-videos/nextgen.jpg" aria-label="Kursfilm om att bygga en produktagent, 72 sekunder">
+          <source src="../../assets/shared/course-videos/nextgen.mp4" type="video/mp4">
+          Din webbläsare kan inte spela upp filmen.
+        </video>
+      </div>
     </div>
   </section>
 
@@ -26,9 +30,9 @@ hide:
   </section>
 
   <section class="capability-grid" aria-label="Agentens förmågor">
-    <article class="capability capability--green"><span>01</span><h3>Kunskap</h3><p>Matcha produkter med en PDF-katalog och verifiera showroom på Lysernos webbplats.</p></article>
+    <article class="capability capability--purple"><span>01</span><h3>Kunskap</h3><p>Matcha produkter med en PDF-katalog och verifiera showroom på Lysernos webbplats.</p></article>
     <article class="capability capability--blue"><span>02</span><h3>Aktuell data</h3><p>Hämta variant, pris, status och lagersaldo från listan Centrallager i SharePoint.</p></article>
-    <article class="capability capability--purple"><span>03</span><h3>Skill</h3><p>En skill hjälper agenten att välja produkt, kontrollera lager och bedöma påfyllningsreglerna.</p></article>
+    <article class="capability capability--violet"><span>03</span><h3>Skill</h3><p>En skill hjälper agenten att välja produkt, kontrollera lager och bedöma påfyllningsreglerna.</p></article>
     <article class="capability capability--coral"><span>04</span><h3>Arbetsflöde</h3><p>Reservera varor när villkoren är uppfyllda. Andra giltiga begäranden skickas för manuell granskning.</p></article>
   </section>
 
